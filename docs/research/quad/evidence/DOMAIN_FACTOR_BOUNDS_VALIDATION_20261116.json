@@ -1,0 +1,1402 @@
+{
+  "schema": "apmesh.quad.domain_bounds_delivery.v1",
+  "source_sha": "d59a513a04ea8c9573e006789641f4adbeecedee",
+  "profiles": {
+    "msvc": {
+      "bounded_cases": {
+        "schema": "apmesh.quad.domain_factor_bounds.v1",
+        "cases": {
+          "original-default": {
+            "objects": {
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+              "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e"
+            },
+            "domain_factors": {
+              "1": 0.8,
+              "2": 0.88,
+              "3": 0.88
+            },
+            "mixed_steps": [
+              {
+                "nodes": 165,
+                "quads": 120,
+                "triangles": 68,
+                "boundary": 20,
+                "source_step": 1,
+                "native_leaves": 46,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 2,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 3,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1
+            ]
+          },
+          "bounded-default": {
+            "objects": {
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+              "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e"
+            },
+            "domain_factors": {
+              "1": 0.8,
+              "2": 0.88,
+              "3": 0.88
+            },
+            "mixed_steps": [
+              {
+                "nodes": 165,
+                "quads": 120,
+                "triangles": 68,
+                "boundary": 20,
+                "source_step": 1,
+                "native_leaves": 46,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 2,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 3,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1
+            ]
+          },
+          "original-coarse": {
+            "objects": {
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "step_2_retry_0_accepted_quad_tri.obj": "44b553cca97a3b124f382e54c8706c61129079d142ef128a98c77a25403ded8d",
+              "step_2_retry_0_accepted_tri.obj": "93e34629c337836f7a42cacbeb4d51fbecac57dbdce48cd42a46fc9d5102fdcd",
+              "step_3_retry_0_accepted_quad_tri.obj": "db84b9af0fec0d5189a43348fc8462d2a0a81a2fe978da4a084e4c18ef092de2",
+              "step_3_retry_0_accepted_tri.obj": "79921e39fbc13dd8704cd25a5e16a02c5e5d44d5eb10aead270a88e0b4622364"
+            },
+            "domain_factors": {
+              "1": 1.5,
+              "2": 1.0,
+              "3": 1.5
+            },
+            "mixed_steps": [
+              {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 615,
+                "quads": 548,
+                "triangles": 122,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 136,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 843,
+                "quads": 772,
+                "triangles": 126,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 247,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "bounded-coarse": {
+            "objects": {
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c",
+              "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+              "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+              "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c"
+            },
+            "domain_factors": {
+              "1": 1.5,
+              "2": 1.5,
+              "3": 1.5
+            },
+            "mixed_steps": [
+              {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 281,
+                "quads": 242,
+                "triangles": 66,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 797,
+                "quads": 724,
+                "triangles": 130,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "bounded-rollback": {
+            "objects": {
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c",
+              "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+              "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+              "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c"
+            },
+            "domain_factors": {
+              "1": 1.5,
+              "2": 1.5,
+              "3": 1.5
+            },
+            "mixed_steps": [
+              {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 281,
+                "quads": 242,
+                "triangles": 66,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 797,
+                "quads": 724,
+                "triangles": 130,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "mixed_adaptive_epochs": 0,
+        "scientific_adoption": false
+      },
+      "image_sha256": "757407a18650b83b741767cda3c1131a7c473de198ff333a6c15fae910a407b6",
+      "native_source_controls": {
+        "captures": 6,
+        "reversed_captures": 3,
+        "negatives": 54
+      },
+      "original_curvature_and_stable_history": {
+        "actual_ap_mesh_entry": true,
+        "original_generator_curve_workflow": true,
+        "original_native_tree": true,
+        "normal_and_rollback": [
+          {
+            "nodes": 165,
+            "quads": 120,
+            "triangles": 68,
+            "boundary": 20,
+            "source_step": 1,
+            "native_leaves": 46,
+            "domain_generation": 1,
+            "nonuniform_sides": 4,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 4,
+              "curve_attempts": 12,
+              "profile": "original_curvature",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2,
+                3
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "existing_output_rejected": true
+          },
+          {
+            "nodes": 165,
+            "quads": 120,
+            "triangles": 68,
+            "boundary": 20,
+            "source_step": 1,
+            "native_leaves": 46,
+            "domain_generation": 1,
+            "nonuniform_sides": 4,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 4,
+              "curve_attempts": 12,
+              "profile": "original_curvature",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2,
+                3
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "existing_output_rejected": true
+          }
+        ],
+        "stable_control_normal_and_rollback": [
+          {
+            "nodes": 5,
+            "quads": 0,
+            "triangles": 4,
+            "boundary": 4,
+            "source_step": 1,
+            "native_leaves": 4,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 3,
+              "curve_attempts": 12,
+              "profile": "stable_control",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "existing_output_rejected": true
+          },
+          {
+            "nodes": 5,
+            "quads": 0,
+            "triangles": 4,
+            "boundary": 4,
+            "source_step": 1,
+            "native_leaves": 4,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 3,
+              "curve_attempts": 12,
+              "profile": "stable_control",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "existing_output_rejected": true
+          }
+        ],
+        "mixed_adaptive_epochs": 0
+      }
+    },
+    "gcc": {
+      "bounded_cases": {
+        "schema": "apmesh.quad.domain_factor_bounds.v1",
+        "cases": {
+          "original-default": {
+            "objects": {
+              "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+              "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2"
+            },
+            "domain_factors": {
+              "1": 0.8,
+              "2": 0.88,
+              "3": 0.88
+            },
+            "mixed_steps": [
+              {
+                "nodes": 165,
+                "quads": 120,
+                "triangles": 68,
+                "boundary": 20,
+                "source_step": 1,
+                "native_leaves": 46,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 2,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 3,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1
+            ]
+          },
+          "bounded-default": {
+            "objects": {
+              "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+              "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2"
+            },
+            "domain_factors": {
+              "1": 0.8,
+              "2": 0.88,
+              "3": 0.88
+            },
+            "mixed_steps": [
+              {
+                "nodes": 165,
+                "quads": 120,
+                "triangles": 68,
+                "boundary": 20,
+                "source_step": 1,
+                "native_leaves": 46,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 2,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 3,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1
+            ]
+          },
+          "original-coarse": {
+            "objects": {
+              "step_3_retry_0_accepted_tri.obj": "79921e39fbc13dd8704cd25a5e16a02c5e5d44d5eb10aead270a88e0b4622364",
+              "step_3_retry_0_accepted_quad_tri.obj": "db84b9af0fec0d5189a43348fc8462d2a0a81a2fe978da4a084e4c18ef092de2",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_2_retry_0_accepted_tri.obj": "93e34629c337836f7a42cacbeb4d51fbecac57dbdce48cd42a46fc9d5102fdcd",
+              "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "step_2_retry_0_accepted_quad_tri.obj": "44b553cca97a3b124f382e54c8706c61129079d142ef128a98c77a25403ded8d"
+            },
+            "domain_factors": {
+              "1": 1.5,
+              "2": 1.0,
+              "3": 1.5
+            },
+            "mixed_steps": [
+              {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 615,
+                "quads": 548,
+                "triangles": 122,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 136,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 843,
+                "quads": 772,
+                "triangles": 126,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 247,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "bounded-coarse": {
+            "objects": {
+              "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+              "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+              "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c"
+            },
+            "domain_factors": {
+              "1": 1.5,
+              "2": 1.5,
+              "3": 1.5
+            },
+            "mixed_steps": [
+              {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 281,
+                "quads": 242,
+                "triangles": 66,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 797,
+                "quads": 724,
+                "triangles": 130,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "bounded-rollback": {
+            "objects": {
+              "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+              "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+              "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c"
+            },
+            "domain_factors": {
+              "1": 1.5,
+              "2": 1.5,
+              "3": 1.5
+            },
+            "mixed_steps": [
+              {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 281,
+                "quads": 242,
+                "triangles": 66,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 797,
+                "quads": 724,
+                "triangles": 130,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "mixed_adaptive_epochs": 0,
+        "scientific_adoption": false
+      },
+      "image_sha256": "85bf985608a24bf3bd0799dfd055055aa81bb72f6fd3b80f6970924395593f5d",
+      "native_source_controls": {
+        "captures": 6,
+        "reversed_captures": 3,
+        "negatives": 54
+      },
+      "original_curvature_and_stable_history": {
+        "actual_ap_mesh_entry": true,
+        "original_generator_curve_workflow": true,
+        "original_native_tree": true,
+        "normal_and_rollback": [
+          {
+            "nodes": 165,
+            "quads": 120,
+            "triangles": 68,
+            "boundary": 20,
+            "source_step": 1,
+            "native_leaves": 46,
+            "domain_generation": 1,
+            "nonuniform_sides": 4,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 4,
+              "curve_attempts": 12,
+              "profile": "original_curvature",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2,
+                3
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "existing_output_rejected": true
+          },
+          {
+            "nodes": 165,
+            "quads": 120,
+            "triangles": 68,
+            "boundary": 20,
+            "source_step": 1,
+            "native_leaves": 46,
+            "domain_generation": 1,
+            "nonuniform_sides": 4,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 4,
+              "curve_attempts": 12,
+              "profile": "original_curvature",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2,
+                3
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "existing_output_rejected": true
+          }
+        ],
+        "stable_control_normal_and_rollback": [
+          {
+            "nodes": 5,
+            "quads": 0,
+            "triangles": 4,
+            "boundary": 4,
+            "source_step": 1,
+            "native_leaves": 4,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 3,
+              "curve_attempts": 12,
+              "profile": "stable_control",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "existing_output_rejected": true
+          },
+          {
+            "nodes": 5,
+            "quads": 0,
+            "triangles": 4,
+            "boundary": 4,
+            "source_step": 1,
+            "native_leaves": 4,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 3,
+              "curve_attempts": 12,
+              "profile": "stable_control",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "existing_output_rejected": true
+          }
+        ],
+        "mixed_adaptive_epochs": 0
+      }
+    },
+    "asan": {
+      "bounded_cases": {
+        "schema": "apmesh.quad.domain_factor_bounds.v1",
+        "cases": {
+          "original-default": {
+            "objects": {
+              "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+              "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2"
+            },
+            "domain_factors": {
+              "1": 0.8,
+              "2": 0.88,
+              "3": 0.88
+            },
+            "mixed_steps": [
+              {
+                "nodes": 165,
+                "quads": 120,
+                "triangles": 68,
+                "boundary": 20,
+                "source_step": 1,
+                "native_leaves": 46,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 2,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 3,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1
+            ]
+          },
+          "bounded-default": {
+            "objects": {
+              "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+              "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2"
+            },
+            "domain_factors": {
+              "1": 0.8,
+              "2": 0.88,
+              "3": 0.88
+            },
+            "mixed_steps": [
+              {
+                "nodes": 165,
+                "quads": 120,
+                "triangles": 68,
+                "boundary": 20,
+                "source_step": 1,
+                "native_leaves": 46,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 2,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 3,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1
+            ]
+          },
+          "original-coarse": {
+            "objects": {
+              "step_3_retry_0_accepted_tri.obj": "79921e39fbc13dd8704cd25a5e16a02c5e5d44d5eb10aead270a88e0b4622364",
+              "step_3_retry_0_accepted_quad_tri.obj": "db84b9af0fec0d5189a43348fc8462d2a0a81a2fe978da4a084e4c18ef092de2",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_2_retry_0_accepted_tri.obj": "93e34629c337836f7a42cacbeb4d51fbecac57dbdce48cd42a46fc9d5102fdcd",
+              "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "step_2_retry_0_accepted_quad_tri.obj": "44b553cca97a3b124f382e54c8706c61129079d142ef128a98c77a25403ded8d"
+            },
+            "domain_factors": {
+              "1": 1.5,
+              "2": 1.0,
+              "3": 1.5
+            },
+            "mixed_steps": [
+              {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 615,
+                "quads": 548,
+                "triangles": 122,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 136,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 843,
+                "quads": 772,
+                "triangles": 126,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 247,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "bounded-coarse": {
+            "objects": {
+              "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+              "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+              "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c"
+            },
+            "domain_factors": {
+              "1": 1.5,
+              "2": 1.5,
+              "3": 1.5
+            },
+            "mixed_steps": [
+              {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 281,
+                "quads": 242,
+                "triangles": 66,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 797,
+                "quads": 724,
+                "triangles": 130,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "bounded-rollback": {
+            "objects": {
+              "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+              "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+              "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+              "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c"
+            },
+            "domain_factors": {
+              "1": 1.5,
+              "2": 1.5,
+              "3": 1.5
+            },
+            "mixed_steps": [
+              {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 281,
+                "quads": 242,
+                "triangles": 66,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              {
+                "nodes": 797,
+                "quads": 724,
+                "triangles": 130,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              }
+            ],
+            "accepted_steps": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "mixed_adaptive_epochs": 0,
+        "scientific_adoption": false
+      },
+      "image_sha256": "3ef973be17add14793955221782f36034e2625f428a5d01a27c6adafaa6e6d48",
+      "native_source_controls": {
+        "captures": 6,
+        "reversed_captures": 3,
+        "negatives": 54
+      },
+      "original_curvature_and_stable_history": {
+        "actual_ap_mesh_entry": true,
+        "original_generator_curve_workflow": true,
+        "original_native_tree": true,
+        "normal_and_rollback": [
+          {
+            "nodes": 165,
+            "quads": 120,
+            "triangles": 68,
+            "boundary": 20,
+            "source_step": 1,
+            "native_leaves": 46,
+            "domain_generation": 1,
+            "nonuniform_sides": 4,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 4,
+              "curve_attempts": 12,
+              "profile": "original_curvature",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2,
+                3
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "existing_output_rejected": true
+          },
+          {
+            "nodes": 165,
+            "quads": 120,
+            "triangles": 68,
+            "boundary": 20,
+            "source_step": 1,
+            "native_leaves": 46,
+            "domain_generation": 1,
+            "nonuniform_sides": 4,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 4,
+              "curve_attempts": 12,
+              "profile": "original_curvature",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2,
+                3
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "existing_output_rejected": true
+          }
+        ],
+        "stable_control_normal_and_rollback": [
+          {
+            "nodes": 5,
+            "quads": 0,
+            "triangles": 4,
+            "boundary": 4,
+            "source_step": 1,
+            "native_leaves": 4,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 3,
+              "curve_attempts": 12,
+              "profile": "stable_control",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "existing_output_rejected": true
+          },
+          {
+            "nodes": 5,
+            "quads": 0,
+            "triangles": 4,
+            "boundary": 4,
+            "source_step": 1,
+            "native_leaves": 4,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "history": {
+              "physical_steps": 3,
+              "curve_attempts": 12,
+              "profile": "stable_control",
+              "last_accepted_step": 1,
+              "rejected_steps": [
+                2
+              ]
+            },
+            "history_negative_controls_rejected": 3,
+            "negative_controls_rejected": 9,
+            "obj_sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "existing_output_rejected": true
+          }
+        ],
+        "mixed_adaptive_epochs": 0
+      }
+    }
+  },
+  "all_profile_cases_and_OBJ_hashes_identical": true,
+  "local_regression": {
+    "passed": 85,
+    "report": "1794828785596882800-532fdd13",
+    "status": "passed"
+  },
+  "negative_controls_per_new_case": 9,
+  "new_case_nonempty_rollback": true,
+  "default_and_previous_coarse_reproduced": true,
+  "mixed_adaptive_epochs": 0,
+  "merged": false,
+  "stage_closed": false,
+  "failures_retained": [
+    "precommit header formatting corrected before source commit",
+    "initial architecture inventory stale; generated hash/byte metadata refreshed",
+    "two copied harnesses rejected BOM decoding before native execution; explicit encoding corrected",
+    "Direct Blender WindowsApps binary launch denied before execution; installed application launcher created and opened the scene successfully",
+    "Copied comparison receipt used CRLF; whitespace gate rejected it, then LF normalization preserved the JSON payload exactly"
+  ],
+  "configured_LLVM_analysis": {
+    "version": "22",
+    "translation_units": 6,
+    "visible_diagnostics": 0,
+    "actual_compile_database": true
+  },
+  "frozen_TRI": {
+    "eistute": {
+      "states": 5,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "boundary_incidence_coverage": "verified"
+    },
+    "book": {
+      "states": 4,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "boundary_incidence_coverage": "verified"
+    }
+  },
+  "blender": {
+    "version": "5.3.0",
+    "steps": 4,
+    "actual_objects": 8,
+    "analytic_display_grid": 64,
+    "opened_and_visually_confirmed": true,
+    "viewport_saved": true,
+    "scene_sha256": "d77cf468e2c452a1acc9112d6fedec25a4ec1bec0287225ecbc1041d320e630d"
+  },
+  "ci": {
+    "run": 43859454045,
+    "status": "completed",
+    "conclusion": "success",
+    "successful_jobs": 4,
+    "exact_head": "d59a513a04ea8c9573e006789641f4adbeecedee"
+  }
+}

@@ -6,21 +6,29 @@
 The larger [PR214](https://github.com/tiagosombrra/apmesh-modernization/pull/214)
 remains draft/unmerged. Main and the default TRI behavior are preserved.
 
-**Execution priority — 2026-11-15:** original real-boundary application
-integration is the one active work item. Reuse the original curve workflow,
-source-derived boundary/tree and existing QUAD/original-AFT closure in the
-live opt-in curved manifold case; independently verify physical output and
-retain fixed16 as regression. See the [finite plan](REAL_BOUNDARY_APPLICATION_PLAN_20261115.md).
+### 2026-11-15 - current bounded delivery
 
-P0/P1 and bounded P2 prerequisites through PR236 remain integrated within
-their measured scopes. Exact PR236 feature and research-merge CI both passed
-4/4; staged physical candidates and the reversible owner rehearsal still
-record zero accepted adaptive epochs. P2d-1c4b follows the real-boundary
-application gate with its durable history, publication/recovery and approved
-selection requirements. R3/M7 [issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
-remains open. The new integration is planned, not yet implemented or measured.
+PR238 exacte90d5a3 fixes source promotion/identity and selects original-curvature
+rediscretization without stable point clipping. Four physical source steps and
+eight TRI/QUAD-TRI OBJ files are exported; the analytic-model scene is saved.
+Local GNU/MSVC/ASan, exact85 local CTests and CI4/4/527 Python pass. See the
+[current review](CURVATURE_STEP_EXPORT_REVIEW_20261115.md). Earlier findings
+below are historical. No independent approval, integration or accepted mixed
+epoch is claimed. Required Doxygen references and mixed scientific policy remain
+open, and the last Blender visual confirmation was interrupted by user Escape.
 
-## Visão global, sem percentuais fictícios
+### 2026-11-15 - functional discrepancy: coarse curved boundary
+
+PR238 is now **draft / not ready to integrate**. The curved source exists,
+but adaptive_stable final point budgets leave two points per side at step 1
+and four at step 2. Twelve intervals is the total for four sides; the curved
+side has only three segments. Step-2 targets 8/7/7/7 are clamped to 4/4/4/4;
+its TRI candidate is rejected, then the bridge uses that source to generate
+mixed once. The expected coarse-to-fine mixed loop is still missing.
+See the [diagnosis](CURVE_DISCRETIZATION_DIAGNOSIS_20261115.md).
+Prior exact-feature CI certifies bounded contracts, not this functional goal.
+No new native qualification or scientific control change occurred.
+
 
 | Marco | Entregável global | Comprovação alcançada | Lacuna para encerramento total |
 |---|---|---|---|
@@ -29,7 +37,7 @@ remains open. The new integration is planned, not yet implemented or measured.
 | **M2 — Topologia QUAD UV** | Vértices, arestas, validações e 2:1 | Construtores e contratos de UV/exterior QUAD+AFT testados em escopo de pesquisa | Campanha completa metamórfica/fuzz, transições e conformidade abrangente |
 | **M3 — Opt-in selector/emitter** | Default TRI and typed interior QUAD | PR217 runs the controlled curved Bezier QUAD/AFT application with explicit build/case; scoped Linux/Windows and TRI-preservation checks pass | Default build remains TRI; broader application and scientific admission remain open beyond this controlled case. |
 | **M4 — Physical QUAD elements** | Four-node QUAD, UV/XYZ, area/normal/ownership | R2c-9: 32 detached original Eistute/Book charts, 1,744 physical nodes, 512 QUAD +1,456 AFT TRI; scoped local orientation/quality checks | P0 UV convexity repair integrated through PR216 with scoped85CTest/527Python and60cases/profile; full M4 remains open. Native sanitizers, adversarial coverage and broader geometry remain required. |
-| **M5 — QUAD/AFT boundary** | Hybrid patch mesh without holes or overlap | PR214 R2c7/R2c9/R2c10 record detached original all-side adapted boundaries and physical charts; PR217 runs a live fixed16 QUAD/AFT patch | ACTIVE: integrate the original real curve partition and compatible tree into the live CLI with independent boundary/seam/physical checks. Detached source trials do not satisfy this application gate. Historical 1993 boundary equivalence, all-QUAD variants and broader quality remain separate. |
+| **M5 — QUAD/AFT boundary** | Hybrid patch mesh without holes or overlap | PR238 exact79828fc connects the original real curve partition/native tree to live typed QUAD/AFT: 12 intervals, four nonuniform sides, 37 nodes/16 QUAD/28 TRI; exact local/compiler/CI source and rollback gates pass | Independent review, research merge and exact merge validation pending. Single initial research layout, not accepted mixed adaptation or global multipatch welding. Historical 1993 boundary equivalence and broader quality remain separate. |
 | **M6 — Multipatch e non-manifold** | Incidência, nós e arestas físicos compatíveis entre patches | **R2c-6/7:** 98 curvas originais sincronizadas, 128 lados/944 arestas de fronteira; valências 4 e 28; contornos locais preservados | **BLOQUEIO científico:** política aprovada por Creto/Bento sobre sheets/junções e compartilhamento físico em valência 4/28; geometria coincidente não autoriza soldagem |
 | **M7 — Mixed-element adaptation** | At least two accepted epochs using actual QUAD/TRI history, with retry/rollback and typed evaluation | Bounded prerequisites through PR236 include physical AFT candidate reconstruction, independent source-error/Pareto witnesses and a five-fault reversible owner rehearsal; zero accepted adaptive epochs | OPEN: first qualify live real-boundary application integration, then P2d-1c4b durable typed accepted history and memory/file recovery with approved selection. Require two distinct transitions from the actual preceding accepted mixed states; do not count detached proposals, clones, reversed pointer swaps or TRI epochs. |
 | **M8 — Experimentos e modelos** | Comparação TRI × quad-dominant × alternativas, custo/erro/qualidade | Eistute e Book com entradas originais SHA-256 e geração física de pesquisa; candidatos externos mapeados na [issue #215](https://github.com/tiagosombrra/apmesh-modernization/issues/215) | Ampliar corpus e métricas, exportações/auditoria independente, repetibilidade e ablação em igualdade de erro |

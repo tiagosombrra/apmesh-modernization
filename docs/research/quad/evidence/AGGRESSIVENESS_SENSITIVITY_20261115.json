@@ -1,0 +1,1682 @@
+{
+  "schema": "apmesh.quad.aggressiveness_sensitivity.v1",
+  "date": "2026-11-15",
+  "source_sha": "e90d5a30963ed0ade9683c69a530847709188fe3",
+  "profile": "GNU C++17 Release, existing qualified serial library, isolated process-local harness",
+  "scope": "user-authorized sensitivity test focused on node/element counts; no production/default changes",
+  "control_matches_prior_eight_OBJ_and_trace": true,
+  "library_sha256": "7760a23083508d174d23bd8d9b01ec4332020744b7f75eae3d454a66e2a08a5f",
+  "harness_source_sha256": "da5a3e40b2f365c5dab97b202fe75e9aac6357524b122ec9944ff24fd9e38e09",
+  "harness_image_sha256": "f2cc9e5cf8d03f2ca882f87f6d4664bae9069857a800696fe84318d4283c8ea8",
+  "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "cases": {
+    "control": {
+      "applied_curve_factors": {
+        "1": [
+          0.8,
+          0.8,
+          0.8,
+          0.8
+        ],
+        "2": [
+          0.84,
+          0.84,
+          0.84,
+          0.84
+        ],
+        "3": [
+          0.84,
+          0.84,
+          0.84,
+          0.84
+        ]
+      },
+      "steps": [
+        {
+          "step": 0,
+          "reference_tri_accepted": true,
+          "reason": "initial",
+          "curve_points": {},
+          "outputs": {
+            "TRI": {
+              "filename": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              }
+            }
+          }
+        },
+        {
+          "step": 1,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 9,
+            "1": 5,
+            "2": 5,
+            "3": 5
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+              "nodes": 63,
+              "quads": 0,
+              "triangles": 104,
+              "boundary": 20,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.01983294498030366,
+                  "rms_uv": 0.006396422293924306,
+                  "rms_source_area": 0.006068792810146995,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.21456422748355522
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.02008810113805133,
+                  "rms_uv": 0.006402791242660727,
+                  "rms_source_area": 0.006073297774680068,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.21472350203207224
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 104,
+                "minimum": 0.47584237525895723,
+                "mean": 0.8622530137816897
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "nodes": 165,
+              "quads": 120,
+              "triangles": 68,
+              "boundary": 20,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.020014795910265778,
+                  "rms_uv": 0.006069866622567142,
+                  "rms_source_area": 0.005618884317554138,
+                  "quad_sites": 2176,
+                  "tri_sites": 1920,
+                  "rms_percent_of_corner_diagonal": 0.19865756018226385
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.02018096207433164,
+                  "rms_uv": 0.006072471489927363,
+                  "rms_source_area": 0.005620346123471756,
+                  "quad_sites": 8704,
+                  "tri_sites": 7680,
+                  "rms_percent_of_corner_diagonal": 0.19870924282612018
+                }
+              },
+              "quad_quality": {
+                "quads": 120,
+                "min_scaled_jacobian": 0.6088161983735212,
+                "min_warpage_cosine": 0.9970126470841612,
+                "max_edge_ratio": 2.140937709126185
+              },
+              "TRI_shape_quality": {
+                "count": 68,
+                "minimum": 0.41893045447155636,
+                "mean": 0.7077220308152984
+              }
+            }
+          }
+        },
+        {
+          "step": 2,
+          "reference_tri_accepted": false,
+          "reason": "global_error_increased",
+          "curve_points": {
+            "0": 65,
+            "1": 17,
+            "2": 17,
+            "3": 17
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_2_retry_0_rejected_tri.obj",
+              "sha256": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "nodes": 337,
+              "quads": 0,
+              "triangles": 560,
+              "boundary": 112,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004385941506812695,
+                  "rms_uv": 0.0011584277867412666,
+                  "rms_source_area": 0.001082033887623978,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.03825567497062788
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004797344774552427,
+                  "rms_uv": 0.0011644965326694078,
+                  "rms_source_area": 0.0010864960579059482,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.038413436513887386
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 560,
+                "minimum": 0.21661303673817855,
+                "mean": 0.8182559215520271
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_2_retry_0_rejected_quad_tri.obj",
+              "sha256": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "nodes": 953,
+              "quads": 784,
+              "triangles": 224,
+              "boundary": 112,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004057103181433468,
+                  "rms_uv": 0.0007058710963951348,
+                  "rms_source_area": 0.0006190044308416066,
+                  "quad_sites": 3136,
+                  "tri_sites": 960,
+                  "rms_percent_of_corner_diagonal": 0.021885111531630964
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004606095132137213,
+                  "rms_uv": 0.0007056736147799973,
+                  "rms_source_area": 0.0006182017602512392,
+                  "quad_sites": 12544,
+                  "tri_sites": 3840,
+                  "rms_percent_of_corner_diagonal": 0.021856732840755573
+                }
+              },
+              "quad_quality": {
+                "quads": 784,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              },
+              "TRI_shape_quality": {
+                "count": 224,
+                "minimum": 0.24570396133260058,
+                "mean": 0.7992949248773545
+              }
+            }
+          }
+        },
+        {
+          "step": 3,
+          "reference_tri_accepted": false,
+          "reason": "global_error_increased",
+          "curve_points": {
+            "0": 65,
+            "1": 17,
+            "2": 17,
+            "3": 17
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_3_retry_0_rejected_tri.obj",
+              "sha256": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+              "nodes": 337,
+              "quads": 0,
+              "triangles": 560,
+              "boundary": 112,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004385941506812695,
+                  "rms_uv": 0.0011584277867412666,
+                  "rms_source_area": 0.001082033887623978,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.03825567497062788
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004797344774552427,
+                  "rms_uv": 0.0011644965326694078,
+                  "rms_source_area": 0.0010864960579059482,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.038413436513887386
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 560,
+                "minimum": 0.21661303673817855,
+                "mean": 0.8182559215520271
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_3_retry_0_rejected_quad_tri.obj",
+              "sha256": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "nodes": 953,
+              "quads": 784,
+              "triangles": 224,
+              "boundary": 112,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004057103181433468,
+                  "rms_uv": 0.0007058710963951348,
+                  "rms_source_area": 0.0006190044308416066,
+                  "quad_sites": 3136,
+                  "tri_sites": 960,
+                  "rms_percent_of_corner_diagonal": 0.021885111531630964
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004606095132137213,
+                  "rms_uv": 0.0007056736147799973,
+                  "rms_source_area": 0.0006182017602512392,
+                  "quad_sites": 12544,
+                  "tri_sites": 3840,
+                  "rms_percent_of_corner_diagonal": 0.021856732840755573
+                }
+              },
+              "quad_quality": {
+                "quads": 784,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              },
+              "TRI_shape_quality": {
+                "count": 224,
+                "minimum": 0.24570396133260058,
+                "mean": 0.7992949248773545
+              }
+            }
+          }
+        }
+      ],
+      "stdout_sha256": "6b0f7392c6d525e4a66072a098f01caf4dfb47eafa90aa0913346ceb93b60118",
+      "config": "# Original curvature-driven workflow; stable-mode point budgets are not enabled.\nINPUT_MODEL=builtin:curva_bezier\nOUTPUT_PREFIX=/home/apmesh/quad-aggressiveness-20261115/run-2/control/mesh\nMESH_ELEMENT_KIND=quad_uv\nQUAD_EXPERIMENTAL_CASE=curved_bezier_original_curves_vertex_mean_v1\nNUM_PROCESSES=1\nNUM_THREADS=1\nUSE_TEMPLATE=y\nADAPTIVE_MODE=legacy\n"
+    },
+    "gentler": {
+      "applied_curve_factors": {
+        "1": [
+          0.8,
+          0.8,
+          0.8,
+          0.8
+        ],
+        "2": [
+          0.84,
+          0.84,
+          0.84,
+          0.84
+        ],
+        "3": [
+          0.84,
+          0.84,
+          0.84,
+          0.84
+        ]
+      },
+      "steps": [
+        {
+          "step": 0,
+          "reference_tri_accepted": true,
+          "reason": "initial",
+          "curve_points": {},
+          "outputs": {
+            "TRI": {
+              "filename": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              }
+            }
+          }
+        },
+        {
+          "step": 1,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 9,
+            "1": 9,
+            "2": 9,
+            "3": 9
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "22c1cbcdbdb832d2a5b1fd64b798145b98f2d3645f4fdf553848f7c6052008d7",
+              "nodes": 77,
+              "quads": 0,
+              "triangles": 120,
+              "boundary": 32,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.014001855620968782,
+                  "rms_uv": 0.00426216431854627,
+                  "rms_source_area": 0.004178847371752984,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.14774456570550581
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.014280175183986986,
+                  "rms_uv": 0.0042641443668758345,
+                  "rms_source_area": 0.004179692261565229,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.1477744370712855
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 120,
+                "minimum": 0.4820228632863677,
+                "mean": 0.8735220273663663
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "32597913706bf7eb0a824ba221a00b2377008227601af70ed5c0c89f9119c9fe",
+              "nodes": 185,
+              "quads": 128,
+              "triangles": 80,
+              "boundary": 32,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.015205775520243235,
+                  "rms_uv": 0.0034836883891580634,
+                  "rms_source_area": 0.0031583162310588357,
+                  "quad_sites": 2304,
+                  "tri_sites": 1792,
+                  "rms_percent_of_corner_diagonal": 0.11166334120566208
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.0152111823281727,
+                  "rms_uv": 0.0034856351677079738,
+                  "rms_source_area": 0.003159194098502786,
+                  "quad_sites": 9216,
+                  "tri_sites": 7168,
+                  "rms_percent_of_corner_diagonal": 0.11169437850679208
+                }
+              },
+              "quad_quality": {
+                "quads": 128,
+                "min_scaled_jacobian": 0.6088161983735212,
+                "min_warpage_cosine": 0.9970126470841612,
+                "max_edge_ratio": 2.140937709126185
+              },
+              "TRI_shape_quality": {
+                "count": 80,
+                "minimum": 0.4795608748302896,
+                "mean": 0.8187707125151243
+              }
+            }
+          }
+        },
+        {
+          "step": 2,
+          "reference_tri_accepted": false,
+          "reason": "global_error_increased",
+          "curve_points": {
+            "0": 65,
+            "1": 57,
+            "2": 57,
+            "3": 57
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_2_retry_0_rejected_tri.obj",
+              "sha256": "492178ddab766dc8b7196361c359005c8b29649ee31ba88ce45cbd245b341ed1",
+              "nodes": 457,
+              "quads": 0,
+              "triangles": 680,
+              "boundary": 232,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.009928262277387271,
+                  "rms_uv": 0.0014491830998290696,
+                  "rms_source_area": 0.0013402235169579061,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.04738405685733096
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.010263345519403977,
+                  "rms_uv": 0.0014538376719162535,
+                  "rms_source_area": 0.0013434983667486903,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.0474998402820525
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 680,
+                "minimum": 0.23337760850005734,
+                "mean": 0.7547326689824729
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_2_retry_0_rejected_quad_tri.obj",
+              "sha256": "621b1b38e614b116de8db911574250e8d4a72467904d9a765748ea8de7c0bf7b",
+              "nodes": 1073,
+              "quads": 784,
+              "triangles": 344,
+              "boundary": 232,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.002868706746286897,
+                  "rms_uv": 0.00066027635738106,
+                  "rms_source_area": 0.0005803645335696202,
+                  "quad_sites": 3136,
+                  "tri_sites": 960,
+                  "rms_percent_of_corner_diagonal": 0.020518984862362307
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.0030137402254409337,
+                  "rms_uv": 0.0006592299591457009,
+                  "rms_source_area": 0.0005786416142107006,
+                  "quad_sites": 12544,
+                  "tri_sites": 3840,
+                  "rms_percent_of_corner_diagonal": 0.020458070464255823
+                }
+              },
+              "quad_quality": {
+                "quads": 784,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              },
+              "TRI_shape_quality": {
+                "count": 344,
+                "minimum": 0.24570396133260058,
+                "mean": 0.667225951583727
+              }
+            }
+          }
+        },
+        {
+          "step": 3,
+          "reference_tri_accepted": false,
+          "reason": "global_error_increased",
+          "curve_points": {
+            "0": 65,
+            "1": 57,
+            "2": 57,
+            "3": 57
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_3_retry_0_rejected_tri.obj",
+              "sha256": "b11d60aa51581f617b095ff98700e28f0bf4a8e445c2f7cf0dc92c980528b8dc",
+              "nodes": 457,
+              "quads": 0,
+              "triangles": 680,
+              "boundary": 232,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.009928262277387271,
+                  "rms_uv": 0.0014491830998290696,
+                  "rms_source_area": 0.0013402235169579061,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.04738405685733096
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.010263345519403977,
+                  "rms_uv": 0.0014538376719162535,
+                  "rms_source_area": 0.0013434983667486903,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.0474998402820525
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 680,
+                "minimum": 0.23337760850005734,
+                "mean": 0.7547326689824729
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_3_retry_0_rejected_quad_tri.obj",
+              "sha256": "9454d817939e56216547d42ed4547c45749aec06ce243c6f2f62b4ad0de612ec",
+              "nodes": 1073,
+              "quads": 784,
+              "triangles": 344,
+              "boundary": 232,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.002868706746286897,
+                  "rms_uv": 0.00066027635738106,
+                  "rms_source_area": 0.0005803645335696202,
+                  "quad_sites": 3136,
+                  "tri_sites": 960,
+                  "rms_percent_of_corner_diagonal": 0.020518984862362307
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.0030137402254409337,
+                  "rms_uv": 0.0006592299591457009,
+                  "rms_source_area": 0.0005786416142107006,
+                  "quad_sites": 12544,
+                  "tri_sites": 3840,
+                  "rms_percent_of_corner_diagonal": 0.020458070464255823
+                }
+              },
+              "quad_quality": {
+                "quads": 784,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              },
+              "TRI_shape_quality": {
+                "count": 344,
+                "minimum": 0.24570396133260058,
+                "mean": 0.667225951583727
+              }
+            }
+          }
+        }
+      ],
+      "stdout_sha256": "e03c5af539a11a0bc43c21dc570be596d3e8641c89313b7f384623a32b3f1808",
+      "config": "# Original curvature-driven workflow; stable-mode point budgets are not enabled.\nINPUT_MODEL=builtin:curva_bezier\nOUTPUT_PREFIX=/home/apmesh/quad-aggressiveness-20261115/run-2/gentler/mesh\nMESH_ELEMENT_KIND=quad_uv\nQUAD_EXPERIMENTAL_CASE=curved_bezier_original_curves_vertex_mean_v1\nNUM_PROCESSES=1\nNUM_THREADS=1\nUSE_TEMPLATE=y\nADAPTIVE_MODE=legacy\n"
+    },
+    "neutral_patch_floor": {
+      "applied_curve_factors": {
+        "1": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "2": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "3": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "steps": [
+        {
+          "step": 0,
+          "reference_tri_accepted": true,
+          "reason": "initial",
+          "curve_points": {},
+          "outputs": {
+            "TRI": {
+              "filename": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              }
+            }
+          }
+        },
+        {
+          "step": 1,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 9,
+            "1": 5,
+            "2": 5,
+            "3": 5
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+              "nodes": 63,
+              "quads": 0,
+              "triangles": 104,
+              "boundary": 20,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.01983294498030366,
+                  "rms_uv": 0.006396422293924306,
+                  "rms_source_area": 0.006068792810146995,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.21456422748355522
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.02008810113805133,
+                  "rms_uv": 0.006402791242660727,
+                  "rms_source_area": 0.006073297774680068,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.21472350203207224
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 104,
+                "minimum": 0.47584237525895723,
+                "mean": 0.8622530137816897
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "nodes": 165,
+              "quads": 120,
+              "triangles": 68,
+              "boundary": 20,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.020014795910265778,
+                  "rms_uv": 0.006069866622567142,
+                  "rms_source_area": 0.005618884317554138,
+                  "quad_sites": 2176,
+                  "tri_sites": 1920,
+                  "rms_percent_of_corner_diagonal": 0.19865756018226385
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.02018096207433164,
+                  "rms_uv": 0.006072471489927363,
+                  "rms_source_area": 0.005620346123471756,
+                  "quad_sites": 8704,
+                  "tri_sites": 7680,
+                  "rms_percent_of_corner_diagonal": 0.19870924282612018
+                }
+              },
+              "quad_quality": {
+                "quads": 120,
+                "min_scaled_jacobian": 0.6088161983735212,
+                "min_warpage_cosine": 0.9970126470841612,
+                "max_edge_ratio": 2.140937709126185
+              },
+              "TRI_shape_quality": {
+                "count": 68,
+                "minimum": 0.41893045447155636,
+                "mean": 0.7077220308152984
+              }
+            }
+          }
+        },
+        {
+          "step": 2,
+          "reference_tri_accepted": false,
+          "reason": "global_error_increased",
+          "curve_points": {
+            "0": 65,
+            "1": 17,
+            "2": 17,
+            "3": 17
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_2_retry_0_rejected_tri.obj",
+              "sha256": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "nodes": 337,
+              "quads": 0,
+              "triangles": 560,
+              "boundary": 112,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004385941506812695,
+                  "rms_uv": 0.0011584277867412666,
+                  "rms_source_area": 0.001082033887623978,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.03825567497062788
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004797344774552427,
+                  "rms_uv": 0.0011644965326694078,
+                  "rms_source_area": 0.0010864960579059482,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.038413436513887386
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 560,
+                "minimum": 0.21661303673817855,
+                "mean": 0.8182559215520271
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_2_retry_0_rejected_quad_tri.obj",
+              "sha256": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "nodes": 953,
+              "quads": 784,
+              "triangles": 224,
+              "boundary": 112,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004057103181433468,
+                  "rms_uv": 0.0007058710963951348,
+                  "rms_source_area": 0.0006190044308416066,
+                  "quad_sites": 3136,
+                  "tri_sites": 960,
+                  "rms_percent_of_corner_diagonal": 0.021885111531630964
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004606095132137213,
+                  "rms_uv": 0.0007056736147799973,
+                  "rms_source_area": 0.0006182017602512392,
+                  "quad_sites": 12544,
+                  "tri_sites": 3840,
+                  "rms_percent_of_corner_diagonal": 0.021856732840755573
+                }
+              },
+              "quad_quality": {
+                "quads": 784,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              },
+              "TRI_shape_quality": {
+                "count": 224,
+                "minimum": 0.24570396133260058,
+                "mean": 0.7992949248773545
+              }
+            }
+          }
+        },
+        {
+          "step": 3,
+          "reference_tri_accepted": false,
+          "reason": "global_error_increased",
+          "curve_points": {
+            "0": 65,
+            "1": 17,
+            "2": 17,
+            "3": 17
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_3_retry_0_rejected_tri.obj",
+              "sha256": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+              "nodes": 337,
+              "quads": 0,
+              "triangles": 560,
+              "boundary": 112,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004385941506812695,
+                  "rms_uv": 0.0011584277867412666,
+                  "rms_source_area": 0.001082033887623978,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.03825567497062788
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004797344774552427,
+                  "rms_uv": 0.0011644965326694078,
+                  "rms_source_area": 0.0010864960579059482,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.038413436513887386
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 560,
+                "minimum": 0.21661303673817855,
+                "mean": 0.8182559215520271
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_3_retry_0_rejected_quad_tri.obj",
+              "sha256": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "nodes": 953,
+              "quads": 784,
+              "triangles": 224,
+              "boundary": 112,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004057103181433468,
+                  "rms_uv": 0.0007058710963951348,
+                  "rms_source_area": 0.0006190044308416066,
+                  "quad_sites": 3136,
+                  "tri_sites": 960,
+                  "rms_percent_of_corner_diagonal": 0.021885111531630964
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004606095132137213,
+                  "rms_uv": 0.0007056736147799973,
+                  "rms_source_area": 0.0006182017602512392,
+                  "quad_sites": 12544,
+                  "tri_sites": 3840,
+                  "rms_percent_of_corner_diagonal": 0.021856732840755573
+                }
+              },
+              "quad_quality": {
+                "quads": 784,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              },
+              "TRI_shape_quality": {
+                "count": 224,
+                "minimum": 0.24570396133260058,
+                "mean": 0.7992949248773545
+              }
+            }
+          }
+        }
+      ],
+      "stdout_sha256": "6ea08975c7005a9387b1b7a9d6bbb56708f7cd34fbd47f21ef705aa6056cbde3",
+      "config": "# Original curvature-driven workflow; stable-mode point budgets are not enabled.\nINPUT_MODEL=builtin:curva_bezier\nOUTPUT_PREFIX=/home/apmesh/quad-aggressiveness-20261115/run-2/neutral_patch_floor/mesh\nMESH_ELEMENT_KIND=quad_uv\nQUAD_EXPERIMENTAL_CASE=curved_bezier_original_curves_vertex_mean_v1\nNUM_PROCESSES=1\nNUM_THREADS=1\nUSE_TEMPLATE=y\nADAPTIVE_MODE=legacy\n\n# Sensitivity trial: neutral floor for the external target-size factor.\nPATCH_FACTOR_MIN=1.0\n"
+    },
+    "coarser_target_150": {
+      "applied_curve_factors": {
+        "1": [
+          1.5,
+          1.5,
+          1.5,
+          1.5
+        ],
+        "2": [
+          1.5,
+          1.5,
+          1.5,
+          1.5
+        ],
+        "3": [
+          1.5,
+          1.5,
+          1.5,
+          1.5
+        ]
+      },
+      "steps": [
+        {
+          "step": 0,
+          "reference_tri_accepted": true,
+          "reason": "initial",
+          "curve_points": {},
+          "outputs": {
+            "TRI": {
+              "filename": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": true,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              }
+            }
+          }
+        },
+        {
+          "step": 1,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 3,
+            "1": 3,
+            "2": 3,
+            "3": 3
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "nodes": 17,
+              "quads": 0,
+              "triangles": 24,
+              "boundary": 8,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.09894934733586498,
+                  "rms_uv": 0.029356713362925134,
+                  "rms_source_area": 0.026568940535144674,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.9393539010671468
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.10192055460636473,
+                  "rms_uv": 0.029375648362709242,
+                  "rms_source_area": 0.026579959784991274,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.9397434903816527
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 24,
+                "minimum": 0.7148837422649872,
+                "mean": 0.8778736617105259
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "nodes": 33,
+              "quads": 16,
+              "triangles": 24,
+              "boundary": 8,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.09841531103350311,
+                  "rms_uv": 0.026419255128426952,
+                  "rms_source_area": 0.023476643542533635,
+                  "quad_sites": 1024,
+                  "tri_sites": 3072,
+                  "rms_percent_of_corner_diagonal": 0.8300246924212452
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.10164871717168936,
+                  "rms_uv": 0.02643708003753333,
+                  "rms_source_area": 0.023485727965384586,
+                  "quad_sites": 4096,
+                  "tri_sites": 12288,
+                  "rms_percent_of_corner_diagonal": 0.8303458752712989
+                }
+              },
+              "quad_quality": {
+                "quads": 16,
+                "min_scaled_jacobian": 0.9909813433098008,
+                "min_warpage_cosine": 0.9991456452498715,
+                "max_edge_ratio": 1.3956211821070355
+              },
+              "TRI_shape_quality": {
+                "count": 24,
+                "minimum": 0.4584145296734616,
+                "mean": 0.6823082333762907
+              }
+            }
+          }
+        },
+        {
+          "step": 2,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 5,
+            "1": 3,
+            "2": 3,
+            "3": 3
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_2_retry_0_accepted_tri.obj",
+              "sha256": "93e34629c337836f7a42cacbeb4d51fbecac57dbdce48cd42a46fc9d5102fdcd",
+              "nodes": 169,
+              "quads": 0,
+              "triangles": 326,
+              "boundary": 10,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.04496817940754079,
+                  "rms_uv": 0.010685736028494666,
+                  "rms_source_area": 0.009934339894065735,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.35123195528529644
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.046526190711405416,
+                  "rms_uv": 0.010732118037509711,
+                  "rms_source_area": 0.009973342365547342,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.3526109008886804
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 326,
+                "minimum": 0.22539457134489344,
+                "mean": 0.8063695039087253
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_2_retry_0_accepted_quad_tri.obj",
+              "sha256": "44b553cca97a3b124f382e54c8706c61129079d142ef128a98c77a25403ded8d",
+              "nodes": 615,
+              "quads": 548,
+              "triangles": 122,
+              "boundary": 10,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.04225807359269234,
+                  "rms_uv": 0.008865469240013711,
+                  "rms_source_area": 0.008152295075474107,
+                  "quad_sites": 2560,
+                  "tri_sites": 1536,
+                  "rms_percent_of_corner_diagonal": 0.28822715650507186
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.04517351980895734,
+                  "rms_uv": 0.008933782088289743,
+                  "rms_source_area": 0.008211560393506232,
+                  "quad_sites": 10240,
+                  "tri_sites": 6144,
+                  "rms_percent_of_corner_diagonal": 0.2903225019185565
+                }
+              },
+              "quad_quality": {
+                "quads": 548,
+                "min_scaled_jacobian": 0.5206054043825379,
+                "min_warpage_cosine": 0.9970024275031495,
+                "max_edge_ratio": 3.4879567792519293
+              },
+              "TRI_shape_quality": {
+                "count": 122,
+                "minimum": 0.03981139118516527,
+                "mean": 0.4243073537936383
+              }
+            }
+          }
+        },
+        {
+          "step": 3,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 9,
+            "1": 3,
+            "2": 3,
+            "3": 3
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_3_retry_0_accepted_tri.obj",
+              "sha256": "79921e39fbc13dd8704cd25a5e16a02c5e5d44d5eb10aead270a88e0b4622364",
+              "nodes": 236,
+              "quads": 0,
+              "triangles": 456,
+              "boundary": 14,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.043134163256655686,
+                  "rms_uv": 0.00839356737604641,
+                  "rms_source_area": 0.007912803519658888,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.279759851347379
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.0456112450202533,
+                  "rms_uv": 0.008456608705482834,
+                  "rms_source_area": 0.007967758242618282,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.28170279421051975
+                }
+              },
+              "quad_quality": null,
+              "TRI_shape_quality": {
+                "count": 456,
+                "minimum": 0.09887787203035739,
+                "mean": 0.7875625468632734
+              }
+            },
+            "QUAD_TRI": {
+              "filename": "step_3_retry_0_accepted_quad_tri.obj",
+              "sha256": "db84b9af0fec0d5189a43348fc8462d2a0a81a2fe978da4a084e4c18ef092de2",
+              "nodes": 843,
+              "quads": 772,
+              "triangles": 126,
+              "boundary": 14,
+              "uv_disk_and_source_mapping_checked": true,
+              "byte_identical_to_control": false,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.04225807359269234,
+                  "rms_uv": 0.007967221874725252,
+                  "rms_source_area": 0.007496146133369193,
+                  "quad_sites": 3088,
+                  "tri_sites": 1008,
+                  "rms_percent_of_corner_diagonal": 0.2650287881835337
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.04517351980895734,
+                  "rms_uv": 0.008038330644123329,
+                  "rms_source_area": 0.007558588358004735,
+                  "quad_sites": 12352,
+                  "tri_sites": 4032,
+                  "rms_percent_of_corner_diagonal": 0.267236454207142
+                }
+              },
+              "quad_quality": {
+                "quads": 772,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              },
+              "TRI_shape_quality": {
+                "count": 126,
+                "minimum": 0.03981139118516527,
+                "mean": 0.3435877411498486
+              }
+            }
+          }
+        }
+      ],
+      "stdout_sha256": "5c6ab35bc4fcb8279de0883f1de9e7b3dd3db3f6d2881f7935934a9ddda16e3d",
+      "config": "# Original curvature-driven workflow; stable-mode point budgets are not enabled.\nINPUT_MODEL=builtin:curva_bezier\nOUTPUT_PREFIX=/home/apmesh/quad-aggressiveness-20261115/run-2/coarser_target_150/mesh\nMESH_ELEMENT_KIND=quad_uv\nQUAD_EXPERIMENTAL_CASE=curved_bezier_original_curves_vertex_mean_v1\nNUM_PROCESSES=1\nNUM_THREADS=1\nUSE_TEMPLATE=y\nADAPTIVE_MODE=legacy\n\n# Research-only coarser external target; no point-count trimming.\nPATCH_FACTOR_MIN=1.5\nPATCH_FACTOR_MAX=1.5\n"
+    }
+  },
+  "grids": [
+    64,
+    128
+  ],
+  "metric": "area-weighted RMS geometric interpolation error against original source; percent normalized by source corner diagonal sqrt8",
+  "not_continuous_bound": true,
+  "not_new_acceptance_policy": true,
+  "mixed_adaptive_epochs": 0,
+  "retained_failure": "run-1 compile: missing research include directory; corrected include only before any native case",
+  "native_cases_executed": 4,
+  "no_more_variants": true,
+  "limits_focus": "node and element counts",
+  "native_run_plan": {
+    "source_sha": "e90d5a30963ed0ade9683c69a530847709188fe3",
+    "classification": "user-authorized isolated research sensitivity experiment; no default or production change",
+    "factors": [
+      1.414213562,
+      1.1
+    ],
+    "changed_control": "DISCRETIZATION_CURVE_FACTOR before existing context construction",
+    "unchanged_control": "internal domain factor, formulas, ordering, quadtree/AFT and acceptance/stopping",
+    "generation_limit_seconds_per_case": 180,
+    "stop_at_first_unexpected_failure": true,
+    "library_sha256": "7760a23083508d174d23bd8d9b01ec4332020744b7f75eae3d454a66e2a08a5f",
+    "harness_sha256": "da5a3e40b2f365c5dab97b202fe75e9aac6357524b122ec9944ff24fd9e38e09"
+  },
+  "followup_plans": {
+    "neutral_patch_floor": {
+      "reason": "First base-factor treatment increased straight-side density; use the existing external size-factor floor instead",
+      "changed_control": "PATCH_FACTOR_MIN",
+      "control": 0.8,
+      "treatment": 1.0,
+      "base_curve_factor_restored": 1.414213562,
+      "point_budget_mode": 0,
+      "unchanged": "all other versioned config inputs, formulas, source, step limit and library",
+      "timeout_seconds": 180,
+      "no_additional_parameter_sweep": true
+    },
+    "coarser_target_150": {
+      "reason": "Neutral target floor was consumed but stayed on the same subdivision plateau; one coarser target is needed to evaluate an actually smaller mesh",
+      "changed_controls": {
+        "PATCH_FACTOR_MIN": 1.5,
+        "PATCH_FACTOR_MAX": 1.5
+      },
+      "semantic_parameter": "fixed external target-size factor",
+      "unchanged_base_curve_factor": 1.414213562,
+      "point_budget_mode": 0,
+      "timeout_seconds": 180,
+      "not_a_default_change": true,
+      "remaining_native_variants_after_this": 0
+    }
+  },
+  "negative_factor": {
+    "exit": 2,
+    "invalid_factor_rejected_before_generation": true,
+    "control_artifacts_preserved": true
+  },
+  "coarser_comparison": [
+    {
+      "step": 1,
+      "node_reduction_percent": 80.0,
+      "RMS_error_ratio": 4.178697797152244,
+      "control_nodes": 165,
+      "coarser_nodes": 33,
+      "control_RMS_percent": 0.19870924282612018,
+      "coarser_RMS_percent": 0.8303458752712989,
+      "control_tri_min_quality": 0.41893045447155636,
+      "coarser_tri_min_quality": 0.4584145296734616
+    },
+    {
+      "step": 2,
+      "node_reduction_percent": 35.46694648478489,
+      "RMS_error_ratio": 13.28297802026482,
+      "control_nodes": 953,
+      "coarser_nodes": 615,
+      "control_RMS_percent": 0.021856732840755573,
+      "coarser_RMS_percent": 0.2903225019185565,
+      "control_tri_min_quality": 0.24570396133260058,
+      "coarser_tri_min_quality": 0.03981139118516527
+    },
+    {
+      "step": 3,
+      "node_reduction_percent": 11.54249737670514,
+      "RMS_error_ratio": 12.226733801166953,
+      "control_nodes": 953,
+      "coarser_nodes": 843,
+      "control_RMS_percent": 0.021856732840755573,
+      "coarser_RMS_percent": 0.267236454207142,
+      "control_tri_min_quality": 0.24570396133260058,
+      "coarser_tri_min_quality": 0.03981139118516527
+    }
+  ],
+  "conclusion": "No lower-node variant is selected as a new default: coarser target trades accuracy and transition quality for fewer nodes, and internal step growth persists.",
+  "not_run": [
+    "new-variant MSVC or sanitizer qualification",
+    "new full baseline CTest/CI campaign",
+    "runtime or peak-memory benchmarking",
+    "equal-error or equal-node optimization",
+    "scientifically approved mixed acceptance"
+  ]
+}

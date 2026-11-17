@@ -1,8 +1,9 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-15 Fortaleza. Canonical branch: `quad-templates`.
-Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: real-boundary QUAD/AFT application integration
+Updated 2026-11-17 Fortaleza. Canonical branch: `quad-templates`.
+Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
+Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
+## Active: complete integrated mixed TRI/QUAD filling before adaptive balancing
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,28 +12,368 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
-### 2026-11-15 execution order adjustment
+### 2026-11-17 - experimental pair metric and ordering decided
 
-**One active work item:** integrate the original serial curve-discretization
-workflow into the live opt-in curved manifold patch application, including
-source-derived boundary/tree, typed QUAD interior, original exterior AFT,
-physical publication and independent source-boundary checks. Keep fixed16 as
-a regression. This is a planned implementation, not a measured new capability.
-The [finite delivery plan](REAL_BOUNDARY_APPLICATION_PLAN_20261115.md) specifies
-reuse, source contracts, negative controls and exact-revision closure gates.
+The user explicitly delegates the previously requested metric/limit/ordering
+choices for the opt-in experiment. Use [physical_angle_pair_v1](MIXED_FILL_PAIR_POLICY_20261117.md):
+S_XYZ <=1.5, existing UV convexity/orientation and physical validity checks,
+minimum S_XYZ, exact-tie physical edge ratio, original frontier order and stable
+source IDs. Keep TRI when no admissible pair exists. This resolves the earlier
+generic questionnaire; formal advisor sign-off and historical identity are not
+asserted. No source numerical selection is activated by this checkpoint.
 
-**Exact next action:** trace the original `GeneratorAdaptive::AdaptCurve`
-inputs/outputs for the same initial curved source/configuration; select only
-compatible PR214 boundary helpers, then implement the source-partition bridge
-in one feature PR targeting `quad-templates`. Preserve original policies and
-actual source parameters/IDs/XYZ; replace the hardcoded boundary/tree contract
-in the new path rather than inventing another discretizer or forcing counts.
+Read-only archived source7fc988d observations:9 adapted stages,7 distinct full
+geometries,760 overlapping topological candidate observations. Existing validity
+plus UV score admits244 versus physical score138;108 are UV-only and2 XYZ-only.
+Three analytic shape/parameterization controls and count/input-hash assertions
+pass. [Portable evidence](evidence/MIXED_FILL_PAIR_POLICY_20261117.json) retains
+input/source hashes, rejected-reference scope and limits. These are not accepted
+pair outcomes, independent experiments or global-error/convergence measurements.
 
-P2d-1c4a stays integrated and qualified within its reversible-rehearsal scope.
-P2d-1c4b accepted-history/publication work follows the real-boundary application
-gate; its approved selection and two-distinct-accepted-transition requirements
-are retained. `adaptive_epochs=0`, R3/M7 #221 open. No code or native tests were
-changed/run by this sequencing checkpoint; no new scientific policy approved.
+Remote main ef40c0f, source7fc988d and canonical entry c05ff0b were freshly
+checked; PR238 remains draft with exact source4/4 checks SUCCESS. No new native
+build, baseline/sanitizer rerun, CI run, mesh generation or Blender display.
+Previous exact-source85/85/three-profile evidence is unchanged, not a new
+scientific qualification of this documentation revision. Other open PRs are
+untouched. Documentation whitespace/local links/JSON checks apply to this delta.
+
+Exact next action: implement physical_angle_pair_v1 in the original live-front
+operation behind a separate opt-in selector, with AFT-pair provenance, reversible
+physical publication, TRI fallback and positive/rejected/tie/rollback contracts.
+Then run its finite native and exact-head gates. No additional generic policy
+questionnaire precedes that implementation. Mixed adaptive epochs remain0;
+M1/M5/M7, Doxygen/full CRT, independent review and integration remain open.
+
+### 2026-11-17 - implementation and documentation realigned
+
+Priority order is now integrated mixed fill, actual mixed accepted-state/error
+feedback, then local curve/transition/interior balance. The earlier balance-first
+direction is retained as history and explicitly superseded. See the finite
+[realignment](MIXED_FILL_REALIGNMENT_20261117.md) and
+[implementation contract](MIXED_FILL_IMPLEMENTATION_20261117.md).
+
+Feature7fc988d30b27f08f620a68e4804ce453270774bd adds actual adjacent AFT TRI pair
+inventories to each applicable real-boundary archive, with original face/node
+indices and source step/epoch/retry/domain identity. Candidates are topological
+possibilities only: selected0, quality/selection not evaluated, no OBJ replacement
+or owner publication. Initial TRI-only source states are not applicable. This is
+completed-output engineering preparation, not the historical in-front algorithm.
+Original real curves, templates/AFT, TRI decisions and mixed mesh output remain
+unchanged. Native/CSV contracts include malformed topology and forged provenance.
+
+Local CLI push/PR writes failed403; the authorized GitHub connection published an
+identical complete tree, preserving the local6c5ec71 commit on a backup branch.
+Exact-head85/85 baseline, GNU/MSVC/Clang sanitizer native old/new/rollback cases,
+two configured LLVM22 TUs/header consumers and current-GNU frozen Eistute5/Book4
+OBJ/acceptance/boundary parity pass. Hosted run44055409865 completes4/4 SUCCESS.
+Each profile rejects five native bad topologies and four CSV forgeries per
+bounded normal/rollback case; all40 prior OBJ files and all new diagnostic CSVs
+agree across profiles. [Receipt](evidence/MIXED_FILL_ALIGNMENT_20261117.json).
+These are read-only candidate/engineering scopes, not accepted pairing evidence.
+PR238 remains draft; old d59a513 checks are not substituted for this head.
+No new numerical pairing, scientific adoption, stage closure or merge.
+
+Superseded next action at that checkpoint: record advisor alignment on shape-space/threshold, alternative/tie
+selection and degenerate handling, then implement in-front pairing with distinct
+AFT-pair provenance and reversible physical publication. An async question asks
+whether those choices exist; pending input is not approval. Retain the local
+balance proposal after this fill capability. Centroid, M5/M7, Doxygen/CRT and
+independent review remain open.
+
+### 2026-11-16 - historical mixed-region scope and pairing gap clarified
+
+Direct paper pages288-291 support mixed final output: interior QUAD templates,
+then optional quality-tested TRI pairing in the remaining boundary-contraction
+region, with TRI retained when no acceptable pair exists. Page289 explicitly
+reclassifies an internal-looking cell near a reentrant contour as boundary;
+this region need not be a thin outer ring. The source does not establish freely
+mixed TRI/QUAD templates in every interior cell or a numerical element census
+from quadtree outlines alone. [Detailed source comparison](TEMPLATE_GALLERY_20261116.md#mixed-final-meshes-and-the-remaining-region-pairing-gap---2026-11-16).
+
+Current d59a513 does not perform that optional exterior TRI-to-QUAD pairing:
+AttemptExteriorTriangulation produces TRI and the candidate appends those three-
+vertex faces after the seeded interior QUAD. Retain this explicit M5 historical
+coverage gap; no formula/threshold, source/scene or scientific policy changed.
+No new native run/test/CI. Active coupling/review priorities remain unchanged.
+
+### 2026-11-16 - combined meshes and intermediate polygons delivered
+
+User clarified a same-scene comparison. New Blender5.3 file now aligns three
+rows by T1-T6: original TRI, emitted QUAD and actual intermediate polygons directly
+below. The original12 template meshes are unchanged; six native polygon captures
+complete18 independently checked planar panels. The analytic/four-step generation
+history is preserved in the same file, and its source file/mesh geometry remains
+unchanged. Opened and visually confirmed the combined18-panel scene. See
+[layout and recreation](TEMPLATE_GALLERY_20261116.md#combined-meshes-and-polygons-in-one-scene---2026-11-16).
+No application source, new scientific policy or regression/CI campaign changed.
+This historical visualization request is complete; next remains the local
+coupling proposal/advisor alignment and PR238 review, with existing gaps retained.
+
+### 2026-11-16 - historical correspondence clarified
+
+Direct verified-PDF review of printed page288/Figure7 supports the six structural
+families and intermediate polygon graph. Printed order T1,T2,T4,T3,T5,T6 differs
+from gallery source-number order. The article shows intermediate polygons before
+final QUAD subdivision, whereas the gallery shows the emitted QUAD faces. Its
+centroid equation is not explicit; current vertex mean is not generally the
+area centroid. Original TRI can adjust centers/diagonals for quality. Therefore
+structural correspondence does not qualify literal numerical1993 reproduction.
+See [direct comparison](TEMPLATE_GALLERY_20261116.md#direct-comparison-with-the-1993-paper---2026-11-16).
+No source/scene change or new native test/CI. Historical point-rule approval and
+M1 partial status remain open; the active local coupling/review queue is unchanged.
+
+### 2026-11-16 - historical native template gallery delivered
+
+At the user's request before further algorithm work, added a Blender reference
+for all six implemented native families T1-T6:12 representative TRI/QUAD panels,
+real node/face counts and split-neighbor sides. Original TRI dispatch and live
+vertex-mean QUAD emission are executed by an isolated diagnostic linked to the
+unchanged d59a513 GNU library. Native export and independent planar disk checks
+pass; retain the initially mismatched physical-checker failure. This does not
+prove per-step use of all families, every quality/rotation branch or1993 identity.
+Exterior AFT is explicitly distinguished from interior templates.
+
+Blender5.3 file QUAD_TRI_history_with_templates.blend opened and visually confirmed.
+It contains the template gallery and preserved analytic/four-step generation
+scene. The source file hash and original mesh geometry/connectivity are unchanged.
+[Gallery and recreation](TEMPLATE_GALLERY_20261116.md) links the portable native
+catalog, provenance receipt and recipe. No application source, algorithm, new
+regression/CI or scientific policy changed. Next remains the local bidirectional
+coupling proposal below, with required advisor alignment; PR238 review and all
+prior scientific/closure limitations remain open.
+
+### 2026-11-16 - prioritize bidirectional local sizing feedback
+
+After Blender inspection, the user prioritizes balanced local refinement across
+the real curves, transition and interior, with transition quality feeding curve
+requests and low-curvature regions protected from unnecessary refinement.
+See the [concrete proposal](LOCAL_BALANCE_COUPLING_PROPOSAL_20261116.md).
+Source d59a513 remains unchanged: corrected curve points3/5/9 versus mixed
+nodes33/281/797. Existing density/structural responses are partly stable-mode
+guards; this case uses legacy. curve_domain_balance returns neutral1 when no
+positive target h is available, so its logged1 does not establish balance.
+Current regional metrics describe TRI source faces, not a closed mixed feedback
+cycle. Missing data must not be reported as successful balance qualification.
+
+Priority: one opt-in local coupling capability using actual mixed adjacency and
+original source-interval identities. Couple geometry-driven size requests,
+transition quality and graded neighbor sizes; refine implicated curve intervals
+or damp unjustified interior refinement according to cause. No new global scalar
+or automatic refinement of all straight/flat regions. Keep shared-curve sync,
+quadtree/templates, original AFT and accepted/rejected owner contracts explicit.
+Next action: settle the physical metric, local neighborhood and error/quality/
+size-gradient/step-change criteria with the advisors, then implement the bounded
+feedback slice with its diagnostic/request contract. This is a scientific proposal,
+not numerical-policy approval. No new build/test/generation/CI or Blender session.
+PR238 review and existing exact-head evidence remain separate; R3/M7 stays OPEN.
+
+### 2026-11-16 - opt-in factor-bound repair delivered and displayed
+
+Exact feature d59a513a04ea8c9573e006789641f4adbeecedee, draft PR238, adds
+curved_bezier_bounded_domain_vertex_mean_v1 and its explicit1.5-bound config.
+Behavior-changing configured-factor defect repair: the step2 ranked override
+respects that interval only in the new case. Historical TRI/original-curves and
+fixed16 retain their behavior. Boundary points3/5/9 remain untrimmed. The actual
+domain factor is now1.5/1.5/1.5 versus old1.5/1.0/1.5. Mixed nodes33/281/797
+versus33/615/843; step2 QUAD548 ->242, leaves136 ->67. This reduces step2 growth
+but RMS worsens0.290323% ->0.420207%; TRI minimum quality improves while QUAD
+minimum scaled Jacobian decreases. Step3 growth and poor TRI quality remain.
+
+Local exact-head85/85 baseline, configured six-TU LLVM22 analysis, GNU/MSVC/
+Clang sanitizer native old/new/rollback/negative histories and frozen Eistute5/
+Book4 equality with verified boundaries pass. All three profiles give identical
+case reports/OBJ hashes; both old default and old coarse eight-file archives
+reproduce previous bytes. Exact CI43859454045 completes4/4 SUCCESS. See
+[delivery/limitations](DOMAIN_FACTOR_BOUNDS_DELIVERY_20261116.md) and its receipts.
+Blender5.3 opened the corrected four-step analytic/TRI/QUAD-TRI scene; viewport
+was visually confirmed, enlarged and saved. No new mixed accepted epoch,
+scientific adoption, merge, full CRT closure or post-merge validation. Prior
+Doxygen failures remain open. First failed formatting/inventory/harness/launch
+attempts and their bounded corrections are retained in the evidence.
+
+Next action: independent review of the opt-in repair in PR238, including the
+error/quality tradeoff and retained gates before integration. Further interior
+h-growth control needs explicit geometry/quality/cost targets and scientific
+alignment; do not promote fixed1.5 as optimal. R3/M7 and mixed feedback remain OPEN.
+
+### 2026-11-16 - interior growth traced to requested sizes and step2 override
+
+Read-only source/log inspection corrects the earlier explanation:33 ->615 counts
+total mixed nodes, not exclusively interior nodes. The coarser case has boundary
+intervals8 ->10, source leaves16 ->136 and QUAD16 ->548. Boundary binary refinement
+and domain quadtree refinement use different curvature samples and size inputs;
+QUAD templates precede exterior AFT triangulation. Critically, configured patch
+bounds1.5 do not hold the domain factor fixed: the step2 ranked-patch rule applies
+min(domain_factor,1.0) here, matching the recorded factor1.5 ->1.0. Smoothed mean
+domain h falls0.280969 ->0.0901984. This contributes to the jump alongside the
+updated previous-TRI size/curvature inputs; no isolated attribution is claimed.
+See the [source/trace clarification](AGGRESSIVENESS_SENSITIVITY_20261115.md#2026-11-16---boundary-domain-and-aft-clarification).
+Next action: reconcile the configured-factor contract with the step2 override
+before another sensitivity test or controller proposal. Decide whether this is
+an intended policy or a behavior-changing defect repair; do not silently alter
+the historical rule. No native run, source/default change, merge or stage closure.
+
+### 2026-11-15 - bounded aggressiveness test completed; no default change
+
+User clarified that the concern is node/element counts. An isolated GNU native
+probe reproduces all eight current OBJ files and curve trace exactly, then
+executes separately recorded sensitivity cases. Curve base1.10 increases nodes
+(185/1073 versus165/953); neutral external floor1.0 is consumed but leaves all
+exports identical. Fixed external target1.5 gives33/615/843 mixed nodes, with
+curved-side points3/5/9. However RMS becomes0.830346%/0.290323%/0.267236% versus
+current0.198709%/0.0218567%/0.0218567%. Step2 TRI minimum quality drops0.245704
+->0.0398114, and the interior still grows16 ->548 QUAD. No variant is promoted.
+See [study](AGGRESSIVENESS_SENSITIVITY_20261115.md) and
+[receipt](evidence/AGGRESSIVENESS_SENSITIVITY_20261115.json). UV/source/disk and
+sample coverage checks pass in their bounded scopes; invalid-factor control
+rejects before generation. First include-path compile failure is retained.
+No production source/default changed, no new MSVC/sanitizer/full CI qualification,
+no mixed acceptance, merge or stage closure. The next controller proposal must
+separate boundary fidelity from interior size damping and specify error/quality/
+growth targets; prior source qualification does not approve these parameters.
+
+### 2026-11-15 - refinement jump and same-site error comparison measured
+
+Read-only comparison of the existing e90d5a3 exports: curved-side step1 has9
+points; step2 curve pass17 then surface pass65, an8x interval increase. On the
+same16,384 analytic source sites, area-weighted geometric RMS normalized by
+source corner diagonal is TRI/mixed0.2147235%/0.1987092% at step1 and
+0.03841344%/0.02185673% at step2. Step3 repeats step2. Mixed uses165 versus63
+nodes at step1 and953 versus337 at step2: no equal-cost efficiency claim.
+The original TRI curvature indicator instead worsens0.125829 ->0.382516;
+these objectives differ and no approved mixed curvature value is inferred.
+Grid64/128 ordering, exact existing mixed-kernel agreement and an uncovered-face
+negative control were checked. No native generation/tests, policy changes,
+integration or new accepted epoch. [Comparison](TRI_MIXED_SAME_SITE_ERROR_20261115.md)
+and [receipt](evidence/TRI_MIXED_SAME_SITE_ERROR_20261115.json). The next mixed
+criterion must distinguish geometric gain, curvature and cost; do not choose an
+arbitrary growth cap from these two refinements alone.
+
+### 2026-11-15 - curvature clipping corrected; four physical steps exported
+
+The latest user instruction rejected artificial point clipping and superseded
+the earlier request to preserve the stable controller. Exact feature
+`e90d5a30963ed0ade9683c69a530847709188fe3`, draft
+[PR238](https://github.com/tiagosombrra/apmesh-modernization/pull/238), now uses
+the existing original-curvature `legacy` profile in this opt-in research case.
+Default TRI configurations and original formulas are unchanged. Full surface-pass
+parameters reach native tree/QUAD/AFT without the stable-mode point rebuild.
+The stable controller remains an explicitly executed regression control.
+
+| Source step | Curved-side points | Straight-side points each | Physical QUAD/TRI reconstruction | Original TRI outcome |
+| --- | --- | --- | --- | --- |
+| 0 | 2 | 2 | 5 nodes / 0 QUAD / 4 TRI | Initial accepted reference |
+| 1 | 9 | 5 | 165 nodes / 120 QUAD / 68 TRI | Accepted |
+| 2 | 65 | 17 | 953 nodes / 784 QUAD / 224 TRI | Rejected for increased surface-curvature error |
+| 3 | 65 | 17 | 953 nodes / 784 QUAD / 224 TRI | Same reference rejection |
+
+All four steps are exported, with TRI and QUAD/TRI files, actual decisions,
+scoped domain generation identity and original pass traces. The primary OBJ
+retains accepted source step 1. Generation is separate from scientific mixed
+acceptance: `mixed_adaptive_epochs=0`, TRI-driven source history, R3/M7 OPEN.
+The source has one curved side and three geometrically straight Bezier sides.
+The straight-side curve pass retains two points; surface-driven refinement
+adds points without changing their straight shape.
+
+Local GNU, MSVC Debug and Clang ASan/UBSan/leak pass both original-curvature
+and stable-control normal/rollback/history/corruption/existing-output checks.
+Each runs six real source captures, three reversed captures and 54 native
+source/tree negatives. All eight original-profile OBJ files match byte-for-byte
+across the three profiles. Fixed16 retains its prior hash. Exact-head local
+CTest 85/85 and [CI43750977300](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43750977300)
+4/4 pass, including hosted85/85 and Python527/527. Native C++ images are identical
+to the already measured b0e7852 images; unchanged-code configured LLVM22 four-TU
+and local frozen Eistute5/Book4 evidence is reused with hashes; final hosted
+frozen TRI is independently green. [Review](CURVATURE_STEP_EXPORT_REVIEW_20261115.md)
+and [receipt](evidence/CURVATURE_GENERATION_STEPS_20261115.json).
+
+A Blender5.3 scene now contains the analytic source model before all four steps,
+with source curves and actual mesh chords. The new file was saved and opening
+was requested, but final visual confirmation was interrupted by user Escape;
+no further UI actions occurred. Do not claim that final scene was visually
+confirmed. The earlier three-step inspection was separately observed.
+
+Earlier reports below are retained findings, superseded by this profile and
+qualification checkpoint where their status differs.
+
+### 2026-11-15 - functional discrepancy: coarse curved boundary
+
+PR238 is now **draft / not ready to integrate**. The curved source exists,
+but adaptive_stable final point budgets leave two points per side at step 1
+and four at step 2. Twelve intervals is the total for four sides; the curved
+side has only three segments. Step-2 targets 8/7/7/7 are clamped to 4/4/4/4;
+its TRI candidate is rejected, then the bridge uses that source to generate
+mixed once. The expected coarse-to-fine mixed loop is still missing.
+See the [diagnosis](CURVE_DISCRETIZATION_DIAGNOSIS_20261115.md).
+Prior exact-feature CI certifies bounded contracts, not this functional goal.
+No new native qualification or scientific control change occurred.
+
+### 2026-11-15 — functional candidate implemented and exact feature qualified
+
+Original-curve QUAD/AFT application integration is implemented on
+`quad/real-boundary-application-20261115`, exact feature
+`79828fcbfc1c4aa20d84576e58f1a3ef8fe2592a`,
+[PR238](https://github.com/tiagosombrra/apmesh-modernization/pull/238).
+It reuses the original curve workflow and actual refined tree, preserves
+source IDs/XYZ/intervals and exact cell identities/counter/ordered leaves,
+then publishes a typed physical QUAD/original-AFT layout. Measured output:
+**37 nodes, 16 QUAD, 28 TRI, 12 original intervals, four nonuniform sides,
+16 native leaves**. Fixed16 remains an unchanged-byte regression.
+
+The curve/tree snapshot comes from the original locally selected source
+attempt. Its global TRI reference is **rejected** by the existing criterion
+and remains `reference_tri_accepted=0`. Initial geometric publication does not
+override that decision or constitute an accepted mixed adaptive epoch.
+
+Exact feature [CI #43716128507](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43716128507)
+passes **4/4**. Local GNU, MSVC Debug, Clang ASan/UBSan/leak and configured
+LLVM22 analysis pass their bounded scopes. Local CTest **85/85**, hosted
+CTest **85/85** and Python **527/527** pass. Local/hosted frozen Eistute five
+and Book four accepted/rejected states retain identical OBJ/acceptance fields
+and verified exact boundaries. See the [closure review](REAL_BOUNDARY_APPLICATION_CLOSURE_20261115.md)
+and [qualification receipt](evidence/REAL_BOUNDARY_APPLICATION_20261115.json).
+
+Earlier source/compiler, config-admission, refined-edge phase, fixed-ID and
+test-target errors remain recorded. First candidate bfd501a CI was 3/4, with
+zero frozen comparisons before config admission refusal; it is not a pass.
+The first local adapter stopped before CTest on inventory drift 75 -> 85;
+LLVM18 configuration errors are invalid analysis despite zero tool exit.
+The corrected exact feature qualifies with those failures retained.
+
+**One active item / exact next action:** review PR238's corrected original-curvature
+profile, source/domain identity and per-step publication. Resolve required
+open documentation checks and obtain independent approval before integration;
+repeat required research-merge validation after any authorized merge. The next
+functional scientific gate is a defensible mixed curvature/error and selection
+policy using actual prior accepted mixed states, not a TRI reference decision.
+Do not count these four reconstructions as accepted mixed adaptive epochs.
+The code is visible in the primary feature checkout; canonical changes here
+are status/evidence only. Integration and post-merge tests remain unperformed.
+Auxiliary Doxygen generation in the nested checkpoint worktree failed on
+three unchanged API references; the same failure was reproduced in the normal
+primary checkout, so a nested-worktree explanation alone was insufficient. It is
+not counted as a pass. Repeat required
+documentation checks from a normally located checkout before integration.
+Research merge and post-merge tests are **not performed**. `mixed_adaptive_epochs=0`;
+R3/M7 #221 remains OPEN. Global welding, production mixed postprocessing,
+1993 equivalence and wider memory/scientific coverage remain separate gates.
+
+### 2026-11-15 clarification: source adaptation precedes one mixed generation
+
+The Blender scene is one mixed layout built from source step 2, not a sequence
+of accepted QUAD-driven refinements. `RunRealBoundaryPatch` first runs the
+original TRI Generator through its configured adaptation attempts, then selects
+the last locally selected curve/tree snapshot with a complete global outcome
+and generates QUAD/AFT once. Recorded TRI source steps 0 and 1 each have four
+boundary intervals and four triangles; step 2 has twelve boundary intervals
+and 28 triangles and is globally rejected. The later mixed export has 37 nodes,
+16 QUAD and 28 AFT TRI; its source boundary is inherited from that step 2.
+There is no feedback from this mixed mesh into the preceding curve adaptation.
+The previous user-facing description overstated completion: real source reuse
+is implemented, but the end-to-end coarse-to-fine mixed adaptive loop is not.
+Integration review must retain this distinction; the queued accepted-history,
+mixed curvature/error and approved selection gates remain necessary. No new
+algorithm, policy or native qualification was performed for this clarification.
 
 ### Earlier 2026-11-15 status review and local visualization
 

@@ -2280,3 +2280,598 @@ PR. No source changes, native tests or new CI campaign occurred in this
 preference checkpoint; validate these two documentation files and verify remote
 readback after commit. Base b8fa113; main remains f6050ec. R3/M7 open,
 adaptive_epochs=0. No additional experiment or milestone was opened.
+
+## 2026-11-15 — original-curve QUAD/AFT executable implemented, qualified feature PR238
+
+Implemented the authorized functional delivery in the primary checkout on
+quad/real-boundary-application-20261115; feature commits bfd501a then
+79828fcbfc1c4aa20d84576e58f1a3ef8fe2592a, reviewable PR238 to quad-templates.
+Actual original serial Generator curve policies/configuration, native refined
+tree, source parameters/IDs/XYZ/intervals and original AFT geometry/topology
+feed a typed physical initial QUAD/TRI mesh. Snapshot values outlive retired
+curve samples; no source sampled-node/native-cell pointer escapes. Replay
+preserves original cell IDs, counter, subdivision chronology and ordered leaves.
+The old fixed16 mode and default TRI remain preserved. No new scientific
+selection/acceptance rule, tolerance, historical input or oracle was changed.
+
+Measured real layout: 37 nodes/16 QUAD/28 AFT TRI; 12 original boundary
+intervals, four nonuniform sides, 16 native leaves. OBJ SHA-256
+3fbb0c312b81406fb60813caa3ef4b3e76b0b7922208801494b2be61d9d5b03a
+matches GNU, MSVC Debug and Clang ASan/UBSan/leak. Fixed16 retains
+cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0.
+The last locally selected original source attempt has a globally rejected TRI
+reference; reference_tri_accepted=0 remains in receipt/OBJ. A coarse accepted
+TRI source had only four intervals/four leaves/no interior templates. The new
+initial research layout does not override original rejection or count as an
+accepted mixed epoch. mixed_adaptive_epochs=0, R3/M7 #221 OPEN.
+
+Exact79828fc: local GNU Release, MSVC Debug and Clang ASan/UBSan/leak pass
+fixed16 and real application normal/rollback/existing-output checks; each
+profile runs 12 actual source captures/six valid reversed captures/108 corrupt
+source-tree negatives. Independent Bernstein/OBJ/source checks reject nine
+corrupt artifacts per normal and rollback run. Required root local CTest
+passes 85/85; exact hosted run43716128507 passes 4/4, root85/85 and Python527/527.
+Local GNU and hosted frozen Eistute five/Book four accepted/rejected states
+retain all OBJ bytes, acceptance fields and verified exact boundaries. Local
+configured LLVM22.1.8 analysis of five changed TUs emits no diagnostics under
+unchanged project filters. Commands/hashes, source scope and open coverage
+are recorded in REAL_BOUNDARY_APPLICATION_CLOSURE_20261115.md and its JSON receipt.
+
+Retained failures: initial const legacy getter/config admission issues,
+misread original edge len=-1 phase, overly restrictive uniform/source-TRI
+preconditions, sequential-ID assumption and a mistargeted Python corruption.
+First bfd501a CI3/4 failed explicit new config-asset admission before frozen
+comparisons; only that exact new path was admitted. First local delivery
+adapter compiled but stopped before CTest on inventory75->85; a fresh85 plan
+then passed. LLVM18 could not parse the current ExcludeHeaderFilterRegex;
+its zero exits were NOT analysis passes. Installed LLVM22 with actual native
+configured metadata passed without disabling a check or changing config.
+
+Created a separate local Blender5.3 inspection scene from the exact OBJ,
+showing fixed16 beside the real boundary and its 12 source samples. A separate background process created a new file; automation did not replace
+the previous saved scene. The new scene was opened and visually inspected in
+Blender. Visualization is not an oracle. Local outputs/raw failures
+remain under ignored build/quad-review-20261115 and compiler-specific build
+directories; no private machine paths or large binary artifacts are committed.
+
+Concurrent main advanced to ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89 through
+documentation-only PR237; preserved without merging unrelated changes into
+research. Frozen reference remains f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94.
+This canonical checkpoint updates STATE/roadmap/milestone/research evidence
+only; implementation stays visible in the primary feature checkout. Code,
+contracts, tests, docs, scientific scope and unresolved coverage were reviewed.
+Independent approval, research integration and exact merge validation remain
+unperformed; no M7/full-science or main qualification is claimed.
+
+Exact next action: independently review PR238 at qualified79828fc, integrate
+only after required approval/gates, then qualify the research merge before
+the queued P2d-1c4b accepted-history/publication work. Keep one active item;
+do not start another fixed16 experiment or unrelated audit campaign.
+
+Auxiliary checkpoint documentation attempt: `python tools/quality.py docs`
+did not pass in the isolated worktree below `build/`: initial output-directory
+absence was corrected, then Doxygen could not resolve three unchanged API
+evidence references. Doxyfile excludes `*/build/*`. This is not a successful
+documentation build or a new code failure; required integration documentation
+checks remain pending from a normally located checkout. Staged whitespace,
+JSON syntax and changed-document local targets are checked separately.
+
+## 2026-11-15 ? clarify the actual source-to-mixed execution sequence
+
+The user questioned why the displayed mesh did not show progressive curve
+refinement. Verified exact feature 79828fc source/config and retained Windows
+reference artifacts; no new native execution. `RunRealBoundaryPatch` runs the
+original TRI Generator first, captures curve/native-tree attempts, selects the
+last locally selected source with a complete global outcome, then calls mixed
+Generate once. Source-step progression is 0: five nodes/four TRI/four boundary
+intervals; 1: five/four/four; 2: 21/28/twelve. Step 2 is globally rejected under
+the original criterion. The displayed mixed result is 37 nodes/16 QUAD/28 AFT
+TRI using that step-2 boundary, not a succession of mixed accepted states.
+Confirmed counts by parsing retained OBJ faces and counting singly incident
+undirected edges; checked the OBJ source header and RunRealBoundaryPatch.
+
+Corrected the user-facing completion claim: actual curve-discretization reuse
+works, but curve refinement is currently driven by the preceding TRI reference,
+not by curvature/error on the newly generated mixed mesh. Full coarse-to-fine
+mixed feedback remains unimplemented. STATE now states this explicitly. No
+formula, code, acceptance policy, experimental scope or prior failure changed.
+Remote research e651ec2, main ef40c0f and feature 79828fc were rechecked; PR238
+remains open with four successful exact-feature jobs. This explanation does not
+rerun or newly certify native, sanitizer, Doxygen or scientific gates.
+Next: review the bounded bridge with these limits, integrate only under required
+gates, and continue the queued accepted-history/mixed-feedback work with its
+scientific approvals. Do not equate one adapted-source export with a completed
+adaptive mixed generator.
+
+## 2026-11-15 - investigate coarse curved boundary, return PR238 to draft
+
+User reported that the curved source and progressive meshing behavior were
+not represented as expected. Verified feature79828fc, research4d0b404 and
+main ef40c0f against live remote. Inspected ModelCurvaBezier, initial meshing,
+stable-mode setup, AdaptCurve, RefineCurveSamples, target rebuild and mixed
+entry point. Retained CSV/log/OBJ show two final points per curve at step1,
+four at step2; pre-consistency targets 8/7/7/7 are clamped to 4/4/4/4. The
+curved side has three segments, not twelve; twelve is the four-side total.
+Step2 was rejected (growth7, improvement0.456174, score-2.85629). Mixed
+publication subsequently uses that source and runs once, with no mixed feedback.
+Analytic midpoint/chord distance is0.375; 10,001 samples against exported
+curve-0 segments give sampled maximum0.06280875228120662 near t0.1846.
+No continuous bound or acceptance tolerance is inferred. Actual intermediate
+curve/surface pass counts before rebuild remain unmeasured.
+
+Returned PR238 to draft and superseded integration-ready status in state,
+roadmap and milestone register. Added CURVE_DISCRETIZATION_DIAGNOSIS_20261115.md.
+Existing source/identity/tree tests do not prove curve approximation or mixed
+convergence. Next bounded code action is pass-by-pass parameters/counts and
+step/attempt/stop provenance, then correction of the proven cause. Keep prior
+accepted mixed-state feedback, estimator/selection approval, ownership/history
+and publication gates; do not tune density/acceptance to improve a picture.
+No source/formula/configuration/default TRI changed; no new native tests or
+scientific qualification. Prior exact-feature evidence retains its bounded
+scope; mixed epochs remain zero and functional behavior correction is pending.
+Validate changed docs, push canonical checkpoint and verify readback.
+
+## 2026-11-15 - correct curvature clipping and export each physical generation step
+
+Implemented native value observations and domain-selection identity atb0e7852,
+analytic-model-first visualization at047c165, then final original-curvature
+profile/audit correction ate90d5a30963ed0ade9683c69a530847709188fe3 (draft PR238).
+The user initially preserved controls, subsequently explicitly rejected the
+stable point clipping. Current opt-in case selects existing legacy curvature
+flow; default TRI configurations/formulas are unchanged. Native source points
+now reach native tree/QUAD/original-AFT unchanged: curved9 then65, straight5
+then17. Four steps/eight OBJ files retain all TRI reference outcomes. Primary
+step1 is165 nodes/120 QUAD/68 TRI; generated rejected-source steps2/3 are
+953/784/224. Actual reference error increases0.125829 ->0.382516 there; mixed
+accepted epochs remain0. Full mixed feedback/approved selection is still open.
+
+Confirmed old stable rejection comes from coherence1.03086 >0.20, not directly
+from negative score under ACCEPTANCE_MODE0. Target5.77422 vs28 elements creates
+overshoot penalty. New geometric sampled curve distance falls to0.00820232 then
+0.000136785; no continuous bound or acceptance tolerance is inferred. All four
+sides are Bezier objects but only one is curved; straight-side point growth
+occurs in the surface pass, with collinearity retained.
+
+Exacte90 local GNU/MSVC/ASan pass both profiles, actual normal/rollback/negative
+histories, six source captures/three reversed/54 native negatives per profile;
+eight original-profile OBJ files are byte-identical across profiles. Exact85/85
+local and CI43750977300 4/4 pass, including85/85 hosted and527 Python. Native
+images matchb0e7852; unchanged-code configured LLVM22 four-TU and local frozen
+Eistute5/Book4 evidence is reused with hashes, and final hosted frozen TRI is
+independently green. Fixed16 bytes stay unchanged. See portable JSON/review.
+
+Blender5.3 scene with analytic source and four steps saved; opening requested.
+User Escape interrupted final visual confirmation; no further UI actions.
+Earlier three-step scene was separately inspected. Retain domain-identity and
+rounded-OBJ development failures. Doxygen reproduced three unchanged missing
+API evidence references in the normal checkout too; prior nested-worktree-only
+explanation was incomplete. No Doxygen pass, independent approval, merge,
+post-merge/native CRT closure, accepted mixed feedback or1993 equivalence.
+
+Source remains visible in primary feature checkout. Canonical checkpoint is
+status/evidence only. Main ef40c0f and other concurrent PRs were preserved.
+Next: review profile/export/source identity, resolve required open gates before
+integration, qualify any research merge, then continue actual accepted mixed
+state/error/selection work under its scientific approval requirements.
+
+## 2026-11-15 - measure TRI/mixed error and localize compounded refinement
+
+User asked whether step1->2 discretization grew too fast and requested TRI vs
+QUAD/TRI error. Verified featuree90d5a3, research808e7fa and main ef40c0f from
+remote; prior exact-feature checks remain4/4. Read original trace: curve9 ->
+curve-pass17 ->surface-pass65, eight->64 boundary intervals; mixed188->1008
+faces and165->953 nodes. No controls or source implementation changed.
+
+Measured the eight existing physical OBJ files at identical64x64 and128x128
+UV midpoint grids against the original analytic Bernstein surface. TRI uses
+barycentric, QUAD inverse-bilinear interpolation; RMS weighted by source area
+Jacobian and percentages normalized by source opposite-corner diagonal sqrt8.
+At128: step1 TRI0.2147235%, mixed0.1987092%; step2/3 TRI0.03841344%,
+mixed0.02185673%. Initial outputs identical2.7178804%. Mixed has2.62x/2.83x
+nodes, so no equal-cost efficiency result. Step1 maximum mixed error is slightly
+higher even though RMS is lower. Step3 repeats the rejected candidate, not a
+new accepted mixed epoch. Same source boundary is preserved by both layouts.
+
+Exact equality with the unchanged existing mixed kernel for every actual mixed
+stage/grid; initial equality control and missing-face coverage negative pass.
+The local read-only kernel explicitly supports TRI-only sampling without
+changing face search/tolerances/weights; no source helper/oracle was edited.
+Raw script/logs remain ignored; portable receipt stores script and input hashes.
+Native TRI curvature index0.125829 ->0.382516 increases while geometric RMS falls:
+these are distinct objectives; no mixed curvature index is supplied or approved.
+
+Added comparison/report/receipt and this state checkpoint. No native generation,
+C++ tests, compiler, CI rerun, scientific policy or integration occurred. Review
+mixed geometry/curvature/cost criteria and use matched budgets before efficiency
+claims. Preserve existing profile/export delivery and R3/M7 gates.
+
+## 2026-11-15 - native aggressiveness sensitivity; count savings versus accuracy
+
+User requested a less aggressive generation test and clarified limits mean
+node/element counts. Read live research05b0628, featuree90d5a3 and main ef40c0f;
+source worktree stayed clean. Existing C++ library/flags were reused for a small
+isolated GNU Release process entry. Default curve base1.414213562 control matches
+all eight qualified OBJ exports and curve trace byte-for-byte. Only process-local
+inputs vary; no engine/default source or scientific tolerance was edited.
+
+The preregistered base1.10 treatment increased straight-side points5->9 and
+17->57, and mixed nodes165->185/953->1073. Its factor also affects coarsening:
+flat-segment base*external becomes0.88, reversing growth in requested length.
+A separately recorded neutral floor1.0 was consumed (curve factors1.0), but
+all eight exports were unchanged. One final coarser fixed external factor1.5
+was recorded before execution to cross the exported subdivision plateau.
+Total four native cases, no additional sweep. First compilation missing the
+private research include stopped before generation; corrected include only and
+retained run1. Invalid factor0 rejects before generation and preserves control.
+
+Coarser stages1/2/3: curved3/5/9 points,33/615/843 nodes,16/548/772 QUAD and
+24/122/126 TRI. Same-site128-grid RMS percentages0.830346/0.290323/0.267236,
+versus control0.198709/0.0218567/0.0218567. Step2 saves35.47% nodes but has
+13.28x geometric RMS and TRI minimum shape quality0.0398114 versus0.245704;
+QUAD corner Jacobian minimum0.520605 versus0.851067. The interior still jumps
+16->548 QUAD. Considering nodes/RMS alone, coarser stages2/3 are worse than
+control step1. No optimal/default setting is inferred; coarser first stage may
+only suit a looser as-yet unspecified geometric target.
+
+All exported states pass existing independent UV/source/disk checks and sampled
+coverage; new mixed metrics exactly match the unchanged64/128 kernel. Paired
+control/neutral metrics reuse byte-identical data. This does not prove global
+physical bounds or continuous error. Coarser reference TRI steps are accepted,
+but no mixed scientific acceptance follows. New MSVC, ASan, CTest/CI, peak memory,
+runtime benchmark and equal-error optimization were not performed. Prior source
+qualification remains its own unchanged scope.
+
+Added study, portable receipt and current state/roadmap evidence. Raw programs,
+configs/plans/logs and copied OBJ files remain in ignored experiment directories.
+No variant was adopted and no integration/stage closed. Next: separate boundary
+fidelity and interior size-field damping, specify geometry/quality/growth targets
+on actual mixed states and obtain the required scientific/independent review.
+
+
+## 2026-11-16 - explain boundary versus interior refinement and step2 override
+
+User asks why the interior grows faster than the curve and whether AFT controls
+both. Read exact feature e90d5a3 source and retained coarser native CSV/OBJ without
+rerunning generation. Correct prior wording:33 ->615 are total mixed nodes.
+Boundary intervals8 ->10, source leaves16 ->136, QUAD16 ->548. Domain uses old TRI
+surface-curvature/size inputs, separate from one-dimensional boundary intervals;
+QUAD templates precede the exterior original AFT reconstruction.
+
+New concrete finding: configured patch bounds1.5 do not keep the domain factor
+constant. Existing step2 ranked-patch override lowers it to1.0 here; raw domain
+CSV confirms1.5 ->1.0 and smoothed h mean0.280969 ->0.0901984. No counterfactual
+isolates that rule from changed previous-TRI inputs, balancing and template
+selection. Append exact measurements, artifact hashes and source mechanism to
+the sensitivity report; preserve prior observations and refine state/roadmap.
+
+Remote main ef40c0f, canonical entry fbf38b5 and feature e90d5a3 were checked.
+PR238 remains draft with4/4 successful existing exact-feature checks; unrelated
+PR214/225 remain untouched. No production code/default or formula changed. No
+new native run, CTest, sanitizer, CI, merge, scientific adoption or closure.
+Documentation/whitespace and checkpoint checks are recorded by the commit.
+Next action: reconcile configured-factor semantics and the historical step2
+override, classify intended policy versus a behavior-changing defect repair,
+then define the smallest authorized correction/test without changing TRI by
+accident. Mixed adaptive feedback/acceptance remains open.
+
+
+## 2026-11-16 - opt-in domain bounds repaired, tested and opened in Blender
+
+User authorizes fixing the conflicting step2 factor, repeating tests and showing
+all steps in Blender. One work item: a behavior-changing configured-factor defect
+repair under new curved_bezier_bounded_domain_vertex_mean_v1. Existing historical
+TRI, original-curves/fixed16 cases, formulas, ordering, acceptance/stopping and
+ownership remain unchanged. New case clamps the ranked step2 override into the
+configured interval. Feature source e8ac72e plus generated inventory refresh gives
+exact delivery d59a513a04ea8c9573e006789641f4adbeecedee, pushed to draft PR238.
+
+Actual factors1.5/1.0/1.5 ->1.5/1.5/1.5, curved points3/5/9 unchanged. Mixed nodes
+33/615/843 ->33/281/797; step2 QUAD548 ->242 and source leaves136 ->67. Step2
+geometric RMS0.290323% ->0.420207%, TRI minimum shape0.0398114 ->0.135358,
+QUAD minimum scaled Jacobian0.520605 ->0.429872. Step3 RMS0.275132%,797 nodes,
+TRI minimum0.0398114. Counts improve at a cost in geometric error; no uniformly
+better or optimal mesh is claimed. Paired TRI/mixed64/128 sampled error and quality
+receipts retained; old metrics reused only for identical inputs. Old default and
+old coarse each reproduce all eight prior OBJ bytes. New mixed kernels exactly
+agree with the existing independent common-grid implementation.
+
+Exact final revision: GNU Release, MSVC Debug and Clang ASan/UBSan/leak detection
+pass five-case old/new tests, rollback and corruption controls. Profiles agree
+on all case reports/OBJ hashes. Each also passes fixed16, original/stable traces,
+six native source captures, three reversed captures and54 negatives. Required
+baseline85/85 passes via validation_session, report1794828785596882800-532fdd13;
+six configured LLVM22 TUs have no visible first-party diagnostics. New GNU TRI
+Eistute5/Book4 exactly match frozen f6050ec OBJ/acceptance with boundary coverage.
+Exact hosted CI43859454045 completes4/4 SUCCESS. Added opt-in case explicitly to
+the scientific comparison's reviewed config assets; no other guard relaxed.
+
+Retain initial header-format hook failure, stale architecture inventory gate,
+two harness-copy BOM syntax failures before native execution and direct protected
+Blender binary access denial. Apply only the indicated bounded corrections:
+format the new method; regenerate changed source/hash inventory; copy scripts
+with explicit encoding; use the installed application launcher. No hidden native
+retry, tolerance relaxation or permissions change. No new Doxygen/full CRT gate;
+prior limitations and independent approval remain open.
+
+Blender5.3 scene created from actual final MSVC archive, eight objects/four states,
+analytic model at left, TRI above mixed. Source geometry is not scaled/smoothed.
+Opened and visually confirmed the correct named window, enlarged and saved its
+viewport. File:build/quad-domain-bounds-d59a513/QUAD_TRI_domain_bounds_steps_analytic.blend.
+
+Remote main ef40c0f and canonical entry2136130 remain distinct; concurrent work
+on unrelated branches and PR214/225 was inspected and untouched. Updated state,
+roadmap, delivery report and two portable receipts; no merge, stage closure,
+accepted mixed feedback epoch or post-merge/main qualification. Next: independent
+review of PR238, then resolve retained integration gates. A later h-growth policy
+requires declared geometry/quality/cost targets and scientific alignment; fixed1.5
+is not adopted as an optimal default. R3/M7 remains OPEN.
+
+Final checkpoint whitespace check exposed CRLF in the copied comparison receipt.
+Normalize that new file to LF and verify identical parsed JSON before publication;
+retain the rejection as a documentation failure, not a native test failure.
+
+
+## 2026-11-16 - prioritize local bidirectional curve-transition-interior balance
+
+User observes a coarse-looking curve beside increasingly refined interior and
+requests a balance factor that can improve boundary discretization when transition
+elements suffer, while avoiding excessive low-curvature refinement. Prioritize
+that functional coupling; the completed factor-bound repair alone does not solve
+it. No new algorithm or numeric threshold was adopted in this session.
+
+Read current remote state and exact d59a513 source. Existing stable-mode density/
+structural responses are not generally active in the current legacy research
+case. ComputeCurveDomainBalance returns1 for nonpositive target h, matching the
+neutral1 in all corrected-run records; this is not evidence of measured balance.
+Current regional coupling statistics use TRI FaceList and source history remains
+TRI-driven, not actual mixed feedback. No new native execution or measurement.
+
+Add LOCAL_BALANCE_COUPLING_PROPOSAL_20261116.md with a concrete local size/geometry/
+quality feedback contract, shared-curve synchronization, units, graded neighbors,
+bounded/hysteretic requests and cause checks for poor AFT/transition elements.
+A straight interval may need local compatibility points; a distant high-curvature
+region must not force uniform global refinement. Missing measurements are
+unavailable, not a pass. Retain all existing defect-repair outputs and failures.
+
+Plan one opt-in coupling capability, rather than another global-factor sweep.
+Next: align the physical metric, local neighborhood and error/quality/spatial/
+per-step controls with advisors, then implement the bounded mixed-feedback slice.
+This is a scientific proposal under AGENTS.md; no formula, weights, limits,
+acceptance/stopping policy or mixed scientific adoption is implied by the user's
+direction alone. Preserve original curve algorithm, quadtree/templates, AFT,
+shared identities and rollback/rejected trace contracts.
+
+Remote main ef40c0f, canonical entry c37201a and feature d59a513 verified; PR238
+remains draft with4/4 existing exact-head checks successful. PR214/225 untouched.
+Changed proposal/state/roadmap/session documentation only. No native build, test,
+CI or new Blender scene; existing85/85/three-profile evidence is not extended to
+this proposal. Documentation whitespace/link and scope review precede checkpoint
+publication. Independent review, Doxygen/CRT and R3/M7 remain open.
+
+
+## 2026-11-16 - preserve native TRI and QUAD templates in Blender history
+
+User requests the template reference before any next algorithm step. No balancing
+implementation or scientific decision is advanced. Extract six canonical native
+quadtree neighbor signatures from the unchanged d59a513 GNU engine library.
+Original makeTemplateBasedMesh yields TRI2/3/6/6/5/6; EmitLeafQuads with the live
+vertex-mean rule yields QUAD4/11/8/12/11/16. Output is normalized for display;
+actual nodes/faces are retained. These are representative implemented families,
+not proof of every rotation/quality branch or per-step usage of all six. Exterior
+AFT triangles are dynamically generated, not these fixed interior templates.
+
+Bounded standalone native exporter compiled/executed successfully. Twelve planar
+audits check coordinates/indices, positive area, boundary/manifold/connected disk
+and Euler contracts; a reversed-face negative is rejected. Retain the first
+checker-selection failure: the physical curved-patch helper rejects flat UV
+coordinates under its different input contract. Switch explicitly to a planar
+auditor, without altering native output. No application/source change, native
+regression campaign, new CI or scientific qualification.
+
+New Blender5.3 file QUAD_TRI_history_with_templates.blend contains the original
+analytic/four-step generation scene and a separate labeled template gallery.
+Original file hash and all original mesh coordinate/connectivity snapshots are
+unchanged. Opened and visually confirmed all12 TRI/QUAD panels with split-side
+highlights. Stored portable catalog, image/source/compiler receipt and Blender
+recipe under docs/research/quad/visual plus TEMPLATE_GALLERY_20261116.md.
+Local blend/raw files remain in ignored build/quad-template-catalog-20261116.
+
+Remote main ef40c0f, canonical entry20c37c6 and feature d59a513 checked; existing
+PR238/214/225 and source branch untouched. Update state/roadmap and append this
+checkpoint; Python syntax, documentation whitespace/links and metadata scope
+checked before publication. No merge or stage closure. Next remains the local
+coupling proposal with advisor-aligned metrics/criteria, retaining PR238 review,
+Doxygen/CRT and R3/M7 OPEN.
+
+
+## 2026-11-16 - clarify structural versus numerical1993 template correspondence
+
+User asks whether the Blender templates match the1993 article. Re-read current
+checkpoint and M1 source/centroid reviews, verified original PDF SHA25649d297e2...
+and5439448 bytes, rendered/read all printed page288 and Figure7 detail through
+installed Poppler. Default Python lacked PyMuPDF; no package installed. Public
+coauthor bibliography confirms citation only, not template topology. Local scan
+and renders remain untracked and are not redistributed.
+
+Confirm six split-neighbor families/QUAD intermediate polygon connectivity and
+printed order T1,T2,T4,T3,T5,T6 versus gallery source-number order. Distinguish
+article lower-row intermediate polygons from gallery final subdivided QUAD faces.
+Numerical centroid equation remains unspecified in the paper; current vertex mean
+is not generally area centroid. TRI quality-dependent centers/diagonals also
+prevent a literal-coordinate reproduction claim. The diagram supplies no numeric
+point oracle. Added this comparison and limits to TEMPLATE_GALLERY_20261116.md;
+no historical formula adopted, scientific milestone closed or file regenerated.
+
+Remote main ef40c0f, canonical entry d6eeb3d and feature d59a513 verified. PR238
+remains draft with four existing exact-head checks successful. Source and gallery
+geometry unchanged; no new native build/tests/CI or Blender action. Documentation
+checks and remote checkpoint readback only. Next remains advisor alignment of
+historical point formula/local coupling criteria and existing PR238 review, with
+M1 partial and R3/M7/known Doxygen/CRT obligations retained.
+
+
+## 2026-11-16 - align generated template meshes and intermediate polygons
+
+User clarifies that the desired reference is a combined view: last TRI/QUAD
+examples with intermediate polygons immediately below in the same scene/file.
+Extend only the isolated native extractor to emit CaptureLeafPolygons cycles;
+no production source or balancing algorithm changed. Original12 template arrays
+are byte/value-identical; add six polygon panels1/3/2/3/3/4 and audit all18 planar
+disks. Native compile/export completes successfully against the unchanged d59a513
+GNU library. This is diagnostic/presentation evidence, not a new scientific gate.
+
+Add extended portable catalog, receipt and three-row Blender recipe. New scene
+shows TRI in orange, QUAD in teal and source polygons in purple, aligned by T1-T6.
+Source history file and mesh snapshots are unchanged; its analytic/four-step
+history remains in another scene within the new file. Opened the correct Blender5.3
+window and visually confirmed all18 panels together. Old gallery files preserved.
+Result:build/quad-template-catalog-20261116/with-polygons/QUAD_TRI_templates_and_polygons.blend.
+
+Entry canonical90fdd5d, feature d59a513 and main ef40c0f remain distinct. No new
+application build/regression/CI, scientific centroid approval or stage closure.
+Check Python syntax, documentation whitespace/links and remote readback for the
+checkpoint. Next remains local coupling/advisor alignment and PR238 review;
+this requested historical visualization is completed first. M1/R3/M7 and known
+Doxygen/CRT limitations remain open.
+
+
+## 2026-11-16 - clarify historical mixed regions and missing exterior pairing
+
+User asks whether the article mixes QUAD/TRI in all internal quadrants. Re-read
+complete scanned pages289-291 with installed Poppler and prior page288, verify
+primary PDF hash49d297e2..., and inspect exact d59a513 current exterior AFT and
+candidate face assembly. Source interpretation supports mixed final elements,
+not unrestricted mixed templates in every interior cell. Interior QUAD branch
+subdivides source polygons into QUADs; remaining-region boundary contraction can
+join triangles into QUADs when its quality condition permits and retain TRI
+otherwise. Page289 explicitly reclassifies a geometrically internal-looking
+cell near a reentrant contour as boundary, so that region is not a uniform ring.
+Do not count quadtree boxes as finite-element QUAD merely from the drawing.
+
+Record a concrete gap: current AttemptExteriorTriangulation and candidate assembly
+append original AFT triangles without the historical optional remaining-region
+pair-to-QUAD treatment. Seeded QUAD plus exterior TRI is not full1993 equivalence.
+Add this to the existing M5 coverage inventory and gallery comparison record;
+no new algorithm, threshold or historical scientific approval. Keep balancing
+feedback separate from element-type pairing. No source/Blender change, native
+build/test or new CI. Scanned pages/renders remain local/untracked.
+
+Entry canonical aa1d9fd, feature d59a513, main ef40c0f and PR238 current status
+verified. Existing PR238 four-job qualification remains its own scope, draft and
+unmerged. Check documentation whitespace/links and remote readback. Next stays
+advisor-aligned local coupling and PR238 review; M5 historical pairing coverage,
+M1 point rule, R3/M7 and Doxygen/CRT remain open.
+
+
+## 2026-11-17 - realign implementation around integrated mixed filling
+
+User requests implementation/documentation alignment with the discussion. One
+work item: engineering preparation of actual mixed fill, followed by actual mixed
+accepted-state/error feedback and then local curve-transition-interior balancing.
+The previous balance-first successor is explicitly deferred, not deleted. No
+historical numerical pairing rule or new adaptive factor is activated.
+
+Implement value-only CollectBoundaryPairCandidates and integrate two source-scoped
+CSV inventories into each real-boundary archive. Record actual adjacent exterior
+TRI source faces/vertices/shared edge/four-node boundary cycles, not invented
+accepted QUAD elements. No-seed initial TRI source states are not applicable.
+Candidates may conflict/be geometrically bad; selected0/not_evaluated is explicit.
+No mesh/source/acceptance mutation or physical owner transfer. This completed-
+output inventory is not the article's in-front algorithm or a greedy postprocessor.
+Implementation contract preserves distinct future native-template/AFT-pair origins
+and requires reversible physical publication before a selected pair can be used.
+
+Initial local commit6c5ec716f4262a2011f6087b16635f186e00416c passed85 and native
+three profiles. Git CLI push and PR edits were refused403; the authorized GitHub
+connection can write contents. Publish identical tree00315980ea56546c7393d0b4fb20f7684a9273ec
+as7fc988d30b27f08f620a68e4804ce453270774bd with screened metadata and a leased
+fast-forward update. Preserve6c5ec71 on local branch quad/local-mixed-prepublish-20261117;
+synchronize the clean working branch by creating the published-head tracking
+branch without changing file contents or overwriting concurrent work. No machine
+credential/permission changes or force push. Exact-head checks repeated after
+remote commit identity changed. Retain the first refused publication and bounded
+payload/schema transport failures before ref update; none is native qualification.
+
+Exact7fc988d local85/85, GNU Release/MSVC Debug/Clang ASan+UBSan/leak histories,
+source controls and new read-only diagnostics pass. Each profile has four topology
+cases/five invalid controls and old six captures/three reversed/54 negatives.
+Independent CSV reader checks actual OBJ adjacency/orientation/cycle boundaries;
+four forgeries per bounded normal/rollback are rejected. All five cases/40 prior
+OBJ files per profile remain byte-identical. All profile case reports and new CSV
+bytes agree. Current-GNU frozen Eistute5/Book4 exact OBJ/acceptance and verified
+boundaries pass. Two configured LLVM22 TUs/header consumers have no visible
+first-party diagnostics on the identical source tree. Local report1794907572218082900-2b73e7b8;
+exact hosted run44055409865 completes4/4 SUCCESS. No extra scientific sweep.
+
+Update README/source implementation contract on the feature, canonical state,
+roadmap, deferred balance proposal, realignment plan and portable receipt. Code,
+contracts, real/negative tests, documentation, scientific scope and remaining
+failure/coverage obligations reviewed explicitly. No scientific stage closure,
+merge, full CRT/Doxygen qualification, mixed accepted epoch or new Blender mesh.
+Existing centroid/M1, full M5/M7, Doxygen/CRT and independent review remain open.
+
+An async factual question asks whether advisors aligned Figure11 shape threshold,
+UV/XYZ interpretation and pair priority; no answer/approval is recorded. AGENTS.md
+requires explicit advisor alignment before numerical changes. Next concrete
+step: settle those choices, then implement in-front selection/typed reversible
+pair publication with TRI fallback. Keep new balancing policies after that fill
+capability. Source/canonical head, branches and open PRs were checked; unrelated
+PR239/225/214 untouched. Canonical entry15e469d, source base d59a513 and main
+ef40c0f are retained separately; checkpoint publication/readback is explicit.
+
+The first documentation whitespace invocation used the source worktree rather
+than the canonical documentation worktree and stopped on a missing canonical-only
+file. Correct the working directory; the seven-file check then passes without
+content relaxation. This is a tooling-scope failure, not a native test failure.
+
+
+## 2026-11-17 - decide the opt-in pair quality space and deterministic ordering
+
+The user asks for technical guidance and explicitly delegates these adjustments.
+Resolve the prior generic questionnaire with physical_angle_pair_v1, documented
+in MIXED_FILL_PAIR_POLICY_20261117.md: retained S<=1.5, physical XYZ corner
+angles, existing four-corner UV and physical validity, minimum S_XYZ, exact-tie
+physical edge ratio then original frontier order and stable source IDs. Preserve
+valid TRI when no acceptable pair exists. This is an experimental curved-surface
+choice, not formal advisor sign-off or source-certified1993 XYZ reproduction.
+No numerical selector, formula/tolerance/adaptive change or source publication.
+
+Read actual archived MSVC Debug candidate CSV and stage OBJ data from exact
+source7fc988d: original-default/original-coarse/bounded-coarse adapted steps1-3,
+including rejected TRI reference stages. Deduplicate full XYZ/UV/connectivity:
+9 observations contain7 distinct geometries and760 overlapping topological pair
+observations. Existing validity plus angular rule:244 UV-eligible,138 XYZ-eligible,
+108 UV-only,2 XYZ-only. UV-invalid410/physical-invalid180 overlap. Among61 base
+TRI observations with multiple common alternatives, score-space ranking differs
+in15; these diagnostic keys do not exercise the future full live-front rank.
+No pair is selected or accepted; candidate counts cannot predict disjoint QUADs.
+
+Command python build/quad-pair-policy-20261117/compare.py computes both spaces
+from unchanged source-scoped OBJ nodes. Three analytic controls: squareS1,
+sheared physicalS1.7048327646991335, inverse-chart physical-squareS1 despite
+distortedUV. Count consistency and input CSV/manifest SHA-256 assertions pass.
+Portable JSON retains analyzer/source/input hashes, witnesses, controls and
+limitations. Analyzer/raw archives remain local, not a self-contained rerun
+bundle. The parameterization examples support metric choice, not global error,
+convergence, optimality, continuous validity or full1993 reproduction.
+
+Fresh remote audit: main ef40c0f, feature7fc988d, canonical entry c05ff0b, open
+draft PR238 and exact source4/4 SUCCESS run44055409865. Other open PR239/225/214
+untouched. No new native build/generation,85-test baseline rerun, sanitizer/CI run
+or Blender session. Prior exact-source evidence remains scoped to read-only
+inventory. A PowerShell rg wildcard path was rejected by Windows; corrected
+file discovery has no bearing on scientific validation.
+
+Update canonical state/roadmap/implementation/realignment and append this entry;
+preserve prior history. Check documentation whitespace, local links, JSON,
+non-documentation identity and neutral publication metadata, then publish the
+canonical checkpoint through the authorized GitHub connection and verify remote
+SHA/blob readback. CLI write access was previously refused403; no retry or
+credential change. This is a decision/diagnostic checkpoint, not stage closure.
+
+Next concrete action is the opt-in original-front implementation with distinct
+AFT-pair provenance, reversible physical owner transaction, TRI fallback and
+positive/rejected/tie/rollback contracts, then finite native/exact-head gates.
+No additional generic questionnaire on these three choices. M1 point convention,
+M5/M7, accepted mixed epochs, local sizing feedback, Doxygen/full CRT,
+independent review and integration remain open.

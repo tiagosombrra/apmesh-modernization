@@ -1,0 +1,757 @@
+{
+  "schema": "apmesh.quad.mixed_fill_alignment.v1",
+  "date": "2026-11-17",
+  "source_sha": "7fc988d30b27f08f620a68e4804ce453270774bd",
+  "tree_sha": "00315980ea56546c7393d0b4fb20f7684a9273ec",
+  "prior_local_commit": "6c5ec716f4262a2011f6087b16635f186e00416c",
+  "prior_local_backup_branch": "quad/local-mixed-prepublish-20261117",
+  "classification": "engineering-only read-only inventory; numerical selection not activated",
+  "profiles": {
+    "msvc": {
+      "cases": {
+        "original-default": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 68,
+              "topology_candidates": 68,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 0,
+          "obj_sha256": {
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "dd4299f279d4822b56552ed9e0fbf043f3c2ec3dd16bcc87333e916a56e7b609",
+            "boundary_pair_candidates.csv": "93badb0559ab567d11e9cf2e365cfb1c0f99d4b2f1e1d0d1eebd6495f497df94"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "bounded-default": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 68,
+              "topology_candidates": 68,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 0,
+          "obj_sha256": {
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "dd4299f279d4822b56552ed9e0fbf043f3c2ec3dd16bcc87333e916a56e7b609",
+            "boundary_pair_candidates.csv": "93badb0559ab567d11e9cf2e365cfb1c0f99d4b2f1e1d0d1eebd6495f497df94"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "original-coarse": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 24,
+              "topology_candidates": 24,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 122,
+              "topology_candidates": 122,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 126,
+              "topology_candidates": 126,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 0,
+          "obj_sha256": {
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_2_retry_0_accepted_quad_tri.obj": "44b553cca97a3b124f382e54c8706c61129079d142ef128a98c77a25403ded8d",
+            "step_2_retry_0_accepted_tri.obj": "93e34629c337836f7a42cacbeb4d51fbecac57dbdce48cd42a46fc9d5102fdcd",
+            "step_3_retry_0_accepted_quad_tri.obj": "db84b9af0fec0d5189a43348fc8462d2a0a81a2fe978da4a084e4c18ef092de2",
+            "step_3_retry_0_accepted_tri.obj": "79921e39fbc13dd8704cd25a5e16a02c5e5d44d5eb10aead270a88e0b4622364"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "088b21c87346d01a5b0024ff51342c61446eac59935655019c28bb04c0293860",
+            "boundary_pair_candidates.csv": "7ff208a8b7709fd24b593aab116548e2620f79be739cf50bfeca67fe3b5f6b63"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "bounded-coarse": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 24,
+              "topology_candidates": 24,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 66,
+              "topology_candidates": 66,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 130,
+              "topology_candidates": 130,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 4,
+          "obj_sha256": {
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "05d359df056510afbb67346c9b88dd52f41969aee50b1970f33a090473064ff4",
+            "boundary_pair_candidates.csv": "eeb8a329748007ed04a0fe0433bea2a18e3ae23a6743d6ee891abc1bcefee5d6"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "bounded-rollback": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 24,
+              "topology_candidates": 24,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 66,
+              "topology_candidates": 66,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 130,
+              "topology_candidates": 130,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 4,
+          "obj_sha256": {
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "05d359df056510afbb67346c9b88dd52f41969aee50b1970f33a090473064ff4",
+            "boundary_pair_candidates.csv": "eeb8a329748007ed04a0fe0433bea2a18e3ae23a6743d6ee891abc1bcefee5d6"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        }
+      },
+      "image_sha256": "c4cb89622aaa7439ceb70f5a80243638e94eb54048ef52305e1afe052716f1fe",
+      "native_pair_contracts": {
+        "topology_cases": 4,
+        "invalid_rejected": 5,
+        "selected": 0
+      },
+      "source_captures": 6,
+      "reversed_captures": 3,
+      "source_negatives": 54,
+      "fixed16_and_old_histories": "passed"
+    },
+    "gcc": {
+      "cases": {
+        "original-default": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 68,
+              "topology_candidates": 68,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 0,
+          "obj_sha256": {
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "dd4299f279d4822b56552ed9e0fbf043f3c2ec3dd16bcc87333e916a56e7b609",
+            "boundary_pair_candidates.csv": "93badb0559ab567d11e9cf2e365cfb1c0f99d4b2f1e1d0d1eebd6495f497df94"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "bounded-default": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 68,
+              "topology_candidates": 68,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 0,
+          "obj_sha256": {
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "dd4299f279d4822b56552ed9e0fbf043f3c2ec3dd16bcc87333e916a56e7b609",
+            "boundary_pair_candidates.csv": "93badb0559ab567d11e9cf2e365cfb1c0f99d4b2f1e1d0d1eebd6495f497df94"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "original-coarse": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 24,
+              "topology_candidates": 24,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 122,
+              "topology_candidates": 122,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 126,
+              "topology_candidates": 126,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 0,
+          "obj_sha256": {
+            "step_3_retry_0_accepted_tri.obj": "79921e39fbc13dd8704cd25a5e16a02c5e5d44d5eb10aead270a88e0b4622364",
+            "step_3_retry_0_accepted_quad_tri.obj": "db84b9af0fec0d5189a43348fc8462d2a0a81a2fe978da4a084e4c18ef092de2",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_2_retry_0_accepted_tri.obj": "93e34629c337836f7a42cacbeb4d51fbecac57dbdce48cd42a46fc9d5102fdcd",
+            "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_2_retry_0_accepted_quad_tri.obj": "44b553cca97a3b124f382e54c8706c61129079d142ef128a98c77a25403ded8d"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "088b21c87346d01a5b0024ff51342c61446eac59935655019c28bb04c0293860",
+            "boundary_pair_candidates.csv": "7ff208a8b7709fd24b593aab116548e2620f79be739cf50bfeca67fe3b5f6b63"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "bounded-coarse": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 24,
+              "topology_candidates": 24,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 66,
+              "topology_candidates": 66,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 130,
+              "topology_candidates": 130,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 4,
+          "obj_sha256": {
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "05d359df056510afbb67346c9b88dd52f41969aee50b1970f33a090473064ff4",
+            "boundary_pair_candidates.csv": "eeb8a329748007ed04a0fe0433bea2a18e3ae23a6743d6ee891abc1bcefee5d6"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "bounded-rollback": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 24,
+              "topology_candidates": 24,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 66,
+              "topology_candidates": 66,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 130,
+              "topology_candidates": 130,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 4,
+          "obj_sha256": {
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "05d359df056510afbb67346c9b88dd52f41969aee50b1970f33a090473064ff4",
+            "boundary_pair_candidates.csv": "eeb8a329748007ed04a0fe0433bea2a18e3ae23a6743d6ee891abc1bcefee5d6"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        }
+      },
+      "image_sha256": "54141d2cec9107e7ca3110969c4385843f3e9133bb725086cada2541f27b6ac7",
+      "native_pair_contracts": {
+        "topology_cases": 4,
+        "invalid_rejected": 5,
+        "selected": 0
+      },
+      "source_captures": 6,
+      "reversed_captures": 3,
+      "source_negatives": 54,
+      "fixed16_and_old_histories": "passed"
+    },
+    "asan": {
+      "cases": {
+        "original-default": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 68,
+              "topology_candidates": 68,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 0,
+          "obj_sha256": {
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "dd4299f279d4822b56552ed9e0fbf043f3c2ec3dd16bcc87333e916a56e7b609",
+            "boundary_pair_candidates.csv": "93badb0559ab567d11e9cf2e365cfb1c0f99d4b2f1e1d0d1eebd6495f497df94"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "bounded-default": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 68,
+              "topology_candidates": 68,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 224,
+              "topology_candidates": 224,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 0,
+          "obj_sha256": {
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "dd4299f279d4822b56552ed9e0fbf043f3c2ec3dd16bcc87333e916a56e7b609",
+            "boundary_pair_candidates.csv": "93badb0559ab567d11e9cf2e365cfb1c0f99d4b2f1e1d0d1eebd6495f497df94"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "original-coarse": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 24,
+              "topology_candidates": 24,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 122,
+              "topology_candidates": 122,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 126,
+              "topology_candidates": 126,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 0,
+          "obj_sha256": {
+            "step_3_retry_0_accepted_tri.obj": "79921e39fbc13dd8704cd25a5e16a02c5e5d44d5eb10aead270a88e0b4622364",
+            "step_3_retry_0_accepted_quad_tri.obj": "db84b9af0fec0d5189a43348fc8462d2a0a81a2fe978da4a084e4c18ef092de2",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_2_retry_0_accepted_tri.obj": "93e34629c337836f7a42cacbeb4d51fbecac57dbdce48cd42a46fc9d5102fdcd",
+            "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_2_retry_0_accepted_quad_tri.obj": "44b553cca97a3b124f382e54c8706c61129079d142ef128a98c77a25403ded8d"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "088b21c87346d01a5b0024ff51342c61446eac59935655019c28bb04c0293860",
+            "boundary_pair_candidates.csv": "7ff208a8b7709fd24b593aab116548e2620f79be739cf50bfeca67fe3b5f6b63"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "bounded-coarse": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 24,
+              "topology_candidates": 24,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 66,
+              "topology_candidates": 66,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 130,
+              "topology_candidates": 130,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 4,
+          "obj_sha256": {
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "05d359df056510afbb67346c9b88dd52f41969aee50b1970f33a090473064ff4",
+            "boundary_pair_candidates.csv": "eeb8a329748007ed04a0fe0433bea2a18e3ae23a6743d6ee891abc1bcefee5d6"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        },
+        "bounded-rollback": {
+          "pair_stages": [
+            {
+              "step": 0,
+              "triangles": 0,
+              "topology_candidates": 0,
+              "selected": 0
+            },
+            {
+              "step": 1,
+              "triangles": 24,
+              "topology_candidates": 24,
+              "selected": 0
+            },
+            {
+              "step": 2,
+              "triangles": 66,
+              "topology_candidates": 66,
+              "selected": 0
+            },
+            {
+              "step": 3,
+              "triangles": 130,
+              "topology_candidates": 130,
+              "selected": 0
+            }
+          ],
+          "csv_forgery_controls": 4,
+          "obj_sha256": {
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_1_retry_0_accepted_quad_tri.obj": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_2_retry_0_accepted_quad_tri.obj": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c"
+          },
+          "diagnostics_sha256": {
+            "boundary_pair_stages.csv": "05d359df056510afbb67346c9b88dd52f41969aee50b1970f33a090473064ff4",
+            "boundary_pair_candidates.csv": "eeb8a329748007ed04a0fe0433bea2a18e3ae23a6743d6ee891abc1bcefee5d6"
+          },
+          "previous_eight_OBJ_bytes_equal": true
+        }
+      },
+      "image_sha256": "85656161103514282a8bf82cf3d5a1d1640440d65cba1b5c64a35f31bef811c3",
+      "native_pair_contracts": {
+        "topology_cases": 4,
+        "invalid_rejected": 5,
+        "selected": 0
+      },
+      "source_captures": 6,
+      "reversed_captures": 3,
+      "source_negatives": 54,
+      "fixed16_and_old_histories": "passed"
+    }
+  },
+  "all_profiles_case_reports_and_OBJ_bytes_equal": true,
+  "all_profiles_diagnostic_CSV_bytes_equal": true,
+  "previous_five_cases_40_OBJ_each_profile_equal": true,
+  "local_regression": {
+    "passed": 85,
+    "status": "passed",
+    "report_id": "1794907572218082900-2b73e7b8"
+  },
+  "analysis": {
+    "LLVM": 22,
+    "translation_units": 2,
+    "visible_first_party_diagnostics": 0,
+    "scope": "both changed TUs and new included headers; reused identical complete tree from6c5ec71"
+  },
+  "ci": {
+    "run": 44055409865,
+    "status": "success",
+    "successful_jobs": 4,
+    "exact_head": "7fc988d30b27f08f620a68e4804ce453270774bd"
+  },
+  "selected_pairs": 0,
+  "mixed_adaptive_epochs": 0,
+  "geometry_quality_policy": "not_evaluated",
+  "scientific_alignment": "not_recorded; async factual question pending",
+  "merge": "not_performed",
+  "closure": "no scientific stage or full CRT/Doxygen closure",
+  "publication": {
+    "git_cli_write": "403 refused",
+    "github_connection": "authorized contents/tree/commit and leased fast-forward update",
+    "credential_configuration_changed": false,
+    "metadata_screened": true
+  },
+  "frozen_TRI": {
+    "eistute": {
+      "states": 5,
+      "exact_obj_and_acceptance": true,
+      "boundary_coverage": "verified"
+    },
+    "book": {
+      "states": 4,
+      "exact_obj_and_acceptance": true,
+      "boundary_coverage": "verified"
+    }
+  }
+}

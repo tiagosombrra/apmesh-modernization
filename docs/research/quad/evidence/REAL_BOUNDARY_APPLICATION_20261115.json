@@ -1,0 +1,124 @@
+{
+  "feature_sha": "79828fcbfc1c4aa20d84576e58f1a3ef8fe2592a",
+  "pull_request": 238,
+  "ci_run": 43716128507,
+  "ci_jobs_passed": 4,
+  "scope": "initial real-curve QUAD/AFT generation; no accepted mixed epoch",
+  "mixed_adaptive_epochs": 0,
+  "profiles": {
+    "msvc": {
+      "real_boundary": {
+        "nodes": 37,
+        "quads": 16,
+        "triangles": 28,
+        "boundary": 12,
+        "source_step": 2,
+        "native_leaves": 16,
+        "nonuniform_sides": 4,
+        "reversed_sides": 0,
+        "reference_tri_accepted": false,
+        "mixed_adaptive_epochs": 0,
+        "negative_controls_rejected": 9,
+        "obj_sha256": "3fbb0c312b81406fb60813caa3ef4b3e76b0b7922208801494b2be61d9d5b03a",
+        "existing_output_rejected": true
+      },
+      "source_captures": 12,
+      "reversed_captures": 6,
+      "native_negative_controls_rejected": 108,
+      "fixed16_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+      "image_sha256": "ffa043955ae0274f3e9aa33700e9a1475bf19b3c75feb1301d3d6a9c6ac61ef2"
+    },
+    "gcc": {
+      "real_boundary": {
+        "nodes": 37,
+        "quads": 16,
+        "triangles": 28,
+        "boundary": 12,
+        "source_step": 2,
+        "native_leaves": 16,
+        "nonuniform_sides": 4,
+        "reversed_sides": 0,
+        "reference_tri_accepted": false,
+        "mixed_adaptive_epochs": 0,
+        "negative_controls_rejected": 9,
+        "obj_sha256": "3fbb0c312b81406fb60813caa3ef4b3e76b0b7922208801494b2be61d9d5b03a",
+        "existing_output_rejected": true
+      },
+      "source_captures": 12,
+      "reversed_captures": 6,
+      "native_negative_controls_rejected": 108,
+      "fixed16_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+      "image_sha256": "86cb9b928a7fb597b48f6abc199886be09b898b6a64e70797098e235fba2bb36"
+    },
+    "asan": {
+      "real_boundary": {
+        "nodes": 37,
+        "quads": 16,
+        "triangles": 28,
+        "boundary": 12,
+        "source_step": 2,
+        "native_leaves": 16,
+        "nonuniform_sides": 4,
+        "reversed_sides": 0,
+        "reference_tri_accepted": false,
+        "mixed_adaptive_epochs": 0,
+        "negative_controls_rejected": 9,
+        "obj_sha256": "3fbb0c312b81406fb60813caa3ef4b3e76b0b7922208801494b2be61d9d5b03a",
+        "existing_output_rejected": true
+      },
+      "source_captures": 12,
+      "reversed_captures": 6,
+      "native_negative_controls_rejected": 108,
+      "fixed16_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+      "image_sha256": "d29b4840179bd3ac8e6151b156d841b7aa630d20f9b1057be36197afd4de2fd2"
+    }
+  },
+  "frozen_tri": {
+    "eistute": {
+      "compared_meshes": 5,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "boundary_regression": "exact",
+      "boundary_incidence_coverage": "verified"
+    },
+    "book": {
+      "compared_meshes": 4,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "boundary_regression": "exact",
+      "boundary_incidence_coverage": "verified"
+    }
+  },
+  "local_root_regression": {
+    "tests": 85,
+    "status": "passed",
+    "stage_closure": false
+  },
+  "configured_analysis": {
+    "tool": "LLVM version 22.1.8",
+    "translation_units": 5,
+    "visible_diagnostics": 0,
+    "existing_project_filters_preserved": true,
+    "config_sha256": "cd82b961e72e1c5e795ec64e88d04a7b842f8dc53644e6800a616d617c03295f",
+    "earlier_clang18": "invalid for current configuration; unknown ExcludeHeaderFilterRegex; not a pass"
+  },
+  "schema": "apmesh.quad.real_boundary_application.qualification.v1",
+  "date": "2026-11-15",
+  "base_sha": "77cb95e5bf46bcf4c8c51af9f40a1a573ba29c0c",
+  "frozen_reference_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "remote_main_sha": "ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89",
+  "python_tooling_ci": 527,
+  "ci_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43716128507",
+  "independent_approval": "pending",
+  "research_merge": "not_performed",
+  "research_merge_validation": "unexecuted",
+  "initial_candidate_failed_ci": {
+    "sha": "bfd501a",
+    "run": 43714661426,
+    "jobs_passed": 3,
+    "failure": "explicit new config asset missing admission; no frozen comparisons executed"
+  },
+  "local_reports": "build/quad-review-20261115/final-79828fc",
+  "visualization": "local Blender 5.3 scene from exact OBJ; display-only inspection, not an oracle",
+  "checkpoint_doxygen": "failed in worktree under build: three unchanged API evidence references unresolved; integration documentation check pending"
+}

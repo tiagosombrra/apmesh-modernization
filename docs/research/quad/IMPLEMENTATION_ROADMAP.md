@@ -1,7 +1,20 @@
 # Plano de pesquisa e implementação QUAD — APMesh
 
 
-## Current finite execution queue — 2026-11-15
+## Current finite execution queue — 2026-11-17
+
+The [current realignment](MIXED_FILL_REALIGNMENT_20261117.md) supersedes the
+balance-first successor: complete integrated remaining-region TRI/QUAD filling,
+then actual mixed accepted-state/error feedback, then local bidirectional sizing.
+Source7fc988d adds read-only actual AFT pair candidates and source-scoped CSV
+contracts. It does not select/publish pairs or adopt scientific numerical policy.
+The user-delegated [experimental pair policy](MIXED_FILL_PAIR_POLICY_20261117.md)
+now specifies S_XYZ <=1.5, existing UV/physical validity, minimum physical score,
+exact-tie edge ratio then frontier/source order, and TRI fallback. No selector
+is activated and no formal advisor sign-off/historical identity is asserted.
+Next is its opt-in in-front implementation with reversible typed publication and
+separate seed-template/AFT-pair provenance. Keep all original M0-M9/R0-R4 gates,
+prior qualified slices, negative evidence and PR238 review; no stage closes here.
 
 The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
 M0–M9 acceptance criteria. The UV convexity repair P0 is integrated through
@@ -20,13 +33,57 @@ analysis, respectively. P2d-1c4a [merged PR236](https://github.com/tiagosombrra/
 is an **integrated fault-injected reversible physical owner rehearsal**,
 not a scientifically adopted new mixed state. Exact feature CI #43704424433
 and exact research-merge CI #43705007549 both completed 4/4 SUCCESS.
-The active functional delivery is now [real-boundary application integration](REAL_BOUNDARY_APPLICATION_PLAN_20261115.md):
-reuse original curve discretization, its native boundary/tree and existing
-QUAD/original-AFT closure in the live curved manifold patch case. Keep fixed16
-as regression. P2d-1c4b follows this gate, retaining accepted-history/publication
-and scientific selection requirements. True previously **accepted** source-driven adapted
-mixed epochs remain [R3/M7 issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
-OPEN with `adaptive_epochs=0`.
+The coarse-curve clipping and per-step export repair is implemented on
+[draft PR238](https://github.com/tiagosombrra/apmesh-modernization/pull/238),
+exact `e90d5a3`: existing original-curvature profile, complete untrimmed native
+partitions, scoped domain selection and eight physical OBJ files across four
+steps. Local three-profile/85 CTest and exact CI4/4/527 Python scopes pass.
+See [current review](CURVATURE_STEP_EXPORT_REVIEW_20261115.md). This supersedes
+the earlier stable-mode-only display. Independent review/integration, required
+documentation repair and exact merge validation remain pending. The same
+accepted-history/approved mixed estimator/selection gates remain necessary;
+source generation is still TRI-driven and `adaptive_epochs=0`, R3/M7 OPEN.
+The [bounded aggressiveness sensitivity](AGGRESSIVENESS_SENSITIVITY_20261115.md)
+completed with negative and tradeoff results; no new default or numerical policy
+was selected. Coarser external targets reduce same-step counts but degrade
+geometry/transition quality and leave a large interior growth jump. Preserve
+the current source qualification and distinguish mixed boundary and interior
+controls before proposing a new accepted-state controller. Read-only follow-up
+on2026-11-16 finds that the step2 ranked-domain override reduces the actual factor
+from1.5 to1.0 despite configured bounds1.5. First reconcile that existing policy
+with the configured-factor contract; the coarser trial is not a constant-domain-
+factor experiment. The opt-in configured-factor repair is now implemented at
+exact d59a513 in draft PR238: actual domain factors1.5/1.5/1.5, step2 nodes615
+->281 and QUAD548 ->242. Native three-profile cases/rollback/negatives, local85
+baseline, six-TU LLVM22 analysis, frozen Eistute5/Book4 and exact CI43859454045
+4/4 pass in their scopes. The [delivery](DOMAIN_FACTOR_BOUNDS_DELIVERY_20261116.md)
+records higher geometric error and mixed quality tradeoffs; step3 still grows
+to797 nodes. Independent review/integration remains next; further growth control
+requires declared geometry/quality/cost targets and scientific alignment.
+Preserve measured outputs, known Doxygen/CRT limitations and R3/M7 OPEN.
+The user's subsequent Blender review prioritizes
+[local boundary-transition-interior coupling](LOCAL_BALANCE_COUPLING_PROPOSAL_20261116.md)
+as the next functional capability. Use actual mixed face/curve-interval adjacency,
+consistent physical size comparisons, geometry-driven requests and transition
+quality in both directions. Protect flat regions and synchronize shared curves;
+do not add a global scalar or treat missing target-h measurements as balanced.
+Existing stable-mode guards and TRI-only regional indicators do not close this
+feedback. Physical metric, quality/error targets, spatial grading, per-step
+change and hysteresis remain scientific choices requiring advisor alignment.
+Implement one opt-in coupling slice after that alignment; retain PR238 review
+and all exact-head/integration gates without claiming adopted mixed epochs.
+Before further algorithm work, the user-requested
+[historical template gallery](TEMPLATE_GALLERY_20261116.md) is delivered: six
+native representative families, TRI/QUAD side by side in Blender5.3, original
+analytic/generation scene preserved. This display-only reference changes no
+numerical policy or pending coupling/acceptance gate.
+The clarified layout adds actual source polygons directly below the existing
+TRI/QUAD rows in one scene:18 aligned panels, with original12 meshes unchanged.
+Historical M5 coverage remains incomplete: the article optionally pairs TRI into
+QUAD in the remaining boundary-contraction region, while current d59a513 appends
+only AFT TRI there. Reclassified boundary cells can extend into the geometry;
+this does not authorize arbitrary mixed templates in every interior cell.
+Keep this gap separate from size balancing; no pairing policy is adopted here.
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 
@@ -50,7 +107,7 @@ or scientific policy.
 | **P2d-1c2 — integrated PR234** | Original native AFT real second-stage 3D QUAD/TRI candidate alternatives, **unaccepted** | Exact feature `32e4653f` [CI #43663198795](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43663198795) **4/4 PASS**, root 85/85 CTests/527 Python, native Linux/Windows, Linux ASan/UBSan/leak and frozen original TRI. Merged research `672aa297`. Physically staged west **109 nodes/75 QUAD/50 AFT TRI**, north **107/71/54**, both **117/82/52**, original boundary 16 and independent 4096-site XYZ/quality audit; isolated corner rejected. Source-area RMS on same UV sites from first band 0.0118103 to west 0.0099601, north 0.0092333, both 0.0091551; none scientifically selected or adopted. [Evidence](evidence/P2D1C2_SECOND_PHYSICAL_AFT_TRIALS_20261114.json). **R3/M7 remains zero accepted mixed epochs.** |
 | **P2d-1c3 — integrated PR235** | Independent **actual-physical-OBJ** Pareto diagnostics with distinct UV coverage and QUAD count objectives | Exact feature `27851df2` [CI #43664129060](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43664129060) **4/4 success**, 85 CTests/527 tooling Python, native Linux/Windows and ASan, frozen original TRI. Integrated research merge `ab1dc62a`; six adversarial Pareto tests run in actual applications. The UV-area profile has north dominating west while the additional QUAD-face-count profile has all four non-dominated. Diagnostic only; **no scientific acceptance policy or epochs**. [Exact evidence](evidence/P2D1C3_PROFILED_PARETO_20261114.json). |
 | **P2d-1c4a — integrated PR236** | Real post-publication P1 owned source-error remeasurement, five-fault typed owner pointer rehearsal | Original P1 `Patch/SubMesh` actual 69/42/36 is published before its measured original native AFT source-error yields real physically mapped 93/62/44 successor. Five faults protect all old node IDs/XYZ/four curvatures, element addresses/IDs/areas, ordered element observers and published OBJ bytes; real `noexcept` Patch/SubMesh owner swap is rehearsed then **reverted**. Eight forged receipts rejected on real accepted/rollback CLI. Exact-source `f55b8e4a` [CI #43704424433](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43704424433) **4/4 PASS**, 85 CTests/527 Python, native Linux/Windows/ASan and original frozen TRI; merged research `8a451eee`. Prior `4b544600` source const-correctness compile failure remains recorded. **Not an accepted mixed epoch; adaptive_epochs=0.** [Evidence](evidence/P2D1C4A_REAL_OWNER_TRANSACTION_REHEARSAL_20261115.json). |
-| **Real-boundary application integration — ACTIVE** | Original curve discretization feeding live native QUAD/AFT generation | Reuse original serial curve workflow/configuration, actual source parameters/IDs/XYZ, oriented native boundary, original edge metrics/tree construction and existing exterior AFT. Publish one typed physical curved manifold patch through actual opt-in CLI, independently check every boundary interval and UV/XYZ/seam, exercise nonuniform/reversed inputs and negative/rollback cases. Retain fixed16 baseline, default TRI and exact-head/research-merge gates. [Finite plan](REAL_BOUNDARY_APPLICATION_PLAN_20261115.md). Planned, not yet implemented or measured. |
+| **Real-boundary application integration - bounded repair qualified, PR238 draft** | Original curvature discretization and per-step native QUAD/AFT export | Existing legacy profile retains 9 then65 curved-side points; step1 120 QUAD/68 TRI, steps2/3 784/224; eight OBJ files and analytic-model Blender scene. Actual source TRI rejections remain separate. GNU/MSVC/ASan, normal/rollback/stable controls, exact85 local CTests and hosted4/4/527 pass. Mixed feedback/acceptance, independent approval, documentation gate and research merge validation remain open. [Review](CURVATURE_STEP_EXPORT_REVIEW_20261115.md). |
 | **P2d-1c4b — QUEUED after real-boundary application gate** | Durable, fault-injected previously **accepted** mixed epoch history and source-driven two-stage adaptation | Must own and archive prior typed SubMesh, real source patch/control-net/curve and Quadtree edit provenance, stage physical original-AFT QUAD/TRI and output safely, test failures **after** temporary owner adoption and before/after file publication including deterministic crash recovery, ensure ordered foreign observers and unique IDs remain valid. A *pre-registered scientifically approved* error/quality/complexity selection (with common grid sensitivity) must precede actual count of accepted epochs. Demonstrate two sequential distinct transitions selected from **each previous accepted** physical source, not from two staged proposals. The real-boundary application gate above is a prerequisite; Eistute/Book high-valence global sheet ownership, 1993 equivalence and anisotropy remain separate gates. Do not close R3/M7 on a fixed16 single-chart rehearsal. |
 
 R4 model-wide trials follow these functional deliveries. High-valence sheet/weld

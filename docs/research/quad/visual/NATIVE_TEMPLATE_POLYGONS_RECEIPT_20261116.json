@@ -1,0 +1,346 @@
+{
+  "source_sha": "d59a513a04ea8c9573e006789641f4adbeecedee",
+  "source_changed": false,
+  "library_sha256": "d796243f38990d75bcb6f871ea9a567764b45e4053d660b62005f4cddd3806ce",
+  "exporter_source_sha256": "9eb2220eadb0c97ee7f560b1d950a2eed723d874936563741051d308c1bb00bf",
+  "exporter_image_sha256": "5f8fbd8dd3a9a0dd0d3507701753f7b231e51ffbe3bec138875d7b2e9dbe0065",
+  "catalog_sha256": "e8d5194cccffb50d7f9d4f7066629c9336f5a007e981d01d0ac1ce997f25aec2",
+  "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "compiler_arguments": [
+    "-ISOURCE_ROOT/include",
+    "-O3",
+    "-DNDEBUG",
+    "-std=gnu++17",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wshadow",
+    "-Wconversion",
+    "-Wno-cast-function-type",
+    "-O3",
+    "-fno-strict-aliasing"
+  ],
+  "classification": "native diagnostic export of existing templates; no scientific behavior change",
+  "validated_catalog_sha256": "17ad9eaaf464b8fa184b245e89bc657fe6022b5207cd225513456e5826aea8a7",
+  "independent_topology": [
+    {
+      "type": "T1",
+      "tri": {
+        "vertices": 4,
+        "faces": 2,
+        "boundary_edges": 4,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 9,
+        "faces": 4,
+        "boundary_edges": 8,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "intermediate": {
+        "vertices": 4,
+        "faces": 1,
+        "boundary_edges": 4,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "original_template_meshes_unchanged": true
+    },
+    {
+      "type": "T2",
+      "tri": {
+        "vertices": 5,
+        "faces": 3,
+        "boundary_edges": 5,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 17,
+        "faces": 11,
+        "boundary_edges": 10,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "intermediate": {
+        "vertices": 6,
+        "faces": 3,
+        "boundary_edges": 5,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "original_template_meshes_unchanged": true
+    },
+    {
+      "type": "T3",
+      "tri": {
+        "vertices": 7,
+        "faces": 6,
+        "boundary_edges": 6,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 15,
+        "faces": 8,
+        "boundary_edges": 12,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "intermediate": {
+        "vertices": 6,
+        "faces": 2,
+        "boundary_edges": 6,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "original_template_meshes_unchanged": true
+    },
+    {
+      "type": "T4",
+      "tri": {
+        "vertices": 7,
+        "faces": 6,
+        "boundary_edges": 6,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 19,
+        "faces": 12,
+        "boundary_edges": 12,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "intermediate": {
+        "vertices": 7,
+        "faces": 3,
+        "boundary_edges": 6,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "original_template_meshes_unchanged": true
+    },
+    {
+      "type": "T5",
+      "tri": {
+        "vertices": 7,
+        "faces": 5,
+        "boundary_edges": 7,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 19,
+        "faces": 11,
+        "boundary_edges": 14,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "intermediate": {
+        "vertices": 7,
+        "faces": 3,
+        "boundary_edges": 7,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "original_template_meshes_unchanged": true
+    },
+    {
+      "type": "T6",
+      "tri": {
+        "vertices": 8,
+        "faces": 6,
+        "boundary_edges": 8,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 25,
+        "faces": 16,
+        "boundary_edges": 16,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "intermediate": {
+        "vertices": 9,
+        "faces": 4,
+        "boundary_edges": 8,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "original_template_meshes_unchanged": true
+    }
+  ],
+  "original12_template_meshes_unchanged": true,
+  "blender": {
+    "blender": "5.3.0",
+    "catalog_sha256": "17ad9eaaf464b8fa184b245e89bc657fe6022b5207cd225513456e5826aea8a7",
+    "original_blend_sha256": "d77cf468e2c452a1acc9112d6fedec25a4ec1bec0287225ecbc1041d320e630d",
+    "original_scenes": [
+      "Original curvature flow - generation steps"
+    ],
+    "original_mesh_geometry_unchanged": true,
+    "gallery_scene": "Templates - TRI QUAD and polygons",
+    "row_order": [
+      "TRI",
+      "QUAD",
+      "intermediate_polygons"
+    ],
+    "source_sha": "d59a513a04ea8c9573e006789641f4adbeecedee",
+    "panels": [
+      {
+        "object": "T1 native TRI",
+        "type": "T1",
+        "kind": "tri",
+        "nodes": 4,
+        "faces": 2
+      },
+      {
+        "object": "T1 native QUAD",
+        "type": "T1",
+        "kind": "quad",
+        "nodes": 9,
+        "faces": 4
+      },
+      {
+        "object": "T1 native INTERMEDIATE",
+        "type": "T1",
+        "kind": "intermediate",
+        "nodes": 4,
+        "faces": 1
+      },
+      {
+        "object": "T2 native TRI",
+        "type": "T2",
+        "kind": "tri",
+        "nodes": 5,
+        "faces": 3
+      },
+      {
+        "object": "T2 native QUAD",
+        "type": "T2",
+        "kind": "quad",
+        "nodes": 17,
+        "faces": 11
+      },
+      {
+        "object": "T2 native INTERMEDIATE",
+        "type": "T2",
+        "kind": "intermediate",
+        "nodes": 6,
+        "faces": 3
+      },
+      {
+        "object": "T3 native TRI",
+        "type": "T3",
+        "kind": "tri",
+        "nodes": 7,
+        "faces": 6
+      },
+      {
+        "object": "T3 native QUAD",
+        "type": "T3",
+        "kind": "quad",
+        "nodes": 15,
+        "faces": 8
+      },
+      {
+        "object": "T3 native INTERMEDIATE",
+        "type": "T3",
+        "kind": "intermediate",
+        "nodes": 6,
+        "faces": 2
+      },
+      {
+        "object": "T4 native TRI",
+        "type": "T4",
+        "kind": "tri",
+        "nodes": 7,
+        "faces": 6
+      },
+      {
+        "object": "T4 native QUAD",
+        "type": "T4",
+        "kind": "quad",
+        "nodes": 19,
+        "faces": 12
+      },
+      {
+        "object": "T4 native INTERMEDIATE",
+        "type": "T4",
+        "kind": "intermediate",
+        "nodes": 7,
+        "faces": 3
+      },
+      {
+        "object": "T5 native TRI",
+        "type": "T5",
+        "kind": "tri",
+        "nodes": 7,
+        "faces": 5
+      },
+      {
+        "object": "T5 native QUAD",
+        "type": "T5",
+        "kind": "quad",
+        "nodes": 19,
+        "faces": 11
+      },
+      {
+        "object": "T5 native INTERMEDIATE",
+        "type": "T5",
+        "kind": "intermediate",
+        "nodes": 7,
+        "faces": 3
+      },
+      {
+        "object": "T6 native TRI",
+        "type": "T6",
+        "kind": "tri",
+        "nodes": 8,
+        "faces": 6
+      },
+      {
+        "object": "T6 native QUAD",
+        "type": "T6",
+        "kind": "quad",
+        "nodes": 25,
+        "faces": 16
+      },
+      {
+        "object": "T6 native INTERMEDIATE",
+        "type": "T6",
+        "kind": "intermediate",
+        "nodes": 9,
+        "faces": 4
+      }
+    ],
+    "scope": "six representative canonical native families; not a per-step usage inventory or every diagonal/rotation branch",
+    "aft_note": "Exterior AFT triangles are generated dynamically and are not these interior templates"
+  },
+  "blender_scene_sha256": "551f989d3412401c886c841025348d5f5662d1ee4a82a7c803ddac483cd7f529",
+  "recipe_sha256": "e98ed88f140bec789c077580c98c07bb4baf07105210cbf637f58326ab785b1d",
+  "opened_and_visually_confirmed": true,
+  "visual_confirmation": "Blender5.3 showed all18 panels in one scene: TRI top, QUAD middle, native source polygons directly below, aligned by T1-T6"
+}

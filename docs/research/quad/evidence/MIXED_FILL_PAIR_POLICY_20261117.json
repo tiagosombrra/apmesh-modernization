@@ -1,0 +1,441 @@
+{
+  "schema": "apmesh.quad.pair_shape_space_observation.v1",
+  "source_sha": "7fc988d30b27f08f620a68e4804ce453270774bd",
+  "scope": "read-only candidate diagnostics; no mesh generation/selection or global optimality claim",
+  "formula": "S=1+max(abs(beta_i_degrees-90))/90",
+  "limit": 1.5,
+  "physical_validity": "existing corner scaled Jacobian/split-normal checks; not a certified global bilinear bound",
+  "stage_observations": [
+    {
+      "case": "original-default",
+      "step": 1,
+      "OBJ_sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+      "geometry_sha256": "d3793a5aa839bbd7b044bc9c477a51839ab81bba3de0775144c5dcc6b41b52dc",
+      "counts": {
+        "observed": 68,
+        "uv_invalid": 26,
+        "physical_invalid": 7,
+        "UV_eligible": 30,
+        "XYZ_eligible": 4,
+        "UV_only": 28,
+        "XYZ_only": 2,
+        "base_triangles_with_multiple_common_options": 0,
+        "UV_XYZ_different_best_on_common_options": 0
+      }
+    },
+    {
+      "case": "original-default",
+      "step": 2,
+      "OBJ_sha256": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+      "geometry_sha256": "afd843cbd83cd047c1f3576727a5380f2d76319f29adf5f8c5588f16602c6475",
+      "counts": {
+        "observed": 224,
+        "uv_invalid": 72,
+        "physical_invalid": 50,
+        "UV_eligible": 150,
+        "XYZ_eligible": 129,
+        "UV_only": 21,
+        "XYZ_only": 0,
+        "base_triangles_with_multiple_common_options": 61,
+        "UV_XYZ_different_best_on_common_options": 15
+      }
+    },
+    {
+      "case": "original-default",
+      "step": 3,
+      "OBJ_sha256": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+      "geometry_sha256": "afd843cbd83cd047c1f3576727a5380f2d76319f29adf5f8c5588f16602c6475",
+      "counts": {
+        "observed": 224,
+        "uv_invalid": 72,
+        "physical_invalid": 50,
+        "UV_eligible": 150,
+        "XYZ_eligible": 129,
+        "UV_only": 21,
+        "XYZ_only": 0,
+        "base_triangles_with_multiple_common_options": 61,
+        "UV_XYZ_different_best_on_common_options": 15
+      }
+    },
+    {
+      "case": "original-coarse",
+      "step": 1,
+      "OBJ_sha256": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+      "geometry_sha256": "c889c5d216df232e96d601fc621c88150a9b00bfe38945589a73125786ab21f8",
+      "counts": {
+        "observed": 24,
+        "uv_invalid": 16,
+        "physical_invalid": 7,
+        "UV_eligible": 8,
+        "XYZ_eligible": 2,
+        "UV_only": 6,
+        "XYZ_only": 0,
+        "base_triangles_with_multiple_common_options": 0,
+        "UV_XYZ_different_best_on_common_options": 0
+      }
+    },
+    {
+      "case": "original-coarse",
+      "step": 2,
+      "OBJ_sha256": "44b553cca97a3b124f382e54c8706c61129079d142ef128a98c77a25403ded8d",
+      "geometry_sha256": "61d70fbb2be21f8307cd83eb41691214d1a4abee9e3559833f84a709d98a0a5a",
+      "counts": {
+        "observed": 122,
+        "uv_invalid": 72,
+        "physical_invalid": 35,
+        "UV_eligible": 18,
+        "XYZ_eligible": 0,
+        "UV_only": 18,
+        "XYZ_only": 0,
+        "base_triangles_with_multiple_common_options": 0,
+        "UV_XYZ_different_best_on_common_options": 0
+      }
+    },
+    {
+      "case": "original-coarse",
+      "step": 3,
+      "OBJ_sha256": "db84b9af0fec0d5189a43348fc8462d2a0a81a2fe978da4a084e4c18ef092de2",
+      "geometry_sha256": "d4bb8baa15fabeb73baa522dd558e8739c8e06d6296395d1804432783e0e48c6",
+      "counts": {
+        "observed": 126,
+        "uv_invalid": 93,
+        "physical_invalid": 33,
+        "UV_eligible": 12,
+        "XYZ_eligible": 0,
+        "UV_only": 12,
+        "XYZ_only": 0,
+        "base_triangles_with_multiple_common_options": 0,
+        "UV_XYZ_different_best_on_common_options": 0
+      }
+    },
+    {
+      "case": "bounded-coarse",
+      "step": 1,
+      "OBJ_sha256": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+      "geometry_sha256": "c889c5d216df232e96d601fc621c88150a9b00bfe38945589a73125786ab21f8",
+      "counts": {
+        "observed": 24,
+        "uv_invalid": 16,
+        "physical_invalid": 7,
+        "UV_eligible": 8,
+        "XYZ_eligible": 2,
+        "UV_only": 6,
+        "XYZ_only": 0,
+        "base_triangles_with_multiple_common_options": 0,
+        "UV_XYZ_different_best_on_common_options": 0
+      }
+    },
+    {
+      "case": "bounded-coarse",
+      "step": 2,
+      "OBJ_sha256": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c",
+      "geometry_sha256": "05073326340e1b2f3239ec513f410f8578f8a94935a79e85aa6289323f7a6448",
+      "counts": {
+        "observed": 66,
+        "uv_invalid": 42,
+        "physical_invalid": 17,
+        "UV_eligible": 8,
+        "XYZ_eligible": 0,
+        "UV_only": 8,
+        "XYZ_only": 0,
+        "base_triangles_with_multiple_common_options": 0,
+        "UV_XYZ_different_best_on_common_options": 0
+      }
+    },
+    {
+      "case": "bounded-coarse",
+      "step": 3,
+      "OBJ_sha256": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+      "geometry_sha256": "f0cea21cd69f4bc6b0efaeeb06aae51b98c0d9581a41ee82cf6945e83d5b7a8f",
+      "counts": {
+        "observed": 130,
+        "uv_invalid": 89,
+        "physical_invalid": 31,
+        "UV_eligible": 18,
+        "XYZ_eligible": 3,
+        "UV_only": 15,
+        "XYZ_only": 0,
+        "base_triangles_with_multiple_common_options": 0,
+        "UV_XYZ_different_best_on_common_options": 0
+      }
+    }
+  ],
+  "unique_geometry_count": 7,
+  "unique_candidate_observations": 760,
+  "unique_counts": {
+    "observed": 760,
+    "uv_invalid": 410,
+    "physical_invalid": 180,
+    "UV_eligible": 244,
+    "XYZ_eligible": 138,
+    "UV_only": 108,
+    "XYZ_only": 2,
+    "base_triangles_with_multiple_common_options": 61,
+    "UV_XYZ_different_best_on_common_options": 15
+  },
+  "witnesses": [
+    {
+      "case": "original-default",
+      "step": 1,
+      "uv_valid": true,
+      "physical_existing_corner_split_valid": true,
+      "S_uv": 1.5,
+      "S_xyz": 1.509559216385873,
+      "min_corner_scaled_jacobian": 0.6963895416430765,
+      "diagonal_normal_cosine": 0.9999999412157039,
+      "edge_ratio": 2.9351968799214068,
+      "UV_policy_pass": true,
+      "XYZ_policy_pass": false,
+      "first_face": 148,
+      "second_face": 153,
+      "nodes": [
+        34,
+        37,
+        125,
+        119
+      ]
+    },
+    {
+      "case": "original-default",
+      "step": 1,
+      "uv_valid": true,
+      "physical_existing_corner_split_valid": true,
+      "S_uv": 1.5,
+      "S_xyz": 1.5062275134135668,
+      "min_corner_scaled_jacobian": 0.6997927281366074,
+      "diagonal_normal_cosine": 0.9992156455272327,
+      "edge_ratio": 2.928436860083055,
+      "UV_policy_pass": true,
+      "XYZ_policy_pass": false,
+      "first_face": 158,
+      "second_face": 165,
+      "nodes": [
+        39,
+        43,
+        143,
+        130
+      ]
+    },
+    {
+      "case": "original-default",
+      "step": 1,
+      "uv_valid": true,
+      "physical_existing_corner_split_valid": true,
+      "S_uv": 1.2825458466885913,
+      "S_xyz": 1.5763547665753017,
+      "min_corner_scaled_jacobian": 0.5645548800972225,
+      "diagonal_normal_cosine": 0.999886081497392,
+      "edge_ratio": 2.713120710140678,
+      "UV_policy_pass": true,
+      "XYZ_policy_pass": false,
+      "first_face": 129,
+      "second_face": 167,
+      "nodes": [
+        12,
+        61,
+        149,
+        150
+      ]
+    },
+    {
+      "case": "original-default",
+      "step": 1,
+      "uv_valid": true,
+      "physical_existing_corner_split_valid": true,
+      "S_uv": 1.2951672353008665,
+      "S_xyz": 1.5675354462236988,
+      "min_corner_scaled_jacobian": 0.582824701530364,
+      "diagonal_normal_cosine": 0.9981879122606925,
+      "edge_ratio": 2.450317417548395,
+      "UV_policy_pass": true,
+      "XYZ_policy_pass": false,
+      "first_face": 127,
+      "second_face": 167,
+      "nodes": [
+        11,
+        149,
+        150,
+        61
+      ]
+    },
+    {
+      "case": "original-default",
+      "step": 1,
+      "uv_valid": true,
+      "physical_existing_corner_split_valid": true,
+      "S_uv": 1.2951672353008665,
+      "S_xyz": 1.5798587336198624,
+      "min_corner_scaled_jacobian": 0.5319077924929483,
+      "diagonal_normal_cosine": 0.9888157749561063,
+      "edge_ratio": 2.7473157264419474,
+      "UV_policy_pass": true,
+      "XYZ_policy_pass": false,
+      "first_face": 132,
+      "second_face": 168,
+      "nodes": [
+        18,
+        82,
+        150,
+        151
+      ]
+    },
+    {
+      "case": "original-default",
+      "step": 1,
+      "uv_valid": true,
+      "physical_existing_corner_split_valid": true,
+      "S_uv": 1.2825458466885913,
+      "S_xyz": 1.5952688384562599,
+      "min_corner_scaled_jacobian": 0.5704313783673719,
+      "diagonal_normal_cosine": 0.9789241599811312,
+      "edge_ratio": 2.713120710140678,
+      "UV_policy_pass": true,
+      "XYZ_policy_pass": false,
+      "first_face": 130,
+      "second_face": 168,
+      "nodes": [
+        12,
+        150,
+        151,
+        82
+      ]
+    },
+    {
+      "case": "original-default",
+      "step": 1,
+      "uv_valid": true,
+      "physical_existing_corner_split_valid": true,
+      "S_uv": 1.2762445709471693,
+      "S_xyz": 1.568971102300534,
+      "min_corner_scaled_jacobian": 0.603695227897378,
+      "diagonal_normal_cosine": 0.9912210547360004,
+      "edge_ratio": 2.450661527304172,
+      "UV_policy_pass": true,
+      "XYZ_policy_pass": false,
+      "first_face": 128,
+      "second_face": 169,
+      "nodes": [
+        11,
+        65,
+        148,
+        149
+      ]
+    },
+    {
+      "case": "original-default",
+      "step": 1,
+      "uv_valid": true,
+      "physical_existing_corner_split_valid": true,
+      "S_uv": 1.3075432922961463,
+      "S_xyz": 1.5093972247540353,
+      "min_corner_scaled_jacobian": 0.6451246721321511,
+      "diagonal_normal_cosine": 0.9951003555629581,
+      "edge_ratio": 2.1310512666350414,
+      "UV_policy_pass": true,
+      "XYZ_policy_pass": false,
+      "first_face": 124,
+      "second_face": 169,
+      "nodes": [
+        9,
+        148,
+        149,
+        65
+      ]
+    }
+  ],
+  "input_artifacts": {
+    "original-default": {
+      "manifest_sha256": "72af3d1784bbc8690535279892608a89b8bc0cc3a2b597e50851ba446af4409b",
+      "pair_csv_sha256": "93badb0559ab567d11e9cf2e365cfb1c0f99d4b2f1e1d0d1eebd6495f497df94"
+    },
+    "original-coarse": {
+      "manifest_sha256": "d02598b1e15f0b68125644c64daf6fc52191b34a7e670906fbeac9cc393d1ec2",
+      "pair_csv_sha256": "7ff208a8b7709fd24b593aab116548e2620f79be739cf50bfeca67fe3b5f6b63"
+    },
+    "bounded-coarse": {
+      "manifest_sha256": "f62f731eb1c501d7d3910009ba1593e5f2dfa0c34f33b63c16a1639e7ea39be0",
+      "pair_csv_sha256": "eeb8a329748007ed04a0fe0433bea2a18e3ae23a6743d6ee891abc1bcefee5d6"
+    }
+  },
+  "analytic_controls": {
+    "unit_square_S": 1.0,
+    "sheared_physical_S": 1.7048327646991335,
+    "reparameterized_square": {
+      "S_uv": 1.7048327646991335,
+      "S_xyz": 1.0
+    }
+  },
+  "pairing_activated": false,
+  "in_front_performance_measured": false,
+  "global_error_comparison_performed": false,
+  "date": "2026-11-17",
+  "classification": "research policy decision and read-only archived-candidate comparison; no numerical activation",
+  "authorization": "The research owner explicitly delegates these experimental choices in the current conversation; formal advisor sign-off is not asserted.",
+  "input_profiles": [
+    "archived MSVC Debug real-boundary output at the stated source SHA"
+  ],
+  "case_scope": [
+    "original-default",
+    "original-coarse",
+    "bounded-coarse"
+  ],
+  "stage_scope": "Adapted steps 1, 2 and 3, including rejected reference TRI states. Initial no-seed stages are excluded. Geometry deduplication includes XYZ, UV and face connectivity, not reference acceptance metadata.",
+  "decision": {
+    "policy_id": "physical_angle_pair_v1",
+    "activation": "future separate opt-in research selector; current source remains not_evaluated",
+    "shape": "S = 1 + max_i(abs(beta_i_degrees - 90)) / 90",
+    "maximum_S": 1.5,
+    "angle_space": "physical XYZ corner chord vectors; curved-surface extension of the historical planar rule",
+    "uv_role": "oriented topological cycle and four strictly positive existing corner determinants; diagnostic S_UV only",
+    "physical_role": "retain existing signed corner scaled-Jacobian and split-normal validity predicates; not a continuous validity certificate",
+    "rank": [
+      "minimum S_XYZ",
+      "on exact score equality, minimum physical maximum/minimum edge-length ratio",
+      "on exact equality, original live-front alternative order",
+      "stable source face/node IDs as final key"
+    ],
+    "fallback": "retain the valid TRI when no admissible pair exists; no forced all-QUAD output",
+    "not_changed": [
+      "default TRI",
+      "source curve partitions",
+      "quadtree/templates",
+      "original AFT ordering",
+      "adaptation/acceptance/stopping",
+      "existing geometric thresholds"
+    ]
+  },
+  "ranking_observation_scope": "The 61/15 alternative counts compare score-space rankings only, with face IDs as the diagnostic tie key. They do not test the future full policy, live-front opportunities or disjoint pair selection.",
+  "count_limits": "760 candidate observations across 7 distinct archived geometries, not 760 independent experiments. Candidates overlap and may conflict; 138 eligible observations are not 138 selected QUADs. Invalid predicate counters overlap.",
+  "reproduction": {
+    "command": "python build/quad-pair-policy-20261117/compare.py",
+    "local_analyzer_sha256": "54af5701a47d3e7c64dab85be8a036b6ffd74be8ffd9ea433874c6e0d1f9d037",
+    "helpers": [
+      "tests/quad/independent_common_grid.py:load_physical_obj",
+      "tests/quad/test_m4_real_model_hybrid.py:golden"
+    ],
+    "method": "Read stage-scoped source pair CSV records and unchanged OBJ XYZ/UV values; evaluate acos corner scores and existing source-normal physical predicates; deduplicate full geometry before aggregation.",
+    "availability": "Analyzer and raw archives remain local build artifacts; this portable report includes source/input hashes, counts and sample witnesses, not a self-contained rerun bundle."
+  },
+  "checks_this_session": [
+    "three analytic score/parameterization controls",
+    "count consistency assertions",
+    "input manifest and candidate CSV SHA-256 readback",
+    "documentation whitespace, local links and JSON parsing"
+  ],
+  "not_run_this_session": [
+    "new native generation/build",
+    "full 85-test baseline rerun",
+    "new native sanitizer run",
+    "new CI run",
+    "integrated pairing",
+    "mixed accepted-state/error comparison",
+    "Blender generation/display"
+  ],
+  "prior_source_evidence": {
+    "source_sha": "7fc988d30b27f08f620a68e4804ce453270774bd",
+    "local_baseline": "previously executed 85/85 at this exact source revision",
+    "hosted_run": "44055409865",
+    "hosted_readback": "4/4 SUCCESS this session; no new run"
+  },
+  "closure": "Decision/diagnostic session only. M1 point convention, in-front ownership/rollback, M5/M7, accepted mixed epochs, full CRT/Doxygen, independent review and integration remain open."
+}

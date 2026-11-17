@@ -1,0 +1,1999 @@
+{
+  "schema": "apmesh.quad.domain_factor_bound_comparison.v1",
+  "source_sha": "d59a513a04ea8c9573e006789641f4adbeecedee",
+  "source_case": "builtin:curva_bezier",
+  "cases": {
+    "original-default": {
+      "domain_trace": [
+        {
+          "step": "1",
+          "retry": "0",
+          "patch_id": "0",
+          "factor_disc_global": "0.8",
+          "old_faces": "4",
+          "raw_h_min": "0.14745",
+          "raw_h_mean": "0.150191",
+          "raw_h_max": "0.152056",
+          "raw_quality_min": "0.828427",
+          "raw_quality_mean": "0.828427",
+          "raw_poor_ratio": "0",
+          "smoothed_h_min": "0.148579",
+          "smoothed_h_mean": "0.14985",
+          "smoothed_h_max": "0.151118",
+          "smoothed_quality_min": "0.828427",
+          "smoothed_quality_mean": "0.828427",
+          "smoothed_poor_ratio": "0",
+          "generated_faces": "104",
+          "generated_quality_min": "0.745746",
+          "generated_quality_mean": "0.905983",
+          "generated_poor_ratio": "0",
+          "quadtree_leaves": "46",
+          "template_count": "22",
+          "template_low_score_count": "0",
+          "template_score_min": "0.804771",
+          "template_score_mean": "0.824126",
+          "low_quality_subdivide_hits": "0",
+          "quality_pre_aft_min": "0.798715",
+          "quality_pre_aft_mean": "0.826231",
+          "quality_post_aft_min": "0.70656",
+          "quality_post_aft_mean": "0.830137",
+          "quality_post_smoothing_min": "0.745746",
+          "quality_post_smoothing_mean": "0.905983",
+          "poor_ratio_pre_aft": "0",
+          "poor_ratio_post_aft": "0",
+          "poor_ratio_post_smoothing": "0",
+          "degenerate_pre_aft_count": "0",
+          "degenerate_post_aft_count": "0",
+          "degenerate_post_smoothing_count": "0",
+          "boundary_element_ratio": "0.192308",
+          "transition_element_ratio": "0",
+          "internal_element_ratio": "0.807692",
+          "postprocess_vertices_considered": "0",
+          "postprocess_vertices_moved": "0",
+          "local_regen_attempt": "0",
+          "generation_status": "curve_transition_needs_retry",
+          "degeneracy_score": "1.17885",
+          "transition_floor": "0.1",
+          "transition_underresolved": "1",
+          "interior_transition_imbalance": "0.178846",
+          "curve_domain_balance": "1",
+          "curve_interior_coupling": "1",
+          "good_ratio_ge_0_60": "1",
+          "boundary_elements": "20",
+          "boundary_quality_min": "0.745746",
+          "boundary_quality_mean": "0.857062",
+          "boundary_q_ge_0_60": "1",
+          "boundary_area_mean": "0.0131749",
+          "boundary_aspect_mean": "1.49991",
+          "transition_elements": "22",
+          "transition_quality_min": "0.746117",
+          "transition_quality_mean": "0.893127",
+          "transition_q_ge_0_60": "1",
+          "transition_area_mean": "0.00998932",
+          "transition_aspect_mean": "1.44938",
+          "interior_elements": "62",
+          "interior_quality_min": "0.818033",
+          "interior_quality_mean": "0.926325",
+          "interior_q_ge_0_60": "1",
+          "interior_area_mean": "0.00833448",
+          "interior_aspect_mean": "1.32309"
+        },
+        {
+          "step": "2",
+          "retry": "0",
+          "patch_id": "0",
+          "factor_disc_global": "0.88",
+          "old_faces": "104",
+          "raw_h_min": "0.0217691",
+          "raw_h_mean": "0.0495965",
+          "raw_h_max": "0.0905568",
+          "raw_quality_min": "0.745746",
+          "raw_quality_mean": "0.905983",
+          "raw_poor_ratio": "0",
+          "smoothed_h_min": "0.0267726",
+          "smoothed_h_mean": "0.0422602",
+          "smoothed_h_max": "0.0729144",
+          "smoothed_quality_min": "0.745746",
+          "smoothed_quality_mean": "0.905983",
+          "smoothed_poor_ratio": "0",
+          "generated_faces": "560",
+          "generated_quality_min": "0.325074",
+          "generated_quality_mean": "0.829696",
+          "generated_poor_ratio": "0.00357143",
+          "quadtree_leaves": "256",
+          "template_count": "196",
+          "template_low_score_count": "0",
+          "template_score_min": "0.828427",
+          "template_score_mean": "0.828427",
+          "low_quality_subdivide_hits": "0",
+          "quality_pre_aft_min": "0.828427",
+          "quality_pre_aft_mean": "0.828427",
+          "quality_post_aft_min": "0.325074",
+          "quality_post_aft_mean": "0.800114",
+          "quality_post_smoothing_min": "0.325074",
+          "quality_post_smoothing_mean": "0.829696",
+          "poor_ratio_pre_aft": "0",
+          "poor_ratio_post_aft": "0.025",
+          "poor_ratio_post_smoothing": "0.00357143",
+          "degenerate_pre_aft_count": "0",
+          "degenerate_post_aft_count": "0",
+          "degenerate_post_smoothing_count": "0",
+          "boundary_element_ratio": "0.196429",
+          "transition_element_ratio": "0",
+          "internal_element_ratio": "0.803571",
+          "postprocess_vertices_considered": "0",
+          "postprocess_vertices_moved": "0",
+          "local_regen_attempt": "0",
+          "generation_status": "curve_transition_needs_retry",
+          "degeneracy_score": "1.17679",
+          "transition_floor": "0.1",
+          "transition_underresolved": "1",
+          "interior_transition_imbalance": "0.176786",
+          "curve_domain_balance": "1",
+          "curve_interior_coupling": "1",
+          "good_ratio_ge_0_60": "0.939286",
+          "boundary_elements": "110",
+          "boundary_quality_min": "0.325074",
+          "boundary_quality_mean": "0.68251",
+          "boundary_q_ge_0_60": "0.690909",
+          "boundary_area_mean": "0.000925348",
+          "boundary_aspect_mean": "2.11389",
+          "transition_elements": "186",
+          "transition_quality_min": "0.761444",
+          "transition_quality_mean": "0.871249",
+          "transition_q_ge_0_60": "1",
+          "transition_area_mean": "0.00196289",
+          "transition_aspect_mean": "1.42298",
+          "interior_elements": "264",
+          "interior_quality_min": "0.832733",
+          "interior_quality_mean": "0.861747",
+          "interior_q_ge_0_60": "1",
+          "interior_area_mean": "0.00201937",
+          "interior_aspect_mean": "1.40063"
+        },
+        {
+          "step": "3",
+          "retry": "0",
+          "patch_id": "0",
+          "factor_disc_global": "0.88",
+          "old_faces": "104",
+          "raw_h_min": "0.0217691",
+          "raw_h_mean": "0.0495965",
+          "raw_h_max": "0.0905568",
+          "raw_quality_min": "0.745746",
+          "raw_quality_mean": "0.905983",
+          "raw_poor_ratio": "0",
+          "smoothed_h_min": "0.0267726",
+          "smoothed_h_mean": "0.0422602",
+          "smoothed_h_max": "0.0729144",
+          "smoothed_quality_min": "0.745746",
+          "smoothed_quality_mean": "0.905983",
+          "smoothed_poor_ratio": "0",
+          "generated_faces": "560",
+          "generated_quality_min": "0.325074",
+          "generated_quality_mean": "0.829696",
+          "generated_poor_ratio": "0.00357143",
+          "quadtree_leaves": "256",
+          "template_count": "196",
+          "template_low_score_count": "0",
+          "template_score_min": "0.828427",
+          "template_score_mean": "0.828427",
+          "low_quality_subdivide_hits": "0",
+          "quality_pre_aft_min": "0.828427",
+          "quality_pre_aft_mean": "0.828427",
+          "quality_post_aft_min": "0.325074",
+          "quality_post_aft_mean": "0.800114",
+          "quality_post_smoothing_min": "0.325074",
+          "quality_post_smoothing_mean": "0.829696",
+          "poor_ratio_pre_aft": "0",
+          "poor_ratio_post_aft": "0.025",
+          "poor_ratio_post_smoothing": "0.00357143",
+          "degenerate_pre_aft_count": "0",
+          "degenerate_post_aft_count": "0",
+          "degenerate_post_smoothing_count": "0",
+          "boundary_element_ratio": "0.196429",
+          "transition_element_ratio": "0",
+          "internal_element_ratio": "0.803571",
+          "postprocess_vertices_considered": "0",
+          "postprocess_vertices_moved": "0",
+          "local_regen_attempt": "0",
+          "generation_status": "curve_transition_needs_retry",
+          "degeneracy_score": "1.17679",
+          "transition_floor": "0.1",
+          "transition_underresolved": "1",
+          "interior_transition_imbalance": "0.176786",
+          "curve_domain_balance": "1",
+          "curve_interior_coupling": "1",
+          "good_ratio_ge_0_60": "0.939286",
+          "boundary_elements": "110",
+          "boundary_quality_min": "0.325074",
+          "boundary_quality_mean": "0.68251",
+          "boundary_q_ge_0_60": "0.690909",
+          "boundary_area_mean": "0.000925348",
+          "boundary_aspect_mean": "2.11389",
+          "transition_elements": "186",
+          "transition_quality_min": "0.761444",
+          "transition_quality_mean": "0.871249",
+          "transition_q_ge_0_60": "1",
+          "transition_area_mean": "0.00196289",
+          "transition_aspect_mean": "1.42298",
+          "interior_elements": "264",
+          "interior_quality_min": "0.832733",
+          "interior_quality_mean": "0.861747",
+          "interior_q_ge_0_60": "1",
+          "interior_area_mean": "0.00201937",
+          "interior_aspect_mean": "1.40063"
+        }
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "reference_tri_accepted": true,
+          "reason": "initial",
+          "curve_points": {},
+          "outputs": {
+            "TRI": {
+              "filename": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              },
+              "quad_quality": null
+            }
+          }
+        },
+        {
+          "step": 1,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 9,
+            "1": 5,
+            "2": 5,
+            "3": 5
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+              "nodes": 63,
+              "quads": 0,
+              "triangles": 104,
+              "boundary": 20,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.01983294498030366,
+                  "rms_uv": 0.006396422293924306,
+                  "rms_source_area": 0.006068792810146995,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.21456422748355522
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.02008810113805133,
+                  "rms_uv": 0.006402791242660727,
+                  "rms_source_area": 0.006073297774680068,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.21472350203207224
+                }
+              },
+              "native_source": {
+                "nodes": 63,
+                "quads": 0,
+                "triangles": 104,
+                "boundary": 20,
+                "source_step": 1,
+                "native_leaves": 46,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 104,
+                "minimum": 0.47584237525895723,
+                "mean": 0.8622530137816897
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "nodes": 165,
+              "quads": 120,
+              "triangles": 68,
+              "boundary": 20,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.020014795910265778,
+                  "rms_uv": 0.006069866622567142,
+                  "rms_source_area": 0.005618884317554138,
+                  "quad_sites": 2176,
+                  "tri_sites": 1920,
+                  "rms_percent_of_corner_diagonal": 0.19865756018226385
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.02018096207433164,
+                  "rms_uv": 0.006072471489927363,
+                  "rms_source_area": 0.005620346123471756,
+                  "quad_sites": 8704,
+                  "tri_sites": 7680,
+                  "rms_percent_of_corner_diagonal": 0.19870924282612018
+                }
+              },
+              "native_source": {
+                "nodes": 165,
+                "quads": 120,
+                "triangles": 68,
+                "boundary": 20,
+                "source_step": 1,
+                "native_leaves": 46,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 68,
+                "minimum": 0.41893045447155636,
+                "mean": 0.7077220308152984
+              },
+              "quad_quality": {
+                "quads": 120,
+                "min_scaled_jacobian": 0.6088161983735212,
+                "min_warpage_cosine": 0.9970126470841612,
+                "max_edge_ratio": 2.140937709126185
+              }
+            }
+          }
+        },
+        {
+          "step": 2,
+          "reference_tri_accepted": false,
+          "reason": "global_error_increased",
+          "curve_points": {
+            "0": 65,
+            "1": 17,
+            "2": 17,
+            "3": 17
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_2_retry_0_rejected_tri.obj",
+              "sha256": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "nodes": 337,
+              "quads": 0,
+              "triangles": 560,
+              "boundary": 112,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004385941506812695,
+                  "rms_uv": 0.0011584277867412666,
+                  "rms_source_area": 0.001082033887623978,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.03825567497062788
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004797344774552427,
+                  "rms_uv": 0.0011644965326694078,
+                  "rms_source_area": 0.0010864960579059482,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.038413436513887386
+                }
+              },
+              "native_source": {
+                "nodes": 337,
+                "quads": 0,
+                "triangles": 560,
+                "boundary": 112,
+                "source_step": 2,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 560,
+                "minimum": 0.21661303673817855,
+                "mean": 0.8182559215520271
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_2_retry_0_rejected_quad_tri.obj",
+              "sha256": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "nodes": 953,
+              "quads": 784,
+              "triangles": 224,
+              "boundary": 112,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004057103181433468,
+                  "rms_uv": 0.0007058710963951348,
+                  "rms_source_area": 0.0006190044308416066,
+                  "quad_sites": 3136,
+                  "tri_sites": 960,
+                  "rms_percent_of_corner_diagonal": 0.021885111531630964
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004606095132137213,
+                  "rms_uv": 0.0007056736147799973,
+                  "rms_source_area": 0.0006182017602512392,
+                  "quad_sites": 12544,
+                  "tri_sites": 3840,
+                  "rms_percent_of_corner_diagonal": 0.021856732840755573
+                }
+              },
+              "native_source": {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 2,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 224,
+                "minimum": 0.24570396133260056,
+                "mean": 0.7992949248773545
+              },
+              "quad_quality": {
+                "quads": 784,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              }
+            }
+          }
+        },
+        {
+          "step": 3,
+          "reference_tri_accepted": false,
+          "reason": "global_error_increased",
+          "curve_points": {
+            "0": 65,
+            "1": 17,
+            "2": 17,
+            "3": 17
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_3_retry_0_rejected_tri.obj",
+              "sha256": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+              "nodes": 337,
+              "quads": 0,
+              "triangles": 560,
+              "boundary": 112,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004385941506812695,
+                  "rms_uv": 0.0011584277867412666,
+                  "rms_source_area": 0.001082033887623978,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.03825567497062788
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004797344774552427,
+                  "rms_uv": 0.0011644965326694078,
+                  "rms_source_area": 0.0010864960579059482,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.038413436513887386
+                }
+              },
+              "native_source": {
+                "nodes": 337,
+                "quads": 0,
+                "triangles": 560,
+                "boundary": 112,
+                "source_step": 3,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 560,
+                "minimum": 0.21661303673817855,
+                "mean": 0.8182559215520271
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_3_retry_0_rejected_quad_tri.obj",
+              "sha256": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "nodes": 953,
+              "quads": 784,
+              "triangles": 224,
+              "boundary": 112,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.004057103181433468,
+                  "rms_uv": 0.0007058710963951348,
+                  "rms_source_area": 0.0006190044308416066,
+                  "quad_sites": 3136,
+                  "tri_sites": 960,
+                  "rms_percent_of_corner_diagonal": 0.021885111531630964
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.004606095132137213,
+                  "rms_uv": 0.0007056736147799973,
+                  "rms_source_area": 0.0006182017602512392,
+                  "quad_sites": 12544,
+                  "tri_sites": 3840,
+                  "rms_percent_of_corner_diagonal": 0.021856732840755573
+                }
+              },
+              "native_source": {
+                "nodes": 953,
+                "quads": 784,
+                "triangles": 224,
+                "boundary": 112,
+                "source_step": 3,
+                "native_leaves": 256,
+                "domain_generation": 1,
+                "nonuniform_sides": 4,
+                "reversed_sides": 0,
+                "reference_tri_accepted": false,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 224,
+                "minimum": 0.24570396133260056,
+                "mean": 0.7992949248773545
+              },
+              "quad_quality": {
+                "quads": 784,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              }
+            }
+          }
+        }
+      ]
+    },
+    "original-coarse": {
+      "domain_trace": [
+        {
+          "step": "1",
+          "retry": "0",
+          "patch_id": "0",
+          "factor_disc_global": "1.5",
+          "old_faces": "4",
+          "raw_h_min": "0.276469",
+          "raw_h_mean": "0.281609",
+          "raw_h_max": "0.285104",
+          "raw_quality_min": "0.828427",
+          "raw_quality_mean": "0.828427",
+          "raw_poor_ratio": "0",
+          "smoothed_h_min": "0.278585",
+          "smoothed_h_mean": "0.280969",
+          "smoothed_h_max": "0.283346",
+          "smoothed_quality_min": "0.828427",
+          "smoothed_quality_mean": "0.828427",
+          "smoothed_poor_ratio": "0",
+          "generated_faces": "24",
+          "generated_quality_min": "0.844112",
+          "generated_quality_mean": "0.886052",
+          "generated_poor_ratio": "0",
+          "quadtree_leaves": "16",
+          "template_count": "4",
+          "template_low_score_count": "0",
+          "template_score_min": "0.828427",
+          "template_score_mean": "0.828427",
+          "low_quality_subdivide_hits": "0",
+          "quality_pre_aft_min": "0.828427",
+          "quality_pre_aft_mean": "0.828427",
+          "quality_post_aft_min": "0.828427",
+          "quality_post_aft_mean": "0.828427",
+          "quality_post_smoothing_min": "0.844112",
+          "quality_post_smoothing_mean": "0.886052",
+          "poor_ratio_pre_aft": "0",
+          "poor_ratio_post_aft": "0",
+          "poor_ratio_post_smoothing": "0",
+          "degenerate_pre_aft_count": "0",
+          "degenerate_post_aft_count": "0",
+          "degenerate_post_smoothing_count": "0",
+          "boundary_element_ratio": "0.333333",
+          "transition_element_ratio": "0",
+          "internal_element_ratio": "0.666667",
+          "postprocess_vertices_considered": "0",
+          "postprocess_vertices_moved": "0",
+          "local_regen_attempt": "0",
+          "generation_status": "curve_transition_needs_retry",
+          "degeneracy_score": "1.10833",
+          "transition_floor": "0.1",
+          "transition_underresolved": "1",
+          "interior_transition_imbalance": "0.108333",
+          "curve_domain_balance": "1",
+          "curve_interior_coupling": "0.5",
+          "good_ratio_ge_0_60": "1",
+          "boundary_elements": "8",
+          "boundary_quality_min": "0.844112",
+          "boundary_quality_mean": "0.877288",
+          "boundary_q_ge_0_60": "1",
+          "boundary_area_mean": "0.0689891",
+          "boundary_aspect_mean": "1.40306",
+          "transition_elements": "0",
+          "transition_quality_min": "0",
+          "transition_quality_mean": "0",
+          "transition_q_ge_0_60": "0",
+          "transition_area_mean": "0",
+          "transition_aspect_mean": "0",
+          "interior_elements": "16",
+          "interior_quality_min": "0.844243",
+          "interior_quality_mean": "0.890435",
+          "interior_q_ge_0_60": "1",
+          "interior_area_mean": "0.0280055",
+          "interior_aspect_mean": "1.44712"
+        },
+        {
+          "step": "2",
+          "retry": "0",
+          "patch_id": "0",
+          "factor_disc_global": "1",
+          "old_faces": "24",
+          "raw_h_min": "0.0571536",
+          "raw_h_mean": "0.097265",
+          "raw_h_max": "0.172008",
+          "raw_quality_min": "0.844112",
+          "raw_quality_mean": "0.886052",
+          "raw_poor_ratio": "0",
+          "smoothed_h_min": "0.0766084",
+          "smoothed_h_mean": "0.0901984",
+          "smoothed_h_max": "0.106034",
+          "smoothed_quality_min": "0.844112",
+          "smoothed_quality_mean": "0.886052",
+          "smoothed_poor_ratio": "0",
+          "generated_faces": "326",
+          "generated_quality_min": "0.115923",
+          "generated_quality_mean": "0.804805",
+          "generated_poor_ratio": "0.0460123",
+          "quadtree_leaves": "136",
+          "template_count": "100",
+          "template_low_score_count": "0",
+          "template_score_min": "0.705053",
+          "template_score_mean": "0.822073",
+          "low_quality_subdivide_hits": "0",
+          "quality_pre_aft_min": "0.683282",
+          "quality_pre_aft_mean": "0.823201",
+          "quality_post_aft_min": "0.0370274",
+          "quality_post_aft_mean": "0.763999",
+          "quality_post_smoothing_min": "0.115923",
+          "quality_post_smoothing_mean": "0.804805",
+          "poor_ratio_pre_aft": "0",
+          "poor_ratio_post_aft": "0.0613497",
+          "poor_ratio_post_smoothing": "0.0460123",
+          "degenerate_pre_aft_count": "0",
+          "degenerate_post_aft_count": "6",
+          "degenerate_post_smoothing_count": "0",
+          "boundary_element_ratio": "0.0306748",
+          "transition_element_ratio": "0.141104",
+          "internal_element_ratio": "0.828221",
+          "postprocess_vertices_considered": "0",
+          "postprocess_vertices_moved": "0",
+          "local_regen_attempt": "0",
+          "generation_status": "degenerate_needs_retry",
+          "degeneracy_score": "0.515056",
+          "transition_floor": "0.1",
+          "transition_underresolved": "0",
+          "interior_transition_imbalance": "0.0891104",
+          "curve_domain_balance": "1",
+          "curve_interior_coupling": "0.842334",
+          "good_ratio_ge_0_60": "0.898773",
+          "boundary_elements": "10",
+          "boundary_quality_min": "0.115923",
+          "boundary_quality_mean": "0.405524",
+          "boundary_q_ge_0_60": "0.3",
+          "boundary_area_mean": "0.018258",
+          "boundary_aspect_mean": "1.89183",
+          "transition_elements": "96",
+          "transition_quality_min": "0.252061",
+          "transition_quality_mean": "0.680001",
+          "transition_q_ge_0_60": "0.729167",
+          "transition_area_mean": "0.00346677",
+          "transition_aspect_mean": "2.09665",
+          "interior_elements": "220",
+          "interior_quality_min": "0.643043",
+          "interior_quality_mean": "0.877414",
+          "interior_q_ge_0_60": "1",
+          "interior_area_mean": "0.00220277",
+          "interior_aspect_mean": "1.44248"
+        },
+        {
+          "step": "3",
+          "retry": "0",
+          "patch_id": "0",
+          "factor_disc_global": "1.5",
+          "old_faces": "326",
+          "raw_h_min": "0.0147764",
+          "raw_h_mean": "0.0512459",
+          "raw_h_max": "0.123092",
+          "raw_quality_min": "0.115923",
+          "raw_quality_mean": "0.804805",
+          "raw_poor_ratio": "0.0460123",
+          "smoothed_h_min": "0.0171647",
+          "smoothed_h_mean": "0.0413745",
+          "smoothed_h_max": "0.079249",
+          "smoothed_quality_min": "0.115923",
+          "smoothed_quality_mean": "0.804805",
+          "smoothed_poor_ratio": "0.0460123",
+          "generated_faces": "456",
+          "generated_quality_min": "0.023353",
+          "generated_quality_mean": "0.80301",
+          "generated_poor_ratio": "0.0482456",
+          "quadtree_leaves": "247",
+          "template_count": "193",
+          "template_low_score_count": "0",
+          "template_score_min": "0.828427",
+          "template_score_mean": "0.828427",
+          "low_quality_subdivide_hits": "0",
+          "quality_pre_aft_min": "0.828427",
+          "quality_pre_aft_mean": "0.828427",
+          "quality_post_aft_min": "0.0370274",
+          "quality_post_aft_mean": "0.770228",
+          "quality_post_smoothing_min": "0.023353",
+          "quality_post_smoothing_mean": "0.80301",
+          "poor_ratio_pre_aft": "0",
+          "poor_ratio_post_aft": "0.0811404",
+          "poor_ratio_post_smoothing": "0.0482456",
+          "degenerate_pre_aft_count": "0",
+          "degenerate_post_aft_count": "12",
+          "degenerate_post_smoothing_count": "5",
+          "boundary_element_ratio": "0.0307018",
+          "transition_element_ratio": "0.0679825",
+          "internal_element_ratio": "0.901316",
+          "postprocess_vertices_considered": "0",
+          "postprocess_vertices_moved": "0",
+          "local_regen_attempt": "0",
+          "generation_status": "curve_transition_needs_retry",
+          "degeneracy_score": "1.58362",
+          "transition_floor": "0.1",
+          "transition_underresolved": "1",
+          "interior_transition_imbalance": "0.157675",
+          "curve_domain_balance": "1",
+          "curve_interior_coupling": "0.873076",
+          "good_ratio_ge_0_60": "0.89693",
+          "boundary_elements": "14",
+          "boundary_quality_min": "0.117415",
+          "boundary_quality_mean": "0.485994",
+          "boundary_q_ge_0_60": "0.5",
+          "boundary_area_mean": "0.00919356",
+          "boundary_aspect_mean": "1.93869",
+          "transition_elements": "162",
+          "transition_quality_min": "0.023353",
+          "transition_quality_mean": "0.74345",
+          "transition_q_ge_0_60": "0.753086",
+          "transition_area_mean": "0.00211381",
+          "transition_aspect_mean": "1.84623",
+          "interior_elements": "280",
+          "interior_quality_min": "0.808859",
+          "interior_quality_mean": "0.85332",
+          "interior_q_ge_0_60": "1",
+          "interior_area_mean": "0.00188876",
+          "interior_aspect_mean": "1.43759"
+        }
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "reference_tri_accepted": true,
+          "reason": "initial",
+          "curve_points": {},
+          "outputs": {
+            "TRI": {
+              "filename": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              },
+              "quad_quality": null
+            }
+          }
+        },
+        {
+          "step": 1,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 3,
+            "1": 3,
+            "2": 3,
+            "3": 3
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "nodes": 17,
+              "quads": 0,
+              "triangles": 24,
+              "boundary": 8,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.09894934733586498,
+                  "rms_uv": 0.029356713362925134,
+                  "rms_source_area": 0.026568940535144674,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.9393539010671468
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.10192055460636473,
+                  "rms_uv": 0.029375648362709242,
+                  "rms_source_area": 0.026579959784991274,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.9397434903816527
+                }
+              },
+              "native_source": {
+                "nodes": 17,
+                "quads": 0,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 24,
+                "minimum": 0.7148837422649872,
+                "mean": 0.8778736617105259
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "nodes": 33,
+              "quads": 16,
+              "triangles": 24,
+              "boundary": 8,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.09841531103350311,
+                  "rms_uv": 0.026419255128426952,
+                  "rms_source_area": 0.023476643542533635,
+                  "quad_sites": 1024,
+                  "tri_sites": 3072,
+                  "rms_percent_of_corner_diagonal": 0.8300246924212452
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.10164871717168936,
+                  "rms_uv": 0.02643708003753333,
+                  "rms_source_area": 0.023485727965384586,
+                  "quad_sites": 4096,
+                  "tri_sites": 12288,
+                  "rms_percent_of_corner_diagonal": 0.8303458752712989
+                }
+              },
+              "native_source": {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 24,
+                "minimum": 0.4584145296734616,
+                "mean": 0.6823082333762907
+              },
+              "quad_quality": {
+                "quads": 16,
+                "min_scaled_jacobian": 0.9909813433098008,
+                "min_warpage_cosine": 0.9991456452498715,
+                "max_edge_ratio": 1.3956211821070355
+              }
+            }
+          }
+        },
+        {
+          "step": 2,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 5,
+            "1": 3,
+            "2": 3,
+            "3": 3
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_2_retry_0_accepted_tri.obj",
+              "sha256": "93e34629c337836f7a42cacbeb4d51fbecac57dbdce48cd42a46fc9d5102fdcd",
+              "nodes": 169,
+              "quads": 0,
+              "triangles": 326,
+              "boundary": 10,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.04496817940754079,
+                  "rms_uv": 0.010685736028494666,
+                  "rms_source_area": 0.009934339894065735,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.35123195528529644
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.046526190711405416,
+                  "rms_uv": 0.010732118037509711,
+                  "rms_source_area": 0.009973342365547342,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.3526109008886804
+                }
+              },
+              "native_source": {
+                "nodes": 169,
+                "quads": 0,
+                "triangles": 326,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 136,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 326,
+                "minimum": 0.22539457134489344,
+                "mean": 0.8063695039087253
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_2_retry_0_accepted_quad_tri.obj",
+              "sha256": "44b553cca97a3b124f382e54c8706c61129079d142ef128a98c77a25403ded8d",
+              "nodes": 615,
+              "quads": 548,
+              "triangles": 122,
+              "boundary": 10,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.04225807359269234,
+                  "rms_uv": 0.008865469240013711,
+                  "rms_source_area": 0.008152295075474107,
+                  "quad_sites": 2560,
+                  "tri_sites": 1536,
+                  "rms_percent_of_corner_diagonal": 0.28822715650507186
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.04517351980895734,
+                  "rms_uv": 0.008933782088289743,
+                  "rms_source_area": 0.008211560393506232,
+                  "quad_sites": 10240,
+                  "tri_sites": 6144,
+                  "rms_percent_of_corner_diagonal": 0.2903225019185565
+                }
+              },
+              "native_source": {
+                "nodes": 615,
+                "quads": 548,
+                "triangles": 122,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 136,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 122,
+                "minimum": 0.03981139118516527,
+                "mean": 0.4243073537936383
+              },
+              "quad_quality": {
+                "quads": 548,
+                "min_scaled_jacobian": 0.5206054043825379,
+                "min_warpage_cosine": 0.9970024275031495,
+                "max_edge_ratio": 3.4879567792519293
+              }
+            }
+          }
+        },
+        {
+          "step": 3,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 9,
+            "1": 3,
+            "2": 3,
+            "3": 3
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_3_retry_0_accepted_tri.obj",
+              "sha256": "79921e39fbc13dd8704cd25a5e16a02c5e5d44d5eb10aead270a88e0b4622364",
+              "nodes": 236,
+              "quads": 0,
+              "triangles": 456,
+              "boundary": 14,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.043134163256655686,
+                  "rms_uv": 0.00839356737604641,
+                  "rms_source_area": 0.007912803519658888,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.279759851347379
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.0456112450202533,
+                  "rms_uv": 0.008456608705482834,
+                  "rms_source_area": 0.007967758242618282,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.28170279421051975
+                }
+              },
+              "native_source": {
+                "nodes": 236,
+                "quads": 0,
+                "triangles": 456,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 247,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 456,
+                "minimum": 0.09887787203035739,
+                "mean": 0.7875625468632734
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_3_retry_0_accepted_quad_tri.obj",
+              "sha256": "db84b9af0fec0d5189a43348fc8462d2a0a81a2fe978da4a084e4c18ef092de2",
+              "nodes": 843,
+              "quads": 772,
+              "triangles": 126,
+              "boundary": 14,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.04225807359269234,
+                  "rms_uv": 0.007967221874725252,
+                  "rms_source_area": 0.007496146133369193,
+                  "quad_sites": 3088,
+                  "tri_sites": 1008,
+                  "rms_percent_of_corner_diagonal": 0.2650287881835337
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.04517351980895734,
+                  "rms_uv": 0.008038330644123329,
+                  "rms_source_area": 0.007558588358004735,
+                  "quad_sites": 12352,
+                  "tri_sites": 4032,
+                  "rms_percent_of_corner_diagonal": 0.267236454207142
+                }
+              },
+              "native_source": {
+                "nodes": 843,
+                "quads": 772,
+                "triangles": 126,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 247,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 126,
+                "minimum": 0.03981139118516527,
+                "mean": 0.3435877411498486
+              },
+              "quad_quality": {
+                "quads": 772,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              }
+            }
+          }
+        }
+      ]
+    },
+    "bounded-coarse": {
+      "domain_trace": [
+        {
+          "step": "1",
+          "retry": "0",
+          "patch_id": "0",
+          "factor_disc_global": "1.5",
+          "old_faces": "4",
+          "raw_h_min": "0.276469",
+          "raw_h_mean": "0.281609",
+          "raw_h_max": "0.285104",
+          "raw_quality_min": "0.828427",
+          "raw_quality_mean": "0.828427",
+          "raw_poor_ratio": "0",
+          "smoothed_h_min": "0.278585",
+          "smoothed_h_mean": "0.280969",
+          "smoothed_h_max": "0.283346",
+          "smoothed_quality_min": "0.828427",
+          "smoothed_quality_mean": "0.828427",
+          "smoothed_poor_ratio": "0",
+          "generated_faces": "24",
+          "generated_quality_min": "0.844112",
+          "generated_quality_mean": "0.886052",
+          "generated_poor_ratio": "0",
+          "quadtree_leaves": "16",
+          "template_count": "4",
+          "template_low_score_count": "0",
+          "template_score_min": "0.828427",
+          "template_score_mean": "0.828427",
+          "low_quality_subdivide_hits": "0",
+          "quality_pre_aft_min": "0.828427",
+          "quality_pre_aft_mean": "0.828427",
+          "quality_post_aft_min": "0.828427",
+          "quality_post_aft_mean": "0.828427",
+          "quality_post_smoothing_min": "0.844112",
+          "quality_post_smoothing_mean": "0.886052",
+          "poor_ratio_pre_aft": "0",
+          "poor_ratio_post_aft": "0",
+          "poor_ratio_post_smoothing": "0",
+          "degenerate_pre_aft_count": "0",
+          "degenerate_post_aft_count": "0",
+          "degenerate_post_smoothing_count": "0",
+          "boundary_element_ratio": "0.333333",
+          "transition_element_ratio": "0",
+          "internal_element_ratio": "0.666667",
+          "postprocess_vertices_considered": "0",
+          "postprocess_vertices_moved": "0",
+          "local_regen_attempt": "0",
+          "generation_status": "curve_transition_needs_retry",
+          "degeneracy_score": "1.10833",
+          "transition_floor": "0.1",
+          "transition_underresolved": "1",
+          "interior_transition_imbalance": "0.108333",
+          "curve_domain_balance": "1",
+          "curve_interior_coupling": "0.5",
+          "good_ratio_ge_0_60": "1",
+          "boundary_elements": "8",
+          "boundary_quality_min": "0.844112",
+          "boundary_quality_mean": "0.877288",
+          "boundary_q_ge_0_60": "1",
+          "boundary_area_mean": "0.0689891",
+          "boundary_aspect_mean": "1.40306",
+          "transition_elements": "0",
+          "transition_quality_min": "0",
+          "transition_quality_mean": "0",
+          "transition_q_ge_0_60": "0",
+          "transition_area_mean": "0",
+          "transition_aspect_mean": "0",
+          "interior_elements": "16",
+          "interior_quality_min": "0.844243",
+          "interior_quality_mean": "0.890435",
+          "interior_q_ge_0_60": "1",
+          "interior_area_mean": "0.0280055",
+          "interior_aspect_mean": "1.44712"
+        },
+        {
+          "step": "2",
+          "retry": "0",
+          "patch_id": "0",
+          "factor_disc_global": "1.5",
+          "old_faces": "24",
+          "raw_h_min": "0.0857305",
+          "raw_h_mean": "0.145898",
+          "raw_h_max": "0.258012",
+          "raw_quality_min": "0.844112",
+          "raw_quality_mean": "0.886052",
+          "raw_poor_ratio": "0",
+          "smoothed_h_min": "0.114913",
+          "smoothed_h_mean": "0.135298",
+          "smoothed_h_max": "0.159051",
+          "smoothed_quality_min": "0.844112",
+          "smoothed_quality_mean": "0.886052",
+          "smoothed_poor_ratio": "0",
+          "generated_faces": "144",
+          "generated_quality_min": "0.51983",
+          "generated_quality_mean": "0.830102",
+          "generated_poor_ratio": "0",
+          "quadtree_leaves": "67",
+          "template_count": "44",
+          "template_low_score_count": "0",
+          "template_score_min": "0.708746",
+          "template_score_mean": "0.810494",
+          "low_quality_subdivide_hits": "0",
+          "quality_pre_aft_min": "0.683282",
+          "quality_pre_aft_mean": "0.820144",
+          "quality_post_aft_min": "0.272007",
+          "quality_post_aft_mean": "0.765086",
+          "quality_post_smoothing_min": "0.51983",
+          "quality_post_smoothing_mean": "0.830102",
+          "poor_ratio_pre_aft": "0",
+          "poor_ratio_post_aft": "0.0555556",
+          "poor_ratio_post_smoothing": "0",
+          "degenerate_pre_aft_count": "0",
+          "degenerate_post_aft_count": "0",
+          "degenerate_post_smoothing_count": "0",
+          "boundary_element_ratio": "0.0694444",
+          "transition_element_ratio": "0.159722",
+          "internal_element_ratio": "0.770833",
+          "postprocess_vertices_considered": "0",
+          "postprocess_vertices_moved": "0",
+          "local_regen_attempt": "0",
+          "generation_status": "ok",
+          "degeneracy_score": "0.0604167",
+          "transition_floor": "0.1",
+          "transition_underresolved": "0",
+          "interior_transition_imbalance": "0.0604167",
+          "curve_domain_balance": "1",
+          "curve_interior_coupling": "0.937297",
+          "good_ratio_ge_0_60": "0.951389",
+          "boundary_elements": "10",
+          "boundary_quality_min": "0.52802",
+          "boundary_quality_mean": "0.624942",
+          "boundary_q_ge_0_60": "0.6",
+          "boundary_area_mean": "0.0311958",
+          "boundary_aspect_mean": "1.82601",
+          "transition_elements": "30",
+          "transition_quality_min": "0.51983",
+          "transition_quality_mean": "0.701263",
+          "transition_q_ge_0_60": "0.9",
+          "transition_area_mean": "0.00874429",
+          "transition_aspect_mean": "1.96937",
+          "interior_elements": "104",
+          "interior_quality_min": "0.778752",
+          "interior_quality_mean": "0.886994",
+          "interior_q_ge_0_60": "1",
+          "interior_area_mean": "0.0040934",
+          "interior_aspect_mean": "1.44111"
+        },
+        {
+          "step": "3",
+          "retry": "0",
+          "patch_id": "0",
+          "factor_disc_global": "1.5",
+          "old_faces": "144",
+          "raw_h_min": "0.0121444",
+          "raw_h_mean": "0.0677061",
+          "raw_h_max": "0.256491",
+          "raw_quality_min": "0.51983",
+          "raw_quality_mean": "0.830102",
+          "raw_poor_ratio": "0",
+          "smoothed_h_min": "0.0169331",
+          "smoothed_h_mean": "0.0551962",
+          "smoothed_h_max": "0.0921532",
+          "smoothed_quality_min": "0.51983",
+          "smoothed_quality_mean": "0.830102",
+          "smoothed_poor_ratio": "0",
+          "generated_faces": "430",
+          "generated_quality_min": "0.0108703",
+          "generated_quality_mean": "0.815994",
+          "generated_poor_ratio": "0.0348837",
+          "quadtree_leaves": "223",
+          "template_count": "175",
+          "template_low_score_count": "0",
+          "template_score_min": "0.828427",
+          "template_score_mean": "0.828427",
+          "low_quality_subdivide_hits": "0",
+          "quality_pre_aft_min": "0.828427",
+          "quality_pre_aft_mean": "0.828427",
+          "quality_post_aft_min": "0.0370274",
+          "quality_post_aft_mean": "0.776067",
+          "quality_post_smoothing_min": "0.0108703",
+          "quality_post_smoothing_mean": "0.815994",
+          "poor_ratio_pre_aft": "0",
+          "poor_ratio_post_aft": "0.072093",
+          "poor_ratio_post_smoothing": "0.0348837",
+          "degenerate_pre_aft_count": "0",
+          "degenerate_post_aft_count": "6",
+          "degenerate_post_smoothing_count": "2",
+          "boundary_element_ratio": "0.0325581",
+          "transition_element_ratio": "0.072093",
+          "internal_element_ratio": "0.895349",
+          "postprocess_vertices_considered": "0",
+          "postprocess_vertices_moved": "0",
+          "local_regen_attempt": "0",
+          "generation_status": "curve_transition_needs_retry",
+          "degeneracy_score": "1.57653",
+          "transition_floor": "0.1",
+          "transition_underresolved": "1",
+          "interior_transition_imbalance": "0.150581",
+          "curve_domain_balance": "1",
+          "curve_interior_coupling": "0.877314",
+          "good_ratio_ge_0_60": "0.911628",
+          "boundary_elements": "14",
+          "boundary_quality_min": "0.162958",
+          "boundary_quality_mean": "0.534197",
+          "boundary_q_ge_0_60": "0.428571",
+          "boundary_area_mean": "0.0122215",
+          "boundary_aspect_mean": "1.8739",
+          "transition_elements": "124",
+          "transition_quality_min": "0.0108703",
+          "transition_quality_mean": "0.734806",
+          "transition_q_ge_0_60": "0.758065",
+          "transition_area_mean": "0.0025325",
+          "transition_aspect_mean": "1.82291",
+          "interior_elements": "292",
+          "interior_quality_min": "0.72133",
+          "interior_quality_mean": "0.863981",
+          "interior_q_ge_0_60": "1",
+          "interior_area_mean": "0.00176325",
+          "interior_aspect_mean": "1.43273"
+        }
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "reference_tri_accepted": true,
+          "reason": "initial",
+          "curve_points": {},
+          "outputs": {
+            "TRI": {
+              "filename": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "boundary": 4,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.36166267639684585,
+                  "rms_uv": 0.09255521367916454,
+                  "rms_source_area": 0.07685632273915012,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 2.717281349295745
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.3683084644323038,
+                  "rms_uv": 0.09258865951687162,
+                  "rms_source_area": 0.07687326653576475,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 2.717880402970007
+                }
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 4,
+                "minimum": 0.8459910324287993,
+                "mean": 0.8663828872940097
+              },
+              "quad_quality": null
+            }
+          }
+        },
+        {
+          "step": 1,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 3,
+            "1": 3,
+            "2": 3,
+            "3": 3
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "nodes": 17,
+              "quads": 0,
+              "triangles": 24,
+              "boundary": 8,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.09894934733586498,
+                  "rms_uv": 0.029356713362925134,
+                  "rms_source_area": 0.026568940535144674,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.9393539010671468
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.10192055460636473,
+                  "rms_uv": 0.029375648362709242,
+                  "rms_source_area": 0.026579959784991274,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.9397434903816527
+                }
+              },
+              "native_source": {
+                "nodes": 17,
+                "quads": 0,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 24,
+                "minimum": 0.7148837422649872,
+                "mean": 0.8778736617105259
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+              "nodes": 33,
+              "quads": 16,
+              "triangles": 24,
+              "boundary": 8,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.09841531103350311,
+                  "rms_uv": 0.026419255128426952,
+                  "rms_source_area": 0.023476643542533635,
+                  "quad_sites": 1024,
+                  "tri_sites": 3072,
+                  "rms_percent_of_corner_diagonal": 0.8300246924212452
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.10164871717168936,
+                  "rms_uv": 0.02643708003753333,
+                  "rms_source_area": 0.023485727965384586,
+                  "quad_sites": 4096,
+                  "tri_sites": 12288,
+                  "rms_percent_of_corner_diagonal": 0.8303458752712989
+                }
+              },
+              "native_source": {
+                "nodes": 33,
+                "quads": 16,
+                "triangles": 24,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": true,
+              "TRI_shape_quality": {
+                "count": 24,
+                "minimum": 0.4584145296734616,
+                "mean": 0.6823082333762907
+              },
+              "quad_quality": {
+                "quads": 16,
+                "min_scaled_jacobian": 0.9909813433098008,
+                "min_warpage_cosine": 0.9991456452498715,
+                "max_edge_ratio": 1.3956211821070355
+              }
+            }
+          }
+        },
+        {
+          "step": 2,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 5,
+            "1": 3,
+            "2": 3,
+            "3": 3
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_2_retry_0_accepted_tri.obj",
+              "sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+              "nodes": 78,
+              "quads": 0,
+              "triangles": 144,
+              "boundary": 10,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.0463828657835677,
+                  "rms_uv": 0.01554423044421185,
+                  "rms_source_area": 0.014763933729630046,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.52198388286051
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.04722778532192052,
+                  "rms_uv": 0.015562001494783867,
+                  "rms_source_area": 0.014777856054370531,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.522476111372204
+                }
+              },
+              "native_source": {
+                "nodes": 78,
+                "quads": 0,
+                "triangles": 144,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": false,
+              "TRI_shape_quality": {
+                "count": 144,
+                "minimum": 0.2908076304612828,
+                "mean": 0.8161307317818906
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_2_retry_0_accepted_quad_tri.obj",
+              "sha256": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c",
+              "nodes": 281,
+              "quads": 242,
+              "triangles": 66,
+              "boundary": 10,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.04520192540273996,
+                  "rms_uv": 0.012727408702696098,
+                  "rms_source_area": 0.011863066449697248,
+                  "quad_sites": 2144,
+                  "tri_sites": 1952,
+                  "rms_percent_of_corner_diagonal": 0.4194227366123772
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.046642004675382244,
+                  "rms_uv": 0.012754681368767137,
+                  "rms_source_area": 0.0118852409671276,
+                  "quad_sites": 8576,
+                  "tri_sites": 7808,
+                  "rms_percent_of_corner_diagonal": 0.42020672419460425
+                }
+              },
+              "native_source": {
+                "nodes": 281,
+                "quads": 242,
+                "triangles": 66,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": false,
+              "TRI_shape_quality": {
+                "count": 66,
+                "minimum": 0.13535804124346085,
+                "mean": 0.484852272851745
+              },
+              "quad_quality": {
+                "quads": 242,
+                "min_scaled_jacobian": 0.42987157618618727,
+                "min_warpage_cosine": 0.9967447080060843,
+                "max_edge_ratio": 4.249137532518618
+              }
+            }
+          }
+        },
+        {
+          "step": 3,
+          "reference_tri_accepted": true,
+          "reason": "accepted",
+          "curve_points": {
+            "0": 9,
+            "1": 3,
+            "2": 3,
+            "3": 3
+          },
+          "outputs": {
+            "TRI": {
+              "filename": "step_3_retry_0_accepted_tri.obj",
+              "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+              "nodes": 223,
+              "quads": 0,
+              "triangles": 430,
+              "boundary": 14,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.0450130483297626,
+                  "rms_uv": 0.010133989773347788,
+                  "rms_source_area": 0.009600666891585119,
+                  "quad_sites": 0,
+                  "tri_sites": 4096,
+                  "rms_percent_of_corner_diagonal": 0.3394348331476505
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.046548219362807355,
+                  "rms_uv": 0.010173853647170987,
+                  "rms_source_area": 0.00963498141804805,
+                  "quad_sites": 0,
+                  "tri_sites": 16384,
+                  "rms_percent_of_corner_diagonal": 0.3406480348654077
+                }
+              },
+              "native_source": {
+                "nodes": 223,
+                "quads": 0,
+                "triangles": 430,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": false,
+              "TRI_shape_quality": {
+                "count": 430,
+                "minimum": 0.046523045073857815,
+                "mean": 0.8044304136434697
+              },
+              "quad_quality": null
+            },
+            "QUAD_TRI": {
+              "filename": "step_3_retry_0_accepted_quad_tri.obj",
+              "sha256": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+              "nodes": 797,
+              "quads": 724,
+              "triangles": 130,
+              "boundary": 14,
+              "metrics": {
+                "64": {
+                  "source_grid": 64,
+                  "sample_count": 4096,
+                  "max_xyz": 0.04225807359269234,
+                  "rms_uv": 0.008218071660594099,
+                  "rms_source_area": 0.00772179507989153,
+                  "quad_sites": 2896,
+                  "tri_sites": 1200,
+                  "rms_percent_of_corner_diagonal": 0.27300668319621096
+                },
+                "128": {
+                  "source_grid": 128,
+                  "sample_count": 16384,
+                  "max_xyz": 0.04517351980895734,
+                  "rms_uv": 0.008286338690802303,
+                  "rms_source_area": 0.007781908576313352,
+                  "quad_sites": 11584,
+                  "tri_sites": 4800,
+                  "rms_percent_of_corner_diagonal": 0.27513201624424616
+                }
+              },
+              "native_source": {
+                "nodes": 797,
+                "quads": 724,
+                "triangles": 130,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0
+              },
+              "metrics_reused_on_exact_input_hash": false,
+              "TRI_shape_quality": {
+                "count": 130,
+                "minimum": 0.03981139118516527,
+                "mean": 0.4043344677104282
+              },
+              "quad_quality": {
+                "quads": 724,
+                "min_scaled_jacobian": 0.8510674897913958,
+                "min_warpage_cosine": 0.9949221386044722,
+                "max_edge_ratio": 2.6546557519835043
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "grids": [
+    64,
+    128
+  ],
+  "metric": "physical source-area-weighted RMS at identical UV midpoint sites; percent normalized by sqrt8 corner diagonal",
+  "continuous_bound": false,
+  "new_mixed_acceptance_policy": false,
+  "mixed_adaptive_epochs": 0,
+  "old_default_and_coarse_eight_OBJ_each_reproduced": true
+}
