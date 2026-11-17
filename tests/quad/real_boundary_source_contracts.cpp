@@ -1,6 +1,7 @@
 #include "application/runtime_config.h"
 #include "data/curve/curve_adaptive_parametric_bezier.h"
 #include "generator/generator_adaptive.h"
+#include "boundary_pair_candidate_contracts.h"
 #include "real_boundary_source.h"
 #include "crab_mesh/aft/quadtree.h"
 #include "crab_mesh/aft/quadtree_cell.h"
@@ -140,6 +141,7 @@ void Run(const apmesh::application::RuntimeConfig& base, bool reverse, unsigned&
 
 int main(int argc, char** argv) {
   try {
+    quad_test::BoundaryPairCandidateContracts();
     Require(argc == 2, "Expected original-curve runtime configuration");
     const auto config = apmesh::application::LoadRuntimeConfig(argv[1]);
     unsigned captures = 0, negatives = 0;

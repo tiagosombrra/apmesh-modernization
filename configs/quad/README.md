@@ -1,5 +1,21 @@
 # Controlled curved QUAD application
 
+## Implementation priority: integrated mixed fill
+
+Complete the historical TRI/QUAD remaining-region fill before introducing new
+adaptive curve/transition/interior size policies. Current application output is
+seeded native QUAD plus original AFT TRI; it does not yet select or publish
+TRI-pair QUADs in the remaining region. Scientific selection requires explicit
+advisor alignment; original TRI behavior and the experimental point-rule labels
+remain unchanged. See the [implementation contract](../../docs/research/quad/MIXED_FILL_IMPLEMENTATION_20261117.md).
+
+Real-boundary archives now include boundary_pair_stages.csv and
+boundary_pair_candidates.csv: a read-only inventory of actual adjacent AFT TRI
+pairs, scoped to each exported stage. Four-node cycles are topological possibilities,
+not accepted QUADs; selection is not_evaluated and selected_pairs remains0.
+Concavity, quality, conflicting pairs and in-front selection are not resolved by
+this diagnostic. Initial TRI-only reference stages are marked not applicable.
+
 ## Original curve workflow and native tree
 
 With the same explicit experimental build, run

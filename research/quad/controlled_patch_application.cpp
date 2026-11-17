@@ -1,4 +1,5 @@
 #include "controlled_patch_application.h"
+#include "boundary_pair_candidates.h"
 #include "application/runtime_config.h"
 #include "physical_quadrilateral_adaptive.h"
 #include "data/mesh/sub_mesh.h"
@@ -1690,6 +1691,13 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   const auto previous = SnapshotOwnerRehearsal(*patch->GetSubMesh());
   Require(std::filesystem::create_directory(staging), "Cannot reserve generation archive");
   std::ofstream manifest(staging / "manifest.csv", std::ios::binary);
+  std::ofstream pair_trace(staging / "boundary_pair_candidates.csv", std::ios::binary);
+  std::ofstream pair_stages(staging / "boundary_pair_stages.csv", std::ios::binary);
+  Require(bool(pair_trace) && bool(pair_stages), "Cannot create boundary pair inventory");
+  pair_trace << "step,epoch,retry,domain_generation,reference_tri_accepted,first_face,second_face,"
+                "shared_a,shared_b,quad_a,quad_b,quad_c,quad_d,selection_status\n";
+  pair_stages << "step,epoch,retry,domain_generation,reference_tri_accepted,seed_quad_faces,"
+                 "observed_aft_triangles,topology_candidates,selected_pairs,scope\n";
   manifest << "step,epoch,retry,domain_generation,reference_tri_accepted,reason,tri_obj,quad_tri_"
               "obj,nodes,quads,"
               "triangles,boundary\n";
@@ -1729,6 +1737,32 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     layout.reference_accepted = stage.accepted;
     layout.stage_reason = stage.reason;
     Export(layout, staging / (stem + "_quad_tri.obj"));
+    // Completed-output diagnostics only. No candidate replaces any mesh element.
+    std::vector<std::array<std::size_t, 3>> exterior;
+    if (layout.quads > 0) {
+      for (std::size_t i = layout.quads; i < layout.faces.size(); ++i) {
+        const auto& face = layout.faces[i];
+        Require(face.size() == 3, "Boundary pair inventory received a non-TRI exterior face");
+        exterior.push_back({face[0], face[1], face[2]});
+      }
+    }
+    const auto pairs = CollectBoundaryPairCandidates(layout.uv.size(), exterior);
+    const auto prefix = std::to_string(stage.step) + ',' + std::to_string(stage.outer.epoch) + ',' +
+                        std::to_string(stage.outer.global_retry) + ',' +
+                        std::to_string(source ? source->domain_generation : 0) + ',' +
+                        std::to_string(stage.accepted) + ',';
+    pair_stages << prefix << layout.quads << ',' << exterior.size() << ',' << pairs.size() << ",0,"
+                << (layout.quads > 0 ? "topology_only_policy_pending"
+                                     : "not_applicable_without_quad_seed")
+                << '\n';
+    for (const auto& pair : pairs) {
+      pair_trace << prefix << layout.quads + pair.first_triangle + 1 << ','
+                 << layout.quads + pair.second_triangle + 1 << ',' << pair.shared_edge[0] + 1 << ','
+                 << pair.shared_edge[1] + 1;
+      for (auto id : pair.boundary_cycle)
+        pair_trace << ',' << id + 1;
+      pair_trace << ",not_evaluated\n";
+    }
     manifest << stage.step << ',' << stage.outer.epoch << ',' << stage.outer.global_retry << ','
              << (source ? source->domain_generation : 0) << ',' << stage.accepted << ','
              << stage.reason << ',' << stem << "_tri.obj," << stem << "_quad_tri.obj,"
@@ -1743,6 +1777,9 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   Require(have_accepted, "Last accepted source has no exported physical step");
   manifest.close();
   Require(bool(manifest), "Cannot complete generation manifest");
+  pair_trace.close();
+  pair_stages.close();
+  Require(bool(pair_trace) && bool(pair_stages), "Cannot complete boundary pair inventory");
   std::ofstream trace(staging / "curve_stages.csv", std::ios::binary);
   trace << curve_trace.str();
   trace.close();

@@ -9,6 +9,7 @@ import uuid
 
 from test_controlled_application import require
 from test_real_boundary_application import audit, audit_history, negative_controls
+from boundary_pair_inventory import audit_pair_inventory
 
 
 def run(exe, directory, name, bounded, coarse, rollback=False):
@@ -69,7 +70,38 @@ def run(exe, directory, name, bounded, coarse, rollback=False):
     if rollback:
         require(b"QUAD_REAL_BOUNDARY_ROLLBACK previous_nonempty=1 preserved=1" in process.stdout,
                 "Missing nonempty owner rollback witness")
+    pair_inventory = audit_pair_inventory(archive)
+    pair_negatives = 0
+    if coarse and bounded:
+        require(sum(row["topology_candidates"] for row in pair_inventory) > 0,
+                "Missing actual AFT pair coverage")
+        original_pairs = (archive / "boundary_pair_candidates.csv").read_bytes()
+        with (archive / "boundary_pair_candidates.csv").open() as stream:
+            reader = csv.DictReader(stream)
+            fields, original_rows = reader.fieldnames, list(reader)
+        for index, alteration in enumerate(("selection_status", "step", "quad_a", "duplicate")):
+            rows = [dict(row) for row in original_rows]
+            if alteration == "duplicate":
+                rows.append(dict(rows[0]))
+            else:
+                rows[0][alteration] = {"selection_status": "selected", "step": "999999",
+                                       "quad_a": "999999999"}[alteration]
+            forged = directory / f"{name}-pair-negative-{index}.csv"
+            with forged.open("w", newline="") as stream:
+                writer = csv.DictWriter(stream, fieldnames=fields)
+                writer.writeheader()
+                writer.writerows(rows)
+            try:
+                audit_pair_inventory(archive, forged)
+            except AssertionError:
+                pair_negatives += 1
+            else:
+                raise AssertionError("Forged boundary pair inventory was accepted")
+        require((archive / "boundary_pair_candidates.csv").read_bytes() == original_pairs,
+                "Pair audit changed original diagnostics")
     return {"objects": objects, "domain_factors": factors, "mixed_steps": records,
+            "pair_inventory": pair_inventory,
+            "pair_inventory_negative_controls": pair_negatives,
             "accepted_steps": [int(row["step"]) for row in accepted]}, archive
 
 
