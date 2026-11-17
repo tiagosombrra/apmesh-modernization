@@ -137,3 +137,50 @@ epoch LOD; no accepted step is manufactured merely for the report.
 picker default; bounded BVHs opt-in only; no generator policy
 adjustment, automatic node welding, main merge, release or tag.
 Physical Windows GPU-present/RSS/VRAM measurements remain open.
+
+## Original native R2.7.16 evidence and durable archive (2026-11-17)
+
+The corrected [CI #44162179260](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44162179260)
+at source SHA `f550ad2453b803b2452710a51c7b93bcacc98ba5`
+has independently completed its **original serial native
+GeneratorAdaptive source-lineage job SUCCESS**. Linux and Windows
+scientific regressions also returned **SUCCESS** after fixing the
+earlier *synthetic fixture keyword argument* error; Chromium was
+still running at the last qualification check. Do not infer all
+four jobs successful until the browser job completes.
+
+The real native original source-epoch R2.7.16 acceptance receipt
+states:
+
+| Model | Native accepted step | Original shared source curve | Patches sharing curve | Read-only sample groups | All-patch same native logical IDs | Different IDs at every patch |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Eistute | 1 | slot 3 | 4 | **11** | **10** | **1** |
+| Book | 1 | slot 3 | 28 | **13** | **12** | **1** |
+
+Every qualified group retains its full original patch-slot and
+native logical node ID membership; there are **no invented global
+mesh IDs**. The full original report's source-verified per-curve
+max sampled canonical-t and XYZ discrepancies were **both exactly
+zero**, on the tested original native acceptance step 1.
+The only different-ID sample is canonical `t=0`, shared-source
+local edge slot 3, with `reversed=false` on all original patches.
+
+GitHub Actions R2.7.16 report artifact
+[#14362709606](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44162179260/artifacts/14362709606)
+was downloaded and stored in the authenticated **personal**
+`Doutorado/DOUTORADO_APMESH_ACOMPANHAMENTO/05_Experimentos_e_Resultados`
+research folder. The Google Drive file was downloaded again;
+its bytes and original Actions ZIP are **SHA-256-identical**:
+`a5a84da0bc1148e043e016eaa4ace835c9e48fceea8e1ba1aba3cf4e9a17b826`
+(4,576 ZIP bytes). The original per-model native NDJSON SHA pins
+inside the report begin Eistute `3fa505b9283d7666` and
+Book `292b0b5ccc399711`, matching the archived original
+post-commit accepted-source snapshots. No private Drive URL
+is disclosed in the public repository.
+
+This is a **native source-scoped sampled correspondence PASS**,
+not a physical node-welding, continuous analytic curve agreement,
+cross-epoch face/curve ancestry or scientific LOD PASS. The initial
+unit regression failure was a test fixture invocation error and
+not a native numerical or geometric instability. Keep R2.8 blocked,
+VTK default, BVH experimental modes opt-in, and PR draft/unmerged.
