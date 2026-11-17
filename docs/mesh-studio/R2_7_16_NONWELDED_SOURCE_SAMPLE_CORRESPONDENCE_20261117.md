@@ -142,12 +142,15 @@ Physical Windows GPU-present/RSS/VRAM measurements remain open.
 
 The corrected [CI #44162179260](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44162179260)
 at source SHA `f550ad2453b803b2452710a51c7b93bcacc98ba5`
-has independently completed its **original serial native
-GeneratorAdaptive source-lineage job SUCCESS**. Linux and Windows
-scientific regressions also returned **SUCCESS** after fixing the
-earlier *synthetic fixture keyword argument* error; Chromium was
-still running at the last qualification check. Do not infer all
-four jobs successful until the browser job completes.
+has now finished **ALL FOUR JOBS SUCCESS**: original compiled serial
+GeneratorAdaptive native lineage/correspondence and real OFF/ON
+numerical parity, Linux scientific regression (**295 tests run,
+4 optional skips**), Windows scientific regression (**295 tests run,
+10 environment skips**), and actual Chromium (**42 passed**, with
+its existing optional exclusions). The earlier unsuccessful run
+#44161087523 failed only on one synthetic unit fixture keyword
+argument; the corrected real native and browser CI both passed.
+This is actual final workflow success, not an inferred browser result.
 
 The real native original source-epoch R2.7.16 acceptance receipt
 states:
