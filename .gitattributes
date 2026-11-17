@@ -1,4 +1,9 @@
 # Preserve byte-exact scientific source hashes on Windows and Linux.
+# Preserve original GRSI archived reference files exactly across Windows/Linux checkouts.
+reference/*.obj text eol=lf
+reference/*.csv text eol=lf
+reference/*.json text eol=lf
+MANIFEST.sha256 text eol=lf
 tools/mesh_studio/fixtures/**/*.obj text eol=lf
 tools/mesh_studio/fixtures/**/*.json text eol=lf
 tools/mesh_studio/fixtures/**/*.csv text eol=lf
