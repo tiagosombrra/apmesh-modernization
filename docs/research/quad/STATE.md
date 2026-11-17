@@ -3,7 +3,7 @@
 Updated 2026-11-17 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: review the qualified opt-in integrated mixed-fill package
+## Active: R3 mixed-state/error feedback preparation after qualified research integration
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,37 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-17 - PR238 integrated and exact research-merge qualification complete
+
+PR238 merged into quad-templates as d251f19139267ad3b0cd3515aade0a23fed560ca,
+parents fae255e/f2bd90d, qualified tree81ecc5bf identical to the candidate.
+Modernization main remains ef40c0f. [Integration and remaining scope](PR238_RESEARCH_INTEGRATION_20261117.md)
+and [portable receipt](evidence/PR238_RESEARCH_INTEGRATION_20261117.json) are the
+current delivery handoff. This is a completed bounded research integration,
+not full M1/M5/R3/M7, lifetime or documentation stage closure.
+
+Two authorized independent technical reviews and their bounded fixes are
+complete. The three required API references now render with exact immutable
+targets; full Doxygen still fails with2739 other unchanged diagnostics. No
+warning-policy relaxation or full Stage8 pass. Full CSV accounting audits220
+events and rejects8 controls. Numerical source/configuration/policies unchanged.
+
+Exact f2bd90d and exact merged d251f19 both pass85 local tests and four hosted
+jobs (44190789988 /44192096506). The corrected real-case checker actually passes
+GNU/MSVC/ASan before and after merge. Post-merge source/reversed/negative and
+accepted/rejected/retry histories pass in all three profiles. Native images
+match6f4ef47 under identical source/build/input identities; no compiled-head
+claim is invented. Merge parents/tree and2637 preserved file bytes/mtimes are
+verified. Default TRI, prior outputs and negative/error tradeoffs remain.
+
+Next concrete action: R3 connection of actual mixed-state/error observations to
+the retained generation history, preserving current acceptance/stopping rules;
+then select/aligned mixed accepted-state control and local curve/transition/
+interior balance. Do not substitute another global-factor sweep. Current
+mixed_adaptive_epochs=0; M1 center/full1993 scope, full M5/R3/M7, continuous
+validity, ordinary abort/new-path full CRT/denials and full Doxygen remain open.
+No new Blender session or modernization-main integration in this package.
 
 ### 2026-11-17 - independent reviews complete; integration prerequisites repaired
 

@@ -3,31 +3,24 @@
 
 ## Current finite execution queue — 2026-11-17
 
-The [continuity audit and live-pair delivery](MIXED_FILL_LIVE_PAIR_DELIVERY_20261117.md)
-implements the user-delegated physical-angle selector on exact feature6f4ef47,
-draft PR238. Actual original AFT triangle commits select2/0/3 disjoint pairs in
-the bounded histories, with distinct AFT-pair provenance and reversible complete
-physical-owner publication. Default TRI, previous cases, original curve nodes,
-templates/front trajectory and adaptation/acceptance remain. Exact85 baseline,
-three native profiles, frozen TRI and hosted4/4 qualify this bounded candidate
-for review. Retain failures and sampled-error increases; no global improvement,
-independent approval, integration or M1/M5/R3/M7 closure follows.
+The [PR238 research integration](PR238_RESEARCH_INTEGRATION_20261117.md) is
+complete at exact merge d251f19, with identical qualified candidate tree81ecc5bf.
+Two independent technical reviews, bounded API-reference/checker repairs,
+exact candidate/research-merge85 baselines, actual corrected-checker/native
+histories on three profiles and both hosted4/4 gates qualify this one package.
+Modernization main remains separate. Full Doxygen still fails; only the required
+three-reference/rendering prerequisite is repaired. Retain all old failures,
+sampled-error increases and broader scientific/coverage limitations.
 
-Independent technical review and the bounded follow-up repairs are complete:
-see [the review packet](PR238_TECHNICAL_REVIEW_20261117.md). The earlier required
-documentation-reference obligation is measured repaired with generated-link
-inspection; full Doxygen remains failed Stage8 debt, not a passed gate. The
-checker now accounts for all CSV rows and rejects extra foreign/no-seed scopes.
-No production/scientific inputs or numeric policies change.
-
-Current finite action: final-candidate qualification and guarded research integration
-of this one package, including applicable exact post-merge checks. After that:
-actual mixed accepted-state/error feedback, then local bidirectional curve/
-transition/interior sizing. The [realignment](MIXED_FILL_REALIGNMENT_20261117.md)
-and [recorded policy](MIXED_FILL_PAIR_POLICY_20261117.md) remain the basis. No
-additional generic metric-choice questionnaire or global-factor sweep precedes
-that route; no new mixed estimator/acceptance controller is decided here.
-Preserve all original M0-M9/R0-R4 gates and prior positive/negative evidence.
+One active successor: R3 actual mixed-state/error feedback preparation. Connect
+existing mixed-state/error observations to retained histories while preserving
+current numerical acceptance/stopping policies. A new mixed estimator/controller
+must have its scientific alignment before adoption. After actual mixed feedback:
+local bidirectional curve/transition/interior sizing. No generic re-questioning
+of settled pair choices or unrelated global-factor sweep. mixed_adaptive_epochs
+remains0; M1/full M5/R3/M7 and all original M0-M9/R0-R4 gates remain open at their
+recorded scope. See the [review dispositions](PR238_TECHNICAL_REVIEW_20261117.md)
+and [integration receipt](evidence/PR238_RESEARCH_INTEGRATION_20261117.json).
 
 The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
 M0–M9 acceptance criteria. The UV convexity repair P0 is integrated through

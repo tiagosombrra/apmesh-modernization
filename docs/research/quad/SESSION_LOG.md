@@ -2997,3 +2997,56 @@ not claim those unexecuted results, modern-main integration, numerical adoption,
 advisor approval, a Blender display or whole scientific/CRT/documentation closure.
 Keep one package and preserve broader M1/M5/R3/M7, continuous validity and full
 new-path denial obligations. Authoritative closure results follow the actual gates.
+
+
+## 2026-11-17 - qualify and integrate reviewed PR238, then revalidate research merge
+
+After independent reviews and measured bounded API-reference/complete-CSV fixes,
+publish identical reviewed candidate tree81ecc5bf as f2bd90daf46e7c4a7011e948d6ec72189a568d32,
+parents reviewed6f4ef47/canonical fae255e. Local c84255b and preceding unpublished
+b9fd49e/follow-up history remain on a local backup branch; remote commit identity
+is recorded separately. Screen parent/tree/publication metadata and leased ref.
+Candidate85/85 report1794954722678277300-22fc9dd8 and actual corrected checker
+executions on GNU/MSVC/Clang ASan+UBSan/leak pass:220 events,8 rejected controls,
+normal/unpaired/nonempty rollback. Images match6f4ef47; production/native/config/
+scientific inputs are unchanged. Older six-control results retain their scope.
+Exact hosted44190789988 completes4/4 SUCCESS. No new numerical policy.
+
+Recheck remote fae255e/f2bd90d/main ef40c0f, PR identities, clean tree and exact
+four checks. Mark the reviewed PR ready and use expected-head guarded merge
+into quad-templates only. PR238 merges as d251f19139267ad3b0cd3515aade0a23fed560ca,
+parents fae255e/f2bd90d and exact qualified tree81ecc5bf. Verify remote readback.
+No force update, automatic main merge or unrelated branch modification.
+
+The qualified-main helper is explicitly main-only and inapplicable to this
+research branch. Verify identical merge/head trees and clean checkout, snapshot
+all2637 tracked file hashes/mtimes, switch directly to exact merged research
+commit without first checking out an old base, and verify all bytes/write-times
+preserved. Fast-forward the separate canonical worktree. No hook bypass or
+modernization-main ref/checkout change. Current actual artifact images match.
+
+Exact research merge passes85/85 report1794955203909230300-f1cb064c. Execute
+source/reversed/negative native contracts, corrected8-control live checker and
+actual original/stable accepted/rejected/retry histories on GNU13.3, MSVC19.44
+Debug and Clang18.1 ASan/UBSan/leak. All pass. Native reuse is documented for
+identical inputs/images, not a claim that binaries were recompiled on this SHA.
+Hosted push44192096506 checks exact d251f19 and completes4/4 SUCCESS, including
+fresh compiler/native/sanitizer, full baseline and frozen TRI evidence.
+
+Keep full Doxygen exit1/2739 other unchanged diagnostics; the specific three
+reference/rendering obligation is repaired and independently inspected. No
+diagnostic suppression, false full documentation pass or stage closure. Retain
+ordinary observer abort/new-path denial/full CRT coverage gaps. Mesh2/0/3 pair
+counts,33/281/797 nodes and sampled error increases remain; adaptive_epochs=0.
+No source physics, thresholds, acceptance/stopping or default TRI changes.
+
+Explicit closure audit covers code, tests, contracts, documentation, scientific
+scope and known failure/coverage inventory. Record candidate/merge receipts,
+source hashes and passed versus retained scopes; update STATE/roadmap and link
+older candidate/review checkpoints to this qualified integration. Publish and
+read back the canonical documentation checkpoint; leave the primary worktree
+on the current quad-templates research branch without rewriting native inputs.
+Next is R3 actual mixed-state/error observations and retained-history connection
+before scientifically aligned mixed acceptance and local sizing. Broader M1/
+M5/R3/M7, continuous validity, full CRT/denials/Doxygen remain open. No new Blender
+display, main integration or claimed scientific optimum. One package closed.

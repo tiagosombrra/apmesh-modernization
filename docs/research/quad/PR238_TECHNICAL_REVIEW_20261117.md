@@ -1,5 +1,10 @@
 # PR238 independent technical review and prerequisite repair - 2026-11-17
 
+Current successor: [qualified PR238 research integration](PR238_RESEARCH_INTEGRATION_20261117.md),
+exact merge d251f19. The candidate/review measurements and pending-gate wording
+below retain their original checkpoint scope; completed follow-through is in
+that integration receipt. No whole-stage closure is implied.
+
 Two separate technical reviews examined exact source6f4ef47 against canonical
 fae255e. The user explicitly authorized these reviews. They are technical source
 and evidence reviews, not advisor sign-off, a GitHub review submission or a

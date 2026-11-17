@@ -1,5 +1,10 @@
 # Mixed-fill continuity audit and live-pair delivery - 2026-11-17
 
+Current successor: [qualified PR238 research integration](PR238_RESEARCH_INTEGRATION_20261117.md),
+exact merge d251f19. The candidate/review measurements and pending-gate wording
+below retain their original checkpoint scope; completed follow-through is in
+that integration receipt. No whole-stage closure is implied.
+
 Source6f4ef473b2d248548632d4e0f358f8eea4749f86, draft PR238; tree
 56412019f9c1123464a262a1a33176f3a37a2e6f. Canonical entry3cf8d21, main ef40c0f,
 frozen reference f6050ec. One work item: integrated mixed filling. This is an
