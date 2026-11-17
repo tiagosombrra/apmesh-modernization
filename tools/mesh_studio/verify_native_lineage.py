@@ -279,9 +279,26 @@ def verify_original_generator_run(
             "scientific_lod_qualified": False,
             "operator_physical_gpu_qualified": False,
         }
-        # Retain byte-exact original per-face evidence after full native validation.
-        # No synthetic fixture or rejected candidate is exported as qualified.
+        # Keep complete authentic native stderr so provisional Adapter
+        # events remain tied to the original process digest.
+        stderr_bytes = process.stderr.encode("utf-8")
+        require(len(stderr_bytes) <= 12_000_000,
+                "r2718_original_native_stderr_size_limit")
+        require(b"R2718_ADAPTER_BOUNDARY_CLOSE=" in stderr_bytes and
+                b"R2718_ADAPTER_BOUNDARY_TRACE_ERROR=" not in stderr_bytes,
+                "r2718_missing_or_failed_original_runtime_boundary_observer")
+        stderr_name = f"r2718-{model}-original-native-generator-stderr.log"
+        summary["r2718_original_stderr_artifact_name"] = stderr_name
+        summary["r2718_original_stderr_sha256"] = hashlib.sha256(
+            stderr_bytes).hexdigest()
+        # Retain source-bound originals and all attempted Adapter events
+        # without ever treating a provisional attempt as accepted.
         artifact_dir.mkdir(parents=True, exist_ok=True)
+        stderr_path = artifact_dir / stderr_name
+        with stderr_path.open("xb") as raw_stderr:
+            raw_stderr.write(stderr_bytes)
+        require(sha256_file(stderr_path) == summary["native_stderr_sha256"],
+                "r2718_native_stderr_not_byte_identical_to_original_process")
         for filename, data, expected_sha in raw_snapshots:
             original = artifact_dir / filename
             with original.open("xb") as output:
