@@ -154,6 +154,7 @@ for(const model of MODELS){
               METHODS[methodIndex]);
             samples.push({
               round,method:METHODS[methodIndex],faceId:pixel.id,
+              pixelX:pixel.x,pixelY:pixel.y,
               eventToPickerMs:x.eventToPickerMs,
               eventToTwoRafMs:x.eventToTwoRafMs,pickerWallMs:x.pickerWallMs,
               browserVisibility:x.visibility,inspectorId:x.inspector!,
@@ -185,7 +186,10 @@ for(const model of MODELS){
           classification:'PHYSICAL_DESKTOP_ATTESTED_NOT_GPU_PRESENT_OR_TOTAL_RAM_CERTIFIED',
           model:model.id,originalSourceSha:model.sha,sourceStatus:model.sourceStatus,
           cameraXYZ:before[0],cameraPreserved:true,
+          cameraXYZBeforeByMethod:before,cameraXYZAfterByMethod:after,
+          viewportCSS:{width:bounds[0]!.width,height:bounds[0]!.height},
           originalSourceFaceIds:candidatePixels.map(p=>p.id),
+          originalFacePixels:candidatePixels.map(p=>({id:p.id,x:p.x,y:p.y})),
           exactOriginalIdMatches:samples.length,
           conditions:{quadVisible:false,rounds:ROUNDS,
             warmupsPerFacePerMethod:WARMUPS,pickerOrder:'ROTATED_REVERSED'},
