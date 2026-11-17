@@ -68,6 +68,30 @@ export function auditR277Receipt(record){
     'duplicate_or_invalid_original_source_face');
   check(cameraValid(record.cameraXYZ)&&record.cameraPreserved===true,
     'missing_or_invalid_camera_provenance');
+  const before=record.cameraXYZBeforeByMethod,after=record.cameraXYZAfterByMethod;
+  check(Array.isArray(before)&&before.length===3&&
+    Array.isArray(after)&&after.length===3&&
+    before.every(cameraValid)&&after.every(cameraValid),
+    'missing_per_method_camera_snapshots');
+  // Stored camera equality is internal provenance, not an independent viewport/GPU oracle.
+  const cameraReference=JSON.stringify(record.cameraXYZ);
+  check(before.every(p=>JSON.stringify(p)===cameraReference)&&
+    after.every(p=>JSON.stringify(p)===cameraReference),
+    'camera_changed_or_methods_disagree');
+  const bounds=record.viewportCSS;
+  check(bounds&&typeof bounds.width==='number'&&
+    typeof bounds.height==='number'&&Number.isFinite(bounds.width)&&
+    Number.isFinite(bounds.height)&&bounds.width>0&&bounds.height>0,
+    'invalid_viewport_geometry');
+  const pixelTable=record.originalFacePixels;
+  check(Array.isArray(pixelTable)&&pixelTable.length===3,
+    'missing_source_face_pixels');
+  for(let i=0;i<faces.length;i++){
+    const p=pixelTable[i];
+    check(p&&p.id===faces[i]&&finiteNonnegative(p.x)&&
+      finiteNonnegative(p.y)&&p.x<bounds.width&&p.y<bounds.height,
+      'source_face_pixel_mismatch');
+  }
   check(record.operatorAttestation?.value==='I_CONFIRM_PHYSICAL_WORKSTATION','attestation');
   check(typeof record.operatorAttestation.declaredGpuModel==='string'&&
     record.operatorAttestation.declaredGpuModel.trim().length>2,'gpu_model_not_declared');
@@ -108,6 +132,25 @@ export function auditR277Receipt(record){
     encountered.add(identity);
   }
   check(encountered.size===8*3*3,'missing_one_or_more_source_round_methods');
+  // Identity alone does not establish the declared rotated/reversed paired protocol.
+  // Reconstruct its exact method and face order and reject permuted traces.
+  const expectedSequence=[];
+  for(let round=0;round<8;round++){
+    const methods=[0,1,2].slice(round%3).concat([0,1,2].slice(0,round%3));
+    if(round%2)methods.reverse();
+    const faceOrder=round%2?[...faces].reverse():faces;
+    for(const faceId of faceOrder)for(const methodIndex of methods){
+      expectedSequence.push({round,faceId,method:METHODS[methodIndex]});
+    }
+  }
+  for(let index=0;index<raw.length;index++){
+    const sample=raw[index],expected=expectedSequence[index];
+    check(sample.round===expected.round&&sample.faceId===expected.faceId&&
+      sample.method===expected.method,'raw_measurement_protocol_order_mismatch');
+    const p=pixelTable[faces.indexOf(sample.faceId)];
+    check(sample.pixelX===p.x&&sample.pixelY===p.y,
+      'methods_not_picking_identical_original_pixel');
+  }
   check(Array.isArray(record.distributions)&&record.distributions.length===3,
     'missing_three_distributions');
   for(const method of METHODS){
