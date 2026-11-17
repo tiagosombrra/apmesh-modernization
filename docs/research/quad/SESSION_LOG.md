@@ -2761,3 +2761,65 @@ verified. Existing PR238 four-job qualification remains its own scope, draft and
 unmerged. Check documentation whitespace/links and remote readback. Next stays
 advisor-aligned local coupling and PR238 review; M5 historical pairing coverage,
 M1 point rule, R3/M7 and Doxygen/CRT remain open.
+
+
+## 2026-11-17 - realign implementation around integrated mixed filling
+
+User requests implementation/documentation alignment with the discussion. One
+work item: engineering preparation of actual mixed fill, followed by actual mixed
+accepted-state/error feedback and then local curve-transition-interior balancing.
+The previous balance-first successor is explicitly deferred, not deleted. No
+historical numerical pairing rule or new adaptive factor is activated.
+
+Implement value-only CollectBoundaryPairCandidates and integrate two source-scoped
+CSV inventories into each real-boundary archive. Record actual adjacent exterior
+TRI source faces/vertices/shared edge/four-node boundary cycles, not invented
+accepted QUAD elements. No-seed initial TRI source states are not applicable.
+Candidates may conflict/be geometrically bad; selected0/not_evaluated is explicit.
+No mesh/source/acceptance mutation or physical owner transfer. This completed-
+output inventory is not the article's in-front algorithm or a greedy postprocessor.
+Implementation contract preserves distinct future native-template/AFT-pair origins
+and requires reversible physical publication before a selected pair can be used.
+
+Initial local commit6c5ec716f4262a2011f6087b16635f186e00416c passed85 and native
+three profiles. Git CLI push and PR edits were refused403; the authorized GitHub
+connection can write contents. Publish identical tree00315980ea56546c7393d0b4fb20f7684a9273ec
+as7fc988d30b27f08f620a68e4804ce453270774bd with screened metadata and a leased
+fast-forward update. Preserve6c5ec71 on local branch quad/local-mixed-prepublish-20261117;
+synchronize the clean working branch by creating the published-head tracking
+branch without changing file contents or overwriting concurrent work. No machine
+credential/permission changes or force push. Exact-head checks repeated after
+remote commit identity changed. Retain the first refused publication and bounded
+payload/schema transport failures before ref update; none is native qualification.
+
+Exact7fc988d local85/85, GNU Release/MSVC Debug/Clang ASan+UBSan/leak histories,
+source controls and new read-only diagnostics pass. Each profile has four topology
+cases/five invalid controls and old six captures/three reversed/54 negatives.
+Independent CSV reader checks actual OBJ adjacency/orientation/cycle boundaries;
+four forgeries per bounded normal/rollback are rejected. All five cases/40 prior
+OBJ files per profile remain byte-identical. All profile case reports and new CSV
+bytes agree. Current-GNU frozen Eistute5/Book4 exact OBJ/acceptance and verified
+boundaries pass. Two configured LLVM22 TUs/header consumers have no visible
+first-party diagnostics on the identical source tree. Local report1794907572218082900-2b73e7b8;
+exact hosted run44055409865 completes4/4 SUCCESS. No extra scientific sweep.
+
+Update README/source implementation contract on the feature, canonical state,
+roadmap, deferred balance proposal, realignment plan and portable receipt. Code,
+contracts, real/negative tests, documentation, scientific scope and remaining
+failure/coverage obligations reviewed explicitly. No scientific stage closure,
+merge, full CRT/Doxygen qualification, mixed accepted epoch or new Blender mesh.
+Existing centroid/M1, full M5/M7, Doxygen/CRT and independent review remain open.
+
+An async factual question asks whether advisors aligned Figure11 shape threshold,
+UV/XYZ interpretation and pair priority; no answer/approval is recorded. AGENTS.md
+requires explicit advisor alignment before numerical changes. Next concrete
+step: settle those choices, then implement in-front selection/typed reversible
+pair publication with TRI fallback. Keep new balancing policies after that fill
+capability. Source/canonical head, branches and open PRs were checked; unrelated
+PR239/225/214 untouched. Canonical entry15e469d, source base d59a513 and main
+ef40c0f are retained separately; checkpoint publication/readback is explicit.
+
+The first documentation whitespace invocation used the source worktree rather
+than the canonical documentation worktree and stopped on a missing canonical-only
+file. Correct the working directory; the seven-file check then passes without
+content relaxation. This is a tooling-scope failure, not a native test failure.

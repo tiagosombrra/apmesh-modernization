@@ -1,9 +1,9 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-16 Fortaleza. Canonical branch: `quad-templates`.
+Updated 2026-11-17 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: local boundary-transition-interior coupling; mixed feedback remains open
+## Active: complete integrated mixed TRI/QUAD filling before adaptive balancing
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,42 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-17 - implementation and documentation realigned
+
+Priority order is now integrated mixed fill, actual mixed accepted-state/error
+feedback, then local curve/transition/interior balance. The earlier balance-first
+direction is retained as history and explicitly superseded. See the finite
+[realignment](MIXED_FILL_REALIGNMENT_20261117.md) and
+[implementation contract](MIXED_FILL_IMPLEMENTATION_20261117.md).
+
+Feature7fc988d30b27f08f620a68e4804ce453270774bd adds actual adjacent AFT TRI pair
+inventories to each applicable real-boundary archive, with original face/node
+indices and source step/epoch/retry/domain identity. Candidates are topological
+possibilities only: selected0, quality/selection not evaluated, no OBJ replacement
+or owner publication. Initial TRI-only source states are not applicable. This is
+completed-output engineering preparation, not the historical in-front algorithm.
+Original real curves, templates/AFT, TRI decisions and mixed mesh output remain
+unchanged. Native/CSV contracts include malformed topology and forged provenance.
+
+Local CLI push/PR writes failed403; the authorized GitHub connection published an
+identical complete tree, preserving the local6c5ec71 commit on a backup branch.
+Exact-head85/85 baseline, GNU/MSVC/Clang sanitizer native old/new/rollback cases,
+two configured LLVM22 TUs/header consumers and current-GNU frozen Eistute5/Book4
+OBJ/acceptance/boundary parity pass. Hosted run44055409865 completes4/4 SUCCESS.
+Each profile rejects five native bad topologies and four CSV forgeries per
+bounded normal/rollback case; all40 prior OBJ files and all new diagnostic CSVs
+agree across profiles. [Receipt](evidence/MIXED_FILL_ALIGNMENT_20261117.json).
+These are read-only candidate/engineering scopes, not accepted pairing evidence.
+PR238 remains draft; old d59a513 checks are not substituted for this head.
+No new numerical pairing, scientific adoption, stage closure or merge.
+
+Next action: record advisor alignment on shape-space/threshold, alternative/tie
+selection and degenerate handling, then implement in-front pairing with distinct
+AFT-pair provenance and reversible physical publication. An async question asks
+whether those choices exist; pending input is not approval. Retain the local
+balance proposal after this fill capability. Centroid, M5/M7, Doxygen/CRT and
+independent review remain open.
 
 ### 2026-11-16 - historical mixed-region scope and pairing gap clarified
 

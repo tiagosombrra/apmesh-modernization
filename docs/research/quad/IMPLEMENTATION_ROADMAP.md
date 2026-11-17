@@ -1,7 +1,16 @@
 # Plano de pesquisa e implementação QUAD — APMesh
 
 
-## Current finite execution queue — 2026-11-15
+## Current finite execution queue — 2026-11-17
+
+The [current realignment](MIXED_FILL_REALIGNMENT_20261117.md) supersedes the
+balance-first successor: complete integrated remaining-region TRI/QUAD filling,
+then actual mixed accepted-state/error feedback, then local bidirectional sizing.
+Source7fc988d adds read-only actual AFT pair candidates and source-scoped CSV
+contracts. It does not select/publish pairs or adopt scientific numerical policy.
+Next is advisor-aligned in-front pairing with reversible typed publication and
+separate seed-template/AFT-pair provenance. Keep all original M0-M9/R0-R4 gates,
+prior qualified slices, negative evidence and PR238 review; no stage closes here.
 
 The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
 M0–M9 acceptance criteria. The UV convexity repair P0 is integrated through

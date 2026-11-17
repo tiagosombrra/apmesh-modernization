@@ -1,5 +1,11 @@
 # Local boundary-transition-interior coupling proposal - 2026-11-16
 
+Sequencing updated2026-11-17: retain this proposal after completion of the
+integrated mixed-fill capability and actual mixed accepted-state/error feedback.
+The [current implementation realignment](MIXED_FILL_REALIGNMENT_20261117.md)
+supersedes its former position as the immediate next controller. This changes
+delivery order, not scientific approval or any proposed numerical threshold.
+
 Status: scientific proposal requested by the user after inspecting the generated
 mesh. No new numerical policy, formula, threshold or implementation is adopted.
 Baseline source remains d59a513a04ea8c9573e006789641f4adbeecedee in draft PR238;
