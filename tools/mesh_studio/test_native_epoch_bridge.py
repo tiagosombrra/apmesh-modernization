@@ -16,6 +16,7 @@ from tools.mesh_studio.native_epoch_bridge import (
     audit_archived_r2c13,
     audit_archived_r2c14,
     audit_native_source,
+    audit_native_obj_identity_gap,
     build_native_epoch_bridge,
 )
 
@@ -118,6 +119,24 @@ class NativeEpochBridgeTests(unittest.TestCase):
             "GlobalOutcomeKind::AcceptedStepCommitted", 1)
         with self.assertRaises(NativeEpochBridgeError):
             audit_native_source(broken, self.outcome)
+
+    def test_original_tri_obj_does_not_export_native_face_or_patch_ids(self) -> None:
+        gap = self.bridge["legacy_native_obj_identity_gap"]
+        self.assertTrue(gap["generator_node_id_used_for_output_vertex_deduplication"])
+        self.assertFalse(gap["generator_element_face_id_serialized"])
+        self.assertFalse(gap["per_face_source_patch_id_serialized"])
+        self.assertFalse(gap["obj_face_position_equals_native_source_element_id"])
+
+    def test_native_writer_identity_contract_cannot_be_guessed_from_obj(self) -> None:
+        changed = self.source.replace(
+            'obj << "f "',
+            'obj << "f " << t->GetId()', 1,
+        )
+        with self.assertRaisesRegex(
+            NativeEpochBridgeError,
+            "original_obj_writer_provenance_revised_reaudit_required",
+        ):
+            audit_native_obj_identity_gap(changed)
 
     def test_changed_bounded_log_contract_is_rejected(self) -> None:
         broken = self.outcome.replace(
