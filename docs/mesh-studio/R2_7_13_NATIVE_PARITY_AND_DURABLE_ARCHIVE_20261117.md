@@ -145,8 +145,63 @@ is byte-identical and no CSV field needs to be normalized or hidden.
 The specifically timed `*_runtime_summary.csv` remains explicitly
 excluded. A new regression test asserts this exclusion.
 
-**Current R2.7.13 parity qualification:** pending the new complete
-source-qualified CI run. Do not declare numerical parity until the
+**R2.7.13 confirmed native parity:** the corrected full CI
+[**#44148365669**](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44148365669)
+at tested code SHA `3dcef1390736c91f0c0eff47579ae2a5d2dbffe3`
+finished with **all four jobs SUCCESS**.
+The real **two separately compiled C++ original serial generator builds**
+reported identical native decision/event counters and *byte-identical*
+original scientific file sets:
+
+| Source model | Original TRI accepted steps | Rejected/restored | OBJ raw-equal | CSV raw-equal | JSON raw-equal | Total raw-equal |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Eistute | [1] | 3 | 5 | 11 | 5 | **21/21** |
+| Book | [1] | 2 | 4 | 9 | 4 | **17/17** |
+| **Combined** | | | **9/9** | **20/20** | **9/9** | **38/38** |
+
+`R2713_NATIVE_OUTPUT_PARITY` markers in the real native CI logs
+confirm exactly `scientific_files_equal=21` for Eistute and
+`scientific_files_equal=17` for Book, with
+`scientific_lod_qualified=false` in both.
+No `.pos` file was produced in these two article profiles;
+the comparator would compare one if produced. The explicit runtime
+timing CSV and unstructured timing/debug logs were **not** included
+among these 38 scientific files.
+
+The original output-file ZIP from that CI,
+`mesh-studio-r2713-native-numerical-parity-3dcef1390736c91f0c0eff47579ae2a5d2dbffe3`,
+artifact **#14356614235**, contains the two complete JSON parity
+receipts. It was also preserved in the same personal Drive research
+results folder as the R2.7.12 original NDJSON evidence, under
+`APMesh_R2713_Paridade_Nativa_OFF_ON_Eistute_Book_SHA-3dcef139_2026-11-17.zip`.
+The private URL is intentionally omitted from this potentially
+public GitHub documentation.
+
+**ZIP parity receipt SHA-256:**
+`4d9bfa11815ee9e1818eafde65b23bd3f3aee1ea2ac666ee837d93b771b68a7e`.
+The original GitHub ZIP was downloaded and hashed locally,
+uploaded to personal Drive and **downloaded again**. The readback
+was byte-identical to the original.
+
+| Internal original parity JSON | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `r2713-eistute-native-output-parity.json` | 5,519 | `47e8e9be26b59dcb233d159784d95f4bb9faf93b7dd758690225a9610652d964` |
+| `r2713-book-native-output-parity.json` | 4,732 | `c281b0c47d4dd4ca47f499c32627bb33434d00f8d194ca22aa00bbd9d74e156b` |
+
+The complete source-qualified CI #44148365669 also passed
+Linux/Windows Python scientific regression and hosted Chromium.
+A follow-up CI for an **additional synthetic unit test of
+explicit runtime-timing exclusions** is recorded separately;
+the native C++ parity code itself remained unchanged between these
+two tested revisions.
+
+**Conclusion:** the optional native observer did not modify
+the accepted/rejected events or **any of the 38 compared scientific
+output file bytes for these two original model configurations**.
+This is stronger than matching only mesh counts, but is **not**
+proof for every model, numerical backend, OS, physical GPU mode
+or adaptive stage. Source face IDs remain snapshot-local and
+R2.8 cross-epoch scientific LOD remains BLOCKED. Do not declare numerical parity until the
 `R2713_NATIVE_OUTPUT_PARITY` markers are observed in a successful
 job for **both original models**.
 
