@@ -78,4 +78,12 @@ test('R2.7.7 local runner refuses unattended CI and missing physical attestation
   });
   expect(blockedNoAttestation.status).toBe(2);
   expect(blockedNoAttestation.stderr).toContain('confirm a local physical workstation');
+  const blockedConfigOverride=spawnSync(process.execPath,[script,'--config=playwright.config.ts'],{
+    encoding:'utf8',timeout:10_000,
+    env:{...process.env,CI:'',APMESH_R277_PHYSICAL_DESKTOP:'I_CONFIRM_PHYSICAL_WORKSTATION',
+      APMESH_R277_GPU_MODEL:'operator-gpu',APMESH_R277_GPU_DRIVER:'operator-driver',
+      APMESH_R277_DISPLAY_REFRESH_HZ:'60'},
+  });
+  expect(blockedConfigOverride.status).toBe(2);
+  expect(blockedConfigOverride.stderr).toContain('CLI overrides are forbidden');
 });
