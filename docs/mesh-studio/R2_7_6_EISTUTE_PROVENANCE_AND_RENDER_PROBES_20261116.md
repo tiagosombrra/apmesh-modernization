@@ -261,3 +261,27 @@ adaptive epoch without original generator acceptance evidence.
 classifications pass the declared CI gates; no default fast-picker
 promotion, no synchronous cap increase, no curved QUAD admission,
 and no R2.8 geometric LOD authorization.
+
+## R2.7.10 correction to archived manifest interpretation (2026-11-17)
+
+The R2.7.6 description of the historical `MANIFEST.sha256` mismatch
+predates an independent byte-level explanation obtained in R2.7.10.
+The archived original Git OBJ's **LF** representation hashes to
+`378b62da75400c1bfe6871be29d22d8b14d6d6e054a1fa79de062de35c95f9eb`.
+Replacing **only the line terminators** from LF to CRLF hashes to
+`c0c55cbdf473233408dd21a9a17b542adee12f969e187abaea8116f103080e18`,
+exactly matching the historical manifest entry. This is a byte
+serialization issue, **not altered geometry**. The original manifest
+is retained unchanged and the source Git LF bytes are now preserved
+on Windows via `.gitattributes` (`reference/*.obj text eol=lf`).
+
+The three original Eistute stage-4 CSV rows matching 7,184 TRI and
+the pinned numerical references all report
+`budget_final_status=rejected` and
+`stop_reason=hybrid_criterion_rejected`. This is a source-reported
+rejection, not an independently rerun native acceptance trace.
+Consequently Eistute remains **not an accepted-adaptive-epoch dataset**
+and is excluded from certified per-face, patch/curve, and R2.8 LOD
+source tests. See
+`docs/mesh-studio/R2_7_10_SOURCE_EPOCH_LEDGER_AND_R28_GATE_20261117.md`
+for the verified exact-byte reconstruction and current classification.
