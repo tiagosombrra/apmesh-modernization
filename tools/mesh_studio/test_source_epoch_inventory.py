@@ -62,6 +62,12 @@ class TestScientificSourceEpochInventory(unittest.TestCase):
         self.assertFalse(archive["historical_manifest_matches_file"])
         self.assertFalse(archive["adaptive_acceptance_verified"])
         self.assertFalse(archive["per_face_original_generator_id_verified"])
+        self.assertEqual(archive["archived_csv_matching_reference_rows"], 3)
+        self.assertEqual(archive["archived_csv_budget_final_status"], "rejected")
+        self.assertEqual(archive["archived_csv_stop_reason"],
+                         "hybrid_criterion_rejected")
+        self.assertEqual(archive["archived_csv_decision_scope"],
+                         "SOURCE_REPORTED_REJECTION_NOT_REPLAYED_NATIVE_TRACE")
         self.assertEqual(archive["obj_face_index_semantics"],
                          "ORDINAL_IN_OBJ_NOT_GENERATOR_FACE_ID")
 
