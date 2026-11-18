@@ -190,6 +190,8 @@ def run_treatment(exe: Path, root: Path, original_dir: Path,
             work / (treatment.model + "-treatment"))
         config = work / "isolated-research.conf"
         config.write_text(execution_config, encoding="utf-8", newline="\n")
+        (destination / "resolved-execution.conf").write_bytes(
+            config.read_bytes())
         env = dict(os.environ,
                    APMESH_RESEARCH_LINEAGE_DIR=str(lineage),
                    APMESH_RESEARCH_ACCEPTANCE_GATES="1")
