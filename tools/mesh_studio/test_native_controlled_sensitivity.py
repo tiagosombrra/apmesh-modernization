@@ -144,6 +144,8 @@ def synthetic_artifact_tree(parent: Path):
         "each_treatment_is_a_distinct_cpp_process_not_a_combined_epoch": True,
         "baseline_native_article_runs_remain_separate_controls": True,
         "all_treatments_have_genuine_two_accepted_same_run_epochs": False,
+        "cross_epoch_native_descendants_certified": False,
+        "continuous_error_bound_certified": False,
         "scientific_lod_qualified": False,
     }
     (output / "index.json").write_text(json.dumps(index), encoding="utf-8")
