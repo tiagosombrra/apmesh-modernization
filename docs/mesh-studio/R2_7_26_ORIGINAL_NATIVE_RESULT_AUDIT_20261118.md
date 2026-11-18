@@ -38,6 +38,24 @@ Book's original accepted native TRI NDJSON is **byte-identical** to the one-pass
 - The original source C++ serial generator, independent re-parse and lineage validation, Linux **400/400 tests (4 optional skips)** and original OFF/ON parity job PASSED. The first Windows Python run **400 tests, 10 skips**, had **two hash-attestation exceptions/failures** for CRLF; it was not successful. Do not conflate actual source-native PASS with overall 4/4 CI PASS or the unrelated hosted Chromium CI result.
 - Exact corrected future CI status, original runtime SHA, Windows success and Chromium PASS must be appended only after they have actually been checked and **not before**.
 
+## Matched original R2.7.23 source acceptance-predicate vector comparison
+
+The genuine same-run original and variant C++ stderr `R2723_NATIVE_ACCEPTANCE_GATE` events were independently matched on **exact** `(step,retry)`; original Eistute had seven rows and the variant had seven; original Book and variant each had three. The following statuses are **read-only observations of the original active gate vector, not alternative/relaxed acceptance criteria**.
+
+| Eistute restored original step/retry | Original false active diagnostic fields | Changed variant `CURVE_POINT_MIN=13` false diagnostic fields | Selected actual flips |
+| --- | --- | --- | --- |
+| Step 2 / retry 0 and 1 | `efficiency_ok`, `target_growth_ok`, `step2_overshoot_ok` | `quality_gate_ok`, `hybrid_shape_gate_ok`, `efficiency_ok`, `target_growth_ok` | `quality_gate_ok: true→false`; `hybrid_shape_gate_ok: true→false`; `step2_overshoot_ok: false→true` |
+| Step 3 / retry 0 and 1 | `local_progress_ok`, `efficiency_ok`, `target_growth_ok`, `stable_progressive_overshoot_ok` | `local_progress_ok`, `efficiency_ok` | `target_growth_ok: false→true`, `stable_progressive_overshoot_ok: false→true`; `stable_mid_explore_accept: true→false` |
+| Step 4 / retry 0 and 1 | `transition_coherence_ok`, `stable_transition_ready`, `quality_gate_ok`, `hybrid_shape_gate_ok`, `efficiency_ok`, `target_growth_ok`, `stable_progressive_overshoot_ok` | `transition_coherence_ok`, `stable_transition_ready`, `efficiency_ok`, `target_growth_ok`, `stable_progressive_overshoot_ok` | `quality_gate_ok: false→true`; `hybrid_shape_gate_ok: false→true`; `stable_late_explore_accept: false→true`, **but original coherence/transition predicates remain false** |
+
+The original/variant Book step 2 and 3 Boolean acceptance vectors were **exactly equal**. Both rejected attempts still include `hybrid_shape_gate_ok=false` and `efficiency_ok=false`. Book has a small changed rejected-candidate numerical error, but no gate classification flip.
+
+These facts rule out **the specific curve-minimum change alone** as a complete solution for a second Eistute native commit: several independent active predicates still refuse the actual step-4 candidates, even though two quality-related predicates recovered. They do not prove which predicate is globally causal when the original policy evaluates conjunctions, modes and overrides. Do not edit policy gates to achieve a cosmetic two-epoch outcome.
+
+### Same-run original source evidence archived separately
+
+The exact **same-run** R2.7.26 original native C++ Eistute and Book raw source archive is [Actions artifact #14482590576](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44419375433/artifacts/14482590576). It includes the original accepted TRI native face/patch/curve NDJSON, source reports and original full C++ stderr for both models (six files). ZIP size **287,820 bytes** and SHA256 `2275cffb786e5bdc619cbd8e9bf8681dfc1d4bfe52729eeb4e3dd09511af2352`. This complete source ZIP was additionally archived in the same personal doctorate Google Drive folder and **downloaded from Drive again**, matching the original GitHub ZIP byte-for-byte and SHA-256. Together with the separately archived R2.7.26 variant ZIP (`2274d2ee2793679f662236b95ef652518ec80b3a14301dfebc3428c3eacc43e0`), the actual source/variant original precommit gate comparisons can be independently reconstructed after GitHub Actions retention expires.
+
 ## Next research decision
 
 The R2.7.26 treatment exposed a trade-off: Eistute minimum curve sampling 11→13 yields more faces and different geometry, but worsens some **rejected** candidate errors and does not clear the original native acceptance gates. Book AFT=1 is largely nonbinding for accepted original geometry. A later preregistered study could explicitly test a smaller Eistute change (e.g. 11→12) or read-only per-patch actual AFT smoothing operations, but **those would be new treatments** requiring a separate registration, source files, native audit and run; they are **not performed in R2.7.26**.
