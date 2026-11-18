@@ -3162,6 +3162,28 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 #else
       timer->InitTimerParallel(0, 0, 3);
 #endif
+#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE
+      // R2.7.25 measures the effective original per-attempt element budget
+      // before the actual unchanged curve and domain adaptation methods.
+      if (const char* flag = std::getenv("APMESH_RESEARCH_EFFECTIVE_BUDGETS");
+          flag != nullptr && flag[0] == '1' && flag[1] == '\0') {
+        std::cerr << std::setprecision(17)
+                  << "R2725_ELEMENT_BUDGET={\"schema\":\"apmesh.meshstudio.r2725.actual_effective_budget.v1\","
+                  << "\"step\":" << this->step_ << ",\"retry\":" << retry
+                  << ",\"stable\":" << (current_policy_.stable_mode ? "true" : "false")
+                  << ",\"configured_intensity\":" << current_policy_.intensity
+                  << ",\"policy_step1_growth\":" << current_policy_.step1_target_growth
+                  << ",\"step1_element_growth\":" << Step1ElementTargetGrowth()
+                  << ",\"step2_element_growth\":" << Step2ElementTargetGrowth()
+                  << ",\"step3_element_growth\":" << Step3PlusElementTargetGrowth()
+                  << ",\"budget_driven\":" << BudgetDrivenAdaptation()
+                  << ",\"element_target_mode\":" << ElementTargetMode()
+                  << ",\"effective_growth\":" << current_target_element_growth_
+                  << ",\"effective_target_elements\":" << current_target_elements_step_
+                  << ",\"previous_elements\":" << previous_elements
+                  << ",\"scientific_lod_qualified\":false}" << '\n';
+      }
+#endif
       AdaptCurve(geometry);
 #if USE_MPI
       timer->EndTimerParallel(RANK_MPI, 0, 3);
@@ -4103,6 +4125,13 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     double min_adjacent_target_h = std::numeric_limits<double>::max();
     double max_adjacent_target_elements = 0.0;
     bool sensitive_curve = false;
+#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE
+    // Observation-only local registers; never consumed by adaptation policy.
+    int r2725_growth_target = previous_points;
+    int r2725_priority_target = previous_points;
+    int r2725_geometric_floor = 0;
+    bool r2725_priority = false;
+#endif
     if (BudgetDrivenAdaptation() == 1 && CurvePointBudgetMode() == 1) {
       double max_patch_growth = 1.0;
       double max_patch_budget = 0.0;
@@ -4148,6 +4177,10 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
       target_curve_points = clamp_curve_target(
           static_cast<int>(std::round(static_cast<double>(previous_points) *
                                       std::min(curve_growth_cap, std::max(1.0, blended_growth)))));
+#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE
+      r2725_growth_target = target_curve_points;
+      r2725_priority = touches_priority_patch;
+#endif
       if (step_ >= 2 && touches_priority_patch) {
         target_curve_points =
             std::max(target_curve_points, clamp_curve_target(previous_points + 4));
@@ -4160,6 +4193,9 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
         target_curve_points = std::max(
             target_curve_points, clamp_curve_target(previous_points + ((step_ <= 1) ? 5 : 7)));
       }
+#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE
+      r2725_priority_target = target_curve_points;
+#endif
       if (current_policy_.stable_mode && step_ >= 2 &&
           min_adjacent_target_h < std::numeric_limits<double>::max()) {
         const double curve_length = std::max(1.0e-9, curve->GetLength());
@@ -4183,8 +4219,31 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
         if (touches_priority_patch)
           geometric_target += 2;
         target_curve_points = std::max(target_curve_points, clamp_curve_target(geometric_target));
+#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE
+        r2725_geometric_floor = clamp_curve_target(geometric_target);
+#endif
       }
     }
+#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE
+    // Emit component targets prior to consistency and structural caps.
+    if (const char* flag = std::getenv("APMESH_RESEARCH_EFFECTIVE_BUDGETS");
+        flag != nullptr && flag[0] == '1' && flag[1] == '\0') {
+      const bool active = BudgetDrivenAdaptation() == 1 && CurvePointBudgetMode() == 1;
+      std::cerr << std::setprecision(17)
+                << "R2725_CURVE_BASE={\"schema\":\"apmesh.meshstudio.r2725.actual_curve_components.v1\","
+                << "\"step\":" << this->step_ << ",\"retry\":" << ADAPTIVE_CURRENT_RETRY
+                << ",\"curve_index\":" << i << ",\"previous_points\":" << previous_points
+                << ",\"budget_active\":" << (active ? "true" : "false")
+                << ",\"configured_growth_cap\":" << CurvePointGrowthStepN()
+                << ",\"growth_target\":" << r2725_growth_target
+                << ",\"priority_target\":" << r2725_priority_target
+                << ",\"geometric_floor\":" << r2725_geometric_floor
+                << ",\"priority_patch\":" << (r2725_priority ? "true" : "false")
+                << ",\"sensitive_curve\":" << (sensitive_curve ? "true" : "false")
+                << ",\"pre_consistency_target\":" << target_curve_points
+                << ",\"scientific_lod_qualified\":false}" << '\n';
+    }
+#endif
     CurveAdaptationSnapshot snapshot;
     snapshot.curve_id = curve->GetId() != 0UL ? curve->GetId() : static_cast<unsigned long>(i);
     snapshot.factor = ComputeCurveAdaptationFactor(curve, patch_factors);
@@ -4299,6 +4358,22 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     snapshot.num_points = curve->GetNumBerPoints();
     snapshot.target_points = target_curve_points;
     snapshot.actual_points = static_cast<int>(curve->GetNumBerPoints());
+#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE
+    // The final actual curve point count is not an accepted mesh epoch.
+    if (const char* flag = std::getenv("APMESH_RESEARCH_EFFECTIVE_BUDGETS");
+        flag != nullptr && flag[0] == '1' && flag[1] == '\0') {
+      std::cerr << "R2725_CURVE_FINAL={\"schema\":\"apmesh.meshstudio.r2725.actual_curve_final.v1\","
+                << "\"step\":" << this->step_ << ",\"retry\":" << ADAPTIVE_CURRENT_RETRY
+                << ",\"curve_index\":" << i
+                << ",\"before_consistency\":" << snapshot.target_points_before_consistency
+                << ",\"after_consistency\":" << snapshot.target_points_after_consistency
+                << ",\"structurally_clamped\":"
+                << (snapshot.curve_consistency_clamped ? "true" : "false")
+                << ",\"final_target\":" << target_curve_points
+                << ",\"actual_points\":" << snapshot.actual_points
+                << ",\"scientific_lod_qualified\":false}" << '\n';
+    }
+#endif
     snapshot.point_growth_factor =
         previous_points > 0
             ? static_cast<double>(snapshot.actual_points) / static_cast<double>(previous_points)
