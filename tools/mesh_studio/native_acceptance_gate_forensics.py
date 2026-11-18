@@ -12,7 +12,9 @@ import json
 import math
 from pathlib import Path
 
-from .verify_native_lineage import require, SOURCE_MODELS, sha256_file
+from .verify_native_lineage import (
+    NativeLineageValidationError, require, SOURCE_MODELS,
+)
 
 SCHEMA = "apmesh.meshstudio.r2723.original_precommit_gate.v1"
 REPORT_SCHEMA = "apmesh.meshstudio.r2723.original_native_acceptance_gate_audit.v1"
@@ -78,6 +80,9 @@ def parse_original_gate_stderr(data: bytes) -> list[dict]:
                            object_pairs_hook=no_duplicates,
                            parse_constant=lambda bad: (_ for _ in ()).throw(
                                ValueError("nonfinite gate " + bad)))
+        except NativeLineageValidationError:
+            # Keep a distinct fail-closed reason for duplicated native fields.
+            raise
         except (UnicodeDecodeError, ValueError) as exc:
             raise ValueError("r2723_invalid_cpp_gate_json") from exc
         require(type(row) is dict and set(row)==FLAG_SET and
