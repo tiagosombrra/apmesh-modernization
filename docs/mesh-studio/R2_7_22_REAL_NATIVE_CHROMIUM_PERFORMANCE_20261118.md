@@ -162,18 +162,124 @@ does **not** substitute for physical WGL/DXGI
 measurements.
 
 ## Qualification status
+cation — 2026-11-18
 
-**Implementation added.** Native and browser evidence
-must be reviewed from the exact passing four-job
-GitHub Actions run before this R2.7.22 revision
-can be called source-bound **hosted performance
-qualified**. Physical Windows GPU/present/RSS/VRAM
-remains **UNQUALIFIED** regardless of hosted success.
+**QUALIFIED for source-verified hosted Chromium timings and exact source
+buffer estimates; NOT qualified for physical Windows GPU performance.**
 
-Scientific geometric R2.8 remains **BLOCKED**:
-neither model has two independent accepted native
-adaptive epochs, cross-epoch original face/curve
-descendant identities or certified continuous
-geometric error bounds. No C++ generator acceptance
-policy change, source mesh rewrite, weld,
-`main` merge, tag or release.
+[GitHub Actions #44280086289](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44280086289)
+completed **SUCCESS — all 4 jobs** at exact tested code/source SHA
+`264a15d57d1168b9bbb7512fa8d918648fd4c6ab`. The final revision
+corrected the synthetic regression fixture's missing
+`native_source_patches` key. The earlier incomplete #44279824404
+run **FAILED Linux/Windows regression and is NOT a certified release**,
+even though its separate original-native and hosted-browser jobs passed.
+All numbers reported below refer **only to the fully green final run**.
+
+| Independent gate | Final source-pinned result |
+| --- | --- |
+| Actual compiled original serial C++ Eistute | 1 real accepted adaptive step, 1,168 original accepted TRI, 4 source patches, 40 verified shared-source patch-local native TRI edges; 3 rejected/restored candidate steps |
+| Actual compiled original serial C++ Book | 1 real accepted step, 4,256 accepted TRI, 28 source patches, 336 true shared-source patch-local TRI edges; 2 rejected/restored |
+| Native source SHA / R2.7.12–R2.7.22 original scene capacity | **PASS**, original postcommit source independent audit and true source-bound report |
+| Original scientific OFF/ON C++ file-byte parity | Eistute **21/21**, Book **17/17**, total **38/38 identical** |
+| Linux Python scientific, contract and negative-gate tests | **352 run, 4 optional skipped, PASS** |
+| Windows Python scientific, contract and negative-gate tests | **352 run, 10 environment skipped, PASS** |
+| Hosted Ubuntu Chromium, including *real original* Eistute+Book performance test | **55 passed**, real same-run native source import, patch/source-sample interactions and CDP JS heap report PASS |
+| Independent hosted report vs native source SHA, measured sample distributions and original buffer sizes | **PASS** |
+
+**Original exact scene JSON:** 1,716,994 bytes;
+SHA256 `e671d0bcee10c4cc8f01640372495d053fe28682d9e3ebfae5cecbd670719a45`.
+The original accepted C++ per-face native NDJSON hashes remain
+Eistute `57eaa949e382aee4537325e7214694fc250d1cf20eeec96beeb6f923f6b518e6`
+and Book `e5be7af26f0064a01929e33f7db9129a50a17959d20d743f09c224551358524a`.
+
+### Final real-source Chromium observations
+
+These are **one hosted Ubuntu browser run**, using the real native
+Eistute/Book JSON imported into the independent R2.7.21 source viewer.
+The patch/source-sample timing below is a **Playwright input-to-double
+requestAnimationFrame readiness proxy**, including controller
+round trips and browser scheduler interference. It is
+**NOT a GPU-present timestamp** and cannot be compared as
+a system-independent graphics frame rate.
+
+| Original source | 10 patch changes, median | 10 patch changes, p95 | 6 source sample changes, median | 6 source sample changes, p95 |
+| --- | ---: | ---: | ---: | ---: |
+| Eistute, 1,168 TRI | **232.1 ms** | **268.7 ms** | **82.4 ms** | **94.3 ms** |
+| Book, 4,256 TRI | **232.1 ms** | **232.6 ms** | **82.2 ms** | **94.0 ms** |
+
+The first original 1.717 MB JSON read completed in **4.9 ms**;
+full source-identity/structure validation **20.6 ms**;
+accepted-native-seam-edge verification **25.1 ms**;
+combined pre-React processing **50.6 ms**. The measured
+import-to-two-RAF UI readiness interval was **1,285.9 ms**
+including automation and scene/GL setup. This interval
+does not isolate a GPU draw/present duration.
+
+The real browser CDP `JSHeapUsedSize` snapshots
+were **10,521,696 bytes** before original import,
+**37,454,440 bytes** after import, and
+**32,671,768 bytes** after the bounded model/patch/sample
+interaction sequence. These are **one browser's live
+JS heap snapshots**, not total browser process RSS,
+system RAM, graphics VRAM or an independently proven
+resource-leak verdict. GC may have affected the delta.
+
+### Bounded actual source display-buffer capacity
+
+Only explicit CPU Float32/Uint32/Uint8 buffers from the
+original faces and their patch-local native shared-source
+edge overlays are budgeted:
+
+| Original real scene | XYZ typed buffers | One patch's UV buffers | Original edge-line buffers | Estimated combined modeled display array envelope |
+| --- | ---: | ---: | ---: | ---: |
+| Eistute | 65,408 B | 16,352 B | 1,440 B | **83,200 B** |
+| Book | 238,336 B | 8,512 B | 12,096 B | **258,944 B** |
+
+This modeled envelope excludes the source JSON parsed as
+JavaScript objects, WebGL driver/upload copies,
+vtk.js internal objects and graphics memory; it is not
+a measured total memory ceiling.
+
+### Original artifacts independently preserved and reverified
+
+The following **same exact final Actions run** ZIP artifacts
+were downloaded from GitHub Actions, uploaded to the
+authenticated personal doctoral Drive
+`Doutorado/DOUTORADO_APMESH_ACOMPANHAMENTO/05_Experimentos_e_Resultados`,
+then downloaded **back from Drive** and their original
+ZIP SHA256 digests independently compared **byte-for-byte**:
+
+| Authentic source artifact | Original ZIP bytes | Original GitHub + Drive-readback SHA256 |
+| --- | ---: | --- |
+| [Raw original C++ accepted NDJSON + original stderr #14417146011](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44280086289/artifacts/14417146011) | **279,373** | `ed6b9ead93d749bc06645e5730e2c8c38045c89d0f0465ff72936c5f0f399284` |
+| [Accepted native TRI Eistute/Book source scenes #14415878797](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44280086289/artifacts/14415878797) | **214,946** | `fd163e0f626d61e4a310161171bec5ea06e50155c211e06c7d2f965fd5ec8f97` |
+| [Real original native source typed-buffer receipt #14416168298](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44280086289/artifacts/14416168298) | **843** | `4c6521e637487ef2703fc47c8cd20696121b74bf4b0b2e9711cc33462714b1f5` |
+| [Original hosted real-source Chromium report + independent audit #14417955381](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44280086289/artifacts/14417955381) | **2,562** | `5680c2e5073c62ac0342cfc058da90e23aefb2c995f766c6c85b5969632e9664` |
+
+The raw Chromium performance JSON SHA256 is
+`ca9dd1eb7e84b562210baca91cdce5a35c62b4bd1561477b28eecf35d338604b`
+(4,795 original bytes); the independent audit JSON SHA256
+is `87a617223657c8c8c1b7c1e06a5315891f0057a0f1215b95fff53fd339b8b651`
+(2,156 bytes). The native source original hashes are pinned
+in the reports and original C++ runtime artifacts.
+
+### Scientific admission remains blocked
+
+**R2.7.22 delivers measured real-source browser *hosted*
+interaction/heap diagnostics and source-derived CPU
+display array capacity; it does NOT certify hardware performance
+on a physical Windows GPU.** Still required: physical
+GPU-present timestamps, controlled Windows device and driver,
+process-level RSS/private bytes, per-process GPU VRAM,
+graphics context lifecycle/stress under repeated close/reopen,
+replicates on additional real systems and independent
+hardware-bound qualification. None has been fabricated.
+
+**R2.8 scientific geometric LOD remains BLOCKED:** neither model
+has two genuinely accepted adaptive epochs, original cross-epoch
+face/curve ancestry and continuous geometric error bounds.
+No scientific C++ generator acceptance change, source mesh
+rewriting, global node weld, `main` merge, tag or release;
+PR #239 remains draft/unmerged. Source VTK picking
+remains default with bounded optional experimental BVHs.
