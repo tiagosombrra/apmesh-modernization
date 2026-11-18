@@ -114,8 +114,18 @@ source auditor PASS**, Python Linux **390 tests / 4 optional skips
 PASS**, and Python Windows **390 / 10 environment skips PASS**.
 The source output parity still certifies **38/38 original article
 scientific files byte-identical** with research instrumentation
-OFF/ON. A hosted Chromium result must be checked separately
-before claiming full 4/4 job success.
+OFF/ON. **Full certification achieved: all 4/4 independent GitHub Actions
+jobs SUCCESS** in exact tested code SHA
+`05880f831428f9505b11fd1f108d7b28374bdb0d`.
+The production TypeScript/Vite build passed; the actual
+hosted Chromium original-native scene/browser contract suite
+passed **55/55 tests**, and the independent browser
+performance report was authenticated against the same exact
+source JSON SHA-256
+`2441b5a5fd5ab9ba7e4a799c6358740c2d9f3175ac5eaa9e39e136bd5b9032f1`.
+Those timing/heap receipts remain **hosted Ubuntu browser
+observations**, not physical Windows GPU present/RSS/VRAM.
+All three other independent jobs are PASS as listed above.
 
 The exact final *native* source-bound effective-budget report
 reproduces all Eistute and Book findings above, including
