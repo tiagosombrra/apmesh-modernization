@@ -153,6 +153,15 @@ jobs:
         run: python -m tools.mesh_studio.native_corner_origin --directory build/r2712-native-evidence --output build/r2717-native-corner-origin.json
       - name: Audit actual provisional Adapter boundary closure against accepted C++ submesh ownership
         run: python -m tools.mesh_studio.native_boundary_ownership --directory build/r2712-native-evidence --output build/r2718-boundary-cpp-ownership.json
+      - name: Generate source-bound read-only native nonwelded Inspector bundle
+        run: python -m tools.mesh_studio.native_identity_inspector --directory build/r2712-native-evidence --output build/r2719-native-inspector.json
+      - name: Retain original R2.7.19 Inspector import manifest for independent local viewer
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2719-native-inspector-${{ github.sha }}
+          path: build/r2719-native-inspector.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Retain original R2.7.18 C++ pointer-comparison receipt without raw addresses
         uses: actions/upload-artifact@v4
         with:
