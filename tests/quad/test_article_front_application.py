@@ -238,6 +238,14 @@ def main():
                 'Article candidate failed to preserve the existing owner on rejection')
         audit(Path(str(rollback_prefix)+'.obj'))
         rollback_verified = True
+    # Reporting is read-only and must not alter any source OBJ or admission.
+    import sys
+    tools_dir = Path(__file__).resolve().parents[2]/'tools'
+    sys.path.insert(0, str(tools_dir))
+    from quad_generation_metrics import collect_archive, write_report
+    measured = collect_archive(directory)
+    write_report(measured, args.directory/'generation-metrics')
+    require(len(measured['stages']) == 2*len(rows), 'Missing per-step error/quality reports')
     report = dict(schema='apmesh.quad.article_application.v1', stages=reports,
                   rejected_forgeries=len(corruptions), rollback_verified=rollback_verified,
                   mixed_adaptive_epochs=0)
