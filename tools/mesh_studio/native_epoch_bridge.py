@@ -19,6 +19,22 @@ R2C13 = BASE / "R2C13_REAL_GENERATOR_ACCEPTED_EPOCHS_20261113.json"
 R2C14 = BASE / "R2C14_ORIGINAL_GENERATOR_REJECTION_FORENSICS_20261113.json"
 SOURCE = Path("src/generator/generator_adaptive.cpp")
 OUTCOME = Path("research/quad/global_outcome.h")
+
+# The legacy accepted/rejected source blob remains immutable. A precisely
+# pinned research observer may be stripped to reconstruct its original bytes.
+R2723_INSTRUMENTED_SOURCE_GIT_BLOB = "2138c9dbab731027692c1a0739cb942034525030"
+R2723_INCLUDES = (
+    b"#include <array>\n#include <cstdlib>\n#include <iomanip>\n"
+    b"#include <sstream>\n#include <ostream>"
+)
+R2723_ORIGINAL_INCLUDES = b"#include <array>\n#include <ostream>"
+R2723_GATE_START = (
+    b"#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE\n"
+    b"      // Emit actual pre-commit decisions only when explicitly enabled"
+)
+R2723_GATE_END = (
+    b"#endif\n      if (score_ok || small_mesh_progress_override) {"
+)
 PINNED_BLOBS = {
     str(R2C13): "9572f0b8951138e757f8c83df5b9999c4073831e",
     str(R2C14): "2259281b8b16bbd8a089c7f2805b7676dd252082",
@@ -66,6 +82,22 @@ def verified_bytes(root: Path, path: Path) -> tuple[str, str]:
     require(b"\r" not in normalized, "unsupported_source_line_ending")
     head = b"blob " + str(len(normalized)).encode("ascii") + b"\0"
     blob = sha1(head + normalized).hexdigest()
+    if path == SOURCE and blob == R2723_INSTRUMENTED_SOURCE_GIT_BLOB:
+        require(normalized.count(R2723_INCLUDES) == 1 and
+                normalized.count(R2723_GATE_START) == 1 and
+                normalized.count(R2723_GATE_END) == 1,
+                "unrecognized_native_acceptance_observer_layout")
+        start = normalized.index(R2723_GATE_START)
+        end = normalized.index(R2723_GATE_END, start)
+        require(start < end and end - start < 9000,
+                "unbounded_native_acceptance_observer")
+        # Strip the exact optional native observer and retain the original
+        # accept/reject policy as a byte-identical historical Git blob.
+        normalized = (
+            normalized[:start] + normalized[end + len(b"#endif\n"):]
+        ).replace(R2723_INCLUDES, R2723_ORIGINAL_INCLUDES, 1)
+        head = b"blob " + str(len(normalized)).encode("ascii") + b"\0"
+        blob = sha1(head + normalized).hexdigest()
     require(blob == PINNED_BLOBS[str(path)],
             "pinned_git_blob_changed_" + str(path))
     return normalized.decode("utf-8"), sha256(normalized).hexdigest()
