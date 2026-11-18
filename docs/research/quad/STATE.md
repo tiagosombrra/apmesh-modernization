@@ -3,7 +3,7 @@
 Updated 2026-11-18 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: review and qualify the delivered prospective mixed-front candidate
+## Active: correct documented article-conformance gaps in the mixed candidate
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,36 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-18 - revalidate article conformance and withdraw invented-adjustment priority
+
+The user directs following the1993 mixed technique incrementally with existing
+original code/flags, rather than inventing a balancing controller. The prior
+coupling implementation priority is withdrawn. [Direct paper/source audit](ARTICLE_CONFORMANCE_REVALIDATION_20261118.md)
+and [method/anchors/flags evidence](evidence/ARTICLE_CONFORMANCE_REVALIDATION_20261118.json)
+identify missing documented stages in exact PR240 source b3d2fbc.
+
+PAPER-01: current interior classification excludes missing-neighbor leaves but
+omits the paper's0.2 contour-edge clearance reclassification. In the actual
+stage3 chart,25 of175 used native interior leaves fall inside that band, using
+both cell-minimum distance and center-distance control. Stages1/2 have0. This
+is a read-only witness, not a repaired or regenerated result. PAPER-02: final
+mixed smoothing is absent; current smoothing flags reach source TRI only.
+PAPER-03: vertex-mean template centers remain an explicitly unconfirmed centroid
+interpretation. Existing selection-before-front-update/S<=1.5 core is coherent;
+these findings do not invalidate its measured topology/ownership scope.
+
+The existing curve/surface contribution is present. Fixed factor bounds1.5/1.5
+clamp the curve factor; target-point rebuild requires the existing budget gates.
+Accepting a flag does not prove it directly controls the final mixed graph.
+No new numerical rule or broad flag sweep is adopted. No native tests rerun.
+
+**One next action:** restore the documented contour-clearance classification in
+the opt-in candidate with a failing witness, coherent source/template/front
+interfaces and default TRI preserved. Then complete the article's mixed smoothing
+and effective-control contract and explicitly dispose M1 center ambiguity.
+Keep independent review, local filesystem disposition and exact integration
+gates. New coupling/R3 controller work is outside the current execution scope.
 
 ### 2026-11-18 - measure the straight-boundary quality limitation
 

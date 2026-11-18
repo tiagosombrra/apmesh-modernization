@@ -1,5 +1,11 @@
 # Straight-boundary size mismatch in the actual mixed output
 
+Later same-day correction: the user rejects a new balancing law. The
+[direct article/source audit](ARTICLE_CONFORMANCE_REVALIDATION_20261118.md)
+identifies missing documented contour-clearance and mixed-smoothing stages.
+The measurements below remain valid; the proposed new-controller follow-up is
+withdrawn from the execution queue. Use the latest STATE/roadmap for next work.
+
 Date: 2026-11-18. Read-only audit of candidate b3d2fbc, draft PR240.
 Canonical entry894a71a; no source, acceptance policy, native test or mesh changes.
 [Per-interval physical measurements](evidence/BOUNDARY_SIZE_MISMATCH_20261118.json).

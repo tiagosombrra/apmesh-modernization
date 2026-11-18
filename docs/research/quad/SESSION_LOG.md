@@ -3187,3 +3187,47 @@ Use original analytical rediscretization and shared synchronization, geometry-
 justified local refinement/coarsening and bounded grading. Thresholds/hysteresis
 remain scientific proposals requiring alignment; no arbitrary factor adopted.
 No tests rerun or previous pass scopes extended. Publish/read back checkpoint.
+
+## 2026-11-18 - revalidate1993 procedure before inventing adjustment policies
+
+User rejects invented adjustments and asks precise decisions using the1993 mixed
+technique incrementally with original code and existing flags. Recheck remote
+canonical f1094d1, source b3d2fbc/PR240 draft, main ef40c0f and hosted4/4 success.
+Other PR239/225 advance independently and remain untouched. Read current state,
+roadmap/protocol and source. Withdraw the prior proposed-controller priority;
+retain its measured mismatch and proposal text as history, not adopted policy.
+
+Verify original paper SHA49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5.
+Native Poppler renders printed pp287-288; visually inspect complete pp287-290
+including Figs7/10/11, classification and smoothing. No scan redistributed.
+Paper prescribes0.2 contour-edge clearance reclassification. Current boundary
+classification uses missing side neighbors, including research capture; no
+equivalent clearance stage. Read-only actual native-box/source-face audit finds
+0/0/25 offending used leaves out of4/44/175 at stages1/2/3. Both minimum-cell
+and center-distance control yield25 at stage3, all on straight intervals:
+length0.5 UV, threshold0.1, minimum distance0.0625. No cells changed or new mesh.
+Largest-interior versus boundary-cell size cap passes in all three archives;
+native source checks2:1 adjacency. Existing mixed front's two prospective
+choices/S<=1.5/one polygon update sequence remains coherent at its bounded scope.
+
+Paper also describes interior-node smoothing; new mixed output has none. Source
+TRI improveMesh and smoothing flags do not directly smooth the reconstructed
+mixed graph. Vertex-mean center remains an explicit unconfirmed interpretation
+of the paper's polygon centroid; keep M1 numeric oracle ambiguity. Record source
+hashes/anchors and avoid claiming a numerical historical reproduction.
+
+Audit flag consumers: current factor bounds1.5/1.5 fix the final curve factor;
+sensitivity alone cannot change it. Count rebuild requires both budget-driven
+and point-budget gates; legacy default budget-driven0 makes a minimum alone
+insufficient. Source-tree quality/depth paths are conditional, not a replacement
+for paper clearance. Mixed research generation structurally uses templates;
+do not describe template-off or mixed smoothing control as implemented. No flag
+sweep, algorithm/threshold edit, native build/test rerun or new mesh occurred.
+
+Add ARTICLE_CONFORMANCE_REVALIDATION_20261118.md/JSON; correct current STATE and
+roadmap, explicitly supersede coupling proposal/audit recommendations. One next
+action: documented clearance stage in the opt-in candidate with a retained
+witness, coherent template/front interfaces and default TRI preserved; then
+documented mixed smoothing/effective controls and M1 disposition. Independent
+review, local filesystem and exact integration gates remain. New controller/R3
+work is outside current scope. Publish/read back this documentation checkpoint.

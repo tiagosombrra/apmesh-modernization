@@ -1,5 +1,12 @@
 # Local boundary-transition-interior coupling proposal - 2026-11-16
 
+2026-11-18 user-directed disposition: **not adopted and outside current execution
+scope**. The user rejects inventing balancing adjustments and requests the1993
+technique with existing controls. The [conformance revalidation](ARTICLE_CONFORMANCE_REVALIDATION_20261118.md)
+finds omitted contour-clearance and mixed-smoothing stages. Correct those before
+claiming a new controller is necessary. Retain this proposal and measured local
+mismatch as historical evidence; all older sequencing below is superseded.
+
 Sequencing updated2026-11-18: the actual prospective mixed-front output exposes
 the [measured straight-boundary mismatch](BOUNDARY_SIZE_MISMATCH_20261118.md).
 Local boundary/transition sizing is now the first functional successor after

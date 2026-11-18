@@ -1,0 +1,859 @@
+{
+  "schema": "apmesh.quad.paper_band_audit.v1",
+  "source_sha": "b3d2fbc2ad42237e2dcdbe81757bfa7abf981c6e",
+  "source_paper_sha256": "49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5",
+  "scope": "Read-only UV-cell distance to finite source contour intervals; no cell reclassification or new generation performed; evaluates the planar paper rule in the current UV chart, not physical curved-distance equivalence",
+  "stages": [
+    {
+      "step": 1,
+      "source_leaves": 16,
+      "native_interior_leaves": 4,
+      "leaves_inside_paper_band": 0,
+      "violating_leaf_ordinals": [],
+      "coarsest_boundary_cell_width": 0.25,
+      "largest_native_interior_cell_width": 0.25,
+      "native_max_size_cap_satisfied": true,
+      "intervals": [
+        {
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.5,
+              0.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.25,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.5,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.25,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.5
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.25,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              1.0,
+              0.5
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.25,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.5,
+              1.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.25,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.5,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.25,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.25,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.25,
+          "too_close_leaf_ordinals": []
+        }
+      ],
+      "source_sha256": "d7992d950fcefbcfeba71b11a1bede312a15b643d92ab1ec251afa97e457c7bd",
+      "trace_sha256": "a0c45da21a3edbba0836c09f8429b5d376cbe83b7c5b2902a136c79673282e85",
+      "center_distance_control_leaves_inside_band": 0
+    },
+    {
+      "step": 2,
+      "source_leaves": 67,
+      "native_interior_leaves": 44,
+      "leaves_inside_paper_band": 0,
+      "violating_leaf_ordinals": [],
+      "coarsest_boundary_cell_width": 0.25,
+      "largest_native_interior_cell_width": 0.125,
+      "native_max_size_cap_satisfied": true,
+      "intervals": [
+        {
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.25457763671875,
+              0.0
+            ]
+          ],
+          "length_uv": 0.25457763671875,
+          "paper_band_uv": 0.05091552734375,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.5,
+              0.0
+            ],
+            [
+              0.74542236328125,
+              0.0
+            ]
+          ],
+          "length_uv": 0.24542236328125,
+          "paper_band_uv": 0.04908447265625,
+          "min_native_cell_distance_uv": 0.125,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.25457763671875,
+              0.0
+            ],
+            [
+              0.5,
+              0.0
+            ]
+          ],
+          "length_uv": 0.24542236328125,
+          "paper_band_uv": 0.04908447265625,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.74542236328125,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "length_uv": 0.25457763671875,
+          "paper_band_uv": 0.05091552734375,
+          "min_native_cell_distance_uv": 0.125,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.5
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.125,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              1.0,
+              0.5
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.125,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.5,
+              1.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.125,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.5,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.125,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.125,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.125,
+          "too_close_leaf_ordinals": []
+        }
+      ],
+      "source_sha256": "ce16561ef84286341f68708b60356d28059ce8e24037de8ce10c3630773cb68e",
+      "trace_sha256": "607119a873e69e7cd7b336af3d6f4ecbbd0842b680d9021881bd37835fa8c761",
+      "center_distance_control_leaves_inside_band": 0
+    },
+    {
+      "step": 3,
+      "source_leaves": 223,
+      "native_interior_leaves": 175,
+      "leaves_inside_paper_band": 25,
+      "violating_leaf_ordinals": [
+        16,
+        17,
+        46,
+        47,
+        52,
+        53,
+        60,
+        61,
+        68,
+        71,
+        72,
+        75,
+        76,
+        77,
+        80,
+        81,
+        85,
+        86,
+        89,
+        90,
+        99,
+        102,
+        103,
+        106,
+        109
+      ],
+      "coarsest_boundary_cell_width": 0.125,
+      "largest_native_interior_cell_width": 0.125,
+      "native_max_size_cap_satisfied": true,
+      "intervals": [
+        {
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.128500796854496,
+              0.0
+            ]
+          ],
+          "length_uv": 0.128500796854496,
+          "paper_band_uv": 0.0257001593708992,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.128500796854496,
+              0.0
+            ],
+            [
+              0.25457763671875,
+              0.0
+            ]
+          ],
+          "length_uv": 0.126076839864254,
+          "paper_band_uv": 0.025215367972850802,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.25457763671875,
+              0.0
+            ],
+            [
+              0.378067746758461,
+              0.0
+            ]
+          ],
+          "length_uv": 0.123490110039711,
+          "paper_band_uv": 0.024698022007942202,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.378067746758461,
+              0.0
+            ],
+            [
+              0.5,
+              0.0
+            ]
+          ],
+          "length_uv": 0.121932253241539,
+          "paper_band_uv": 0.0243864506483078,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.5,
+              0.0
+            ],
+            [
+              0.621932253241539,
+              0.0
+            ]
+          ],
+          "length_uv": 0.121932253241539,
+          "paper_band_uv": 0.0243864506483078,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.621932253241539,
+              0.0
+            ],
+            [
+              0.74542236328125,
+              0.0
+            ]
+          ],
+          "length_uv": 0.123490110039711,
+          "paper_band_uv": 0.024698022007942202,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.74542236328125,
+              0.0
+            ],
+            [
+              0.871499203145504,
+              0.0
+            ]
+          ],
+          "length_uv": 0.126076839864254,
+          "paper_band_uv": 0.025215367972850802,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              0.871499203145504,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "length_uv": 0.128500796854496,
+          "paper_band_uv": 0.0257001593708992,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": []
+        },
+        {
+          "uv": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.5
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": [
+            68,
+            71,
+            99,
+            102,
+            103,
+            106
+          ]
+        },
+        {
+          "uv": [
+            [
+              1.0,
+              0.5
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": [
+            72,
+            75,
+            99,
+            102,
+            103,
+            106
+          ]
+        },
+        {
+          "uv": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.5,
+              1.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": [
+            46,
+            47,
+            60,
+            61,
+            76,
+            77
+          ]
+        },
+        {
+          "uv": [
+            [
+              0.5,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": [
+            46,
+            47,
+            60,
+            61,
+            80,
+            81
+          ]
+        },
+        {
+          "uv": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": [
+            16,
+            17,
+            52,
+            53,
+            85,
+            86
+          ]
+        },
+        {
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "length_uv": 0.5,
+          "paper_band_uv": 0.1,
+          "min_native_cell_distance_uv": 0.0625,
+          "too_close_leaf_ordinals": [
+            16,
+            17,
+            52,
+            53,
+            89,
+            90,
+            109
+          ]
+        }
+      ],
+      "source_sha256": "aa06f6177f1367f9d1ad13ea533aafe11ebcee12cb7a586a3d34c786ab8781e3",
+      "trace_sha256": "e55a59466ba9c091902af92aae4b1d984690c50cf94becf1551a1caea5b3acfb",
+      "center_distance_control_leaves_inside_band": 25
+    }
+  ],
+  "source_anchors": [
+    {
+      "file": "research/quad/article_mixed_front.h",
+      "sha256": "47a9ca40306485d571d99aa84ae4fe805a8661780c6139fdf77b3c1a43e9ca3b",
+      "anchors": [
+        {
+          "class ArticleMixedFront": [
+            42
+          ]
+        },
+        {
+          "const std::array<Edge, 2> sides": [
+            107
+          ]
+        },
+        {
+          "choice.eligible =": [
+            118
+          ]
+        },
+        {
+          "return std::move(result_)": [
+            140
+          ]
+        },
+        {
+          "double Shape(": [
+            295
+          ]
+        }
+      ]
+    },
+    {
+      "file": "research/quad/quadtree_quad.cpp",
+      "sha256": "2efc2d84d277d367dd35a2e6dd45cc4a9d2ccb92d0a9e82f9660fbd34dec1848",
+      "anchors": [
+        {
+          "LeafPolygonMesh CaptureLeafPolygons": [
+            210
+          ]
+        },
+        {
+          "if (std::any_of(neighbors.begin()": [
+            230
+          ]
+        }
+      ]
+    },
+    {
+      "file": "research/quad/controlled_patch_application.cpp",
+      "sha256": "9fd113fd02d9fa13f6cc3c688cd5ccfd126734cfef581b60365f66bf75cb0e90",
+      "anchors": [
+        {
+          "UvVertex PointRule": [
+            117
+          ]
+        },
+        {
+          "if (article_front) {": [
+            268,
+            354
+          ]
+        },
+        {
+          "article = ArticleMixedFront": [
+            276
+          ]
+        },
+        {
+          "smoothing=none": [
+            1186
+          ]
+        },
+        {
+          "EnforceResearchDomainFactorBounds": [
+            1811
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "sha256": "ee2211d196db73ab7d9c6583af08bf80214acd7316a388bc8172bef774f88aa4",
+      "anchors": [
+        {
+          "bool QuadtreeCell::inBoundary()": [
+            1395
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/application/runtime_config.cpp",
+      "sha256": "316faa72b3ef323e78204d89ce94ae11d9481654f694457f08a53e8993cfa433",
+      "anchors": [
+        {
+          "SMOOTHING_LAPLACIAN_NUMBER =": [
+            217
+          ]
+        },
+        {
+          "config.curve_point_min =": [
+            142
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/generator/generator_adaptive.cpp",
+      "sha256": "71b55cba23a8e5f0bbe885712c7a9734188acfb43890c1660b3dae8c2c2a5cc5",
+      "anchors": [
+        {
+          "BudgetDrivenAdaptation() == 1 && CurvePointBudgetMode() == 1, target_curve_points": [
+            4226
+          ]
+        },
+        {
+          "double GeneratorAdaptive::ComputeCurveAdaptationFactor": []
+        },
+        {
+          "return ClampValue(attenuated_factor, PatchFactorMin(), PatchFactorMax());": [
+            6007
+          ]
+        }
+      ]
+    }
+  ],
+  "native_tests_this_session": "not run; source and compiled inputs unchanged; previous exact b3d2fbc85 baseline/CI4 passes retain their own scope and do not establish full paper conformance",
+  "findings": [
+    {
+      "id": "PAPER-01",
+      "severity": "blocks complete paper-conformance claim",
+      "status": "confirmed missing stage",
+      "description": "Current interior selection excludes leaves with missing side neighbors but does not apply the printed p288 0.2 contour-edge clearance reclassification",
+      "measured_witness": "Stage3 has25 used native interior leaves within the band using both minimum cell distance and center-distance control in UV; stage1/2 have0",
+      "action": "Restore the documented contour-cell classification in the opt-in path and preserve original TRI/default evidence; do not substitute a new feedback law"
+    },
+    {
+      "id": "PAPER-02",
+      "severity": "blocks complete paper-conformance claim",
+      "status": "confirmed omitted stage",
+      "description": "Paper p290 smooths interior nodes after mixed contraction; ArticleMixedFront.Run and physical reconstruction perform no mixed smoothing",
+      "action": "Complete the documented mixed smoothing with boundary preservation and explicit effective existing controls; current smoothing flags act on source TRI only"
+    },
+    {
+      "id": "PAPER-03",
+      "severity": "historical identity unresolved",
+      "status": "explicit experimental center rule",
+      "description": "PointRule uses vertex arithmetic mean; paper specifies polygon centroid without an executable numeric oracle. These formulas differ on asymmetric polygons",
+      "action": "Retain M1 ambiguity and existing alternative experiments; do not certify vertex mean as historical identity or silently change the formula"
+    },
+    {
+      "id": "PLAN-01",
+      "severity": "planning correction",
+      "status": "superseded by explicit user steering",
+      "description": "Prioritizing a new boundary/interior feedback controller was premature before checking all existing article stages and controls",
+      "action": "Withdraw that implementation priority; preserve measured mismatch as evidence, prioritize conformance gaps and existing effective flags"
+    }
+  ],
+  "flag_audit": [
+    {
+      "flags": [
+        "PATCH_FACTOR_MIN",
+        "PATCH_FACTOR_MAX"
+      ],
+      "current": "both1.5 in the case",
+      "effect": "existing source curve/domain factor bounds, enforced by the selected case; real source input changes possible",
+      "caveat": "Do not interpret this adaptive factor as the paper initial quadtree percentage; units and consumers differ"
+    },
+    {
+      "flags": [
+        "CURVE_FACTOR_SENSITIVITY",
+        "CURVE_ADAPTATION_POLICY",
+        "CURVE_ADAPTATION_BLEND"
+      ],
+      "effect": "existing source curve factor calculation",
+      "caveat": "Final curve factor clamps to1.5 when both bounds are1.5, so changing sensitivity cannot change that clamped factor in the current profile"
+    },
+    {
+      "flags": [
+        "CURVE_POINT_MIN",
+        "CURVE_POINT_MAX",
+        "CURVE_POINT_BUDGET_MODE"
+      ],
+      "effect": "existing target-count rebuild route",
+      "caveat": "Actual rebuild requires both BudgetDrivenAdaptation()==1 and CurvePointBudgetMode()==1; current legacy defaults have budget-driven0, so a minimum alone does not force new boundary points"
+    },
+    {
+      "flags": [
+        "SMOOTHING_LAPLACIAN_NUMBER",
+        "SMOOTHING_LAPLACIAN_FACTOR",
+        "AFT_LOCAL_POSTPROCESS_PASSES",
+        "AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD",
+        "AFT_LOCAL_POSTPROCESS_BLEND"
+      ],
+      "effect": "original source TRI smoothing, possibly changing source/history indirectly",
+      "caveat": "No direct smoothing in the new mixed contraction/output; runtime iteration value clamps to5..7, and legacy improvement has additional quality passes, so this is not automatically the exact paper smoother"
+    },
+    {
+      "flags": [
+        "QUADTREE_FACE_QUALITY_THRESHOLD",
+        "QUADTREE_LOW_QUALITY_H_FACTOR",
+        "PATCH_QUADTREE_DEPTH_STEP1",
+        "PATCH_QUADTREE_DEPTH_STEPN",
+        "PATCH_QUADTREE_MIN_H_SCALE"
+      ],
+      "effect": "existing source-tree quality/depth paths, conditional on their native policies",
+      "caveat": "These are not implementations of the missing distance-based0.2 reclassification; do not promise identical effects or mask missing stages with a parameter sweep"
+    },
+    {
+      "flags": [
+        "USE_TEMPLATE"
+      ],
+      "effect": "source TRI follows its configured mode; research Generate unconditionally constructs its template reference and QUAD interior",
+      "caveat": "The research case requires templates structurally but does not expose a general template-off mixed path; accepted configuration should not be presented as proof of direct mixed control"
+    }
+  ],
+  "retained_coherent_steps": [
+    "Original curve/surface source partitions are replayed without sample trimming",
+    "Native neighbor grading2:1 is explicitly checked",
+    "Measured largest native interior cell respects largest boundary cell in all three stages",
+    "Six template topology families and canonical midpoint subdivision are retained, distinct from numeric centroid identity",
+    "Existing-node local maximum-angle search, two prospective alternatives, planar S<=1.5, TRI fallback and one polygonal front update match the audited core sequence",
+    "Paper starts from a supplied discretized contour; it does not prescribe the proposed new adaptive boundary/interior controller"
+  ]
+}

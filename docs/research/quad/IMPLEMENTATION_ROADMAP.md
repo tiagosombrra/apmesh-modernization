@@ -13,25 +13,24 @@ and displayed in Blender with analytic geometry and historical source polygons.
 three hosted native profiles and exact CI44271951483 4/4 SUCCESS, plus sampled
 error increases and incomplete local WSL filesystem gates.
 
-The [straight-boundary audit](BOUNDARY_SIZE_MISMATCH_20261118.md) now measures a
-concrete quality limitation: unchanged straight partitions beside increasingly
-fine native QUAD, final directional size ratios13.26-15.35 and angles down8.11deg.
-After the active PR240 review/qualification, prioritize opt-in local boundary/
-transition size coupling as the next functional package, before the full R3
-mixed-error controller. Use actual mixed adjacency and consistent physical
-sizes; preserve analytical rediscretization/shared-curve synchronization and
-scientific alignment for thresholds. This supersedes earlier R3-before-balance
-wording below without introducing a second active implementation item.
+The user explicitly rejects invented adjustment rules and requests the planned
+1993 technique as an increment to existing code, using effective existing flags.
+The [article/source revalidation](ARTICLE_CONFORMANCE_REVALIDATION_20261118.md)
+supersedes the previous new-coupling priority. The measured straight-boundary
+mismatch remains evidence. Missing article stages are now the active concern:
+distance-based0.2 contour-cell reclassification and mixed smoothing. Stage3
+has25 used interior leaves in the planar clearance band; no repair is claimed.
+Experimental vertex-mean centers and full historical identity remain unresolved.
 
-One active next action: independent candidate review, explicit local-filesystem
-failure disposition and required exact research-integration/post-merge gates.
-No integration or full historical stage closure. After qualification/integration,
-resume R3 mixed-state/error feedback, then local bidirectional size balancing.
-Preserve default TRI, previous prototype, current acceptance/stopping policies
-and scientific alignment for new mixed control. Full M1/M5/R3/M7, smoothing/
-curved-metric scope and original M0-M9/R0-R4 gates remain open. The queue below
-records the previous implementation target; its pending status is superseded
-only within the delivered bounded scope. No global-factor sweep successor.
+One active next action: restore documented contour-clearance classification in
+the opt-in candidate with a retained witness, coherent native-template/front
+interfaces and original TRI preserved. Then complete/qualify the documented
+mixed smoothing and its effective existing controls; explicitly dispose centroid
+identity. Independent review, local-filesystem disposition and exact integration
+gates remain mandatory. No new coupling law or full R3 controller is in current
+execution scope. Full M1/M5/R3/M7, curved-metric scope and original M0-M9/R0-R4
+gates remain open. Older queues below retain history and do not override this
+user-directed conformance priority. No broad parameter sweep is scheduled.
 
 The [PR238 research integration](PR238_RESEARCH_INTEGRATION_20261117.md) is
 complete at exact merge d251f19, with identical qualified candidate tree81ecc5bf.
