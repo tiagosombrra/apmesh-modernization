@@ -147,7 +147,9 @@ def fit_circle_source_segments(curve, *, limit=BUDGET_MM):
             for j in range(33):
                 u=j/32
                 p=cubic_point(controls,u)
-                deviation=distance(p,curve.Value(a+(b-a)*u).Coord())
+                # Bezier u and native circle angle are not synchronized parameters.
+                # Compare the physical point to the trimmed original edge instead.
+                deviation=curve_distance(curve,p,divisions=64)
                 max_err=max(max_err,deviation)
                 if deviation>=limit*0.75:success=False
             pieces.append(controls)
