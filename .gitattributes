@@ -9,3 +9,5 @@ tools/mesh_studio/fixtures/**/*.json text eol=lf
 tools/mesh_studio/fixtures/**/*.csv text eol=lf
 tools/mesh_studio/fixtures/**/*.py text eol=lf
 docs/mesh-studio/figures/**/*.svg text eol=lf
+configs/eistute/article.conf text eol=lf
+configs/book/article.conf text eol=lf
