@@ -3343,3 +3343,47 @@ research integration, followed by aligned mixed-state/error/adaptive work. No ne
 controller or factor sweep. Source feature branch remains visible; canonical docs
 and modernization main have distinct roles. Publish/read back this documentation
 checkpoint. The summary adopts no new scientific policy or stage qualification.
+
+## 2026-11-18 - implement the explicitly confirmed contour-clearance interpretation
+
+User authorizes the current order and requests descriptive questions before
+scientific uncertainty. Verify canonical a3e16e4, source9ca6deb and main ef40c0f;
+concurrent PR239/225/214 untouched. Explain minimum cell-to-segment versus center
+distance and UV/XYZ scope; user confirms minimum distance to finite segment in UV
+as the proposed aligned decision. Keep factor0.2/strict inequality and original
+TRI/curve/acceptance policies. No later smoothing choice is inferred.
+
+Implement explicit read-only policy in capture/emission/dispatch; article front
+uses the selected seed's own active interface and original outer contour. Avoid
+staging the old classification-dependent TRI bridge for this value-owned path;
+old bridge/observer behavior remains. Add source policy metadata, six native
+geometry/witness cases, two dispatch cases and independent actual-cell auditing
+plus three forged policy receipts. Exact source published/read back11dcaa7,
+tree5dc1ff44ad0bd9c7d22fb1efba99da0d22cc8182 on draft PR240.
+
+Retain failures and repairs: Windows small macro in new test; new filtered test
+called the unfiltered helper default; unqualified Ninja/compiler/tool environment;
+formatting hook; first85-test baseline invalidated by source identity changing
+during formatting/commit. No hidden retry or suppressed diagnostic. After stable
+identity, exact local85/85, native19/19 (leaf36/dispatch14), source-boundary contract,
+old live-pair application and fresh183-commit/186-frame/11-forgery/nonempty-rollback
+history pass. Configured changed production/header/geometric analysis passes.
+Expanded full adversarial-fixture scan fails an old invalid-enum negative control;
+retain it unresolved for review rather than hiding/removing it.
+
+Exact hosted44401586214 all4 checks pass; GNU/MSVC/ASan each match the183 commits,
+11 forged traces and rollback. All four TRI and first three mixed OBJ outputs
+are byte-identical to9ca6deb. Step3 excludes exactly25 cells and uses150 interior
+leaves;689 nodes/630 QUAD/102 TRI. Boundary angle8.11->10.37deg improves, but RMS
+0.00726210->0.01182093 and edge ratio8.70->15.08 worsen. Retain all counterevidence;
+no complete1993 reproduction, new mixed error, overall improvement or stage closure.
+
+Update repair/evidence, current plan/state/roadmap and PR description. Reread the
+retained printed-p290 smoothing paragraph: incident-element vertex-coordinate
+mean, four/five repetitions, original contour fixed, planar problem. Next ask
+explicitly about UV versus projected XYZ, unique incident vertices/multiplicity,
+and pass count/update order; a UV/distinct/five-simultaneous proposal is pending.
+No mixed smoothing is implemented before that response. Independent review,
+adversarial-analysis disposition, M1 centers, local WSL, full historical/native
+and exact integration/post-merge gates remain open. No new Blender or main merge.
+Commit/read back this canonical checkpoint; retain the visible source PR branch.

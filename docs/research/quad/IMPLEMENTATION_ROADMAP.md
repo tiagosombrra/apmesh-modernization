@@ -5,32 +5,40 @@ Read the [current delivered/pending summary](CURRENT_PLAN_OVERVIEW_20261118.md) 
 The dated historical entries below preserve evidence and superseded priorities;
 they do not replace the current execution queue.
 
+Current correction: [approved UV contour-clearance repair](CONTOUR_CLEARANCE_REPAIR_20261118.md)
+is implemented in exact11dcaa7/draft PR240 with exact local85/85, native19/19 and
+hosted44401586214 all4 success. It excludes25 step3 cells; final689/630/102 replaces
+797/738/102. Preserve increased sampled error/edge ratio and the unresolved
+additional adversarial-fixture analysis finding. Next clarify mixed smoothing
+science before implementation. Earlier missing-clearance statements below are
+the retained pre-repair audit, not current implementation status. No stage closure.
+
 ## Current finite execution queue — 2026-11-18
 
-The first prospective mixed-front output is implemented on
-[draft PR240](https://github.com/tiagosombrra/apmesh-modernization/pull/240), exact
-b3d2fbc: native quadtree/templates and original curves feed an existing-node
-contraction that chooses TRI/QUAD before updating the contour. Stages produce
-24/249/738 QUAD and8/52/102 TRI. All191 commits and194 OBJ snapshots are exported
-and displayed in Blender with analytic geometry and historical source polygons.
-[Delivery](ARTICLE_MIXED_FRONT_DELIVERY_20261118.md) records local85/85, analysis,
-three hosted native profiles and exact CI44271951483 4/4 SUCCESS, plus sampled
-error increases and incomplete local WSL filesystem gates.
+The prospective mixed-front output and confirmed clearance repair are implemented
+on [draft PR240](https://github.com/tiagosombrra/apmesh-modernization/pull/240),
+exact11dcaa7. Native quadtree/templates and original curves feed a contraction
+that chooses TRI/QUAD before updating the contour. Current stages produce
+24/249/630 QUAD and8/52/102 TRI;183 commits and186 OBJ snapshots are exported.
+[Current repair](CONTOUR_CLEARANCE_REPAIR_20261118.md) records exact local85/85,
+native19/19 and hosted44401586214 all4 success, plus mixed error/quality tradeoffs
+and the unresolved additional adversarial-analysis diagnostic. The earlier
+[first-output delivery](ARTICLE_MIXED_FRONT_DELIVERY_20261118.md) and explained
+Blender remain historical9ca6deb/b3d2fbc references, with their original evidence.
 
 The user explicitly rejects invented adjustment rules and requests the planned
 1993 technique as an increment to existing code, using effective existing flags.
 The [article/source revalidation](ARTICLE_CONFORMANCE_REVALIDATION_20261118.md)
 supersedes the previous new-coupling priority. The measured straight-boundary
-mismatch remains evidence. Missing article stages are now the active concern:
-distance-based0.2 contour-cell reclassification and mixed smoothing. Stage3
-has25 used interior leaves in the planar clearance band; no repair is claimed.
-Experimental vertex-mean centers and full historical identity remain unresolved.
+mismatch remains evidence. The distance-based0.2 contour-cell correction removes
+the25 witnessed stage3 violations using the confirmed UV minimum-distance rule.
+Mixed smoothing and historical center identity remain unresolved. Improved
+boundary angle coexists with worse sampled error and edge ratio after clearance.
 
-One active next action: restore documented contour-clearance classification in
-the opt-in candidate with a retained witness, coherent native-template/front
-interfaces and original TRI preserved. Then complete/qualify the documented
-mixed smoothing and its effective existing controls; explicitly dispose centroid
-identity. Independent review, local-filesystem disposition and exact integration
+One active next action: explicitly align the scientific mixed-smoothing contract
+before implementation on the curved surface, then implement and qualify its
+effective controls while preserving original TRI. Explicitly dispose centroid
+identity. Independent review, adversarial-analysis/local-filesystem disposition and exact integration
 gates remain mandatory. No new coupling law or full R3 controller is in current
 execution scope. Full M1/M5/R3/M7, curved-metric scope and original M0-M9/R0-R4
 gates remain open. Older queues below retain history and do not override this

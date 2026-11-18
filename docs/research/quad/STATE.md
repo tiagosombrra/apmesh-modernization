@@ -12,18 +12,42 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-18 - approved UV contour-clearance repair implemented
+
+User explicitly confirms minimum cell-to-finite-segment distance in UV with the
+unchanged0.2 threshold; strict equality is retained. [Repair](CONTOUR_CLEARANCE_REPAIR_20261118.md)
+and [evidence](evidence/CONTOUR_CLEARANCE_REPAIR_20261118.json) pin draft PR240
+exact11dcaa7. Capture/templates/article front share the filtered region; default
+TRI and prior observer paths remain unchanged. Exactly25 step3 cells are excluded.
+Final mixed output689 nodes/630 QUAD/102 TRI replaces797/738/102; other seven OBJ
+scopes are byte-identical. Boundary angle8.11->10.37deg improves, but geometry RMS
+0.00726210->0.01182093 and edge ratio8.70->15.08 worsen. No global improvement claim.
+
+Exact local85/85, native19/19,183 commits/11 forgeries/rollback, source curves and
+old live-pair application pass. Exact hosted44401586214 all4 checks pass with
+GNU/MSVC/ASan agreement. Changed production/header/geometric analysis passes;
+additional full adversarial-fixture analysis retains a pre-existing enum-cast
+negative-control diagnostic for review. Prior failed prefixes remain recorded.
+No merge, whole stage closure, smoothing, center change or mixed global estimator.
+
+**Next:** settle the mixed smoothing contract through descriptive scientific
+questions before implementing it: coordinate space, distinct versus repeated
+incident vertices, and four/five simultaneous versus sequential passes. The
+printed-p290 passage is reread; a UV/distinct/five-simultaneous proposal is pending,
+not adopted. Preserve contour positions, existing validity and rollback policies.
+
 ### Current plan in one view - verified2026-11-18
 
 Read the [short current plan](CURRENT_PLAN_OVERVIEW_20261118.md) before historical
 entries below. Real mixed generation exists; complete paper conformance and
-mixed adaptive closure do not. Current code is draft PR240 exact9ca6deb.
+mixed adaptive closure do not. Current code is draft PR240 exact11dcaa7.
 
 | Work | Status |
 | --- | --- |
 | Original curves, native templates and prospective mixed front | Implemented; real archived outputs exist |
 | Per-step errors/quality and explained Blender | Delivered; presentation does not change generation |
-| Contour-clearance classification | Missing; the single next implementation action |
-| Actual mixed smoothing and historical centers | Pending after/alongside the bounded article correction |
+| Contour-clearance classification | Implemented and tested in11dcaa7; review limitations retained |
+| Actual mixed smoothing and historical centers | Pending; clarify smoothing science before implementation |
 | Actual mixed global curvature error/accepted adaptation | Not complete; original TRI still drives adaptation |
 | Independent review and research integration of PR240 | Pending; draft/unmerged |
 
@@ -31,8 +55,7 @@ Order: documented clearance -> mixed smoothing/control and center disposition ->
 real-history comparison and bounded gates -> reviewed research integration ->
 aligned mixed-state/error/adaptive work. No new balancing controller, broad flag
 sweep or modernization-main change. Previous local85/85 and exact hosted4/4 are
-retained source evidence, not coverage of omitted paper stages. No native rerun
-or source change in this clarification. Full roadmap gates remain open.
+retained source evidence, not coverage of omitted paper stages. This overview is updated by the repair entry above. Full roadmap gates remain open.
 
 ### 2026-11-18 - deliver the explained complete Blender presentation
 
