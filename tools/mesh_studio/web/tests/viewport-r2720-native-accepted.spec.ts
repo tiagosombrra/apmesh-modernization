@@ -179,7 +179,12 @@ test('R2.7.21 native Eistute source seam is real TRI edges in XYZ and patch-loca
     'data-native-seam-segments','1');
   await expect(page.getByTestId('r2720-viewport-xyz')).toHaveAttribute(
     'data-native-seam-patch-incidences','4');
+  // The 3D source canvas/camera must survive source-patch changes.
+  await page.getByTestId('r2720-viewport-xyz').locator('canvas').first().evaluate(
+    canvas => canvas.setAttribute('data-r2721-preserved-xyz', 'yes'));
   await page.getByTestId('r2720-patch').selectOption('2');
+  await expect(page.getByTestId('r2720-viewport-xyz').locator('canvas').first())
+    .toHaveAttribute('data-r2721-preserved-xyz','yes');
   await expect(page.getByTestId('r2720-source-node-id')).toHaveText('102');
   await expect(page.getByTestId('r2720-native-element-id')).toHaveText('5002');
   await expect(page.getByTestId('r2721-selection-scope')).toContainText('incidente');
