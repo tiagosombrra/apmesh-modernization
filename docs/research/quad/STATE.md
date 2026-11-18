@@ -1,9 +1,9 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-17 Fortaleza. Canonical branch: `quad-templates`.
+Updated 2026-11-18 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: article-style TRI/QUAD front contraction before adaptive feedback
+## Active: review and qualify the delivered prospective mixed-front candidate
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,45 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-18 - prospective mixed-front mesh generated and opened in Blender
+
+Draft [PR240](https://github.com/tiagosombrra/apmesh-modernization/pull/240),
+exact b3d2fbc2ad42237e2dcdbe81757bfa7abf981c6e, implements an explicit opt-in
+existing-node contraction: best triangle, two prospective alternatives, planar
+S<=1.5 selection, then one TRI/QUAD contour commit. The old TRI path and qualified
+pair-observer prototype remain unchanged. [Delivery](ARTICLE_MIXED_FRONT_DELIVERY_20261118.md)
+and [receipt](evidence/ARTICLE_MIXED_FRONT_DELIVERY_20261118.json) supersede the
+implementation-pending status below within this bounded functional scope.
+
+Stages1/2/3 produce33/281/797 nodes,24/249/738 QUAD and8/52/102 TRI. Front QUAD
+counts8/7/14 are chosen before16/59/116 polygon updates. Source intervals/IDs/XYZ
+are preserved. Independent replay verifies191 commits,8 forged traces and owner
+rollback;194 OBJ frames include3 native starts. Local85/85, configured affected-
+source/header analysis, MSVC old/new histories and exact hosted44271951483 all4
+jobs pass. Hosted GNU/MSVC/sanitizer reports agree, including rollback. Frozen
+TRI science passes. Same-site sampled source-area RMS rises1.1217%/0.1323%/0.3667%
+against unpaired output; no error or density improvement is claimed.
+
+Blender5.3 visibly opens the new comparison with analytic geometry and18 native
+TRI/QUAD/source-polygon panels below, plus an actual-commit animation scene.
+The user closed a hung instance before requesting the successful retry. No old
+history file is overwritten. See delivery for the local artifact and hashes.
+
+Retain failed inventory/checker/hosted prefixes and their bounded corrections.
+Local WSL GNU and sanitizer publication on the Windows mount stop on denied
+directory rename: incomplete local gates, not passes. Exact native-Linux hosted
+checks pass; explicit local-failure disposition is still required. No hidden
+retry, tolerance relaxation, independent approval or merge is claimed.
+
+**One next action:** independently review PR240's mixed-front and ownership/
+rollback contracts, dispose the local filesystem gate, then satisfy exact
+research-integration/post-merge gates. R3/controller balancing follows qualified
+integration. mixed_adaptive_epochs=0; planar UV selection lifted to curved XYZ
+and vertex-mean centers remain experimental. Full M1/M5/R3/M7, smoothing scope,
+continuous validity, new-path full CRT/denials and broader Doxygen remain open.
+Remote main ef40c0f and concurrent PR239/225/214 are untouched. Source stays on
+the reviewable feature branch; this canonical checkpoint does not integrate code.
 
 ### 2026-11-17 - correct the functional target: mixed contraction from the 1993 article
 

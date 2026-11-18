@@ -3083,3 +3083,53 @@ generated mesh or Blender display. Next action is the explicit opt-in mixed
 contraction implementation and its bounded output gates, not another R3-only
 preparation package. Commit the canonical checkpoint with leased remote update
 and verify readback before reporting persistence.
+
+## 2026-11-18 - implement prospective mixed front and display actual output
+
+Resume canonical868f518/main ef40c0f and the article-style functional priority.
+Keep one source feature and preserve concurrent PR239/225/214. Implement opt-in
+existing-node UV contraction using native leaf neighborhoods, maximum included
+angle, two prospective neighbor alternatives and planar S<=1.5. Select first,
+then commit the TRI/QUAD contour update. Preserve default TRI, old pair mode,
+source curves and native templates. Record source-ID/side ties and experimental
+vertex-mean/curved-lift scope without claiming formal advisor approval.
+
+Generate33/281/797 nodes,24/249/738 QUAD,8/52/102 TRI;191 commits and194 OBJ frames.
+Independent replay checks search/shape/ranking/front/source identity and8 forged
+traces. Native controls cover direct QUAD, retained TRI, poor union, island,
+precommit abort and deterministic retry. Initial list/tuple checker comparison
+fails; normalize representation only. Initial MinGW direct launch produces no
+compiler artifact; retain it without a compiler-pass claim.
+
+Publish treeecd7662e as b434034 (local e1f1281 retained), draft PR240. Baseline
+first stops on stale inventory; regenerate with35 contracts/277 anchors intact,
+then pass85/85 at b434034. Hosted44271313083 rejects the unregistered new config
+before frozen science. Register only that reviewed asset; final b3d2fbc (local
+111764e retained) differs only in workflow metadata and passes exact local85/85
+and hosted44271951483 all4 jobs. Hosted native contracts19/19 on both platforms;
+GNU/MSVC/ASan+UBSan+leak article reports agree with8 forgeries and rollback.
+Frozen Eistute5/Book4 science and configured LLVM22 full affected-TU/header/new-
+contract analysis pass. No diagnostics suppressed or numerical policy relaxed.
+
+Local MSVC source/reversal/negative, old/new modes and original accepted/rejected/
+retry histories pass. Compiled inputs/image are identical across b434034/b3d2fbc;
+do not claim fresh compilation on the CI-only follow-up. Local GNU and sanitizer
+Windows-mount runs stop on denied directory rename; sanitizer normal generation/
+replay completes, rollback publication fails. Later jobs are unstarted. Retain
+both failed prefixes as incomplete local gates, not replaced by hosted passes.
+
+Same24x24-site independent source-area RMS versus unpaired output rises1.1217%/
+0.1323%/0.3667%; node counts unchanged. Preserve these tradeoffs. Blender5.3
+comparison includes analytic model, TRI/mixed histories,18 template/polygon panels
+below and actual-commit animation. Initial installed UI is hung and packaged
+execution denied. The user closes it and explicitly requests retry; the launcher
+then creates the new file and its actual window visibly shows the mixed meshes
+and templates. Render inspected, historical file hashes preserved.
+
+Audit code/tests/contracts/docs/scientific scope/failure inventory in
+ARTICLE_MIXED_FRONT_DELIVERY_20261118.md and its portable receipt. PR240 remains
+draft/unmerged. Next: independent mixed-front review, local-filesystem failure
+disposition and required exact research-integration/post-merge gates. R3 and local
+balancing follow qualified integration. Full M1/M5/R3/M7, smoothing/continuous
+validity, new-path full CRT/denials and Doxygen2739 remain open. Commit/read back
+the canonical checkpoint; primary checkout retains the visible source candidate.

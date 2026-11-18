@@ -1,0 +1,507 @@
+{
+  "schema": "apmesh.quad.article_front_delivery.v1",
+  "date": "2026-11-18",
+  "pr": 240,
+  "source_sha": "b3d2fbc2ad42237e2dcdbe81757bfa7abf981c6e",
+  "source_tree": "f359decd0f375a1aeba8b3bf12d28673d8b4260d",
+  "first_source_sha": "b434034bc7a9571653c41a84b997943ab7922ef7",
+  "canonical_entry": "868f518f7c2bfcc352a3682f45806a1ab6abfa98",
+  "main_sha": "ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89",
+  "merged": false,
+  "independent_review": "pending",
+  "classification": "opt-in scientific research candidate; production TRI behavior preserved; no formal advisor approval asserted",
+  "local_baseline": {
+    "source": "b3d2fbc2ad42237e2dcdbe81757bfa7abf981c6e",
+    "tests": 85,
+    "status": "passed",
+    "report": "build/validation-session/1794992480630687400-40eac423/report.json",
+    "sha256": "e2cb7871b1d57a1a3c330880689b63ff853866ba88a4a616969e118a1e816169"
+  },
+  "ci": {
+    "run": 44271951483,
+    "source": "b3d2fbc2ad42237e2dcdbe81757bfa7abf981c6e",
+    "status": "success",
+    "job_ids": [
+      134690639067,
+      134690638469,
+      134690638833,
+      134690639063
+    ],
+    "article_reports": [
+      {
+        "schema": "apmesh.quad.article_application.v1",
+        "stages": [
+          {
+            "step": 1,
+            "nodes": 33,
+            "quads": 24,
+            "triangles": 8,
+            "boundary": 8,
+            "source_step": 1,
+            "native_leaves": 16,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "commits": 16,
+            "selected_quads": 8,
+            "retained_triangles": 8,
+            "rejected_unions": 8,
+            "competing_alternatives": 0
+          },
+          {
+            "step": 2,
+            "nodes": 281,
+            "quads": 249,
+            "triangles": 52,
+            "boundary": 10,
+            "source_step": 2,
+            "native_leaves": 67,
+            "domain_generation": 1,
+            "nonuniform_sides": 1,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "commits": 59,
+            "selected_quads": 7,
+            "retained_triangles": 52,
+            "rejected_unions": 53,
+            "competing_alternatives": 1
+          },
+          {
+            "step": 3,
+            "nodes": 797,
+            "quads": 738,
+            "triangles": 102,
+            "boundary": 14,
+            "source_step": 3,
+            "native_leaves": 223,
+            "domain_generation": 1,
+            "nonuniform_sides": 1,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "commits": 116,
+            "selected_quads": 14,
+            "retained_triangles": 102,
+            "rejected_unions": 102,
+            "competing_alternatives": 3
+          }
+        ],
+        "rejected_forgeries": 8,
+        "rollback_verified": true,
+        "mixed_adaptive_epochs": 0
+      },
+      {
+        "schema": "apmesh.quad.article_application.v1",
+        "stages": [
+          {
+            "step": 1,
+            "nodes": 33,
+            "quads": 24,
+            "triangles": 8,
+            "boundary": 8,
+            "source_step": 1,
+            "native_leaves": 16,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "commits": 16,
+            "selected_quads": 8,
+            "retained_triangles": 8,
+            "rejected_unions": 8,
+            "competing_alternatives": 0
+          },
+          {
+            "step": 2,
+            "nodes": 281,
+            "quads": 249,
+            "triangles": 52,
+            "boundary": 10,
+            "source_step": 2,
+            "native_leaves": 67,
+            "domain_generation": 1,
+            "nonuniform_sides": 1,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "commits": 59,
+            "selected_quads": 7,
+            "retained_triangles": 52,
+            "rejected_unions": 53,
+            "competing_alternatives": 1
+          },
+          {
+            "step": 3,
+            "nodes": 797,
+            "quads": 738,
+            "triangles": 102,
+            "boundary": 14,
+            "source_step": 3,
+            "native_leaves": 223,
+            "domain_generation": 1,
+            "nonuniform_sides": 1,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "commits": 116,
+            "selected_quads": 14,
+            "retained_triangles": 102,
+            "rejected_unions": 102,
+            "competing_alternatives": 3
+          }
+        ],
+        "rejected_forgeries": 8,
+        "rollback_verified": true,
+        "mixed_adaptive_epochs": 0
+      },
+      {
+        "schema": "apmesh.quad.article_application.v1",
+        "stages": [
+          {
+            "step": 1,
+            "nodes": 33,
+            "quads": 24,
+            "triangles": 8,
+            "boundary": 8,
+            "source_step": 1,
+            "native_leaves": 16,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "commits": 16,
+            "selected_quads": 8,
+            "retained_triangles": 8,
+            "rejected_unions": 8,
+            "competing_alternatives": 0
+          },
+          {
+            "step": 2,
+            "nodes": 281,
+            "quads": 249,
+            "triangles": 52,
+            "boundary": 10,
+            "source_step": 2,
+            "native_leaves": 67,
+            "domain_generation": 1,
+            "nonuniform_sides": 1,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "commits": 59,
+            "selected_quads": 7,
+            "retained_triangles": 52,
+            "rejected_unions": 53,
+            "competing_alternatives": 1
+          },
+          {
+            "step": 3,
+            "nodes": 797,
+            "quads": 738,
+            "triangles": 102,
+            "boundary": 14,
+            "source_step": 3,
+            "native_leaves": 223,
+            "domain_generation": 1,
+            "nonuniform_sides": 1,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0,
+            "commits": 116,
+            "selected_quads": 14,
+            "retained_triangles": 102,
+            "rejected_unions": 102,
+            "competing_alternatives": 3
+          }
+        ],
+        "rejected_forgeries": 8,
+        "rollback_verified": true,
+        "mixed_adaptive_epochs": 0
+      }
+    ]
+  },
+  "msvc": {
+    "source": "b434034bc7a9571653c41a84b997943ab7922ef7",
+    "profile": "msvc",
+    "image_sha256": "5f39152bb585203dacb9904124551d02c41f61c5675a84602767e6dac7cb829d",
+    "steps": [
+      {
+        "stage": "build",
+        "exit": 0,
+        "seconds": 25.093075037002563
+      },
+      {
+        "stage": "source-contracts",
+        "exit": 0,
+        "seconds": 3.9187674522399902
+      },
+      {
+        "stage": "article",
+        "exit": 0,
+        "seconds": 31.94198966026306
+      },
+      {
+        "stage": "live-pairs",
+        "exit": 0,
+        "seconds": 13.018897533416748
+      },
+      {
+        "stage": "bounds",
+        "exit": 0,
+        "seconds": 35.71592855453491
+      },
+      {
+        "stage": "fixed16",
+        "exit": 0,
+        "seconds": 6.068263292312622
+      },
+      {
+        "stage": "history",
+        "exit": 0,
+        "seconds": 17.045853853225708
+      }
+    ],
+    "status": "passed"
+  },
+  "article": {
+    "schema": "apmesh.quad.article_application.v1",
+    "stages": [
+      {
+        "step": 1,
+        "nodes": 33,
+        "quads": 24,
+        "triangles": 8,
+        "boundary": 8,
+        "source_step": 1,
+        "native_leaves": 16,
+        "domain_generation": 1,
+        "nonuniform_sides": 0,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "commits": 16,
+        "selected_quads": 8,
+        "retained_triangles": 8,
+        "rejected_unions": 8,
+        "competing_alternatives": 0
+      },
+      {
+        "step": 2,
+        "nodes": 281,
+        "quads": 249,
+        "triangles": 52,
+        "boundary": 10,
+        "source_step": 2,
+        "native_leaves": 67,
+        "domain_generation": 1,
+        "nonuniform_sides": 1,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "commits": 59,
+        "selected_quads": 7,
+        "retained_triangles": 52,
+        "rejected_unions": 53,
+        "competing_alternatives": 1
+      },
+      {
+        "step": 3,
+        "nodes": 797,
+        "quads": 738,
+        "triangles": 102,
+        "boundary": 14,
+        "source_step": 3,
+        "native_leaves": 223,
+        "domain_generation": 1,
+        "nonuniform_sides": 1,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "commits": 116,
+        "selected_quads": 14,
+        "retained_triangles": 102,
+        "rejected_unions": 102,
+        "competing_alternatives": 3
+      }
+    ],
+    "rejected_forgeries": 8,
+    "rollback_verified": true,
+    "mixed_adaptive_epochs": 0
+  },
+  "local_source_reuse": "Only the workflow reviewed-asset list differs between b434034 and b3d2fbc; all compiled and scientific inputs and actual MSVC image are identical. Local 85 baseline ran on both; hosted compilers reran on exact b3d2fbc.",
+  "analysis": {
+    "status": "passed",
+    "tool": "configured LLVM22 clang-tidy; no fix or suppressions added",
+    "scope": [
+      "src/application/runtime_config.cpp",
+      "src/application/run_application.cpp",
+      "research/quad/controlled_patch_application.cpp",
+      "research/quad/article_mixed_front.h",
+      "tests/quad/article_mixed_front_contracts.cpp"
+    ],
+    "logs": "build/quad-article-front-20261118/analysis-b3d2fbc"
+  },
+  "sampled_error": [
+    {
+      "step": 1,
+      "unpaired": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.08856727834105745,
+        "rms_uv": 0.026278020266195978,
+        "rms_source_area": 0.023406069100086815,
+        "quad_sites": 144,
+        "tri_sites": 432
+      },
+      "article_front": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.09094210987957016,
+        "rms_uv": 0.026760747684951496,
+        "rms_source_area": 0.023668615133612004,
+        "quad_sites": 504,
+        "tri_sites": 72
+      },
+      "rms_source_area_relative_change": 0.011217006683288622,
+      "source_sha256": "921c1d2df6842e49beddec017505e589c46f956e3b316f5451443bdfbb6923f0",
+      "article_sha256": "d7992d950fcefbcfeba71b11a1bede312a15b643d92ab1ec251afa97e457c7bd"
+    },
+    {
+      "step": 2,
+      "unpaired": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.040148706524736344,
+        "rms_uv": 0.012513721875255103,
+        "rms_source_area": 0.011688139399734733,
+        "quad_sites": 303,
+        "tri_sites": 273
+      },
+      "article_front": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.040148706524736344,
+        "rms_uv": 0.012538522388086141,
+        "rms_source_area": 0.011703599390114654,
+        "quad_sites": 347,
+        "tri_sites": 229
+      },
+      "rms_source_area_relative_change": 0.0013227075628712281,
+      "source_sha256": "ba09dfd42b7e1a50f647a04dc968e12bbdf50305c458b558736e4e7f3b10d27c",
+      "article_sha256": "ce16561ef84286341f68708b60356d28059ce8e24037de8ce10c3630773cb68e"
+    },
+    {
+      "step": 3,
+      "unpaired": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.03224427259909553,
+        "rms_uv": 0.007666757572949901,
+        "rms_source_area": 0.007235566866455381,
+        "quad_sites": 436,
+        "tri_sites": 140
+      },
+      "article_front": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.03224427259909553,
+        "rms_uv": 0.007692758481077097,
+        "rms_source_area": 0.007262101995028263,
+        "quad_sites": 462,
+        "tri_sites": 114
+      },
+      "rms_source_area_relative_change": 0.0036673185477562598,
+      "source_sha256": "dd0d4551a160f0c9a198d3d5f5c709fc07ea01972ed65590d9091ee40e1d4956",
+      "article_sha256": "aa06f6177f1367f9d1ad13ea533aafe11ebcee12cb7a586a3d34c786ab8781e3"
+    }
+  ],
+  "blender": {
+    "blender": "5.3.0",
+    "file": "build/quad-article-front-20261118/QUAD_TRI_article_front_steps_templates.blend",
+    "archive": "build/quad-article-front-20261118/qualification-msvc/article/article-0b6f5a84c07946f7a494af1f7d6e0cbb.steps",
+    "source_sha": "b3d2fbc2ad42237e2dcdbe81757bfa7abf981c6e",
+    "historical_gallery_source_sha256": "551f989d3412401c886c841025348d5f5662d1ee4a82a7c803ddac483cd7f529",
+    "template_mesh_panels": 18,
+    "animation": [
+      {
+        "stage": 1,
+        "commits": 16,
+        "frames": 17,
+        "front_sha256": "a0c45da21a3edbba0836c09f8429b5d376cbe83b7c5b2902a136c79673282e85"
+      },
+      {
+        "stage": 2,
+        "commits": 59,
+        "frames": 60,
+        "front_sha256": "607119a873e69e7cd7b336af3d6f4ecbbd0842b680d9021881bd37835fa8c761"
+      },
+      {
+        "stage": 3,
+        "commits": 116,
+        "frames": 117,
+        "front_sha256": "e55a59466ba9c091902af92aae4b1d984690c50cf94becf1551a1caea5b3acfb"
+      }
+    ],
+    "frames": 117,
+    "source_geometry_modified": false,
+    "mixed_adaptive_epochs": 0,
+    "file_sha256": "18ce20cdb1572430e28358c9204b9aac0cc0a49b4ed50e6a92df99a9edb1e0f6",
+    "scene_driver_sha256": "4bdf67b2a0aa4d0432be89f0e55f38dfc1c2232ba7ebada8555fe4fe726ffa71"
+  },
+  "initial_frame_checks": 3,
+  "commit_frame_checks": 191,
+  "blender_ui": "New comparison file visibly opened in Blender5.3; historical files unchanged; original hung session was closed by the user before the explicitly requested retry.",
+  "failed_or_incomplete": [
+    {
+      "scope": "First local baseline",
+      "result": "Stopped on stale source inventory",
+      "retained": "build/validation-session/1794992061977924100-4b6e336c/report.json",
+      "correction": "Regenerate inventory; retain35 contracts/277 anchors; later85 pass"
+    },
+    {
+      "scope": "Initial independent checker development",
+      "result": "List-versus-tuple frame comparison failed",
+      "correction": "Normalize index representation; no numerical criterion changed"
+    },
+    {
+      "scope": "First hosted run44271313083",
+      "result": "Rejected unregistered configs/quad/curved_patch_article_front.conf before science execution",
+      "correction": "Review/register exactly the new case; final hosted run44271951483 succeeds"
+    },
+    {
+      "scope": "Local GNU profile on Windows mount",
+      "result": "Denied output-directory rename; article gate incomplete, later jobs unstarted",
+      "retained": "build/quad-article-front-20261118/qualification-gcc"
+    },
+    {
+      "scope": "Local Clang ASan/UBSan/leak profile on Windows mount",
+      "result": "Normal article generation/replay succeeded; rollback publication stopped on denied directory rename; later jobs unstarted",
+      "retained": "build/quad-article-front-20261118/qualification-asan"
+    },
+    {
+      "scope": "Initial MinGW direct launch",
+      "result": "No compiler artifact; exit1 without diagnostics",
+      "correction": "No MinGW qualification claim; GNU and Clang native contracts and exact hosted jobs are recorded separately"
+    },
+    {
+      "scope": "Initial Blender attempt",
+      "result": "Installed UI hung; direct packaged executable access denied; launcher produced no inspection artifact",
+      "correction": "User closed the hung instance and requested retry; installed launcher then created and opened the new file"
+    }
+  ],
+  "limits": [
+    "No complete historical numerical identity: experimental vertex-mean template centers/full M1 remains open",
+    "Planar UV score and explicit source-ID/side tie handling; curved XYZ lift is experimental",
+    "No smoothing or invented quadtree/curve edits",
+    "mixed_adaptive_epochs=0; adaptation remains TRI-source-driven",
+    "No error or node-count reduction; sampled error increases retained",
+    "Local cross-host filesystem gate failures require disposition before integration",
+    "Independent review, required denial/CRT coverage and exact research-merge gates remain pending",
+    "Full M5/R3/M7, continuous validity and existing Doxygen2739 diagnostics remain open"
+  ]
+}

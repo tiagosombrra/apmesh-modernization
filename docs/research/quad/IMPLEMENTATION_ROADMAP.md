@@ -1,7 +1,27 @@
 # Plano de pesquisa e implementação QUAD — APMesh
 
 
-## Current finite execution queue — 2026-11-17
+## Current finite execution queue — 2026-11-18
+
+The first prospective mixed-front output is implemented on
+[draft PR240](https://github.com/tiagosombrra/apmesh-modernization/pull/240), exact
+b3d2fbc: native quadtree/templates and original curves feed an existing-node
+contraction that chooses TRI/QUAD before updating the contour. Stages produce
+24/249/738 QUAD and8/52/102 TRI. All191 commits and194 OBJ snapshots are exported
+and displayed in Blender with analytic geometry and historical source polygons.
+[Delivery](ARTICLE_MIXED_FRONT_DELIVERY_20261118.md) records local85/85, analysis,
+three hosted native profiles and exact CI44271951483 4/4 SUCCESS, plus sampled
+error increases and incomplete local WSL filesystem gates.
+
+One active next action: independent candidate review, explicit local-filesystem
+failure disposition and required exact research-integration/post-merge gates.
+No integration or full historical stage closure. After qualification/integration,
+resume R3 mixed-state/error feedback, then local bidirectional size balancing.
+Preserve default TRI, previous prototype, current acceptance/stopping policies
+and scientific alignment for new mixed control. Full M1/M5/R3/M7, smoothing/
+curved-metric scope and original M0-M9/R0-R4 gates remain open. The queue below
+records the previous implementation target; its pending status is superseded
+only within the delivered bounded scope. No global-factor sweep successor.
 
 The [PR238 research integration](PR238_RESEARCH_INTEGRATION_20261117.md) is
 complete at exact merge d251f19, with identical qualified candidate tree81ecc5bf.
@@ -12,13 +32,10 @@ Modernization main remains separate. Full Doxygen still fails; only the required
 three-reference/rendering prerequisite is repaired. Retain all old failures,
 sampled-error increases and broader scientific/coverage limitations.
 
-One active successor: implement article-style mixed TRI/QUAD contraction before
-R3 feedback. The current prototype commits a TRI front and then selects pairs;
-the article selects the element before updating the active contour. Implement
-prospective neighbor choice on the best triangle's two other sides and one
-polygonal front commit in an explicit opt-in path, preserving default TRI and
-the qualified prototype. Deliver a validated static mixed mesh and its Blender
-comparison first. See [source comparison and first-output contract](ARTICLE_MIXED_FRONT_TARGET_20261117.md).
+The [source comparison and first-output contract](ARTICLE_MIXED_FRONT_TARGET_20261117.md)
+identified the old TRI-first observer gap. PR240 now implements prospective
+neighbor choice and one polygonal contour commit in a distinct opt-in path.
+Keep complete historical identity separate from this delivered behavior.
 
 Only after this output, connect actual mixed-state/error observations to retained
 histories, then address local bidirectional curve/transition/interior sizing.
