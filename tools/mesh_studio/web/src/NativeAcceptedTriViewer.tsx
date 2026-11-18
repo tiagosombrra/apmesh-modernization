@@ -86,8 +86,12 @@ export function NativeAcceptedTriViewer({
   const seamActorsRef = useRef<ReturnType<typeof vtkActor.newInstance>[]>([]);
   const onSelectRef = useRef(onSelectFace);
   onSelectRef.current = onSelectFace;
-  const prepared = useMemo(() => prepareNativeDisplay(scene, space, patchSlot),
-    [scene, space, patchSlot]);
+  // A patch selection changes only the XYZ seam overlay and the local UV
+  // chart. Do not rebuild a 4,256-face XYZ buffer or reset the user's
+  // camera whenever a different original source patch is selected.
+  const displayPatch = space === 'uv' ? patchSlot : -1;
+  const prepared = useMemo(() => prepareNativeDisplay(scene, space, displayPatch),
+    [scene, space, displayPatch]);
 
   useEffect(() => {
     const host = hostRef.current;
