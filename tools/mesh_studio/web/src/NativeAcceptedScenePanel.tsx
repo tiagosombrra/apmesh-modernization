@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { NativeAcceptedTriViewer } from './NativeAcceptedTriViewer';
 import { parseNativeAcceptedScene } from './nativeAcceptedSceneContract';
 import type { NativeSceneBundle } from './nativeAcceptedSceneContract';
@@ -6,6 +6,7 @@ import { buildNativeSeamTrace, firstActualNativeFaceForSample,
   sourceSampleOrdinalsOnFace } from './nativeSeamTrace';
 
 export function NativeAcceptedScenePanel() {
+  const perfHostRef = useRef<HTMLElement>(null);
   const [data, setData] = useState<NativeSceneBundle | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [sceneIndex, setSceneIndex] = useState(0);
@@ -35,6 +36,11 @@ export function NativeAcceptedScenePanel() {
   }, [identity, selected]);
 
   async function importNative(file: File | undefined) {
+    const importStart = performance.now();
+    if (perfHostRef.current) {
+      for (const key of Object.keys(perfHostRef.current.dataset))
+        if (key.startsWith('nativePerf')) delete perfHostRef.current.dataset[key];
+    }
     setData(null); setError(null); setSceneIndex(0); setCurveIndex(0); setPatchSlot(0);
     setSampleOrdinal(0); setFaceIndex(null);
     if (!file) return;
@@ -42,7 +48,10 @@ export function NativeAcceptedScenePanel() {
       if (file.size < 10 || file.size > 9_000_000) {
         throw new Error('r2720_bounded_native_scene_file_required');
       }
-      const result = parseNativeAcceptedScene(await file.text());
+      const input = await file.text();
+      const readEnd = performance.now();
+      const result = parseNativeAcceptedScene(input);
+      const parseEnd = performance.now();
       // Every displayed source segment must be an actual original accepted
       // native TRI edge, not a guessed chord between matching XYZ samples.
       for (const originalScene of result.scenes) {
@@ -53,6 +62,17 @@ export function NativeAcceptedScenePanel() {
         if (!originalIdentity) throw new Error('r2721_missing_original_source_scope');
         for (const qualifiedCurve of originalIdentity.qualified_shared_source_curves)
           buildNativeSeamTrace(originalScene,qualifiedCurve);
+      }
+      if (new URLSearchParams(window.location.search).get('nativePerf') === '1' &&
+          perfHostRef.current) {
+        const host = perfHostRef.current;
+        host.dataset.nativePerfFileReadMs = (readEnd - importStart).toFixed(3);
+        host.dataset.nativePerfContractMs = (parseEnd - readEnd).toFixed(3);
+        host.dataset.nativePerfActualSeamCheckMs =
+          (performance.now() - parseEnd).toFixed(3);
+        host.dataset.nativePerfPreReactMs =
+          (performance.now() - importStart).toFixed(3);
+        host.dataset.nativePerfJsonBytes = String(file.size);
       }
       setData(result);
       setPatchSlot(result.identity.documents[0]
@@ -92,7 +112,8 @@ export function NativeAcceptedScenePanel() {
     }
   }
 
-  return <section className="native-identity-panel native-accepted-scene-panel"
+  return <section ref={perfHostRef}
+    className="native-identity-panel native-accepted-scene-panel"
     data-testid="r2720-panel" aria-label="R2.7.21 cena TRI nativa com interfaces">
     <div className="native-identity-heading">
       <div><div className="eyebrow">RESEARCH / R2.7.21 · OPT-IN</div>
