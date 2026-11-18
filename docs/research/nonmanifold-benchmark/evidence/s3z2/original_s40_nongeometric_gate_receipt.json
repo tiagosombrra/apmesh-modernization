@@ -1,0 +1,28 @@
+{
+  "schema": "apmesh-s3z2-original-s40-nongeometric-receipt-v1",
+  "date_local": "2026-11-17",
+  "source_original_step_sha256_required": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "s3w_private_bp_sha256_required": "c826487d8cee76f6649100c59e5ce84fa6cb43c9004f53c68e3e565e86cdb174",
+  "s3y_selected_bp_sha256": "af50597db4b8d7b3bcb2fc381596fefc95ba6b6e00ed169576bec7a6b7873177",
+  "admitted_research_atlas_patches": 156,
+  "admitted_source_faces": 22,
+  "original_source_faces_total": 43,
+  "blocked_original_face_ids": [
+    1827,
+    1907
+  ],
+  "synthetic_hermetic_unit_tests": {
+    "passed": 55,
+    "failed": 0,
+    "skipped": 0
+  },
+  "new_or_extended_tests": 27,
+  "source_native_trial_executed": false,
+  "private_original_step_locally_available": false,
+  "private_s3w_bp_locally_available": false,
+  "new_face_admissions": 0,
+  "source_derived_control_coordinates_published": false,
+  "cpp_regression_run": false,
+  "apmesh_tri_quad_meshing_run": false,
+  "formal_interval_proof": false
+}
