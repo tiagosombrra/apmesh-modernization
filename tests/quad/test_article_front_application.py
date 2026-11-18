@@ -98,12 +98,51 @@ def shape(uv, quad):
     return 1 + max(abs(a-90) for a in angles)/90
 
 
+def audit_clearance(data):
+    policy = data['clearance']
+    require(policy['policy'] == 'minimum_cell_segment_uv_v1' and policy['factor'] == 0.2,
+            'Wrong scientific clearance policy')
+    uv, seed, leaves = data['vertices'], data['seed_faces'], data['leaves']
+    seed_vertices = {v for face in seed for v in face}
+    require(seed_vertices == set(range(len(seed_vertices))), 'Noncanonical seed sites')
+    contour = uv[len(seed_vertices):]
+    require(len(contour) >= 3, 'Missing original clearance contour')
+    def too_close(box):
+        x0,y0,x1,y1 = box
+        for a,b in zip(contour,contour[1:]+contour[:1]):
+            require((a[0] == b[0]) != (a[1] == b[1]), 'Non-axis-aligned actual chart contour')
+            if a[1] == b[1]:
+                dx = max(x0-max(a[0],b[0]), min(a[0],b[0])-x1, 0)
+                dy = max(y0-a[1],a[1]-y1,0)
+            else:
+                dx = max(x0-a[0],a[0]-x1,0)
+                dy = max(y0-max(a[1],b[1]), min(a[1],b[1])-y1, 0)
+            # Independent axis-interval gap formula, not the C++ corner/segment routine.
+            if math.hypot(dx,dy) < math.dist(a,b)/5:
+                return True
+        return False
+    interior = {i for i,box in enumerate(leaves) if all(box[k] > 0 for k in (0,1)) and
+                all(box[k] < 1 for k in (2,3))}
+    excluded = {i for i in interior if too_close(leaves[i])}
+    require(policy['excluded_cells'] == len(excluded), 'Wrong clearance exclusion count')
+    used = set()
+    for face in seed:
+        center = [sum(uv[v][k] for v in face)/len(face) for k in (0,1)]
+        owners = [i for i,box in enumerate(leaves) if all(box[k] < center[k] < box[k+2] for k in (0,1))]
+        require(len(owners) == 1, 'Ambiguous native seed leaf')
+        require(owners[0] in interior-excluded, 'Template cell violates contour clearance')
+        used.add(owners[0])
+    require(used == interior-excluded, 'Clearance discarded unrelated native interior leaves')
+    return len(excluded)
+
+
 def replay(data, obj, directory=None):
     xyz, uv, output = obj
     require(data['schema'] == 'apmesh.quad.article_front.v1' and
             data['vertices'] == [list(p) for p in uv], 'Foreign article source sites')
     seed = data['seed_faces']
     require(seed and all(len(f) == 4 for f in seed), 'Missing actual template interior')
+    clearance_excluded = audit_clearance(data)
     used = Counter(e for face in seed for e in edges(face))
     exterior = [(b, a) for (a, b), n in used.items() if used[b, a] == 0]
     all_uses = Counter(e for face in output for e in edges(face))
@@ -162,7 +201,7 @@ def replay(data, obj, directory=None):
             require(px == xyz and pu == uv and pf == list(map(tuple, committed)), 'Commit OBJ differs from actual history')
     require(not front and Counter(map(tuple, committed)) == Counter(map(tuple, output)),
             'Unfinished contour or foreign final elements')
-    return dict(commits=len(data['commits']), selected_quads=selected,
+    return dict(clearance_excluded_cells=clearance_excluded, commits=len(data['commits']), selected_quads=selected,
                 retained_triangles=len(data['commits'])-selected, rejected_unions=rejected,
                 competing_alternatives=competing)
 
@@ -200,6 +239,8 @@ def main():
             saved = data, obj
     require(all(r['selected_quads'] and r['retained_triangles'] for r in reports),
             'The real stages did not exercise mixed prospective generation')
+    require([r['clearance_excluded_cells'] for r in reports] == [0,0,25],
+            'The retained real clearance witness changed')
     data, obj = saved
     corruptions = []
     for field in ('before', 'best', 'polygon', 'alternatives'):
@@ -219,6 +260,10 @@ def main():
     broken = copy.deepcopy(data)
     broken['commits'].pop()
     corruptions.append(broken)
+    for field,value in [('policy','center_distance'),('factor',0.3),('excluded_cells',999)]:
+        broken = copy.deepcopy(data)
+        broken['clearance'][field] = value
+        corruptions.append(broken)
     for broken in corruptions:
         try: replay(broken, obj)
         except (AssertionError, KeyError, ValueError, IndexError): continue

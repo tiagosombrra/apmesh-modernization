@@ -42,15 +42,16 @@ std::vector<std::array<VertexId, 2>> BoundaryOf(const UvMesh& mesh) {
   return result;
 }
 
-}  // namespace
+} // namespace
 
-InteriorTemplateSelection InteriorTemplateDispatcher::Select(
-    InteriorTemplateMode mode, const PolygonPointSelector& point_selector) {
+InteriorTemplateSelection
+InteriorTemplateDispatcher::Select(InteriorTemplateMode mode,
+                                   const PolygonPointSelector& point_selector,
+                                   const UvContourClearance* clearance) {
   if (selected_) {
     throw std::invalid_argument("Interior template choice already committed for this attempt");
   }
-  if (mode != InteriorTemplateMode::LegacyTri &&
-      mode != InteriorTemplateMode::ExperimentalQuad) {
+  if (mode != InteriorTemplateMode::LegacyTri && mode != InteriorTemplateMode::ExperimentalQuad) {
     throw std::invalid_argument("Unsupported interior template selection");
   }
   if (!tree_.GetTemplateFaces().empty() || !tree_.GetTemplateVertices().empty() ||
@@ -62,6 +63,9 @@ InteriorTemplateSelection InteriorTemplateDispatcher::Select(
   result.mode = mode;
   result.source_leaves = tree_.GetLeafCount();
   if (mode == InteriorTemplateMode::LegacyTri) {
+    if (clearance) {
+      throw std::invalid_argument("Legacy TRI must not receive research clearance");
+    }
     if (point_selector) {
       throw std::invalid_argument("Legacy TRI templates must not receive a QUAD point rule");
     }
@@ -73,10 +77,11 @@ InteriorTemplateSelection InteriorTemplateDispatcher::Select(
       throw std::invalid_argument("Research QUAD needs an explicit interior-point rule");
     }
     // Read the real refined tree before any legacy triangle publication.
-    const auto captured = CaptureLeafPolygons(tree_);
+    const auto captured = CaptureLeafPolygons(tree_, clearance);
     result.excluded_boundary_leaves = captured.excluded_boundary_leaves;
+    result.excluded_clearance_leaves = captured.excluded_clearance_leaves;
     result.quad_region_area = captured.interior_area;
-    result.uv_quads = EmitLeafQuads(tree_, point_selector);
+    result.uv_quads = EmitLeafQuads(tree_, point_selector, 1.0e-12L, clearance);
     // Subdivide emits one QUAD per polygon corner, in source polygon order.
     // Retain that provenance for non-overlap and later physical publication.
     for (std::size_t i = 0; i < captured.input.polygons.size(); ++i) {
@@ -99,4 +104,4 @@ InteriorTemplateSelection InteriorTemplateDispatcher::Select(
   return result;
 }
 
-}  // namespace apmesh::quad
+} // namespace apmesh::quad

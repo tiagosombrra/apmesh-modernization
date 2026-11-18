@@ -40,6 +40,7 @@
 #include <map>
 #include <limits>
 #include <memory>
+#include <optional>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -192,6 +193,7 @@ struct Candidate {
   std::vector<LivePairEvent> live_pair_events;
   std::vector<ArticleFrontCommit> article_commits;
   std::vector<ArticleMixedFront::Box> article_leaves;
+  std::size_t clearance_excluded_cells = 0;
   std::vector<std::vector<std::size_t>> source_faces;
   std::size_t seed_quads = 0;
   std::size_t quads = 0;
@@ -215,17 +217,35 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    const RealBoundarySource* source = nullptr, bool pair_during_front = false,
                    bool article_front = false) {
   ValidateSourceCurves(patch);
-  auto original = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
-  Require(original->makeTemplateBasedMesh() == Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
-          "Original interior TRI reference failed");
-  const auto front = SnapshotLegacyFront(*original);
+  Require(!article_front || !pair_during_front, "Article and TRI-observer modes are exclusive");
+  std::unique_ptr<Quadtree> original;
+  std::vector<UvFrontSegment> front;
+  if (!article_front) {
+    original = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
+    Require(original->makeTemplateBasedMesh() ==
+                Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
+            "Original interior TRI reference failed");
+    front = SnapshotLegacyFront(*original);
+  }
   auto tree = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
+  std::vector<UvVertex> contour;
+  std::optional<UvContourClearance> clearance;
+  if (article_front) {
+    for (auto* vertex : tree->getBoundary()->getBoundary())
+      contour.push_back({vertex->getX(), vertex->getY()});
+    clearance.emplace(contour);
+  }
   InteriorTemplateDispatcher dispatch(*tree);
-  const auto selected = dispatch.Select(InteriorTemplateMode::ExperimentalQuad, PointRule);
+  const auto selected = dispatch.Select(InteriorTemplateMode::ExperimentalQuad, PointRule,
+                                        clearance ? &*clearance : nullptr);
   auto* raw = tree.get();
-  auto aft = std::make_unique<OwnedQuadAftFront>(raw->getBoundary(), raw);
-  tree.release();
-  const auto seeded = aft->Seed(selected, front);
+  std::unique_ptr<OwnedQuadAftFront> aft;
+  OwnedAftFrontReport seeded;
+  if (!article_front) {
+    aft = std::make_unique<OwnedQuadAftFront>(raw->getBoundary(), raw);
+    tree.release();
+    seeded = aft->Seed(selected, front);
+  }
   LiveBoundaryPairing pairing;
   std::map<Vertex*, std::size_t> live_ids;
   const auto physical_point = [&](UvVertex uv) {
@@ -262,13 +282,14 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
       pairing.ObserveTriangle(ids);
     });
   }
-  for (auto* edge : aft->getBoundary()->getEdges())
-    aft->getQuadtree()->findCell(edge);
+  if (aft)
+    for (auto* edge : aft->getBoundary()->getEdges())
+      aft->getQuadtree()->findCell(edge);
   ArticleFrontResult article;
   if (article_front) {
-    std::vector<UvVertex> contour;
-    for (auto* vertex : raw->getBoundary()->getBoundary())
-      contour.push_back({vertex->getX(), vertex->getY()});
+    // This front derives its exact inner interface from the selected QUAD seed.
+    // The older TRI bridge requires missing-neighbor classification and must not
+    // be seeded with a different, clearance-filtered interior region.
     std::vector<ArticleMixedFront::Box> boxes;
     for (auto* leaf : raw->getLeaves())
       boxes.push_back({leaf->getMin()->getX(), leaf->getMin()->getY(), leaf->getMax()->getX(),
@@ -333,23 +354,26 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
   result.quads = result.faces.size();
   result.seed_quads = result.quads;
   result.quad_origins = selected.quad_face_origins;
+  result.clearance_excluded_cells = selected.excluded_clearance_leaves;
   Require(result.quad_origins.size() == result.quads,
           "Mixed residual leaf provenance differs from the real native tree");
-  std::map<Vertex*, std::size_t> aft_ids;
-  // Only the already-audited seam may bridge source pointer identities to QUAD IDs.
-  for (auto* v : aft->OwnedSeamVertices())
-    aft_ids.emplace(v, uv_ids.at({v->getX(), v->getY()}));
-  Require(aft_ids.size() == seeded.distinct_quad_front_vertices,
-          "Incomplete canonical QUAD/AFT seam");
-  for (auto* face : aft->Triangles()) {
-    std::vector<std::size_t> ids;
-    for (auto* v : {face->getV1(), face->getV2(), face->getV3()}) {
-      auto it = aft_ids.find(v);
-      if (it == aft_ids.end())
-        it = aft_ids.emplace(v, add_node({v->getX(), v->getY()})).first;
-      ids.push_back(it->second);
+  if (aft) {
+    std::map<Vertex*, std::size_t> aft_ids;
+    // Only the already-audited seam may bridge source pointer identities to QUAD IDs.
+    for (auto* v : aft->OwnedSeamVertices())
+      aft_ids.emplace(v, uv_ids.at({v->getX(), v->getY()}));
+    Require(aft_ids.size() == seeded.distinct_quad_front_vertices,
+            "Incomplete canonical QUAD/AFT seam");
+    for (auto* face : aft->Triangles()) {
+      std::vector<std::size_t> ids;
+      for (auto* v : {face->getV1(), face->getV2(), face->getV3()}) {
+        auto it = aft_ids.find(v);
+        if (it == aft_ids.end())
+          it = aft_ids.emplace(v, add_node({v->getX(), v->getY()})).first;
+        ids.push_back(it->second);
+      }
+      result.faces.push_back(std::move(ids));
     }
-    result.faces.push_back(std::move(ids));
   }
   if (article_front) {
     for (std::size_t i = result.uv.size(); i < article.vertices.size(); ++i)
@@ -510,7 +534,9 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     }
     trace << ']';
   };
-  trace << "{\"schema\":\"apmesh.quad.article_front.v1\",\"vertices\":[";
+  trace << "{\"schema\":\"apmesh.quad.article_front.v1\",\"clearance\":{"
+        << "\"policy\":\"minimum_cell_segment_uv_v1\",\"factor\":0.2,\"excluded_cells\":"
+        << candidate.clearance_excluded_cells << "},\"vertices\":[";
   for (std::size_t i = 0; i < candidate.uv.size(); ++i) {
     if (i)
       trace << ',';

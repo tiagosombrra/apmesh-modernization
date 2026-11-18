@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <functional>
 #include <iomanip>
 #include <iostream>
@@ -265,6 +266,59 @@ int main() {
           },
           "Non-finite");
       Check(State(fixture.tree) == before, "Invalid point changed source");
+    });
+    run("clearance-minimum-is-not-center", [] {
+      UvContourClearance policy({{0, 0}, {1, 0}, {1, 1}, {0, 1}});
+      Check(policy.Excludes({0.1875, 0.4375}, {0.25, 0.5}),
+            "Cell entering the band was retained because its center is outside");
+      Check((0.1875 + 0.25) / 2 > 0.2, "The center-distance negative control is not distinct");
+    });
+    run("clearance-strict-threshold", [] {
+      UvContourClearance policy({{0, 0}, {5, 0}, {5, 5}, {0, 5}});
+      Check(!policy.Excludes({1, 2}, {2, 3}), "Threshold equality must remain interior");
+      Check(policy.Excludes({std::nextafter(1.0, 0.0), 2}, {2, 3}),
+            "Inside threshold was retained");
+      Check(!policy.Excludes({std::nextafter(1.0, 2.0), 2}, {2, 3}),
+            "Outside threshold was excluded");
+    });
+    run("clearance-finite-segments-not-supporting-lines", [] {
+      UvContourClearance policy({{0, 0}, {1, 0}, {0, 1}});
+      Check(!policy.Excludes({-1.5, 0.01}, {-1, 0.1}), "Infinite line was used instead of segment");
+    });
+    run("clearance-crossing-and-contained-endpoint", [] {
+      UvContourClearance diagonal({{-2, -2}, {2, 2}, {-2, 2}});
+      Check(diagonal.Excludes({-.1, -.1}, {.1, .1}), "Crossing contour was not detected");
+      UvContourClearance short_contour({{0, 0}, {.1, 0}, {0, .1}});
+      Check(short_contour.Excludes({-.5, -.5}, {.5, .5}),
+            "Contained contour endpoint was not detected");
+    });
+    run("clearance-reject-malformed-input", [] {
+      Reject([] { UvContourClearance policy({{0, 0}, {1, 0}}); }, "closed contour");
+      Reject([] { UvContourClearance policy({{0, 0}, {0, 0}, {1, 1}}); }, "Degenerate");
+      Reject(
+          [] {
+            UvContourClearance policy(
+                {{0, 0}, {1, 0}, {0, std::numeric_limits<double>::infinity()}});
+          },
+          "clearance");
+      UvContourClearance policy({{0, 0}, {1, 0}, {1, 1}, {0, 1}});
+      Reject([&] { policy.Excludes({.2, .2}, {.2, .4}); }, "cell");
+    });
+    run("clearance-native-tree-witness-and-preservation", [] {
+      quad_test::TreeFixture fixture(3);
+      const auto before = State(fixture.tree);
+      const auto old = CaptureLeafPolygons(fixture.tree);
+      UvContourClearance policy({{0, 0}, {1, 0}, {1, 1}, {0, 1}});
+      const auto filtered = CaptureLeafPolygons(fixture.tree, &policy);
+      Check(old.origins.size() == 36 && old.excluded_clearance_leaves == 0,
+            "Legacy witness no longer exposes the omitted clearance stage");
+      Check(filtered.origins.size() == 16 && filtered.excluded_clearance_leaves == 20 &&
+                filtered.excluded_boundary_leaves == 28,
+            "Wrong clearance leaf classification");
+      const auto mesh = EmitLeafQuads(fixture.tree, TestPoint, 1e-12L, &policy);
+      Check(mesh.quads.size() == 64 && filtered.interior_area == 0.25L,
+            "Emission and capture use different classified regions");
+      Check(State(fixture.tree) == before, "Clearance changed the source tree or owners");
     });
     std::cout << "quad_leaf_contract_outcomes=" << outcomes << " failed=0\n";
     return 0;

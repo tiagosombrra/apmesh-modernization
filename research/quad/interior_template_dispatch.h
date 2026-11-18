@@ -24,6 +24,7 @@ struct InteriorTemplateSelection {
   std::size_t legacy_tri_faces = 0;
   std::size_t source_leaves = 0;
   std::size_t excluded_boundary_leaves = 0;
+  std::size_t excluded_clearance_leaves = 0;
   long double quad_region_area = 0;
   bool live_aft_interface_published = false;
   bool physical_elements_published = false;
@@ -35,21 +36,22 @@ struct InteriorTemplateSelection {
 // Neither path modifies discretized model curves or physical patch boundaries.
 // QUAD failure is nonpublishing and permits a corrected retry in this session.
 class InteriorTemplateDispatcher final {
- public:
+public:
   explicit InteriorTemplateDispatcher(Par2DJMesh::AFT::Quadtree& tree) noexcept : tree_(tree) {}
   InteriorTemplateDispatcher(const InteriorTemplateDispatcher&) = delete;
   InteriorTemplateDispatcher& operator=(const InteriorTemplateDispatcher&) = delete;
 
   InteriorTemplateSelection Select(InteriorTemplateMode mode,
-                                   const PolygonPointSelector& point_selector = {});
+                                   const PolygonPointSelector& point_selector = {},
+                                   const UvContourClearance* clearance = nullptr);
 
   bool HasSelected() const noexcept { return selected_; }
 
- private:
+private:
   Par2DJMesh::AFT::Quadtree& tree_;
   bool selected_ = false;
 };
 
-}  // namespace apmesh::quad
+} // namespace apmesh::quad
 
-#endif  // APMESH_RESEARCH_QUAD_INTERIOR_TEMPLATE_DISPATCH_H
+#endif // APMESH_RESEARCH_QUAD_INTERIOR_TEMPLATE_DISPATCH_H

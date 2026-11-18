@@ -207,7 +207,8 @@ const std::vector<std::vector<std::size_t>>& Cycles(LeafPattern pattern) {
 
 } // namespace
 
-LeafPolygonMesh CaptureLeafPolygons(Par2DJMesh::AFT::Quadtree& tree) {
+LeafPolygonMesh CaptureLeafPolygons(Par2DJMesh::AFT::Quadtree& tree,
+                                    const UvContourClearance* clearance) {
   auto snapshot = ReadTree(tree);
   const auto leaves = tree.getLeaves();
   Require(leaves.size() == snapshot.boxes.size(), "Quadtree leaf list is stale");
@@ -230,6 +231,10 @@ LeafPolygonMesh CaptureLeafPolygons(Par2DJMesh::AFT::Quadtree& tree) {
     if (std::any_of(neighbors.begin(), neighbors.end(),
                     [](const auto& side) { return side.empty(); })) {
       ++result.excluded_boundary_leaves;
+      continue;
+    }
+    if (clearance && clearance->Excludes(box.minimum, box.maximum)) {
+      ++result.excluded_clearance_leaves;
       continue;
     }
     unsigned mask = 0;
@@ -281,9 +286,9 @@ LeafPolygonMesh CaptureLeafPolygons(Par2DJMesh::AFT::Quadtree& tree) {
 }
 
 UvMesh EmitLeafQuads(Par2DJMesh::AFT::Quadtree& tree, const PolygonPointSelector& selector,
-                     long double relative_tolerance) {
+                     long double relative_tolerance, const UvContourClearance* clearance) {
   Require(static_cast<bool>(selector), "A polygon point selector is required");
-  auto captured = CaptureLeafPolygons(tree);
+  auto captured = CaptureLeafPolygons(tree, clearance);
   for (std::size_t i = 0; i < captured.input.polygons.size(); ++i) {
     std::vector<UvVertex> points;
     for (auto id : captured.input.polygons[i]) {
