@@ -62,3 +62,12 @@
 .native-accepted-corners th{color:#9fb5c2}
 .native-accepted-inspectors .native-identity-selection button:disabled{opacity:.5;cursor:default}
 @media(max-width:1000px){.native-accepted-inspectors{grid-template-columns:1fr}}
+
+
+/* R2.7.21 highlights only original accepted patch-local TRI seam edges. */
+.native-seam-proof{margin-top:16px;border:1px solid #397b82;border-radius:10px;
+  background:#17343d;color:#c9e8ec;padding:12px;font-size:11px;line-height:1.7}
+.native-seam-proof strong{color:#f4e7bb;margin-right:10px}
+.native-seam-proof span[data-testid]{font-weight:700;color:#f5d286;padding:0 4px}
+.native-seam-legend{display:block;color:#9adbdc;font-size:10px}
+.native-accepted-view-grid .native-accepted-view .vtk-canvas{min-height:300px}
