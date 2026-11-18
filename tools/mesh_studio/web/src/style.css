@@ -8,3 +8,44 @@
 .camera-toolbar button:disabled{opacity:.45;cursor:default}
 .camera-toolbar [role="status"]{font-size:11px;color:#a1c4ce;margin-left:5px}
 .selected-face-label{float:right;color:#ffb494;font-weight:700}
+
+
+/* R2.7.19 source-scoped nonwelded native Inspector, only in explicit opt-in. */
+.native-identity-panel{margin-top:28px;padding:24px;background:#132433;border:1px solid #345367;border-radius:14px}
+.native-identity-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.native-identity-heading h2{font:600 21px 'Space Grotesk',sans-serif;margin:7px 0}
+.native-identity-heading p{font-size:12px;color:#91b3c1}
+.native-identity-tag{white-space:nowrap;color:#a9dec9;border:1px solid #386c67;background:#1d3a3c;border-radius:7px;font-size:11px;padding:8px}
+.native-identity-caution{font-size:11px;line-height:1.6;padding:12px;background:#282d32;color:#dfc9a4;border:1px solid #59503e;border-radius:8px;margin:14px 0}
+.native-identity-upload{display:block;border:1px dashed #557d91;border-radius:10px;padding:15px;font-size:12px;color:#c1e1eb}
+.native-identity-upload input{display:block;margin-top:12px;max-width:100%;font-size:12px;color:#b2c8d5}
+.native-identity-error{padding:12px;background:#412a30;color:#ffb9ac;border-radius:8px;font-size:11px}
+.native-identity-controls{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:12px;margin-top:20px}
+.native-identity-controls label{font-size:11px;color:#a6c5d1}
+.native-identity-controls select{margin-top:7px;padding:9px 6px}
+.native-identity-controls input[type=range]{display:block;width:100%;margin-top:16px}
+.native-identity-evidence{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:18px}
+.native-identity-evidence>div{background:#1d3545;border:1px solid #365163;border-radius:9px;padding:12px}
+.native-identity-evidence small{font-size:9px;display:block;color:#8cacba;line-height:1.5}
+.native-identity-evidence strong{display:block;font-size:14px;margin-top:5px;color:#e2f0f5}
+.native-identity-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:16px;margin-top:18px}
+.native-identity-fan-wrap,.native-identity-selection,.native-identity-members{border:1px solid #345265;border-radius:10px;padding:14px;min-width:0}
+.native-identity-fan{display:block;width:100%;max-height:320px;background:#101f2b;border-radius:9px}
+.native-identity-patch-buttons{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;max-height:115px;overflow:auto}
+.native-identity-patch-buttons button{font-size:10px;background:#233e4d;color:#d3e6ec;border:1px solid #466373;border-radius:5px;padding:5px 7px;cursor:pointer}
+.native-identity-patch-buttons button[aria-pressed=true]{border-color:#e3c48b;background:#6a5334}
+.native-identity-selection h3,.native-identity-members h3{font:600 14px 'Space Grotesk',sans-serif;margin:2px 0 15px}
+.native-identity-selection dl{display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:11px}
+.native-identity-selection dt{color:#93afbc}
+.native-identity-selection dd{margin:0;overflow-wrap:anywhere;text-align:right;color:#e1f0f5}
+.native-identity-members{margin-top:15px}
+.native-identity-table-scroll{overflow-x:auto;max-height:350px;overflow-y:auto}
+.native-identity-members table{border-collapse:collapse;width:100%;font-size:11px;text-align:left}
+.native-identity-members th,.native-identity-members td{padding:10px;border-bottom:1px solid #2f4859}
+.native-identity-members th{color:#91adbe;position:sticky;top:0;background:#132433}
+.native-identity-members tbody tr{cursor:pointer}
+.native-identity-members tr[data-selected=true]{background:#2e4653;color:#ffdfaa}
+.native-identity-sha{font-size:11px;line-height:1.6;color:#98b5c3}
+.native-identity-sha code{display:block;font-size:10px;color:#d9ecf1;overflow-wrap:anywhere}
+@media(max-width:1000px){.native-identity-layout{grid-template-columns:1fr}.native-identity-controls{grid-template-columns:1fr 1fr}.native-identity-evidence{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.native-identity-panel{padding:14px}.native-identity-heading{display:block}.native-identity-controls{grid-template-columns:1fr}.native-identity-evidence{grid-template-columns:1fr 1fr}}
