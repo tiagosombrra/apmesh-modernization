@@ -221,6 +221,12 @@ def summarize_source_trial(source: list[dict], experimental: list[dict],
         "model": model,
         "real_original_attempts": len(source),
         "real_original_curves_per_attempt": SIZES[model],
+        "original_configured_intensity": source[0]["element"]["configured_intensity"],
+        "variant_configured_intensity": experimental[0]["element"]["configured_intensity"],
+        "original_policy_nominal_step1_growth": source[0]["element"]["policy_step1_growth"],
+        "variant_policy_nominal_step1_growth": experimental[0]["element"]["policy_step1_growth"],
+        "original_curve_step_n_growth_cap": source[0]["base"][0]["configured_growth_cap"],
+        "variant_curve_step_n_growth_cap": experimental[0]["base"][0]["configured_growth_cap"],
         "different_growth_component_targets": base_curve_changes,
         "different_final_curve_targets": output_target_changes,
         "different_actual_curve_point_counts": real_sample_count_changes,
@@ -284,7 +290,10 @@ def audit(original_dir: Path, trials_dir: Path) -> dict:
             x["accepted_step"] for x in receipt["accepted_snapshots"]]
         observation["variant_accepted_steps"] = (
             trial_report["source_accepted_steps"])
-        observation["both_runs_original_genuine_two_commits"] = False
+        observation["original_has_two_independent_accepted_steps"] = (
+            len(receipt["accepted_snapshots"]) >= 2)
+        observation["variant_has_two_independent_accepted_steps"] = (
+            len(trial_report["source_accepted_steps"]) >= 2)
         models[model] = observation
     return {
         "schema": REPORT_SCHEMA,
