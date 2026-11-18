@@ -35,6 +35,10 @@ def audit_preregistered_treatments(root: Path, original_dir: Path,
             index.get("scope") ==
             "EXPLORATORY_CONFIG_ONLY_UNCHANGED_CPP_ACCEPTANCE_POLICY" and
             index.get("treatment_ids") == [v.id for v in TREATMENTS] and
+            index.get("source_input_models") == sorted(
+                {v.model for v in TREATMENTS}) and
+            index.get("cross_epoch_native_descendants_certified") is False and
+            index.get("continuous_error_bound_certified") is False and
             index.get("each_treatment_is_a_distinct_cpp_process_not_a_combined_epoch")
             is True and index.get("baseline_native_article_runs_remain_separate_controls")
             is True and index.get("scientific_lod_qualified") is False and
