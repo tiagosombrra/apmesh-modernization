@@ -1,6 +1,7 @@
 #include "controlled_patch_application.h"
 #include "boundary_pair_candidates.h"
 #include "live_boundary_pairing.h"
+#include "article_mixed_front.h"
 #include "application/runtime_config.h"
 #include "physical_quadrilateral_adaptive.h"
 #include "data/mesh/sub_mesh.h"
@@ -189,6 +190,8 @@ struct Candidate {
   std::vector<LeafPolygonOrigin> quad_origins;
   std::vector<BoundaryPairCandidate> aft_pair_origins;
   std::vector<LivePairEvent> live_pair_events;
+  std::vector<ArticleFrontCommit> article_commits;
+  std::vector<ArticleMixedFront::Box> article_leaves;
   std::vector<std::vector<std::size_t>> source_faces;
   std::size_t seed_quads = 0;
   std::size_t quads = 0;
@@ -209,7 +212,8 @@ using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
 
 Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    const ResearchSourceTreeFactory& source_tree_factory = {},
-                   const RealBoundarySource* source = nullptr, bool pair_during_front = false) {
+                   const RealBoundarySource* source = nullptr, bool pair_during_front = false,
+                   bool article_front = false) {
   ValidateSourceCurves(patch);
   auto original = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
   Require(original->makeTemplateBasedMesh() == Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
@@ -260,12 +264,36 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
   }
   for (auto* edge : aft->getBoundary()->getEdges())
     aft->getQuadtree()->findCell(edge);
-  const auto report = aft->AttemptExteriorTriangulation(selected);
-  Require(report.front_drained && report.triangles_positive && report.seam_orientation_complete &&
-              report.seam_vertices_unchanged && report.uv_area_balanced &&
-              report.spatial_overlap_tested && report.no_spatial_overlap &&
-              report.exterior_triangles > 0,
-          "Original AFT failed complete nonoverlapping UV coverage");
+  ArticleFrontResult article;
+  if (article_front) {
+    std::vector<UvVertex> contour;
+    for (auto* vertex : raw->getBoundary()->getBoundary())
+      contour.push_back({vertex->getX(), vertex->getY()});
+    std::vector<ArticleMixedFront::Box> boxes;
+    for (auto* leaf : raw->getLeaves())
+      boxes.push_back({leaf->getMin()->getX(), leaf->getMin()->getY(), leaf->getMax()->getX(),
+                       leaf->getMax()->getY()});
+    article = ArticleMixedFront(selected.uv_quads, contour, std::move(boxes)).Run();
+    std::vector<std::array<UvVertex, 3>> audit_triangles;
+    for (std::size_t i = article.seed_quads; i < article.faces.size(); ++i) {
+      const auto& face = article.faces[i];
+      audit_triangles.push_back(
+          {article.vertices[face[0]], article.vertices[face[1]], article.vertices[face[2]]});
+      if (face.size() == 4)
+        audit_triangles.push_back(
+            {article.vertices[face[0]], article.vertices[face[2]], article.vertices[face[3]]});
+    }
+    Require(!article.commits.empty() &&
+                AuditUvOverlap(selected.uv_quads, audit_triangles).no_overlap,
+            "Article contraction has incomplete or overlapping output");
+  } else {
+    const auto report = aft->AttemptExteriorTriangulation(selected);
+    Require(report.front_drained && report.triangles_positive && report.seam_orientation_complete &&
+                report.seam_vertices_unchanged && report.uv_area_balanced &&
+                report.spatial_overlap_tested && report.no_spatial_overlap &&
+                report.exterior_triangles > 0,
+            "Original AFT failed complete nonoverlapping UV coverage");
+  }
   Candidate result;
   result.real_boundary = source != nullptr;
   result.source_witness = source;
@@ -322,6 +350,19 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
       ids.push_back(it->second);
     }
     result.faces.push_back(std::move(ids));
+  }
+  if (article_front) {
+    for (std::size_t i = result.uv.size(); i < article.vertices.size(); ++i)
+      add_node(article.vertices[i]);
+    result.faces = article.faces;
+    result.article_commits = std::move(article.commits);
+    result.article_leaves = std::move(article.leaves);
+    // Preserve seed-first output; mixed commits retain their independent order.
+    std::stable_partition(result.faces.begin() + static_cast<std::ptrdiff_t>(result.seed_quads),
+                          result.faces.end(), [](const auto& face) { return face.size() == 4; });
+    result.quads =
+        static_cast<std::size_t>(std::count_if(result.faces.begin(), result.faces.end(),
+                                               [](const auto& face) { return face.size() == 4; }));
   }
   if (pair_during_front) {
     Require(pairing.Triangles().size() == aft->Triangles().size(),
@@ -448,6 +489,105 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
   if (fail_before_commit)
     throw PublicationFailure("Injected failure before physical publication");
   return result;
+}
+
+// The entire history lives inside the caller's unpublished staging directory.
+// These are actual polygon commits, not successive snapshots of a TRI matcher.
+void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path& directory) {
+  Require(!candidate.article_commits.empty(), "Missing article contraction history");
+  Require(std::filesystem::create_directory(directory), "Article history already exists");
+  std::ofstream trace(directory / "front.json", std::ios::binary);
+  trace.imbue(std::locale::classic());
+  trace << std::setprecision(17);
+  const auto ids = [&](const auto& values) {
+    trace << '[';
+    bool first = true;
+    for (auto value : values) {
+      if (!first)
+        trace << ',';
+      trace << value;
+      first = false;
+    }
+    trace << ']';
+  };
+  trace << "{\"schema\":\"apmesh.quad.article_front.v1\",\"vertices\":[";
+  for (std::size_t i = 0; i < candidate.uv.size(); ++i) {
+    if (i)
+      trace << ',';
+    trace << '[' << candidate.uv[i].u << ',' << candidate.uv[i].v << ']';
+  }
+  trace << "],\"leaves\":[";
+  for (std::size_t i = 0; i < candidate.article_leaves.size(); ++i) {
+    if (i)
+      trace << ',';
+    ids(candidate.article_leaves[i]);
+  }
+  trace << "],\"seed_faces\":[";
+  std::vector<std::vector<VertexId>> faces;
+  for (std::size_t i = 0; i < candidate.seed_quads; ++i) {
+    if (i)
+      trace << ',';
+    ids(candidate.faces[i]);
+    faces.push_back(candidate.faces[i]);
+  }
+  trace << "],\"commits\":[";
+  const auto frame = [&](std::size_t step) {
+    std::ofstream out(directory / ("commit_" + std::to_string(step) + ".obj"), std::ios::binary);
+    out.imbue(std::locale::classic());
+    out << std::setprecision(17) << "# actual prospective mixed-front commit " << step << '\n';
+    for (unsigned i = 0; i < candidate.mesh->GetNumberNos(); ++i) {
+      const auto* node = candidate.mesh->GetNoh(i);
+      out << "v " << node->GetX() << ' ' << node->GetY() << ' ' << node->GetZ() << '\n';
+    }
+    for (const auto& uv : candidate.uv)
+      out << "vt " << uv.u << ' ' << uv.v << '\n';
+    for (const auto& face : faces) {
+      out << 'f';
+      for (auto id : face)
+        out << ' ' << id + 1 << '/' << id + 1;
+      out << '\n';
+    }
+    out.close();
+    Require(bool(out), "Cannot write article commit frame");
+  };
+  frame(0);
+  for (std::size_t i = 0; i < candidate.article_commits.size(); ++i) {
+    const auto& step = candidate.article_commits[i];
+    if (i)
+      trace << ',';
+    trace << "{\"before\":[";
+    for (std::size_t j = 0; j < step.before.size(); ++j) {
+      if (j)
+        trace << ',';
+      ids(std::array<VertexId, 2>{step.before[j].first, step.before[j].second});
+    }
+    trace << "],\"best\":";
+    ids(step.best);
+    trace << ",\"selected_side\":" << step.selected_side << ",\"polygon\":";
+    ids(step.polygon);
+    trace << ",\"alternatives\":[";
+    for (std::size_t j = 0; j < step.alternatives.size(); ++j) {
+      const auto& choice = step.alternatives[j];
+      if (j)
+        trace << ',';
+      trace << "{\"side\":" << choice.side << ",\"triangle\":";
+      ids(choice.triangle);
+      trace << ",\"quad\":";
+      ids(choice.quad);
+      trace << ",\"eligible\":" << (choice.eligible ? "true" : "false") << ",\"score\":";
+      if (std::isfinite(choice.score))
+        trace << choice.score;
+      else
+        trace << "null";
+      trace << '}';
+    }
+    trace << "]}";
+    faces.push_back(step.polygon);
+    frame(i + 1);
+  }
+  trace << "]}\n";
+  trace.close();
+  Require(bool(trace), "Cannot complete article front trace");
 }
 
 // Capture exactly the live non-owning element links, including their order.
@@ -1041,6 +1181,9 @@ void Export(const Candidate& result, const std::filesystem::path& path,
     const auto& faces =
         source_scaffold && !result.source_faces.empty() ? result.source_faces : result.faces;
     const auto quads = source_scaffold ? result.seed_quads : result.quads;
+    if (!result.article_commits.empty())
+      out << "# article_front planar_UV_1993_rule prospective_choice_before_front_update=1"
+             " smoothing=none curved_XYZ_lift=experimental\n";
     if (!result.source_faces.empty()) {
       out << "# live_pair_policy physical_angle_pair_v1 source_scaffold=" << source_scaffold
           << " seed_quads=" << result.seed_quads
@@ -1661,7 +1804,10 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   GeneratorAdaptive generator(application::MakeGenerationContext(config, NUMBER_PROCESS));
   const bool live_pairs =
       config.quad_experimental_case == "curved_bezier_live_pairs_vertex_mean_v1";
-  if (config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1" || live_pairs)
+  const bool article_front =
+      config.quad_experimental_case == "curved_bezier_article_front_vertex_mean_v1";
+  if (config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1" ||
+      live_pairs || article_front)
     generator.EnforceResearchDomainFactorBounds();
   Timer timer(config.num_processes, config.num_threads, 12);
   timer.InitTimerParallel(0, 0, 10);
@@ -1824,18 +1970,20 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
       if (has_interior)
         layout = Generate(
             *patch, false, [&]() { return ReplayRealSourceTree(*patch, *source); }, source,
-            live_pairs);
+            live_pairs, article_front);
     }
     layout.source_witness = source;
     layout.generation_step = stage.step;
     layout.reference_accepted = stage.accepted;
     layout.stage_reason = stage.reason;
     Export(layout, staging / (stem + "_quad_tri.obj"));
+    if (article_front && !layout.article_commits.empty())
+      ExportArticleSteps(layout, staging / (stem + "_article_front"));
     if (live_pairs)
       Export(layout, staging / (stem + "_aft_source.obj"), true);
     // Completed-output diagnostics only. No candidate replaces any mesh element.
     std::vector<std::array<std::size_t, 3>> exterior;
-    if (layout.quads > 0) {
+    if (layout.quads > 0 && !article_front) {
       const auto& scaffold = layout.source_faces.empty() ? layout.faces : layout.source_faces;
       for (std::size_t i = layout.seed_quads; i < scaffold.size(); ++i) {
         const auto& face = scaffold[i];
@@ -1851,8 +1999,9 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     pair_stages << prefix << layout.seed_quads << ',' << exterior.size() << ',' << pairs.size()
                 << ",0,"
                 << (layout.quads > 0
-                        ? (live_pairs ? "source_scaffold_inventory_live_selection_separate"
-                                      : "topology_only_policy_pending")
+                        ? (article_front ? "not_applicable_prospective_polygon_commits"
+                           : live_pairs  ? "source_scaffold_inventory_live_selection_separate"
+                                         : "topology_only_policy_pending")
                         : "not_applicable_without_quad_seed")
                 << '\n';
     for (const auto& pair : pairs) {
@@ -1941,10 +2090,10 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     const auto bytes = ReadRehearsalOutput(file);
     bool rejected = false;
     try {
-      if (live_pairs) {
+      if (live_pairs || article_front) {
         auto failed = Generate(
             *patch, true, [&]() { return ReplayRealSourceTree(*patch, *selected); }, selected,
-            true);
+            live_pairs, article_front);
         (void)failed;
       } else {
         auto failed = CloneTypedHistory(*accepted, candidate, *patch, 0);

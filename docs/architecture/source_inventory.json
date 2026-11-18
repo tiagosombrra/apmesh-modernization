@@ -413,7 +413,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "758cb3e7753a37ff8090746739331a969881245cbc3bacf01a6c0423b58e6914"
+      "sha256": "e1b0c13c2a4c58f8786ef78e4385019db40cef9e67306243de96fc01705c1f58"
     },
     {
       "path": "CMakePresets.json",
@@ -485,7 +485,7 @@
     },
     {
       "path": "tests/quad/CMakeLists.txt",
-      "sha256": "ca50476eb214f91f9de630400d3083a64b5f4c44c258cd50dc7cc151f6f37304"
+      "sha256": "43e5197de150a902880c983b80eb6987519835840d83c2c246bef9694f3befba"
     },
     {
       "path": "tests/second_edge_memory/CMakeLists.txt",
@@ -3896,8 +3896,8 @@
       "path": "src/application/run_application.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "35f042e07ad197981340fbbf38ebe2c283c14167e88e8f78d6688ccaaa5f4ac8",
-      "bytes": 5381,
+      "sha256": "44ab2a666fd73f817e76bf999cc9b129590493c4bac0b9c20096452962d162a3",
+      "bytes": 5569,
       "includes": [
         {
           "line": 1,
@@ -4094,8 +4094,8 @@
       "path": "src/application/runtime_config.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "25ead89e9cd2c4b894afbadbb726cd0e07ba44911ef78f9566a89cc86c923e45",
-      "bytes": 23419,
+      "sha256": "316faa72b3ef323e78204d89ce94ae11d9481654f694457f08a53e8993cfa433",
+      "bytes": 23486,
       "includes": [
         {
           "line": 1,
