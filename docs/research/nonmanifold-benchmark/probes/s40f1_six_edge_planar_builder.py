@@ -92,6 +92,56 @@ def curve_distance(native_curve, p, *, divisions=48):
     return min(distances[imin],math.sqrt(max(0.0,objective(found.x))))
 
 
+def bezier_segment_distance(net, xyz, *, divisions=32):
+    """Sample then locally minimize point distance to one bounded cubic segment.
+
+    This optimization is a numerical screen, never a continuous Hausdorff
+    certificate or guaranteed global minimum for a pathological cubic.
+    """
+    if type(divisions) is not int or not 8 <= divisions <= 256:
+        raise ValueError('Invalid Bezier projection sample density')
+    if len(net) != 4 or any(len(point) != 3 or
+            not all(math.isfinite(x) for x in point) for point in net):
+        raise ValueError('Nonfinite or invalid Bezier control net')
+    if len(xyz) != 3 or not all(math.isfinite(x) for x in xyz):
+        raise ValueError('Invalid native query point')
+    def distance_squared(t):
+        point = cubic_point(net,t)
+        return sum((point[j]-xyz[j])**2 for j in range(3))
+    samples=[distance_squared(k/divisions) for k in range(divisions+1)]
+    k=min(range(len(samples)),key=lambda j:samples[j])
+    lo=max(0.,(k-1)/divisions)
+    hi=min(1.,(k+1)/divisions)
+    if hi==lo:
+        return math.sqrt(samples[k])
+    candidate=minimize_scalar(distance_squared,bounds=(lo,hi),method='bounded',
+                              options={'xatol':1e-13})
+    return math.sqrt(max(0.,min(samples[k],distance_squared(candidate.x))))
+
+
+def native_curve_to_bezier_chain_distance(curve, segments, *, samples=65,
+                                           divisions=32):
+    """Sample the *original bounded edge* toward the entire Bezier chain.
+
+    The inverse test must use all source-identified pieces, not each piece
+    against the whole edge. Both original parameter endpoints are included.
+    """
+    if type(samples) is not int or not 3 <= samples <= 4097:
+        raise ValueError('Invalid original-native source sample density')
+    if not segments:
+        raise ValueError('Original source curve has no Bezier chain')
+    lo,hi=curve.FirstParameter(),curve.LastParameter()
+    if not math.isfinite(lo+hi) or hi<=lo:
+        raise ValueError('Unbounded or invalid native curve parameter interval')
+    maximum=0.
+    for i in range(samples):
+        xyz=curve.Value(lo+(hi-lo)*i/(samples-1)).Coord()
+        nearest=min(bezier_segment_distance(net,xyz,divisions=divisions)
+                    for net in segments)
+        maximum=max(maximum,nearest)
+    return maximum
+
+
 def check_curve_fit(pts, ids, native_curve, *, samples=17, limit=BUDGET_MM):
     """Reject inherited/new curves whose sampled error exceeds frozen limit."""
     err=0.0
@@ -153,6 +203,12 @@ def fit_circle_source_segments(curve, *, limit=BUDGET_MM):
                 max_err=max(max_err,deviation)
                 if deviation>=limit*0.75:success=False
             pieces.append(controls)
+        if success:
+            # One-way point-to-edge checks can miss missing source-arc coverage.
+            inverse=native_curve_to_bezier_chain_distance(curve,pieces,
+                                                          samples=max(65,33*n))
+            max_err=max(max_err,inverse)
+            success=inverse<limit*0.75
         if success:return pieces,max_err
         n*=2
     raise ValueError('Cannot fit original circular edge under fixed 0.001-mm budget')
@@ -195,6 +251,11 @@ def recover_inherited_source_chain(table, original_entry, native_curve, pts, ope
         chosen.append(found[0]);seen.add((found[0][0],found[0][1]))
     if len(chosen)!=len(eligible):
         raise ValueError('Unmatched or duplicate indexed source-curve segments')
+    chain=[tuple(pts[idx] for idx in ids) for _,_,ids in chosen]
+    reverse_deviation=native_curve_to_bezier_chain_distance(native_curve,chain,
+                                                             samples=65)
+    if reverse_deviation>=BUDGET_MM:
+        raise ValueError('Inherited indexed chain misses original source curve')
     return chosen
 
 

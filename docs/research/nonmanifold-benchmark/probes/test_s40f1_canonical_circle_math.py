@@ -19,7 +19,8 @@ from scipy.optimize import minimize_scalar
 
 TARGET = Path(__file__).with_name('s40f1_six_edge_planar_builder.py')
 HELPERS = {'cubic_point','distance','curve_distance','check_curve_fit','_unit',
-           'circle_piece','fit_circle_source_segments','recover_inherited_source_chain'}
+           'circle_piece','fit_circle_source_segments','recover_inherited_source_chain',
+           'bezier_segment_distance','native_curve_to_bezier_chain_distance'}
 tree = ast.parse(TARGET.read_text(encoding='utf-8'))
 functions=[node for node in tree.body if isinstance(node,ast.FunctionDef) and node.name in HELPERS]
 source_module=ast.Module(body=functions,type_ignores=[])

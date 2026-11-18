@@ -16,7 +16,8 @@ from OCP.gp import gp_Vec
 
 FILE=Path(__file__).with_name('s40f1_six_edge_planar_builder.py')
 HELPERS={'cubic_point','distance','curve_distance','check_curve_fit','_unit',
-         'circle_piece','fit_circle_source_segments'}
+         'circle_piece','fit_circle_source_segments',
+         'bezier_segment_distance','native_curve_to_bezier_chain_distance'}
 tree=ast.parse(FILE.read_text())
 funcs=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in HELPERS]
 assert {n.name for n in funcs}==HELPERS
