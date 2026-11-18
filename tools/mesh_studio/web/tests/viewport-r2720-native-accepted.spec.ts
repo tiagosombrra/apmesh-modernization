@@ -166,3 +166,69 @@ test('R2.7.20 rejects forged native face ID, source SHA and welding semantics',a
   await upload(page,welded);
   await expect(page.getByTestId('r2720-error')).toContainText('scope_or_scientific_exclusions');
 });
+
+
+test('R2.7.21 native Eistute source seam is real TRI edges in XYZ and patch-local UV',async({page})=>{
+  await page.goto('/?nativeScene=1');
+  await upload(page,example());
+  await expect(page.getByTestId('r2721-segment-count')).toHaveText('4');
+  await expect(page.getByTestId('r2721-patch-count')).toHaveText('4');
+  await expect(page.getByTestId('r2720-viewport-xyz')).toHaveAttribute(
+    'data-native-seam-segments','4');
+  await expect(page.getByTestId('r2720-viewport-uv')).toHaveAttribute(
+    'data-native-seam-segments','1');
+  await expect(page.getByTestId('r2720-viewport-xyz')).toHaveAttribute(
+    'data-native-seam-patch-incidences','4');
+  await page.getByTestId('r2720-patch').selectOption('2');
+  await expect(page.getByTestId('r2720-source-node-id')).toHaveText('102');
+  await expect(page.getByTestId('r2720-native-element-id')).toHaveText('5002');
+  await expect(page.getByTestId('r2721-selection-scope')).toContainText('incidente');
+  await page.getByTestId('r2720-sample').focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByTestId('r2720-source-node-id')).toHaveText('200');
+  await expect(page.getByTestId('r2720-viewport-xyz')).toHaveAttribute(
+    'data-native-selected-sample','1');
+  await expect(page.getByTestId('r2720-viewport-uv')).toHaveAttribute(
+    'data-native-selected-sample','1');
+});
+
+test('R2.7.21 retains all 28 native Book source patches without fake welding',async({page})=>{
+  await page.goto('/?nativeScene=1');
+  await upload(page,example());
+  await page.getByTestId('r2720-model').selectOption('1');
+  await expect(page.getByTestId('r2721-patch-count')).toHaveText('28');
+  await expect(page.getByTestId('r2721-segment-count')).toHaveText('28');
+  await expect(page.getByTestId('r2720-viewport-xyz')).toHaveAttribute(
+    'data-native-seam-segments','28');
+  await page.getByTestId('r2720-patch').selectOption('27');
+  await expect(page.getByTestId('r2720-source-node-id')).toHaveText('127');
+  await expect(page.getByTestId('r2720-native-element-id')).toHaveText('5027');
+  await expect(page.getByTestId('r2720-viewport-uv')).toHaveAttribute(
+    'data-native-seam-segments','1');
+  await expect(page.getByTestId('r2721-curve')).toHaveValue('0');
+});
+
+test('R2.7.21 refuses invented seam chords when original nodes are not adjacent TRI vertices',async({page})=>{
+  await page.goto('/?nativeScene=1');
+  const forged=example();
+  const target=forged.scenes[0];
+  target.native_faces[0][4][1]=[9001,0.5,0,0,0.5,0];
+  target.native_faces.push([
+    0,700,1,9501,
+    [[200,0,1,0,0,1],[9002,1,0.4,0,1,0.4],[9003,0.7,0.9,0,0.7,0.9]],
+  ]);
+  target.source_patch_face_counts[0]++;
+  target.native_tri_faces++;
+  await upload(page,forged);
+  await expect(page.getByTestId('r2720-error'))
+    .toContainText('r2721_source_sample_segment_not_native_accepted_tri_edge');
+  await expect(page.getByTestId('r2720-viewport-xyz')).toHaveCount(0);
+  await expect(page.getByTestId('r2720-viewport-uv')).toHaveCount(0);
+});
+
+test('R2.7.21 never displays source seam overlay without explicit native scene opt-in',async({page})=>{
+  await page.goto('/');
+  await expect(page.getByTestId('r2721-seam-proof')).toHaveCount(0);
+  await expect(page.getByTestId('r2720-viewport-xyz')).toHaveCount(0);
+  await expect(page.getByTestId('viewport-xyz')).toBeVisible();
+});
