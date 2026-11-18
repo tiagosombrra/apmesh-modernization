@@ -105,6 +105,65 @@ source-controlled generator runs**, not general statistical
 conclusions or independent geometry error/LOD validation.
 **R2.8 remains BLOCKED**.
 
+## Final exact-source native certification and original raw archive
+
+The corrected revision [GitHub Actions #44414466513](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44414466513),
+exact code SHA `05880f831428f9505b11fd1f108d7b28374bdb0d`,
+has **native original compiled C++ and independent effective-budget
+source auditor PASS**, Python Linux **390 tests / 4 optional skips
+PASS**, and Python Windows **390 / 10 environment skips PASS**.
+The source output parity still certifies **38/38 original article
+scientific files byte-identical** with research instrumentation
+OFF/ON. A hosted Chromium result must be checked separately
+before claiming full 4/4 job success.
+
+The exact final *native* source-bound effective-budget report
+reproduces all Eistute and Book findings above, including
+**78/91 strict Eistute geometric floor dominances,
+54/91 original consistency/structural adjustment flags**,
+zero changes in original/treated growth-component targets,
+postconsistency targets, actually sampled curve points or
+effective element budget targets, and the genuine single
+postcommit accepted step per independent model process.
+
+The original exact-run source archives were separately
+retrieved from GitHub, uploaded to the personal doctoral
+Drive results folder, then retrieved **back from Drive**
+with identical file byte lengths and SHA256:
+
+| Original scientific artifact | Exact final GitHub Actions archive | ZIP bytes | Original and Drive readback SHA256 |
+| --- | --- | ---: | --- |
+| [R2.7.25 original budget report and auditor #14479741769](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44414466513/artifacts/14479741769) | Native actual element/curve targets | **1,611** | `6efbc8342ee6a2b7c43cd1614ac548076ffc6b5b04d176591bdc40f40c9ac404` |
+| [R2.7.25 original native C++ control and precommit source #14478712972](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44414466513/artifacts/14478712972) | Original accepted TRI source NDJSON and complete stdout/stderr | **287,823** | `0f5200bfb4d1cb6e69d629baf15992e55b7daa25c07d20bb9968fce8e7e34f74` |
+| [R2.7.25 real separate controlled C++ trials #14479532334](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44414466513/artifacts/14479532334) | Both unchanged-policy original native C++ single-factor experiments with independent audit | **297,482** | `189ece6b76787e5453ee44152a2035beab5caef7ca1740bac532514f152c762d` |
+
+The preserved original independent effective-budget report JSON
+contains **7,284 bytes** and SHA256
+`4c2a4d3c82cbd38196bab2fe02fe4d9ffaa160fa700a88c124b8d0879c0f6b99`.
+Private authenticated personal Drive links are omitted from
+the repository document; they can be shared in the private
+research conversation.
+
 ## Status and next research decision
 
-**Implementation prepared. Empirical numerical findings must be read from the exact passing native C++ and independent R2.7.25 audit artifacts; do not invent which floor dominates before the new source capture runs.** Even if some geometric target or actual curve sampling changes, the true original postcommit accepted step counts remain the only admission criterion for genuine native epochs. R2.8 remains **BLOCKED** pending at least two accepted commits in one actual source-model/run, verified original source face/curve descendants and a continuous geometric approximation-error bound. No merging, tagging, publishing, or alteration of acceptance policy.
+**R2.7.25 original C++ effective-budget observations qualified
+at native/source level.** They explain why the two
+R2.7.24 preregistered controls did not modify observed
+per-curve or per-element budgets, without claiming
+universally ineffective parameters or byte-identical
+uncommitted candidate TRI meshes.
+
+**Next R2.7.26** should use an independently preregistered
+and finite *generation-control* experiment based on actual
+binding constraints, with original acceptance predicates
+unchanged; any revised source configuration must remain a
+separate process and cannot be appended to the historical
+article epoch chain.
+
+**R2.8 remains BLOCKED:** there are not two genuinely accepted
+source epochs inside any of these original model runs,
+nor independently certified cross-epoch source face/curve
+descendants, continuous geometric error bounds, or
+physical Windows GPU-present/RSS/VRAM evidence.
+No merge to main, tag, release, global welding, or
+C++ acceptance-policy modification.
