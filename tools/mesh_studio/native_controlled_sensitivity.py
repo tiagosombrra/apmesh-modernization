@@ -194,7 +194,8 @@ def run_treatment(exe: Path, root: Path, original_dir: Path,
             config.read_bytes())
         env = dict(os.environ,
                    APMESH_RESEARCH_LINEAGE_DIR=str(lineage),
-                   APMESH_RESEARCH_ACCEPTANCE_GATES="1")
+                   APMESH_RESEARCH_ACCEPTANCE_GATES="1",
+                   APMESH_RESEARCH_EFFECTIVE_BUDGETS="1")
         process = subprocess.run(
             [str(exe), str(config)], cwd=root, env=env,
             capture_output=True, timeout=timeout, check=False)
