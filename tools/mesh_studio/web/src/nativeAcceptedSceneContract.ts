@@ -147,7 +147,7 @@ export function parseNativeAcceptedScene(text: string): NativeSceneBundle {
       for (const group of curve.sample_groups) {
         for (const member of group.members) {
           const found = faces.some(face => face[0] === member.patch_slot &&
-            face[4].some(corner => corner[0] === member.native_node_id &&
+            face[4].some((corner: number[]) => corner[0] === member.native_node_id &&
               Math.abs(corner[1] - member.original_xyz[0]) <= 1e-9 &&
               Math.abs(corner[2] - member.original_xyz[1]) <= 1e-9 &&
               Math.abs(corner[3] - member.original_xyz[2]) <= 1e-9));
