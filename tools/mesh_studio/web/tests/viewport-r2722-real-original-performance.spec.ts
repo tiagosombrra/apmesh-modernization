@@ -1,5 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
+import { createHash } from 'node:crypto';
 import { expect, test } from '@playwright/test';
 import type { Page } from '@playwright/test';
 
@@ -100,6 +101,7 @@ test('R2.7.22 original native Eistute Book Chromium import, patch, sample, heap 
   const report:{
     schema:string; source_kind:string; workflow_sha:string|null;
     hosted_runner_scope:string; original_scene_json_bytes:number;
+    original_scene_json_sha256:string;
     source_browser_user_agent:string; measurement_method:string;
     real_original_sources:Record<string,unknown>;
     imported_original_cpu:typeof originalImportMeasurements;
@@ -115,6 +117,7 @@ test('R2.7.22 original native Eistute Book Chromium import, patch, sample, heap 
     workflow_sha:process.env.GITHUB_SHA ?? null,
     hosted_runner_scope:'ubuntu-24.04 GitHub-hosted Chromium; hardware not qualified',
     original_scene_json_bytes:original.length,
+    original_scene_json_sha256:createHash('sha256').update(original).digest('hex'),
     source_browser_user_agent:await page.evaluate(()=>navigator.userAgent),
     measurement_method:'Playwright input to 2 RAF readiness includes controller round trips; CDP JS heap is browser estimate, not RSS or VRAM; VTK synchronous render-call time is not GPU present.',
     real_original_sources:{},
