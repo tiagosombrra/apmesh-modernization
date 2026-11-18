@@ -296,6 +296,20 @@ jobs:
           path: build/r2725-original-effective-budget-audit.json
           if-no-files-found: error
           retention-days: 14
+      - name: Execute R2.7.26 preregistered original-native generation-controls on real Eistute and Book
+        run: python -m tools.mesh_studio.native_active_generation_study --mode run --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --trials-directory build/r2726-original-generation-treatments --timeout 300
+      - name: Independently re-open R2.7.26 actual source C++ gates, face receipts and curve budgets
+        run: python -m tools.mesh_studio.native_active_generation_study --mode audit --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --trials-directory build/r2726-original-generation-treatments --output build/r2726-original-native-generation-audit.json
+      - name: Retain R2.7.26 raw native C++ separate-process treatment evidence even if experiment fails closed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2726-source-native-trials-${{ github.sha }}
+          path: |
+            build/r2726-original-generation-treatments/
+            build/r2726-original-native-generation-audit.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Preserve exact R2.7.24 original C++ controlled-treatment attempts and independently verified native source outcomes
         if: always()
         uses: actions/upload-artifact@v4
