@@ -300,9 +300,19 @@ independently verified byte-identical to GitHub.
 Private Drive URLs are not placed in this
 potentially public research repository.
 
-## Outcome status
+## Qualification status
 
-**Experiment preregistered in source. Actual experimental
-outcomes and the exact source SHA remain pending
-until all 4 CI jobs and the source-bound native artifact
-can be checked.** Do not substitute guessed results.
+**Source-bound original C++ two-treatment experiment and
+independent raw-source audit: PASS.** Scientific regression
+Linux/Windows: **379 tests each, PASS**, with 4 and 10
+environment skips respectively. **Original 38/38
+numerical source files remain byte-identical
+with C++ research instrumentation enabled/disabled.**
+
+The certified scope is a negative sensitivity
+finding for the two previously declared
+single-factor configurations, not a second
+committed adaptive epoch or scientific LOD.
+The original hosted Chromium job of the
+same exact code/source run must independently
+complete before claiming **4/4 CI jobs PASS**.
