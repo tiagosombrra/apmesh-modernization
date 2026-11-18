@@ -35,7 +35,7 @@ The S3.Z.4 package from this checkpoint adds `s3zd_original_s40_runner.py`, whic
 
 The actual S40 native trial remains **NOT RUN** in this runtime: authorized original STEP and private S3.W BP/manifest were missing, and raw GitHub retrieval from the isolated container failed. The source-only code and the Python test evidence do not replace the original CAD.
 
-The code package is delivered to the researcher privately in the conversation; **this specific GitHub commit records the register and S3.Z.4 orchestration only**. Until script contents are committed, use the package's verified local Python files, not a hypothetical remote code path.
+**Published executable code:** S3.Z through S3.Z.4 and all 102 hermetic unit tests are now committed to `docs/research/nonmanifold-benchmark/probes/`. The matching private ZIP provides offline reproduction. Original third-party STEP and source-derived BP coordinates remain outside public GitHub; unit tests are not a native-S40 certificate.
 
 ## Next verifiable actions
 
