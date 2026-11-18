@@ -35,6 +35,7 @@ def synthetic_budget_source():
             "scientific_lod_qualified":False,
             "patch_local_points_not_globally_welded":True,
             "native_tri_faces":tri,
+            "native_source_patches":patches,
             "source_patch_face_counts":counts,
             "native_faces":[None]*tri,
         })
