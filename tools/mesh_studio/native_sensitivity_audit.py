@@ -48,6 +48,12 @@ def audit_preregistered_treatments(root: Path, original_dir: Path,
             (original_dir / f"r2712-{variant.model}-native-lineage-audit.json")
             .read_text(encoding="utf-8"))
         article = original.read_bytes()
+        selector = re.search(rb"^INPUT_MODEL=(.+)$", article, flags=re.M)
+        require(selector is not None, "r2724_original_native_input_selector_missing")
+        source_path = (root / selector.group(1).decode("utf-8").strip()).resolve()
+        require(source_path.is_relative_to(root) and source_path.is_file() and
+                sha256_file(source_path) == control["real_model_input_sha256"],
+                "r2724_original_native_model_input_changed")
         expected_intent = make_single_factor_config(article, variant)
         directory = artifact_root / variant.id
         report = json.loads(
