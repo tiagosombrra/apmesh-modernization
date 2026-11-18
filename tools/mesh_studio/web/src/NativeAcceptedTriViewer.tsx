@@ -7,6 +7,8 @@ import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor';
 import vtkCellPicker from '@kitware/vtk.js/Rendering/Core/CellPicker';
 import vtkDataArray from '@kitware/vtk.js/Common/Core/DataArray';
 import type { NativeAcceptedScene } from './nativeAcceptedSceneContract';
+import type { NativeSeamTrace } from './nativeSeamTrace';
+import { nativeSeamActors } from './nativeSeamVtk';
 
 type Space = 'xyz' | 'uv';
 
@@ -15,6 +17,8 @@ interface Props {
   space: Space;
   patchSlot: number;
   selectedFaceIndex: number | null;
+  seamTrace: NativeSeamTrace | null;
+  selectedSampleOrdinal: number;
   onSelectFace(index: number | null): void;
 }
 
@@ -72,12 +76,14 @@ function prepareNativeDisplay(
  * Float32 buffers are never fed back to scientific source data.
  */
 export function NativeAcceptedTriViewer({
-  scene, space, patchSlot, selectedFaceIndex, onSelectFace,
+  scene, space, patchSlot, selectedFaceIndex, seamTrace,
+  selectedSampleOrdinal, onSelectFace,
 }: Props) {
   const hostRef = useRef<HTMLDivElement>(null);
   const renderRef = useRef<ReturnType<typeof vtkGenericRenderWindow.newInstance> | null>(null);
   const actorRef = useRef<ReturnType<typeof vtkActor.newInstance> | null>(null);
   const overlayRef = useRef<ReturnType<typeof vtkActor.newInstance> | null>(null);
+  const seamActorsRef = useRef<ReturnType<typeof vtkActor.newInstance>[]>([]);
   const onSelectRef = useRef(onSelectFace);
   onSelectRef.current = onSelectFace;
   const prepared = useMemo(() => prepareNativeDisplay(scene, space, patchSlot),
@@ -167,6 +173,11 @@ export function NativeAcceptedTriViewer({
         overlayRef.current.delete();
         overlayRef.current=null;
       }
+      for (const seam of seamActorsRef.current) {
+        renderer.removeActor(seam);
+        seam.delete();
+      }
+      seamActorsRef.current=[];
       renderer.removeActor(actor);
       picker.delete();
       renderRef.current=null;
@@ -174,6 +185,40 @@ export function NativeAcceptedTriViewer({
       grw.delete();
     };
   }, [prepared, scene.model, scene.accepted_native_step, space]);
+
+  useEffect(() => {
+    const grw = renderRef.current;
+    const host = hostRef.current;
+    if (!grw || !host) return;
+    const renderer = grw.getRenderer();
+    for(const actor of seamActorsRef.current) {
+      renderer.removeActor(actor);
+      actor.delete();
+    }
+    seamActorsRef.current=[];
+    delete host.dataset.nativeSeamSegments;
+    delete host.dataset.nativeSeamPatchIncidences;
+    if (seamTrace) {
+      const actors=nativeSeamActors(
+        seamTrace,space,patchSlot,selectedSampleOrdinal);
+      seamActorsRef.current=actors;
+      actors.forEach(actor=>renderer.addActor(actor));
+      host.dataset.nativeSeamSegments=String(
+        space==='xyz' ? seamTrace.segments.length :
+        seamTrace.segments.filter(s=>s.patchSlot===patchSlot).length);
+      host.dataset.nativeSeamPatchIncidences=String(seamTrace.patchSlots.length);
+      host.dataset.nativeSelectedSample=String(selectedSampleOrdinal);
+    }
+    grw.getRenderWindow().render();
+    return () => {
+      if(renderRef.current===grw) {
+        for(const actor of seamActorsRef.current){
+          renderer.removeActor(actor);actor.delete();
+        }
+        seamActorsRef.current=[];
+      }
+    };
+  }, [prepared,seamTrace,space,patchSlot,selectedSampleOrdinal]);
 
   useEffect(() => {
     const grw = renderRef.current;
