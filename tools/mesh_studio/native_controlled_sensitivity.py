@@ -37,6 +37,7 @@ class Treatment:
     original: str
     treatment: str
     rationale: str
+    insert_after: str | None = None
 
 
 # Preregistered, source-controlled treatments. One generation input at a time.
@@ -76,17 +77,36 @@ def make_single_factor_config(original_bytes: bytes, treatment: Treatment) -> by
     original = original_bytes.decode("utf-8")
     before = treatment.parameter + "=" + treatment.original
     after = treatment.parameter + "=" + treatment.treatment
-    require(len(re.findall("^" + re.escape(treatment.parameter) + "=",
-                           original, flags=re.M)) == 1 and
-            original.splitlines().count(before) == 1 and
-            treatment.original != treatment.treatment,
+    require(treatment.original != treatment.treatment,
             "r2724_requested_parameter_not_one_legitimate_source_control")
-    changed = original.replace(before + "\n", after + "\n")
-    require(len(changed.splitlines()) == len(original.splitlines()) and
-            sum(a != b for a, b in zip(original.splitlines(),
-                                      changed.splitlines())) == 1 and
-            changed.replace(after + "\n", before + "\n") == original,
-            "r2724_treatment_modified_more_than_one_original_parameter")
+    if treatment.insert_after is None:
+        require(len(re.findall("^" + re.escape(treatment.parameter) + "=",
+                               original, flags=re.M)) == 1 and
+                original.splitlines().count(before) == 1,
+                "r2724_requested_parameter_not_one_legitimate_source_control")
+        changed = original.replace(before + "\n", after + "\n")
+        require(len(changed.splitlines()) == len(original.splitlines()) and
+                sum(a != b for a, b in zip(original.splitlines(),
+                                          changed.splitlines())) == 1 and
+                changed.replace(after + "\n", before + "\n") == original,
+                "r2724_treatment_modified_more_than_one_original_parameter")
+    else:
+        # Only the independently preregistered Book default-off AFT switch
+        # may insert one absent key. Other additions still fail closed.
+        require(treatment.model == "book" and
+                treatment.parameter == "AFT_LOCAL_POSTPROCESS_PASSES" and
+                treatment.original == "0" and treatment.treatment == "1" and
+                treatment.insert_after == "ADAPTIVE_TARGET_GROWTH=1.05" and
+                original.splitlines().count(treatment.insert_after) == 1 and
+                len(re.findall("^" + re.escape(treatment.parameter) + "=",
+                               original, flags=re.M)) == 0,
+                "r2726_unqualified_omitted_default_parameter")
+        marker = treatment.insert_after + "\n"
+        changed = original.replace(marker, marker + after + "\n")
+        require(changed.replace(after + "\n", "", 1) == original and
+                len(changed.splitlines()) == len(original.splitlines()) + 1 and
+                changed.splitlines().count(after) == 1,
+                "r2726_variant_not_exactly_one_added_default_override")
     # For article configs, original output and input selectors are retained
     # in the immutable intention config. Only the ephemeral run copy changes
     # absolute INPUT_MODEL and OUTPUT_PREFIX to isolate side effects.
