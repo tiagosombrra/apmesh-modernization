@@ -44,6 +44,67 @@ The report is anchored to the exact source C++ stderr hashes, original input mod
 
 The `native-lineage-optin` job first compiles and independently verifies original real C++ Eistute and Book article source replay, original accepted TRI per-face sidecars, R2.7.23 acceptance predicates and original 38-file OFF/ON parity. It then executes the same two preregistered R2.7.24 source-sensitive trials with the additional read-only R2.7.25 flag. The independent R2.7.24 auditor remains mandatory, followed by the new effective-budget auditor, which retains a source-SHA-scoped 14-day JSON artifact. Linux, Windows and actual hosted Chromium jobs remain independent regression gates; hosted Chromium is **not a certified physical Windows GPU present/RSS/VRAM benchmark**.
 
+## Preliminary original native observations — independent C++ audit passed
+
+The first source-observation native job in
+[Actions #44413831478](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44413831478)
+**passed the compiled C++ native source and independent R2.7.25
+budget audit**, but that earlier workflow failed a **synthetic Windows
+negative-test error-code expectation**, so it is **not a full 4/4 CI
+certification**. The source artifact
+[original effective-budget audit #14479206683](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44413831478/artifacts/14479206683)
+was independently inspected against both raw original and
+trial C++ stderr archives and their source SHA. Its observations
+must be reproduced by the final corrected workflow before full
+R2.7.25 certification is declared.
+
+| Actual original evidence | Eistute, 7 attempts × 13 curves | Book, 3 attempts × 85 curves |
+| --- | ---: | ---: |
+| Source curve-attempt witnesses | **91** | **255** |
+| Configured control changed in genuine C++ observation | Curve step-N cap **4→2** in all 91 witnesses | Intensity **0.02→0.01** in all 3 element-budget witnesses |
+| Changed initial curve growth target | **0** | **0** |
+| Changed post-consistency curve target | **0** | **0** |
+| Changed final real sampled curve point count | **0** | **0** |
+| Changed effective per-step element target | **0** | **0** |
+| Geometric floor strictly above initial growth target (original) | **78/91** | **0/255** |
+| Original consistency or structural adjustment flag | **54/91** | **0/255** |
+
+**Eistute:** `budget_driven=1`, `element_target_mode=1`;
+configured step-N curve growth cap really changes from 4 to 2, but
+the growth-component point targets remain byte-for-byte the same
+observed integer sequence (11 or 21). That is direct evidence
+that the decreased cap did not bind *that observed component*
+in these exact attempts, not proof that the parameter can never
+matter. At every step 2, 3 and 4 source retry, the actual
+geometric-spacing floor strictly exceeds this initial growth
+component for all 13 original curves. The original structural
+consistency path flags 54 of the 91 curve-attempt witnesses.
+The largest recorded initial geometric floor is 131 points,
+whereas the final actual source curve counts in these
+observations never exceed 20. These records expose how
+later source-specific constraints can dominate intermediate
+curve budgets; they do **not** establish any newly accepted
+adaptive epoch.
+
+**Book:** `budget_driven=0`, `element_target_mode=0`, and the
+actual curve point-budget branch is **inactive** for all 255
+curve-attempt witnesses. The input intensity changes from
+0.02 to 0.01, changing nominal
+`policy_step1_growth` from 1.16 to 1.08,
+but the actual C++ element growth values remain **1.8**
+(steps 1 and 2) and **1.5** (step 3), from the separately
+configured original element-growth path; the
+`effective_target_elements` remain **112, 4256, 4256**.
+The trial thus changed a *computed nominal parameter* but
+did not engage the budget-driven element target path under
+Book's original research-debug configuration. The original
+curve samples and accepted TRI sidecar bytes remain unchanged.
+
+These results are observations from **specific real original
+source-controlled generator runs**, not general statistical
+conclusions or independent geometry error/LOD validation.
+**R2.8 remains BLOCKED**.
+
 ## Status and next research decision
 
 **Implementation prepared. Empirical numerical findings must be read from the exact passing native C++ and independent R2.7.25 audit artifacts; do not invent which floor dominates before the new source capture runs.** Even if some geometric target or actual curve sampling changes, the true original postcommit accepted step counts remain the only admission criterion for genuine native epochs. R2.8 remains **BLOCKED** pending at least two accepted commits in one actual source-model/run, verified original source face/curve descendants and a continuous geometric approximation-error bound. No merging, tagging, publishing, or alteration of acceptance policy.
