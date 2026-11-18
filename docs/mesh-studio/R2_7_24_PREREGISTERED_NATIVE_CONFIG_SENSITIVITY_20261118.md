@@ -1,6 +1,6 @@
 # Mesh Studio R2.7.24 — predeclared single-factor native C++ configuration sensitivity
 
-**Preregistration date:** 2026-11-18. **Branch:** \`feature/mesh-studio-r27-bvh-20261116\`; **PR #239:** research draft, not merged. **Evidence classification:** separate exploratory parameter treatments; *not* article-replication results and *not* a new geometric LOD.
+**Preregistration date:** 2026-11-18. **Branch:** `feature/mesh-studio-r27-bvh-20261116`; **PR #239:** research draft, not merged. **Evidence classification:** separate exploratory parameter treatments; *not* article-replication results and *not* a new geometric LOD.
 
 ## Scientific hypothesis and experimental controls
 
@@ -12,8 +12,8 @@ criteria. Book native steps 2 and 3 increased the estimated error by
 300.43% under the nonstable Mode-0 policy.
 
 The original native generator's expression
-\`score_ok || small_mesh_progress_override\`, its policy configuration
-parsing, the C++ accepted scope's \`Commit()\` behavior, original mesh
+`score_ok || small_mesh_progress_override`, its policy configuration
+parsing, the C++ accepted scope's `Commit()` behavior, original mesh
 input files, and original article configurations are **not** edited.
 
 The experiment tests only whether **source-side generation controls**
@@ -26,8 +26,8 @@ processes are **never** spliced into a false two-epoch history.
 
 | Trial ID | Original model and control | Exactly one changed generation control | Original → exploratory value | Causal hypothesis, not expected outcome |
 | --- | --- | --- | --- | --- |
-| \`eistute_curve_growth_stepn_half\` | \`configs/eistute/article.conf\`, model \`input_models/eistute2.fixed.bp\` | \`CURVE_POINT_GROWTH_STEPN\` | **4.0 → 2.0** | Reduce post-first-step curve point budget so native step-4 refinement may avoid severe between-patch transition imbalance and weak TRI elements |
-| \`book_adaptive_intensity_half\` | \`configs/book/article.conf\`, model \`input_models/book_v7a.bp\` | \`ADAPTIVE_INTENSITY\` | **0.02 → 0.01** | Reduce generation intensity to determine whether the nonstable Mode-0 step-2 candidate error increase can be avoided |
+| `eistute_curve_growth_stepn_half` | `configs/eistute/article.conf`, model `input_models/eistute2.fixed.bp` | `CURVE_POINT_GROWTH_STEPN` | **4.0 → 2.0** | Reduce post-first-step curve point budget so native step-4 refinement may avoid severe between-patch transition imbalance and weak TRI elements |
+| `book_adaptive_intensity_half` | `configs/book/article.conf`, model `input_models/book_v7a.bp` | `ADAPTIVE_INTENSITY` | **0.02 → 0.01** | Reduce generation intensity to determine whether the nonstable Mode-0 step-2 candidate error increase can be avoided |
 
 These treatments were selected **before** obtaining their empirical
 native outcome report. A zero- or single-accepted-epoch outcome is a
@@ -38,21 +38,21 @@ inserted into this two-trial matrix.
 
 **Exact original Git-blob source controls**:
 Eistute article configuration
-\`bd368dbad5b61515106b5d74d28cbde159780cd6\`;
+`bd368dbad5b61515106b5d74d28cbde159780cd6`;
 Book article configuration
-\`d88116054728311df74a6ece1d38d0cd23a64466\`.
+`d88116054728311df74a6ece1d38d0cd23a64466`.
 The original model SHA-256 values and compiled C++ executable SHA
 are recalculated at runtime from the independently accepted
 R2.7.12 original source records. Every variant intention configuration
 must differ from the article configuration by **exactly one**
 recorded line. The actual execution configuration differs additionally
 only in two isolated I/O path selectors: absolute
-\`INPUT_MODEL\` (same byte-hash source input) and a disposable
-absolute \`OUTPUT_PREFIX\` (no original project output overwrite).
+`INPUT_MODEL` (same byte-hash source input) and a disposable
+absolute `OUTPUT_PREFIX` (no original project output overwrite).
 
 ## Execution and evidence isolation
 
-\`tools/mesh_studio/native_controlled_sensitivity.py\` runs the
+`tools/mesh_studio/native_controlled_sensitivity.py` runs the
 **same actual C++ serial research instrumented generator executable**
 twice, once per original model. Each process has a unique temporary
 output directory and a unique accepted-source sidecar directory.
@@ -63,14 +63,14 @@ It records:
   and SHA-256, original native model byte hash and exact executable hash.
 - Complete original C++ stdout and stderr, including the R2.7.23
   acceptance predicate vector for each real native
-  \`(step, retry)\`, plus R2.7.18 adapter provisional
+  `(step, retry)`, plus R2.7.18 adapter provisional
   boundary-close telemetry when present.
 - Every **actually accepted** native per-face TRI NDJSON sidecar,
   independently checked for original patch/curve source topology,
   native patch-local node IDs, finite XYZ/UV, a typed outer
   accepted scope, native step/retry and SHA-256. A rejected
   candidate cannot enter this folder as an accepted epoch.
-- Original C++ \`real_generator_outcomes\` accepted/restored counts
+- Original C++ `real_generator_outcomes` accepted/restored counts
   crosschecked against all positive precommit decisions,
   independently accepted sidecar steps and rejected/restored
   step groups.
@@ -86,7 +86,7 @@ incomplete or inconsistent accepted sidecar, nonfinite
 native gate, changed source model/configuration/acceptance
 policy, or unaccounted retry causes a **fail-closed** outcome.
 
-The independent \`native_sensitivity_audit.py\` reopens the
+The independent `native_sensitivity_audit.py` reopens the
 raw retained native artifacts, recomputes the model/executable
 and both config hashes, restores the one-line article config
 identity, validates the resolved runtime config changed only
@@ -110,7 +110,7 @@ GeneratorAdaptive once and separately executes the real
 article configurations and R2.7.23 source audit. Only
 then may it execute these two predeclared source variations:
 
-\`\`\`bash
+```bash
 python -m tools.mesh_studio.native_controlled_sensitivity \
   --exe build/r2712-native/bin/quad_generator_outcome_probe \
   --root . \
@@ -123,7 +123,7 @@ python -m tools.mesh_studio.native_sensitivity_audit \
   --original-directory build/r2712-native-evidence \
   --treatments build/r2724-controlled-native-treatment-evidence \
   --output build/r2724-controlled-native-sensitivity-audit.json
-\`\`\`
+```
 
 The native job archives the exact original exploratory
 trial intention/execution configs, full stdout/stderr,
@@ -144,7 +144,7 @@ decisions, model-specific original error,
 coherence/imbalance, quality and growth diagnostics
 in each **distinct** treatment process.
 No treatment is declared a success based merely
-on lower error or on a \`predicted_branch_accept_not_committed\`
+on lower error or on a `predicted_branch_accept_not_committed`
 flag. The postcommit accepted sidecar is mandatory.
 
 **Even if one treatment has two genuine accepted
