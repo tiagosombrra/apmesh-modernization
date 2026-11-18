@@ -3620,71 +3620,71 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
         std::ostringstream gate;
         gate << std::setprecision(17)
              << "R2723_NATIVE_ACCEPTANCE_GATE={"
-             << "\\"schema\\":\\"apmesh.meshstudio.r2723.original_precommit_gate.v1\\","
-             << "\\"step\\":" << this->step_ << ",\\"retry\\":" << retry
-             << ",\\"acceptance_mode\\":" << AcceptanceMode()
-             << ",\\"stable_mode\\":" << (current_policy_.stable_mode ? "true" : "false")
-             << ",\\"score_ok\\":" << (score_ok ? "true" : "false")
-             << ",\\"small_mesh_progress_override\\":"
+             << "\"schema\":\"apmesh.meshstudio.r2723.original_precommit_gate.v1\","
+             << "\"step\":" << this->step_ << ",\"retry\":" << retry
+             << ",\"acceptance_mode\":" << AcceptanceMode()
+             << ",\"stable_mode\":" << (current_policy_.stable_mode ? "true" : "false")
+             << ",\"score_ok\":" << (score_ok ? "true" : "false")
+             << ",\"small_mesh_progress_override\":"
              << (small_mesh_progress_override ? "true" : "false")
-             << ",\\"predicted_branch_accept_not_committed\\":"
+             << ",\"predicted_branch_accept_not_committed\":"
              << ((score_ok || small_mesh_progress_override) ? "true" : "false")
-             << ",\\"error_improvement_fraction\\":" << improvement
-             << ",\\"previous_error\\":" << prev_error
-             << ",\\"candidate_error\\":" << this->error_local_process_
-             << ",\\"element_growth_factor\\":" << element_growth_factor
-             << ",\\"acceptance_score\\":" << acceptance_score
-             << ",\\"stable_mid_explore_accept\\":"
+             << ",\"error_improvement_fraction\":" << improvement
+             << ",\"previous_error\":" << prev_error
+             << ",\"candidate_error\":" << this->error_local_process_
+             << ",\"element_growth_factor\":" << element_growth_factor
+             << ",\"acceptance_score\":" << acceptance_score
+             << ",\"stable_mid_explore_accept\":"
              << (stable_mid_explore_accept ? "true" : "false")
-             << ",\\"stable_late_explore_accept\\":"
+             << ",\"stable_late_explore_accept\":"
              << (stable_late_explore_accept ? "true" : "false")
-             << ",\\"transition_coherence_ok\\":"
+             << ",\"transition_coherence_ok\":"
              << (transition_coherence_ok ? "true" : "false")
-             << ",\\"local_progress_ok\\":"
+             << ",\"local_progress_ok\":"
              << (local_progress_ok ? "true" : "false")
-             << ",\\"consistency_ok\\":"
+             << ",\"consistency_ok\":"
              << (consistency_ok ? "true" : "false")
-             << ",\\"stable_transition_ready\\":"
+             << ",\"stable_transition_ready\":"
              << (stable_transition_ready ? "true" : "false")
-             << ",\\"quality_gate_ok\\":"
+             << ",\"quality_gate_ok\":"
              << (quality_gate_ok ? "true" : "false")
-             << ",\\"hybrid_shape_gate_ok\\":"
+             << ",\"hybrid_shape_gate_ok\":"
              << (hybrid_shape_gate_ok ? "true" : "false")
-             << ",\\"error_within_tolerance\\":"
+             << ",\"error_within_tolerance\":"
              << (error_within_tolerance ? "true" : "false")
-             << ",\\"small_step_drop_ok\\":"
+             << ",\"small_step_drop_ok\":"
              << (small_step_drop_ok ? "true" : "false")
-             << ",\\"efficiency_ok\\":"
+             << ",\"efficiency_ok\":"
              << (efficiency_ok ? "true" : "false")
-             << ",\\"target_growth_ok\\":"
+             << ",\"target_growth_ok\":"
              << (target_growth_ok ? "true" : "false")
-             << ",\\"step2_quality_stable\\":"
+             << ",\"step2_quality_stable\":"
              << (step2_quality_stable ? "true" : "false")
-             << ",\\"stable_step2_error_ok\\":"
+             << ",\"stable_step2_error_ok\":"
              << (stable_step2_error_ok ? "true" : "false")
-             << ",\\"step2_overshoot_ok\\":"
+             << ",\"step2_overshoot_ok\":"
              << (step2_overshoot_ok ? "true" : "false")
-             << ",\\"stable_progressive_overshoot_ok\\":"
+             << ",\"stable_progressive_overshoot_ok\":"
              << (stable_progressive_overshoot_ok ? "true" : "false")
-             << ",\\"step1_override\\":"
+             << ",\"step1_override\":"
              << (step1_override ? "true" : "false")
-             << ",\\"budget_driven_step1_ok\\":"
+             << ",\"budget_driven_step1_ok\":"
              << (budget_driven_step1_ok ? "true" : "false")
-             << ",\\"error_drop_abs\\":" << error_drop_abs
-             << ",\\"error_drop_per_element\\":" << error_drop_per_element
-             << ",\\"candidate_quality_min\\":" << candidate_quality.quality_min
-             << ",\\"candidate_quality_good_ratio_ge_0_60\\":"
+             << ",\"error_drop_abs\":" << error_drop_abs
+             << ",\"error_drop_per_element\":" << error_drop_per_element
+             << ",\"candidate_quality_min\":" << candidate_quality.quality_min
+             << ",\"candidate_quality_good_ratio_ge_0_60\":"
              << candidate_quality.good_ratio_ge_0_60
-             << ",\\"candidate_quality_poor_ratio\\":" << candidate_quality.poor_ratio
-             << ",\\"transition_coherence_penalty\\":"
+             << ",\"candidate_quality_poor_ratio\":" << candidate_quality.poor_ratio
+             << ",\"transition_coherence_penalty\":"
              << current_transition_coherence_penalty_
-             << ",\\"underresolved_transition_fraction\\":"
+             << ",\"underresolved_transition_fraction\":"
              << current_underresolved_transition_fraction_real_
-             << ",\\"transition_imbalance_max\\":"
+             << ",\"transition_imbalance_max\":"
              << current_transition_imbalance_max_real_
-             << ",\\"local_progress_coverage\\":" << current_local_progress_coverage_
-             << ",\\"patch_budget_dispersion\\":" << current_patch_budget_dispersion_
-             << ",\\"scientific_lod_admitted\\":false}";
+             << ",\"local_progress_coverage\":" << current_local_progress_coverage_
+             << ",\"patch_budget_dispersion\":" << current_patch_budget_dispersion_
+             << ",\"scientific_lod_admitted\":false}";
         std::cerr << gate.str() << '\n';
       }
 #endif
