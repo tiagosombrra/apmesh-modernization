@@ -161,8 +161,7 @@ runner, virtual X server or synthetic GPU smoke
 does **not** substitute for physical WGL/DXGI
 measurements.
 
-## Qualification status
-cation — 2026-11-18
+## Final R2.7.22 qualification — 2026-11-18
 
 **QUALIFIED for source-verified hosted Chromium timings and exact source
 buffer estimates; NOT qualified for physical Windows GPU performance.**
