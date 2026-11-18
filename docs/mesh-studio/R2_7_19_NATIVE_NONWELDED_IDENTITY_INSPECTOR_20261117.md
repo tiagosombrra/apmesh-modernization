@@ -174,11 +174,56 @@ the R2.7.13 OFF/ON source file byte parity.
 
 ## Qualification status
 
-**Await the exact four-job GitHub Actions run** before marking
-R2.7.19 certified. The source-bound native artifact, its own
-source SHA and actual model/sample/patch counts must also be
-checked. A green build alone is not a claim that the browser
-has independently authenticated the original raw NDJSON.
+**R2.7.19 CERTIFIED for the original-native read-only inspector
+and its opt-in Chromium interface**, with exact full
+[GitHub Actions #44213335142](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44213335142)
+at tested implementation SHA
+`8dd59928e3368336de8846de3d1a9755b1eb0488`:
+**ALL FOUR INDEPENDENT JOBS SUCCESS**.
+
+| Independent original research or UI gate | Measured result |
+| --- | --- |
+| Compiled native serial original Eistute accepted TRI | 1 accepted step, **1,168 faces**, 3 rejected/restored |
+| Compiled native serial original Book accepted TRI | 1 accepted step, **4,256 faces**, 2 rejected/restored |
+| Original source-bound R2.7.12–R2.7.19 native lineage, UV, source incidence, corner IDs, C++ ownership, closure provenance and read-only inspector export | **PASS** |
+| Eistute original C++ instrumented OFF/ON scientific file comparison | **21/21 exactly equal bytes** |
+| Book original C++ instrumented OFF/ON scientific file comparison | **17/17 exactly equal bytes** |
+| Linux Python scientific and negative-contract regressions | **322 run, 4 optional skips, PASS** |
+| Windows Python scientific and negative-contract regressions | **322 run, 10 environment skips, PASS** |
+| Chromium browser suite, including four R2.7.19 opt-in identity Inspector tests | **46 PASS** |
+
+**Original inspector import contract confirmed:** Eistute
+original shared source curve slot 3, **4 source owner patches /
+11 sample groups**; Book original curve slot 3, **28 patches /
+13 sample groups**; both one actually accepted native TRI
+adaptive step. The real full source SHA, accepted owner/pointer
+comparisons, and original archived native stderr remain linked
+to the bundle by exact per-model provenance.
+
+The original R2.7.19 Actions ZIP artifact **#14386564751**
+with SHA256
+`a092bfba0ab436b05b6e8ffcd1c40652cb42f054da708d596ad3125ff417b242`
+was archived in the personal doctorate Google Drive research
+results, downloaded back and checked byte-identical to GitHub.
+Its genuine JSON and original source hashes are recorded in
+the preceding section. No private Drive URL appears in this
+possibly public research repository.
+
+**Qualification limitation:** the browser's JSON-only importer
+enforces schema, source identity and no-welding flags, but
+does **not** independently hash the original accepted NDJSON
+without those original bytes. The artifact's scientific
+qualification comes from the independent compiled native
+source pipeline and full SHA-bound original record. A schema
+conforming arbitrary local JSON is never treated as
+independently authenticated by the browser.
+
+Only one original accepted epoch exists per model in this
+experiment. Geometric LOD R2.8 remains BLOCKED. Physical
+Windows GPU/RSS/VRAM measurements, continuous geometric
+error bounds, and verified cross-epoch descendants remain
+unqualified. No default picker switch, node welding,
+generator policy change, main merge, tag or release.
 
 The scientific LOD R2.8 remains BLOCKED: no second genuine
 native accepted epoch per source model, no certified
