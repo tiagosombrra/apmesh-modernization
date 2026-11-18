@@ -146,6 +146,7 @@ with identical file byte lengths and SHA256:
 | [R2.7.25 original budget report and auditor #14479741769](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44414466513/artifacts/14479741769) | Native actual element/curve targets | **1,611** | `6efbc8342ee6a2b7c43cd1614ac548076ffc6b5b04d176591bdc40f40c9ac404` |
 | [R2.7.25 original native C++ control and precommit source #14478712972](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44414466513/artifacts/14478712972) | Original accepted TRI source NDJSON and complete stdout/stderr | **287,823** | `0f5200bfb4d1cb6e69d629baf15992e55b7daa25c07d20bb9968fce8e7e34f74` |
 | [R2.7.25 real separate controlled C++ trials #14479532334](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44414466513/artifacts/14479532334) | Both unchanged-policy original native C++ single-factor experiments with independent audit | **297,482** | `189ece6b76787e5453ee44152a2035beab5caef7ca1740bac532514f152c762d` |
+| [R2.7.25 hosted Chromium original TRI and independent browser report #14478543655](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44414466513/artifacts/14478543655) | Actual browser 55-test real same-source scene interactions, timings and audit | **2,529** | `d1c8397ad5779205e440c70fd9ba082dc834426b5e3a8857a190aa8364d4d033` |
 
 The preserved original independent effective-budget report JSON
 contains **7,284 bytes** and SHA256
