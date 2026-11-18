@@ -140,23 +140,137 @@ not independently validate the current algorithm.
 Likewise, reinterpreting a stored rejected step-4
 OBJ as accepted is not an admissible shortcut.
 
-## Status
+## Exact scientific and regression certification — 2026-11-18
 
-**Implementation under CI validation.** The first
-draft of the C++ diagnostic log had an escaped
-quotation compiler problem; this was corrected
-before the final native scientific gate. The
-original C++ and independent Python/Chromium CI
-must pass on the exact final implementation SHA
-before the new original native diagnostic report
-is considered certified.
+**R2.7.23 CERTIFIED for original native C++ precommit acceptance predicate
+observation, independently corroborated by original postcommit accepted
+TRI sidecars and restored outcomes. This does NOT certify geometric LOD.**
 
-**R2.8 remains BLOCKED**: no second genuine
-same-run accepted epoch has yet been observed per
-original model, original cross-epoch face/curve
-descendants have not been certified, and no
-continuous geometric approximation-error bound
-has been established. No physical Windows GPU
-present/RSS/VRAM result or production release
-is asserted. The research PR stays draft,
-`main` untouched, no tag/release.
+The final [GitHub Actions run #44379553187](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44379553187)
+finished with **all 4 independent jobs SUCCESS** at exact implementation
+SHA `6c41fa07ca811661484ca3b8db824fdda878bdb8`. Earlier
+preflight runs with escaped C++ output, a duplicate-field exception handler
+and a historic pinned Git source mismatch were **not certified**; all were
+corrected in the exact passing revision.
+
+| Independent qualification | Actual result |
+| --- | --- |
+| Original compiled serial Eistute C++ source accepted-epoch + predicate audit | **1 original committed step** (step 1, retry 0); **3 restored steps**, **7** precommit local gate decisions in all |
+| Original compiled serial Book C++ source accepted-epoch + predicate audit | **1 original committed step** (step 1, retry 0); **2 restored steps**, **3** precommit local gate decisions |
+| Original C++ postcommit sidecar and precommit gate identity | **PASS**, exact source/run/accepted step/retry provenance |
+| Historic original C++ source Git blob after removing exclusively the optional pinned observer | **Byte-identical** with immutable historical accepted C++ source blob `e0d1edd28968a684edba1e6c11a72b54e07e283a` |
+| Original native scientific instrumentation OFF / ON | Eistute **21/21**, Book **17/17**, total **38/38 exact bytes identical** |
+| Linux Python scientific + adversarial contracts | **363 run, 4 optional skipped, PASS** |
+| Windows Python scientific + adversarial contracts | **363 run, 10 environment skipped, PASS** |
+| Production TypeScript and Vite build, hosted Chromium | **PASS, 55 browser tests** |
+
+### Real original C++ acceptance decisions
+
+The actual original article configuration of both models uses
+`AcceptanceMode() == 0`, but with different stable policies:
+**Eistute stable_mode=true**, **Book stable_mode=false**.
+
+| Model / real step | Retry observations | Error improvement relative to previous accepted state | Candidate TRI element growth factor | Genuine postcommit outcome |
+| --- | --- | ---: | ---: | --- |
+| Eistute 1 | 0 | **+78.26%** | **73.00×** | **Accepted** |
+| Eistute 2 | 0 and 1 | **−24.92%** (error increased) | **1.719×** | **Rejected/restored** |
+| Eistute 3 | 0 and 1 | **−20.23%** (error increased) | **1.880×** | **Rejected/restored** |
+| Eistute 4 | 0 and 1 | **+83.86%** (error decreased) | **6.178×** | **Rejected/restored** |
+| Book 1 | 0 | **+18.16%** | **38.00×** | **Accepted** |
+| Book 2 | 0 | **−300.43%** (error increased) | **4.646×** | **Rejected/restored** |
+| Book 3 | 0 | **−300.43%** (error increased) | **4.646×** | **Rejected/restored** |
+
+These data are original **precommit predicate evaluations** bound to
+the identical original postcommit native source, not an inference
+from OBJ or saved historical candidate output.
+
+**Most important scientific blocker — Eistute step 4.**
+Candidate error falls from approximately **0.0620623**
+to **0.0100167**, but this is *not enough* for the
+stable-mode source acceptance policy:
+
+- Actual observed transition-coherence penalty
+  **2.06669**, while the original stable step-4
+  permitted cap is **0.42**, so
+  `transition_coherence_ok=false`.
+- Actual maximum transition imbalance **0.29752**
+  exceeds the original stable step-4 cap **0.18**,
+  so `stable_transition_ready=false`.
+- The original `quality_gate_ok=false`,
+  `hybrid_shape_gate_ok=false`, and
+  `stable_late_explore_accept=false`.
+  Candidate minimum quality is approximately
+  **0.12612**, with good-quality face ratio
+  **0.57871**.
+- Candidate TRI growth **6.178×** is a material
+  *diagnostic* of aggressive refinement. Under the
+  **actual Mode 0** source expression, a reported
+  `target_growth_ok=false` is **not itself** an
+  active acceptance conjunct. Do **not** claim that
+  growth alone caused this rejection.
+- Both local retries (0, 1) return the **same
+  recorded metric/boolean vector** except retry
+  ordinal, at each Eistute step 2, 3 and 4.
+  This does **not** independently prove byte-identical
+  candidate TRI meshes or that retries are physically
+  identical; inspect local adaptation, curve sampling
+  and quality response before concluding why.
+
+**Book steps 2 and 3:** The original non-stable
+Mode-0 acceptance policy requires
+`improvement >= 0`. Both candidate errors rise
+from approximately **42.18746** to **168.93236**
+(**300.43% error growth**). Their failure to
+satisfy that active error-improvement condition
+is decisive. Recorded mode-1-like efficiency and
+shape diagnostic flags **are not additional
+active Mode-0 acceptance requirements** for Book,
+even if false.
+
+The accepted step-1 TRI growth values (73× and 38×)
+also caution against inferring desirable geometric
+LOD behavior from simple element count alone.
+
+### Original research artifacts independently retained
+
+The following artifacts are from that **exact passing run**, fetched
+directly from GitHub Actions, uploaded to the authenticated personal
+doctoral Drive research results folder, fetched back from Drive, and
+verified to be **SHA-256 byte-identical** to GitHub's original ZIPs.
+
+| Scientific source | Original GitHub Actions artifact | Original ZIP bytes | Original ZIP/Drive SHA-256 |
+| --- | --- | ---: | --- |
+| Full original source-bound C++ precommit gate + postcommit acceptance/rejection audit | [#14462921635](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44379553187/artifacts/14462921635) | **2,669** | `55acd0734e0d9305c25ff0b11d82a7dc1f0db7438ac8aeed9d0769479ed3a1aa` |
+| Actual raw postcommit accepted Eistute/Book NDJSON, original native stderr with all gate evaluations, original source and config SHA reports | [#14462986643](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44379553187/artifacts/14462986643) | **281,589** | `79b6017bcd07764476b44ca59925a17d42b32a5d731b4995b86cb362895c9a96` |
+
+The accepted original NDJSON source SHA-256 values are still:
+Eistute
+`57eaa949e382aee4537325e7214694fc250d1cf20eeec96beeb6f923f6b518e6`,
+Book
+`e5be7af26f0064a01929e33f7db9129a50a17959d20d743f09c224551358524a`.
+The original C++ output is unchanged by research trace:
+all 38 OFF/ON scientific output source files remain
+byte-for-byte identical.
+
+### Next research sequence, no invented LOD
+
+**R2.7.24:** Audit Eistute source step-4 transition and quality
+mechanisms, and why local retries produce indistinguishable
+recorded scores. Use a preregistered *bounded configuration
+sensitivity study*, varying only legitimate original generation
+controls while retaining the untouched C++ acceptance policy,
+source model SHA, precise configuration SHA and full attempted
+vs independently committed ancestry. **Changing legitimate
+generation controls still creates a different experiment from
+the original article configuration, and its accepted steps
+cannot be mixed across separate runs.** Apply separate
+Book analysis to the actual Mode-0 error increase.
+
+**R2.8 geometric LOD stays BLOCKED:** no second genuine
+postcommit accepted epoch within a single original source
+model/run; no independently qualified cross-epoch face or
+curve ancestry; no continuous source-surface error bound
+and no physical Windows GPU present/RSS/VRAM qualification.
+No C++ scientific acceptance-policy modification, source
+mesh rewrite, physical welding, `main` merge, tag
+or release. PR #239 remains draft/unmerged.
