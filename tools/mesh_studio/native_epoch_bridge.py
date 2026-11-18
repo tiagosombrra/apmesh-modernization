@@ -22,6 +22,16 @@ OUTCOME = Path("research/quad/global_outcome.h")
 
 # The legacy accepted/rejected source blob remains immutable. A precisely
 # pinned research observer may be stripped to reconstruct its original bytes.
+R2725_INSTRUMENTED_SOURCE_GIT_BLOB = "844673ea764f3092330e5e9ebb01d8eb339869bc"
+R2725_SOURCE_OBSERVER_MARKERS = (
+    b"// R2.7.25 measures the effective original per-attempt element budget",
+    b"// Observation-only local registers; never consumed by adaptation policy.",
+    b"r2725_growth_target = target_curve_points;",
+    b"r2725_priority_target = target_curve_points;",
+    b"r2725_geometric_floor = clamp_curve_target(geometric_target);",
+    b"// Emit component targets prior to consistency and structural caps.",
+    b"// The final actual curve point count is not an accepted mesh epoch.",
+)
 R2723_INSTRUMENTED_SOURCE_GIT_BLOB = "2138c9dbab731027692c1a0739cb942034525030"
 R2723_INCLUDES = (
     b"#include <array>\n#include <cstdlib>\n#include <iomanip>\n"
@@ -82,6 +92,26 @@ def verified_bytes(root: Path, path: Path) -> tuple[str, str]:
     require(b"\r" not in normalized, "unsupported_source_line_ending")
     head = b"blob " + str(len(normalized)).encode("ascii") + b"\0"
     blob = sha1(head + normalized).hexdigest()
+    if path == SOURCE and blob == R2725_INSTRUMENTED_SOURCE_GIT_BLOB:
+        # A newer observer must normalize byte-for-byte to the *previous*
+        # already-pinned R2.7.23 observer before the unchanged historical
+        # generator acceptance policy is certified by its original Git blob.
+        require(len(R2725_SOURCE_OBSERVER_MARKERS) == 7,
+                "r2725_source_observer_manifest_changed")
+        for marker in R2725_SOURCE_OBSERVER_MARKERS:
+            require(normalized.count(marker) == 1,
+                    "r2725_missing_or_ambiguous_source_observer")
+            center = normalized.index(marker)
+            begin = normalized.rfind(
+                b"#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE\n", 0, center)
+            end = normalized.find(b"#endif\n", center)
+            require(begin >= 0 and end > center and end - begin < 5500,
+                    "r2725_unbounded_or_misplaced_cpp_observer")
+            normalized = normalized[:begin] + normalized[end + len(b"#endif\n"):]
+        head = b"blob " + str(len(normalized)).encode("ascii") + b"\0"
+        blob = sha1(head + normalized).hexdigest()
+        require(blob == R2723_INSTRUMENTED_SOURCE_GIT_BLOB,
+                "r2725_original_prior_cpp_source_not_reconstructed")
     if path == SOURCE and blob == R2723_INSTRUMENTED_SOURCE_GIT_BLOB:
         require(normalized.count(R2723_INCLUDES) == 1 and
                 normalized.count(R2723_GATE_START) == 1 and
