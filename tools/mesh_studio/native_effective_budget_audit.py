@@ -15,7 +15,7 @@ from pathlib import Path
 
 from .native_acceptance_gate_forensics import parse_original_gate_stderr
 from .native_controlled_sensitivity import TREATMENTS
-from .verify_native_lineage import require
+from .verify_native_lineage import NativeLineageValidationError, require
 
 BUDGET_SCHEMA = "apmesh.meshstudio.r2725.actual_effective_budget.v1"
 BASE_SCHEMA = "apmesh.meshstudio.r2725.actual_curve_components.v1"
@@ -55,6 +55,8 @@ def _parse_strict(raw: bytes, expected: str) -> dict:
         record = json.loads(raw.decode("utf-8"), object_pairs_hook=unique,
                             parse_constant=lambda value: (_ for _ in ()).throw(
                                 ValueError("non-finite original C++ " + value)))
+    except NativeLineageValidationError:
+        raise
     except (ValueError, UnicodeDecodeError) as exc:
         raise ValueError("r2725_invalid_original_cpp_budget_json") from exc
     require(type(record) is dict and record.get("schema") == expected and
@@ -123,10 +125,8 @@ def parse_effective_budgets(stderr: bytes, model: str) -> list[dict]:
                         row["curve_index"] == len(current["base"]) and
                         row["curve_index"] < count and
                         2 <= row["previous_points"] and
-                        row["budget_active"] is (
-                            current["element"]["budget_driven"] == 1
-                            # The curve mode may be independent of element mode.
-                            and row["budget_active"]),
+                        (not row["budget_active"] or
+                         current["element"]["budget_driven"] == 1),
                         "r2725_source_curve_component_order_invalid")
                 require(row["pre_consistency_target"] ==
                         max(row["growth_target"], row["priority_target"],
