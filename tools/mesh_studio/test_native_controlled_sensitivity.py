@@ -284,7 +284,7 @@ class IndependentTreatmentArtifactContracts(unittest.TestCase):
         path = self.out / TREATMENTS[0].id / "resolved-execution.conf"
         path.write_text(path.read_text().replace(
             "CURVE_POINT_GROWTH_STEPN=2.0",
-            "CURVE_POINT_GROWTH_STEPN=3.0"))
+            "CURVE_POINT_GROWTH_STEPN=3.0"), newline="\n")
         with self.assertRaisesRegex(
                 NativeLineageValidationError, "r2724_resolved_config_changed_more_than_io"):
             self.audit()
