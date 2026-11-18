@@ -63,6 +63,10 @@ def audit_preregistered_treatments(root: Path, original_dir: Path,
         report = json.loads(
             (directory / "treatment-report.json").read_text(encoding="utf-8"))
         retained_config = (directory / "single-factor-intent.conf").read_bytes()
+        # Detect a forged preregistered treatment before inspecting any
+        # secondary run-time IO transformation of that source config.
+        require(retained_config == expected_intent,
+                "r2724_treatment_article_input_config_or_executable_forged")
         resolved_config = (directory / "resolved-execution.conf").read_bytes()
         require(b"\r" not in resolved_config and
                 resolved_config.endswith(b"\n"),
