@@ -12,6 +12,24 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-18 - clarify the primary global curvature error
+
+The user correctly asks for the primary convergence indicator. Source9ca6deb
+ErrorGlobal/CalculateErrorGlobalOmp and the original native CSV confirm global
+surface-curvature errors0.314848/0.139436/0.0538754/0.0303172 at steps0-3.
+The report already carries these as tri_reference_adaptive_error and Blender
+labels them TRI adaptive curvature E; that label does not clearly identify the
+global indicator. Geometry RMS is a separate sampled-distance diagnostic.
+These native global values describe the original TRI mesh only. No equivalent
+global curvature error on the actual mixed graph is measured; copying the TRI
+reference into mixed rows does not establish mixed convergence. Low global
+error also does not guarantee good worst-element quality.
+
+This clarification changes documentation only: no source, Blender artifact,
+native rerun, test rerun or new mixed estimator. Existing exact9ca6deb hosted
+four-check success is reverified, not transferred to a new algorithm. Keep the
+article-clearance/smoothing next action and the mixed-error gap explicit.
+
 ### 2026-11-18 - expose per-stage error and actual element quality
 
 Engineering-only reporting in draft PR240 exact9ca6deb adds eight TRI/mixed rows

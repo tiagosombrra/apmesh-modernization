@@ -3264,3 +3264,23 @@ PR240 unmerged; no roadmap or modernization history change. Exact next action is
 documented contour-clearance repair with the retained witness and default TRI
 preserved, then mixed smoothing/effective controls. Publish/read back canonical
 checkpoint; primary checkout keeps the visible source feature branch.
+
+## 2026-11-18 - distinguish primary global curvature error from geometric RMS
+
+User asks whether global error is the principal indicator. Read current canonical
+407ba79 and exact source9ca6deb; remote main ef40c0f, PR240 draft and concurrent
+PR239/225/214 unchanged. Original native CSV confirms global curvature errors
+0.314848,0.139436,0.0538754,0.0303172. Verify source ErrorGlobal and stopping
+comparison against GlobalErrorTarget. Existing reporter maps this CSV field to
+tri_reference_adaptive_error; Blender calls it TRI adaptive curvature E. Explain
+that this is the primary current convergence error and needs clearer prominence;
+RMS/max geometry distance and element quality serve different purposes. Neither
+replaces it. Actual mixed global curvature error remains unavailable; the TRI
+reference is not mixed convergence evidence. Do not convert the legacy normalized
+index into an ordinary geometric percentage or claim a new estimator.
+
+Documentation-only clarification; no source/viewer/artifact change or new native
+generation/tests. Previous exact9ca6deb four remote checks reverified success,
+with no qualification transferred. Preserve current article-clearance/smoothing
+priority, independent review, local failures and broader gates. Publish/read back
+STATE and this append-only entry; no roadmap or modernization history change.
