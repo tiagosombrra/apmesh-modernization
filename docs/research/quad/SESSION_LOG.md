@@ -3231,3 +3231,36 @@ witness, coherent template/front interfaces and default TRI preserved; then
 documented mixed smoothing/effective controls and M1 disposition. Independent
 review, local filesystem and exact integration gates remain. New controller/R3
 work is outside current scope. Publish/read back this documentation checkpoint.
+
+## 2026-11-18 - add visible generation-stage error and quality diagnostics
+
+User requests actual error and element quality in the results. Keep one PR240
+work item and the current article-completion priority. Audit remote canonical
+2c71f1b, main ef40c0f and concurrent PR239/225/214; leave them untouched.
+Implement bounded engineering-only reporting/viewer changes at exact9ca6deb.
+No native algorithm, configuration, source history or acceptance edit.
+
+Add per-step paired TRI/mixed RMS/max and per-type quality, physical angles/edge
+ratios, full per-face identities, native logged TRI reference fields and explicit
+null mixed adaptive error. Bind report to manifest/source mesh hashes. Five
+analytic/scope controls pass warning-as-error. Exact local baseline85/85 passes;
+no stage qualification. Existing archive replay verifies191 commits/eight forged
+traces without new rollback; six adapted geometry rows match earlier independent
+comparison. Exact hosted44296219310 all4 checks pass; GNU/MSVC/ASan fresh native
+histories each verify191 commits, eight forgeries and rollback. No local rebuild.
+
+Create and visually verify Blender5.3 numeric and quality-colored scenes with
+eight unchanged meshes, original analytic model, eighteen native template/source
+panels below and original actual-commit animation. Prior blend hash unchanged.
+Final mixed RMS0.00726210 but global minimum angle1.34deg demonstrates that lower
+sampled error does not imply satisfactory worst elements. Keep native TRI adaptive
+and diagnostic geometric errors distinct. Add methods/evidence; update STATE.
+
+Retain initial ResourceWarning repaired by closing CSV files, outer artifact
+logging NameError after successful Blender creation, and cropped preview repaired
+only in new artifact. Prior WSL rename failures, article clearance/smoothing/M1
+center ambiguity and independent integration review remain unresolved. Keep draft
+PR240 unmerged; no roadmap or modernization history change. Exact next action is
+documented contour-clearance repair with the retained witness and default TRI
+preserved, then mixed smoothing/effective controls. Publish/read back canonical
+checkpoint; primary checkout keeps the visible source feature branch.

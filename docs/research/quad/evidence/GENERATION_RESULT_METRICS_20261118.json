@@ -1,0 +1,472 @@
+{
+  "schema": "apmesh.quad.generation_result_metrics.v1",
+  "date": "2026-11-18",
+  "classification": "engineering-only diagnostic reporting",
+  "source_sha": "9ca6deb35878f2b491ac27c908534936cfc55ca8",
+  "native_source_sha": "b3d2fbc2ad42237e2dcdbe81757bfa7abf981c6e",
+  "native_inputs_unchanged": true,
+  "source": "builtin:curva_bezier",
+  "manifest_sha256": "786422d4428f490931cc6a68eedbb9856b8760abe474b69414d5cd0719582091",
+  "definitions": {
+    "geometry_error": "Sampled XYZ distance on fixed UV sites; source-area weighted RMS; model units",
+    "adaptive_error": "Original TRI relative 3D surface-curvature error; reference only; mixed estimator unavailable",
+    "tri_reference_native_quality": "Original TRI quality as logged; separate from the diagnostic TRI area/edge score and QUAD corner Jacobian",
+    "tri_q": "4*sqrt(3)*area/sum(edge_length_squared); equilateral TRI=1",
+    "quad_corner_jacobian": "Minimum signed corner scaled Jacobian using analytic source normals; orthogonal aligned corners=1; not a continuous bound or aspect ratio",
+    "angle": "Physical XYZ corner angle, degrees",
+    "edge_ratio": "Longest/shortest physical edge; smaller is better; ideal equal lengths=1",
+    "scope": "Diagnostics only; TRI and QUAD quality scales remain separate; no new acceptance threshold"
+  },
+  "stages": [
+    {
+      "step": 0,
+      "epoch": 0,
+      "retry": -1,
+      "domain_generation": 0,
+      "reference_tri_accepted": true,
+      "reason": "initial",
+      "scheme": "TRI",
+      "file": "step_0_retry_-1_accepted_tri.obj",
+      "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+      "nodes": 5,
+      "triangles": 4,
+      "quads": 0,
+      "geometry_error": {
+        "grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.33986094231271624,
+        "rms_uv": 0.09228344884218848,
+        "rms_source_area": 0.07671966942907951,
+        "tri_sites": 576,
+        "quad_sites": 0
+      },
+      "quality": {
+        "tri_q": {
+          "count": 4,
+          "minimum": 0.8459910324287993,
+          "mean": 0.8663828872940097
+        },
+        "quad_corner_jacobian": {
+          "count": 0,
+          "minimum": null,
+          "mean": null
+        },
+        "min_angle_xyz": 43.7028214605833,
+        "max_edge_ratio_xyz": 1.445866246747383,
+        "boundary_min_angle_xyz": 43.7028214605833
+      },
+      "tri_reference_adaptive_error": 0.314848,
+      "tri_reference_native_quality": {
+        "quality_min": 0.801203,
+        "quality_mean": 0.829098
+      },
+      "mixed_adaptive_error": null
+    },
+    {
+      "step": 0,
+      "epoch": 0,
+      "retry": -1,
+      "domain_generation": 0,
+      "reference_tri_accepted": true,
+      "reason": "initial",
+      "scheme": "QUAD_TRI",
+      "file": "step_0_retry_-1_accepted_quad_tri.obj",
+      "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+      "nodes": 5,
+      "triangles": 4,
+      "quads": 0,
+      "geometry_error": {
+        "grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.33986094231271624,
+        "rms_uv": 0.09228344884218848,
+        "rms_source_area": 0.07671966942907951,
+        "tri_sites": 576,
+        "quad_sites": 0
+      },
+      "quality": {
+        "tri_q": {
+          "count": 4,
+          "minimum": 0.8459910324287993,
+          "mean": 0.8663828872940097
+        },
+        "quad_corner_jacobian": {
+          "count": 0,
+          "minimum": null,
+          "mean": null
+        },
+        "min_angle_xyz": 43.7028214605833,
+        "max_edge_ratio_xyz": 1.445866246747383,
+        "boundary_min_angle_xyz": 43.7028214605833
+      },
+      "tri_reference_adaptive_error": 0.314848,
+      "tri_reference_native_quality": {
+        "quality_min": 0.801203,
+        "quality_mean": 0.829098
+      },
+      "mixed_adaptive_error": null
+    },
+    {
+      "step": 1,
+      "epoch": 1,
+      "retry": 0,
+      "domain_generation": 1,
+      "reference_tri_accepted": true,
+      "reason": "accepted",
+      "scheme": "TRI",
+      "file": "step_1_retry_0_accepted_tri.obj",
+      "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+      "nodes": 17,
+      "triangles": 24,
+      "quads": 0,
+      "geometry_error": {
+        "grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.08992172188197542,
+        "rms_uv": 0.02921060082361642,
+        "rms_source_area": 0.026487358708233807,
+        "tri_sites": 576,
+        "quad_sites": 0
+      },
+      "quality": {
+        "tri_q": {
+          "count": 24,
+          "minimum": 0.7148837422649873,
+          "mean": 0.8778736617105257
+        },
+        "quad_corner_jacobian": {
+          "count": 0,
+          "minimum": null,
+          "mean": null
+        },
+        "min_angle_xyz": 29.75731204057063,
+        "max_edge_ratio_xyz": 1.9929878870571147,
+        "boundary_min_angle_xyz": 29.75731204057063
+      },
+      "tri_reference_adaptive_error": 0.139436,
+      "tri_reference_native_quality": {
+        "quality_min": 0.63538,
+        "quality_mean": 0.854523
+      },
+      "mixed_adaptive_error": null
+    },
+    {
+      "step": 1,
+      "epoch": 1,
+      "retry": 0,
+      "domain_generation": 1,
+      "reference_tri_accepted": true,
+      "reason": "accepted",
+      "scheme": "QUAD_TRI",
+      "file": "step_1_retry_0_accepted_quad_tri.obj",
+      "sha256": "d7992d950fcefbcfeba71b11a1bede312a15b643d92ab1ec251afa97e457c7bd",
+      "nodes": 33,
+      "triangles": 8,
+      "quads": 24,
+      "geometry_error": {
+        "grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.09094210987957016,
+        "rms_uv": 0.026760747684951496,
+        "rms_source_area": 0.023668615133612004,
+        "tri_sites": 72,
+        "quad_sites": 504
+      },
+      "quality": {
+        "tri_q": {
+          "count": 8,
+          "minimum": 0.7191319563478131,
+          "mean": 0.7789288050123189
+        },
+        "quad_corner_jacobian": {
+          "count": 24,
+          "minimum": 0.5119563503207104,
+          "mean": 0.8774298867255558
+        },
+        "min_angle_xyz": 28.5514192674082,
+        "max_edge_ratio_xyz": 4.595718286656775,
+        "boundary_min_angle_xyz": 31.12614083693293
+      },
+      "tri_reference_adaptive_error": 0.139436,
+      "tri_reference_native_quality": {
+        "quality_min": 0.63538,
+        "quality_mean": 0.854523
+      },
+      "mixed_adaptive_error": null
+    },
+    {
+      "step": 2,
+      "epoch": 2,
+      "retry": 0,
+      "domain_generation": 1,
+      "reference_tri_accepted": true,
+      "reason": "accepted",
+      "scheme": "TRI",
+      "file": "step_2_retry_0_accepted_tri.obj",
+      "sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+      "nodes": 78,
+      "triangles": 144,
+      "quads": 0,
+      "geometry_error": {
+        "grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.043373081209104374,
+        "rms_uv": 0.015399537731905081,
+        "rms_source_area": 0.014651996625046178,
+        "tri_sites": 576,
+        "quad_sites": 0
+      },
+      "quality": {
+        "tri_q": {
+          "count": 144,
+          "minimum": 0.2908076304612828,
+          "mean": 0.8161307317818906
+        },
+        "quad_corner_jacobian": {
+          "count": 0,
+          "minimum": null,
+          "mean": null
+        },
+        "min_angle_xyz": 9.97628324874417,
+        "max_edge_ratio_xyz": 4.923397436595142,
+        "boundary_min_angle_xyz": 9.97628324874417
+      },
+      "tri_reference_adaptive_error": 0.0538754,
+      "tri_reference_native_quality": {
+        "quality_min": 0.22536,
+        "quality_mean": 0.785366
+      },
+      "mixed_adaptive_error": null
+    },
+    {
+      "step": 2,
+      "epoch": 2,
+      "retry": 0,
+      "domain_generation": 1,
+      "reference_tri_accepted": true,
+      "reason": "accepted",
+      "scheme": "QUAD_TRI",
+      "file": "step_2_retry_0_accepted_quad_tri.obj",
+      "sha256": "ce16561ef84286341f68708b60356d28059ce8e24037de8ce10c3630773cb68e",
+      "nodes": 281,
+      "triangles": 52,
+      "quads": 249,
+      "geometry_error": {
+        "grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.040148706524736344,
+        "rms_uv": 0.012538522388086141,
+        "rms_source_area": 0.011703599390114654,
+        "tri_sites": 229,
+        "quad_sites": 347
+      },
+      "quality": {
+        "tri_q": {
+          "count": 52,
+          "minimum": 0.13535804124346085,
+          "mean": 0.49100540196150494
+        },
+        "quad_corner_jacobian": {
+          "count": 249,
+          "minimum": 0.39446628989456517,
+          "mean": 0.8997610785333655
+        },
+        "min_angle_xyz": 4.824378954243407,
+        "max_edge_ratio_xyz": 9.239147054237291,
+        "boundary_min_angle_xyz": 9.832344817515402
+      },
+      "tri_reference_adaptive_error": 0.0538754,
+      "tri_reference_native_quality": {
+        "quality_min": 0.22536,
+        "quality_mean": 0.785366
+      },
+      "mixed_adaptive_error": null
+    },
+    {
+      "step": 3,
+      "epoch": 3,
+      "retry": 0,
+      "domain_generation": 1,
+      "reference_tri_accepted": true,
+      "reason": "accepted",
+      "scheme": "TRI",
+      "file": "step_3_retry_0_accepted_tri.obj",
+      "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+      "nodes": 223,
+      "triangles": 430,
+      "quads": 0,
+      "geometry_error": {
+        "grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.03963428759144356,
+        "rms_uv": 0.009799322780138266,
+        "rms_source_area": 0.009310312382515127,
+        "tri_sites": 576,
+        "quad_sites": 0
+      },
+      "quality": {
+        "tri_q": {
+          "count": 430,
+          "minimum": 0.0465230450738578,
+          "mean": 0.8044304136434697
+        },
+        "quad_corner_jacobian": {
+          "count": 0,
+          "minimum": null,
+          "mean": null
+        },
+        "min_angle_xyz": 1.7092104488135065,
+        "max_edge_ratio_xyz": 5.305400232693815,
+        "boundary_min_angle_xyz": 7.895481753429326
+      },
+      "tri_reference_adaptive_error": 0.0303172,
+      "tri_reference_native_quality": {
+        "quality_min": 0.00452729,
+        "quality_mean": 0.770669
+      },
+      "mixed_adaptive_error": null
+    },
+    {
+      "step": 3,
+      "epoch": 3,
+      "retry": 0,
+      "domain_generation": 1,
+      "reference_tri_accepted": true,
+      "reason": "accepted",
+      "scheme": "QUAD_TRI",
+      "file": "step_3_retry_0_accepted_quad_tri.obj",
+      "sha256": "aa06f6177f1367f9d1ad13ea533aafe11ebcee12cb7a586a3d34c786ab8781e3",
+      "nodes": 797,
+      "triangles": 102,
+      "quads": 738,
+      "geometry_error": {
+        "grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.03224427259909553,
+        "rms_uv": 0.007692758481077097,
+        "rms_source_area": 0.007262101995028263,
+        "tri_sites": 114,
+        "quad_sites": 462
+      },
+      "quality": {
+        "tri_q": {
+          "count": 102,
+          "minimum": 0.03981139118516527,
+          "mean": 0.38757393741746965
+        },
+        "quad_corner_jacobian": {
+          "count": 738,
+          "minimum": 0.32843100153567506,
+          "mean": 0.9831509214566453
+        },
+        "min_angle_xyz": 1.3366724682189366,
+        "max_edge_ratio_xyz": 8.703204448599648,
+        "boundary_min_angle_xyz": 8.109999430013485
+      },
+      "tri_reference_adaptive_error": 0.0303172,
+      "tri_reference_native_quality": {
+        "quality_min": 0.00452729,
+        "quality_mean": 0.770669
+      },
+      "mixed_adaptive_error": null
+    }
+  ],
+  "local_artifact_directory": "build/quad-article-front-20261118/results-with-metrics",
+  "artifact_sha256": {
+    "metrics.json": "703f017e03fdc86f66a1b38151a5a9da1c2482932815b46d7c89c6e6941ac774",
+    "metrics.csv": "3d28cff0aaf6d00f9611ebf49122e512105a972035307b2feecc54636b9c0d00",
+    "elements.csv": "7a6e6e65e835eca8a0b27566b326f3e48c12e26e43b3aa392f8b266c064ac81a",
+    "results.md": "b7a63b18d4c11ed5bca6cc2199b2605179954eac283050848576b34929636cf7",
+    "QUAD_TRI_errors_and_quality.blend": "44eff61f7b3d63b82d415242db19229164f15cae0252046da8a088602312e1e9",
+    "quality_preview.png": "ea061c5aa1640c80e5cfd47c8e1932e3b480c9e770a4a1981973c76e6abc159c"
+  },
+  "validation": {
+    "analytic_reporting_controls": {
+      "tests": 5,
+      "passed": 5,
+      "resource_warnings_are_errors": true
+    },
+    "local_exact_head_baseline": {
+      "passed": 85,
+      "selected": 85,
+      "report": "build/validation-session/1795001781285800300-566523f9/report.json",
+      "delivery_eligible": false
+    },
+    "existing_archive_replay": {
+      "commits": 191,
+      "forgeries_rejected": 8,
+      "fresh_rollback_executed": false
+    },
+    "prior_geometry_crosscheck": {
+      "adapted_rows": 6,
+      "relative_tolerance": 1e-12,
+      "absolute_tolerance": 1e-14,
+      "all_stage_face_counts_checked": 8
+    },
+    "hosted_run": 44296219310,
+    "exact_checks": [
+      {
+        "id": 134773816944,
+        "name": "QUAD native (windows-2022)",
+        "conclusion": "success"
+      },
+      {
+        "id": 134773816936,
+        "name": "TRI baseline and tooling controls (Linux)",
+        "conclusion": "success"
+      },
+      {
+        "id": 134773816888,
+        "name": "TRI scientific equivalence against frozen baseline",
+        "conclusion": "success"
+      },
+      {
+        "id": 134773816395,
+        "name": "QUAD native (ubuntu-24.04)",
+        "conclusion": "success"
+      }
+    ],
+    "hosted_native_replays": {
+      "profiles": [
+        "GNU",
+        "MSVC",
+        "ASan/UBSan/leak"
+      ],
+      "commits_each": 191,
+      "forgeries_rejected_each": 8,
+      "rollback_each": true
+    },
+    "blender": {
+      "version": "5.3.0",
+      "measured_meshes": 8,
+      "geometry_and_topology_preserved": true,
+      "metric_labels_per_mesh": 4,
+      "scenes": [
+        "Results - error and element quality",
+        "Quality colors - actual elements",
+        "Article front - actual commits"
+      ],
+      "gui_observed": true,
+      "old_scene_sha256_preserved": "18ce20cdb1572430e28358c9204b9aac0cc0a49b4ed50e6a92df99a9edb1e0f6"
+    },
+    "python_compile": "passed",
+    "source_whitespace_files": 5,
+    "diff_check": "passed"
+  },
+  "retained_failures": [
+    "Initial reporting-test CSV reads emitted ResourceWarning; context-managed reads repair the cause; warning-as-error rerun passes.",
+    "Scene creation succeeded before its outer logging wrapper raised NameError; inspect existing artifacts rather than rerun generation.",
+    "Initial preview camera cropped outer labels; correct only the newly authored preview framing; final render and GUI inspected.",
+    "Prior native WSL directory-rename failures remain unresolved; hosted Linux success does not erase them."
+  ],
+  "limitations": [
+    "Only builtin:curva_bezier source geometry is supported by this reporter.",
+    "Sampled geometric errors in model units are not continuous bounds or finite-element solution errors.",
+    "TRI area-Q and QUAD corner Jacobian are separate scales, not one mixed quality mean.",
+    "Corner Jacobian is not aspect ratio or continuous bilinear validity; angles and edge ratios are separate.",
+    "Native TRI curvature error and native TRI logged quality are retained separately; mixed adaptive error is null.",
+    "Archived local meshes are measured without regeneration; hosted checks execute fresh native generation.",
+    "No article clearance, mixed smoothing, centroid interpretation, acceptance or stopping change.",
+    "PR240 remains draft and unmerged; no stage closure or main qualification."
+  ]
+}

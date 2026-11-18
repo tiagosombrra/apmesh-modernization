@@ -12,6 +12,29 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-18 - expose per-stage error and actual element quality
+
+Engineering-only reporting in draft PR240 exact9ca6deb adds eight TRI/mixed rows
+for steps0-3, geometry RMS/max, separate TRI area-Q and QUAD corner J min/mean,
+angles, edge ratios and per-face CSV/JSON. [Methods/results](GENERATION_RESULT_METRICS_20261118.md)
+and [evidence](evidence/GENERATION_RESULT_METRICS_20261118.json) bind source hashes
+and scope. Original native TRI error/quality stay separate; mixed adaptive error
+is N/A. No generator/acceptance change. Final RMS TRI0.00931031/mixed0.00726210
+coexists with global minimum angles1.71/1.34deg; no quality repair is claimed.
+
+Blender5.3 opens the new numeric/quality-colored comparison, with analytic model,
+native template/source panels below and actual-commit animation preserved.
+Five warning-clean reporting controls, exact local85/85 and exact hosted
+run44296219310 all4 checks pass. Hosted GNU/MSVC/sanitizer fresh histories each
+verify191 commits/eight forgeries/rollback; local existing-history replay does
+not rerun rollback. No local native regeneration. Retain prior WSL failures,
+paper gaps and broader gates. No merge/stage closure; roadmap order unchanged.
+
+**One next action remains:** implement documented contour-clearance classification
+with the retained failing witness in the opt-in candidate; then actual mixed
+smoothing/control qualification and M1 center disposition. This diagnostic request
+does not authorize a new balancing controller or mixed estimator.
+
 ### 2026-11-18 - revalidate article conformance and withdraw invented-adjustment priority
 
 The user directs following the1993 mixed technique incrementally with existing
