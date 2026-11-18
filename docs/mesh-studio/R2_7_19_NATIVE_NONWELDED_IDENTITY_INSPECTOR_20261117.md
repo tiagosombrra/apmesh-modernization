@@ -122,6 +122,56 @@ Vite/API workflow, open `http://127.0.0.1:5173/?nativeInspector=1`,
 download/extract the current R2.7.19 GitHub Actions
 manifest artifact and select its sole JSON in the import input.
 
+## Original scientific export observed (2026-11-17)
+
+The authentic original serial native source job in
+[GitHub Actions #44213335142](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44213335142),
+at exact implementation SHA
+`8dd59928e3368336de8846de3d1a9755b1eb0488`,
+completed **SUCCESS** and generated separate original inspector
+artifact [#14386564751](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44213335142/artifacts/14386564751).
+
+The original source-bound archive was downloaded, inspected,
+then archived in the authenticated personal doctoral Drive
+`Doutorado/DOUTORADO_APMESH_ACOMPANHAMENTO/05_Experimentos_e_Resultados`
+and downloaded again. Original Actions artifact and Drive
+readback ZIP byte-hash **exactly match**:
+
+`a092bfba0ab436b05b6e8ffcd1c40652cb42f054da708d596ad3125ff417b242`
+
+ZIP length **4,725 bytes**; contained original bounded
+`r2719-native-inspector.json` manifest length **204,629 bytes**
+(SHA-256 `74a35639a7f3ecbebc0ceaca7e4a8dd8528683350a90070e6242518461e30962`).
+The manifest's original native source SHA is separately retained:
+
+| Real source | Accepted TRI step | Original source NDJSON SHA | Source curve / owners / samples |
+| --- | ---: | --- | --- |
+| Eistute | **1** | `57eaa949e382aee4537325e7214694fc250d1cf20eeec96beeb6f923f6b518e6` | slot **3**, **4** source patches, **11** source samples |
+| Book | **1** | `e5be7af26f0064a01929e33f7db9129a50a17959d20d743f09c224551358524a` | slot **3**, **28** source patches, **13** source samples |
+
+In both authentic native sources the first canonical sample has
+**different logical original native IDs across the incident
+patches** (example Eistute **21 vs 90**, Book **141 vs 181**);
+all other original source samples in the shared curve have the
+same logical ID across those patches. Only the actual accepted
+UV(0,0) source-sample rows have true live C++ SubMesh owner
+observations; later sample rows have **null/unknown C++ pointer
+identity**, not an inferred false or a welded-node claim.
+
+The real manifest separately passed an independent local
+structural preflight for unique patch incidence, monotonic
+source parameters, exact source member counts, observed
+native-ID relation classes, finite original XYZ and explicitly
+restricted C++ witness fields. This is **manifest structure
+and original source provenance verified by the native job**;
+it is not a browser UI test or physical GPU qualification.
+
+The new independent scientific regression suites on
+this run returned **Linux: 322 Python tests, 4 optional skips
+PASS**; **Windows: 322 tests, 10 environment skips PASS**.
+The original C++ serial generator also independently re-passed
+the R2.7.13 OFF/ON source file byte parity.
+
 ## Qualification status
 
 **Await the exact four-job GitHub Actions run** before marking
