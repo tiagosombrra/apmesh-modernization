@@ -25,7 +25,8 @@ AUDIT_SCHEMA = "apmesh.meshstudio.r2724.independent_native_treatment_audit.v1"
 
 
 def audit_preregistered_treatments(root: Path, original_dir: Path,
-                                  artifact_root: Path, exe: Path) -> dict:
+                                  artifact_root: Path, exe: Path, *,
+                                  treatments: tuple = TREATMENTS) -> dict:
     """Rebuild claims from original article inputs, stderr and postcommit bytes."""
     root, exe = root.resolve(), exe.resolve()
     index_path = artifact_root / "index.json"
@@ -34,19 +35,19 @@ def audit_preregistered_treatments(root: Path, original_dir: Path,
             "apmesh.meshstudio.r2724.separate_cpp_process_treatment_index.v1" and
             index.get("scope") ==
             "EXPLORATORY_CONFIG_ONLY_UNCHANGED_CPP_ACCEPTANCE_POLICY" and
-            index.get("treatment_ids") == [v.id for v in TREATMENTS] and
+            index.get("treatment_ids") == [v.id for v in treatments] and
             index.get("source_input_models") == sorted(
-                {v.model for v in TREATMENTS}) and
+                {v.model for v in treatments}) and
             index.get("cross_epoch_native_descendants_certified") is False and
             index.get("continuous_error_bound_certified") is False and
             index.get("each_treatment_is_a_distinct_cpp_process_not_a_combined_epoch")
             is True and index.get("baseline_native_article_runs_remain_separate_controls")
             is True and index.get("scientific_lod_qualified") is False and
             set(item.name for item in artifact_root.iterdir()) ==
-            {"index.json"} | {v.id for v in TREATMENTS},
+            {"index.json"} | {v.id for v in treatments},
             "r2724_original_single_factor_inventory_not_preregistered")
     observed = {}
-    for variant in TREATMENTS:
+    for variant in treatments:
         original = root / "configs" / variant.model / "article.conf"
         control = json.loads(
             (original_dir / f"r2712-{variant.model}-native-lineage-audit.json")
