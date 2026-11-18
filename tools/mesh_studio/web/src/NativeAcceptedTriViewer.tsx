@@ -96,6 +96,7 @@ export function NativeAcceptedTriViewer({
   useEffect(() => {
     const host = hostRef.current;
     if (!host) return;
+    const setupStart = performance.now();
     const grw = vtkGenericRenderWindow.newInstance({background:[0.047,0.085,0.126]});
     grw.setContainer(host);
     grw.resize();
@@ -137,7 +138,17 @@ export function NativeAcceptedTriViewer({
       camera.orthogonalizeViewUp();
       renderer.resetCameraClippingRange();
     }
+    const renderStart = performance.now();
     grw.getRenderWindow().render();
+    if (new URLSearchParams(window.location.search).get('nativePerf') === '1') {
+      host.dataset.nativePerfVtkSetupCpuMs =
+        (performance.now() - setupStart).toFixed(3);
+      host.dataset.nativePerfVtkRenderCallCpuMs =
+        (performance.now() - renderStart).toFixed(3);
+      host.dataset.nativePerfVtkExplicitCpuTypedBytes = String(
+        prepared.positions.byteLength + prepared.polys.byteLength +
+        prepared.colors.byteLength);
+    }
     host.dataset.nativeAcceptedFaces = String(prepared.originalFaceIndices.length);
     host.dataset.originalSourceModel = scene.model;
     host.dataset.nativeAcceptedStep = String(scene.accepted_native_step);
@@ -195,6 +206,7 @@ export function NativeAcceptedTriViewer({
     const host = hostRef.current;
     if (!grw || !host) return;
     const renderer = grw.getRenderer();
+    const overlayStart = performance.now();
     for(const actor of seamActorsRef.current) {
       renderer.removeActor(actor);
       actor.delete();
@@ -214,6 +226,9 @@ export function NativeAcceptedTriViewer({
       host.dataset.nativeSelectedSample=String(selectedSampleOrdinal);
     }
     grw.getRenderWindow().render();
+    if (new URLSearchParams(window.location.search).get('nativePerf') === '1')
+      host.dataset.nativePerfSeamOverlayCpuMs =
+        (performance.now() - overlayStart).toFixed(3);
     return () => {
       if(renderRef.current===grw) {
         for(const actor of seamActorsRef.current){
