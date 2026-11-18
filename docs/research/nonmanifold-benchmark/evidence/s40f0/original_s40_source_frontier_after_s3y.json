@@ -1,0 +1,1148 @@
+{
+  "schema": "apmesh-s40f0-original-step-frontier-after-s3y-v1",
+  "checkpoint": "2026-11-18",
+  "source": {
+    "upstream": "cgg-bern/hex-me-if-you-can",
+    "revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+    "path": "original/i25o_s40.step",
+    "sha256_verified_in_current_session": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+    "source_byte_length": 216438
+  },
+  "reference_atlas": {
+    "stage": "S3.Y",
+    "admitted_patches": 156,
+    "declared_control_points": 1665,
+    "represented_source_face_count": 22,
+    "represented_source_faces": [
+      17,
+      218,
+      912,
+      1105,
+      1181,
+      1230,
+      1519,
+      1773,
+      1800,
+      1986,
+      2092,
+      2403,
+      2430,
+      2457,
+      2806,
+      2882,
+      2936,
+      2990,
+      3044,
+      3100,
+      3127,
+      3737
+    ],
+    "selected_bp_sha256": "af50597db4b8d7b3bcb2fc381596fefc95ba6b6e00ed169576bec7a6b7873177"
+  },
+  "independently_parsed_source_topology": {
+    "step_entities": 3753,
+    "source_advanced_faces": 43,
+    "source_edge_curves": 117,
+    "source_vertex_points": 77,
+    "original_3plus_incident_edge_count": 0
+  },
+  "pending_summary": {
+    "total": 21,
+    "support_histogram": {
+      "COMPLEX_RATIONAL_B_SPLINE_SURFACE": 1,
+      "B_SPLINE_SURFACE_WITH_KNOTS": 2,
+      "PLANE": 12,
+      "CYLINDRICAL_SURFACE": 6
+    },
+    "directly_adjacent_original_source_faces": 15,
+    "two_source_edge_hops_from_atlas": 6,
+    "prior_s3x_face_record_crosschecks": 21,
+    "prior_s3x_face_record_mismatches": 0
+  },
+  "priority": {
+    "near_term_construction_face_ids": [
+      1279,
+      1386
+    ],
+    "previously_blocked_repair_face_ids": [
+      1827,
+      1907
+    ],
+    "downstream_five_line_faces": [
+      3269,
+      3485
+    ],
+    "multiple_wire_special_cases": [
+      2243,
+      2545
+    ],
+    "four_side_nontrivial_spline_face": 859,
+    "explanation": "Prioritize source-indexed 6-edge 4-LINE+2-CIRCLE candidates over #859, which has two source B-splines. Do not count a face as converted without a native-checked BP."
+  },
+  "pending_original_faces": [
+    {
+      "source_advanced_face_id": 556,
+      "source_support_type": "COMPLEX_RATIONAL_B_SPLINE_SURFACE",
+      "source_wire_edge_counts": [
+        8
+      ],
+      "original_source_edge_count": 8,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 5,
+        "LINE": 3
+      },
+      "original_edges": [
+        {
+          "edge_id": 560,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 3134,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 614,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 2545,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 666,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 2469,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 718,
+          "curve": "LINE",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 745,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 807,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 500,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 218,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 766,
+          "curve": "LINE",
+          "neighbor_face_id": 1493,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 788,
+          "curve": "LINE",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 1,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 807,
+      "source_support_type": "B_SPLINE_SURFACE_WITH_KNOTS",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 3,
+        "LINE": 1
+      },
+      "original_edges": [
+        {
+          "edge_id": 411,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 218,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 745,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 556,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 813,
+          "curve": "LINE",
+          "neighbor_face_id": 3269,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 840,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 859,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 1,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 859,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 2,
+        "CIRCLE": 1,
+        "LINE": 1
+      },
+      "original_edges": [
+        {
+          "edge_id": 440,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 218,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 840,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 807,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 865,
+          "curve": "LINE",
+          "neighbor_face_id": 912,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 893,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 1493,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 2,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 1279,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        6
+      ],
+      "original_source_edge_count": 6,
+      "source_edge_curve_histogram": {
+        "CIRCLE": 2,
+        "LINE": 4
+      },
+      "original_edges": [
+        {
+          "edge_id": 1139,
+          "curve": "LINE",
+          "neighbor_face_id": 1105,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1284,
+          "curve": "LINE",
+          "neighbor_face_id": 3737,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1307,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3710,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1336,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3683,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1365,
+          "curve": "LINE",
+          "neighbor_face_id": 3485,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1002,
+          "curve": "LINE",
+          "neighbor_face_id": 912,
+          "neighbor_represented": true
+        }
+      ],
+      "represented_neighbor_edge_count": 3,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 1386,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        6
+      ],
+      "original_source_edge_count": 6,
+      "source_edge_curve_histogram": {
+        "CIRCLE": 2,
+        "LINE": 4
+      },
+      "original_edges": [
+        {
+          "edge_id": 1259,
+          "curve": "LINE",
+          "neighbor_face_id": 1230,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1080,
+          "curve": "LINE",
+          "neighbor_face_id": 912,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1392,
+          "curve": "LINE",
+          "neighbor_face_id": 3269,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1415,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3319,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1444,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3402,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1473,
+          "curve": "LINE",
+          "neighbor_face_id": 3737,
+          "neighbor_represented": true
+        }
+      ],
+      "represented_neighbor_edge_count": 3,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 1493,
+      "source_support_type": "B_SPLINE_SURFACE_WITH_KNOTS",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "LINE": 3
+      },
+      "original_edges": [
+        {
+          "edge_id": 1497,
+          "curve": "LINE",
+          "neighbor_face_id": 3485,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 766,
+          "curve": "LINE",
+          "neighbor_face_id": 556,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 473,
+          "curve": "LINE",
+          "neighbor_face_id": 218,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 893,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 859,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 1,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 1827,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        6
+      ],
+      "original_source_edge_count": 6,
+      "source_edge_curve_histogram": {
+        "CIRCLE": 4,
+        "LINE": 2
+      },
+      "original_edges": [
+        {
+          "edge_id": 1523,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 1519,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1807,
+          "curve": "LINE",
+          "neighbor_face_id": 1800,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 252,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 218,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1834,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 1986,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1858,
+          "curve": "LINE",
+          "neighbor_face_id": 2403,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1886,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 2457,
+          "neighbor_represented": true
+        }
+      ],
+      "represented_neighbor_edge_count": 6,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 1907,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        6
+      ],
+      "original_source_edge_count": 6,
+      "source_edge_curve_histogram": {
+        "CIRCLE": 4,
+        "LINE": 2
+      },
+      "original_edges": [
+        {
+          "edge_id": 1911,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 2457,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1934,
+          "curve": "LINE",
+          "neighbor_face_id": 2430,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1962,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 1986,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 326,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 218,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1778,
+          "curve": "LINE",
+          "neighbor_face_id": 1773,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1593,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 1519,
+          "neighbor_represented": true
+        }
+      ],
+      "represented_neighbor_edge_count": 6,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 2243,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        2,
+        3
+      ],
+      "original_source_edge_count": 5,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 3,
+        "CIRCLE": 2
+      },
+      "original_edges": [
+        {
+          "edge_id": 1991,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 1986,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 378,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 218,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 2251,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 2457,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1644,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 1519,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 2309,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 2457,
+          "neighbor_represented": true
+        }
+      ],
+      "represented_neighbor_edge_count": 5,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 2469,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "LINE": 3
+      },
+      "original_edges": [
+        {
+          "edge_id": 666,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 556,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2474,
+          "curve": "LINE",
+          "neighbor_face_id": 2545,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2497,
+          "curve": "LINE",
+          "neighbor_face_id": 3237,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2525,
+          "curve": "LINE",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 0,
+      "original_edge_hops_to_atlas": 2,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 2545,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        5,
+        6
+      ],
+      "original_source_edge_count": 11,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "CIRCLE": 6,
+        "LINE": 4
+      },
+      "original_edges": [
+        {
+          "edge_id": 614,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 556,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2550,
+          "curve": "LINE",
+          "neighbor_face_id": 3134,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2573,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3183,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2606,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3237,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2474,
+          "curve": "LINE",
+          "neighbor_face_id": 2469,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2635,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 2990,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 2666,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 2936,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 2695,
+          "curve": "LINE",
+          "neighbor_face_id": 2806,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 2723,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 2882,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 2752,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3127,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 2781,
+          "curve": "LINE",
+          "neighbor_face_id": 3100,
+          "neighbor_represented": true
+        }
+      ],
+      "represented_neighbor_edge_count": 6,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 3134,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "LINE": 3
+      },
+      "original_edges": [
+        {
+          "edge_id": 560,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 556,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3139,
+          "curve": "LINE",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3162,
+          "curve": "LINE",
+          "neighbor_face_id": 3183,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2550,
+          "curve": "LINE",
+          "neighbor_face_id": 2545,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 0,
+      "original_edge_hops_to_atlas": 2,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 3183,
+      "source_support_type": "CYLINDRICAL_SURFACE",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "CIRCLE": 2,
+        "LINE": 2
+      },
+      "original_edges": [
+        {
+          "edge_id": 3187,
+          "curve": "LINE",
+          "neighbor_face_id": 3237,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2573,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 2545,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3162,
+          "curve": "LINE",
+          "neighbor_face_id": 3134,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3212,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 0,
+      "original_edge_hops_to_atlas": 2,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 3237,
+      "source_support_type": "CYLINDRICAL_SURFACE",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "CIRCLE": 2,
+        "LINE": 2
+      },
+      "original_edges": [
+        {
+          "edge_id": 3187,
+          "curve": "LINE",
+          "neighbor_face_id": 3183,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3242,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2497,
+          "curve": "LINE",
+          "neighbor_face_id": 2469,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2606,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 2545,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 0,
+      "original_edge_hops_to_atlas": 2,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 3269,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        5
+      ],
+      "original_source_edge_count": 5,
+      "source_edge_curve_histogram": {
+        "LINE": 5
+      },
+      "original_edges": [
+        {
+          "edge_id": 3273,
+          "curve": "LINE",
+          "neighbor_face_id": 3319,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1392,
+          "curve": "LINE",
+          "neighbor_face_id": 1386,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1057,
+          "curve": "LINE",
+          "neighbor_face_id": 912,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 813,
+          "curve": "LINE",
+          "neighbor_face_id": 807,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3299,
+          "curve": "LINE",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 1,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 3319,
+      "source_support_type": "CYLINDRICAL_SURFACE",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "CIRCLE": 1,
+        "LINE": 2
+      },
+      "original_edges": [
+        {
+          "edge_id": 3323,
+          "curve": "LINE",
+          "neighbor_face_id": 3402,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1415,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 1386,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3273,
+          "curve": "LINE",
+          "neighbor_face_id": 3269,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3348,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 0,
+      "original_edge_hops_to_atlas": 2,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 3402,
+      "source_support_type": "CYLINDRICAL_SURFACE",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "CIRCLE": 1,
+        "LINE": 2
+      },
+      "original_edges": [
+        {
+          "edge_id": 3323,
+          "curve": "LINE",
+          "neighbor_face_id": 3319,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3407,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3464,
+          "curve": "LINE",
+          "neighbor_face_id": 3737,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1444,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 1386,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 1,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 3485,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        5
+      ],
+      "original_source_edge_count": 5,
+      "source_edge_curve_histogram": {
+        "LINE": 5
+      },
+      "original_edges": [
+        {
+          "edge_id": 3489,
+          "curve": "LINE",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1497,
+          "curve": "LINE",
+          "neighbor_face_id": 1493,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1030,
+          "curve": "LINE",
+          "neighbor_face_id": 912,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 1365,
+          "curve": "LINE",
+          "neighbor_face_id": 1279,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3515,
+          "curve": "LINE",
+          "neighbor_face_id": 3683,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 1,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 3535,
+      "source_support_type": "PLANE",
+      "source_wire_edge_counts": [
+        13
+      ],
+      "original_source_edge_count": 13,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 4,
+        "CIRCLE": 2,
+        "LINE": 7
+      },
+      "original_edges": [
+        {
+          "edge_id": 3299,
+          "curve": "LINE",
+          "neighbor_face_id": 3269,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 718,
+          "curve": "LINE",
+          "neighbor_face_id": 556,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 2525,
+          "curve": "LINE",
+          "neighbor_face_id": 2469,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3242,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3237,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3212,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 3183,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3139,
+          "curve": "LINE",
+          "neighbor_face_id": 3134,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 788,
+          "curve": "LINE",
+          "neighbor_face_id": 556,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3489,
+          "curve": "LINE",
+          "neighbor_face_id": 3485,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3547,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 3683,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3604,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 3710,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3661,
+          "curve": "LINE",
+          "neighbor_face_id": 3737,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 3407,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 3402,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3348,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 3319,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 1,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 3683,
+      "source_support_type": "CYLINDRICAL_SURFACE",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "CIRCLE": 1,
+        "LINE": 2
+      },
+      "original_edges": [
+        {
+          "edge_id": 3687,
+          "curve": "LINE",
+          "neighbor_face_id": 3710,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3547,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3515,
+          "curve": "LINE",
+          "neighbor_face_id": 3485,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1336,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 1279,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 0,
+      "original_edge_hops_to_atlas": 2,
+      "source_indexed_status": "NOT_ADMITTED"
+    },
+    {
+      "source_advanced_face_id": 3710,
+      "source_support_type": "CYLINDRICAL_SURFACE",
+      "source_wire_edge_counts": [
+        4
+      ],
+      "original_source_edge_count": 4,
+      "source_edge_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "CIRCLE": 1,
+        "LINE": 2
+      },
+      "original_edges": [
+        {
+          "edge_id": 3687,
+          "curve": "LINE",
+          "neighbor_face_id": 3683,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 1307,
+          "curve": "CIRCLE",
+          "neighbor_face_id": 1279,
+          "neighbor_represented": false
+        },
+        {
+          "edge_id": 3716,
+          "curve": "LINE",
+          "neighbor_face_id": 3737,
+          "neighbor_represented": true
+        },
+        {
+          "edge_id": 3604,
+          "curve": "B_SPLINE_CURVE_WITH_KNOTS",
+          "neighbor_face_id": 3535,
+          "neighbor_represented": false
+        }
+      ],
+      "represented_neighbor_edge_count": 1,
+      "original_edge_hops_to_atlas": 1,
+      "source_indexed_status": "NOT_ADMITTED"
+    }
+  ],
+  "execution_limits": {
+    "source_graph_executed_against_exact_original": true,
+    "private_BP_available_for_native_reconstruction": false,
+    "new_BP_patches_generated": 0,
+    "new_source_faces_admitted": 0,
+    "native_BRep_audit_in_this_checkpoint": false,
+    "apmesh_tri_quad_run": false,
+    "production_cpp_regression_run": false,
+    "formal_continuous_geometry_certificate": false
+  }
+}
