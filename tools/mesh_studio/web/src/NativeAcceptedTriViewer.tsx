@@ -151,6 +151,7 @@ export function NativeAcceptedTriViewer({
     }
     host.dataset.nativeAcceptedFaces = String(prepared.originalFaceIndices.length);
     host.dataset.originalSourceModel = scene.model;
+    host.dataset.nativeDisplayedPatchSlot = String(space === 'uv' ? patchSlot : -1);
     host.dataset.nativeAcceptedStep = String(scene.accepted_native_step);
     const picker = vtkCellPicker.newInstance();
     picker.setPickFromList(true);
