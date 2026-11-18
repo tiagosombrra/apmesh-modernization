@@ -15,7 +15,7 @@ import re
 from .native_acceptance_gate_forensics import parse_original_gate_stderr
 from .native_controlled_sensitivity import (
     BASELINE_BLOBS, SCHEMA, TREATMENTS, certify_same_run_outcomes,
-    git_blob, make_single_factor_config,
+    git_blob, make_single_factor_config, resolve_isolated_config,
 )
 from .verify_native_lineage import (
     decode_ndjson, require, sha256_file, validate_lineage_records,
@@ -59,6 +59,21 @@ def audit_preregistered_treatments(root: Path, original_dir: Path,
         report = json.loads(
             (directory / "treatment-report.json").read_text(encoding="utf-8"))
         retained_config = (directory / "single-factor-intent.conf").read_bytes()
+        resolved_config = (directory / "resolved-execution.conf").read_bytes()
+        require(b"\r" not in resolved_config and
+                resolved_config.endswith(b"\n"),
+                "r2724_original_resolved_execution_not_canonical")
+        output_selector = re.search(
+            rb"^OUTPUT_PREFIX=(.+)$", resolved_config, re.M)
+        require(output_selector is not None,
+                "r2724_missing_isolated_native_output")
+        output_prefix = Path(output_selector.group(1).decode("utf-8").strip())
+        require(output_prefix.is_absolute() and
+                resolved_config.decode("utf-8") ==
+                resolve_isolated_config(
+                    retained_config.decode("utf-8"), source_path,
+                    output_prefix),
+                "r2724_resolved_config_changed_more_than_io")
         require(type(report) is dict and report.get("schema") == SCHEMA and
                 report.get("id") == variant.id and
                 report.get("source_model") == variant.model and
@@ -78,6 +93,8 @@ def audit_preregistered_treatments(root: Path, original_dir: Path,
                 retained_config == expected_intent and
                 report.get("single_factor_intent_sha256") ==
                 hashlib.sha256(retained_config).hexdigest() and
+                report.get("resolved_run_config_sha256") ==
+                hashlib.sha256(resolved_config).hexdigest() and
                 report.get("native_model_input_sha256") ==
                 control["real_model_input_sha256"] and
                 report.get("original_compiled_cpp_executable_sha256") ==
@@ -145,7 +162,8 @@ def audit_preregistered_treatments(root: Path, original_dir: Path,
         require(report.get("precommit_original_gate_trace") == predictions,
                 "r2724_reported_original_predicates_do_not_match_cpp_stderr")
         require(set(file.name for file in directory.iterdir()) ==
-                {"single-factor-intent.conf", "treatment-report.json",
+                {"single-factor-intent.conf", "resolved-execution.conf",
+                 "treatment-report.json",
                  "original-generator-stdout.log",
                  "original-generator-stderr.log"} |
                 {receipt["artifact_file"] for receipt in receipts},
