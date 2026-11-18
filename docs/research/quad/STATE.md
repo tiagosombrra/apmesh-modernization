@@ -3,7 +3,7 @@
 Updated 2026-11-17 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: R3 mixed-state/error feedback preparation after qualified research integration
+## Active: article-style TRI/QUAD front contraction before adaptive feedback
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,42 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-17 - correct the functional target: mixed contraction from the 1993 article
+
+The user clarifies that "real mesh" means generation by the 1993 mixed TRI/QUAD
+procedure, not merely curved geometry or a mixed output after TRI advancement.
+The current qualified prototype is useful but does not close that contract:
+`makeMesh` updates the TRI front before the observer selects pairs of already
+committed triangles. The paper chooses the TRI or QUAD first, then updates the
+active contour for that chosen polygon. These trajectories are not equivalent.
+See [primary-source comparison and delivery boundary](ARTICLE_MIXED_FRONT_TARGET_20261117.md).
+
+**One active next action:** implement an explicit opt-in mixed contraction path
+that evaluates the best base triangle and the prospective neighbors on its two
+other sides before any front mutation, then commits one TRI or QUAD and its
+active-edge changes atomically. Start from the planar article case, retaining
+original quadtree/template and boundary contracts. Validate complete coverage,
+noncrossing/conforming interfaces, accepted/rejected choices and owner rollback;
+then generate the mixed mesh and display its stages with the source geometry in
+Blender. Keep the existing qualified prototype and default TRI unchanged.
+
+This supersedes the earlier R3-first sequence below. R3 mixed-error/adaptive
+feedback and local curve/transition/interior balancing follow this functional
+output; they are not prerequisites for the first article-style mixed mesh.
+No implementation completion or calendar estimate is claimed by this checkpoint.
+The center ambiguity/full M1, full M5/R3/M7 and existing native/scientific gates
+remain open. Existing physical-angle choices are an experimental curved-surface
+extension, not proof of planar historical identity or advisor approval.
+
+This session changes research documentation only. Directly inspect printed
+pages288-290 of the seven-page local paper, identified by SHA-256 in the linked
+comparison. Native Windows Poppler renders pages289-290 successfully; an earlier
+WSL renderer attempt failed because `pdftoppm` was unavailable there. No source
+algorithm changes, native tests, new meshes or Blender display in this session.
+The last qualified code remains d251f19; no qualification is transferred to an
+unimplemented mixed-front path. Remote entry quad-templates d5b6175 and main
+ef40c0f were checked; prior integration evidence and failures are retained.
 
 ### 2026-11-17 - PR238 integrated and exact research-merge qualification complete
 

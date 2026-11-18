@@ -12,15 +12,22 @@ Modernization main remains separate. Full Doxygen still fails; only the required
 three-reference/rendering prerequisite is repaired. Retain all old failures,
 sampled-error increases and broader scientific/coverage limitations.
 
-One active successor: R3 actual mixed-state/error feedback preparation. Connect
-existing mixed-state/error observations to retained histories while preserving
-current numerical acceptance/stopping policies. A new mixed estimator/controller
-must have its scientific alignment before adoption. After actual mixed feedback:
-local bidirectional curve/transition/interior sizing. No generic re-questioning
-of settled pair choices or unrelated global-factor sweep. mixed_adaptive_epochs
-remains0; M1/full M5/R3/M7 and all original M0-M9/R0-R4 gates remain open at their
-recorded scope. See the [review dispositions](PR238_TECHNICAL_REVIEW_20261117.md)
-and [integration receipt](evidence/PR238_RESEARCH_INTEGRATION_20261117.json).
+One active successor: implement article-style mixed TRI/QUAD contraction before
+R3 feedback. The current prototype commits a TRI front and then selects pairs;
+the article selects the element before updating the active contour. Implement
+prospective neighbor choice on the best triangle's two other sides and one
+polygonal front commit in an explicit opt-in path, preserving default TRI and
+the qualified prototype. Deliver a validated static mixed mesh and its Blender
+comparison first. See [source comparison and first-output contract](ARTICLE_MIXED_FRONT_TARGET_20261117.md).
+
+Only after this output, connect actual mixed-state/error observations to retained
+histories, then address local bidirectional curve/transition/interior sizing.
+Preserve current acceptance/stopping policies; a new mixed estimator/controller
+requires scientific alignment. No global-factor sweep or generic re-questioning
+of settled experimental pair choices. mixed_adaptive_epochs remains0; full
+M1/M5/R3/M7 and original M0-M9/R0-R4 gates remain open. The prior qualified package
+and its negative evidence are unchanged; this priority correction is not a new
+algorithm qualification. Historical entries below retain their original scope.
 
 The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
 M0–M9 acceptance criteria. The UV convexity repair P0 is integrated through

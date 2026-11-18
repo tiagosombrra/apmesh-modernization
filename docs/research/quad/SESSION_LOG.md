@@ -3050,3 +3050,36 @@ Next is R3 actual mixed-state/error observations and retained-history connection
 before scientifically aligned mixed acceptance and local sizing. Broader M1/
 M5/R3/M7, continuous validity, full CRT/denials/Doxygen remain open. No new Blender
 display, main integration or claimed scientific optimum. One package closed.
+
+## 2026-11-17 - clarify article-style mixed generation before adaptive feedback
+
+The user corrects the meaning of "real mesh": generation by the 1993 mixed
+TRI/QUAD procedure, not just real Bezier geometry or a paired TRI-driven output.
+Recheck clean quad-templates d5b6175 and live remote equality; main remains
+ef40c0f. Fresh delivery audit observes concurrent draft PR239 at e20d77e and PR225 at
+7fe0f39 (both advanced since entry), and PR214 at 7cd5014. Leave all three
+unrelated branches untouched. Research merge CI44192096506 remains SUCCESS.
+
+Directly inspect the primary seven-page scan (SHA-256 recorded in
+ARTICLE_MIXED_FRONT_TARGET_20261117.md), printed pp288-290 and Figures7/10/11.
+The article chooses the best triangle and prospective adjacent alternatives on
+its two other sides, evaluates shape, then updates the front for the selected
+TRI/QUAD. Inspect original makeMesh and the research observer: current TRI
+front mutation precedes pairing of already committed triangles. Also retain
+the unresolved original geometry-phase/existing-node candidate-search and
+centroid differences; current tests do not establish historical equivalence.
+
+Correct STATE and the current roadmap queue: one active successor is an opt-in
+prospective mixed-front path and validated static mixed mesh/Blender output.
+R3 mixed-state/error feedback and local size coupling follow this output.
+Preserve the qualified prototype/default TRI, all integration receipts, sampled
+error increases, zero mixed adaptive epochs and full M1/M5/R3/M7/native limits.
+Do not transfer prior test passes to the unimplemented path or promise a date.
+
+Native Windows Poppler rendered pages5-6 successfully after a failed WSL
+pdftoppm attempt (tool absent). Keep local logs; redistribute no paper pages.
+Documentation-only session: no native build/test, algorithm change, newly
+generated mesh or Blender display. Next action is the explicit opt-in mixed
+contraction implementation and its bounded output gates, not another R3-only
+preparation package. Commit the canonical checkpoint with leased remote update
+and verify readback before reporting persistence.
