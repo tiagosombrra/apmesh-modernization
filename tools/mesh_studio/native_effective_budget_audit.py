@@ -139,7 +139,9 @@ def parse_effective_budgets(stderr: bytes, model: str) -> list[dict]:
             else:
                 _check_fields(row, INT_CURVE_FINAL, (),
                               ("structurally_clamped",))
-                require(len(current["base"]) == count and
+                require(len(current["base"]) == count,
+                        "r2725_incomplete_original_curves_per_native_attempt")
+                require(
                         row["curve_index"] == len(current["final"]) and
                         row["curve_index"] < count and
                         row["before_consistency"] ==
