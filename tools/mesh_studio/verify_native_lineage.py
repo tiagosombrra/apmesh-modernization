@@ -228,7 +228,8 @@ def verify_original_generator_run(
         # Enable read-only original C++ acceptance predicate tracing for this real
         # generator run; the native scientific policy is not modified.
         env = dict(os.environ, APMESH_RESEARCH_LINEAGE_DIR=str(lineagedir),
-                   APMESH_RESEARCH_ACCEPTANCE_GATES="1")
+                   APMESH_RESEARCH_ACCEPTANCE_GATES="1",
+                   APMESH_RESEARCH_EFFECTIVE_BUDGETS="1")
         process = subprocess.run([str(executable), str(path)], cwd=root, env=env,
                                  text=True, capture_output=True, timeout=timeout,
                                  check=False)
