@@ -34,7 +34,7 @@ async function now(page:Page):Promise<number> {
 }
 
 async function browserMetricSnapshot(
-  cdp:Awaited<ReturnType<Page['context']>> extends never ? never : any,
+  cdp:import('@playwright/test').CDPSession,
 ) {
   const result=await cdp.send('Performance.getMetrics');
   const map=new Map<string,number>(result.metrics.map(
@@ -83,13 +83,16 @@ test('R2.7.22 original native Eistute Book Chromium import, patch, sample, heap 
   await paintAfterDOM(page);
   const importReadyMs=(await now(page))-start;
   const originalImportMeasurements=await page.getByTestId('r2720-panel')
-    .evaluate(node=>({ ...node instanceof HTMLElement ? {
-      file_read_ms:Number(node.dataset.nativePerfFileReadMs),
-      contract_ms:Number(node.dataset.nativePerfContractMs),
-      verified_real_seam_edges_ms:Number(node.dataset.nativePerfActualSeamCheckMs),
-      pre_react_ms:Number(node.dataset.nativePerfPreReactMs),
-      json_bytes:Number(node.dataset.nativePerfJsonBytes),
-    } : {} }));
+    .evaluate(node => {
+      const el=node as HTMLElement;
+      return {
+        file_read_ms:Number(el.dataset.nativePerfFileReadMs),
+        contract_ms:Number(el.dataset.nativePerfContractMs),
+        verified_real_seam_edges_ms:Number(el.dataset.nativePerfActualSeamCheckMs),
+        pre_react_ms:Number(el.dataset.nativePerfPreReactMs),
+        json_bytes:Number(el.dataset.nativePerfJsonBytes),
+      };
+    });
   expect(originalImportMeasurements.json_bytes).toBe(original.length);
   expect(originalImportMeasurements.contract_ms).toBeGreaterThanOrEqual(0);
   expect(originalImportMeasurements.verified_real_seam_edges_ms).toBeGreaterThanOrEqual(0);
@@ -123,9 +126,8 @@ test('R2.7.22 original native Eistute Book Chromium import, patch, sample, heap 
     physical_windows_gpu_present_rss_vram_qualified:false,
     scientific_lod_qualified:false,
   };
-  // The actual XYZ WebGL canvas is expected to survive every patch toggle.
-  await xyz.locator('canvas').first().evaluate(node=>
-    node.setAttribute('data-r2722-preserved-canvas','real-original'));
+  // An original model change is allowed to create a new VTK context;
+  // changing patches WITHIN the same model must retain its exact canvas.
   for(const [index,scene] of candidates.entries()) {
     const modelStart=await now(page);
     await page.getByTestId('r2720-model').selectOption(String(index));
@@ -136,6 +138,8 @@ test('R2.7.22 original native Eistute Book Chromium import, patch, sample, heap 
       'data-native-accepted-faces',String(scene.native_tri_faces));
     await paintAfterDOM(page);
     const initialRenderMs=(await now(page))-modelStart;
+    await xyz.locator('canvas').first().evaluate(node=>
+      node.setAttribute('data-r2722-preserved-canvas','real-original'));
     const patchCount=scene.native_source_patches;
     const patchSlots=[0,patchCount-1,Math.floor(patchCount/2),1,
       patchCount-1,0,Math.floor(patchCount/3),patchCount-1,0,1];
