@@ -2,11 +2,14 @@ import { useMemo, useState } from 'react';
 import { NativeAcceptedTriViewer } from './NativeAcceptedTriViewer';
 import { parseNativeAcceptedScene } from './nativeAcceptedSceneContract';
 import type { NativeSceneBundle } from './nativeAcceptedSceneContract';
+import { buildNativeSeamTrace, firstActualNativeFaceForSample,
+  sourceSampleOrdinalsOnFace } from './nativeSeamTrace';
 
 export function NativeAcceptedScenePanel() {
   const [data, setData] = useState<NativeSceneBundle | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [sceneIndex, setSceneIndex] = useState(0);
+  const [curveIndex, setCurveIndex] = useState(0);
   const [patchSlot, setPatchSlot] = useState(0);
   const [sampleOrdinal, setSampleOrdinal] = useState(0);
   const [faceIndex, setFaceIndex] = useState<number | null>(null);
@@ -15,7 +18,9 @@ export function NativeAcceptedScenePanel() {
     d.model === scene.model &&
     d.accepted_native_step === scene.accepted_native_step &&
     d.source_ndjson_sha256 === scene.source_ndjson_sha256);
-  const curve = identity?.qualified_shared_source_curves[0];
+  const curve = identity?.qualified_shared_source_curves[curveIndex];
+  const seamTrace = useMemo(() => scene && curve
+    ? buildNativeSeamTrace(scene,curve) : null, [scene,curve]);
   const sample = curve?.sample_groups[sampleOrdinal];
   const member = sample?.members.find(m => m.patch_slot === patchSlot);
   const selected = faceIndex === null ? null : scene?.native_faces[faceIndex] ?? null;
@@ -30,7 +35,7 @@ export function NativeAcceptedScenePanel() {
   }, [identity, selected]);
 
   async function importNative(file: File | undefined) {
-    setData(null); setError(null); setSceneIndex(0); setPatchSlot(0);
+    setData(null); setError(null); setSceneIndex(0); setCurveIndex(0); setPatchSlot(0);
     setSampleOrdinal(0); setFaceIndex(null);
     if (!file) return;
     try {
@@ -38,6 +43,17 @@ export function NativeAcceptedScenePanel() {
         throw new Error('r2720_bounded_native_scene_file_required');
       }
       const result = parseNativeAcceptedScene(await file.text());
+      // Every displayed source segment must be an actual original accepted
+      // native TRI edge, not a guessed chord between matching XYZ samples.
+      for (const originalScene of result.scenes) {
+        const originalIdentity = result.identity.documents.find(d =>
+          d.model === originalScene.model &&
+          d.accepted_native_step === originalScene.accepted_native_step &&
+          d.source_ndjson_sha256 === originalScene.source_ndjson_sha256);
+        if (!originalIdentity) throw new Error('r2721_missing_original_source_scope');
+        for (const qualifiedCurve of originalIdentity.qualified_shared_source_curves)
+          buildNativeSeamTrace(originalScene,qualifiedCurve);
+      }
       setData(result);
       setPatchSlot(result.identity.documents[0]
         .qualified_shared_source_curves[0].patch_slots[0]);
@@ -48,21 +64,38 @@ export function NativeAcceptedScenePanel() {
 
   function changePatch(slot: number) {
     setPatchSlot(slot);
-    setFaceIndex(null);
+    setFaceIndex(scene && curve
+      ? firstActualNativeFaceForSample(scene,curve,slot,sampleOrdinal) : null);
   }
 
   function selectSourceSampleFace() {
-    if (!scene || !member) return;
-    const found = scene.native_faces.findIndex(face =>
-      face[0] === patchSlot && face[4].some(node =>
-        node[0] === member.native_node_id));
-    if (found >= 0) setFaceIndex(found);
+    if (!scene || !curve || !member) return;
+    setFaceIndex(firstActualNativeFaceForSample(
+      scene,curve,patchSlot,sampleOrdinal));
+  }
+
+  function selectSample(ordinal: number) {
+    setSampleOrdinal(ordinal);
+    setFaceIndex(scene && curve
+      ? firstActualNativeFaceForSample(scene,curve,patchSlot,ordinal) : null);
+  }
+
+  function selectNativeFace(index: number | null) {
+    setFaceIndex(index);
+    if (index === null || !scene || !curve) return;
+    const face=scene.native_faces[index];
+    setPatchSlot(face[0]);
+    const sourceOrdinals=sourceSampleOrdinalsOnFace(face,curve);
+    if(sourceOrdinals.length>0) {
+      setSampleOrdinal(sourceOrdinals.includes(sampleOrdinal)
+        ? sampleOrdinal : sourceOrdinals[0]);
+    }
   }
 
   return <section className="native-identity-panel native-accepted-scene-panel"
-    data-testid="r2720-panel" aria-label="R2.7.20 cena TRI nativa aceita">
+    data-testid="r2720-panel" aria-label="R2.7.21 cena TRI nativa com interfaces">
     <div className="native-identity-heading">
-      <div><div className="eyebrow">RESEARCH / R2.7.20 · OPT-IN</div>
+      <div><div className="eyebrow">RESEARCH / R2.7.21 · OPT-IN</div>
         <h2>Malha TRI nativa aceita — Eistute e Book</h2>
         <p>Identidades reais de faces, nós e patches · visão independente de P1</p>
       </div>
@@ -92,7 +125,7 @@ export function NativeAcceptedScenePanel() {
         <label>Modelo / etapa realmente aceita
           <select data-testid="r2720-model" value={sceneIndex} onChange={e => {
             const index = Number(e.currentTarget.value);
-            setSceneIndex(index); setPatchSlot(0);
+            setSceneIndex(index); setPatchSlot(0); setCurveIndex(0);
             setFaceIndex(null); setSampleOrdinal(0);
           }}>
             {data.scenes.map((s,i) => <option key={s.model+':'+s.accepted_native_step}
@@ -111,7 +144,19 @@ export function NativeAcceptedScenePanel() {
         <label>Amostra da curva de origem ({sampleOrdinal + 1}/{curve.sample_count})
           <input data-testid="r2720-sample" type="range" min="0"
             max={curve.sample_count-1} value={sampleOrdinal}
-            onChange={e => setSampleOrdinal(Number(e.currentTarget.value))}/>
+            onChange={e => selectSample(Number(e.currentTarget.value))}/>
+        </label>
+        <label>Curva nativa compartilhada
+          <select data-testid="r2721-curve" value={curveIndex} onChange={e => {
+            const index=Number(e.currentTarget.value);
+            setCurveIndex(index); setSampleOrdinal(0);setFaceIndex(null);
+            setPatchSlot(identity.qualified_shared_source_curves[index].patch_slots[0]);
+          }}>
+            {identity.qualified_shared_source_curves.map((item,i) =>
+              <option key={item.source_curve_slot} value={i}>
+                Curva {item.source_curve_slot} · {item.patch_slots.length} patches
+              </option>)}
+          </select>
         </label>
       </div>
       <div className="native-identity-evidence">
@@ -122,15 +167,24 @@ export function NativeAcceptedScenePanel() {
         <div><small>ÉPOCA ADAPTATIVA REAL</small>
           <strong>{scene.accepted_native_step} · sem LOD</strong></div>
       </div>
+      <div className="native-seam-proof" data-testid="r2721-seam-proof">
+        <strong>Curva compartilhada #{curve.source_curve_slot}</strong>
+        <span data-testid="r2721-segment-count">
+          {seamTrace?.verifiedOriginalNativeTriangleEdgeCount ?? 0}
+        </span> arestas locais TRI verificadas em
+        <span data-testid="r2721-patch-count">{curve.patch_slots.length}</span> patches.
+        <span className="native-seam-legend">Turquesa: interfaces dos demais patches.
+          Amarelo: patch selecionado. Vermelho: amostra selecionada.</span>
+        A coincidência de XYZ não implica um único objeto C++ ou soldagem.
+      </div>
       <div className="view-grid native-accepted-view-grid">
         <NativeAcceptedTriViewer scene={scene} space="xyz" patchSlot={patchSlot}
-          selectedFaceIndex={faceIndex}
-          onSelectFace={index => {
-            setFaceIndex(index);
-            if (index !== null) setPatchSlot(scene.native_faces[index][0]);
-          }}/>
+          selectedFaceIndex={faceIndex} seamTrace={seamTrace}
+          selectedSampleOrdinal={sampleOrdinal}
+          onSelectFace={selectNativeFace}/>
         <NativeAcceptedTriViewer scene={scene} space="uv" patchSlot={patchSlot}
-          selectedFaceIndex={faceIndex} onSelectFace={setFaceIndex}/>
+          selectedFaceIndex={faceIndex} seamTrace={seamTrace}
+          selectedSampleOrdinal={sampleOrdinal} onSelectFace={selectNativeFace}/>
       </div>
       <div className="native-accepted-inspectors">
         <div className="native-identity-selection" data-testid="r2720-face-inspector">
@@ -151,6 +205,11 @@ export function NativeAcceptedScenePanel() {
                 <td>{n.slice(4).map(v => Number(v.toPrecision(7))).join(' / ')}</td>
               </tr>)}</tbody>
             </table>
+            <p className="small-note" data-testid="r2721-selection-scope">
+              {sourceSampleOrdinalsOnFace(selected,curve).length
+                ? 'Face incidente à curva nativa compartilhada do patch selecionado'
+                : 'Face sem incidência observada na curva compartilhada selecionada'}
+            </p>
             <p className="small-note" data-testid="r2720-linked-samples">
               Amostras desta face na curva de origem:
               {' '}{linkedSourceSamples.length
