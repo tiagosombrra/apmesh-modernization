@@ -313,6 +313,27 @@ The certified scope is a negative sensitivity
 finding for the two previously declared
 single-factor configurations, not a second
 committed adaptive epoch or scientific LOD.
-The original hosted Chromium job of the
-same exact code/source run must independently
-complete before claiming **4/4 CI jobs PASS**.
+**Final exact-code CI certification:** [GitHub Actions #44409265558](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44409265558),
+tested code SHA `196527356695b7a8d8b22ab7d58378bd173ef0e4`,
+**all four independent jobs SUCCESS**: original C++ native experiment
+and independent audit PASS; original 38/38 scientific ON/OFF
+byte-identical outputs; Linux **379 tests, 4 optional skips PASS**;
+Windows **379 tests, 10 environmental skips PASS**; production
+TypeScript build PASS and hosted Chromium **55 tests PASS**,
+including its same-run original accepted TRI performance provenance gate.
+This browser run is not hardware GPU present/RSS/VRAM qualification.
+Any documentation-only revisions following this certified code SHA
+do not modify the qualified C++/Python/TypeScript implementation.
+
+Early CI attempts were **not certified**: the Windows checkout
+original `.conf` LF/CRLF conversion changed exact control hashes,
+and two synthetic negative regression tests had error-classification
+and test-file canonical-line-ending expectations. The final
+source-pinned revision corrected them without weakening any
+model/config/accepted-sidecar hash checks.
+
+**R2.8 remains BLOCKED**. Both new exploratory runs yielded
+exactly one genuinely committed original native step each;
+even a future two-commit observation would still need an
+independent cross-epoch source face/curve descendant proof
+and continuous geometric error certification.
