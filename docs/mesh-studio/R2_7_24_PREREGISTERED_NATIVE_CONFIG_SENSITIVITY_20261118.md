@@ -79,8 +79,13 @@ It records:
   which is distinct from any potential cross-process
   comparison or original article run.
 
-A zero-accepted-step result is retained as such; no artificial
-minimum-one-epoch rule is imposed on the exploratory treatment.
+The underlying `quad_generator_outcome_probe` research harness still
+requires at least one accepted and one restored native step for a
+successful process exit. A zero-accepted-step outcome would therefore
+be retained only as raw nonzero-exit diagnostic logs and be marked
+**unqualified**, not silently promoted to a valid certified
+postcommit trial. The separate pure-python accepted-step auditor
+supports zero receipts, but does not override the C++ harness contract.
 A nonzero process error, missing original source bytes,
 incomplete or inconsistent accepted sidecar, nonfinite
 native gate, changed source model/configuration/acceptance
