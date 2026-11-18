@@ -2,6 +2,7 @@
 #include "boundary_pair_candidates.h"
 #include "live_boundary_pairing.h"
 #include "article_mixed_front.h"
+#include "mixed_uv_smoothing.h"
 #include "application/runtime_config.h"
 #include "physical_quadrilateral_adaptive.h"
 #include "data/mesh/sub_mesh.h"
@@ -193,6 +194,10 @@ struct Candidate {
   std::vector<LivePairEvent> live_pair_events;
   std::vector<ArticleFrontCommit> article_commits;
   std::vector<ArticleMixedFront::Box> article_leaves;
+  std::vector<UvVertex> article_uv_before_smoothing;
+  std::vector<Xyz> article_xyz_before_smoothing;
+  MixedUvSmoothingTrace article_smoothing;
+  std::vector<std::vector<Xyz>> article_smoothing_xyz;
   std::size_t clearance_excluded_cells = 0;
   std::vector<std::vector<std::size_t>> source_faces;
   std::size_t seed_quads = 0;
@@ -285,6 +290,7 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
   if (aft)
     for (auto* edge : aft->getBoundary()->getEdges())
       aft->getQuadtree()->findCell(edge);
+  Candidate result;
   ArticleFrontResult article;
   if (article_front) {
     // This front derives its exact inner interface from the selected QUAD seed.
@@ -307,6 +313,46 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
     Require(!article.commits.empty() &&
                 AuditUvOverlap(selected.uv_quads, audit_triangles).no_overlap,
             "Article contraction has incomplete or overlapping output");
+    result.article_uv_before_smoothing = article.vertices;
+    for (const auto uv : article.vertices)
+      result.article_xyz_before_smoothing.push_back(physical_point(uv));
+    result.article_smoothing = SmoothMixedUv(
+        article.vertices, article.faces, [&](std::size_t, const std::vector<UvVertex>& positions) {
+          std::vector<Xyz> physical;
+          for (const auto uv : positions)
+            physical.push_back(physical_point(uv));
+          std::vector<std::array<UvVertex, 3>> facets;
+          double alignment = 1.0;
+          for (const auto& face : article.faces) {
+            const auto check = [&](std::size_t a, std::size_t b, std::size_t c) {
+              const std::array<UvVertex, 3> triangle{positions[face[a]], positions[face[b]],
+                                                     positions[face[c]]};
+              CheckFacet(patch, FaceUv{triangle}, alignment);
+              facets.push_back(triangle);
+            };
+            check(0, 1, 2);
+            if (face.size() == 4) {
+              check(0, 2, 3);
+              research::PhysicalQuadCorners corners{}, normals{};
+              for (std::size_t i = 0; i < 4; ++i) {
+                const auto uv = positions[face[i]];
+                const auto next = positions[face[(i + 1) % 4]], prev = positions[face[(i + 3) % 4]];
+                Require((next.u - uv.u) * (prev.v - uv.v) - (next.v - uv.v) * (prev.u - uv.u) >
+                            1e-14,
+                        "Mixed smoothing inverted or collapsed a UV quad");
+                corners[i] = physical[face[i]];
+                normals[i] = Cross(Values(patch.Qu(uv.u, uv.v)), Values(patch.Qv(uv.u, uv.v)));
+              }
+              (void)research::ObservePhysicalQuadQuality(corners, normals);
+            }
+          }
+          // Reuse the existing complete TRI intersection audit for all facets,
+          // including the two halves of each QUAD, with unchanged tolerances.
+          Require(AuditUvOverlap({}, facets).no_overlap,
+                  "Mixed smoothing overlaps physical facets");
+          result.article_smoothing_xyz.push_back(std::move(physical));
+        });
+    article.vertices = result.article_smoothing.passes.back();
   } else {
     const auto report = aft->AttemptExteriorTriangulation(selected);
     Require(report.front_drained && report.triangles_positive && report.seam_orientation_complete &&
@@ -315,7 +361,6 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                 report.exterior_triangles > 0,
             "Original AFT failed complete nonoverlapping UV coverage");
   }
-  Candidate result;
   result.real_boundary = source != nullptr;
   result.source_witness = source;
   unsigned long source_max_id = 0;
@@ -347,7 +392,7 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
     result.uv.push_back(uv);
     return id;
   };
-  for (const auto& uv : selected.uv_quads.vertices)
+  for (const auto& uv : (article_front ? article.vertices : selected.uv_quads.vertices))
     add_node(uv);
   for (const auto& quad : selected.uv_quads.quads)
     result.faces.emplace_back(quad.vertices.begin(), quad.vertices.end());
@@ -519,6 +564,10 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
 // These are actual polygon commits, not successive snapshots of a TRI matcher.
 void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path& directory) {
   Require(!candidate.article_commits.empty(), "Missing article contraction history");
+  Require(candidate.article_uv_before_smoothing.size() == candidate.uv.size() &&
+              candidate.article_smoothing.passes.size() == 5 &&
+              candidate.article_smoothing_xyz.size() == 5,
+          "Missing complete mixed smoothing history");
   Require(std::filesystem::create_directory(directory), "Article history already exists");
   std::ofstream trace(directory / "front.json", std::ios::binary);
   trace.imbue(std::locale::classic());
@@ -537,10 +586,11 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
   trace << "{\"schema\":\"apmesh.quad.article_front.v1\",\"clearance\":{"
         << "\"policy\":\"minimum_cell_segment_uv_v1\",\"factor\":0.2,\"excluded_cells\":"
         << candidate.clearance_excluded_cells << "},\"vertices\":[";
-  for (std::size_t i = 0; i < candidate.uv.size(); ++i) {
+  for (std::size_t i = 0; i < candidate.article_uv_before_smoothing.size(); ++i) {
     if (i)
       trace << ',';
-    trace << '[' << candidate.uv[i].u << ',' << candidate.uv[i].v << ']';
+    const auto uv = candidate.article_uv_before_smoothing[i];
+    trace << '[' << uv.u << ',' << uv.v << ']';
   }
   trace << "],\"leaves\":[";
   for (std::size_t i = 0; i < candidate.article_leaves.size(); ++i) {
@@ -557,17 +607,18 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     faces.push_back(candidate.faces[i]);
   }
   trace << "],\"commits\":[";
-  const auto frame = [&](std::size_t step) {
-    std::ofstream out(directory / ("commit_" + std::to_string(step) + ".obj"), std::ios::binary);
+  const auto snapshot = [&](const std::string& name, const std::string& caption,
+                            const std::vector<UvVertex>& positions,
+                            const std::vector<Xyz>& physical,
+                            const std::vector<std::vector<VertexId>>& snapshot_faces) {
+    std::ofstream out(directory / name, std::ios::binary);
     out.imbue(std::locale::classic());
-    out << std::setprecision(17) << "# actual prospective mixed-front commit " << step << '\n';
-    for (unsigned i = 0; i < candidate.mesh->GetNumberNos(); ++i) {
-      const auto* node = candidate.mesh->GetNoh(i);
-      out << "v " << node->GetX() << ' ' << node->GetY() << ' ' << node->GetZ() << '\n';
-    }
-    for (const auto& uv : candidate.uv)
+    out << std::setprecision(17) << "# " << caption << '\n';
+    for (const auto& p : physical)
+      out << "v " << p[0] << ' ' << p[1] << ' ' << p[2] << '\n';
+    for (const auto& uv : positions)
       out << "vt " << uv.u << ' ' << uv.v << '\n';
-    for (const auto& face : faces) {
+    for (const auto& face : snapshot_faces) {
       out << 'f';
       for (auto id : face)
         out << ' ' << id + 1 << '/' << id + 1;
@@ -575,6 +626,11 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     }
     out.close();
     Require(bool(out), "Cannot write article commit frame");
+  };
+  const auto frame = [&](std::size_t step) {
+    snapshot("commit_" + std::to_string(step) + ".obj",
+             "actual prospective mixed-front commit " + std::to_string(step),
+             candidate.article_uv_before_smoothing, candidate.article_xyz_before_smoothing, faces);
   };
   frame(0);
   for (std::size_t i = 0; i < candidate.article_commits.size(); ++i) {
@@ -611,7 +667,26 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     faces.push_back(step.polygon);
     frame(i + 1);
   }
-  trace << "]}\n";
+  trace
+      << "],\"smoothing\":{\"policy\":\"uv_distinct_incident_vertices_jacobi_5_v1\",\"boundary\":";
+  ids(candidate.article_smoothing.boundary);
+  trace << ",\"passes\":[";
+  for (std::size_t pass = 0; pass < 5; ++pass) {
+    if (pass)
+      trace << ',';
+    trace << '[';
+    const auto& positions = candidate.article_smoothing.passes[pass];
+    for (std::size_t i = 0; i < positions.size(); ++i) {
+      if (i)
+        trace << ',';
+      trace << '[' << positions[i].u << ',' << positions[i].v << ']';
+    }
+    trace << ']';
+    snapshot("smoothing_" + std::to_string(pass + 1) + ".obj",
+             "approved mixed UV smoothing pass " + std::to_string(pass + 1), positions,
+             candidate.article_smoothing_xyz[pass], candidate.faces);
+  }
+  trace << "]}}\n";
   trace.close();
   Require(bool(trace), "Cannot complete article front trace");
 }
@@ -1209,7 +1284,7 @@ void Export(const Candidate& result, const std::filesystem::path& path,
     const auto quads = source_scaffold ? result.seed_quads : result.quads;
     if (!result.article_commits.empty())
       out << "# article_front planar_UV_1993_rule prospective_choice_before_front_update=1"
-             " smoothing=none curved_XYZ_lift=experimental\n";
+             " smoothing=uv_distinct_incident_vertices_jacobi_5_v1 curved_XYZ_lift=experimental\n";
     if (!result.source_faces.empty()) {
       out << "# live_pair_policy physical_angle_pair_v1 source_scaffold=" << source_scaffold
           << " seed_quads=" << result.seed_quads

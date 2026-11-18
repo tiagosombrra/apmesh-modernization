@@ -7,11 +7,13 @@ import json
 import math
 from pathlib import Path
 import subprocess
+import sys
 import uuid
 
 from independent_common_grid import load_physical_obj
 from test_controlled_application import require
 from test_real_boundary_application import audit
+from test_m4_real_model_hybrid import golden
 
 EPS = 1e-14
 
@@ -206,7 +208,56 @@ def replay(data, obj, directory=None):
                 competing_alternatives=competing)
 
 
+def replay_smoothing(data, before, final, directory=None):
+    xyz, initial, faces = before
+    fx, final_uv, final_faces = final
+    require(Counter(map(tuple, faces)) == Counter(map(tuple, final_faces)),
+            'Smoothing changed element connectivity')
+    receipt = data['smoothing']
+    require(receipt['policy'] == 'uv_distinct_incident_vertices_jacobi_5_v1' and
+            len(receipt['passes']) == 5, 'Wrong smoothing scientific policy/pass count')
+    incidence = Counter(tuple(sorted(e)) for f in faces for e in edges(f))
+    fixed = {v for e,n in incidence.items() if n == 1 for v in e}
+    require(receipt['boundary'] == sorted(fixed), 'Wrong fixed smoothing contour')
+    neighbors = [set() for _ in initial]
+    for face in faces:
+        for vertex in face:
+            neighbors[vertex].update(set(face)-{vertex})
+    current = initial
+    from quad_generation_metrics import summarize_elements, geometry_error
+    measurements = [dict(pass_number=0,quality=summarize_elements(xyz,initial,faces)[0],
+                         geometry_error=geometry_error(xyz,initial,faces))]
+    for pass_number, recorded in enumerate(receipt['passes'],1):
+        expected = [p if i in fixed else
+                    tuple(sum(current[j][axis] for j in sorted(neighbors[i]))/len(neighbors[i])
+                          for axis in (0,1)) for i,p in enumerate(current)]
+        require(len(recorded) == len(expected) and all(len(p) == 2 for p in recorded),
+                'Wrong smoothing point scope')
+        require(all(math.isclose(a,b,rel_tol=1e-13,abs_tol=1e-14)
+                    for p,q in zip(recorded,expected) for a,b in zip(p,q)),
+                'Smoothing is not distinct-vertex simultaneous averaging')
+        require(all(tuple(recorded[i]) == tuple(initial[i]) for i in fixed),
+                'Smoothing changed original contour coordinates')
+        current = [tuple(p) for p in recorded]
+        physical = [golden(*p)[0] for p in current]
+        if directory:
+            px,pu,pf = load_physical_obj(directory/f'smoothing_{pass_number}.obj')
+            require(pu == current and Counter(pf) == Counter(map(tuple,faces)),
+                    'Native smoothing frame differs from receipt')
+            require(all(math.dist(a,b) <= 2e-12 for a,b in zip(px,physical)),
+                    'Smoothing frame did not lift points onto the analytic source')
+            require(all(px[i] == xyz[i] for i in fixed), 'Native smoothing moved physical contour')
+            physical = px
+        measurements.append(dict(pass_number=pass_number,
+                                 quality=summarize_elements(physical,current,faces)[0],
+                                 geometry_error=geometry_error(physical,current,faces)))
+    require(final_uv == current and all(math.dist(a,b) <= 2e-12 for a,b in zip(fx,physical)),
+            'Final mesh differs from the fifth smoothing pass')
+    return measurements
+
+
 def main():
+    sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'tools'))
     parser = argparse.ArgumentParser()
     parser.add_argument('--exe', type=Path, required=True)
     parser.add_argument('--directory', type=Path, required=True)
@@ -226,6 +277,7 @@ def main():
     rows = list(csv.DictReader((directory/'manifest.csv').open()))
     require([int(r['step']) for r in rows] == [0, 1, 2, 3], 'Missing source generation stages')
     reports = []
+    smoothing_reports = []
     saved = None
     for row in rows[1:]:
         obj_path = directory/row['quad_tri_obj']
@@ -233,15 +285,18 @@ def main():
         history = directory/(obj_path.stem.removesuffix('_quad_tri')+'_article_front')
         data = json.loads((history/'front.json').read_text())
         obj = load_physical_obj(obj_path)
-        report = replay(data, obj, history)
+        before = load_physical_obj(history/f'commit_{len(data["commits"])}.obj')
+        report = replay(data, before, history)
+        smoothing_reports.append(dict(step=int(row['step']),
+            passes=replay_smoothing(data,before,obj,history)))
         reports.append(dict(step=int(row['step']), **native, **report))
         if saved is None:
-            saved = data, obj
+            saved = data, before, obj
     require(all(r['selected_quads'] and r['retained_triangles'] for r in reports),
             'The real stages did not exercise mixed prospective generation')
     require([r['clearance_excluded_cells'] for r in reports] == [0,0,25],
             'The retained real clearance witness changed')
-    data, obj = saved
+    data, obj, final = saved
     corruptions = []
     for field in ('before', 'best', 'polygon', 'alternatives'):
         broken = copy.deepcopy(data)
@@ -268,6 +323,20 @@ def main():
         try: replay(broken, obj)
         except (AssertionError, KeyError, ValueError, IndexError): continue
         raise AssertionError('Forged prospective trace was accepted')
+    smoothing_forgeries = []
+    for field,value in [('policy','xyz_average'),('boundary',[]),('passes',[])]:
+        broken = copy.deepcopy(data)
+        broken['smoothing'][field] = value
+        smoothing_forgeries.append(broken)
+    for vertex in (data['smoothing']['boundary'][0],next(i for i in range(len(data['vertices']))
+                  if i not in data['smoothing']['boundary'])):
+        broken = copy.deepcopy(data)
+        broken['smoothing']['passes'][0][vertex][0] += 0.01
+        smoothing_forgeries.append(broken)
+    for broken in smoothing_forgeries:
+        try: replay_smoothing(broken,obj,final)
+        except (AssertionError,KeyError,ValueError,IndexError): continue
+        raise AssertionError('Forged smoothing trace was accepted')
     rollback_verified = False
     if not args.existing_prefix:
         rollback_prefix = args.directory/f'rollback-{uuid.uuid4().hex}'
@@ -284,7 +353,6 @@ def main():
         audit(Path(str(rollback_prefix)+'.obj'))
         rollback_verified = True
     # Reporting is read-only and must not alter any source OBJ or admission.
-    import sys
     tools_dir = Path(__file__).resolve().parents[2]/'tools'
     sys.path.insert(0, str(tools_dir))
     from quad_generation_metrics import collect_archive, write_report
@@ -293,7 +361,9 @@ def main():
     require(len(measured['stages']) == 2*len(rows), 'Missing per-step error/quality reports')
     report = dict(schema='apmesh.quad.article_application.v1', stages=reports,
                   rejected_forgeries=len(corruptions), rollback_verified=rollback_verified,
+                  rejected_smoothing_forgeries=len(smoothing_forgeries), smoothing_passes_per_stage=5,
                   mixed_adaptive_epochs=0)
+    (args.directory/'smoothing_report.json').write_text(json.dumps(smoothing_reports,indent=2)+'\n')
     (args.directory/'article_report.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps(report))
 

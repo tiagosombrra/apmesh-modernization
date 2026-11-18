@@ -35,12 +35,19 @@ add_executable(quad_article_front_contracts article_mixed_front_contracts.cpp)
 target_include_directories(quad_article_front_contracts PRIVATE ../../research/quad)
 target_compile_features(quad_article_front_contracts PRIVATE cxx_std_17)
 add_test(NAME quad.article.prospective_front COMMAND quad_article_front_contracts)
+add_executable(quad_mixed_uv_smoothing_contracts mixed_uv_smoothing_contracts.cpp)
+target_include_directories(quad_mixed_uv_smoothing_contracts PRIVATE ../../research/quad)
+target_compile_features(quad_mixed_uv_smoothing_contracts PRIVATE cxx_std_17)
+add_test(NAME quad.article.mixed_uv_smoothing COMMAND quad_mixed_uv_smoothing_contracts)
+set_tests_properties(quad.article.mixed_uv_smoothing PROPERTIES
+  TIMEOUT 30 LABELS "research-quad;mixed-smoothing;negative-controls")
 set_tests_properties(quad.article.prospective_front PROPERTIES
   TIMEOUT 30 LABELS "research-quad;mixed-front;negative-controls")
 
 foreach(target IN ITEMS apmesh_quad_uv quad_uv_contracts quad_mesh_mode_contracts quad_uv_demo
   apmesh_quad_experimental_point quad_experimental_point_contracts quad_visual_export
   quad_article_front_contracts
+  quad_mixed_uv_smoothing_contracts
   quad_epoch_admission_contracts quad_mixed_surface_residual_contracts)
   if(MSVC)
     target_compile_options(${target} PRIVATE /W4 /WX /EHsc /utf-8)
