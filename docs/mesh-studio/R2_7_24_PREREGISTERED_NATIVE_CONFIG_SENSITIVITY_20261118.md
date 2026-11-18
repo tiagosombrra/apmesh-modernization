@@ -168,6 +168,138 @@ The PR stays draft/unmerged, no main merge,
 tag, release, C++ acceptance-policy change or
 physical node welding.
 
+## Exact original C++ native results — source-verified negative sensitivity
+
+The two separate preregistered exploratory treatments were
+executed by the actual original serial C++ generator at tested
+source/code SHA `196527356695b7a8d8b22ab7d58378bd173ef0e4`.
+The independent native-source job is **SUCCESS** in
+[Actions #44409265558](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44409265558).
+The final four-job certification status must include the hosted
+Chromium job separately.
+
+| Genuine source model | Original article control | Exact single-source treatment | Real accepted steps in treatment process | Real restored steps | Original actual accepted step-1 source |
+| --- | --- | --- | --- | ---: | --- |
+| Eistute | 1 accepted, 3 restored | `CURVE_POINT_GROWTH_STEPN=4.0→2.0` | **[1] only** | **3** | **1,168 native TRI; accepted NDJSON SHA unchanged** |
+| Book | 1 accepted, 2 restored | `ADAPTIVE_INTENSITY=0.02→0.01` | **[1] only** | **2** | **4,256 native TRI; accepted NDJSON SHA unchanged** |
+
+Both original accepted per-face NDJSON SHA-256 digests are
+**byte-identical** to the original article controls:
+Eistute
+`57eaa949e382aee4537325e7214694fc250d1cf20eeec96beeb6f923f6b518e6`;
+Book
+`e5be7af26f0064a01929e33f7db9129a50a17959d20d743f09c224551358524a`.
+
+The source-bound precommit native decision records were
+**independently compared field-for-field against the
+previous original R2.7.23 raw process logs**:
+all **7/7** original Eistute records and all **3/3**
+original Book records were identical. This includes error
+ratios, quality and transition metrics, active acceptance
+decisions and original restored outcome counts. The
+comparison **does not prove that all rejected physical
+candidate geometries are byte-identical** because their
+full original TRI face snapshots were not committed, nor
+does it prove the controls were not parsed. The runtime
+configuration parser does parse both tested keys.
+
+The exact variation intention config SHAs:
+- Eistute:
+  `2c8ed5bd89ecefcee98706e2b937a61542b92f33e7821e5fa015cc182e591e36`.
+- Book:
+  `db7011afc42e80198b22f105f4e5bf664599a7944c19a52a18a17b49f2b5bb40`.
+
+Original native model input SHAs stay Eistute
+`fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f`
+and Book
+`3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d`;
+the *same compiled original generator* SHA
+`9227c49a65ede72a5229df5bf2ac4fd89ec1bd2b6a6e79f17eab6f3e96b7b67d`
+was reused in both trial processes and in the original native
+controls. The original article `.conf` files remain byte-unchanged;
+`.gitattributes` explicitly enforces LF in those two files on
+Windows and Linux, without normalizing arbitrary scientific sources.
+
+The original compiled generator remains numerically identical
+with lineage instrumentation OFF and ON: Eistute **21/21** and
+Book **17/17** original scientific CSV/JSON/OBJ files exact
+byte equality, **38/38 total**. Linux **379 tests, 4 optional
+skips PASS**, Windows **379 tests, 10 environment skips PASS**.
+These tests include 16 **synthetic negative contracts** that
+cannot be used as positive experimental evidence.
+
+### Research interpretation and mechanism to investigate next
+
+**Negative result of the preregistered two-treatment matrix:**
+neither changed generation control created two genuine
+committed epochs. Do not cherry-pick restored attempts
+or concatenate accepted original and variant snapshots.
+Both variants are scientifically separate processes
+from the original article run, despite equal source
+input and original accepted face bytes.
+
+One *plausible*, not independently proven,
+masking mechanism for Eistute is found in
+`GeneratorAdaptive::AdaptCurve()`:
+the branch for
+`BudgetDrivenAdaptation()==1 && CurvePointBudgetMode()==1`
+uses the configured `CurvePointGrowthStepN()` cap
+for steps 2+, but its final target may be increased by
+priority-patch minimum increments, sensitive-curve
+minimum increments and the source curve's geometric
+spacing budget
+`max(target_curve_points, geometric_target)`.
+This can make the smaller configured cap nonbinding.
+A future **read-only source effective-target trace**
+should observe which exact floor dominates, not
+assume a causal mechanism from equal final metrics.
+
+For Book, nonstable `BuildAdaptivePolicyRuntime()`
+still computes a policy intensity and step-one target
+growth, but the source's nonstable element target
+branch may use other explicit
+`Step1ElementTargetGrowth()` /
+`Step2ElementTargetGrowth()` values.
+The *observed* unchanged precommit vectors do not
+establish which policy knob dominates all downstream
+adapter attempts. A future trace of the effective
+target and per-patch source sampling budgets is required.
+Book's nonstable execution also uses legacy step
+count semantics rather than treating
+`ADAPTIVE_MAX_STEPS=4` as an accepted epoch count.
+
+The next investigation should measure **effective
+generation controls and actual clamp/priority
+contributions**, not silently loosen the native
+acceptance policy. Even if a subsequent controlled
+configuration obtains multiple genuine same-run
+commits, R2.8 also requires cross-epoch native
+face/curve ancestry and certified continuous
+geometric error bounds.
+
+### Source artifact identity
+
+The actual R2.7.24 same-run original compiled
+native experiment and independent audit artifact is
+[GitHub Actions #14477052478](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44409265558/artifacts/14477052478),
+ZIP **291,251 bytes**, SHA256
+`2b66604d5ca51800527fb050cdfd6ed69b9fb1ffbc5325db304eb03b9f1b5d94`.
+It contains 14 original source-linked files:
+the two precise variant intention and resolved
+execution configs, two complete real process
+stdout/stderr logs, both genuine per-face accepted
+TRI NDJSON, two per-treatment reports,
+the preregistered scope index and the separate
+source-rebuilding independent audit.
+
+The exact ZIP was archived in personal doctoral
+Google Drive folder
+`Doutorado/DOUTORADO_APMESH_ACOMPANHAMENTO/05_Experimentos_e_Resultados`,
+then **downloaded back**. ZIP length and SHA256 were
+independently verified byte-identical to GitHub.
+Private Drive URLs are not placed in this
+potentially public research repository.
+
 ## Outcome status
 
 **Experiment preregistered in source. Actual experimental
