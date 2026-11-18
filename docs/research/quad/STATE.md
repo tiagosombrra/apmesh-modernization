@@ -12,6 +12,28 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### Current plan in one view - verified2026-11-18
+
+Read the [short current plan](CURRENT_PLAN_OVERVIEW_20261118.md) before historical
+entries below. Real mixed generation exists; complete paper conformance and
+mixed adaptive closure do not. Current code is draft PR240 exact9ca6deb.
+
+| Work | Status |
+| --- | --- |
+| Original curves, native templates and prospective mixed front | Implemented; real archived outputs exist |
+| Per-step errors/quality and explained Blender | Delivered; presentation does not change generation |
+| Contour-clearance classification | Missing; the single next implementation action |
+| Actual mixed smoothing and historical centers | Pending after/alongside the bounded article correction |
+| Actual mixed global curvature error/accepted adaptation | Not complete; original TRI still drives adaptation |
+| Independent review and research integration of PR240 | Pending; draft/unmerged |
+
+Order: documented clearance -> mixed smoothing/control and center disposition ->
+real-history comparison and bounded gates -> reviewed research integration ->
+aligned mixed-state/error/adaptive work. No new balancing controller, broad flag
+sweep or modernization-main change. Previous local85/85 and exact hosted4/4 are
+retained source evidence, not coverage of omitted paper stages. No native rerun
+or source change in this clarification. Full roadmap gates remain open.
+
 ### 2026-11-18 - deliver the explained complete Blender presentation
 
 The [new presentation](EXPLAINED_BLENDER_PRESENTATION_20261118.md) and

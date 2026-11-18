@@ -3319,3 +3319,27 @@ STATE and this log; leave roadmap/modernization history unchanged. Next remains
 documented contour-clearance repair, then mixed smoothing and M1 disposition.
 Mixed global error, independent review, local WSL and wider gates remain open.
 Commit/read back the canonical checkpoint; keep visible source on its PR branch.
+
+## 2026-11-18 - make the delivered and pending plan explicit
+
+User is lost between the planned technique, implementation and presentation.
+Read current protocol/state/roadmap and named evidence; verify canonical8184416,
+source9ca6deb/draft PR240 and main ef40c0f. Concurrent PR239/225 advance to
+22cd921/d4e373a; leave them and PR214 untouched. Source remote four checks remain
+successful. No tests, generation, scientific decisions or first-party code changes.
+
+Add a compact current-plan reading guide and status table at the start of STATE;
+link it from the full roadmap without changing milestone scope or order. Explain
+that original curves/templates and prospective mixed static output are implemented,
+while complete1993 conformance and mixed adaptive closure are not. Recent Blender
+and metrics deliveries do not repair the generator. Keep missing contour clearance,
+actual mixed smoothing, historical center interpretation and mixed global error
+separate. Preserve draft review/integration, local WSL and full historical gates.
+
+One next implementation action remains documented contour-clearance classification
+with the retained witness. Then mixed smoothing/control/center disposition, real
+history regeneration/comparison and finite required gates, independent review and
+research integration, followed by aligned mixed-state/error/adaptive work. No new
+controller or factor sweep. Source feature branch remains visible; canonical docs
+and modernization main have distinct roles. Publish/read back this documentation
+checkpoint. The summary adopts no new scientific policy or stage qualification.

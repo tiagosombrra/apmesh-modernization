@@ -1,6 +1,10 @@
 # Plano de pesquisa e implementação QUAD — APMesh
 
 
+Read the [current delivered/pending summary](CURRENT_PLAN_OVERVIEW_20261118.md) for a short view.
+The dated historical entries below preserve evidence and superseded priorities;
+they do not replace the current execution queue.
+
 ## Current finite execution queue — 2026-11-18
 
 The first prospective mixed-front output is implemented on
