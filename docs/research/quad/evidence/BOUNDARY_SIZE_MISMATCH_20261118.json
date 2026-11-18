@@ -1,0 +1,1382 @@
+{
+  "schema": "apmesh.quad.boundary_balance_audit.v1",
+  "source_sha": "b3d2fbc2ad42237e2dcdbe81757bfa7abf981c6e",
+  "scope": "Read-only actual mixed OBJ boundary-to-nearest-native-face adjacency and physical XYZ diagnostics; no controller or acceptance thresholds adopted",
+  "script_sha256": "000600899d989be88a6984ba7cd6d2521ed6321b7f8ad7d41c3e17e2b912eb18",
+  "stages": [
+    {
+      "file": "build\\quad-article-front-20261118\\qualification-msvc\\article\\article-0b6f5a84c07946f7a494af1f7d6e0cbb.steps\\step_1_retry_0_accepted_quad_tri.obj",
+      "sha256": "d7992d950fcefbcfeba71b11a1bede312a15b643d92ab1ec251afa97e457c7bd",
+      "nodes": 33,
+      "seed_quads": 16,
+      "sides": [
+        {
+          "side": 0,
+          "boundary_points": 3,
+          "segments": 2,
+          "min_angle_xyz": 31.12614083693293,
+          "max_edge_ratio_xyz": 3.9666812252747503,
+          "min_tri_quality": null,
+          "boundary_lengths_xyz": [
+            1.0680004681646913,
+            1.0680004681646913
+          ],
+          "local_tangent_ratio_range": [
+            3.20750041567664,
+            3.20750041567664
+          ],
+          "min_altitude_xyz": null
+        },
+        {
+          "side": 1,
+          "boundary_points": 3,
+          "segments": 2,
+          "min_angle_xyz": 38.455946389420134,
+          "max_edge_ratio_xyz": 4.595718286656775,
+          "min_tri_quality": null,
+          "boundary_lengths_xyz": [
+            1.0,
+            1.0
+          ],
+          "local_tangent_ratio_range": [
+            3.8723705979673837,
+            4.259733506662333
+          ],
+          "min_altitude_xyz": null
+        },
+        {
+          "side": 2,
+          "boundary_points": 3,
+          "segments": 2,
+          "min_angle_xyz": 44.72776598867178,
+          "max_edge_ratio_xyz": 3.7371549101316273,
+          "min_tri_quality": null,
+          "boundary_lengths_xyz": [
+            1.0,
+            1.0
+          ],
+          "local_tangent_ratio_range": [
+            3.7372262773722627,
+            3.7372262773722627
+          ],
+          "min_altitude_xyz": null
+        },
+        {
+          "side": 3,
+          "boundary_points": 3,
+          "segments": 2,
+          "min_angle_xyz": 38.9251463323061,
+          "max_edge_ratio_xyz": 4.595125298113846,
+          "min_tri_quality": null,
+          "boundary_lengths_xyz": [
+            1.0,
+            1.0
+          ],
+          "local_tangent_ratio_range": [
+            3.8723705979673837,
+            4.259733506662333
+          ],
+          "min_altitude_xyz": null
+        }
+      ],
+      "intervals": [
+        {
+          "side": 0,
+          "edge": [
+            25,
+            26
+          ],
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.5,
+              0.0
+            ]
+          ],
+          "incident_face": 16,
+          "kind": "QUAD",
+          "length_xyz": 1.0680004681646913,
+          "min_angle_xyz": 31.740943654755576,
+          "edge_ratio_xyz": 3.9666812252747503,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            0
+          ],
+          "local_native_tangent_width_xyz": 0.3329697053022488,
+          "boundary_to_native_tangent_ratio": 3.20750041567664
+        },
+        {
+          "side": 0,
+          "edge": [
+            26,
+            27
+          ],
+          "uv": [
+            [
+              0.5,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "incident_face": 17,
+          "kind": "QUAD",
+          "length_xyz": 1.0680004681646913,
+          "min_angle_xyz": 31.12614083693293,
+          "edge_ratio_xyz": 3.9487483444163716,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            5
+          ],
+          "local_native_tangent_width_xyz": 0.3329697053022488,
+          "boundary_to_native_tangent_ratio": 3.20750041567664
+        },
+        {
+          "side": 1,
+          "edge": [
+            27,
+            28
+          ],
+          "uv": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.5
+            ]
+          ],
+          "incident_face": 18,
+          "kind": "QUAD",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 38.455946389420134,
+          "edge_ratio_xyz": 4.595718286656775,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            5
+          ],
+          "local_native_tangent_width_xyz": 0.2347564697265625,
+          "boundary_to_native_tangent_ratio": 4.259733506662333
+        },
+        {
+          "side": 1,
+          "edge": [
+            28,
+            29
+          ],
+          "uv": [
+            [
+              1.0,
+              0.5
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "incident_face": 19,
+          "kind": "QUAD",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 45.28600530711262,
+          "edge_ratio_xyz": 3.8867159182859545,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            10
+          ],
+          "local_native_tangent_width_xyz": 0.25823974609375,
+          "boundary_to_native_tangent_ratio": 3.8723705979673837
+        },
+        {
+          "side": 2,
+          "edge": [
+            29,
+            30
+          ],
+          "uv": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.5,
+              1.0
+            ]
+          ],
+          "incident_face": 20,
+          "kind": "QUAD",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 44.72776598867178,
+          "edge_ratio_xyz": 3.735242807005081,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            10
+          ],
+          "local_native_tangent_width_xyz": 0.267578125,
+          "boundary_to_native_tangent_ratio": 3.7372262773722627
+        },
+        {
+          "side": 2,
+          "edge": [
+            30,
+            31
+          ],
+          "uv": [
+            [
+              0.5,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "incident_face": 21,
+          "kind": "QUAD",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 44.783267304081186,
+          "edge_ratio_xyz": 3.7371549101316273,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            15
+          ],
+          "local_native_tangent_width_xyz": 0.267578125,
+          "boundary_to_native_tangent_ratio": 3.7372262773722627
+        },
+        {
+          "side": 3,
+          "edge": [
+            31,
+            32
+          ],
+          "uv": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "incident_face": 22,
+          "kind": "QUAD",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 45.34043657960187,
+          "edge_ratio_xyz": 3.8692544690746944,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            15
+          ],
+          "local_native_tangent_width_xyz": 0.25823974609375,
+          "boundary_to_native_tangent_ratio": 3.8723705979673837
+        },
+        {
+          "side": 3,
+          "edge": [
+            25,
+            32
+          ],
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "incident_face": 23,
+          "kind": "QUAD",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 38.9251463323061,
+          "edge_ratio_xyz": 4.595125298113846,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            0
+          ],
+          "local_native_tangent_width_xyz": 0.2347564697265625,
+          "boundary_to_native_tangent_ratio": 4.259733506662333
+        }
+      ],
+      "step": 1
+    },
+    {
+      "file": "build\\quad-article-front-20261118\\qualification-msvc\\article\\article-0b6f5a84c07946f7a494af1f7d6e0cbb.steps\\step_2_retry_0_accepted_quad_tri.obj",
+      "sha256": "ce16561ef84286341f68708b60356d28059ce8e24037de8ce10c3630773cb68e",
+      "nodes": 281,
+      "seed_quads": 242,
+      "sides": [
+        {
+          "side": 0,
+          "boundary_points": 5,
+          "segments": 4,
+          "min_angle_xyz": 9.832344817515402,
+          "max_edge_ratio_xyz": 9.239147054237291,
+          "min_tri_quality": 0.28838089026995783,
+          "boundary_lengths_xyz": [
+            0.5431470772597249,
+            0.544959548250103,
+            0.544959548250103,
+            0.5431470772597249
+          ],
+          "local_tangent_ratio_range": [
+            3.0420458808960413,
+            7.3381885475029565
+          ],
+          "min_altitude_xyz": 0.0702112965232926
+        },
+        {
+          "side": 1,
+          "boundary_points": 3,
+          "segments": 2,
+          "min_angle_xyz": 20.82662135088025,
+          "max_edge_ratio_xyz": 2.013379174862104,
+          "min_tri_quality": 0.45470891235041644,
+          "boundary_lengths_xyz": [
+            1.0,
+            1.0
+          ],
+          "local_tangent_ratio_range": [
+            7.318803809550399,
+            7.683113761924999
+          ],
+          "min_altitude_xyz": 0.20900427253422976
+        },
+        {
+          "side": 2,
+          "boundary_points": 3,
+          "segments": 2,
+          "min_angle_xyz": 20.865589490950885,
+          "max_edge_ratio_xyz": 2.0049150341068143,
+          "min_tri_quality": 0.453785361351776,
+          "boundary_lengths_xyz": [
+            1.0,
+            1.0
+          ],
+          "local_tangent_ratio_range": [
+            7.599257884972171,
+            7.599257884972171
+          ],
+          "min_altitude_xyz": 0.20845500856156457
+        },
+        {
+          "side": 3,
+          "boundary_points": 3,
+          "segments": 2,
+          "min_angle_xyz": 20.913375815251364,
+          "max_edge_ratio_xyz": 2.0117520346221767,
+          "min_tri_quality": 0.45655302401657577,
+          "boundary_lengths_xyz": [
+            1.0,
+            1.0
+          ],
+          "local_tangent_ratio_range": [
+            7.3862756251199695,
+            7.683113761924999
+          ],
+          "min_altitude_xyz": 0.20995713662987658
+        }
+      ],
+      "intervals": [
+        {
+          "side": 0,
+          "edge": [
+            271,
+            272
+          ],
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.25457763671875,
+              0.0
+            ]
+          ],
+          "incident_face": 242,
+          "kind": "QUAD",
+          "length_xyz": 0.5431470772597249,
+          "min_angle_xyz": 25.852902364912794,
+          "edge_ratio_xyz": 9.239147054237291,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            238,
+            102
+          ],
+          "local_native_tangent_width_xyz": 0.1249764432395476,
+          "boundary_to_native_tangent_ratio": 4.345995638703304
+        },
+        {
+          "side": 0,
+          "edge": [
+            273,
+            274
+          ],
+          "uv": [
+            [
+              0.5,
+              0.0
+            ],
+            [
+              0.74542236328125,
+              0.0
+            ]
+          ],
+          "incident_face": 243,
+          "kind": "QUAD",
+          "length_xyz": 0.544959548250103,
+          "min_angle_xyz": 23.279958547561126,
+          "edge_ratio_xyz": 3.9016496580836777,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            41
+          ],
+          "local_native_tangent_width_xyz": 0.17914244872913748,
+          "boundary_to_native_tangent_ratio": 3.0420458808960413
+        },
+        {
+          "side": 0,
+          "edge": [
+            272,
+            273
+          ],
+          "uv": [
+            [
+              0.25457763671875,
+              0.0
+            ],
+            [
+              0.5,
+              0.0
+            ]
+          ],
+          "incident_face": 249,
+          "kind": "TRI",
+          "length_xyz": 0.544959548250103,
+          "min_angle_xyz": 14.417761007060667,
+          "edge_ratio_xyz": 1.9409025765002734,
+          "tri_quality": 0.29109469251152914,
+          "altitude_to_boundary_xyz": 0.0702112965232926,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            99,
+            16
+          ],
+          "local_native_tangent_width_xyz": 0.07426349769052229,
+          "boundary_to_native_tangent_ratio": 7.3381885475029565
+        },
+        {
+          "side": 0,
+          "edge": [
+            274,
+            275
+          ],
+          "uv": [
+            [
+              0.74542236328125,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "incident_face": 250,
+          "kind": "TRI",
+          "length_xyz": 0.5431470772597249,
+          "min_angle_xyz": 9.832344817515402,
+          "edge_ratio_xyz": 5.24697554574879,
+          "tri_quality": 0.28838089026995783,
+          "altitude_to_boundary_xyz": 0.10297847461614634,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            37
+          ],
+          "local_native_tangent_width_xyz": 0.16597348762489017,
+          "boundary_to_native_tangent_ratio": 3.2724930049507015
+        },
+        {
+          "side": 1,
+          "edge": [
+            275,
+            276
+          ],
+          "uv": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.5
+            ]
+          ],
+          "incident_face": 251,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 21.822950826773944,
+          "edge_ratio_xyz": 1.9177316060929395,
+          "tri_quality": 0.4561313988675568,
+          "altitude_to_boundary_xyz": 0.20916338466600282,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            52
+          ],
+          "local_native_tangent_width_xyz": 0.13663434982299805,
+          "boundary_to_native_tangent_ratio": 7.318803809550399
+        },
+        {
+          "side": 1,
+          "edge": [
+            276,
+            277
+          ],
+          "uv": [
+            [
+              1.0,
+              0.5
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "incident_face": 252,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 20.82662135088025,
+          "edge_ratio_xyz": 2.013379174862104,
+          "tri_quality": 0.45470891235041644,
+          "altitude_to_boundary_xyz": 0.20900427253422976,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            72
+          ],
+          "local_native_tangent_width_xyz": 0.1301555633544922,
+          "boundary_to_native_tangent_ratio": 7.683113761924999
+        },
+        {
+          "side": 2,
+          "edge": [
+            277,
+            278
+          ],
+          "uv": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.5,
+              1.0
+            ]
+          ],
+          "incident_face": 253,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 20.865589490950885,
+          "edge_ratio_xyz": 2.0049150341068143,
+          "tri_quality": 0.453785361351776,
+          "altitude_to_boundary_xyz": 0.20845500856156457,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            80
+          ],
+          "local_native_tangent_width_xyz": 0.131591796875,
+          "boundary_to_native_tangent_ratio": 7.599257884972171
+        },
+        {
+          "side": 2,
+          "edge": [
+            278,
+            279
+          ],
+          "uv": [
+            [
+              0.5,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "incident_face": 254,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 20.88018168342652,
+          "edge_ratio_xyz": 2.004646978712188,
+          "tri_quality": 0.454094671011782,
+          "altitude_to_boundary_xyz": 0.20861453962218846,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            85
+          ],
+          "local_native_tangent_width_xyz": 0.131591796875,
+          "boundary_to_native_tangent_ratio": 7.599257884972171
+        },
+        {
+          "side": 3,
+          "edge": [
+            279,
+            280
+          ],
+          "uv": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "incident_face": 255,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 20.913375815251364,
+          "edge_ratio_xyz": 2.0117520346221767,
+          "tri_quality": 0.45655302401657577,
+          "altitude_to_boundary_xyz": 0.20995713662987658,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            97
+          ],
+          "local_native_tangent_width_xyz": 0.1301555633544922,
+          "boundary_to_native_tangent_ratio": 7.683113761924999
+        },
+        {
+          "side": 3,
+          "edge": [
+            271,
+            280
+          ],
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "incident_face": 256,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 22.61439964844213,
+          "edge_ratio_xyz": 1.9051856760972523,
+          "tri_quality": 0.4723550233830066,
+          "altitude_to_boundary_xyz": 0.21758272229941633,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            241,
+            28
+          ],
+          "local_native_tangent_width_xyz": 0.13538622856140137,
+          "boundary_to_native_tangent_ratio": 7.3862756251199695
+        }
+      ],
+      "step": 2
+    },
+    {
+      "file": "build\\quad-article-front-20261118\\qualification-msvc\\article\\article-0b6f5a84c07946f7a494af1f7d6e0cbb.steps\\step_3_retry_0_accepted_quad_tri.obj",
+      "sha256": "aa06f6177f1367f9d1ad13ea533aafe11ebcee12cb7a586a3d34c786ab8781e3",
+      "nodes": 797,
+      "seed_quads": 724,
+      "sides": [
+        {
+          "side": 0,
+          "boundary_points": 9,
+          "segments": 8,
+          "min_angle_xyz": 10.367272360473434,
+          "max_edge_ratio_xyz": 4.691837500019713,
+          "min_tri_quality": 0.30088697922437296,
+          "boundary_lengths_xyz": [
+            0.2731564187143696,
+            0.2733343051922837,
+            0.2734840656198669,
+            0.27344566434168915,
+            0.27344566434168915,
+            0.2734840656198669,
+            0.2733343051922838,
+            0.27315641871436946
+          ],
+          "local_tangent_ratio_range": [
+            3.0673754956871977,
+            3.7922604628549106
+          ],
+          "min_altitude_xyz": 0.05653607572482633
+        },
+        {
+          "side": 1,
+          "boundary_points": 3,
+          "segments": 2,
+          "min_angle_xyz": 10.273151976708235,
+          "max_edge_ratio_xyz": 2.1619226269907377,
+          "min_tri_quality": 0.22580739454976656,
+          "boundary_lengths_xyz": [
+            1.0,
+            1.0
+          ],
+          "local_tangent_ratio_range": [
+            13.263284508098923,
+            15.339547581974594
+          ],
+          "min_altitude_xyz": 0.09936823698683858
+        },
+        {
+          "side": 2,
+          "boundary_points": 3,
+          "segments": 2,
+          "min_angle_xyz": 10.2914341679063,
+          "max_edge_ratio_xyz": 2.155739864502233,
+          "min_tri_quality": 0.22569408424404183,
+          "boundary_lengths_xyz": [
+            1.0,
+            1.0
+          ],
+          "local_tangent_ratio_range": [
+            15.348009367681499,
+            15.348009367681499
+          ],
+          "min_altitude_xyz": 0.09929957451233003
+        },
+        {
+          "side": 3,
+          "boundary_points": 3,
+          "segments": 2,
+          "min_angle_xyz": 8.109999430013485,
+          "max_edge_ratio_xyz": 3.588273137341248,
+          "min_tri_quality": 0.2234338391153686,
+          "boundary_lengths_xyz": [
+            1.0,
+            1.0
+          ],
+          "local_tangent_ratio_range": [
+            13.440549247298476,
+            15.339547581974594
+          ],
+          "min_altitude_xyz": 0.10003855098916195
+        }
+      ],
+      "intervals": [
+        {
+          "side": 0,
+          "edge": [
+            783,
+            784
+          ],
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.128500796854496,
+              0.0
+            ]
+          ],
+          "incident_face": 724,
+          "kind": "QUAD",
+          "length_xyz": 0.2731564187143696,
+          "min_angle_xyz": 22.332489205112605,
+          "edge_ratio_xyz": 4.337008416077723,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            272
+          ],
+          "local_native_tangent_width_xyz": 0.08905216172536878,
+          "boundary_to_native_tangent_ratio": 3.0673754956871977
+        },
+        {
+          "side": 0,
+          "edge": [
+            784,
+            785
+          ],
+          "uv": [
+            [
+              0.128500796854496,
+              0.0
+            ],
+            [
+              0.25457763671875,
+              0.0
+            ]
+          ],
+          "incident_face": 725,
+          "kind": "QUAD",
+          "length_xyz": 0.2733343051922837,
+          "min_angle_xyz": 23.965788535441387,
+          "edge_ratio_xyz": 4.1296203160102225,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            16
+          ],
+          "local_native_tangent_width_xyz": 0.08006328595617884,
+          "boundary_to_native_tangent_ratio": 3.413978104044945
+        },
+        {
+          "side": 0,
+          "edge": [
+            785,
+            786
+          ],
+          "uv": [
+            [
+              0.25457763671875,
+              0.0
+            ],
+            [
+              0.378067746758461,
+              0.0
+            ]
+          ],
+          "incident_face": 726,
+          "kind": "QUAD",
+          "length_xyz": 0.2734840656198669,
+          "min_angle_xyz": 23.383455463276544,
+          "edge_ratio_xyz": 3.973433355336228,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            8
+          ],
+          "local_native_tangent_width_xyz": 0.07534761843204818,
+          "boundary_to_native_tangent_ratio": 3.6296311855763155
+        },
+        {
+          "side": 0,
+          "edge": [
+            786,
+            787
+          ],
+          "uv": [
+            [
+              0.378067746758461,
+              0.0
+            ],
+            [
+              0.5,
+              0.0
+            ]
+          ],
+          "incident_face": 727,
+          "kind": "QUAD",
+          "length_xyz": 0.27344566434168915,
+          "min_angle_xyz": 21.14613410502037,
+          "edge_ratio_xyz": 3.8947540564084586,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            0
+          ],
+          "local_native_tangent_width_xyz": 0.07210624560735795,
+          "boundary_to_native_tangent_ratio": 3.7922604628549106
+        },
+        {
+          "side": 0,
+          "edge": [
+            787,
+            788
+          ],
+          "uv": [
+            [
+              0.5,
+              0.0
+            ],
+            [
+              0.621932253241539,
+              0.0
+            ]
+          ],
+          "incident_face": 728,
+          "kind": "QUAD",
+          "length_xyz": 0.27344566434168915,
+          "min_angle_xyz": 19.438606955832434,
+          "edge_ratio_xyz": 3.893679673284863,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            61
+          ],
+          "local_native_tangent_width_xyz": 0.07210624560735795,
+          "boundary_to_native_tangent_ratio": 3.7922604628549106
+        },
+        {
+          "side": 0,
+          "edge": [
+            788,
+            789
+          ],
+          "uv": [
+            [
+              0.621932253241539,
+              0.0
+            ],
+            [
+              0.74542236328125,
+              0.0
+            ]
+          ],
+          "incident_face": 729,
+          "kind": "QUAD",
+          "length_xyz": 0.2734840656198669,
+          "min_angle_xyz": 19.941790223443547,
+          "edge_ratio_xyz": 3.970664014346309,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            37
+          ],
+          "local_native_tangent_width_xyz": 0.07534761843204818,
+          "boundary_to_native_tangent_ratio": 3.6296311855763155
+        },
+        {
+          "side": 0,
+          "edge": [
+            789,
+            790
+          ],
+          "uv": [
+            [
+              0.74542236328125,
+              0.0
+            ],
+            [
+              0.871499203145504,
+              0.0
+            ]
+          ],
+          "incident_face": 730,
+          "kind": "QUAD",
+          "length_xyz": 0.2733343051922838,
+          "min_angle_xyz": 21.764990486672183,
+          "edge_ratio_xyz": 4.13010962636515,
+          "tri_quality": null,
+          "altitude_to_boundary_xyz": null,
+          "nearest_native_face_distance": 1,
+          "nearest_native_faces": [
+            189
+          ],
+          "local_native_tangent_width_xyz": 0.08006328595617895,
+          "boundary_to_native_tangent_ratio": 3.4139781040449413
+        },
+        {
+          "side": 0,
+          "edge": [
+            790,
+            791
+          ],
+          "uv": [
+            [
+              0.871499203145504,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "incident_face": 738,
+          "kind": "TRI",
+          "length_xyz": 0.27315641871436946,
+          "min_angle_xyz": 10.367272360473434,
+          "edge_ratio_xyz": 4.691837500019713,
+          "tri_quality": 0.30088697922437296,
+          "altitude_to_boundary_xyz": 0.05653607572482633,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            185
+          ],
+          "local_native_tangent_width_xyz": 0.08624739422344674,
+          "boundary_to_native_tangent_ratio": 3.1671266265353517
+        },
+        {
+          "side": 1,
+          "edge": [
+            791,
+            792
+          ],
+          "uv": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.5
+            ]
+          ],
+          "incident_face": 739,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 11.03226082253852,
+          "edge_ratio_xyz": 1.9992858142923426,
+          "tri_quality": 0.22652387729511164,
+          "altitude_to_boundary_xyz": 0.09939225461605738,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            193
+          ],
+          "local_native_tangent_width_xyz": 0.0753961056470871,
+          "boundary_to_native_tangent_ratio": 13.263284508098923
+        },
+        {
+          "side": 1,
+          "edge": [
+            792,
+            793
+          ],
+          "uv": [
+            [
+              1.0,
+              0.5
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "incident_face": 740,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 10.273151976708235,
+          "edge_ratio_xyz": 2.1619226269907377,
+          "tri_quality": 0.22580739454976656,
+          "altitude_to_boundary_xyz": 0.09936823698683858,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            206
+          ],
+          "local_native_tangent_width_xyz": 0.06519097089767456,
+          "boundary_to_native_tangent_ratio": 15.339547581974594
+        },
+        {
+          "side": 2,
+          "edge": [
+            793,
+            794
+          ],
+          "uv": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.5,
+              1.0
+            ]
+          ],
+          "incident_face": 741,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 10.2914341679063,
+          "edge_ratio_xyz": 2.155739864502233,
+          "tri_quality": 0.22569408424404183,
+          "altitude_to_boundary_xyz": 0.09929957451233003,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            214
+          ],
+          "local_native_tangent_width_xyz": 0.065155029296875,
+          "boundary_to_native_tangent_ratio": 15.348009367681499
+        },
+        {
+          "side": 2,
+          "edge": [
+            794,
+            795
+          ],
+          "uv": [
+            [
+              0.5,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "incident_face": 742,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 10.293871831483703,
+          "edge_ratio_xyz": 2.155715952715135,
+          "tri_quality": 0.22574729655473152,
+          "altitude_to_boundary_xyz": 0.09932360874495272,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            219
+          ],
+          "local_native_tangent_width_xyz": 0.065155029296875,
+          "boundary_to_native_tangent_ratio": 15.348009367681499
+        },
+        {
+          "side": 3,
+          "edge": [
+            795,
+            796
+          ],
+          "uv": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "incident_face": 743,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 10.340961836380325,
+          "edge_ratio_xyz": 2.161247624706592,
+          "tri_quality": 0.22729077708272638,
+          "altitude_to_boundary_xyz": 0.10003855098916195,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            231
+          ],
+          "local_native_tangent_width_xyz": 0.06519097089767456,
+          "boundary_to_native_tangent_ratio": 15.339547581974594
+        },
+        {
+          "side": 3,
+          "edge": [
+            783,
+            796
+          ],
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ],
+          "incident_face": 744,
+          "kind": "TRI",
+          "length_xyz": 1.0,
+          "min_angle_xyz": 8.109999430013485,
+          "edge_ratio_xyz": 3.588273137341248,
+          "tri_quality": 0.2234338391153686,
+          "altitude_to_boundary_xyz": 0.10575727393432803,
+          "nearest_native_face_distance": 2,
+          "nearest_native_faces": [
+            24
+          ],
+          "local_native_tangent_width_xyz": 0.07440172135829926,
+          "boundary_to_native_tangent_ratio": 13.440549247298476
+        }
+      ],
+      "step": 3
+    }
+  ],
+  "method": {
+    "boundary": "One-owner edges of the actual physical mixed OBJ",
+    "native_interior": "Seed QUAD prefix recorded by front.json; each boundary face searches the face-edge adjacency graph to its nearest native seed layer",
+    "local_width": "Median over the nearest native QUAD faces of their XYZ vertex extent projected onto the unit XYZ boundary chord tangent",
+    "ratio": "Boundary chord length / local native tangential width; descriptive only, no threshold adopted",
+    "quality": "Actual physical corner angles; TRI quality = 4*sqrt(3)*area / sum(edge_length_squared), one for equilateral TRI",
+    "limits": "Local directional widths, not a scalar isotropic mesh target or continuous quality bound; no native regeneration or new controller"
+  },
+  "curve_trace": [
+    {
+      "step": 1,
+      "curve": 0,
+      "curve_pass": [
+        "0|1"
+      ],
+      "surface_pass": [
+        "0|0.5|1"
+      ],
+      "final_budget": [
+        "0|0.5|1"
+      ]
+    },
+    {
+      "step": 1,
+      "curve": 1,
+      "curve_pass": [
+        "0|1"
+      ],
+      "surface_pass": [
+        "0|0.5|1"
+      ],
+      "final_budget": [
+        "0|0.5|1"
+      ]
+    },
+    {
+      "step": 1,
+      "curve": 2,
+      "curve_pass": [
+        "0|1"
+      ],
+      "surface_pass": [
+        "0|0.5|1"
+      ],
+      "final_budget": [
+        "0|0.5|1"
+      ]
+    },
+    {
+      "step": 1,
+      "curve": 3,
+      "curve_pass": [
+        "0|1"
+      ],
+      "surface_pass": [
+        "0|0.5|1"
+      ],
+      "final_budget": [
+        "0|0.5|1"
+      ]
+    },
+    {
+      "step": 2,
+      "curve": 0,
+      "curve_pass": [
+        "0|0.5|1"
+      ],
+      "surface_pass": [
+        "0|0.25457763671875|0.5|0.74542236328125|1"
+      ],
+      "final_budget": [
+        "0|0.25457763671875|0.5|0.74542236328125|1"
+      ]
+    },
+    {
+      "step": 2,
+      "curve": 1,
+      "curve_pass": [
+        "0|1"
+      ],
+      "surface_pass": [
+        "0|0.5|1"
+      ],
+      "final_budget": [
+        "0|0.5|1"
+      ]
+    },
+    {
+      "step": 2,
+      "curve": 2,
+      "curve_pass": [
+        "0|1"
+      ],
+      "surface_pass": [
+        "0|0.5|1"
+      ],
+      "final_budget": [
+        "0|0.5|1"
+      ]
+    },
+    {
+      "step": 2,
+      "curve": 3,
+      "curve_pass": [
+        "0|1"
+      ],
+      "surface_pass": [
+        "0|0.5|1"
+      ],
+      "final_budget": [
+        "0|0.5|1"
+      ]
+    },
+    {
+      "step": 3,
+      "curve": 0,
+      "curve_pass": [
+        "0|0.25457763671875|0.5|0.74542236328125|1"
+      ],
+      "surface_pass": [
+        "0|0.128500796854496|0.25457763671875|0.378067746758461|0.5|0.621932253241539|0.74542236328125|0.871499203145504|1"
+      ],
+      "final_budget": [
+        "0|0.128500796854496|0.25457763671875|0.378067746758461|0.5|0.621932253241539|0.74542236328125|0.871499203145504|1"
+      ]
+    },
+    {
+      "step": 3,
+      "curve": 1,
+      "curve_pass": [
+        "0|1"
+      ],
+      "surface_pass": [
+        "0|0.5|1"
+      ],
+      "final_budget": [
+        "0|0.5|1"
+      ]
+    },
+    {
+      "step": 3,
+      "curve": 2,
+      "curve_pass": [
+        "0|1"
+      ],
+      "surface_pass": [
+        "0|0.5|1"
+      ],
+      "final_budget": [
+        "0|0.5|1"
+      ]
+    },
+    {
+      "step": 3,
+      "curve": 3,
+      "curve_pass": [
+        "0|1"
+      ],
+      "surface_pass": [
+        "0|0.5|1"
+      ],
+      "final_budget": [
+        "0|0.5|1"
+      ]
+    }
+  ]
+}

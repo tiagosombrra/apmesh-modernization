@@ -12,6 +12,27 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-18 - measure the straight-boundary quality limitation
+
+The user requests why straight-edge elements remain poor beside a fine interior.
+The [actual adjacency/XYZ audit](BOUNDARY_SIZE_MISMATCH_20261118.md) and
+[interval evidence](evidence/BOUNDARY_SIZE_MISMATCH_20261118.json) confirm three
+points per straight curve at all stages. Interval/native tangential width ratios
+grow3.74-4.26 ->7.32-7.68 ->13.26-15.35; minimum incident physical angle falls
+38.46 ->20.83 ->8.11 degrees. Curved-side final ratios are3.07-3.79. This is a
+measured local size mismatch, not proof that every poor element has one cause.
+
+The original surface-curvature pass exists but supplies no actual mixed-face
+quality/native-size request back to original curve intervals. Current mixed
+front preserves those intervals and creates no new contour nodes. No source,
+native rerun, new mesh or numerical thresholds changed in this audit.
+
+One active item remains PR240 review/qualification, now carrying this explicit
+quality limitation. Prioritize a separate opt-in local boundary/transition sizing
+package as its functional successor, before the full R3 mixed-error controller.
+Do not delay local quality feedback until full adaptive closure. Proposed rules
+still require scientific alignment; no new default or stage closure is asserted.
+
 ### 2026-11-18 - distinguish pure TRI and mixed comparison references
 
 The user requests a detailed TRI versus mixed explanation. The read-only

@@ -13,6 +13,16 @@ and displayed in Blender with analytic geometry and historical source polygons.
 three hosted native profiles and exact CI44271951483 4/4 SUCCESS, plus sampled
 error increases and incomplete local WSL filesystem gates.
 
+The [straight-boundary audit](BOUNDARY_SIZE_MISMATCH_20261118.md) now measures a
+concrete quality limitation: unchanged straight partitions beside increasingly
+fine native QUAD, final directional size ratios13.26-15.35 and angles down8.11deg.
+After the active PR240 review/qualification, prioritize opt-in local boundary/
+transition size coupling as the next functional package, before the full R3
+mixed-error controller. Use actual mixed adjacency and consistent physical
+sizes; preserve analytical rediscretization/shared-curve synchronization and
+scientific alignment for thresholds. This supersedes earlier R3-before-balance
+wording below without introducing a second active implementation item.
+
 One active next action: independent candidate review, explicit local-filesystem
 failure disposition and required exact research-integration/post-merge gates.
 No integration or full historical stage closure. After qualification/integration,

@@ -3158,3 +3158,32 @@ Blender change. Native85/85 and hosted4/4 retain their exact prior candidate
 scope. Next remains independent PR240 review, local-filesystem failure
 disposition and exact research-integration/post-merge gates, then R3/balancing.
 Publish/read back the canonical documentation checkpoint without source changes.
+
+## 2026-11-18 - audit poor straight-boundary elements against actual interior size
+
+User requests why straight-side quality remains poor and asks to include interior
+contribution. Recheck canonical894a71a and source b3d2fbc/PR240 draft/unmerged.
+Read original curve/surface passes, factor/balance policies, current candidate
+and archived source traces. No source edit, native generation or policy change.
+
+Measure every actual boundary edge, its mixed incident face and the nearest
+native QUAD layer via shared-edge face adjacency, all in physical XYZ. Compare
+boundary chord with native vertex extent along the chord tangent. Straight
+partitions retain3 points/two length1 intervals at every stage; original curve
+pass gives0/1, surface pass and final budget retain0/0.5/1. Ratios grow3.74-4.26,
+7.32-7.68,13.26-15.35; minimum incident physical angles fall38.46,20.83,8.11deg.
+Final straight TRI quality is0.223-0.226 and altitude about0.10. Curved-side final
+ratios3.07-3.79. Preserve per-interval hashes, faces and method in the audit JSON.
+
+This confirms a local size/transition mismatch; no single-cause proof for every
+bad face. Original surface-curvature adaptation is present, but actual mixed
+face quality and nearby native QUAD sizes do not return as curve-interval sizing
+requests. New contraction preserves source edges and cannot subdivide them.
+
+Update STATE, roadmap and the prior coupling proposal: keep PR240 review/gates
+as one active item, record this quality limitation, then prioritize an opt-in
+local curve/transition size package before the full R3 mixed-error controller.
+Use original analytical rediscretization and shared synchronization, geometry-
+justified local refinement/coarsening and bounded grading. Thresholds/hysteresis
+remain scientific proposals requiring alignment; no arbitrary factor adopted.
+No tests rerun or previous pass scopes extended. Publish/read back checkpoint.

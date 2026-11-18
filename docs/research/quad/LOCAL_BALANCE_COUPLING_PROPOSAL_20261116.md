@@ -1,5 +1,12 @@
 # Local boundary-transition-interior coupling proposal - 2026-11-16
 
+Sequencing updated2026-11-18: the actual prospective mixed-front output exposes
+the [measured straight-boundary mismatch](BOUNDARY_SIZE_MISMATCH_20261118.md).
+Local boundary/transition sizing is now the first functional successor after
+the active PR240 review/qualification, before the full R3 mixed-error controller.
+This supersedes the sequencing below; numerical rules remain proposals requiring
+scientific alignment. Existing source/negative evidence is not rewritten.
+
 Sequencing updated2026-11-17: retain this proposal after completion of the
 integrated mixed-fill capability and actual mixed accepted-state/error feedback.
 The [current implementation realignment](MIXED_FILL_REALIGNMENT_20261117.md)
