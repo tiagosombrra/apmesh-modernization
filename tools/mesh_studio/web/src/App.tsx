@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { studyApi } from './api';
 import { Viewer } from './Viewer';
+import { NativeIdentityInspector } from './NativeIdentityInspector';
 import type { ViewerHandle } from './Viewer';
 import { CAMERA_SCHEMA, parseCameraRecipe, storageKey } from './camera';
 import type { FaceDetail, MeshGeometry, ModelEntry } from './contracts';
@@ -141,6 +142,8 @@ export default function App() {
           <div><small>ÉPOCAS ADAPTATIVAS ACEITAS</small><strong>0</strong></div>
           <div><small>IDENTIDADE SHA-256</small><code title={model?.sha256}>{model?.sha256.slice(0, 24) ?? '...'}</code></div></div>
           <div className="caution">Os resultados são de uma superfície Bézier controlada. Candidatas em estágio não são épocas adaptativas aceitas. All-quad e anisotropia não estão disponíveis.</div>
+          {new URLSearchParams(window.location.search).get('nativeInspector') === '1' &&
+            <NativeIdentityInspector/>}
         </main>
         <aside className="right-sidebar"><div className="sidebar-eyebrow">INSPECTOR / 02</div><h2>Face selecionada</h2>
           {selected === null ? <div className="inspector-empty"><span className="empty-icon">⌖</span><strong>Selecione uma face</strong><p>Clique em qualquer elemento no espaço físico ou UV para inspecionar os dados originais.</p></div>
