@@ -1,0 +1,169 @@
+{
+  "schema": "apmesh.quad.explained_presentation.v1",
+  "date": "2026-11-18",
+  "source_sha": "9ca6deb35878f2b491ac27c908534936cfc55ca8",
+  "classification": "presentation-only engineering artifact",
+  "local_directory": "build/quad-article-front-20261118/presentation-complete-20261118",
+  "artifact_sha256": {
+    "QUAD_TRI_complete_explained.blend": "7b50bab4a7e5aa74e15ce1adba28b87b7e4b4a21fc55baaf6d43aa5d9f126d42",
+    "GUIA_DE_APRESENTACAO.md": "06d93610997c89ef6b5fb7ec2238691bddae07f9adc8f62f3d26138615afd65d",
+    "results.png": "9a8d31b88fc31688d783ae5bb679befcc1e065e3f3530222383422d5fde8b3c6",
+    "quality.png": "1b080920007ea1d9d7364dd83f0da94fb06f7305d94f979ee7eb792c31001d16",
+    "guide.png": "a80d49cdcdddb8e4f30298d65e97db0e7f5d6395c9ee5f2b1d41ac357acb5c2b",
+    "templates.png": "3b96bd15aa9192cd98976572824ea2b5d470b362565d9249ad63ad657c7d9db0",
+    "cells.png": "115657c32b7e2a5c9d3ce9f9406edc501d44edc1325c6f0864384b1c5dd89d0c",
+    "metrics.json": "703f017e03fdc86f66a1b38151a5a9da1c2482932815b46d7c89c6e6941ac774",
+    "metrics.csv": "3d28cff0aaf6d00f9611ebf49122e512105a972035307b2feecc54636b9c0d00",
+    "elements.csv": "7a6e6e65e835eca8a0b27566b326f3e48c12e26e43b3aa392f8b266c064ac81a",
+    "template_usage.json": "0dd99d4cca593c2f204f5323ce0d559c5d227a97af5652e09cc3be997b26543e"
+  },
+  "receipt": {
+    "blender": "5.3.0",
+    "source_sha": "9ca6deb35878f2b491ac27c908534936cfc55ca8",
+    "source_blend_sha256": "44eff61f7b3d63b82d415242db19229164f15cae0252046da8a088602312e1e9",
+    "source_blend_preserved": true,
+    "mesh_instances_checked": 16,
+    "actual_meshes": 8,
+    "template_panels": 18,
+    "scenes": [
+      "00 Guia - termos e perguntas",
+      "01 Malhas - erros e templates",
+      "02 Qualidade - cores e templates",
+      "03 Templates - catalogo e uso",
+      "04 Celulas - familias usadas",
+      "05 AFT - commits reais"
+    ],
+    "glossary_cards": 8,
+    "language": "pt-BR personal presentation",
+    "usage": [
+      {
+        "step": 1,
+        "front_sha256": "a0c45da21a3edbba0836c09f8429b5d376cbe83b7c5b2902a136c79673282e85",
+        "total_leaves": 16,
+        "interior_leaves": 4,
+        "template_cells": {
+          "T1": 4
+        },
+        "seed_quads": {
+          "T1": 16
+        },
+        "total_seed_quads": 16,
+        "aft_quads": 8,
+        "aft_triangles": 8
+      },
+      {
+        "step": 2,
+        "front_sha256": "607119a873e69e7cd7b336af3d6f4ecbbd0842b680d9021881bd37835fa8c761",
+        "total_leaves": 67,
+        "interior_leaves": 44,
+        "template_cells": {
+          "T4": 3,
+          "T1": 35,
+          "T2": 6
+        },
+        "seed_quads": {
+          "T4": 36,
+          "T1": 140,
+          "T2": 66
+        },
+        "total_seed_quads": 242,
+        "aft_quads": 7,
+        "aft_triangles": 52
+      },
+      {
+        "step": 3,
+        "front_sha256": "e55a59466ba9c091902af92aae4b1d984690c50cf94becf1551a1caea5b3acfb",
+        "total_leaves": 223,
+        "interior_leaves": 175,
+        "template_cells": {
+          "T1": 173,
+          "T6": 2
+        },
+        "seed_quads": {
+          "T1": 692,
+          "T6": 32
+        },
+        "total_seed_quads": 724,
+        "aft_quads": 14,
+        "aft_triangles": 102
+      }
+    ],
+    "metric_report_sha256": "703f017e03fdc86f66a1b38151a5a9da1c2482932815b46d7c89c6e6941ac774",
+    "mixed_global_error": "not calculated",
+    "native_generation_this_session": false,
+    "animation_geometry_preserved": true,
+    "embedded_faq": true,
+    "visual_corrections": [
+      "Add visible native edges to image renders without changing source meshes.",
+      "Remove navigation label overlapping gallery heading.",
+      "Quality-scene overlays use explicit source translation; inactive-scene matrix state is not used."
+    ]
+  },
+  "checks": {
+    "actual_meshes": 8,
+    "native_archive_mesh_instances_verified": 16,
+    "mesh_max_coordinate_difference": 1e-06,
+    "connectivity": "exact",
+    "source_preserved_at_creation": true,
+    "source_path_unchanged_at_final_readback": false,
+    "source_current_sha256": "8026519e345b83448d998f08418996019b6fabb836ea3134c9907dbb16be8558",
+    "source_snapshot_retained_in_existing_blend1": true,
+    "diagnostic_csv_json_preserved": true,
+    "guide_cards_bounds_verified": 8,
+    "display_edge_overlays": 322,
+    "template_cells": [
+      4,
+      44,
+      175
+    ],
+    "seed_quads": [
+      16,
+      242,
+      724
+    ],
+    "seed_faces_assigned_once": true,
+    "seed_count_matches_native_family": true,
+    "aft_quads": [
+      8,
+      7,
+      14
+    ],
+    "aft_triangles": [
+      8,
+      52,
+      102
+    ],
+    "template_plus_front_totals_match_output": true,
+    "rendered_scenes_inspected": [
+      "results",
+      "quality",
+      "guide",
+      "templates",
+      "cells"
+    ],
+    "blender_gui_observed": true,
+    "blender_version": "5.3.0",
+    "python_scripts_compile": "passed",
+    "native_tests_this_session": "not rerun; no generator or first-party source change",
+    "retained_exact_source_hosted_run": 44296219310,
+    "retained_checks": "4/4 success reverified"
+  },
+  "scope": {
+    "personal_presentation_language": "pt-BR",
+    "tracked_checkpoint_language": "English",
+    "geometry_or_selection_changed": false,
+    "mixed_global_curvature_error": "not calculated",
+    "adaptation": "original TRI reference; zero accepted mixed epochs",
+    "template_catalog": "six native canonical families, not every rotation or TRI diagonal branch",
+    "inventory": "actual mixed interior families reconstructed from archived native boxes and matched against every seed face; no per-step TRI interior-family claim",
+    "animation": "existing native commit history preserved"
+  },
+  "retained_findings": [
+    "Initial inventory reader expected an absent kind field; actual polygon arity supplies TRI/QUAD classification, verified against final counts.",
+    "Initial image renders omitted viewport mesh wire; add display-only actual-edge curves without changing meshes.",
+    "Remove navigation label overlapping the template heading.",
+    "Inactive quality-scene matrix state misplaced edge overlays; replace with verified explicit source translations and inspect corrected render.",
+    "The old source path changed after presentation creation; its existing blend1 retains the exact captured input hash. Do not overwrite either version or attribute the later save without evidence.",
+    "Prior article-clearance, mixed smoothing, historical center identity, local WSL filesystem failures and independent integration gates remain open."
+  ]
+}

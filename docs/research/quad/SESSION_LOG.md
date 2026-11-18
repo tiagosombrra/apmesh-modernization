@@ -3284,3 +3284,38 @@ generation/tests. Previous exact9ca6deb four remote checks reverified success,
 with no qualification transferred. Preserve current article-clearance/smoothing
 priority, independent review, local failures and broader gates. Publish/read back
 STATE and this append-only entry; no roadmap or modernization history change.
+
+## 2026-11-18 - deliver a complete explained Blender presentation
+
+User requests a new Blender with all existing results/templates and explanations
+for unfamiliar terms such as RMS. Verify canonical ec59235, source9ca6deb, main
+ef40c0f and draft PR240. Concurrent PR225 advances to c08e359; leave it and other
+branches untouched. Existing exact-source hosted44296219310 checks remain4/4.
+
+Create a new personal Portuguese presentation from preserved output, not a new
+meshing run. Six scenes show the analytic model/eight stages, separate type and
+quality colors,18 TRI/QUAD/source-polygon panels immediately below, a larger
+catalog with actual usage, real UV-cell maps and retained commit animation.
+Prominent global errors are TRI-only; mixed global curvature error stays missing.
+Eight reading cards and detailed FAQ explain RMS, max distance, native global
+index, separate Q/J, angles/edge ratios, UV/XYZ, quadtree, AFT, S and source-center
+limits. Include original numeric reports and per-face data beside the blend.
+
+Reconstruct family signatures from archived boxes, independently match all initial
+QUAD faces to included cells and verify template plus actual front counts.
+Observe T1:4 at step1; T1:35/T2:6/T4:3 at step2; T1:173/T6:2 at step3. T3/T5
+remain reference diagrams. No per-step original TRI family inventory is asserted.
+Verify16 native mesh instances/face connectivity,18 panels, eight card bounds,
+input snapshot retention and unchanged reports. A later save changes the old
+source path; its blend1 matches the exact captured input. Leave both untouched.
+Inspect all five image views and
+the new file open in Blender5.3. Retain absent-kind extractor failure repaired
+using polygon arity, missing render wires, overlapping navigation label and
+inactive-scene matrix overlay correction. Only display geometry is added.
+
+No first-party source/estimator/policy change, native build/tests or generation;
+previous exact-source checks are reverified, not extended. Record delivery/evidence,
+STATE and this log; leave roadmap/modernization history unchanged. Next remains
+documented contour-clearance repair, then mixed smoothing and M1 disposition.
+Mixed global error, independent review, local WSL and wider gates remain open.
+Commit/read back the canonical checkpoint; keep visible source on its PR branch.

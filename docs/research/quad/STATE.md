@@ -12,6 +12,26 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-18 - deliver the explained complete Blender presentation
+
+The [new presentation](EXPLAINED_BLENDER_PRESENTATION_20261118.md) and
+[receipt](evidence/EXPLAINED_BLENDER_PRESENTATION_20261118.json) provide six scenes,
+eight real stage meshes,18 template/source-polygon panels, actual cell maps and
+the retained front animation. Portuguese guide cards and an embedded FAQ define
+RMS/global error/quality/UV/AFT/S and limits. Four global TRI values are prominent;
+actual mixed global curvature error remains explicitly unavailable.
+
+Actual mixed template cells: step1 T1:4; step2 T1:35/T2:6/T4:3; step3 T1:173/T6:2.
+Every seed face is assigned once; template plus front counts match all outputs.
+Physical coordinates/connectivity and diagnostics are preserved. The captured
+old blend remains in its existing blend1 after a later save at the old path;
+neither concurrent version is overwritten.
+Blender5.3 GUI/five renders and eight card bounds checked. No source change,
+native tests or generation this session; exact9ca6deb hosted4/4 reverified only.
+No roadmap change or stage closure. One next algorithm action remains documented
+contour-clearance repair with default TRI preserved, then mixed smoothing/control
+qualification and M1 center disposition. Retain mixed-error/integration gaps.
+
 ### 2026-11-18 - clarify the primary global curvature error
 
 The user correctly asks for the primary convergence indicator. Source9ca6deb
