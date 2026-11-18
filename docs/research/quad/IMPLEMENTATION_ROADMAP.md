@@ -37,6 +37,11 @@ future work (mixed accepted epochs0). Full M1/M5/R3/M7, curved-metric scope and
 original M0-M9/R0-R4 gates remain open. Dated historical queues below do not
 override this current user-directed conformance priority.
 
+The [boundary/center review](BOUNDARY_ORIGIN_AND_CENTERS_20261118.md) now explains
+Step1/Step2 provenance and measures 18 differing Step2 polygon centers. The
+descriptive area-centroid UV proposal is sent; await the scientific reply before
+changing the formula. No new generation or rule qualification follows this audit.
+
 The [PR238 research integration](PR238_RESEARCH_INTEGRATION_20261117.md) is
 complete at exact merge d251f19, with identical qualified candidate tree81ecc5bf.
 Two independent technical reviews, bounded API-reference/checker repairs,

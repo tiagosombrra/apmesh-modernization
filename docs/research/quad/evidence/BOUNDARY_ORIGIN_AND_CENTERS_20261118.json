@@ -1,0 +1,3043 @@
+{
+  "schema": "apmesh.quad.boundary_origin_and_centers.v1",
+  "source": "beb2aee2605110ec5c7a542bb45b10cb8c876b40",
+  "scope": "Read-only existing native history and polygons; no new mesh generation or center replacement.",
+  "stages": [
+    {
+      "step": 1,
+      "nodes": 33,
+      "outer_edges": 8,
+      "seed_interface_edges": 16,
+      "by_side": {
+        "u0": {
+          "intervals": 2,
+          "front_QUAD": 2,
+          "front_TRI": 0
+        },
+        "u1": {
+          "intervals": 2,
+          "front_QUAD": 2,
+          "front_TRI": 0
+        },
+        "v0": {
+          "intervals": 2,
+          "front_QUAD": 2,
+          "front_TRI": 0
+        },
+        "v1": {
+          "intervals": 2,
+          "front_QUAD": 2,
+          "front_TRI": 0
+        }
+      },
+      "native_leaves": 16,
+      "clearance_excluded": 0,
+      "provenance": {
+        "template_QUAD": {
+          "total": 16,
+          "with_outer_edge": 0,
+          "with_outer_vertex": 0
+        },
+        "front_QUAD": {
+          "total": 8,
+          "with_outer_edge": 8,
+          "with_outer_vertex": 8
+        },
+        "front_TRI": {
+          "total": 8,
+          "with_outer_edge": 0,
+          "with_outer_vertex": 8
+        }
+      },
+      "tri_commit_alternative_reasons": {
+        "no_valid_prospective_triangle": 12,
+        "nonconvex_or_collapsed_quad": 4
+      },
+      "tri_commit_alternatives": [
+        {
+          "commit": 9,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 9,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 10,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 10,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 11,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 11,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 12,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 12,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 13,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 13,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 14,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 14,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 15,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 15,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 16,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 16,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        }
+      ],
+      "native_template_polygons": 4,
+      "different_centers": 0,
+      "max_center_difference_uv": 0,
+      "center_witnesses": [],
+      "trace_sha256": "720bcd4a61b0424c99952ae83cc1a5d34bc6d0c8f5d83121bcbf34efb65cc1a7",
+      "mesh_sha256": "4e1626172bdd8404f46aa5f16a9b3348ad9632160168ef20f89a65190d5cfbad"
+    },
+    {
+      "step": 2,
+      "nodes": 281,
+      "outer_edges": 10,
+      "seed_interface_edges": 56,
+      "by_side": {
+        "u0": {
+          "intervals": 2,
+          "front_QUAD": 0,
+          "front_TRI": 2
+        },
+        "u1": {
+          "intervals": 2,
+          "front_QUAD": 0,
+          "front_TRI": 2
+        },
+        "v0": {
+          "intervals": 4,
+          "front_QUAD": 2,
+          "front_TRI": 2
+        },
+        "v1": {
+          "intervals": 2,
+          "front_QUAD": 0,
+          "front_TRI": 2
+        }
+      },
+      "native_leaves": 67,
+      "clearance_excluded": 0,
+      "provenance": {
+        "template_QUAD": {
+          "total": 242,
+          "with_outer_edge": 0,
+          "with_outer_vertex": 0
+        },
+        "front_QUAD": {
+          "total": 7,
+          "with_outer_edge": 2,
+          "with_outer_vertex": 3
+        },
+        "front_TRI": {
+          "total": 52,
+          "with_outer_edge": 8,
+          "with_outer_vertex": 45
+        }
+      },
+      "tri_commit_alternative_reasons": {
+        "nonconvex_or_collapsed_quad": 36,
+        "shape_S_above_1.5": 11,
+        "no_valid_prospective_triangle": 57
+      },
+      "tri_commit_alternatives": [
+        {
+          "commit": 2,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 2,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 4,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.5233032987035993
+        },
+        {
+          "commit": 4,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 5,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 5,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 6,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 6,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 7,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 7,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 8,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 8,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 9,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 9,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 10,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 10,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 11,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 11,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 14,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 14,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 15,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 15,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 16,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 16,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 17,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 17,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 18,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 18,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 19,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 19,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 21,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 21,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 22,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 22,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 23,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 23,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 24,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 24,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 25,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 25,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 26,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 26,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 27,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 27,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 28,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 28,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 29,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 29,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 30,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 30,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 32,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 32,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 33,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 33,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 34,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 34,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 35,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 35,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 36,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 36,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 37,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 37,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 38,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 38,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 39,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 39,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 41,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 41,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 42,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 42,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 43,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 43,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 44,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 44,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 45,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 45,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 46,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 46,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 47,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 47,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 48,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 48,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 49,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 49,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 50,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 50,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 51,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 51,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 52,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 52,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 53,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 53,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 54,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 54,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 55,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 55,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 56,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 56,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 57,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 57,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 58,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 58,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 59,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 59,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        }
+      ],
+      "native_template_polygons": 62,
+      "different_centers": 18,
+      "max_center_difference_uv": 0.003882062460937146,
+      "center_witnesses": [
+        {
+          "center_id": 78,
+          "polygon": [
+            [
+              0.375,
+              0.25
+            ],
+            [
+              0.25,
+              0.25
+            ],
+            [
+              0.3125,
+              0.1875
+            ],
+            [
+              0.375,
+              0.1875
+            ]
+          ],
+          "vertex_mean": [
+            0.328125,
+            0.21875
+          ],
+          "area_centroid": [
+            0.3263888888888889,
+            0.2222222222222222
+          ],
+          "delta_uv": 0.0038820624609371213
+        },
+        {
+          "center_id": 85,
+          "polygon": [
+            [
+              0.3125,
+              0.1875
+            ],
+            [
+              0.25,
+              0.25
+            ],
+            [
+              0.25,
+              0.125
+            ],
+            [
+              0.3125,
+              0.125
+            ]
+          ],
+          "vertex_mean": [
+            0.28125,
+            0.171875
+          ],
+          "area_centroid": [
+            0.2777777777777778,
+            0.1736111111111111
+          ],
+          "delta_uv": 0.0038820624609371213
+        },
+        {
+          "center_id": 117,
+          "polygon": [
+            [
+              0.5,
+              0.125
+            ],
+            [
+              0.625,
+              0.125
+            ],
+            [
+              0.5625,
+              0.1875
+            ],
+            [
+              0.5,
+              0.1875
+            ]
+          ],
+          "vertex_mean": [
+            0.546875,
+            0.15625
+          ],
+          "area_centroid": [
+            0.5486111111111112,
+            0.1527777777777778
+          ],
+          "delta_uv": 0.003882062460937146
+        },
+        {
+          "center_id": 121,
+          "polygon": [
+            [
+              0.5,
+              0.1875
+            ],
+            [
+              0.5625,
+              0.1875
+            ],
+            [
+              0.625,
+              0.25
+            ],
+            [
+              0.5,
+              0.25
+            ]
+          ],
+          "vertex_mean": [
+            0.546875,
+            0.21875
+          ],
+          "area_centroid": [
+            0.5486111111111112,
+            0.2222222222222222
+          ],
+          "delta_uv": 0.003882062460937146
+        },
+        {
+          "center_id": 130,
+          "polygon": [
+            [
+              0.75,
+              0.375
+            ],
+            [
+              0.875,
+              0.375
+            ],
+            [
+              0.8125,
+              0.4375
+            ],
+            [
+              0.75,
+              0.4375
+            ]
+          ],
+          "vertex_mean": [
+            0.796875,
+            0.40625
+          ],
+          "area_centroid": [
+            0.7986111111111112,
+            0.4027777777777778
+          ],
+          "delta_uv": 0.003882062460937146
+        },
+        {
+          "center_id": 136,
+          "polygon": [
+            [
+              0.75,
+              0.4375
+            ],
+            [
+              0.8125,
+              0.4375
+            ],
+            [
+              0.875,
+              0.5
+            ],
+            [
+              0.75,
+              0.5
+            ]
+          ],
+          "vertex_mean": [
+            0.796875,
+            0.46875
+          ],
+          "area_centroid": [
+            0.7986111111111112,
+            0.4722222222222222
+          ],
+          "delta_uv": 0.003882062460937146
+        },
+        {
+          "center_id": 183,
+          "polygon": [
+            [
+              0.5,
+              0.25
+            ],
+            [
+              0.5,
+              0.375
+            ],
+            [
+              0.4375,
+              0.3125
+            ],
+            [
+              0.4375,
+              0.25
+            ]
+          ],
+          "vertex_mean": [
+            0.46875,
+            0.296875
+          ],
+          "area_centroid": [
+            0.4722222222222222,
+            0.2986111111111111
+          ],
+          "delta_uv": 0.0038820624609371213
+        },
+        {
+          "center_id": 187,
+          "polygon": [
+            [
+              0.4375,
+              0.25
+            ],
+            [
+              0.4375,
+              0.3125
+            ],
+            [
+              0.375,
+              0.375
+            ],
+            [
+              0.375,
+              0.25
+            ]
+          ],
+          "vertex_mean": [
+            0.40625,
+            0.296875
+          ],
+          "area_centroid": [
+            0.4027777777777778,
+            0.2986111111111111
+          ],
+          "delta_uv": 0.0038820624609371213
+        },
+        {
+          "center_id": 200,
+          "polygon": [
+            [
+              0.625,
+              0.375
+            ],
+            [
+              0.625,
+              0.25
+            ],
+            [
+              0.6875,
+              0.3125
+            ],
+            [
+              0.6875,
+              0.375
+            ]
+          ],
+          "vertex_mean": [
+            0.65625,
+            0.328125
+          ],
+          "area_centroid": [
+            0.6527777777777778,
+            0.3263888888888889
+          ],
+          "delta_uv": 0.0038820624609371213
+        },
+        {
+          "center_id": 204,
+          "polygon": [
+            [
+              0.6875,
+              0.375
+            ],
+            [
+              0.6875,
+              0.3125
+            ],
+            [
+              0.75,
+              0.25
+            ],
+            [
+              0.75,
+              0.375
+            ]
+          ],
+          "vertex_mean": [
+            0.71875,
+            0.328125
+          ],
+          "area_centroid": [
+            0.7222222222222222,
+            0.3263888888888889
+          ],
+          "delta_uv": 0.0038820624609371213
+        },
+        {
+          "center_id": 208,
+          "polygon": [
+            [
+              0.5,
+              0.5
+            ],
+            [
+              0.5,
+              0.375
+            ],
+            [
+              0.5625,
+              0.4375
+            ],
+            [
+              0.5625,
+              0.5
+            ]
+          ],
+          "vertex_mean": [
+            0.53125,
+            0.453125
+          ],
+          "area_centroid": [
+            0.5277777777777778,
+            0.4513888888888889
+          ],
+          "delta_uv": 0.0038820624609371213
+        },
+        {
+          "center_id": 214,
+          "polygon": [
+            [
+              0.5625,
+              0.4375
+            ],
+            [
+              0.5,
+              0.375
+            ],
+            [
+              0.625,
+              0.375
+            ],
+            [
+              0.625,
+              0.4375
+            ]
+          ],
+          "vertex_mean": [
+            0.578125,
+            0.40625
+          ],
+          "area_centroid": [
+            0.5763888888888888,
+            0.4027777777777778
+          ],
+          "delta_uv": 0.003882062460937146
+        },
+        {
+          "center_id": 227,
+          "polygon": [
+            [
+              0.75,
+              0.5
+            ],
+            [
+              0.75,
+              0.625
+            ],
+            [
+              0.6875,
+              0.5625
+            ],
+            [
+              0.6875,
+              0.5
+            ]
+          ],
+          "vertex_mean": [
+            0.71875,
+            0.546875
+          ],
+          "area_centroid": [
+            0.7222222222222222,
+            0.5486111111111112
+          ],
+          "delta_uv": 0.003882062460937146
+        },
+        {
+          "center_id": 233,
+          "polygon": [
+            [
+              0.6875,
+              0.5625
+            ],
+            [
+              0.75,
+              0.625
+            ],
+            [
+              0.625,
+              0.625
+            ],
+            [
+              0.625,
+              0.5625
+            ]
+          ],
+          "vertex_mean": [
+            0.671875,
+            0.59375
+          ],
+          "area_centroid": [
+            0.6736111111111112,
+            0.5972222222222222
+          ],
+          "delta_uv": 0.003882062460937146
+        },
+        {
+          "center_id": 239,
+          "polygon": [
+            [
+              0.625,
+              0.625
+            ],
+            [
+              0.625,
+              0.75
+            ],
+            [
+              0.5625,
+              0.6875
+            ],
+            [
+              0.5625,
+              0.625
+            ]
+          ],
+          "vertex_mean": [
+            0.59375,
+            0.671875
+          ],
+          "area_centroid": [
+            0.5972222222222222,
+            0.6736111111111112
+          ],
+          "delta_uv": 0.003882062460937146
+        },
+        {
+          "center_id": 244,
+          "polygon": [
+            [
+              0.5625,
+              0.625
+            ],
+            [
+              0.5625,
+              0.6875
+            ],
+            [
+              0.5,
+              0.75
+            ],
+            [
+              0.5,
+              0.625
+            ]
+          ],
+          "vertex_mean": [
+            0.53125,
+            0.671875
+          ],
+          "area_centroid": [
+            0.5277777777777778,
+            0.6736111111111112
+          ],
+          "delta_uv": 0.003882062460937146
+        },
+        {
+          "center_id": 261,
+          "polygon": [
+            [
+              0.5,
+              0.625
+            ],
+            [
+              0.375,
+              0.625
+            ],
+            [
+              0.4375,
+              0.5625
+            ],
+            [
+              0.5,
+              0.5625
+            ]
+          ],
+          "vertex_mean": [
+            0.453125,
+            0.59375
+          ],
+          "area_centroid": [
+            0.4513888888888889,
+            0.5972222222222222
+          ],
+          "delta_uv": 0.0038820624609371213
+        },
+        {
+          "center_id": 264,
+          "polygon": [
+            [
+              0.5,
+              0.5625
+            ],
+            [
+              0.4375,
+              0.5625
+            ],
+            [
+              0.375,
+              0.5
+            ],
+            [
+              0.5,
+              0.5
+            ]
+          ],
+          "vertex_mean": [
+            0.453125,
+            0.53125
+          ],
+          "area_centroid": [
+            0.4513888888888889,
+            0.5277777777777778
+          ],
+          "delta_uv": 0.0038820624609371213
+        }
+      ],
+      "trace_sha256": "f72a716a5de6823f1ea1507d03cd966a514fdaa98721a86d9d60d4d90aae63a3",
+      "mesh_sha256": "f9f9936260edcb84edfffa22053ebabe67bc49720747a3c0aa45d944dab1ef6b"
+    },
+    {
+      "step": 3,
+      "nodes": 689,
+      "outer_edges": 14,
+      "seed_interface_edges": 100,
+      "by_side": {
+        "u0": {
+          "intervals": 2,
+          "front_QUAD": 0,
+          "front_TRI": 2
+        },
+        "u1": {
+          "intervals": 2,
+          "front_QUAD": 0,
+          "front_TRI": 2
+        },
+        "v0": {
+          "intervals": 8,
+          "front_QUAD": 6,
+          "front_TRI": 2
+        },
+        "v1": {
+          "intervals": 2,
+          "front_QUAD": 0,
+          "front_TRI": 2
+        }
+      },
+      "native_leaves": 223,
+      "clearance_excluded": 25,
+      "provenance": {
+        "template_QUAD": {
+          "total": 624,
+          "with_outer_edge": 0,
+          "with_outer_vertex": 0
+        },
+        "front_QUAD": {
+          "total": 6,
+          "with_outer_edge": 6,
+          "with_outer_vertex": 6
+        },
+        "front_TRI": {
+          "total": 102,
+          "with_outer_edge": 8,
+          "with_outer_vertex": 102
+        }
+      },
+      "tri_commit_alternative_reasons": {
+        "shape_S_above_1.5": 14,
+        "nonconvex_or_collapsed_quad": 82,
+        "no_valid_prospective_triangle": 108
+      },
+      "tri_commit_alternatives": [
+        {
+          "commit": 1,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 1,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 8,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 8,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 9,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 9,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 10,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 10,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 11,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 11,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 12,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 12,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 13,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 13,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7048327646991335
+        },
+        {
+          "commit": 14,
+          "has_outer_edge": true,
+          "alternative": 0,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7951672353008667
+        },
+        {
+          "commit": 14,
+          "has_outer_edge": true,
+          "alternative": 1,
+          "reason": "shape_S_above_1.5",
+          "S": 1.7779654830900027
+        },
+        {
+          "commit": 15,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 15,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 16,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 16,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 17,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 17,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 18,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 18,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 19,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 19,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 20,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 20,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 21,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 21,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 22,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 22,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 23,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 23,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 24,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 24,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 25,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 25,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 26,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 26,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 27,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 27,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 28,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 28,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 29,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 29,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 30,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 30,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 31,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 31,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 32,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 32,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 33,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 33,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 34,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 34,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 35,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 35,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 36,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 36,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 37,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 37,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 38,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 38,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 39,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 39,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 40,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 40,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 41,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 41,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 42,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 42,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 43,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 43,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 44,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 44,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 45,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 45,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 46,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 46,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 47,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 47,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 48,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 48,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 49,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 49,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 50,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 50,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 51,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 51,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 52,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 52,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 53,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 53,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 54,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 54,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 55,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 55,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 56,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 56,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 57,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 57,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 58,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 58,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 59,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 59,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 60,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 60,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 61,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 61,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 62,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 62,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 63,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 63,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 64,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 64,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 65,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 65,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 66,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 66,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 67,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 67,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 68,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 68,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 69,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 69,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 70,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 70,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 71,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 71,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 72,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 72,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 73,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 73,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 74,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 74,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 75,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 75,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 76,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 76,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 77,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 77,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 78,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 78,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 79,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 79,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 80,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 80,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 81,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 81,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 82,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 82,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 83,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 83,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 84,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 84,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 85,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 85,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 86,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 86,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 87,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 87,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 88,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 88,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 89,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 89,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 90,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 90,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 91,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 91,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 92,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 92,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 93,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 93,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 94,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 94,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 95,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 95,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 96,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 96,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 97,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 97,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 98,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 98,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 99,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 99,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 100,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 100,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 101,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 101,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 102,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 102,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 103,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 103,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 104,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 104,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 105,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 105,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 106,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 106,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 107,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "nonconvex_or_collapsed_quad",
+          "S": null
+        },
+        {
+          "commit": 107,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 108,
+          "has_outer_edge": false,
+          "alternative": 0,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        },
+        {
+          "commit": 108,
+          "has_outer_edge": false,
+          "alternative": 1,
+          "reason": "no_valid_prospective_triangle",
+          "S": null
+        }
+      ],
+      "native_template_polygons": 156,
+      "different_centers": 0,
+      "max_center_difference_uv": 0,
+      "center_witnesses": [],
+      "trace_sha256": "85d0646051f26c3be76aee898cd1d3529f2764a861ff071b9caf2e959f962bb8",
+      "mesh_sha256": "ac73d34a13f6363fdb7cb09e83c0e707c8595e91e47404d126e8b41fb15bfd6b"
+    }
+  ],
+  "date": "2026-11-18",
+  "classification": "Read-only source/history audit and documentation; no scientific policy change.",
+  "method": "Reconcile each final face by exact vertex cycle against seed_faces and prospective commits; derive count-one contour edges independently. Reconstruct each pre-smoothing source polygon from QUAD corner/midpoint incidence; compare retained vertex mean with existing independent signed-area formula.",
+  "figure": {
+    "path": "build/quad-boundary-origin-20261118/step1_step2_origin.png",
+    "sha256": "50487367f2578a2c7f4b2f606bf49f71b594ac4c44f6c73909c733663ef7c0ab"
+  },
+  "script": {
+    "path": "build/quad-boundary-origin-20261118/analyze.py",
+    "sha256": "70060d1fa6a6d5668c59f1d23487b408f13e4a7d912d813d4f68c21d0d48e21e"
+  },
+  "primary_source": {
+    "year": 1993,
+    "sha256": "49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5",
+    "bytes": 5439448,
+    "pages_reviewed": [
+      287,
+      288
+    ],
+    "centroid_equation_printed": false,
+    "baehmann_1987_doi": "10.1002/nme.1620240603",
+    "baehmann_1987_full_text_accessed": false
+  },
+  "scientific_decision": {
+    "status": "pending_user_reply",
+    "proposal": "Existing signed-area polygon centroid in UV; retain current curve/front/smoothing/adaptive contracts and compare actual native histories before integration.",
+    "historical_identity_proven": false,
+    "implementation_changed": false
+  },
+  "remote": {
+    "source": "beb2aee2605110ec5c7a542bb45b10cb8c876b40",
+    "canonical_before": "53b3266e22a1ff57240ff760782fe7e7572965c3",
+    "main": "ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89",
+    "pr": 240,
+    "draft": true,
+    "run": 44408768431,
+    "run_reverified": "completed/success; retained evidence, not new tests"
+  },
+  "execution": {
+    "native_builds_this_session": 0,
+    "native_tests_this_session": 0,
+    "new_meshes_this_session": 0,
+    "blender_changed": false,
+    "read_only_analysis_passed": true,
+    "stages_reconciled": 3,
+    "source_polygons_reconciled": 222,
+    "initial_analysis_assumption": "Direct output order differs from commit order because native physical export groups face kinds; corrected diagnostic to reconcile exact face identities. No source repair or gate bypass."
+  }
+}

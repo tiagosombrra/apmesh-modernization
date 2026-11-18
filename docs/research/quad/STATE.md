@@ -12,6 +12,28 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-18 - boundary provenance explained; center decision requested
+
+[Read-only audit](BOUNDARY_ORIGIN_AND_CENTERS_20261118.md) and [evidence](evidence/BOUNDARY_ORIGIN_AND_CENTERS_20261118.json)
+reconcile all real faces and222 source polygons at unchanged PR240 beb2aee.
+Step1 contour faces:8 front QUAD/0 TRI; Step2:2 front QUAD/8 TRI. Interior
+templates16->242 QUAD never touch the original contour. Inner interface16->56
+versus outer8->10 changes the newly reconstructed front. Actual Step2 QUAD
+alternatives fail convexity or S<=1.5; clearance excludes0 cells in both stages
+and smoothing preserves connectivity. This is explained behavior, not proof
+of an optimal or good-quality transition. New UV provenance image is available;
+no source/Blender change, native test or generation this session.
+
+Primary1993 p288 says polygon centroid without an equation; publisher1987 full
+text remains inaccessible. Actual vertex-mean versus area-centroid positions
+differ in18/62 Step2 polygons and0/4,0/156 in Steps1/3. A descriptive question
+proposes the existing area centroid in UV as an explicit experiment with native
+before/after comparison, preserving current policies and historical limits.
+**Next:** await that scientific answer before changing the formula, then make
+and validate the bounded approved correction. No new formula is inferred from
+general permission to continue. Retain prior exact checks and all review/global
+mixed-error/adaptive/analysis/filesystem/historical gates; no merge or closure.
+
 ### 2026-11-18 - confirmed mixed UV smoothing implemented and measured
 
 User explicitly adopts UV averaging, each distinct incident other vertex once

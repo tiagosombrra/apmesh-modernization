@@ -3434,3 +3434,39 @@ geometry gates. Exact next action: resolve template-center interpretation agains
 the primary source, asking descriptively before a new scientific choice; then
 review/qualify static research integration before aligned mixed-error/adaptive
 work. Commit/read back this canonical checkpoint; source stays on PR240 branch.
+
+## 2026-11-18 - trace Step1/Step2 boundary faces and advance center review
+
+User authorizes the next center-review action and asks why boundary QUAD at
+Step1 become mainly TRI at Step2. Read canonical53b3266/sourcebeb2aee and verify
+remote main ef40c0f, concurrent PR239 db6906d/2253549760/2147cd5014 and exact
+hosted44408768431 successful. Leave concurrent work unchanged. Read-only source/
+native archive audit separates template faces from prospective front commits,
+independently derives original contour edges and reconstructs222 source polygons.
+
+Step1 template16/front8Q8T and contour8Q0T; Step2 template242/front7Q52T and
+contour2Q8T. All three straight sides in Step2 use TRI on their original edges;
+two boundary QUAD remain on curved v0. Inner interface16->56 and outer8->10;
+the application reconstructs each mixed layout. All16 alternatives for the eight
+outer-edge TRI fail convexity or S1.5; e.g. S1.7048327646991335. No clearance
+cells excluded in either step, no face-kind changes from smoothing. Preserve
+quality limitation; this explanation is not optimality or a solved imbalance.
+
+Verify original1993 PDF hash and reread full printed287/288; polygon-centroid
+wording has no equation. Locate1987 publisher source but full-text/PDF access
+fails; do not replace it with secondary citations. Compare actual retained
+mean centers with existing independent signed-area formula: Step1 0/4 differ,
+Step2 18/62 (max0.003882062460937146 UV), Step3 0/156. No alternative mesh or
+quality gain is claimed. Send descriptive scientific question recommending
+existing area centroid in UV as explicit experiment with real before/after
+validation, explain ambiguity and ask before any formula change; answer pending.
+
+Create inspected two-panel UV provenance plot and source/hash-bound evidence.
+Correct diagnostic's initial assumption about commit/output face ordering by
+matching exact cycles; native export groups physical face kinds. No source repair,
+new native build/tests, generated mesh, Blender edit, policy change or merge.
+Audit contracts/scientific scope/docs and preserve prior checks as retained only.
+Next await center decision, implement/compare only the approved slice, then
+independent review/static research integration. Mixed global error/epochs0,
+old enum diagnostic/WSL failures and wider historical/native/exact merge gates
+remain. Commit/read back state and append-only log on quad-templates.
