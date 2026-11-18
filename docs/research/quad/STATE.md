@@ -12,7 +12,35 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
-### 2026-11-18 - approved UV contour-clearance repair implemented
+### 2026-11-18 - confirmed mixed UV smoothing implemented and measured
+
+User explicitly adopts UV averaging, each distinct incident other vertex once
+(including opposite QUAD corners), five simultaneous passes and fixed contour.
+[Implementation/results](MIXED_UV_SMOOTHING_20261118.md) and [evidence](evidence/MIXED_UV_SMOOTHING_20261118.json)
+pin draft PR240 exactbeb2aee. All15 real passes are exported/lifted/validated;
+183 commits/186 earlier frames and four original TRI outputs remain byte-identical.
+Counts remain33/281/689 nodes,24/249/630 QUAD and8/52/102 TRI.
+
+Final local85/85 and hosted44408768431 all4 checks pass. Native20/20,
+11 front plus5 smoothing forgeries, actual rollback, source boundaries, old
+live-pair path and changed application/header/fixture analysis pass in their
+recorded scopes. Native c3ddc06 evidence is byte-identity-bound to finalbeb2aee;
+only architecture inventory hash changed. Retain first stale-inventory baseline
+failure and initial new-call compile failure; neither is reported as a pass.
+
+Global minimum angles improve, but QUAD minimum J worsens in all stages,
+stage2 geometry RMS worsens and stage3 boundary minimum angle worsens. No
+overall-quality claim. New Blender5.3 opens real results, all pass states and
+template catalog with metric explanations. Previous presentations remain historical.
+
+**Next:** resolve historical template-center interpretation against the primary
+article/source; ask a descriptive scientific question before changing vertex
+mean if ambiguity remains. Then independent static-package review and exact
+research integration. Retain old enum-analysis/local-filesystem dispositions,
+mixed global curvature error/accepted adaptation0 and wider historical/native
+gates. No new balancing law, default TRI change, merge or whole-stage closure.
+
+### 2026-11-18 - approved UV contour-clearance repair implemented (previous checkpoint)
 
 User explicitly confirms minimum cell-to-finite-segment distance in UV with the
 unchanged0.2 threshold; strict equality is retained. [Repair](CONTOUR_CLEARANCE_REPAIR_20261118.md)
@@ -30,7 +58,7 @@ additional full adversarial-fixture analysis retains a pre-existing enum-cast
 negative-control diagnostic for review. Prior failed prefixes remain recorded.
 No merge, whole stage closure, smoothing, center change or mixed global estimator.
 
-**Next:** settle the mixed smoothing contract through descriptive scientific
+**Next at that checkpoint:** settle the mixed smoothing contract through descriptive scientific
 questions before implementing it: coordinate space, distinct versus repeated
 incident vertices, and four/five simultaneous versus sequential passes. The
 printed-p290 passage is reread; a UV/distinct/five-simultaneous proposal is pending,
@@ -40,18 +68,19 @@ not adopted. Preserve contour positions, existing validity and rollback policies
 
 Read the [short current plan](CURRENT_PLAN_OVERVIEW_20261118.md) before historical
 entries below. Real mixed generation exists; complete paper conformance and
-mixed adaptive closure do not. Current code is draft PR240 exact11dcaa7.
+mixed adaptive closure do not. Current code is draft PR240 exactbeb2aee.
 
 | Work | Status |
 | --- | --- |
 | Original curves, native templates and prospective mixed front | Implemented; real archived outputs exist |
 | Per-step errors/quality and explained Blender | Delivered; presentation does not change generation |
 | Contour-clearance classification | Implemented and tested in11dcaa7; review limitations retained |
-| Actual mixed smoothing and historical centers | Pending; clarify smoothing science before implementation |
+| Actual mixed smoothing | Implemented/tested with explicit UV/distinct/five-pass interpretation; tradeoffs retained |
+| Historical template centers | Unresolved; clarify before changing vertex mean |
 | Actual mixed global curvature error/accepted adaptation | Not complete; original TRI still drives adaptation |
 | Independent review and research integration of PR240 | Pending; draft/unmerged |
 
-Order: documented clearance -> mixed smoothing/control and center disposition ->
+Order: clearance and mixed smoothing implemented -> center disposition ->
 real-history comparison and bounded gates -> reviewed research integration ->
 aligned mixed-state/error/adaptive work. No new balancing controller, broad flag
 sweep or modernization-main change. Previous local85/85 and exact hosted4/4 are

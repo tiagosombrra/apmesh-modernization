@@ -3387,3 +3387,50 @@ No mixed smoothing is implemented before that response. Independent review,
 adversarial-analysis disposition, M1 centers, local WSL, full historical/native
 and exact integration/post-merge gates remain open. No new Blender or main merge.
 Commit/read back this canonical checkpoint; retain the visible source PR branch.
+
+## 2026-11-18 - implement the explicitly confirmed mixed UV smoothing contract
+
+User adopts the descriptive UV/distinct-neighbor/five-simultaneous proposal,
+including opposite QUAD corners, fixed original contour, analytic XYZ lifting
+and existing validity/rollback. No new thresholds, relaxation, pass selection,
+curve rediscretization, balancing controller or adaptive policy is authorized.
+Read canonical432f13a, verify source11dcaa7/main ef40c0f and concurrent PRs;
+preserve their advances. Implement value-owned smoothing and native arithmetic/
+malformed/failure controls, actual per-pass geometry checks and complete source
+history export. Add independent synchronous replay/Bernstein lifting,11 old plus
+5 new trace-forgery negatives and per-pass error/quality. Keep original TRI.
+
+Publish/read back implementationc3ddc06 then finalbeb2aee on draft PR240,
+tree99da71296c0ebee57a02d762ff45a0bf4cb0bd3f. Initial new CheckFacet array call
+fails compilation and is corrected to existing FaceUv. First exact baseline
+stops before tests because the retained CMake inventory hash is stale; refresh
+that hash only, then exact final85/85 passes. Native MSVC20/20, fresh183 commits,
+15 actual smoothing passes,11+5 forged traces/nonempty rollback,6 source captures/
+54 controls, old live-pair220 events/eight forgeries and configured changed
+application/header/native-fixture analysis pass. Explicitly verify all code/test/
+input/image bytes unchanged fromc3ddc06 when reusing native evidence atbeb2aee.
+Final hosted44408768431 all4 checks pass; GNU/MSVC/ASan ordinary application
+reports agree. No hidden retry, diagnostic suppression or unexecuted gate claim.
+
+All four original TRI outputs and186 pre-smoothing commit frames are byte-identical
+to11dcaa7. Counts remain33/281/689 nodes,24/249/630 QUAD and8/52/102 TRI. All15
+passes retain fixed boundary/connectivity. Native/independent UV agreement is
+2.22e-16. Minimum global angles improve but minimum QUAD J falls in all stages;
+stage2 RMS worsens and stage3 boundary angle worsens. Retain nonmonotonic passes;
+do not choose the best column retrospectively. Mixed global curvature error is
+still unavailable; accepted mixed epochs0. Original TRI global values unchanged.
+
+Build a new personal Blender5.3 file with eight outputs,18 before/pass states,
+retained18-panel templates/source polygons and embedded Portuguese term/limit
+guide. Correct the initial-step label to explicitly unsmoothed. Inspect two
+rendered views and observe the new file open in the GUI; old presentations are
+not overwritten. Update current state/overview/roadmap, delivery/evidence and PR.
+
+Closure audit covers code/value ownership, controls/history/boundary contracts,
+metrics/documentation and scientific scope. Draft/unmerged; no whole-stage or
+main integration. Retain prior adversarial invalid-enum analysis, WSL output
+failures, independent review, historical centers and full native/CRT/oracle/general
+geometry gates. Exact next action: resolve template-center interpretation against
+the primary source, asking descriptively before a new scientific choice; then
+review/qualify static research integration before aligned mixed-error/adaptive
+work. Commit/read back this canonical checkpoint; source stays on PR240 branch.

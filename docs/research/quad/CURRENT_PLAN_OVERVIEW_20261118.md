@@ -1,6 +1,6 @@
 # Current QUAD plan at a glance
 
-Updated2026-11-18 against the verified canonical plan and exact source11dcaa7,
+Updated2026-11-18 against the verified canonical plan and exact sourcebeb2aee,
 draft PR240. This reading guide summarizes the existing approved sequence;
 it does not introduce a new scientific rule, milestone or authorization.
 
@@ -21,17 +21,17 @@ and explicit separation between a static mixed output and mixed adaptive closure
 | Real curved-model output at steps0-3 | Regenerated and archived; current final output689 nodes,630 QUAD,102 TRI | These are outputs driven by TRI source histories, not accepted mixed adaptive epochs |
 | Contour-clearance classification | Implemented in11dcaa7; exactly25 former violations removed | Boundary angle improves, but geometry error and worst edge ratio worsen |
 | Per-step geometry errors and element quality | Exported to Markdown/CSV/JSON and displayed in Blender | Original global curvature error is TRI-only; mixed RMS is a different diagnostic |
-| Explained Blender presentation | Delivered with six scenes, eight meshes,18 panels, real usage maps and FAQ | It shows the previous9ca6deb output; current clearance results are in the new numerical archive |
+| Mixed smoothing | Implemented: UV, distinct incident other vertices, five simultaneous passes, fixed contour | Angle gains coexist with worse QUAD J/stage2 RMS/stage3 boundary angle |
+| Current Blender presentation | New three-scene file: eight outputs,18 pass states and18 template/source panels with guide | Older complete presentation remains historical; current file uses clearance plus smoothing |
 
-The latest source11dcaa7 has exact local85/85 and four successful hosted
+The latest sourcebeb2aee has exact local85/85, native20/20 with explicit code-identity reuse and four successful hosted
 checks, reverified remotely. Passing those scopes does not cover the missing
 paper stages, full historical oracle, general geometry or full adaptive closure.
 PR240 remains draft/unmerged. The modernization main branch stays separate.
 
 ## What prevents calling the technique complete
 
-1. **Mixed smoothing:** current final mixed graph has no smoothing pass. Existing
-   TRI smoothing flags do not directly smooth that graph.
+1. **Historical smoothing identity:** adopted UV/distinct/five-pass smoothing is implemented and tested; numeric identity with the historical planar method is not proven.
 2. **Historical center identity:** vertex arithmetic mean remains experimental;
    it is not generally the area centroid. Do not silently change the formula.
 3. **Mixed global curvature error and adaptation:** the equivalent error on the
@@ -46,12 +46,8 @@ PR240 remains draft/unmerged. The modernization main branch stays separate.
 1. **Implemented:** documented contour-clearance classification in the opt-in
    candidate, with retained witness/default TRI and exact checks. Review its
    tradeoffs and additional adversarial-fixture analysis finding.
-2. **Next:** clarify and complete the paper's mixed smoothing/effective-control contract and
-   explicitly resolve the historical center interpretation within its scientific
-   alignment requirements. Preserve formulas rather than invent new balancing.
-3. **Validate that correction:** regenerate the real histories, compare original
-   TRI versus mixed geometry/quality under stated conditions, retain bad results
-   and negative controls, update Blender and complete change-relevant tests.
+2. **Smoothing implemented/tested; next center disposition:** resolve the historical template-center interpretation against the primary article/source. Ask descriptively before changing the retained vertex-mean formula if scientific ambiguity remains.
+3. **Executed for clearance/smoothing:** real histories regenerated, before/after quality/error exported, all15 passes/negative controls retained, new Blender opened and change-relevant tests passed. Any later center correction requires its own bounded evidence.
 4. **Qualify and integrate the bounded static package:** independent review,
    local-failure disposition, exact candidate remote/local gates, then research
    integration and exact post-merge verification. No automatic main integration.
@@ -75,6 +71,8 @@ Artifact polish and repeated audits are not default successors to this summary.
 
 Repository roles: canonical decisions/checkpoints are on `quad-templates`;
 current executable changes remain on the source branch of PR240
-(`research/quad-article-mixed-front-20261118`,11dcaa7). A documentation checkpoint
+(`research/quad-article-mixed-front-20261118`,beb2aee). A documentation checkpoint
 is not a new algorithm delivery. The earlier overview was documentation-only; the subsequent clearance repair
 changes source and regenerates the real case. See its pinned report and evidence.
+
+Current [mixed smoothing delivery](MIXED_UV_SMOOTHING_20261118.md) preserves all tradeoffs and exact validation identities.

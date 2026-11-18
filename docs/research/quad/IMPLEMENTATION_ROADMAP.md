@@ -5,44 +5,37 @@ Read the [current delivered/pending summary](CURRENT_PLAN_OVERVIEW_20261118.md) 
 The dated historical entries below preserve evidence and superseded priorities;
 they do not replace the current execution queue.
 
-Current correction: [approved UV contour-clearance repair](CONTOUR_CLEARANCE_REPAIR_20261118.md)
-is implemented in exact11dcaa7/draft PR240 with exact local85/85, native19/19 and
-hosted44401586214 all4 success. It excludes25 step3 cells; final689/630/102 replaces
-797/738/102. Preserve increased sampled error/edge ratio and the unresolved
-additional adversarial-fixture analysis finding. Next clarify mixed smoothing
-science before implementation. Earlier missing-clearance statements below are
-the retained pre-repair audit, not current implementation status. No stage closure.
+Current correction: [approved mixed UV smoothing](MIXED_UV_SMOOTHING_20261118.md)
+is implemented in exactbeb2aee/draft PR240, following the confirmed contour
+clearance repair. Final local85/85 and hosted44408768431 all4 succeed;
+native20/20 and complete histories have explicit code/image identity reuse.
+Earlier missing-clearance/missing-smoothing entries retain their original scope.
 
-## Current finite execution queue — 2026-11-18
+## Current finite execution queue - 2026-11-18
 
-The prospective mixed-front output and confirmed clearance repair are implemented
-on [draft PR240](https://github.com/tiagosombrra/apmesh-modernization/pull/240),
-exact11dcaa7. Native quadtree/templates and original curves feed a contraction
-that chooses TRI/QUAD before updating the contour. Current stages produce
-24/249/630 QUAD and8/52/102 TRI;183 commits and186 OBJ snapshots are exported.
-[Current repair](CONTOUR_CLEARANCE_REPAIR_20261118.md) records exact local85/85,
-native19/19 and hosted44401586214 all4 success, plus mixed error/quality tradeoffs
-and the unresolved additional adversarial-analysis diagnostic. The earlier
-[first-output delivery](ARTICLE_MIXED_FRONT_DELIVERY_20261118.md) and explained
-Blender remain historical9ca6deb/b3d2fbc references, with their original evidence.
+Original curves, native templates and prospective TRI/QUAD choice feed the
+confirmed minimum-cell UV clearance0.2 and now five simultaneous smoothing
+passes over distinct incident other vertices. Original contour is fixed; XYZ
+is lifted from the Bezier patch every pass. Current stages remain24/249/630 QUAD
+and8/52/102 TRI;183 commits/186 original frames plus15 smoothing frames exist.
+New Blender displays the current before/after history and retained templates.
 
-The user explicitly rejects invented adjustment rules and requests the planned
-1993 technique as an increment to existing code, using effective existing flags.
-The [article/source revalidation](ARTICLE_CONFORMANCE_REVALIDATION_20261118.md)
-supersedes the previous new-coupling priority. The measured straight-boundary
-mismatch remains evidence. The distance-based0.2 contour-cell correction removes
-the25 witnessed stage3 violations using the confirmed UV minimum-distance rule.
-Mixed smoothing and historical center identity remain unresolved. Improved
-boundary angle coexists with worse sampled error and edge ratio after clearance.
+All scientific tradeoffs remain: after smoothing global minimum angles improve,
+but minimum QUAD J falls in all stages, stage2 RMS increases and stage3 boundary
+angle falls. Clearance's own retained tradeoffs also remain. No overall quality,
+historical numeric reproduction or mixed convergence claim. Source TRI, angular
+selection S<=1.5, original curve policies and adaptation/acceptance/stopping stay
+unchanged. The user rejects invented balancing controllers and broad flag sweeps.
 
-One active next action: explicitly align the scientific mixed-smoothing contract
-before implementation on the curved surface, then implement and qualify its
-effective controls while preserving original TRI. Explicitly dispose centroid
-identity. Independent review, adversarial-analysis/local-filesystem disposition and exact integration
-gates remain mandatory. No new coupling law or full R3 controller is in current
-execution scope. Full M1/M5/R3/M7, curved-metric scope and original M0-M9/R0-R4
-gates remain open. Older queues below retain history and do not override this
-user-directed conformance priority. No broad parameter sweep is scheduled.
+One active next action: resolve the retained historical template-center
+interpretation against the primary source; ask a descriptive scientific question
+before modifying the current vertex mean if ambiguity remains. Then independent
+review and old adversarial-analysis/local-filesystem disposition, exact candidate
+research integration and post-merge gates. No merge is performed by this session.
+Actual mixed global curvature error and accepted adaptation remain separate
+future work (mixed accepted epochs0). Full M1/M5/R3/M7, curved-metric scope and
+original M0-M9/R0-R4 gates remain open. Dated historical queues below do not
+override this current user-directed conformance priority.
 
 The [PR238 research integration](PR238_RESEARCH_INTEGRATION_20261117.md) is
 complete at exact merge d251f19, with identical qualified candidate tree81ecc5bf.
