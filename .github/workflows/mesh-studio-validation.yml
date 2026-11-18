@@ -287,6 +287,15 @@ jobs:
         run: python -m tools.mesh_studio.native_controlled_sensitivity --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --out-dir build/r2724-controlled-native-treatment-evidence --timeout 300
       - name: Independently re-audit R2.7.24 original model/config/executable SHAs and genuine native postcommit trial sidecars
         run: python -m tools.mesh_studio.native_sensitivity_audit --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --treatments build/r2724-controlled-native-treatment-evidence --output build/r2724-controlled-native-sensitivity-audit.json
+      - name: Audit R2.7.25 original effective C++ curve point floors and element targets for both real source/trial runs
+        run: python -m tools.mesh_studio.native_effective_budget_audit --original-directory build/r2712-native-evidence --trials-directory build/r2724-controlled-native-treatment-evidence --output build/r2725-original-effective-budget-audit.json
+      - name: Retain source-verified R2.7.25 effective native C++ budget and per-curve comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2725-original-effective-budgets-${{ github.sha }}
+          path: build/r2725-original-effective-budget-audit.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Preserve exact R2.7.24 original C++ controlled-treatment attempts and independently verified native source outcomes
         if: always()
         uses: actions/upload-artifact@v4
