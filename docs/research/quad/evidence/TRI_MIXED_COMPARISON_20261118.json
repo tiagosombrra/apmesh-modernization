@@ -1,0 +1,117 @@
+{
+  "schema": "apmesh.quad.tri_versus_mixed_summary.v1",
+  "source_sha": "b3d2fbc2ad42237e2dcdbe81757bfa7abf981c6e",
+  "grid": 24,
+  "sites_per_stage": 576,
+  "script_sha256": "c9708f9dcb5e5dbe9d265c2bd59d23764815bf4826043da30d5e3935087c7545",
+  "scope": "Read-only same-site geometry comparison of archived outputs; different node layouts and no optimization or equal-cost claim; original mixed-region checker unchanged",
+  "stages": [
+    {
+      "step": 1,
+      "tri_nodes": 17,
+      "tri_faces": 24,
+      "mixed_nodes": 33,
+      "mixed_quads": 24,
+      "mixed_triangles": 8,
+      "tri_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.08992172188197542,
+        "rms_uv": 0.02921060082361642,
+        "rms_source_area": 0.026487358708233807,
+        "tri_sites": 576,
+        "quad_sites": 0
+      },
+      "mixed_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.09094210987957016,
+        "rms_uv": 0.026760747684951496,
+        "rms_source_area": 0.023668615133612004,
+        "quad_sites": 504,
+        "tri_sites": 72
+      },
+      "RMS_change_percent": -10.641844683990985,
+      "node_growth_percent": 94.11764705882352,
+      "face_growth_percent": 33.33333333333333,
+      "tri_sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+      "mixed_sha256": "d7992d950fcefbcfeba71b11a1bede312a15b643d92ab1ec251afa97e457c7bd"
+    },
+    {
+      "step": 2,
+      "tri_nodes": 78,
+      "tri_faces": 144,
+      "mixed_nodes": 281,
+      "mixed_quads": 249,
+      "mixed_triangles": 52,
+      "tri_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.043373081209104374,
+        "rms_uv": 0.015399537731905081,
+        "rms_source_area": 0.014651996625046178,
+        "tri_sites": 576,
+        "quad_sites": 0
+      },
+      "mixed_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.040148706524736344,
+        "rms_uv": 0.012538522388086141,
+        "rms_source_area": 0.011703599390114654,
+        "quad_sites": 347,
+        "tri_sites": 229
+      },
+      "RMS_change_percent": -20.1228358863496,
+      "node_growth_percent": 260.2564102564103,
+      "face_growth_percent": 109.02777777777777,
+      "tri_sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+      "mixed_sha256": "ce16561ef84286341f68708b60356d28059ce8e24037de8ce10c3630773cb68e"
+    },
+    {
+      "step": 3,
+      "tri_nodes": 223,
+      "tri_faces": 430,
+      "mixed_nodes": 797,
+      "mixed_quads": 738,
+      "mixed_triangles": 102,
+      "tri_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.03963428759144356,
+        "rms_uv": 0.009799322780138266,
+        "rms_source_area": 0.009310312382515127,
+        "tri_sites": 576,
+        "quad_sites": 0
+      },
+      "mixed_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.03224427259909553,
+        "rms_uv": 0.007692758481077097,
+        "rms_source_area": 0.007262101995028263,
+        "quad_sites": 462,
+        "tri_sites": 114
+      },
+      "RMS_change_percent": -21.99937341880629,
+      "node_growth_percent": 257.39910313901345,
+      "face_growth_percent": 95.34883720930232,
+      "tri_sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+      "mixed_sha256": "aa06f6177f1367f9d1ad13ea533aafe11ebcee12cb7a586a3d34c786ab8781e3"
+    }
+  ],
+  "method": {
+    "sites": "24x24 cell centers: ((i+0.5)/24, (j+0.5)/24)",
+    "reference": "Independent tensor-product Bernstein evaluation of the original curved Bezier patch",
+    "tri_interpolation": "Linear barycentric interpolation on the containing TRI",
+    "quad_interpolation": "Inverse bilinear UV map and four-node interpolation on the containing QUAD",
+    "measure": "sqrt(sum(||P_exact-P_mesh||^2 * source_jacobian) / sum(source_jacobian))",
+    "units": "Original model coordinate units",
+    "limits": "Sampled geometry comparison; different node counts/layouts and smoothing paths; no equal-cost, runtime, finite-element-solution or continuous-error claim"
+  },
+  "first_attempt": {
+    "status": "rejected by existing mixed-region precondition",
+    "reason": "common_grid_source_error requires both TRI and QUAD sample regions, so pure TRI is intentionally inadmissible",
+    "disposition": "Existing checker unchanged. A separate TRI-only linear interpolation calculation evaluates all576 same sites per stage."
+  }
+}

@@ -12,6 +12,23 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-18 - distinguish pure TRI and mixed comparison references
+
+The user requests a detailed TRI versus mixed explanation. The read-only
+[comparison](TRI_MIXED_COMPARISON_20261118.md) and [same-site evidence](evidence/TRI_MIXED_COMPARISON_20261118.json)
+show pure TRI nodes17/78/223 and elements24/144/430 versus mixed nodes33/281/797,
+QUAD24/249/738 and TRI8/52/102. Independent576-site source-area RMS is lower by
+10.6418%/20.1228%/21.9994% than pure TRI, with different density and smoothing.
+Stage1 maximum sampled distance is higher. No equal-cost or causal QUAD benefit,
+runtime gain, continuous bound or finite-element solution result is claimed.
+
+Earlier RMS increases1.1217%/0.1323%/0.3667% compare against the unpaired mixed
+layout, not pure TRI; retain those tradeoffs. The mixed-region checker correctly
+rejects the first pure-TRI attempt. Its contract is unchanged; a separate linear
+TRI measurement covers all576 sites. No source change, native rerun or new mesh.
+Next remains independent PR240 review, local-filesystem failure disposition and
+exact research-integration gates before R3/balancing. No plan sequencing change.
+
 ### 2026-11-18 - prospective mixed-front mesh generated and opened in Blender
 
 Draft [PR240](https://github.com/tiagosombrra/apmesh-modernization/pull/240),

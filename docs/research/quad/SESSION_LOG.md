@@ -3133,3 +3133,28 @@ disposition and required exact research-integration/post-merge gates. R3 and loc
 balancing follow qualified integration. Full M1/M5/R3/M7, smoothing/continuous
 validity, new-path full CRT/denials and Doxygen2739 remain open. Commit/read back
 the canonical checkpoint; primary checkout retains the visible source candidate.
+
+## 2026-11-18 - explain pure TRI versus mixed generation with named references
+
+User requests detailed technique comparison. Recheck canonical660d0ad and source
+b3d2fbc/PR240 draft/unmerged, read current state and actual archived outputs.
+Inspect original ideal-vertex, geometry/topology and improveMesh calls versus
+the prospective two-neighbor mixed contour commit. Record unchanged original
+curves/quadtree inputs, denser midpoint/center templates, planar UV selection,
+curved XYZ lift and zero accepted mixed adaptive epochs.
+
+Read-only counts: pure TRI17/78/223 nodes and24/144/430 elements; mixed33/281/797
+nodes and24/249/738 QUAD plus8/52/102 TRI. Existing mixed-region checker rejects
+pure TRI by design. Preserve its contract; use separate barycentric TRI
+interpolation at all576 fixed UV sites against independent Bernstein XYZ and
+Jacobian weights. RMS reductions10.6418%/20.1228%/21.9994% describe these different
+density/smoothing outputs, not equal-cost or isolated QUAD advantage. Stage1
+maximum error rises despite lower RMS. Earlier small RMS increases compare to
+the unpaired mixed layout, not pure TRI, and remain valid negative evidence.
+
+Add TRI_MIXED_COMPARISON_20261118.md and method/input-hashed JSON, update STATE.
+No algorithm, controller, test/oracle relaxation, native rerun, new mesh or
+Blender change. Native85/85 and hosted4/4 retain their exact prior candidate
+scope. Next remains independent PR240 review, local-filesystem failure
+disposition and exact research-integration/post-merge gates, then R3/balancing.
+Publish/read back the canonical documentation checkpoint without source changes.
