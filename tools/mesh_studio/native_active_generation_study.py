@@ -209,11 +209,17 @@ def audit(root: Path, exe: Path, original: Path, trials: Path) -> dict:
             "variant_predicted_accept":
                 g2[key]["predicted_branch_accept_not_committed"],
         } for key in matched]
-        original_sha = [x["sha256"]
-                        for x in base_receipt["accepted_snapshots"]
-                        if "sha256" in x]
+        # Native article evidence uses source_file_sha256; the isolated
+        # treatment writer adds sha256. Neither accepted source may be omitted.
+        original_sha = [x["source_file_sha256"]
+                        for x in base_receipt["accepted_snapshots"]]
         variant_sha = [x["sha256"] for x in
                        treated_receipt["accepted_real_native_face_snapshots"]]
+        require(len(original_sha) == base_receipt["native_accepted_commits"]
+                and len(variant_sha) ==
+                treated_receipt["genuine_source_postcommit_receipts"]
+                and all(len(value) == 64 for value in original_sha + variant_sha),
+                "r2726_missing_original_or_variant_accepted_source_sha256")
         result[model] = {
             "trial": variant.id,
             "one_factor": {"name": variant.parameter,
