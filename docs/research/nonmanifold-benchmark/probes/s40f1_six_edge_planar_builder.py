@@ -196,6 +196,39 @@ def recover_inherited_source_chain(table, original_entry, native_curve, pts, ope
     return chosen
 
 
+def prebind_inherited_original_vertices(table, edges, recovered_chains, points, vertex_index):
+    """Bind all original inherited endpoints before creating new curve controls.
+
+    Original STEP edge-loop order is not a safe order in which to allocate
+    global control indices: an unrepresented edge may precede its inherited
+    neighbor. Preserving the inherited integer identity requires a full
+    prepass across every inherited edge of each target face.
+    """
+    for edge in edges:
+        eid = edge['edge_curve_id']
+        if eid not in recovered_chains:
+            continue
+        chain = recovered_chains[eid]
+        if not chain:
+            raise ValueError('Inherited original source edge has no indexed segments')
+        ids_chain = [tuple(row[2]) for row in chain]
+        if any(len(ids) != 4 for ids in ids_chain):
+            raise ValueError('Inherited source control side must be cubic')
+        for vertex_id, control_id in (
+            (edge['start_vertex_id'], ids_chain[0][0]),
+            (edge['end_vertex_id'], ids_chain[-1][-1]),
+        ):
+            if not isinstance(control_id, int) or not 0 <= control_id < len(points):
+                raise ValueError('Inherited STEP vertex points to an invalid global control')
+            expected = coordinates(table, vertex_id)
+            if distance(points[control_id], expected) >= 1e-5:
+                raise ValueError('Inherited endpoint is not the original STEP vertex')
+            if vertex_id in vertex_index and vertex_index[vertex_id] != control_id:
+                raise ValueError('Original STEP vertex has conflicting global control IDs')
+            vertex_index[vertex_id] = control_id
+    return vertex_index
+
+
 def _native_uv_state(face, xyz):
     plane=BRepAdaptor_Surface(face.wrapped).Plane()
     uv=ElSLib.Parameters_s(plane,gp_Pnt(*xyz))
@@ -229,23 +262,32 @@ def build_source_candidate(source, native, parent, parent_manifest, *, faces=TAR
         if any(edges[i]['end_vertex_id']!=edges[(i+1)%6]['start_vertex_id'] for i in range(6)):
             raise ValueError('Original STEP wire is disconnected')
         indexed=[];edge_manifest={}
+        # Prebind every old source endpoint before allocating any new index.
+        inherited_chains = {}
+        for e in edges:
+            eid = e['edge_curve_id']
+            if eid not in EXPECTED_INHERITED_EDGES[fid]:
+                continue
+            owners = mapping['owners'][eid]
+            if len(owners) != 2 or fid not in owners:
+                raise ValueError('Unexpected original inherited source edge owner count')
+            curve = BRepAdaptor_Curve(mapping['native_edges'][mapping['edge_map'][eid]].wrapped)
+            chain = recover_inherited_source_chain(table, e, curve, points, open_sides)
+            for pid, label, ids in chain:
+                if (pid, label) in used_prior:
+                    raise ValueError('Already consumed original indexed side')
+                used_prior.add((pid, label))
+            inherited_chains[eid] = chain
+        prebind_inherited_original_vertices(table, edges, inherited_chains,
+                                             points, source_vertices)
         for e in edges:
             eid=e['edge_curve_id'];curve=BRepAdaptor_Curve(mapping['native_edges'][mapping['edge_map'][eid]].wrapped)
             owners=mapping['owners'][eid]
             if len(owners)!=2 or fid not in owners:
                 raise ValueError('Unexpected original face/source edge owner count')
             if eid in EXPECTED_INHERITED_EDGES[fid]:
-                chain=recover_inherited_source_chain(table,e,curve,points,open_sides)
-                for pid,label,ids in chain:
-                    if (pid,label) in used_prior:
-                        raise ValueError('Already consumed original indexed side')
-                    used_prior.add((pid,label))
+                chain=inherited_chains[eid]
                 ids_chain=[ids for _,_,ids in chain]
-                for source_vid,idx in ((e['start_vertex_id'],ids_chain[0][0]),
-                                       (e['end_vertex_id'],ids_chain[-1][-1])):
-                    if source_vid in source_vertices and source_vertices[source_vid]!=idx:
-                        raise ValueError('Original STEP vertex split across global control IDs')
-                    source_vertices[source_vid]=idx
                 edge_manifest[str(eid)]={'kind':'inherited','segment_count':len(chain),
                    'prior_patch_sides':[[pid,label] for pid,label,_ in chain]}
             else:
@@ -395,6 +437,7 @@ def build_source_candidate(source, native, parent, parent_manifest, *, faces=TAR
 def audit_native(source, native, parent, manifest, candidate, receipt,
                  *, inside_grid=13, boundary_grid=31):
     """Independent original native plane trim gate (finite sampling, not proof)."""
+    validate_native_sample_grids(inside_grid, boundary_grid)
     regenerated,baseline=build_source_candidate(source,native,parent,manifest)
     if candidate!=regenerated or receipt!=baseline:
         raise ValueError('Unverifiable candidate lineage or edited receipt')
@@ -435,6 +478,65 @@ def audit_native(source, native, parent, manifest, candidate, receipt,
     return summary
 
 
+def require_native_pilot_pass(audit):
+    """Keep an original-native rejection from returning a successful exit code.
+
+    This only allows the experimental sampled CAD gate to proceed. It does
+    not certify complete CAD equivalence or APMesh C++ mesh acceptance.
+    """
+    if not isinstance(audit, dict):
+        raise ValueError('Missing original S40 native audit receipt')
+    if audit.get('status') != 'PASS_BOUNDED_SAMPLED_NATIVE_TRIM':
+        raise ValueError('Original STEP native trim was not admitted')
+    if audit.get('boundary_OUT') != 0 or audit.get('inside_IN', 0) <= 0:
+        raise ValueError('Original STEP native trim counts failed')
+    if audit.get('boundary_IN_or_ON', 0) <= 0:
+        raise ValueError('Native original boundary samples were not executed')
+    by_face = audit.get('by_face')
+    if not isinstance(by_face, dict) or set(by_face) != {'1279', '1386'}:
+        raise ValueError('Original STEP native target-face evidence is incomplete')
+    for fid in ('1279', '1386'):
+        face = by_face[fid]
+        if (not isinstance(face, dict) or face.get('boundary_OUT') != 0 or
+                face.get('interior_IN', 0) <= 0 or face.get('boundary_IN_or_ON', 0) <= 0 or
+                face.get('candidate_patches', 0) <= 0 or
+                not isinstance(face.get('sampled_native_coverage'), dict)):
+            raise ValueError(f'Original STEP native face #{fid} failed admission evidence')
+        coverage = face['sampled_native_coverage']
+        if coverage.get('continuous_coverage_certified') is not False:
+            raise ValueError('Unsupported continuous CAD coverage certification claim')
+        metrics = ('native_area_mm2', 'approximate_integrated_bp_area_mm2',
+                   'min_sampled_oriented_jacobian', 'sampled_relative_area_difference',
+                   'sampled_2d_patch_overlap_area', 'sampled_numerical_hole_area_mm2')
+        for key in metrics:
+            value = coverage.get(key)
+            if type(value) not in (int, float) or not math.isfinite(value):
+                raise ValueError(f'Original STEP native face #{fid} missing finite {key}')
+        if (coverage['native_area_mm2'] <= 0 or
+                coverage['approximate_integrated_bp_area_mm2'] <= 0 or
+                coverage['min_sampled_oriented_jacobian'] <= 0 or
+                not 0 <= coverage['sampled_relative_area_difference'] <= 1e-4 or
+                not -1e-7 <= coverage['sampled_2d_patch_overlap_area'] <= 1e-5 or
+                not 0 <= coverage['sampled_numerical_hole_area_mm2'] <= 1e-7):
+            raise ValueError(f'Original STEP native face #{fid} coverage metrics failed')
+    if sum(by_face[fid]['interior_IN'] for fid in ('1279', '1386')) != audit['inside_IN'] or \
+            sum(by_face[fid]['boundary_IN_or_ON'] for fid in ('1279', '1386')) != audit['boundary_IN_or_ON']:
+        raise ValueError('Original STEP native global and per-face sample counts differ')
+    if audit.get('continuous_hausdorff_certified') is not False or \
+            audit.get('apmesh_TRI_QUAD_executed') is not False:
+        raise ValueError('Unsupported continuous or production mesh certification claim')
+    return True
+
+
+def validate_native_sample_grids(inside_grid, boundary_grid):
+    """Prevent zero-sample and unbounded sampling options from bypassing a gate."""
+    if any(type(v) is not int for v in (inside_grid, boundary_grid)):
+        raise ValueError('Original STEP sampling grid must use integer densities')
+    if not 3 <= inside_grid <= 33 or not 11 <= boundary_grid <= 161:
+        raise ValueError('Invalid original STEP native sampling density')
+    return True
+
+
 def main():
     cli=argparse.ArgumentParser(description=__doc__)
     cli.add_argument('--original-step',type=Path,required=True)
@@ -451,7 +553,9 @@ def main():
         native=cq.importers.importStep(str(args.original_step)).val()
         candidate,receipt=build_source_candidate(original,native,bp,manifest)
         audit=audit_native(original,native,bp,manifest,candidate,receipt)
-    except (ValueError, OSError, KeyError) as exc:
+        # A rejected native trim must not produce exit status zero or an approved BP.
+        require_native_pilot_pass(audit)
+    except (ValueError, OSError, KeyError, IndexError, RuntimeError, TypeError, OverflowError) as exc:
         # Preserve an explicit rejection and never issue an accepted BP on failure.
         failure={'schema':'s40f1-fail-closed-native-checkpoint-v1',
                  'state':'BLOCKED_NO_NEW_FACE_ADMISSION',
@@ -461,7 +565,7 @@ def main():
         (args.output/'s40f1_rejection.json').write_text(json.dumps(failure,indent=2)+'\n')
         print(json.dumps(failure,indent=2))
         raise SystemExit(3)
-    filename='s40f1.BOUNDED_RESEARCH_CANDIDATE.bp' if audit['status'].startswith('PASS') else 's40f1.NOT_ADMITTED.bp'
+    filename='s40f1.BOUNDED_RESEARCH_CANDIDATE.bp'
     (args.output/filename).write_text(candidate)
     (args.output/'s40f1_manifest.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
     (args.output/'s40f1_native_audit.json').write_text(json.dumps(audit,indent=2,sort_keys=True)+'\n')
