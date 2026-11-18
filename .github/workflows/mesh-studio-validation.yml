@@ -86,6 +86,9 @@ jobs:
           if-no-files-found: error
           retention-days: 7
   browser-spike:
+    # Measure only the scene just qualified by the same original compiled C++
+    # GeneratorAdaptive job, never a fixture or an unbound prior run artifact.
+    needs: native-lineage-optin
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
@@ -99,6 +102,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Recover same-run original compiled accepted TRI for real Chromium performance
+        uses: actions/download-artifact@v4
+        with:
+          name: mesh-studio-r2720-native-accepted-scene-${{ github.sha }}
+          path: build
+      - name: Recover same-run source-bound typed-buffer capacity receipt
+        uses: actions/download-artifact@v4
+        with:
+          name: mesh-studio-r2722-original-visual-transfer-budget-${{ github.sha }}
+          path: build/mesh-studio
+      - name: Reject missing actual compiled original accepted TRI performance inputs
+        run: |
+          python -c "from pathlib import Path; assert Path('build/r2720-native-accepted-scene.json').is_file(); assert Path('build/mesh-studio/r2722-visual-transfer-budget.json').is_file()"
       - name: Install API dependencies
         run: python -m pip install fastapi==0.128.2 httpx==0.28.1 uvicorn==0.48.0
       - name: Install pinned top-level frontend packages
@@ -113,9 +129,20 @@ jobs:
       - name: Install Chromium and dependencies
         working-directory: tools/mesh_studio/web
         run: npx playwright install --with-deps chromium
-      - name: Execute real Chromium dual-view smoke
+      - name: Execute real Chromium dual-view smoke and authentic original TRI performance
         working-directory: tools/mesh_studio/web
         run: npm run test:e2e
+      - name: Independently audit actual original Chromium performance receipt and source SHA
+        run: python -m tools.mesh_studio.native_browser_perf_audit --report build/mesh-studio/r2722-original-chromium-performance.json --scene build/r2720-native-accepted-scene.json --budget build/mesh-studio/r2722-visual-transfer-budget.json --output build/mesh-studio/r2722-chromium-audit.json
+      - name: Retain exact-source original Chromium import interaction and JS heap measurements
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2722-real-native-chromium-${{ github.sha }}
+          path: |
+            build/mesh-studio/r2722-original-chromium-performance.json
+            build/mesh-studio/r2722-chromium-audit.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Retain bounded browser screenshots and test logs
         if: always()
         uses: actions/upload-artifact@v4
@@ -159,6 +186,15 @@ jobs:
         run: python -m tools.mesh_studio.native_accepted_scene --directory build/r2712-native-evidence --output build/r2720-native-accepted-scene.json
       - name: Independently audit source-sha-pinned accepted TRI seam edges across every patch
         run: python -m tools.mesh_studio.native_seam_edges --directory build/r2712-native-evidence --output build/r2721-original-native-seam-edges.json
+      - name: Compute R2.7.22 real native scene CPU typed-buffer capacity from original source bytes
+        run: python -m tools.mesh_studio.native_scene_perf_budget --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --output build/mesh-studio/r2722-visual-transfer-budget.json
+      - name: Retain original-source R2.7.22 deterministic CPU transfer budget
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2722-original-visual-transfer-budget-${{ github.sha }}
+          path: build/mesh-studio/r2722-visual-transfer-budget.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Retain native R2.7.21 read-only per-patch actual TRI edge qualification
         uses: actions/upload-artifact@v4
         with:
