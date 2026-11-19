@@ -12,6 +12,31 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-18 - local Linux qualification complete; independent reviews pending
+
+[Review readiness](PR240_REVIEW_READINESS_20261118.md) and [evidence](evidence/PR240_REVIEW_READINESS_20261118.json)
+pin unchanged source15e2915/all24 changed files. Fresh GNU13.3 and Clang18.1
+ASan/UBSan/leak profiles each complete13 steps and all five existing cases,
+including article183 commits/11+5+3 forgeries/nonempty rollback. Output is on
+native Linux filesystem; source remains on v9fs. Old DrvFS failed/partial runs
+remain failed, with no claim of a DrvFS repair or arbitrary-route qualification.
+
+Whitespace24/C++ format14 pass. Retained exact85/20/hosted4 evidence is identity-
+checked, not rerun. Prospective integration has no conflicts and only QUAD-doc
+differences from the candidate; no merge or post-merge gate is executed.
+
+The old enum warning is an intentional unsupported-mode cast in an unchanged
+negative fixture. Primary Clang/C++ documentation supports a proposed style-
+diagnostic classification; raw full-fixture analysis still exits1 and is not
+suppressed or called a pass. Its explicit independent disposition remains open.
+
+**Next:** await user choice of two separate technical reviewers or external human
+review, then run independent ownership/regression review on exact15e2915. Packet
+is concrete and ready; no independent approval is claimed. Review findings and
+scoped enum/WSL disposition must precede exact research integration/post-merge
+gates. Draft PR240, historical/mixed-global-error/adaptive/native-CRT limits stay
+open; no scientific policy, source or modernization-main change this session.
+
 ### 2026-11-18 - adopted area centroid implemented and compared
 
 User explicitly adopts area centroid in UV and real-history comparison.

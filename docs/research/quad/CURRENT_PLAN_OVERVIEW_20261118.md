@@ -77,3 +77,8 @@ changes source and regenerates the real case. See its pinned report and evidence
 Current [mixed smoothing delivery](MIXED_UV_SMOOTHING_20261118.md) preserves all tradeoffs and exact validation identities.
 
 Current [area-centroid implementation and comparison](AREA_CENTROID_DELIVERY_20261118.md) settles the experimental center choice; next independent static-package review and finding disposition.
+
+The [review-readiness checkpoint](PR240_REVIEW_READINESS_20261118.md) adds fresh
+local GNU/Clang sanitizer qualification using Linux-filesystem outputs. Old DrvFS
+failures and the raw enum analysis remain visible. Independent review is not yet
+started: the concrete reviewer-route question is pending. No merge is claimed.

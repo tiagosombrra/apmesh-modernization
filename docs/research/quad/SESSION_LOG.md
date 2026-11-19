@@ -3514,3 +3514,45 @@ settled; no repeated scientific selection question. Next independent static PR24
 review and old enum-analysis/WSL disposition, then exact research integration/
 post-merge gates. Retain historical identity, full native/CRT/oracle and later
 actual mixed-global-error/adaptive work. Commit/read back canonical checkpoint.
+
+## 2026-11-18 - prepare static PR240 review and qualify native Linux output routing
+
+User asks to continue the stated review/finding-disposition plan. Read canonical
+93ae272/source15e2915/main ef40c0f and verify current PRs/checks. Source remains
+clean and unchanged; PR240 draft, no GitHub reviews, exact44440173309 successful.
+Prepare a24-file SHA-bound ownership/regression packet. Present a concrete user
+choice for two separate reviewers versus external human review; prior two-reviewer
+authorization concerned PR238. No reviewer is started without that choice and
+no primary audit is labeled independent approval. Choice is pending at checkpoint.
+
+Inspect old WSL GNU/Clang denied directory-renames and preserve all failed/partial
+prefixes. Rebuild exact15e2915 under the existing GNU13.3 Release and Clang18.1
+Debug ASan/UBSan/leak cache profiles/flags. Explicitly place outputs under
+/home/apmesh on native Linux filesystem, source still v9fs. Start23:11:53 Fortaleza
+(correct the initially reported23:15); finish in242.285seconds. Keep300-second
+child caps/current checker caps and first-failure/process-group cleanup. All13
+steps per profile pass: compiler/filesystem, build, front/smoothing build/run,
+source contracts and article/live-pair/bounds/fixed16/original-boundary histories.
+All three current article reports GNU/ASan/MSVC match in their recorded fields;
+183 commits,11+5+3 forged traces and nonempty rollback. No hidden retry/fallback,
+new generator rule, permissions change or claim that old DrvFS was repaired.
+
+Retain expected enum diagnostic: scoped fixed-int enum value127 in a deliberate
+unsupported-mode test. Source identical since11dcaa7; native rejection checks
+run in the retained20-test scope. Clang documentation distinguishes this warning
+from necessarily undefined behavior; C++ fixed-enum/cast rules support the proposed
+technical classification. Do not add a fake enumerator, remove the control or
+suppress the warning. Raw full-fixture analysis still exits1; independent review
+must explicitly dispose it. No unilateral required-gate waiver or full-analysis
+pass. Preserve previous unrelated/native/historical limitations.
+
+Whole changed-file whitespace24/C++ format14 checks pass without edits. Check
+current source hashes/image identity and reuse exact85/20/hosted4/frozen TRI
+evidence without rerunning it. Read-only merge-tree preflight has no conflicts;
+prospective tree differs from candidate only in QUAD documentation. No remote
+merge, source mutation or post-merge tests. Audit code/owners/contracts/tests/
+docs/scientific scope and known coverage; broader native/CRT/oracle, historical
+identity and mixed global error/adaptive epochs0 remain open. Append readiness
+evidence/state/plan and commit/read back canonical checkpoint. Next selected
+independent review route on exact15e2915, findings/disposition, then required
+research integration/post-merge gates. No Blender change or whole-stage closure.

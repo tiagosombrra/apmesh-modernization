@@ -29,7 +29,12 @@ center choice is settled by the user's explicit aligned response; do not ask
 again to select it. Full historical equation/oracle identity remains open.
 
 One active next action: independent review of the static PR240 package and
-explicit disposition of old enum-analysis/WSL findings. Then required exact
+explicit disposition of old enum-analysis/WSL findings. The [current review
+packet](PR240_REVIEW_READINESS_20261118.md) now includes fresh GNU/Clang sanitizer
+Linux-filesystem qualification for all five existing cases, while retaining old
+DrvFS failures. The enum classification is proposed with primary-source support;
+raw full-fixture analysis stays nonzero. Await the user's reviewer-route choice
+before claiming independent approval. Then required exact
 research integration and post-merge gates; no merge is performed here.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
 package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope
