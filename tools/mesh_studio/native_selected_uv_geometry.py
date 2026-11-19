@@ -30,7 +30,7 @@ REGISTRATION_PATH = (
 )
 REGISTRATION_BLOB = "4e716e3333e50beeb2c4755a00af44ddf618d9e3"
 PROBE_PATH = "tests/quad/generator_selected_uv_probe.cpp"
-PROBE_BLOB = "eda1d37a7ca7fdbe70422de196bd88398e37c797"
+PROBE_BLOB = "756659da5c978e57744f72d15865d59f8f650768"
 ROLES = ("original", "variant")
 MAX_STDOUT = 3_000_000
 MAX_REPORT = 3_000_000
