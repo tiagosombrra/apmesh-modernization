@@ -10,6 +10,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]/"tools"))
 import quad_generation_metrics as metrics
+import quad_diagonal_curvature as diagonals
 
 
 class GenerationMetricsTests(unittest.TestCase):
@@ -200,6 +201,69 @@ class GenerationMetricsTests(unittest.TestCase):
             self.assertEqual(rows[-1]['nodes_delta'], '1')
             self.assertEqual(rows[-1]['sha256'], before[archive/rows[-1]['file']])
             self.assertIn('a rejected stage never becomes', (output/'results.md').read_text())
+
+
+class DiagonalCurvatureTests(unittest.TestCase):
+    def graph_controls(self, a, b, c):
+        return tuple(tuple((i/3, j/3, a*i*(i-1)/6+b*j*(j-1)/6+c*i*j/9) for j in range(4)) for i in range(4))
+
+    def grid(self, curved=False):
+        xyz = [(x, y, 0.2*(x*x+x*y+2*y*y) if curved else 0) for y in (0, 0.6, 1) for x in (0, 0.3, 1)]
+        faces = [(0, 1, 4, 3), (1, 2, 5, 4), (3, 4, 7, 6), (4, 5, 8, 7)]
+        return xyz, faces
+
+    def test_analytical_gaussian_plane_paraboloid_and_saddle(self):
+        for a, b, c in ((0, 0, 0), (0.5, 0.5, 0), (0.5, -0.5, 0), (0, 0, 1)):
+            for u, v in ((0, 0), (0.2, 0.7), (1, 1)):
+                expected = (4*a*b-c*c)/(1+(2*a*u+c*v)**2+(2*b*v+c*u)**2)**2
+                self.assertAlmostEqual(diagonals.source_gaussian(u, v, self.graph_controls(a, b, c)), expected, places=12)
+
+    def test_analytical_sphere_and_singular_surface(self):
+        for radius in (1, 3):
+            u, v = 0.4, 0.6
+            su, cu, sv, cv = math.sin(u), math.cos(u), math.sin(v), math.cos(v)
+            du = (-radius*su*cv, radius*cu*cv, 0)
+            dv = (-radius*cu*sv, -radius*su*sv, radius*cv)
+            duu = (-radius*cu*cv, -radius*su*cv, 0)
+            duv = (radius*su*sv, -radius*cu*sv, 0)
+            dvv = (-radius*cu*cv, -radius*su*cv, -radius*sv)
+            self.assertAlmostEqual(diagonals.gaussian_from_derivatives(du, dv, duu, duv, dvv), 1/radius**2, places=13)
+        with self.assertRaises(ValueError):
+            diagonals.gaussian_from_derivatives((0, 0, 0), (0, 1, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0))
+
+    def test_planar_interior_and_boundary_are_distinct(self):
+        xyz, faces = self.grid()
+        for diagonal in ('02', '13'):
+            result = diagonals.independent_metric(xyz, faces, diagonal)
+            self.assertFalse(result[4]['boundary'])
+            self.assertAlmostEqual(result[4]['density'], 0, places=12)
+            self.assertEqual(sum(n['boundary'] for n in result), 8)
+            self.assertAlmostEqual(sum(n['defect'] for n in result), 2*math.pi, places=12)
+            self.assertGreater(result[0]['density'], 0)
+
+    def test_quad_rotation_selects_the_other_diagonal(self):
+        xyz, faces = self.grid(curved=True)
+        rotated = [f[1:]+f[:1] for f in faces]
+        expected = diagonals.independent_metric(xyz, faces, '13')
+        self.assertEqual(diagonals.independent_metric(xyz, rotated, '02'), expected)
+        first = diagonals.independent_metric(xyz, faces, '02')
+        self.assertGreater(abs(first[4]['density']-expected[4]['density']), 1e-6)
+
+    def test_pure_tri_is_insensitive_and_density_scales_as_inverse_area(self):
+        xyz, quads = self.grid(curved=True)
+        faces = [t for a, b, c, d in quads for t in ((a, b, c), (a, c, d))]
+        first = diagonals.independent_metric(xyz, faces, '02')
+        self.assertEqual(first, diagonals.independent_metric(xyz, faces, '13'))
+        scaled = diagonals.independent_metric([tuple(7*x for x in p) for p in xyz], faces, '02')
+        for a, b in zip(first, scaled):
+            self.assertAlmostEqual(a['density']/49, b['density'], places=12)
+
+    def test_malformed_diagonal_geometry_rejects(self):
+        xyz, faces = self.grid()
+        for broken, diagonal in (([(0, 1, 1)], '02'), ([(0, 1, 2)], '02'), (faces, 'other'),
+                                 (faces+[(0, 1, 4)], '02'), ([(0, 1, 99)], '13')):
+            with self.assertRaises(ValueError):
+                diagonals.independent_metric(xyz, broken, diagonal)
 
 
 if __name__ == '__main__':
