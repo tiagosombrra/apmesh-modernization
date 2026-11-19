@@ -33,7 +33,8 @@ def gates() -> list[dict]:
 
 def fake_rows() -> list[dict]:
     rows = []
-    for event in gates():
+    for event in sorted(gates() + [row(1, False, 1)],
+                        key=lambda item: (item["step"], item["retry"])):
         for patch in range(4):
             rows.append({
                 "step": event["step"],
@@ -51,6 +52,16 @@ def fake_rows() -> list[dict]:
                 "curve_domain_balance": 0.8,
             })
     return rows
+
+
+def fake_events(extra: list[dict] | None = None) -> list[dict]:
+    """Construct synthetic local witnesses, including ungated Adapter scope."""
+    return [{
+        "adaptive_step": int(record["step"]),
+        "retry_index": int(record["retry"]),
+        "patch_index": int(record["patch_id"]),
+        "local_attempt": int(record["local_regen_attempt"]),
+    } for record in (fake_rows() + (extra or []))]
 
 
 def encode(rows: list[dict], columns: list[str] | None = None) -> bytes:
@@ -71,9 +82,9 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
             evidence)
 
     def test_genuine_shape_synthetic_eistute_candidate_inventory(self):
-        result = parse_original_patch_csv(encode(fake_rows()), gates())
-        self.assertEqual(result["native_local_patch_attempt_rows"], 28)
-        self.assertEqual(len(result["step4_local_candidate_sets_by_patch"]), 8)
+        result = parse_original_patch_csv(encode(fake_rows()), gates(), fake_events())
+        self.assertEqual(result["native_local_patch_attempt_rows"], 32)
+        self.assertEqual(len(result["step4_local_candidate_sets_by_patch"]), 8)\n        self.assertEqual(result["real_original_adapter_outer_attempt_scopes"], 8)\n        self.assertEqual(result["original_adapter_only_outer_scopes_not_global_gate"], [[1, 1]])
         self.assertTrue(all(
             v["all_recorded_local_attempts_underresolved"]
             for v in result["step4_local_candidate_sets_by_patch"]))
@@ -93,7 +104,7 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
             "internal_element_ratio": 0.50,
         })
         rows.append(trial)
-        result = parse_original_patch_csv(encode(rows), gates())
+        result = parse_original_patch_csv(encode(rows), gates(), fake_events([trial]))
         self.assertFalse(
             result["step4_local_candidate_sets_by_patch"][-1][
                 "all_recorded_local_attempts_underresolved"])
@@ -107,7 +118,7 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
         with self.assertRaisesRegex(
                 NativeLineageValidationError,
                 "r2728_original_adapter_csv_wrong_outer_or_duplicate"):
-            parse_original_patch_csv(encode(rows), gates())
+            parse_original_patch_csv(encode(rows), gates(), fake_events())
 
     def test_missing_patch_scope_rejected(self):
         rows = fake_rows()
@@ -115,7 +126,7 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
         with self.assertRaisesRegex(
                 NativeLineageValidationError,
                 "r2728_original_adapter_missing_patch"):
-            parse_original_patch_csv(encode(rows), gates())
+            parse_original_patch_csv(encode(rows), gates(), fake_events())
 
     def test_missing_attempt_zero_rejected(self):
         rows = fake_rows()
@@ -123,7 +134,7 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
         with self.assertRaisesRegex(
                 NativeLineageValidationError,
                 "r2728_original_adapter_missing_patch"):
-            parse_original_patch_csv(encode(rows), gates())
+            parse_original_patch_csv(encode(rows), gates(), fake_events([rows[-1]]))
 
     def test_noncontiguous_local_indices_rejected(self):
         rows = fake_rows()
@@ -133,7 +144,7 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
         with self.assertRaisesRegex(
                 NativeLineageValidationError,
                 "r2728_original_adapter_missing_patch"):
-            parse_original_patch_csv(encode(rows), gates())
+            parse_original_patch_csv(encode(rows), gates(), fake_events([added]))
 
     def test_forged_boolean_transition_flag_rejected(self):
         rows = fake_rows()
@@ -141,7 +152,7 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
         with self.assertRaisesRegex(
                 NativeLineageValidationError,
                 "r2728_original_cpp_transition_underresolved_formula_forged"):
-            parse_original_patch_csv(encode(rows), gates())
+            parse_original_patch_csv(encode(rows), gates(), fake_events())
 
     def test_forged_interior_imbalance_rejected(self):
         rows = fake_rows()
@@ -149,7 +160,7 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
         with self.assertRaisesRegex(
                 NativeLineageValidationError,
                 "r2728_original_cpp_interior_transition_imbalance_forged"):
-            parse_original_patch_csv(encode(rows), gates())
+            parse_original_patch_csv(encode(rows), gates(), fake_events())
 
     def test_nonfinite_metrics_rejected(self):
         for value in ("nan", "inf", "-inf"):
@@ -159,14 +170,14 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
                 with self.assertRaisesRegex(
                         NativeLineageValidationError,
                         "r2728_original_adapter_csv_nonfinite"):
-                    parse_original_patch_csv(encode(rows), gates())
+                    parse_original_patch_csv(encode(rows), gates(), fake_events())
 
     def test_missing_required_header_rejected(self):
         columns = [s for s in FIELDS if s != "transition_underresolved"]
         with self.assertRaisesRegex(
                 NativeLineageValidationError,
                 "r2728_original_adapter_csv_missing_or_duplicate_headers"):
-            parse_original_patch_csv(encode(fake_rows(), columns), gates())
+            parse_original_patch_csv(encode(fake_rows(), columns), gates(), fake_events())
 
     def test_duplicate_header_rejected(self):
         raw = encode(fake_rows())
@@ -176,7 +187,7 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
         with self.assertRaisesRegex(
                 NativeLineageValidationError,
                 "r2728_original_adapter_csv_missing_or_duplicate_headers"):
-            parse_original_patch_csv(corrupted, gates())
+            parse_original_patch_csv(corrupted, gates(), fake_events())
 
     def test_truncated_or_windows_newline_rejected(self):
         raw = encode(fake_rows())
@@ -185,13 +196,13 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
                 with self.assertRaisesRegex(
                         NativeLineageValidationError,
                         "r2728_missing_oversized_or_noncanonical_native_patch_csv"):
-                    parse_original_patch_csv(corrupted, gates())
+                    parse_original_patch_csv(corrupted, gates(), fake_events())
 
     def test_different_actual_native_cpp_gate_chronology_rejected(self):
         with self.assertRaisesRegex(
                 NativeLineageValidationError,
                 "r2728_not_original_seven_eistute_cpp_gate_attempts"):
-            parse_original_patch_csv(encode(fake_rows()), gates()[:-1])
+            parse_original_patch_csv(encode(fake_rows()), gates()[:-1], fake_events())
 
     def test_no_source_fake_directory_can_pass_attestation(self):
         with tempfile.TemporaryDirectory() as tmp:
