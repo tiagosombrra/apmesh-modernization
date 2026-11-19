@@ -102,7 +102,12 @@ def main():
         p.add_argument('--'+key,required=True)
     p.add_argument('--parent-source-lineage',default=None)
     a=vars(p.parse_args())
+    # Never allow an earlier candidate directory to masquerade as this run.
+    from s40f11_atomic_candidate_delivery import (
+        publish_native_candidate, require_fresh_destination,
+    )
     try:
+        require_fresh_destination(a['output_dir'])
         candidate,receipt=private_f9_native_trial(
             original_step_path=a['original_step'],
             s3y_bp_path=a['s3y_bp'],
@@ -112,18 +117,19 @@ def main():
             original_f5_spec_path=a['original_f5_spec'],
             original_f6_spec_path=a['original_f6_spec'],
             parent_source_lineage_path=a['parent_source_lineage'])
+        publish_native_candidate(a['output_dir'],candidate,receipt)
     except (OSError,ValueError,KeyError,TypeError,UnicodeError) as error:
+        output_target=Path(a['output_dir'])
         print(json.dumps({'classification':'BLOCKED_NO_NATIVE_ADMISSION',
                           'error':type(error).__name__+': '+str(error),
-                          'candidate_bp_emitted':False,'new_source_faces_admitted':0},
+                          'new_candidate_emitted_this_run':False,
+                          'output_destination_preexisting':output_target.exists() or output_target.is_symlink(),
+                          'new_source_faces_admitted':0},
                          sort_keys=True),file=sys.stderr)
         return 3
-    out=Path(a['output_dir']);out.mkdir(parents=True,exist_ok=True)
-    (out/'s40f9_source_joined.ORIGINAL_NATIVE_SAMPLED_CANDIDATE.bp').write_text(candidate)
-    (out/'s40f9_original_native_reconciliation_receipt.json').write_text(
-        json.dumps(receipt,indent=2,sort_keys=True)+'\n')
     print(json.dumps({'classification':receipt['classification'],
-                      'joined_patches':164,'represented_original_faces':26,
+                      'candidate_patches':164,'candidate_original_source_faces':26,
+                      'new_source_faces_homologated':0,
                       'continuous_original_STEP_geometry_proof':False,
                       'apmesh_cpp_tri_quad_executed':False},sort_keys=True))
     return 0
