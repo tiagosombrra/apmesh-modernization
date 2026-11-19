@@ -21,7 +21,7 @@ Previously the F9 command wrote the joined .bp candidate and its JSON receipt as
 
 The new module was run locally on hermetic synthetic data: **10/10 PASS** for publishing, no overwrite, dangling symlink, hash mismatch, incomplete exact proof, failed native proof, false full-model status, false source-face admission, staged rename failure cleanup and repeat-run rejection.
 
-Previous S40-F10 local exact-Jacobian tests were re-executed: **6/6 PASS**. Combined directed selection: **16/16 PASS**, distinct from the full historical Python suite, any C++ production regression or a native original S40 run.
+Previous S40-F10 local exact-Jacobian tests were re-executed: **6/6 PASS**. Three additional isolated F9 CLI entrypoint tests now verify that existing destinations are rejected before calling the private CAD trial, absent private inputs produce no candidate, and a synthetic success is explicitly labelled as a candidate, not a scientifically admitted model. **19/19 directed tests PASS** (10 publisher + 3 CLI + 6 F10) in a single local Python unittest run. The committed F9 CLI and F11 publisher Git blobs match the exact locally checked source bytes. These are distinct from the full historical Python suite, any C++ production regression or a native original S40 run.
 
 ## Remaining scientific block
 
@@ -32,7 +32,7 @@ The original private byte-pinned S40 STEP, S3.Y 156-patch BP, F6/F9 BPs and geom
 From \`docs/research/nonmanifold-benchmark/probes\`:
 
 \`\`\`bash
-python -m unittest -v test_s40f11_atomic_candidate_delivery test_s40f10_postrebase_exact_certificate
+python -m unittest -v test_s40f11_native_join_entrypoint test_s40f11_atomic_candidate_delivery test_s40f10_postrebase_exact_certificate
 \`\`\`
 
 Run the existing \`s40f9_native_join_gate.py\` with all SHA-pinned private parameters in an isolated environment, specifying an output directory that does **not yet exist**. A complete result is the directory pair \`s40f9_source_joined.ORIGINAL_NATIVE_SAMPLED_CANDIDATE.bp\` and \`s40f9_original_native_reconciliation_receipt.json\`.
