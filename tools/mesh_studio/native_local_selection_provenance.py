@@ -43,6 +43,8 @@ SOURCE_PINS = {
         "8fcba75ae55d42bda610fb310977ab5f25dcfb00",
     "research/quad/adapter_capture.h":
         "c22fbe8ef19f65b2ec5ed88284adfb6d8ccbeac1",
+    "docs/mesh-studio/R2_7_30A_ADAPTER_INVOCATION_EPOCH_SCOPE_CLARIFICATION_20261119.md":
+        "d6b62155d96f15f23cf137ab95cbe43c829d7e52",
 }
 EVENT_PATTERN = re.compile(
     rb"^R2730_LOCAL_SELECTION=ordinal=(\d+),session=(\d+),"
@@ -101,7 +103,7 @@ def parse_native_local_selection(stdout: bytes) -> list[dict]:
         require(ordinal == len(result) + 1 and
                 session == 6306001 and epoch > 0 and
                 1 <= step <= 4 and 0 <= patch < 4 and
-                0 <= local <= 3 and retry == outer_retry and
+                0 <= local <= 3 and outer_retry in (0, 1) and
                 retry in (0, 1) and kind in (
                     "selected", "superseded", "generation_failed"),
                 "r2730_original_cpp_local_selection_chronology_or_scope_invalid")
@@ -224,9 +226,9 @@ def join_selected_local_to_native_csv(stdout: bytes, raw_csv: bytes,
             "local_selected_is_not_global_accepted_tri": True,
         })
     require(len(selected) == 40 and
-            len(set((r["outer_epoch"], r["patch"])
-                    for r in selected)) == len(selected),
-            "r2730_original_cpp_duplicate_outer_epoch_patch_selection")
+            [r["adapter_return_index"] for r in selected] ==
+            list(range(40)),
+            "r2730_original_cpp_adapter_return_chronology_not_identified")
     step4 = [r for r in selected if r["step"] == 4]
     require(len(step4) == 16 and
             all(r["transition_underresolved"] and
@@ -242,6 +244,8 @@ def join_selected_local_to_native_csv(stdout: bytes, raw_csv: bytes,
         "actual_original_cpp_sole_selected_event_per_adapter_return": True,
         "exact_original_cpp_csv_status_and_group_order_reproduced": True,
         "selected_local_is_not_global_accepted_epoch": True,
+        "outer_retry_and_local_retry_are_distinct_source_dimensions": True,
+        "adapter_return_index_is_group_order_not_global_epoch": True,
         "source_cpp_adapter_csv_sha256": _sha(raw_csv),
         "source_cpp_selection_stdout_sha256": _sha(stdout),
         "local_observations": all_obs,
