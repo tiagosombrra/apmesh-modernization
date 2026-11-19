@@ -6,11 +6,11 @@ The dated historical entries below preserve evidence and superseded priorities;
 they do not replace the current execution queue.
 
 Current correction: [adopted area centroid in UV](AREA_CENTROID_DELIVERY_20261118.md)
-is implemented/compared in exact15e2915/draft PR240. Final local85/85,
-native20/20 and hosted44440173309 all4 succeed. Historical dated missing-stage
+is implemented/compared in reviewed15e2915 and integrated as51d51f6/PR240. Exact post-merge local85/85,
+native20/20, three-profile application histories and hosted44496523827 all4 succeed. Historical dated missing-stage
 entries below retain their original scope; no whole-stage closure follows.
 
-## Current finite execution queue - 2026-11-18
+## Current finite execution queue - 2026-11-19
 
 Original curves/native templates/prospective TRI-QUAD selection, confirmed
 clearance0.2, five simultaneous UV smoothing passes and the now adopted polygon
@@ -28,14 +28,16 @@ historical numeric reproduction or mixed convergence claim. The experimental
 center choice is settled by the user's explicit aligned response; do not ask
 again to select it. Full historical equation/oracle identity remains open.
 
-One active next action: independent review of the static PR240 package and
-explicit disposition of old enum-analysis/WSL findings. The [current review
-packet](PR240_REVIEW_READINESS_20261118.md) now includes fresh GNU/Clang sanitizer
-Linux-filesystem qualification for all five existing cases, while retaining old
-DrvFS failures. The enum classification is proposed with primary-source support;
-raw full-fixture analysis stays nonzero. Await the user's reviewer-route choice
-before claiming independent approval. Then required exact
-research integration and post-merge gates; no merge is performed here.
+The [static PR240 research integration](PR240_RESEARCH_INTEGRATION_20261119.md)
+is complete at51d51f6 after two independent technical reviews and explicit scoped
+enum/WSL dispositions. Exact post-merge baseline85, native20, three-profile actual
+histories/rollback/forgeries and hosted4/4/frozen TRI pass. Old failed prefixes,
+raw full-fixture enum exit1, DrvFS route and broader coverage limits remain.
+
+One active next action: bind actual mixed-state/error/quality observations to the
+retained source history as the bounded R3 prerequisite. Before choosing a mixed
+global curvature estimator/controller or changing acceptance/stopping, ask a
+descriptive scientific question. No new numerical rule is adopted by integration.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
 package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope
 and original M0-M9/R0-R4 gates remain open. Existing selection S<=1.5, curves,

@@ -1,9 +1,9 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-18 Fortaleza. Canonical branch: `quad-templates`.
-Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
+Updated 2026-11-19 Fortaleza. Canonical branch: `quad-templates`.
+Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: correct documented article-conformance gaps in the mixed candidate
+## Active: static PR240 integrated; prepare the bounded mixed-history R3 prerequisite
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,34 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-19 - PR240 static integration qualified; independent reviews complete
+
+[Integration and closure audit](PR240_RESEARCH_INTEGRATION_20261119.md),
+[ownership review](PR240_OWNERSHIP_REVIEW_20261119.md),
+[regression review](PR240_REGRESSION_REVIEW_20261119.md) and
+[evidence](evidence/PR240_RESEARCH_INTEGRATION_20261119.json) record no blocking
+static-package defect at reviewed15e2915. Enum negative-input analysis retains
+raw exit1; native-Linux publication is qualified while old DrvFS failures remain.
+Low exact-front-tie and broader allocation/transaction coverage limits stay open.
+
+PR240 is merged as51d51f6423abd0208b250f0bbb0291364852cab1; parents/tree match
+preflight. Exact post-merge local85/85, MSVC20/20 and all five existing cases on
+MSVC/GNU/Clang sanitizer pass. Actual183 commits/15 passes/11+5+3 forgeries and
+nonempty rollback agree. Exact hosted44496523827 completes4/4 SUCCESS with
+85 baseline/527 Python and frozen Eistute5/Book4 OBJ/acceptance/boundary parity.
+All2456 protected tracked files retain bytes/size/write-times; image/cache hashes
+match. Initial incorrect WSL distribution invocation starts no test; inventory-
+based correction is recorded, with no case retry. Main ef40c0f is unchanged.
+
+**Delivered:** bounded static article path, original curves, prospective mixed
+front, confirmed clearance, area centroid and five-pass smoothing are canonical.
+**Next:** bind actual mixed-state/error/quality observations to retained histories
+as the bounded R3 prerequisite. Describe and ask before adopting a mixed global
+curvature estimator/controller or changing scientific acceptance/stopping.
+Mixed global error remains unavailable, accepted mixed epochs0; no full-stage,
+historical-identity, universal-quality or native/CRT coverage closure is claimed.
+No new source, generation or Blender change in this review/integration session.
 
 ### 2026-11-18 - local Linux qualification complete; independent reviews pending
 
@@ -137,11 +165,11 @@ incident vertices, and four/five simultaneous versus sequential passes. The
 printed-p290 passage is reread; a UV/distinct/five-simultaneous proposal is pending,
 not adopted. Preserve contour positions, existing validity and rollback policies.
 
-### Current plan in one view - verified2026-11-18
+### Current plan in one view - verified2026-11-19
 
 Read the [short current plan](CURRENT_PLAN_OVERVIEW_20261118.md) before historical
 entries below. Real mixed generation exists; complete paper conformance and
-mixed adaptive closure do not. Current code is draft PR240 exact15e2915.
+mixed adaptive closure do not. Current code is integrated PR240 exact research merge51d51f6.
 
 | Work | Status |
 | --- | --- |
@@ -151,7 +179,7 @@ mixed adaptive closure do not. Current code is draft PR240 exact15e2915.
 | Actual mixed smoothing | Implemented/tested with explicit UV/distinct/five-pass interpretation; tradeoffs retained |
 | Template centers | Area centroid UV adopted/implemented/tested for the experiment; historical numeric identity remains unproven |
 | Actual mixed global curvature error/accepted adaptation | Not complete; original TRI still drives adaptation |
-| Independent review and research integration of PR240 | Pending; draft/unmerged |
+| Independent review and research integration of PR240 | Complete in the bounded static scope at51d51f6; exact post-merge gates pass |
 
 Order: clearance, smoothing and adopted area centroid implemented/compared ->
 independent static-package review and finding disposition -> research integration ->

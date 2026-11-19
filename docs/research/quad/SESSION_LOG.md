@@ -3556,3 +3556,45 @@ identity and mixed global error/adaptive epochs0 remain open. Append readiness
 evidence/state/plan and commit/read back canonical checkpoint. Next selected
 independent review route on exact15e2915, findings/disposition, then required
 research integration/post-merge gates. No Blender change or whole-stage closure.
+
+## 2026-11-19 - independent PR240 reviews and qualified static research integration
+
+User explicitly authorizes two separate PR240 reviewers. Pin reviewed source
+15e2915/tree57e9800 and canonical fccab6b; audit remote main/branches/open PRs/
+exact checks before delivery. Both ownership/lifetime and scientific/regression
+reviews find no blocking static-package defect; persist their complete reports.
+Dispose intentional fixed-int enum negative input while retaining raw additional
+full-fixture analysis exit1. Qualify only the native-Linux publication route;
+old DrvFS failures, exact-tie replay/allocation/transaction coverage limits remain.
+Technical review is not advisor alignment, GitHub approval or whole-stage closure.
+
+Mark PR240 ready and merge exact15e2915 as51d51f6423abd0208b250f0bbb0291364852cab1
+into quad-templates. Verify parents fccab6b/15e2915 and prospective tree51e2efa;
+only QUAD docs differ from candidate. Release secondary canonical checkout at
+its unchanged commit; guard direct primary research checkout, preserving all2456
+non-QUAD-doc tracked files' bytes/size/mtime. Main ef40c0f and concurrent PRs stay
+untouched. No code/scientific formula, policy, ordering or synchronization change.
+
+Start exact-merge validation06:27 Fortaleza. Full baseline85/85, native MSVC20/20,
+source contracts and all five existing application cases pass. Initial WSL call
+selects nonexistent Ubuntu, starts no test and is recorded as launcher error;
+inventory confirms Ubuntu-24.04 and the invocation is explicitly corrected.
+No test retry/fallback occurs. Existing GNU13.3 Release and Clang18.1 Debug
+ASan/UBSan/leak profiles each pass13 steps with native-Linux outputs, same flags,
+300-second child bounds and first-failure stop; correct Linux run180.937seconds.
+Qualified native image/cache hashes remain identical. All local article reports
+agree on183 commits,15 passes,11+5+3 forgeries and nonempty rollback. Raw436 files
+are hashed. Exact hosted44496523827 completes4/4 SUCCESS,85 baseline/527 Python,
+native20 GNU/MSVC, actual GNU/ASan/MSVC article equality, frozen Eistute5/Book4
+OBJ/acceptance/boundary parity. Retain unchanged-source configured analysis and
+24-file whitespace/14-file format evidence without relabeling them as reruns.
+
+Closure audit covers code/owners/tests/contracts/docs/scientific scope and known
+failure/coverage inventory. Bounded static integration is complete, while full
+M1/M5/R3/M7/historical/native-CRT/general-geometry and Doxygen obligations remain.
+Mixed global curvature error is unavailable; accepted mixed epochs0. No new mesh
+or Blender presentation. Update STATE/roadmap/current summary and portable
+review/integration evidence; commit and verify canonical remote checkpoint.
+Next bounded R3 action binds actual mixed-state/error/quality observations to
+retained histories. Ask a descriptive scientific question before adopting mixed
+curvature estimator/controller or changing acceptance/stopping; no balancing law.

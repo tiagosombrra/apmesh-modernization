@@ -1,7 +1,7 @@
 # Current QUAD plan at a glance
 
-Updated2026-11-18 against the verified canonical plan and exact source15e2915,
-draft PR240. This reading guide summarizes the existing approved sequence;
+Updated2026-11-19 against the verified canonical plan and exact research merge
+51d51f6/PR240 (reviewed source15e2915). This reading guide summarizes the existing approved sequence;
 it does not introduce a new scientific rule, milestone or authorization.
 
 ## Objective
@@ -17,17 +17,18 @@ and explicit separation between a static mixed output and mixed adaptive closure
 | --- | --- | --- |
 | Original analytical curves feeding actual application output | Implemented; earlier bounded integration completed through PR238 | The adaptation still uses the original TRI state |
 | Native interior templates and source polygons | Implemented; six-family catalog and actual mixed usage available | Area-centroid UV policy adopted/tested; historical numeric identity remains unproven |
-| Prospective mixed advancing front | Implemented on draft PR240; chooses TRI/QUAD before one contour update | Static output exists; complete paper conformance is not claimed |
+| Prospective mixed advancing front | Integrated in PR240; chooses TRI/QUAD before one contour update | Static output exists; complete paper conformance is not claimed |
 | Real curved-model output at steps0-3 | Regenerated and archived; current final output689 nodes,630 QUAD,102 TRI | These are outputs driven by TRI source histories, not accepted mixed adaptive epochs |
 | Contour-clearance classification | Implemented in11dcaa7; exactly25 former violations removed | Boundary angle improves, but geometry error and worst edge ratio worsen |
 | Per-step geometry errors and element quality | Exported to Markdown/CSV/JSON and displayed in Blender | Original global curvature error is TRI-only; mixed RMS is a different diagnostic |
 | Mixed smoothing | Implemented: UV, distinct incident other vertices, five simultaneous passes, fixed contour | Angle gains coexist with worse QUAD J/stage2 RMS/stage3 boundary angle |
 | Current Blender presentation | New four-scene file: eight outputs,18 pass states, mean/area comparison and previous template reference | New four-scene area-centroid file adds six actual mean/area comparison meshes; retained catalog is labeled previous mean reference |
 
-The latest source15e2915 has exact local85/85, native20/20 on the exact source and four successful hosted
-checks, reverified remotely. Passing those scopes does not cover the missing
-paper stages, full historical oracle, general geometry or full adaptive closure.
-PR240 remains draft/unmerged. The modernization main branch stays separate.
+[PR240 is integrated and qualified](PR240_RESEARCH_INTEGRATION_20261119.md) at
+51d51f6: independent ownership/scientific reviews, exact post-merge85/85 baseline,
+native20/20, actual three-profile histories and four successful hosted checks
+(including527 Python/frozen TRI). Source/config/image identities are preserved.
+The modernization main branch stays separate. No full-stage closure follows.
 
 ## What prevents calling the technique complete
 
@@ -36,9 +37,7 @@ PR240 remains draft/unmerged. The modernization main branch stays separate.
 3. **Mixed global curvature error and adaptation:** the equivalent error on the
    actual mixed graph is unavailable; accepted mixed adaptive epochs remain0.
    Lower sampled RMS does not establish mixed adaptive convergence.
-4. **Review/integration:** independent review, the retained adversarial-fixture
-   enum diagnostic, local filesystem failures and exact research-merge gates
-   remain necessary.
+4. **Coverage limits:** static review/integration is complete. The raw additional enum-analysis exit1, old DrvFS route, full CRT/allocation/atomic-publication coverage and independent exact front-tie coverage remain explicitly limited.
 
 ## The single execution sequence
 
@@ -47,10 +46,8 @@ PR240 remains draft/unmerged. The modernization main branch stays separate.
    tradeoffs and additional adversarial-fixture analysis finding.
 2. **Smoothing and center disposition implemented/tested:** the user adopts area centroid in UV. Actual histories and negative controls pass; small Step2 benefits and a small QUAD-J loss remain. No repeated selection question for the settled experiment.
 3. **Executed for clearance/smoothing:** real histories regenerated, before/after quality/error exported, all15 passes/negative controls retained, new Blender opened and change-relevant tests passed. Current area-centroid comparison is delivered in its own exact-source evidence.
-4. **Qualify and integrate the bounded static package:** independent review,
-   local-failure disposition, exact candidate remote/local gates, then research
-   integration and exact post-merge verification. No automatic main integration.
-5. **Later adaptive package:** connect actual mixed-state/error observations and
+4. **Complete:** bounded static review, retained-finding disposition, research integration and exact post-merge verification at51d51f6. Main remains separate.
+5. **Next bounded R3 prerequisite:** connect actual mixed-state/error/quality observations and
    retained histories, then the scientifically aligned estimator/acceptance and
    local boundary-transition/interior feedback work. Full M1/M5/R3/M7 and broader
    original gates remain open; no new controller is adopted by this summary.
