@@ -95,7 +95,7 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict]) -> dict:
                 and len(columns) <= 96,
                 "r2728_original_adapter_csv_missing_or_duplicate_headers")
         rows = list(reader)
-    except (ValueError, UnicodeDecodeError, csv.Error) as exc:
+    except (UnicodeDecodeError, csv.Error) as exc:
         raise ValueError("r2728_original_csv_invalid_UTF8_or_syntax") from exc
     require(1 <= len(rows) <= 256,
             "r2728_original_adapter_csv_empty_or_unbounded_rows")
