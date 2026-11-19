@@ -316,6 +316,22 @@ jobs:
           path: build/r2729-original-aft-adapter-metric-semantics.json
           if-no-files-found: warn
           retention-days: 14
+      - name: Build standalone original-engine R2.7.30 Adapter selected-local observer without touching prior compiled outcome probe
+        run: cmake --build build/r2712-native --target quad_generator_local_selection_probe --parallel 2
+      - name: Replay exact Eistute article and predeclared min13 on original engine with final selected-local C++ observer
+        run: python -m tools.mesh_studio.native_local_selection_provenance --mode capture --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --selection-exe build/r2712-native/bin/quad_generator_local_selection_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --output-dir build/r2730-original-eistute-selected-local --timeout 300
+      - name: Independently verify real R2.7.30 selected-local Adapter returns, accepted TRI source and complete local CSV chronology
+        run: python -m tools.mesh_studio.native_local_selection_provenance --mode audit --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --selection-exe build/r2712-native/bin/quad_generator_local_selection_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --r2728-report build/r2728-original-eistute-patch-audit.json --output-dir build/r2730-original-eistute-selected-local --report build/r2730-original-eistute-selected-local-audit.json
+      - name: Archive raw original C++ R2.7.30 selected-local witness and fail-closed independent source audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2730-original-selected-adapter-local-${{ github.sha }}
+          path: |
+            build/r2730-original-eistute-selected-local/
+            build/r2730-original-eistute-selected-local-audit.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Archive raw R2.7.28 original C++ Adapter per-patch CSV and independent source audit even on experimental failure
         if: always()
         uses: actions/upload-artifact@v4
