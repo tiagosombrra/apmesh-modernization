@@ -19,6 +19,7 @@ import subprocess
 from tempfile import TemporaryDirectory
 
 from .native_acceptance_gate_forensics import parse_original_gate_stderr
+from .native_boundary_ownership import read_actual_adapter_events
 from .native_active_generation_study import TRIALS, audit as audit_r2726
 from .native_controlled_sensitivity import (
     certify_same_run_outcomes, git_blob, make_single_factor_config,
@@ -36,6 +37,8 @@ ADAPTER_BLOB = "78f821411f33a8ca7594c8e357bbe4a79e5d33f9"
 RUNTIME_BLOB = "d21ceb3397c7825bb50534be072261908c9b0e49"
 GENERATOR_BLOB = "844673ea764f3092330e5e9ebb01d8eb339869bc"
 ARTICLE_BLOB = "bd368dbad5b61515106b5d74d28cbde159780cd6"
+BOUNDARY_PARSER_BLOB = "0a9e555fa7d00282d83a8b4187a904851b66ea54"
+LOCAL_SCOPE_ADDENDUM_BLOB = "b82d03399d192362c0553a70e6be9c8835d4893e"
 MAX_CSV_BYTES = 2_000_000
 MAX_LOG_BYTES = 12_000_000
 MAX_SIDECAR_BYTES = 30_000_000
@@ -56,6 +59,9 @@ def attest_original_sources(root: Path) -> dict:
         "src/adapter/adapter.cpp": ADAPTER_BLOB,
         "src/application/runtime_state.cpp": RUNTIME_BLOB,
         "src/generator/generator_adaptive.cpp": GENERATOR_BLOB,
+        "tools/mesh_studio/native_boundary_ownership.py": BOUNDARY_PARSER_BLOB,
+        "docs/mesh-studio/R2_7_28A_ORIGINAL_LOCAL_PRECOMMIT_SCOPE_ADDENDUM_20261119.md":
+            LOCAL_SCOPE_ADDENDUM_BLOB,
     }
     out = {}
     for name, expected in sources.items():
@@ -81,7 +87,8 @@ def _file_hash(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
 
 
-def parse_original_patch_csv(raw: bytes, gate_rows: list[dict]) -> dict:
+def parse_original_patch_csv(raw: bytes, gate_rows: list[dict],
+                             adapter_events: list[dict]) -> dict:
     """Independently validate actual adapter local attempts, not accepted faces."""
     require(0 < len(raw) <= MAX_CSV_BYTES and b"\x00" not in raw
             and b"\r" not in raw and raw.endswith(b"\n"),
@@ -103,6 +110,21 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict]) -> dict:
     require(len(original_gate_keys) == 7 and
             original_gate_keys == sorted(set(original_gate_keys)),
             "r2728_not_original_seven_eistute_cpp_gate_attempts")
+    require(type(adapter_events) is list and adapter_events,
+            "r2728_original_native_adapter_witness_missing")
+    observed = {
+        (row["adaptive_step"], row["retry_index"],
+         row["patch_index"], row["local_attempt"])
+        for row in adapter_events
+    }
+    observed_scopes = {(s, r) for s, r, _p, _l in observed}
+    gate_scopes = set(original_gate_keys)
+    additional = observed_scopes - gate_scopes
+    require(gate_scopes < observed_scopes and
+            additional == {(1, 1)} and
+            all((s, r, patch, 0) in observed for s, r in observed_scopes
+                for patch in range(4)),
+            "r2728_original_adapter_local_scope_not_bound_to_cpp_boundary")
     by_outer = {}
     uncertain = 0
     clean_rows = []
@@ -128,7 +150,7 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict]) -> dict:
         except ValueError as exc:
             raise ValueError("r2728_original_adapter_csv_bad_typed_field") from exc
         key = (step, retry, patch, local)
-        require((step, retry) in original_gate_keys and
+        require((step, retry) in observed_scopes and key in observed and
                 0 <= patch < SOURCE_MODELS["eistute"][0] and
                 0 <= local <= 3 and key not in unique and
                 flagged in (0, 1) and generated >= 0 and leaves >= 0,
@@ -177,7 +199,7 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict]) -> dict:
             "flag_reconstruction_from_rounded_csv_conclusive": not close,
         })
     expected = {(step, retry, patch)
-                for step, retry in original_gate_keys for patch in range(4)}
+                for step, retry in observed_scopes for patch in range(4)}
     require(set(by_outer) == expected and
             all(0 in locals_ for locals_ in by_outer.values()) and
             all(locals_ == set(range(max(locals_) + 1))
@@ -201,7 +223,13 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict]) -> dict:
     } for retry in (0, 1) for patch in range(4)]
     return {
         "schema": SCHEMA,
-        "real_original_outer_cpp_attempts": 7,
+        "real_original_global_cpp_gate_attempts": 7,
+        "real_original_adapter_outer_attempt_scopes": len(observed_scopes),
+        "original_adapter_only_outer_scopes_not_global_gate":
+            [list(x) for x in sorted(additional)],
+        "original_native_adapter_boundary_witness_events": len(adapter_events),
+        "original_native_boundary_identity_slots": len(observed),
+        "original_native_boundary_slots_not_in_csv": len(observed - unique),
         "original_patch_slots_per_cpp_attempt": 4,
         "native_local_patch_attempt_rows": len(clean_rows),
         "local_attempts_not_assumed_selected": True,
@@ -303,6 +331,16 @@ def _run_one(exe: Path, root: Path, ref: dict,
                 b"R2712_NATIVE_LINEAGE_ERROR=" not in execution.stderr,
                 "r2728_original_serial_cpp_process_failed")
         events = parse_original_gate_stderr(execution.stderr)
+        adapter_events = read_actual_adapter_events(execution.stderr, "eistute")
+        expected_close = (104, 72) if role == "original" else (112, 80)
+        observed_identities = {
+            (row["adaptive_step"], row["retry_index"],
+             row["patch_index"], row["local_attempt"])
+            for row in adapter_events
+        }
+        require((len(adapter_events), len(observed_identities)) ==
+                expected_close,
+                "r2728_original_source_adapter_boundary_inventory_diverged")
         marker = re.findall(
             rb"^real_generator_outcomes=1 accepted_tri=(\d+) restored_tri=(\d+)",
             execution.stdout, re.M)
@@ -320,7 +358,7 @@ def _run_one(exe: Path, root: Path, ref: dict,
                 "r2728_original_cpp_accepted_native_face_bytes_not_identical")
         (dest / "accepted_step_1_retry_0.ndjson").write_bytes(sidecar)
         acceptance = certify_same_run_outcomes(events, [receipt], 1, 3)
-        patch = parse_original_patch_csv(raw, events)
+        patch = parse_original_patch_csv(raw, events, adapter_events)
         report = {
             "schema": SCHEMA,
             "role": role,
@@ -423,6 +461,16 @@ def audit(root: Path, exe: Path, original: Path, old_trials: Path,
         stdout = (folder / "original-generator-stdout.log").read_bytes()
         stderr = (folder / "original-generator-stderr.log").read_bytes()
         gates = parse_original_gate_stderr(stderr)
+        adapter_events = read_actual_adapter_events(stderr, "eistute")
+        expected_close = (104, 72) if role == "original" else (112, 80)
+        observed_identities = {
+            (row["adaptive_step"], row["retry_index"],
+             row["patch_index"], row["local_attempt"])
+            for row in adapter_events
+        }
+        require((len(adapter_events), len(observed_identities)) ==
+                expected_close,
+                "r2728_reopened_native_adapter_boundary_inventory_changed")
         marker = re.findall(
             rb"^real_generator_outcomes=1 accepted_tri=(\d+) restored_tri=(\d+)",
             stdout, re.M)
@@ -435,7 +483,7 @@ def audit(root: Path, exe: Path, original: Path, old_trials: Path,
                 "r2728_replayed_accepted_original_tri_faces_not_source_bound")
         acceptance = certify_same_run_outcomes(gates, [receipt], 1, 3)
         raw_csv = (folder / "original-adapter-domain-adaptation.csv").read_bytes()
-        patch = parse_original_patch_csv(raw_csv, gates)
+        patch = parse_original_patch_csv(raw_csv, gates, adapter_events)
         stored = json.loads(
             (folder / "observation-report.json").read_text(encoding="utf-8"))
         require(stored.get("schema") == SCHEMA and
