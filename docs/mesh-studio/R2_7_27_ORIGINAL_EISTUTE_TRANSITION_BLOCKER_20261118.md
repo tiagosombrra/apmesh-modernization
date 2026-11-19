@@ -35,6 +35,26 @@ The original Eistute run additionally violated the max imbalance threshold (0.29
 
 Book `research_debug` is a **non-stable-mode control**: in this source mode the stable transition-coherence gate is bypassed even if the raw penalty is numerically large. Applying Eistute's step-4 caps to Book would produce a false diagnosis. The new independent R2.7.27 auditor explicitly checks the original source's mode-dependent bypass.
 
+## Original adapter's structural trigger and existing diagnostic path
+
+A second **read-only source inspection** of original `src/adapter/adapter.cpp` (Git blob `78f821411f33a8ca7594c8e357bbe4a79e5d33f9`) located `IsTransitionUnderresolved(aft_stats, transition_floor)`. The original per-patch flag is asserted only when **both** of these predicates hold in the returned candidate's structural statistics:
+
+```cpp
+const bool interior_dominant = aft_stats.internal_element_ratio > 0.66;
+return interior_dominant &&
+       (aft_stats.transition_element_ratio + 1.0e-9 < transition_floor);
+```
+
+The original `ComputeTransitionFloor(target_patch_h, internal_ratio)` clamps
+
+`0.08 + 0.08*Clamp((0.18-target_patch_h)/0.18,0,1) + 0.07*Clamp((internal_ratio-0.60)/0.35,0,1)`
+
+to **[0.08, 0.24]**. Since the original generator's full-patch loop records the returned `Adapter::DomainStructuralStats::transition_underresolved` once for each patch, the observed **4/4 step-4 flags** establish that every selected per-patch candidate satisfied **both original structural conditions**. They do **not** reveal the actual numeric `target_patch_h`, internal ratio, transition ratio, or transition floor for each slot, and no new per-patch measurements have been invented.
+
+Importantly, the original adapter **already implements** `AppendDomainDebugLog`, writing a per-patch `<OUTPUT_PREFIX>_domain_adaptation.csv` with `step,retry,patch_id,local_regen_attempt,generation_status,transition_floor,transition_underresolved,interior_transition_imbalance`, region counts/quality and related AFT statistics. The serial runtime state defines `WRITE_ADAPTATION_DEBUG=1` by default; the writer still requires a nonempty output prefix and the runtime debug switch enabled. Existing R2.7.26 study artifacts retained original stderr, source sidecars and intent configs, **not this temporary generated CSV**, and the CSV's own exact bytes have not yet been verified.
+
+**Safer next experiment:** preregister a separate **observation-only** run to preserve the original native per-patch CSV from both truly isolated source and variant processes *without modifying any source model, scientific generation setting, original C++ acceptance predicate, or default visualization*. Then independently audit that each source patch/attempt row is genuine, distinguish selected from local regeneration attempts, cross-check raw gate totals and original postcommit sidecars, and retain the final ZIP in Drive with hash readback. Do not present an unretained or hypothetical debug CSV as empirical evidence.
+
 ## Immutable source evidence and consequences
 
 - Original generator Git blob: `844673ea764f3092330e5e9ebb01d8eb339869bc`. Original exact native precommit event parser Git blob: `f415a2f1410b1c41411aeebbc383d9497753cfd1`.
