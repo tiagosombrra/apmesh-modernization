@@ -196,11 +196,9 @@ def audit(root: Path, original_selected_dir: Path, prior_report: Path) -> dict:
                     if r["step"] == 4]
         require([r["original_selected_local_attempt"] for r in selected] ==
                 previous["selected_step4_local_attempt_indices"] and
-                all(selected == [
-                    p for group in range(4)
-                    for p in previous["selected_step4_by_patch"][str(group)]
-                    if p["step"] == 4
-                ] for _ in (0,)),
+                all([r for r in selected if r["patch"] == patch] ==
+                    previous["selected_step4_by_patch"][str(patch)]
+                    for patch in range(4)),
                 "r2731_selected_adapter_returns_differ_from_prior_cpp_audit")
         profiles[role] = {
             "original_cpp_selection_stdout_sha256": _sha(stdout),
