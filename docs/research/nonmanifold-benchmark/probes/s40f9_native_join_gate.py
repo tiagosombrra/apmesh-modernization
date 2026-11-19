@@ -71,6 +71,10 @@ def private_f9_native_trial(*, original_step_path, s3y_bp_path,
         parent_expected_seams=264,parent_expected_open=96)
     if (len(points),len(patches))!=(1743,164):
         raise ValueError('164-patch structural source join cardinality changed')
+    # Reindexing may substitute parent control coordinates; certify the final BP.
+    from s40f10_postrebase_exact_certificate import certify_postrebase_eight
+    serialized_joined_bp=f7.serialize_bp(points,patches)
+    postrebase_proof=certify_postrebase_eight(serialized_joined_bp.encode('utf-8'))
     native_proof=f7.original_native_gate(
         source,original_step_path,points,patches,original_manifest,rebased,
         preimported_native=native,preverified_mapping=source_mapping)
@@ -82,12 +86,13 @@ def private_f9_native_trial(*, original_step_path, s3y_bp_path,
             'original_s3y_parent_bp_sha256':f7.S3Y_SHA,
             'regularized_island_bp_sha256':independent.F9_SHA,
             'exact_bernstein_strict_positive_eight':True,
+            'postrebase_exact_jacobian_proof':postrebase_proof,
             'all_original_native_trim_and_edge_gates_executed':True,
             'original_native_audit':native_proof,
             'apmesh_cpp_tri_quad_executed':False,
             'full_43_face_atlas_complete':False,
             'formal_continuous_original_STEP_hausdorff_certified':False}
-    return f7.serialize_bp(points,patches),report
+    return serialized_joined_bp,report
 
 
 def main():
