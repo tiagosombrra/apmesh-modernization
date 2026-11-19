@@ -3,7 +3,7 @@
 Updated 2026-11-19 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: diagonal comparison complete; mixed curvature operator contract next
+## Active: mixed curvature contract prepared; scientific adoption pending
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,33 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-19 - mixed Gaussian/mean operator contract prepared, not adopted
+
+[Proposed contract](MIXED_CURVATURE_OPERATOR_CONTRACT_20261119.md) and
+[evidence](evidence/MIXED_CURVATURE_OPERATOR_CONTRACT_20261119.json) pin unchanged
+baseline bfaded7. Primary polynomial-jet/CGAL references support a bounded
+quadratic-fit candidate for nodal K/H without choosing a QUAD diagonal. Project
+choices are explicit: uniform samples, coface one/two rings, PCA/normalized fit,
+full-rank/SVD diagnostics, fitted-normal orientation and unavailable-node status.
+One-sided boundary fits are included; legacy TRI and all generation/policies stay.
+No new operator is implemented, adopted or qualified by this document.
+
+Read-only source audit identifies a legacy mean scaling mismatch to investigate:
+signed normal-angle sum over area scales1/s^2 on fixed branches, while analytical
+mean scales1/s. This is not a native scale test or proof of a historical bug.
+Keep legacy intact; full Kim reference remains inaccessible. Original global
+aggregation and a new geometrical K/H mixed-channel normalization are separate
+scientific decisions. Do not substitute RMS, drop nodes or call nodal estimates
+a qualified mixed global error. Source hashes/references/limits are retained.
+
+**Next:** explicit scientific adoption or revision of the complete bounded
+quadratic-jet candidate before implementation. If adopted, implement actual
+read-only K/H/coverage on retained histories with independent analytic/differential
+controls, without activating adaptation or repairing TRI. No native tests or
+generation run this documentation session; prior PR242 evidence is retained in
+its own exact scope, not relabeled. Mixed global error unavailable/epochs0 and
+full R3/M7/historical/native-CRT/failure inventory remain open.
 
 ### 2026-11-19 - adopted both-diagonal Gaussian comparison completed
 

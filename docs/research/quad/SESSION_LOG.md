@@ -3692,3 +3692,47 @@ operator contract, including adjacency/area/angle/boundary conventions and these
 sign-flip fixtures, for explicit alignment before adoption. No further global-factor
 or generation sweep. Update STATE/roadmap/current summary/evidence, commit and
 verify canonical remote readback; docs checkpoint is not a new native execution.
+
+## 2026-11-19 - specify mixed Gaussian/mean operator before scientific adoption
+
+User asks to continue the stated contract/specification step. Read canonical
+bfaded7/main ef40c0f/plan/latest session, inspect clean primary tree and live
+branches/open PRs/exact7ccd8d7 four successful checks. Keep one documentation-only
+scientific-proposal item; no code, native experiment, generation or policy change.
+Read full legacy angle/area/adjacency/analytical/global aggregation call chain,
+typed Quad geometry and prior diagonal counterexamples. Record source hashes.
+
+Source-level inference: legacy discrete mean3*signed-normal-angle-sum/area has
+1/s^2 scaling on fixed adjacency/tolerance/concavity branches; analytical mean
+has1/s. Vector angle and area access show no hidden length factor. No scaled
+native fixture runs, historical transcription defect or repair is claimed. Kim
+reference full PDF returns403; abstract is not sufficient to decide its equation.
+Original node/submesh aggregation remains literal; mixing geometrical K^2/H^2
+needs an explicit normalization decision before a true mixed global error.
+
+Consult primary Cazals/Pouget2003 fitting/rank/conditioning text and official CGAL
+jet-fitting algorithm/sample/orientation/numerical documentation. Journal2005
+metadata is distinct from inspected2003 full text. Polygon-Laplacian alternatives
+are identified by primary abstracts; full PDFs exceed tool size limits, so no
+detailed coefficient audit is asserted. No new external dependency or copied code.
+
+Prepare concrete, unadopted quadratic-jet candidate: uniform six-coefficient
+least squares; query plus distinct coface one-ring vertices including opposite
+Quad corners, one complete two-ring expansion for insufficient/frame/rank failure;
+PCA rough normal, deterministic tangent frame, normalized XYZ, small SVD/full rank,
+explicit machine-epsilon guards, condition/residual/fitted-offset reporting and
+final fitted-normal sign check. Estimate geometrical K/H at all mixed-chart nodes,
+including boundary/incident-TRI nodes, in separate value records. Preserve default
+TRI and stored curvatures. Unavailable remains explicit, never zero/analytic/diagonal
+fallback or dropped global coverage. No diagonal/remeshing invariance overclaim,
+finite-fit accuracy/convergence guarantee, global normalization or adaptive use.
+
+Document independent matrix/known-frame/full-pipeline/cylinder/rigid/scale/normal/
+coverage/negative and actual22-history gates for a future adopted implementation.
+Prior85/17/three-profile/hosted4 evidence remains pinned to its original revision;
+no new native tests are run or claimed for an unimplemented operator. Audit docs,
+source consistency, scientific scope and known inventory. Update STATE/roadmap/
+current summary/evidence; commit and verify canonical remote checkpoint. Next
+request explicit scientific adoption/revision of the complete bounded candidate.
+Prior approval of the diagonal experiment is not approval of this method. Full
+R3/M7/global-error/accepted-epoch0/historical/native-CRT/retained failures stay open.

@@ -1,0 +1,98 @@
+{
+  "schema": "apmesh.quad.mixed_curvature_operator_contract.v1",
+  "date": "2026-11-19 Fortaleza",
+  "classification": "Documentation-only scientific proposal/read-only source audit; no implementation or numerical policy adoption.",
+  "baseline": "bfaded719b70a04bf821f677247819a639215cd0",
+  "tree": "56bb682c023f3b371f54c590f3cc479f10d2c7cc",
+  "main": "ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89",
+  "source_sha256": {
+    "src/curvature/curvature_discrete.cpp": "33fb75c7c0f8567024c91c94fb2d52b858b5f0fd5463dad151cfc6d177e23870",
+    "src/curvature/adjacent.cpp": "c7afc9b703b1b8ee9d8f365164d3c499ec20bfc3415b2bc1fc339aabf7026cdc",
+    "src/curvature/curvature_analytical.cpp": "f5e9c5c29f8d56d58ea2b1637e95818aa57a1d1d4bbb38d76a0acd358c254666",
+    "src/data/vector_adaptive.cpp": "c910b1091f4907b54725a6184c00c7a006e26ea63231b4d9182c4e829817f960",
+    "src/data/triangle_adaptive.cpp": "53345ab265f634e13ee940e4bfe04e6e65654e70aaffe6e14951390f1692a923",
+    "src/data/element_adaptive.cpp": "8ef44029a086d7a60481c514a38594c2ead8f7e2ea8ed1c72774001893698d01",
+    "src/generator/generator_adaptive.cpp": "71b55cba23a8e5f0bbe885712c7a9734188acfb43890c1660b3dae8c2c2a5cc5",
+    "research/quad/physical_quadrilateral_adaptive.cpp": "fb7e39dec923f81aec80effda820721b071d44e32192838fa1752c659efd9c3a",
+    "research/quad/typed_mixed_curvature.h": "deb42aacb39f9585bbeab360b99102e8c32ca76841b7997a058603199779aa26",
+    "tools/quad_diagonal_curvature.py": "5082d9c0361a72d66cdeea0486234a4f574c7dd4b54ebbd820a53d09ab706bca"
+  },
+  "references": [
+    {
+      "title": "Cazals and Pouget, Estimating Differential Quantities Using Polynomial Fitting of Osculating Jets, SGP2003",
+      "url": "https://graphics.stanford.edu/courses/cs164-10-spring/Handouts/papers_p177-cazals.pdf",
+      "status": "Primary full text retrievable; fitting, rank, conditioning sections consulted. No finite-mesh convergence guarantee inferred."
+    },
+    {
+      "title": "Cazals and Pouget journal version, CAGD2005",
+      "url": "https://doi.org/10.1016/j.cagd.2004.09.004",
+      "status": "Publication metadata/abstract inspected; not substituted for the inspected2003 full text."
+    },
+    {
+      "title": "CGAL Jet_fitting_3 user manual, displayed6.2.1",
+      "url": "https://doc.cgal.org/latest/Jet_fitting_3/index.html",
+      "status": "Official algorithm/degeneracy/sample requirements/orientation/numerical documentation inspected. Reference only; no dependency or implementation-identity claim."
+    },
+    {
+      "title": "Alexa and Wardetzky2011, Discrete Laplacians on General Polygonal Meshes",
+      "url": "https://ddg.math.uni-goettingen.de/pub/Polygonal_Laplace.pdf",
+      "status": "Primary abstract inspected. Full PDF retrieval rejected by tool size limit21039534 bytes; no detailed operator audit."
+    },
+    {
+      "title": "Bunge et al.2020, Polygon Laplacian Made Simple",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/cgf.13931",
+      "status": "Primary publisher abstract inspected. Separate full PDF retrieval exceeded tool size limit17317792 bytes; no full coefficient audit."
+    },
+    {
+      "title": "Kim/Jeong/Kim legacy curvature-metric reference cited by source as1999",
+      "url": "https://citeseerx.ist.psu.edu/document?doi=8d1ab2a7d50285d22fab9063efe80241b0ee379f&repid=rep1&type=pdf",
+      "status": "Indexed abstract located; full PDF returned403. Intended historical mean equation unverified."
+    }
+  ],
+  "findings": [
+    {
+      "id": "tri_adjacency",
+      "status": "source_observation",
+      "detail": "Adjacent traverses three vertex slots; virtual Quad getters alone do not implement four-node adjacency."
+    },
+    {
+      "id": "legacy_mean_scaling",
+      "status": "source_level_inference_not_native_measurement",
+      "detail": "Inspected mean formula3*sum(signed normal angles)/sum(area) scales1/s^2 on fixed adjacency/tolerance/concavity branches; unclipped analytical mean scales1/s. No legacy correction or historical-transcription conclusion."
+    },
+    {
+      "id": "global_aggregation",
+      "status": "source_observation_and_dimensional_question",
+      "detail": "Original per-submesh sqrt(sum diff^2/sum analytic^2)/Nv then submesh average retained. Mixing geometrical K^2 and H^2 requires explicit normalization/scientific decision; no new aggregate proposed/adopted here."
+    },
+    {
+      "id": "quad_geometry",
+      "status": "source_observation",
+      "detail": "Current Quad area/normal use0-2 triangulation; corner angle is live-node-identity-based. New candidate must not silently rely on that diagonal."
+    },
+    {
+      "id": "diagonal_results",
+      "status": "prior_measured_evidence",
+      "detail": "PR242 same-node sign-flip examples retained; not rerun in this documentation session."
+    }
+  ],
+  "proposal": {
+    "status": "not_adopted",
+    "method": "Unweighted quadratic local jet, six coefficients, coface one-ring with one complete two-ring expansion on insufficient/rank/frame failure.",
+    "frame": "PCA rough normal, deterministic right-handed tangent basis; source chart used only for orientation, including fitted-normal check.",
+    "numerics": "Normalized physical XYZ, standard-library small SVD; proposed machine-epsilon rank/eigengap/orientation guards; report condition/residual/offset, no analytic-error-based stencil tuning.",
+    "output": "Read-only nodal geometrical K/H and coverage/status, including one-sided boundary fits. No zero/analytic/diagonal fallback; no NodeAdaptive writes.",
+    "scope": "Initial existing smooth single Bezier chart; legacy TRI/generator/adaptation untouched. Global aggregation remains a separate scientific gate."
+  },
+  "evidence_status": {
+    "new_operator_implemented": false,
+    "new_native_tests": "not_run; documentation-only scope",
+    "new_generation": "not_run",
+    "prior_qualification": "PR242 exact7ccd8d7:85/17, three-profile22 observations, hosted44522539529 four successful jobs; retained only in its original scope, not qualification of the proposed operator.",
+    "advisor_alignment": "Pending explicit adoption of the new candidate; prior both-diagonal approval does not authorize this method.",
+    "mixed_global_error": null,
+    "accepted_mixed_epochs": 0,
+    "full_R3_M7": "open"
+  },
+  "next_action": "Obtain explicit scientific decision on the complete bounded quadratic-jet candidate contract before implementation; if adopted, deliver actual nodal K/H with independent analytic/differential controls on the retained real histories."
+}

@@ -52,7 +52,7 @@ The modernization main branch stays separate. No full-stage closure follows.
 4. **Complete:** bounded static review, retained-finding disposition, research integration and exact post-merge verification at51d51f6. Main remains separate.
 5. **Complete:** source-history reporting prerequisite in PR241/5fe2e6f; actual accepted/rejected/retry observations remain associated with the correct previous accepted source.
 6. **Complete:** approved both-diagonal Gaussian comparison in PR242/7ccd8d7; same-node sign flips and nonuniform stage results are retained.
-7. **Next scientific checkpoint:** specify a reference-backed mixed Gaussian/mean operator, with boundary and area/angle conventions, for alignment before global error/adaptation. Full M1/M5/R3/M7 and broader gates remain open.
+7. **Prepared, not adopted:** [mixed Gaussian/mean operator contract](MIXED_CURVATURE_OPERATOR_CONTRACT_20261119.md). Explicit adoption/revision of the bounded quadratic-jet candidate is next; legacy mean scaling/global aggregation questions stay separate. Full M1/M5/R3/M7 and broader gates remain open.
 
 The previously proposed new balancing controller and broad global-factor sweeps
 are not the current next action. Preserve measured size mismatch as evidence.
@@ -67,6 +67,7 @@ Artifact polish and repeated audits are not default successors to this summary.
 - [Error/quality reporting](GENERATION_RESULT_METRICS_20261118.md).
 - [Current source-history bindings](MIXED_HISTORY_OBSERVATIONS_20261119.md).
 - [Measured both-diagonal comparison](DIAGONAL_CURVATURE_COMPARISON_20261119.md).
+- [Pending mixed K/H scientific contract](MIXED_CURVATURE_OPERATOR_CONTRACT_20261119.md).
 - [Explained presentation](EXPLAINED_BLENDER_PRESENTATION_20261118.md).
 
 Repository roles: canonical current code and decisions/checkpoints are on
@@ -86,5 +87,5 @@ The earlier [review-readiness checkpoint](PR240_REVIEW_READINESS_20261118.md)
 retains its pre-review status and Linux-filesystem qualification evidence.
 Old DrvFS failures and raw enum analysis remain visible; their scoped disposition
 is recorded by the later integration. The adopted curvature comparison is
-complete. The next scientific contract concerns
-the mixed Gaussian/mean estimator, as described in STATE.
+complete. The mixed Gaussian/mean contract is now prepared; explicit scientific adoption
+or revision is pending, as described in STATE.
