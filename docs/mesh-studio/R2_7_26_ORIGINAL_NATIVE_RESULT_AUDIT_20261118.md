@@ -1,5 +1,21 @@
 # Mesh Studio R2.7.26 — original source-native single-factor results and CI qualification
 
+## FINAL code certification and durable complete evidence — 2026-11-18
+
+**Full CI PASS, all 4 jobs** at immutable code commit `5f9eb7ca52804b0be79dafd38f4241aeae11c88b`: [GitHub Actions #44421753186](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44421753186). Real original serial C++ lineage and independent native R2.7.26 auditor PASS; Linux **400 Python tests (4 intentional skips)**; Windows **400 Python tests (10 environmental skips)**; Chromium **55 passed**. The two original/source native findings remain exactly the values reported below. The earlier source run #44419375433 proved the native experiment but failed the unrelated Windows LF checkout attestation; `.gitattributes` now pins the original Markdown and original C++ parser/AFT source to LF, without changing scientific algorithms. The complete 4/4 result is from **exact code SHA `5f9eb7ca`**, not later documentation-only branch HEAD.
+
+**Retained complete successful CI ZIP artifacts** downloaded from GitHub and independently downloaded back from personal doctoral Google Drive; all three checksums are **whole ZIP SHA-256**. The original native source, variant and real-browser source-bound evidence were archived under `Doutorado/DOUTORADO_APMESH_ACOMPANHAMENTO/05_Experimentos_e_Resultados`. Private Drive links remain out of public GitHub documentation.
+
+| Certified original Actions artifact | GitHub artifact ID | ZIP bytes | SHA-256, independently Drive-readback-verified |
+| --- | ---: | ---: | --- |
+| R2.7.26 original two native one-factor real C++ trials + independent per-attempt audit | [14483101697](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44421753186/artifacts/14483101697) | 313744 | `d192f3a111bbac9bbaa0c8f96330ce7a959c00ba23f284c2ea668be53b3dd9e2` |
+| R2.7.26 original same-run real C++ source reports, stderr and original postcommit TRI | [14482777304](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44421753186/artifacts/14482777304) | 287823 | `04c35180afc0abb9412ad912c8965dfa514b5706d6ce69e10d55614f8666dccb` |
+| R2.7.26 exact original native source-bound Chromium performance receipt and auditor | [14482822947](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44421753186/artifacts/14482822947) | 2577 | `0fb2be0500b9dcbc44e70463aadab03e60a002173b74f6813fdb270229065b9d` |
+
+The qualified 55 hosted Chromium passes are **not** measurements of native Windows GPU-present or physical RSS/VRAM. Rejected proposals remain uncommitted. **R2.8 scientific LOD remains BLOCKED** pending same-run ≥2 original C++ accepted steps, independently verified cross-epoch original face/curve mapping and continuous geometry bounds.
+
+### Earlier failed CI receipt retained without rewriting history
+
 **Research status:** exact original serial C++ native job and independent raw-source auditor PASS in GitHub Actions [#44419375433](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44419375433), tested code `6ce70c686020eb4ff17ea86bc18bf356ceed6cc5`. **FULL FOUR-JOB WORKFLOW NOT CERTIFIED** in that run: Windows Python 400-test suite failed two source-Git-blob checks because Windows checked out the newly pinned Markdown protocol with CRLF rather than its original LF bytes. Linux scientific regression 400 tests/4 optional skips and native source job PASS. The subsequent scoped `.gitattributes` fix (`5f9eb7ca52804b0be79dafd38f4241aeae11c88b`) forces LF on the original preregistration Markdown and both pinned original C++ parser/AFT files. This fix does not alter C++ generator source/acceptance or scientific configurations; it **still requires a passing independent Windows CI rerun**.
 
 This report was prepared **after** the prior independent preregistration [R2.7.26 protocol](R2_7_26_PREREGISTERED_ACTIVE_GENERATION_CONTROLS_20261118.md), not used to retroactively change the two experimental treatments.
