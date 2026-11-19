@@ -23,6 +23,7 @@ SCHEMA = "apmesh.meshstudio.r2727.original_cpp_transition_coherence_forensics.v1
 CPP_SOURCE_BLOB = "844673ea764f3092330e5e9ebb01d8eb339869bc"
 GATE_PARSER_BLOB = "f415a2f1410b1c41411aeebbc383d9497753cfd1"
 PREREGISTRATION_BLOB = "38b226fb0f08b9f364f4b197298f04d737f1d25c"
+PATCH_SEMANTICS_ADDENDUM_BLOB = "7115b00de89848aad1ebb5432e1625109192186f"
 NUMERIC_EPS = 1e-12
 
 
@@ -34,6 +35,8 @@ def attest_cpp_acceptance_source(root: Path) -> dict:
             GATE_PARSER_BLOB,
         "docs/mesh-studio/R2_7_27_ORIGINAL_TRANSITION_COHERENCE_FORENSICS_PROTOCOL_20261118.md":
             PREREGISTRATION_BLOB,
+        "docs/mesh-studio/R2_7_27A_ORIGINAL_PATCH_COUNT_SEMANTICS_ADDENDUM_20261118.md":
+            PATCH_SEMANTICS_ADDENDUM_BLOB,
     }
     receipts = {}
     for name, blob in sources.items():
@@ -58,6 +61,11 @@ def attest_cpp_acceptance_source(root: Path) -> dict:
         "current_transition_imbalance_max_real_ <= ((this->step_ >= 4) ? 0.18 : 0.12)",
         "current_transition_coherence_penalty_ <= transition_penalty_cap",
         "current_underresolved_transition_patch_count_real_ == 0U",
+        "for (unsigned int i = 0; i < geometry->GetNumberPatches(); ++i)",
+        "if (structural->transition_underresolved != 0)",
+        "++current_underresolved_transition_patch_count_real_;",
+        "static_cast<double>(current_underresolved_transition_patch_count_real_) /",
+        "static_cast<double>(geometry->GetNumberPatches());",
     )
     require(all(x in text for x in anchors),
             "r2727_original_cpp_transition_gate_formula_not_attested")
@@ -222,7 +230,22 @@ def audit(root: Path, executable: Path, original: Path, trials: Path,
                 "r2727_original_cpp_attempts_or_postcommit_epochs_changed")
         audited_source = [diagnose_gate(row) for row in source]
         audited_variant = [diagnose_gate(row) for row in variant]
+        source_receipt = json.loads((
+            original / f"r2712-{trial.model}-native-lineage-audit.json"
+        ).read_text(encoding="utf-8"))
+        variant_receipt = json.loads((
+            trials / trial.id / "treatment-report.json"
+        ).read_text(encoding="utf-8"))
+        patch_count = source_receipt["accepted_snapshots"][0][
+            "native_source_patches"]
+        require(type(patch_count) is int and 1 <= patch_count <= 128 and
+                variant_receipt["accepted_real_native_face_snapshots"][0][
+                    "native_source_patches"] == patch_count,
+                "r2727_original_cpp_model_patch_count_not_source_bound")
+        deduced_step_four_patch_slots = []
         if trial.model == "eistute":
+            require(patch_count == 4,
+                    "r2727_original_Eistute_four_source_patches_not_attested")
             require(all(r["stable_mode"] and
                         r["acceptance_mode"] == 0
                         for r in source + variant),
@@ -247,6 +270,10 @@ def audit(root: Path, executable: Path, original: Path, trials: Path,
                     for pair in step_four for r in pair
                 ),
                 "r2727_original_eistute_step4_blocker_not_reproduced")
+            # The original C++ loop can increment at most once per patch,
+            # and its denominator is ALL geometry patches. A fraction of
+            # exactly 1.0 proves every original Eistute patch was flagged.
+            deduced_step_four_patch_slots = list(range(patch_count))
         else:
             require(all(not r["stable_mode"] for r in source + variant),
                     "r2727_original_book_negative_mode_control_changed")
@@ -258,7 +285,12 @@ def audit(root: Path, executable: Path, original: Path, trials: Path,
             "matching_original_attempts": expected_attempts,
             "source_attempts": audited_source,
             "one_factor_attempts": audited_variant,
-            "unqualified_patch_identity_in_aggregate_fraction": True,
+            "source_native_patch_count": patch_count,
+            "inferred_step4_underresolved_patch_slots":
+                deduced_step_four_patch_slots,
+            "patch_slots_inferred_from_unchanged_cpp_loop_not_per_patch_log":
+                trial.model == "eistute",
+            "per_patch_quantitative_transition_mechanism_observed": False,
             "original_source_cpp_executable_sha256": (
                 json.loads((
                     original / f"r2712-{trial.model}-native-lineage-audit.json"
@@ -278,7 +310,8 @@ def audit(root: Path, executable: Path, original: Path, trials: Path,
         "all_original_postcommit_receipts_reaudited": True,
         "independent_native_source_models": models,
         "observed_step4_necessary_failure_not_counterfactual_success": True,
-        "per_patch_underresolved_identity_observed": False,
+        "individual_patch_structural_quantities_directly_observed": False,
+        "eistute_all_four_patch_slots_proven_underresolved_by_source_loop": True,
         "actual_second_same_run_accepted_epoch": False,
         "cross_epoch_original_face_curve_ancestry_certified": False,
         "continuous_surface_error_bounds_certified": False,
