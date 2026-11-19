@@ -474,6 +474,23 @@ def original_native_gate(source: bytes, step_path, joined_points, joined_patches
     }
 
 
+
+def require_strict_orientation_certificate(f6_bp: bytes):
+    """Reject a source-island BP unless all Jacobians are exact-positive.
+
+    A source-analytic native sampled gate is not sufficient to certify that
+    J(u,v) never changes sign in tiny unsampled neighborhoods near corners.
+    """
+    from s40f8_exact_planar_jacobian import audit_f6
+    result = audit_f6(f6_bp)
+    invalid = [p['patch_index'] for p in result['certificates']
+               if p['classification'] != 'CERTIFIED_STRICT_POSITIVE']
+    if invalid:
+        raise ValueError('Exact S40-F8 Jacobian gate blocked source-island patches '
+                         + ','.join(map(str,invalid)))
+    return result
+
+
 def prepare_private_trial(original_step_path, s3y_bp_path, lineage_path,
                           f6_bp_path, f6_receipt_path):
     """Load all pinned real inputs; reject missing ones without producing a BP."""
@@ -489,6 +506,10 @@ def prepare_private_trial(original_step_path, s3y_bp_path, lineage_path,
     if len(parent_points) != 1665 or len(parent_patches) != 156:
         raise ValueError('Frozen 156-patch S3.Y source baseline cardinality changed')
     child_points, child_patches, _ = isolated_gate(child, receipt)
+    # An exact full-domain certificate is stricter than sampled Jacobian gates.
+    # Preserve the admitted parent when the frozen island has a nonpositive
+    # oriented corner, including microscopic decimal-representation effects.
+    require_strict_orientation_certificate(child)
     native_preloaded = None
     original_mapping = None
     if lineages is None:
