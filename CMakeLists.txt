@@ -349,6 +349,14 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
     "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
   target_link_libraries(quad_generator_outcome_probe PRIVATE ap_mesh_engine)
   target_compile_features(quad_generator_outcome_probe PRIVATE cxx_std_17)
+  # R2.7.30: separate research observer executable; the original outcome probe
+  # and native GeneratorAdaptive/Adapter/AFT numerical code stay untouched.
+  add_executable(quad_generator_local_selection_probe
+    tests/quad/generator_local_selection_probe.cpp)
+  target_include_directories(quad_generator_local_selection_probe PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_generator_local_selection_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_generator_local_selection_probe PRIVATE cxx_std_17)
   add_test(NAME quad.generator.real_global_outcomes
     COMMAND "${Python3_EXECUTABLE}"
       "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_generator_outcomes.py"
