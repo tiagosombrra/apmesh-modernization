@@ -5,6 +5,7 @@
 #include "timer/timer.h"
 #include "adapter_capture.h"
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <cstdint>
