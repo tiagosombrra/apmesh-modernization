@@ -84,7 +84,9 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
     def test_genuine_shape_synthetic_eistute_candidate_inventory(self):
         result = parse_original_patch_csv(encode(fake_rows()), gates(), fake_events())
         self.assertEqual(result["native_local_patch_attempt_rows"], 32)
-        self.assertEqual(len(result["step4_local_candidate_sets_by_patch"]), 8)\n        self.assertEqual(result["real_original_adapter_outer_attempt_scopes"], 8)\n        self.assertEqual(result["original_adapter_only_outer_scopes_not_global_gate"], [[1, 1]])
+        self.assertEqual(len(result["step4_local_candidate_sets_by_patch"]), 8)
+        self.assertEqual(result["real_original_adapter_outer_attempt_scopes"], 8)
+        self.assertEqual(result["original_adapter_only_outer_scopes_not_global_gate"], [[1, 1]])
         self.assertTrue(all(
             v["all_recorded_local_attempts_underresolved"]
             for v in result["step4_local_candidate_sets_by_patch"]))
