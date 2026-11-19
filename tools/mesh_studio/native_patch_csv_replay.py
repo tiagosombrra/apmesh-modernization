@@ -143,6 +143,14 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict]) -> dict:
             0 <= imbalance < 4 and 0 <= balance <= 2.00001
             and re.fullmatch(r"[a-z_]{2,64}", rec["generation_status"]) is not None,
             "r2728_original_adapter_csv_nonfinite_or_unphysical_metric")
+        # Recompute the separately pinned original Adapter imbalance formula.
+        # Original ostream rounding prevents binary-exact float comparison.
+        computed_imbalance = (
+            max(0.0, floor - transition) +
+            0.5 * max(0.0, internal - 0.65)
+        )
+        require(abs(imbalance - computed_imbalance) <= 5e-6,
+                "r2728_original_cpp_interior_transition_imbalance_forged")
         # The original CSV uses default C++ stream precision, so a value
         # within 5e-6 of a strict source inequality is inconclusive.
         close = (abs(internal - 0.66) <= 5e-6 or
@@ -177,6 +185,20 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict]) -> dict:
             "r2728_original_adapter_missing_patch_or_noncontiguous_local_attempt")
     require(sum(r["step"] == 4 for r in clean_rows) >= 8,
             "r2728_original_step4_patch_attempts_missing")
+    # Retain local fallback choices as an explicit SET of possible candidates;
+    # do not infer selected outer C++ structural stats from a max retry index.
+    step4 = [{
+        "retry": retry, "patch_slot": patch,
+        "local_attempts": sorted(
+            [r for r in clean_rows if
+             r["step"] == 4 and r["retry"] == retry and
+             r["patch_slot"] == patch],
+            key=lambda row: row["local_regen_attempt"]),
+        "all_recorded_local_attempts_underresolved": all(
+            r["transition_underresolved"] for r in clean_rows if
+            r["step"] == 4 and r["retry"] == retry and
+            r["patch_slot"] == patch),
+    } for retry in (0, 1) for patch in range(4)]
     return {
         "schema": SCHEMA,
         "real_original_outer_cpp_attempts": 7,
@@ -185,6 +207,7 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict]) -> dict:
         "local_attempts_not_assumed_selected": True,
         "n_rounding_ambiguous_strict_conditions": uncertain,
         "raw_csv_sha256": _file_hash(raw),
+        "step4_local_candidate_sets_by_patch": step4,
         "per_local_attempt": clean_rows,
         "source_native_adapter_csv_directly_observed": True,
         "selected_patch_slots_inferred_only_from_original_cpp_gate": True,
