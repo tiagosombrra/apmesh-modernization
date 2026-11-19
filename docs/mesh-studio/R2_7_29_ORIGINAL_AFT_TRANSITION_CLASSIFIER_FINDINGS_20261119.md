@@ -4,6 +4,10 @@
 
 This result follows, without changing, the prior preregistration [R2.7.29](R2_7_29_PREREGISTERED_ORIGINAL_AFT_TRANSITION_SEMANTICS_20261119.md) and prior source-native [R2.7.28 original local CSV evidence](R2_7_28_ORIGINAL_EISTUTE_PATCH_CSV_RESULTS_20261119.md). R2.7.29 adds **one read-only source semantic auditor and synthetic negative test module**, no modification to any C++ generator, AFT numerical policy, original CAD input, acceptance gate, original source config or visual renderer.
 
+## Rerun status — original GitHub Actions attempt 2
+
+On [run #44520562326, rerun attempt 2](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44520562326/attempts/2), the previously failing Linux job **PASSED all 445 Python regressions, with four optional skips** after the APT mirror recovered. Windows still **PASSED 445 tests, ten environmental skips** and the true original C++/independent R2.7.29 numeric source-audit job remains **PASSED**. The hosted Chromium job was still running its external dependency installation during this update; **4/4 full workflow success is not asserted pending its final result**. Original test code SHA `e8c4fa099e95477d293e4f6d74991f0cb6b09ff8` and source-scoped research bytes are unchanged. This update does not rewrite the failed first attempt or confuse the external APT mirror outage with a scientific result.
+
 ## Critical original-source distinction
 
 The original native `AdvancingFront::ComputeStageFaceStats` (source `src/crab_mesh/aft/advancing_front.cpp`, immutable Git blob `1bd430d1bd1079e6f55f3bc7488ff9313e4bb82b`) computes **stage-1, post-AFT** `transition_element_ratio` as a count over ALL source faces of **nonboundary TRI whose maximum/minimum edge-length ratio exceeds 1.8**, determined by a pointer-based edge incidence map. A shape-regular interior triangle is NOT called a transition face by this AFT classifier merely because it lies near the boundary. `internal_element_ratio` counts the other nonboundary faces. The three original stage-1 proportions `boundary_element_ratio + transition_element_ratio + internal_element_ratio` sum to approximately one.
