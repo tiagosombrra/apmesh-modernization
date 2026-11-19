@@ -22,6 +22,7 @@ from .verify_native_lineage import require
 SCHEMA = "apmesh.meshstudio.r2727.original_cpp_transition_coherence_forensics.v1"
 CPP_SOURCE_BLOB = "844673ea764f3092330e5e9ebb01d8eb339869bc"
 GATE_PARSER_BLOB = "f415a2f1410b1c41411aeebbc383d9497753cfd1"
+PREREGISTRATION_BLOB = "38b226fb0f08b9f364f4b197298f04d737f1d25c"
 NUMERIC_EPS = 1e-12
 
 
@@ -31,6 +32,8 @@ def attest_cpp_acceptance_source(root: Path) -> dict:
         "src/generator/generator_adaptive.cpp": CPP_SOURCE_BLOB,
         "tools/mesh_studio/native_acceptance_gate_forensics.py":
             GATE_PARSER_BLOB,
+        "docs/mesh-studio/R2_7_27_ORIGINAL_TRANSITION_COHERENCE_FORENSICS_PROTOCOL_20261118.md":
+            PREREGISTRATION_BLOB,
     }
     receipts = {}
     for name, blob in sources.items():
