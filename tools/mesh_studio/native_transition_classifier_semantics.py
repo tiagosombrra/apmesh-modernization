@@ -147,6 +147,11 @@ def inspect_csv(raw: bytes) -> dict:
             "regional_generated_faces": generated,
             "regional_minus_stage1_aft_transition_fraction":
                 regional - shape_transition,
+            # Descriptive only: this is NOT a proposal to replace the gate.
+            "regional_spatial_or_shape_fraction_reaches_original_floor":
+                regional >= floor,
+            "aft_shape_fraction_reaches_original_floor":
+                shape_transition >= floor,
             "transition_floor_original": floor,
             "original_cpp_underresolved": bool(flagged),
             "original_csv_generation_status": row["generation_status"],
@@ -179,6 +184,16 @@ def _describe(records: list[dict]) -> dict:
             sum(x > 0 for x in differences),
         "underresolved_local_candidate_rows":
             sum(r["original_cpp_underresolved"] for r in records),
+        "local_rows_with_regional_fraction_above_original_aft_floor":
+            sum(r["regional_spatial_or_shape_fraction_reaches_original_floor"]
+                for r in records),
+        "local_rows_with_aft_shape_fraction_above_its_own_floor":
+            sum(r["aft_shape_fraction_reaches_original_floor"]
+                for r in records),
+        "original_flagged_even_when_distinct_regional_fraction_above_floor":
+            sum(r["original_cpp_underresolved"] and
+                r["regional_spatial_or_shape_fraction_reaches_original_floor"]
+                for r in records),
         "uncertain_strict_predicate_from_rounded_cpp_ostream":
             sum(r["flag_math_ambiguous_at_original_csv_precision"]
                 for r in records),
