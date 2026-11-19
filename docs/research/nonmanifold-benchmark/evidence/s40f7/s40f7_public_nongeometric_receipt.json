@@ -1,0 +1,72 @@
+{
+  "actual_joint_bp_emitted": false,
+  "apmesh_cpp_tri_quad_executed": false,
+  "candidate_matching_status": "BLOCKED_MISSING_FROZEN_S3Y_PARENT_AND_NATIVE_SOURCE_INPUTS",
+  "checkpoint": "2026-11-18",
+  "child_F6_isolated": {
+    "global_controls": 104,
+    "open_sides": 20,
+    "patches": 8,
+    "source_faces": 4,
+    "two_sided_seams": 6
+  },
+  "existing_S3Y": {
+    "global_controls": 1665,
+    "open_sides": 96,
+    "patches": 156,
+    "source_faces": 22,
+    "two_sided_seams": 264
+  },
+  "experiments": {
+    "s40f5_private": {
+      "fail": 0,
+      "pass": 33,
+      "skip": 0
+    },
+    "s40f6_private": {
+      "fail": 0,
+      "pass": 37,
+      "skip": 0
+    },
+    "s40f7_with_f6_private_and_synthetic_parent": {
+      "fail": 0,
+      "pass": 33,
+      "skip": 0
+    }
+  },
+  "hypothetical_matched_join": {
+    "global_controls": 1743,
+    "open_sides": 100,
+    "patches": 164,
+    "source_faces": 26,
+    "two_sided_seams": 278
+  },
+  "new_source_faces_native_admitted": 0,
+  "original_s3y_parent_controls_rebased": false,
+  "original_source_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "original_step_native_import_executed": false,
+  "parent_controls_reused_only_if_native_match": 26,
+  "protected_main_modified": false,
+  "provenance_note": "Source graph evidence cross-checked against upstream STEP through the connected GitHub reader; full source bytes were not locally mounted for native STEP import.",
+  "s3y_private_parent_bp_sha256": "af50597db4b8d7b3bcb2fc381596fefc95ba6b6e00ed169576bec7a6b7873177",
+  "s40f6_private_island_bp_sha256": "72b8756c948a7a7da19c9f2a9a7099673e81a30573f19e4820abf27ba720f0a7",
+  "schema": "apmesh-s40f7-native-parent-reconciliation-nongeometric-v1",
+  "source_face_lineage_verified_in_original_step_graph": true,
+  "source_faces_of_isolated_child": [
+    1279,
+    1386,
+    3269,
+    3485
+  ],
+  "source_original_edges_requiring_parent_reconciliation": [
+    1002,
+    1030,
+    1057,
+    1080,
+    1139,
+    1259,
+    1284,
+    1473
+  ],
+  "third_party_step_or_derived_bp_coordinates_publicly_committed": false
+}
