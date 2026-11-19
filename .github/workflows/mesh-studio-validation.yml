@@ -332,6 +332,16 @@ jobs:
             build/r2730-original-eistute-selected-local-audit.json
           if-no-files-found: warn
           retention-days: 14
+      - name: Independently re-open original C++ selected Adapter returns and decompose actual R2.7.31 AFT floor deficits
+        run: python -m tools.mesh_studio.native_selected_gate_decomposition --root . --selected-directory build/r2730-original-eistute-selected-local --prior-report build/r2730-original-eistute-selected-local-audit.json --output build/r2731-selected-original-aft-gate-decomposition.json
+      - name: Retain source-hash-bound R2.7.31 selected original native AFT gate decomposition
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2731-selected-original-aft-gate-${{ github.sha }}
+          path: build/r2731-selected-original-aft-gate-decomposition.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Archive raw R2.7.28 original C++ Adapter per-patch CSV and independent source audit even on experimental failure
         if: always()
         uses: actions/upload-artifact@v4
