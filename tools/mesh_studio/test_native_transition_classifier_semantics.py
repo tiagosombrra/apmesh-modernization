@@ -67,6 +67,9 @@ class OriginalNativeTwoTransitionSemanticsContracts(unittest.TestCase):
         self.assertAlmostEqual(
             item["regional_minus_stage1_aft_transition_fraction"], 0.4)
         self.assertTrue(item["original_cpp_underresolved"])
+        self.assertTrue(
+            item["regional_spatial_or_shape_fraction_reaches_original_floor"])
+        self.assertFalse(item["aft_shape_fraction_reaches_original_floor"])
 
     def test_equal_numeric_fractions_are_permitted_but_not_same_semantics(self):
         sample = synthetic_record()
