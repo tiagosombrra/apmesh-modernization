@@ -302,6 +302,20 @@ jobs:
         run: python -m tools.mesh_studio.native_active_generation_study --mode audit --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --trials-directory build/r2726-original-generation-treatments --output build/r2726-original-native-generation-audit.json
       - name: Independently audit R2.7.27 actual original C++ transition coherence and preserved gate thresholds
         run: python -m tools.mesh_studio.native_transition_coherence_audit --root . --exe build/r2712-native/bin/quad_generator_outcome_probe --original-directory build/r2712-native-evidence --trials-directory build/r2726-original-generation-treatments --r2726-audit build/r2726-original-native-generation-audit.json --output build/r2727-original-transition-coherence-audit.json
+      - name: Replay Eistute original and existing min13 variant with original Adapter CSV retention only
+        run: python -m tools.mesh_studio.native_patch_csv_replay --mode capture --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --output-dir build/r2728-original-eistute-patch-csv --timeout 300
+      - name: Independently audit real original Adapter per-patch CSV, local candidates and accepted TRI source
+        run: python -m tools.mesh_studio.native_patch_csv_replay --mode audit --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --output-dir build/r2728-original-eistute-patch-csv --report build/r2728-original-eistute-patch-audit.json
+      - name: Archive raw R2.7.28 original C++ Adapter per-patch CSV and independent source audit even on experimental failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2728-original-eistute-adapter-patch-csv-${{ github.sha }}
+          path: |
+            build/r2728-original-eistute-patch-csv/
+            build/r2728-original-eistute-patch-audit.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Retain exact-source R2.7.27 read-only original C++ coherence and readiness forensic receipt
         uses: actions/upload-artifact@v4
         with:
