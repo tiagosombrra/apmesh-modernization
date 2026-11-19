@@ -306,6 +306,16 @@ jobs:
         run: python -m tools.mesh_studio.native_patch_csv_replay --mode capture --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --output-dir build/r2728-original-eistute-patch-csv --timeout 300
       - name: Independently audit real original Adapter per-patch CSV, local candidates and accepted TRI source
         run: python -m tools.mesh_studio.native_patch_csv_replay --mode audit --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --output-dir build/r2728-original-eistute-patch-csv --report build/r2728-original-eistute-patch-audit.json
+      - name: Independently verify R2.7.29 original AFT elongated-face transition versus Adapter spatial-or-shape classification
+        run: python -m tools.mesh_studio.native_transition_classifier_semantics --root . --exe build/r2712-native/bin/quad_generator_outcome_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --r2728-report build/r2728-original-eistute-patch-audit.json --output build/r2729-original-aft-adapter-metric-semantics.json
+      - name: Retain source-verified R2.7.29 independently recalculated AFT and regional original C++ transition metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2729-original-aft-regional-semantics-${{ github.sha }}
+          path: build/r2729-original-aft-adapter-metric-semantics.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Archive raw R2.7.28 original C++ Adapter per-patch CSV and independent source audit even on experimental failure
         if: always()
         uses: actions/upload-artifact@v4
