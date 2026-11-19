@@ -14,8 +14,34 @@ from independent_common_grid import load_physical_obj
 from test_controlled_application import require
 from test_real_boundary_application import audit
 from test_m4_real_model_hybrid import golden
+from test_m1_point_rule_quality import selected_point
+from fractions import Fraction
 
 EPS = 1e-14
+
+
+def audit_template_centers(data):
+    require(data['point_rule'] == 'polygon_area_centroid_uv_v1', 'Wrong article point policy')
+    uv = data['vertices']
+    groups = {}
+    for face in data['seed_faces']:
+        groups.setdefault(face[2], []).append(face)
+    different = 0
+    for center, quads in groups.items():
+        next_corner = {q[0]: next(other[0] for other in quads if other[3] == q[1])
+                       for q in quads}
+        first = quads[0][0]
+        cycle = [first]
+        while next_corner[cycle[-1]] != first:
+            require(len(cycle) < len(quads), 'Invalid source polygon cycle')
+            cycle.append(next_corner[cycle[-1]])
+        require(len(cycle) == len(quads), 'Incomplete source polygon')
+        polygon = [tuple(Fraction(str(x)) for x in uv[v]) for v in cycle]
+        expected = selected_point(polygon, 'area_centroid')
+        require(math.dist(uv[center], expected) <= 2e-15,
+                'Template point differs from independent exact-area centroid')
+        different += expected != selected_point(polygon, 'vertex_mean')
+    return dict(source_polygons=len(groups),centers_different_from_vertex_mean=different)
 
 
 def cross(uv, a, b, c):
@@ -279,24 +305,52 @@ def main():
     reports = []
     smoothing_reports = []
     saved = None
+    asymmetric_source = None
     for row in rows[1:]:
         obj_path = directory/row['quad_tri_obj']
         native = audit(obj_path)
         history = directory/(obj_path.stem.removesuffix('_quad_tri')+'_article_front')
         data = json.loads((history/'front.json').read_text())
+        point_report = audit_template_centers(data)
         obj = load_physical_obj(obj_path)
         before = load_physical_obj(history/f'commit_{len(data["commits"])}.obj')
         report = replay(data, before, history)
         smoothing_reports.append(dict(step=int(row['step']),
             passes=replay_smoothing(data,before,obj,history)))
-        reports.append(dict(step=int(row['step']), **native, **report))
+        reports.append(dict(step=int(row['step']), **native, **report, **point_report))
         if saved is None:
             saved = data, before, obj
+        if int(row['step']) == 2:
+            asymmetric_source = data
     require(all(r['selected_quads'] and r['retained_triangles'] for r in reports),
             'The real stages did not exercise mixed prospective generation')
     require([r['clearance_excluded_cells'] for r in reports] == [0,0,25],
             'The retained real clearance witness changed')
     data, obj, final = saved
+    require([r['centers_different_from_vertex_mean'] for r in reports] == [0,18,0],
+            'Real source no longer exercises the asymmetric centroid decision')
+    point_forgeries = []
+    broken = copy.deepcopy(data)
+    broken['point_rule'] = 'vertex_mean_uv_v1'
+    point_forgeries.append(broken)
+    broken = copy.deepcopy(asymmetric_source)
+    groups = {}
+    for face in broken['seed_faces']:
+        groups.setdefault(face[2], []).append(face[0])
+    for center, corners in groups.items():
+        mean = [sum(broken['vertices'][v][k] for v in corners)/len(corners) for k in (0,1)]
+        if math.dist(mean,broken['vertices'][center]) > 1e-14:
+            broken['vertices'][center] = mean
+            point_forgeries.append(broken)
+            break
+    broken = copy.deepcopy(data)
+    broken['vertices'][broken['seed_faces'][0][2]][0] += .01
+    point_forgeries.append(broken)
+    require(len(point_forgeries) == 3, 'Missing real asymmetric vertex-mean forgery')
+    for broken in point_forgeries:
+        try: audit_template_centers(broken)
+        except (AssertionError,KeyError,ValueError,IndexError,StopIteration): continue
+        raise AssertionError('Forged centroid trace was accepted')
     corruptions = []
     for field in ('before', 'best', 'polygon', 'alternatives'):
         broken = copy.deepcopy(data)
@@ -362,6 +416,7 @@ def main():
     report = dict(schema='apmesh.quad.article_application.v1', stages=reports,
                   rejected_forgeries=len(corruptions), rollback_verified=rollback_verified,
                   rejected_smoothing_forgeries=len(smoothing_forgeries), smoothing_passes_per_stage=5,
+                  rejected_point_forgeries=len(point_forgeries),
                   mixed_adaptive_epochs=0)
     (args.directory/'smoothing_report.json').write_text(json.dumps(smoothing_reports,indent=2)+'\n')
     (args.directory/'article_report.json').write_text(json.dumps(report, indent=2)+'\n')

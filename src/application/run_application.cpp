@@ -48,14 +48,16 @@ int RunApplication(int argc, char** argv) {
             config.quad_experimental_case == "curved_bezier_original_curves_vertex_mean_v1" ||
             config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1" ||
             config.quad_experimental_case == "curved_bezier_live_pairs_vertex_mean_v1" ||
-            config.quad_experimental_case == "curved_bezier_article_front_vertex_mean_v1") {
+            config.quad_experimental_case == "curved_bezier_article_front_vertex_mean_v1" ||
+            config.quad_experimental_case == "curved_bezier_article_front_area_centroid_v1") {
           if (config.num_processes != 1 || config.num_threads != 1)
             throw std::runtime_error("Controlled QUAD requires serial execution");
           ApplyRuntimeConfig(config);
           if (config.quad_experimental_case == "curved_bezier_original_curves_vertex_mean_v1" ||
               config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1" ||
               config.quad_experimental_case == "curved_bezier_live_pairs_vertex_mean_v1" ||
-              config.quad_experimental_case == "curved_bezier_article_front_vertex_mean_v1")
+              config.quad_experimental_case == "curved_bezier_article_front_vertex_mean_v1" ||
+              config.quad_experimental_case == "curved_bezier_article_front_area_centroid_v1")
             return apmesh::quad::RunRealBoundaryPatch(config);
           return apmesh::quad::RunControlledPatch(config);
         }

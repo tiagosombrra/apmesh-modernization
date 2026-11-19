@@ -54,6 +54,7 @@ if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD)
     research/quad/controlled_patch_application.cpp
     research/quad/real_boundary_source.cpp
     research/quad/physical_quadrilateral_adaptive.cpp
+    research/quad/experimental_point_rule.cpp
     research/quad/uv_mesh.cpp research/quad/quadtree_quad.cpp
     research/quad/interior_template_dispatch.cpp
     research/quad/front_interface_audit.cpp research/quad/owned_aft_front.cpp)

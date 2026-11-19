@@ -3,6 +3,7 @@
 #include "live_boundary_pairing.h"
 #include "article_mixed_front.h"
 #include "mixed_uv_smoothing.h"
+#include "experimental_point_rule.h"
 #include "application/runtime_config.h"
 #include "physical_quadrilateral_adaptive.h"
 #include "data/mesh/sub_mesh.h"
@@ -127,6 +128,11 @@ UvVertex PointRule(const apmesh::quad::LeafPolygonOrigin&, const std::vector<UvV
   return center;
 }
 
+UvVertex AreaPointRule(const apmesh::quad::LeafPolygonOrigin&,
+                       const std::vector<UvVertex>& polygon) {
+  return ExperimentalInteriorPoint(polygon, ExperimentalPointRule::PolygonAreaCentroid);
+}
+
 Xyz Evaluate(PatchBezier& patch, UvVertex uv) {
   Require(std::isfinite(uv.u) && std::isfinite(uv.v) && uv.u >= 0.0 && uv.u <= 1.0 && uv.v >= 0.0 &&
               uv.v <= 1.0,
@@ -199,6 +205,7 @@ struct Candidate {
   MixedUvSmoothingTrace article_smoothing;
   std::vector<std::vector<Xyz>> article_smoothing_xyz;
   std::size_t clearance_excluded_cells = 0;
+  bool article_area_centroid = false;
   std::vector<std::vector<std::size_t>> source_faces;
   std::size_t seed_quads = 0;
   std::size_t quads = 0;
@@ -220,9 +227,10 @@ using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
 Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    const ResearchSourceTreeFactory& source_tree_factory = {},
                    const RealBoundarySource* source = nullptr, bool pair_during_front = false,
-                   bool article_front = false) {
+                   bool article_front = false, bool article_area_centroid = false) {
   ValidateSourceCurves(patch);
   Require(!article_front || !pair_during_front, "Article and TRI-observer modes are exclusive");
+  Require(!article_area_centroid || article_front, "Area centroid requires the article mode");
   std::unique_ptr<Quadtree> original;
   std::vector<UvFrontSegment> front;
   if (!article_front) {
@@ -241,7 +249,8 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
     clearance.emplace(contour);
   }
   InteriorTemplateDispatcher dispatch(*tree);
-  const auto selected = dispatch.Select(InteriorTemplateMode::ExperimentalQuad, PointRule,
+  const auto selected = dispatch.Select(InteriorTemplateMode::ExperimentalQuad,
+                                        article_area_centroid ? AreaPointRule : PointRule,
                                         clearance ? &*clearance : nullptr);
   auto* raw = tree.get();
   std::unique_ptr<OwnedQuadAftFront> aft;
@@ -291,6 +300,7 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
     for (auto* edge : aft->getBoundary()->getEdges())
       aft->getQuadtree()->findCell(edge);
   Candidate result;
+  result.article_area_centroid = article_area_centroid;
   ArticleFrontResult article;
   if (article_front) {
     // This front derives its exact inner interface from the selected QUAD seed.
@@ -583,7 +593,9 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     }
     trace << ']';
   };
-  trace << "{\"schema\":\"apmesh.quad.article_front.v1\",\"clearance\":{"
+  trace << "{\"schema\":\"apmesh.quad.article_front.v1\",\"point_rule\":\""
+        << (candidate.article_area_centroid ? "polygon_area_centroid_uv_v1" : "vertex_mean_uv_v1")
+        << "\",\"clearance\":{"
         << "\"policy\":\"minimum_cell_segment_uv_v1\",\"factor\":0.2,\"excluded_cells\":"
         << candidate.clearance_excluded_cells << "},\"vertices\":[";
   for (std::size_t i = 0; i < candidate.article_uv_before_smoothing.size(); ++i) {
@@ -1285,6 +1297,8 @@ void Export(const Candidate& result, const std::filesystem::path& path,
     if (!result.article_commits.empty())
       out << "# article_front planar_UV_1993_rule prospective_choice_before_front_update=1"
              " smoothing=uv_distinct_incident_vertices_jacobi_5_v1 curved_XYZ_lift=experimental\n";
+    if (result.article_area_centroid)
+      out << "# point_rule=polygon_area_centroid_uv_v1 historical_numeric_identity=unproven\n";
     if (!result.source_faces.empty()) {
       out << "# live_pair_policy physical_angle_pair_v1 source_scaffold=" << source_scaffold
           << " seed_quads=" << result.seed_quads
@@ -1905,8 +1919,11 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   GeneratorAdaptive generator(application::MakeGenerationContext(config, NUMBER_PROCESS));
   const bool live_pairs =
       config.quad_experimental_case == "curved_bezier_live_pairs_vertex_mean_v1";
+  const bool article_area_centroid =
+      config.quad_experimental_case == "curved_bezier_article_front_area_centroid_v1";
   const bool article_front =
-      config.quad_experimental_case == "curved_bezier_article_front_vertex_mean_v1";
+      config.quad_experimental_case == "curved_bezier_article_front_vertex_mean_v1" ||
+      article_area_centroid;
   if (config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1" ||
       live_pairs || article_front)
     generator.EnforceResearchDomainFactorBounds();
@@ -2071,7 +2088,7 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
       if (has_interior)
         layout = Generate(
             *patch, false, [&]() { return ReplayRealSourceTree(*patch, *source); }, source,
-            live_pairs, article_front);
+            live_pairs, article_front, article_area_centroid);
     }
     layout.source_witness = source;
     layout.generation_step = stage.step;
@@ -2194,7 +2211,7 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
       if (live_pairs || article_front) {
         auto failed = Generate(
             *patch, true, [&]() { return ReplayRealSourceTree(*patch, *selected); }, selected,
-            live_pairs, article_front);
+            live_pairs, article_front, article_area_centroid);
         (void)failed;
       } else {
         auto failed = CloneTypedHistory(*accepted, candidate, *patch, 0);
