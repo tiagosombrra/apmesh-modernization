@@ -1,0 +1,2446 @@
+{
+  "schema": "apmesh.quad.diagonal_curvature_comparison.v1",
+  "date": "2026-11-19 Fortaleza",
+  "candidate": "d2eb15e05733d1d384402c92aeb0a7293bd7a3df",
+  "merge": "7ccd8d769536b291a2264b140fa4acfc76f3960a",
+  "tree": "db837237445646074412eac3b2bdd8ac3bd5aa78",
+  "pr": 242,
+  "classification": "Explicitly adopted read-only Gaussian witness sensitivity experiment. No diagonal/operator/controller adoption.",
+  "main": "ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89",
+  "source_identity": {
+    "source": "d2eb15e05733d1d384402c92aeb0a7293bd7a3df",
+    "tree": "db837237445646074412eac3b2bdd8ac3bd5aa78",
+    "unchanged_native_inputs": 2454,
+    "header_sha256": "deb42aacb39f9585bbeab360b99102e8c32ca76841b7997a058603199779aa26"
+  },
+  "checkout": {
+    "source": "d2eb15e05733d1d384402c92aeb0a7293bd7a3df",
+    "merge": "7ccd8d769536b291a2264b140fa4acfc76f3960a",
+    "base": "3052a7c0cbcb52ac0e5a1afb944668a575fc9411",
+    "tree": "db837237445646074412eac3b2bdd8ac3bd5aa78",
+    "parents": [
+      "3052a7c0cbcb52ac0e5a1afb944668a575fc9411",
+      "d2eb15e05733d1d384402c92aeb0a7293bd7a3df"
+    ],
+    "preserved_files": 2679
+  },
+  "source_sha256": {
+    "tools/quad_diagonal_curvature.py": "5082d9c0361a72d66cdeea0486234a4f574c7dd4b54ebbd820a53d09ab706bca",
+    "tests/quad/test_generation_metrics.py": "5ae818531df717cdb9270d7a9220c6a0eb0897dedee76e22addab22893d3d889",
+    "research/quad/typed_mixed_curvature.h": "deb42aacb39f9585bbeab360b99102e8c32ca76841b7997a058603199779aa26",
+    "tests/quad/test_m4_real_model_hybrid.py": "da04cc2b28f3e0b1cd5156f8e9b20a642ea6176547f11ca2e4b25414077d6c94",
+    "src/curvature/curvature_analytical.cpp": "f5e9c5c29f8d56d58ea2b1637e95818aa57a1d1d4bbb38d76a0acd358c254666",
+    "src/generator/generator_adaptive.cpp": "71b55cba23a8e5f0bbe885712c7a9734188acfb43890c1660b3dae8c2c2a5cc5"
+  },
+  "generated_probe_source_sha256": "b39124e8bc0fd130662f9e2910b1462acbb03dd31797883268a20825735af3b0",
+  "local": {
+    "candidate": {
+      "receipt": {
+        "source": "d2eb15e05733d1d384402c92aeb0a7293bd7a3df",
+        "status": "passed",
+        "steps": [
+          {
+            "label": "controls",
+            "exit": 0,
+            "seconds": 0.4417994022369385,
+            "timeout": 60
+          },
+          {
+            "label": "msvc-configure",
+            "exit": 0,
+            "seconds": 4.464773178100586,
+            "timeout": 180
+          },
+          {
+            "label": "msvc-build",
+            "exit": 0,
+            "seconds": 2.5540695190429688,
+            "timeout": 180
+          },
+          {
+            "label": "msvc-archives",
+            "exit": 0,
+            "seconds": 2.332184314727783,
+            "timeout": 300
+          },
+          {
+            "label": "linux",
+            "exit": 0,
+            "seconds": 38.421128034591675,
+            "timeout": 900
+          },
+          {
+            "label": "baseline",
+            "exit": 0,
+            "seconds": 103.19325184822083,
+            "timeout": 900
+          }
+        ]
+      },
+      "baseline": {
+        "directory": "build/validation-session/1795090274624480000-57a2e80a",
+        "tests": 85,
+        "source": "d2eb15e05733d1d384402c92aeb0a7293bd7a3df",
+        "report_sha256": "b641462c0cefc66db63a3e6e35f1e333e3c25f502182e9cac5382b24a8bff192"
+      },
+      "start_fortaleza": "2026-11-19T09:10:17.256229-03:00",
+      "finish_fortaleza": "2026-11-19T09:12:48.672969-03:00"
+    },
+    "merge": {
+      "receipt": {
+        "source": "7ccd8d769536b291a2264b140fa4acfc76f3960a",
+        "status": "passed",
+        "steps": [
+          {
+            "label": "controls",
+            "exit": 0,
+            "seconds": 0.4979574680328369,
+            "timeout": 60
+          },
+          {
+            "label": "msvc-archives",
+            "exit": 0,
+            "seconds": 1.5640995502471924,
+            "timeout": 300
+          },
+          {
+            "label": "linux",
+            "exit": 0,
+            "seconds": 28.534703016281128,
+            "timeout": 900
+          },
+          {
+            "label": "baseline",
+            "exit": 0,
+            "seconds": 77.02895331382751,
+            "timeout": 900
+          }
+        ]
+      },
+      "baseline": {
+        "directory": "build/validation-session/1795090739971318900-2164ff73",
+        "tests": 85,
+        "source": "7ccd8d769536b291a2264b140fa4acfc76f3960a",
+        "report_sha256": "75dabc57aee800721d60050ef76c4b5cc9f7dd1da2051858380bdef8ef4a8954"
+      },
+      "start_fortaleza": "2026-11-19T09:18:26.854073-03:00",
+      "finish_fortaleza": "2026-11-19T09:20:14.485878-03:00"
+    }
+  },
+  "profiles": {
+    "candidate": {
+      "msvc": {
+        "source": "d2eb15e05733d1d384402c92aeb0a7293bd7a3df",
+        "probe_sha256": "dfdeae52ef34be30f0396d094fa7e69f908d1807aee4e2e7222b0c6d4f605c9f",
+        "negative_controls": [
+          {
+            "index": 0,
+            "exit": 1,
+            "input": "0 0\n",
+            "stderr": "Invalid diagnostic input size\n"
+          },
+          {
+            "index": 1,
+            "exit": 1,
+            "input": "4 1\n0 0 0\n1 0 0\n1 1 0\n0 1 0\n4 0 1 2 2\n",
+            "stderr": "Invalid or repeated mixed face vertex\n"
+          },
+          {
+            "index": 2,
+            "exit": 1,
+            "input": "3 1\n0 0 0\n1 0 0\n2 0 0\n3 0 1 2\n",
+            "stderr": "Collapsed physical mixed diagnostic subtriangle\n"
+          }
+        ],
+        "input_sha256": {
+          "article": {
+            "manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+          },
+          "original-rejected": {
+            "manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb"
+          },
+          "stable-retry": {
+            "manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f"
+          }
+        },
+        "mesh_observations": 22,
+        "output_sha256": {
+          "msvc/article/comparison.json": "2264b30f4231738d794b8542b2d14236f0acb3f7529fb6fd45fd0bab9af0fdee",
+          "msvc/article/nodes.csv": "687488e8b42b0c6f5819e1dac47073a6bcddaca181e77214dd318f03d3996e30",
+          "msvc/original-rejected/comparison.json": "bcea81954d17a7a473d32836de517d181fd6ede0b8761ccb1e41c0124953a9dd",
+          "msvc/original-rejected/nodes.csv": "07a67a075422041f62f33b7c71bcff66281991b00392b159392ad3c2182d762f",
+          "msvc/stable-retry/comparison.json": "9f786b20e04bca458cdf11ad5bfc930144a513ff58cea7e5a76e08017edac348",
+          "msvc/stable-retry/nodes.csv": "b15012f8c0da626a23b147505562c59689847fe6843348c37795bb9e73c1bd62"
+        }
+      },
+      "gnu": {
+        "source": "d2eb15e05733d1d384402c92aeb0a7293bd7a3df",
+        "probe_sha256": "beec147e96eba9cefda521b7725b93f5b5f70da8359a7dd5c27c9e2179dd34c3",
+        "negative_controls": [
+          {
+            "index": 0,
+            "exit": 1,
+            "input": "0 0\n",
+            "stderr": "Invalid diagnostic input size\n"
+          },
+          {
+            "index": 1,
+            "exit": 1,
+            "input": "4 1\n0 0 0\n1 0 0\n1 1 0\n0 1 0\n4 0 1 2 2\n",
+            "stderr": "Invalid or repeated mixed face vertex\n"
+          },
+          {
+            "index": 2,
+            "exit": 1,
+            "input": "3 1\n0 0 0\n1 0 0\n2 0 0\n3 0 1 2\n",
+            "stderr": "Collapsed physical mixed diagnostic subtriangle\n"
+          }
+        ],
+        "input_sha256": {
+          "article": {
+            "manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+          },
+          "original-rejected": {
+            "manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb"
+          },
+          "stable-retry": {
+            "manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f"
+          }
+        },
+        "mesh_observations": 22,
+        "output_sha256": {
+          "linux-output/gnu/article/comparison.json": "3696141c3c9f5fb34476206fe9380da909065de6a73ad3795c451ee0086f62a2",
+          "linux-output/gnu/article/nodes.csv": "a47e0db0d15bd4f52bb367b99acf0c8de218a399007b6730c9c2feeedcd4c772",
+          "linux-output/gnu/original-rejected/comparison.json": "6b5d46c08d67714c2673d8542ff8d14bce1069c9a23be7362d9bed85d4f872bb",
+          "linux-output/gnu/original-rejected/nodes.csv": "f7b991d5d308729c0ee491684a31106f9ee422030fcd043637384224e25b043e",
+          "linux-output/gnu/stable-retry/comparison.json": "29686c15d990723efb44bee5ed55f359359f72d6d9db0a7a8be7b0444de2b125",
+          "linux-output/gnu/stable-retry/nodes.csv": "48a21edf017ed9d8b7a720be9e0e05096250c684e7fa293d2523f07a85126566"
+        }
+      },
+      "asan": {
+        "source": "d2eb15e05733d1d384402c92aeb0a7293bd7a3df",
+        "probe_sha256": "35f2644aeee55a5614f9dbd400f65217f4261e0c57a9aa58b57cc5811469c2a3",
+        "negative_controls": [
+          {
+            "index": 0,
+            "exit": 1,
+            "input": "0 0\n",
+            "stderr": "Invalid diagnostic input size\n"
+          },
+          {
+            "index": 1,
+            "exit": 1,
+            "input": "4 1\n0 0 0\n1 0 0\n1 1 0\n0 1 0\n4 0 1 2 2\n",
+            "stderr": "Invalid or repeated mixed face vertex\n"
+          },
+          {
+            "index": 2,
+            "exit": 1,
+            "input": "3 1\n0 0 0\n1 0 0\n2 0 0\n3 0 1 2\n",
+            "stderr": "Collapsed physical mixed diagnostic subtriangle\n"
+          }
+        ],
+        "input_sha256": {
+          "article": {
+            "manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+          },
+          "original-rejected": {
+            "manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb"
+          },
+          "stable-retry": {
+            "manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f"
+          }
+        },
+        "mesh_observations": 22,
+        "output_sha256": {
+          "linux-output/asan/article/comparison.json": "7288135aa60c07cb3fcf301fdb4dda7573ecb77f98f2eb1273d9db7358d4d5f4",
+          "linux-output/asan/article/nodes.csv": "a47e0db0d15bd4f52bb367b99acf0c8de218a399007b6730c9c2feeedcd4c772",
+          "linux-output/asan/original-rejected/comparison.json": "6eac5bbdac3f3e81976d4433a06d6e526a913e6f6b04a32bd3cffaa5b0860b2f",
+          "linux-output/asan/original-rejected/nodes.csv": "f7b991d5d308729c0ee491684a31106f9ee422030fcd043637384224e25b043e",
+          "linux-output/asan/stable-retry/comparison.json": "f555d8624c60198e3e0623bf56d4589fda24a825adbab4325e219ef69e8bc8e0",
+          "linux-output/asan/stable-retry/nodes.csv": "48a21edf017ed9d8b7a720be9e0e05096250c684e7fa293d2523f07a85126566"
+        }
+      }
+    },
+    "merge": {
+      "msvc": {
+        "source": "7ccd8d769536b291a2264b140fa4acfc76f3960a",
+        "probe_sha256": "dfdeae52ef34be30f0396d094fa7e69f908d1807aee4e2e7222b0c6d4f605c9f",
+        "negative_controls": [
+          {
+            "index": 0,
+            "exit": 1,
+            "input": "0 0\n",
+            "stderr": "Invalid diagnostic input size\n"
+          },
+          {
+            "index": 1,
+            "exit": 1,
+            "input": "4 1\n0 0 0\n1 0 0\n1 1 0\n0 1 0\n4 0 1 2 2\n",
+            "stderr": "Invalid or repeated mixed face vertex\n"
+          },
+          {
+            "index": 2,
+            "exit": 1,
+            "input": "3 1\n0 0 0\n1 0 0\n2 0 0\n3 0 1 2\n",
+            "stderr": "Collapsed physical mixed diagnostic subtriangle\n"
+          }
+        ],
+        "input_sha256": {
+          "article": {
+            "manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+          },
+          "original-rejected": {
+            "manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb"
+          },
+          "stable-retry": {
+            "manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f"
+          }
+        },
+        "mesh_observations": 22,
+        "output_sha256": {
+          "postmerge/msvc/article/comparison.json": "2264b30f4231738d794b8542b2d14236f0acb3f7529fb6fd45fd0bab9af0fdee",
+          "postmerge/msvc/article/nodes.csv": "687488e8b42b0c6f5819e1dac47073a6bcddaca181e77214dd318f03d3996e30",
+          "postmerge/msvc/original-rejected/comparison.json": "bcea81954d17a7a473d32836de517d181fd6ede0b8761ccb1e41c0124953a9dd",
+          "postmerge/msvc/original-rejected/nodes.csv": "07a67a075422041f62f33b7c71bcff66281991b00392b159392ad3c2182d762f",
+          "postmerge/msvc/stable-retry/comparison.json": "9f786b20e04bca458cdf11ad5bfc930144a513ff58cea7e5a76e08017edac348",
+          "postmerge/msvc/stable-retry/nodes.csv": "b15012f8c0da626a23b147505562c59689847fe6843348c37795bb9e73c1bd62"
+        }
+      },
+      "gnu": {
+        "source": "7ccd8d769536b291a2264b140fa4acfc76f3960a",
+        "probe_sha256": "beec147e96eba9cefda521b7725b93f5b5f70da8359a7dd5c27c9e2179dd34c3",
+        "negative_controls": [
+          {
+            "index": 0,
+            "exit": 1,
+            "input": "0 0\n",
+            "stderr": "Invalid diagnostic input size\n"
+          },
+          {
+            "index": 1,
+            "exit": 1,
+            "input": "4 1\n0 0 0\n1 0 0\n1 1 0\n0 1 0\n4 0 1 2 2\n",
+            "stderr": "Invalid or repeated mixed face vertex\n"
+          },
+          {
+            "index": 2,
+            "exit": 1,
+            "input": "3 1\n0 0 0\n1 0 0\n2 0 0\n3 0 1 2\n",
+            "stderr": "Collapsed physical mixed diagnostic subtriangle\n"
+          }
+        ],
+        "input_sha256": {
+          "article": {
+            "manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+          },
+          "original-rejected": {
+            "manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb"
+          },
+          "stable-retry": {
+            "manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f"
+          }
+        },
+        "mesh_observations": 22,
+        "output_sha256": {
+          "postmerge/linux-output/gnu/article/comparison.json": "3696141c3c9f5fb34476206fe9380da909065de6a73ad3795c451ee0086f62a2",
+          "postmerge/linux-output/gnu/article/nodes.csv": "a47e0db0d15bd4f52bb367b99acf0c8de218a399007b6730c9c2feeedcd4c772",
+          "postmerge/linux-output/gnu/original-rejected/comparison.json": "6b5d46c08d67714c2673d8542ff8d14bce1069c9a23be7362d9bed85d4f872bb",
+          "postmerge/linux-output/gnu/original-rejected/nodes.csv": "f7b991d5d308729c0ee491684a31106f9ee422030fcd043637384224e25b043e",
+          "postmerge/linux-output/gnu/stable-retry/comparison.json": "29686c15d990723efb44bee5ed55f359359f72d6d9db0a7a8be7b0444de2b125",
+          "postmerge/linux-output/gnu/stable-retry/nodes.csv": "48a21edf017ed9d8b7a720be9e0e05096250c684e7fa293d2523f07a85126566"
+        }
+      },
+      "asan": {
+        "source": "7ccd8d769536b291a2264b140fa4acfc76f3960a",
+        "probe_sha256": "35f2644aeee55a5614f9dbd400f65217f4261e0c57a9aa58b57cc5811469c2a3",
+        "negative_controls": [
+          {
+            "index": 0,
+            "exit": 1,
+            "input": "0 0\n",
+            "stderr": "Invalid diagnostic input size\n"
+          },
+          {
+            "index": 1,
+            "exit": 1,
+            "input": "4 1\n0 0 0\n1 0 0\n1 1 0\n0 1 0\n4 0 1 2 2\n",
+            "stderr": "Invalid or repeated mixed face vertex\n"
+          },
+          {
+            "index": 2,
+            "exit": 1,
+            "input": "3 1\n0 0 0\n1 0 0\n2 0 0\n3 0 1 2\n",
+            "stderr": "Collapsed physical mixed diagnostic subtriangle\n"
+          }
+        ],
+        "input_sha256": {
+          "article": {
+            "manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+          },
+          "original-rejected": {
+            "manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb"
+          },
+          "stable-retry": {
+            "manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f"
+          }
+        },
+        "mesh_observations": 22,
+        "output_sha256": {
+          "postmerge/linux-output/asan/article/comparison.json": "7288135aa60c07cb3fcf301fdb4dda7573ecb77f98f2eb1273d9db7358d4d5f4",
+          "postmerge/linux-output/asan/article/nodes.csv": "a47e0db0d15bd4f52bb367b99acf0c8de218a399007b6730c9c2feeedcd4c772",
+          "postmerge/linux-output/asan/original-rejected/comparison.json": "6eac5bbdac3f3e81976d4433a06d6e526a913e6f6b04a32bd3cffaa5b0860b2f",
+          "postmerge/linux-output/asan/original-rejected/nodes.csv": "f7b991d5d308729c0ee491684a31106f9ee422030fcd043637384224e25b043e",
+          "postmerge/linux-output/asan/stable-retry/comparison.json": "f555d8624c60198e3e0623bf56d4589fda24a825adbab4325e219ef69e8bc8e0",
+          "postmerge/linux-output/asan/stable-retry/nodes.csv": "48a21edf017ed9d8b7a720be9e0e05096250c684e7fa293d2523f07a85126566"
+        }
+      }
+    }
+  },
+  "ci": {
+    "candidate": {
+      "head": "d2eb15e05733d1d384402c92aeb0a7293bd7a3df",
+      "run_id": 44521151484,
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 135549776377,
+          "name": "TRI scientific equivalence against frozen baseline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135549776715,
+          "name": "TRI baseline and tooling controls (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135549776748,
+          "name": "QUAD native (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135549776768,
+          "name": "QUAD native (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "frozen_tri": [
+        {
+          "model": "eistute",
+          "compared_meshes": 5,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 1168,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        },
+        {
+          "model": "book",
+          "compared_meshes": 4,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 4256,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        }
+      ],
+      "article": [
+        {
+          "job_id": 135549776748,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        },
+        {
+          "job_id": 135549776748,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        },
+        {
+          "job_id": 135549776768,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        }
+      ],
+      "excerpts": {
+        "TRI scientific equivalence against frozen baseline": [],
+        "TRI baseline and tooling controls (Linux)": [
+          "2026-11-19T12:14:47.9477545Z 100% tests passed, 0 tests failed out of 85",
+          "2026-11-19T12:14:49.5735212Z Ran 527 tests in 1.531s"
+        ],
+        "QUAD native (ubuntu-24.04)": [
+          "2026-11-19T12:08:51.0257589Z Ran 17 tests in 0.105s",
+          "2026-11-19T12:09:16.9574468Z 100% tests passed, 0 tests failed out of 20"
+        ],
+        "QUAD native (windows-2022)": [
+          "2026-11-19T12:08:56.9686405Z Ran 17 tests in 0.230s\r",
+          "2026-11-19T12:09:45.4334279Z 100% tests passed, 0 tests failed out of 20\r"
+        ]
+      },
+      "experiment_scope": "Both-diagonal generated probes and22 retained meshes actually executed locally on MSVC/GNU/Clang sanitizer. Hosted runs17 Python reporting/analytical controls and existing native/application histories; no hosted both-diagonal probe execution claimed."
+    },
+    "postmerge": {
+      "head": "7ccd8d769536b291a2264b140fa4acfc76f3960a",
+      "run_id": 44522539529,
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 135554571729,
+          "name": "TRI scientific equivalence against frozen baseline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135554572462,
+          "name": "QUAD native (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135554572501,
+          "name": "QUAD native (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135554572533,
+          "name": "TRI baseline and tooling controls (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "frozen_tri": [
+        {
+          "model": "eistute",
+          "compared_meshes": 5,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 1168,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        },
+        {
+          "model": "book",
+          "compared_meshes": 4,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 4256,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        }
+      ],
+      "article": [
+        {
+          "job_id": 135554572462,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        },
+        {
+          "job_id": 135554572501,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        },
+        {
+          "job_id": 135554572501,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        }
+      ],
+      "excerpts": {
+        "TRI scientific equivalence against frozen baseline": [],
+        "QUAD native (windows-2022)": [
+          "2026-11-19T12:17:55.7821438Z Ran 17 tests in 0.224s\r",
+          "2026-11-19T12:18:48.5792546Z 100% tests passed, 0 tests failed out of 20\r"
+        ],
+        "QUAD native (ubuntu-24.04)": [
+          "2026-11-19T12:17:51.1944543Z Ran 17 tests in 0.136s",
+          "2026-11-19T12:18:24.0498528Z 100% tests passed, 0 tests failed out of 20"
+        ],
+        "TRI baseline and tooling controls (Linux)": [
+          "2026-11-19T12:23:34.8440859Z 100% tests passed, 0 tests failed out of 85",
+          "2026-11-19T12:23:36.1908532Z Ran 527 tests in 1.260s"
+        ]
+      },
+      "experiment_scope": "Local three-profile both-diagonal probes and22 retained observations actually rerun; unchanged probe images reused. Hosted runs17 reporting/analytical controls and existing native/application histories; no hosted both-diagonal probe execution claimed."
+    }
+  },
+  "summary": {
+    "cases": {
+      "article": [
+        {
+          "file": "step_0_retry_-1_accepted_tri.obj",
+          "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+          "nodes": 5,
+          "quads": 0,
+          "triangles": 4,
+          "interior_nodes": 1,
+          "boundary_nodes": 4,
+          "absolute_difference_02": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "absolute_difference_13": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "diagonal_difference": {
+            "count": 1,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "0",
+          "epoch": "0",
+          "retry": "-1",
+          "domain_generation": "0",
+          "reference_tri_accepted": "1",
+          "reason": "initial",
+          "scheme": "TRI",
+          "analytical_range": [
+            0.010262591804669133,
+            0.010262591804669133
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 5,
+            "u": 0.5,
+            "v": 0.5,
+            "boundary": false,
+            "analytical_gaussian": 0.010262591804669133,
+            "density_02": 0.007395404159223798,
+            "density_13": 0.007395404159223798,
+            "area_02": 1.3366287703266764,
+            "area_13": 1.3366287703266764,
+            "abs_difference_02": 0.0028671876454453354,
+            "abs_difference_13": 0.0028671876454453354,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_0_retry_-1_accepted_quad_tri.obj",
+          "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+          "nodes": 5,
+          "quads": 0,
+          "triangles": 4,
+          "interior_nodes": 1,
+          "boundary_nodes": 4,
+          "absolute_difference_02": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "absolute_difference_13": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "diagonal_difference": {
+            "count": 1,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "0",
+          "epoch": "0",
+          "retry": "-1",
+          "domain_generation": "0",
+          "reference_tri_accepted": "1",
+          "reason": "initial",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            0.010262591804669133,
+            0.010262591804669133
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 5,
+            "u": 0.5,
+            "v": 0.5,
+            "boundary": false,
+            "analytical_gaussian": 0.010262591804669133,
+            "density_02": 0.007395404159223798,
+            "density_13": 0.007395404159223798,
+            "area_02": 1.3366287703266764,
+            "area_13": 1.3366287703266764,
+            "abs_difference_02": 0.0028671876454453354,
+            "abs_difference_13": 0.0028671876454453354,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_1_retry_0_accepted_tri.obj",
+          "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+          "nodes": 17,
+          "quads": 0,
+          "triangles": 24,
+          "interior_nodes": 9,
+          "boundary_nodes": 8,
+          "absolute_difference_02": {
+            "count": 9,
+            "maximum": 0.14065957775648108,
+            "median": 0.020576270513154256
+          },
+          "absolute_difference_13": {
+            "count": 9,
+            "maximum": 0.14065957775648108,
+            "median": 0.020576270513154256
+          },
+          "diagonal_difference": {
+            "count": 9,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "1",
+          "epoch": "1",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "scheme": "TRI",
+          "analytical_range": [
+            -0.011570961683297283,
+            0.23852215474899655
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 9,
+            "u": 0.25766849876025355,
+            "v": 0.2584082176732231,
+            "boundary": false,
+            "analytical_gaussian": 0.23852215474899655,
+            "density_02": 0.09786257699251548,
+            "density_13": 0.09786257699251548,
+            "area_02": 0.2449945393947122,
+            "area_13": 0.2449945393947122,
+            "abs_difference_02": 0.14065957775648108,
+            "abs_difference_13": 0.14065957775648108,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_1_retry_0_accepted_quad_tri.obj",
+          "sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+          "nodes": 33,
+          "quads": 24,
+          "triangles": 8,
+          "interior_nodes": 25,
+          "boundary_nodes": 8,
+          "absolute_difference_02": {
+            "count": 25,
+            "maximum": 0.24174458874259636,
+            "median": 0.010063014109404998
+          },
+          "absolute_difference_13": {
+            "count": 25,
+            "maximum": 0.3522646484442591,
+            "median": 0.0121587005851957
+          },
+          "diagonal_difference": {
+            "count": 25,
+            "maximum": 0.34581756292940435,
+            "median": 0.015037141510794123
+          },
+          "step": "1",
+          "epoch": "1",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            -0.024897227768448597,
+            0.264486231597564
+          ],
+          "closer_02_nodes": 14,
+          "closer_13_nodes": 11,
+          "sign_disagreements_between_diagonals": 8,
+          "worst_diagonal_node": {
+            "node": 10,
+            "u": 0.33287544881214753,
+            "v": 0.223953065191091,
+            "boundary": false,
+            "analytical_gaussian": 0.227938195605608,
+            "density_02": 0.07924522983678126,
+            "density_13": 0.4250627927661856,
+            "area_02": 0.11130934134250023,
+            "area_13": 0.06203091707072576,
+            "abs_difference_02": 0.14869296576882673,
+            "abs_difference_13": 0.1971245971605776,
+            "diagonal_difference": 0.34581756292940435
+          }
+        },
+        {
+          "file": "step_2_retry_0_accepted_tri.obj",
+          "sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+          "nodes": 78,
+          "quads": 0,
+          "triangles": 144,
+          "interior_nodes": 68,
+          "boundary_nodes": 10,
+          "absolute_difference_02": {
+            "count": 68,
+            "maximum": 0.6996785869337487,
+            "median": 0.00462199460706959
+          },
+          "absolute_difference_13": {
+            "count": 68,
+            "maximum": 0.6996785869337487,
+            "median": 0.00462199460706959
+          },
+          "diagonal_difference": {
+            "count": 68,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "2",
+          "epoch": "2",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "scheme": "TRI",
+          "analytical_range": [
+            -0.4172153728399189,
+            0.25089588468036333
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 11,
+            "u": 0.18480306531207574,
+            "v": 0.0906499143715074,
+            "boundary": false,
+            "analytical_gaussian": -0.41661238318995797,
+            "density_02": -1.1162909701237067,
+            "density_13": -1.1162909701237067,
+            "area_02": 0.03238327089239523,
+            "area_13": 0.03238327089239523,
+            "abs_difference_02": 0.6996785869337487,
+            "abs_difference_13": 0.6996785869337487,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_2_retry_0_accepted_quad_tri.obj",
+          "sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+          "nodes": 281,
+          "quads": 249,
+          "triangles": 52,
+          "interior_nodes": 271,
+          "boundary_nodes": 10,
+          "absolute_difference_02": {
+            "count": 271,
+            "maximum": 4.827009323940284,
+            "median": 0.010043982266310942
+          },
+          "absolute_difference_13": {
+            "count": 271,
+            "maximum": 3.8391267675351797,
+            "median": 0.00984049280164272
+          },
+          "diagonal_difference": {
+            "count": 271,
+            "maximum": 5.438696520744008,
+            "median": 0.017212872644779297
+          },
+          "step": "2",
+          "epoch": "2",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            -0.7695709595955589,
+            0.2734619657774655
+          ],
+          "closer_02_nodes": 122,
+          "closer_13_nodes": 149,
+          "sign_disagreements_between_diagonals": 82,
+          "worst_diagonal_node": {
+            "node": 115,
+            "u": 0.5754748725074611,
+            "v": 0.10065571347513426,
+            "boundary": false,
+            "analytical_gaussian": -0.5564634621079806,
+            "density_02": 4.270545861832304,
+            "density_13": -1.1681506589117046,
+            "area_02": 0.005209772256149793,
+            "area_13": 0.017727615457211552,
+            "abs_difference_02": 4.827009323940284,
+            "abs_difference_13": 0.611687196803724,
+            "diagonal_difference": 5.438696520744008
+          }
+        },
+        {
+          "file": "step_3_retry_0_accepted_tri.obj",
+          "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+          "nodes": 223,
+          "quads": 0,
+          "triangles": 430,
+          "interior_nodes": 209,
+          "boundary_nodes": 14,
+          "absolute_difference_02": {
+            "count": 209,
+            "maximum": 0.8321169174383443,
+            "median": 0.0010504783345672564
+          },
+          "absolute_difference_13": {
+            "count": 209,
+            "maximum": 0.8321169174383443,
+            "median": 0.0010504783345672564
+          },
+          "diagonal_difference": {
+            "count": 209,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "3",
+          "epoch": "3",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "scheme": "TRI",
+          "analytical_range": [
+            -2.354774531229807,
+            0.2753844540156027
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 15,
+            "u": 0.0885853292895429,
+            "v": 0.0319226910880225,
+            "boundary": false,
+            "analytical_gaussian": -2.354774531229807,
+            "density_02": -1.522657613791463,
+            "density_13": -1.522657613791463,
+            "area_02": 0.004099471177525412,
+            "area_13": 0.004099471177525412,
+            "abs_difference_02": 0.8321169174383443,
+            "abs_difference_13": 0.8321169174383443,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_3_retry_0_accepted_quad_tri.obj",
+          "sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+          "nodes": 689,
+          "quads": 630,
+          "triangles": 102,
+          "interior_nodes": 675,
+          "boundary_nodes": 14,
+          "absolute_difference_02": {
+            "count": 675,
+            "maximum": 2.3426808203343232,
+            "median": 0.01024975619014295
+          },
+          "absolute_difference_13": {
+            "count": 675,
+            "maximum": 3.4469505495093853,
+            "median": 0.009966138096493257
+          },
+          "diagonal_difference": {
+            "count": 675,
+            "maximum": 1.8198965376546967,
+            "median": 0.017869109689757627
+          },
+          "step": "3",
+          "epoch": "3",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            -1.8461148276965045,
+            0.2779888098171789
+          ],
+          "closer_02_nodes": 336,
+          "closer_13_nodes": 339,
+          "sign_disagreements_between_diagonals": 139,
+          "worst_diagonal_node": {
+            "node": 15,
+            "u": 0.6893410521782364,
+            "v": 0.05826315802382022,
+            "boundary": false,
+            "analytical_gaussian": -1.2456069095830433,
+            "density_02": -1.7763299860792432,
+            "density_13": 0.043566551575453555,
+            "area_02": 0.0045979182841847715,
+            "area_13": 0.0019080778785293376,
+            "abs_difference_02": 0.5307230764961999,
+            "abs_difference_13": 1.2891734611584968,
+            "diagonal_difference": 1.8198965376546967
+          }
+        }
+      ],
+      "original-rejected": [
+        {
+          "file": "step_0_retry_-1_accepted_tri.obj",
+          "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+          "nodes": 5,
+          "quads": 0,
+          "triangles": 4,
+          "interior_nodes": 1,
+          "boundary_nodes": 4,
+          "absolute_difference_02": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "absolute_difference_13": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "diagonal_difference": {
+            "count": 1,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "0",
+          "epoch": "0",
+          "retry": "-1",
+          "domain_generation": "0",
+          "reference_tri_accepted": "1",
+          "reason": "initial",
+          "scheme": "TRI",
+          "analytical_range": [
+            0.010262591804669133,
+            0.010262591804669133
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 5,
+            "u": 0.5,
+            "v": 0.5,
+            "boundary": false,
+            "analytical_gaussian": 0.010262591804669133,
+            "density_02": 0.007395404159223798,
+            "density_13": 0.007395404159223798,
+            "area_02": 1.3366287703266764,
+            "area_13": 1.3366287703266764,
+            "abs_difference_02": 0.0028671876454453354,
+            "abs_difference_13": 0.0028671876454453354,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_0_retry_-1_accepted_quad_tri.obj",
+          "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+          "nodes": 5,
+          "quads": 0,
+          "triangles": 4,
+          "interior_nodes": 1,
+          "boundary_nodes": 4,
+          "absolute_difference_02": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "absolute_difference_13": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "diagonal_difference": {
+            "count": 1,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "0",
+          "epoch": "0",
+          "retry": "-1",
+          "domain_generation": "0",
+          "reference_tri_accepted": "1",
+          "reason": "initial",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            0.010262591804669133,
+            0.010262591804669133
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 5,
+            "u": 0.5,
+            "v": 0.5,
+            "boundary": false,
+            "analytical_gaussian": 0.010262591804669133,
+            "density_02": 0.007395404159223798,
+            "density_13": 0.007395404159223798,
+            "area_02": 1.3366287703266764,
+            "area_13": 1.3366287703266764,
+            "abs_difference_02": 0.0028671876454453354,
+            "abs_difference_13": 0.0028671876454453354,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_1_retry_0_accepted_tri.obj",
+          "sha256": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+          "nodes": 63,
+          "quads": 0,
+          "triangles": 104,
+          "interior_nodes": 43,
+          "boundary_nodes": 20,
+          "absolute_difference_02": {
+            "count": 43,
+            "maximum": 0.5264815955061877,
+            "median": 0.0036876226315491253
+          },
+          "absolute_difference_13": {
+            "count": 43,
+            "maximum": 0.5264815955061877,
+            "median": 0.0036876226315491253
+          },
+          "diagonal_difference": {
+            "count": 43,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "1",
+          "epoch": "1",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "scheme": "TRI",
+          "analytical_range": [
+            -0.2784532009816531,
+            0.24562375786108756
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 21,
+            "u": 0.12595516507864835,
+            "v": 0.12944908044492842,
+            "boundary": false,
+            "analytical_gaussian": -0.06772807586289716,
+            "density_02": -0.5942096713690849,
+            "density_13": -0.5942096713690849,
+            "area_02": 0.04378549290724448,
+            "area_13": 0.04378549290724448,
+            "abs_difference_02": 0.5264815955061877,
+            "abs_difference_13": 0.5264815955061877,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_1_retry_0_accepted_quad_tri.obj",
+          "sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+          "nodes": 165,
+          "quads": 120,
+          "triangles": 68,
+          "interior_nodes": 145,
+          "boundary_nodes": 20,
+          "absolute_difference_02": {
+            "count": 145,
+            "maximum": 0.9645471843740048,
+            "median": 0.011137334566891009
+          },
+          "absolute_difference_13": {
+            "count": 145,
+            "maximum": 0.9926220776684933,
+            "median": 0.010688984765744354
+          },
+          "diagonal_difference": {
+            "count": 145,
+            "maximum": 0.386428931438593,
+            "median": 0.017812516026273394
+          },
+          "step": "1",
+          "epoch": "1",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            -0.28910964963414154,
+            0.2770048810138534
+          ],
+          "closer_02_nodes": 69,
+          "closer_13_nodes": 76,
+          "sign_disagreements_between_diagonals": 22,
+          "worst_diagonal_node": {
+            "node": 60,
+            "u": 0.1875,
+            "v": 0.1875,
+            "boundary": false,
+            "analytical_gaussian": 0.261049433719212,
+            "density_02": 0.11923478686474073,
+            "density_13": 0.5056637183033338,
+            "area_02": 0.01549054853409046,
+            "area_13": 0.007721994369030953,
+            "abs_difference_02": 0.1418146468544713,
+            "abs_difference_13": 0.24461428458412177,
+            "diagonal_difference": 0.386428931438593
+          }
+        },
+        {
+          "file": "step_2_retry_0_rejected_tri.obj",
+          "sha256": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+          "nodes": 337,
+          "quads": 0,
+          "triangles": 560,
+          "interior_nodes": 225,
+          "boundary_nodes": 112,
+          "absolute_difference_02": {
+            "count": 225,
+            "maximum": 0.8956603746109923,
+            "median": 0.0004657363603798592
+          },
+          "absolute_difference_13": {
+            "count": 225,
+            "maximum": 0.8956603746109923,
+            "median": 0.0004657363603798592
+          },
+          "diagonal_difference": {
+            "count": 225,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "2",
+          "epoch": "2",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "global_error_increased",
+          "scheme": "TRI",
+          "analytical_range": [
+            -3.7628001218257885,
+            0.271397495869484
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 113,
+            "u": 0.06412462968796444,
+            "v": 0.028134890228373236,
+            "boundary": false,
+            "analytical_gaussian": -2.5780617647835684,
+            "density_02": -2.389315525438225,
+            "density_13": -2.389315525438225,
+            "area_02": 0.005564848328556002,
+            "area_13": 0.005564848328556002,
+            "abs_difference_02": 0.18874623934534362,
+            "abs_difference_13": 0.18874623934534362,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_2_retry_0_rejected_quad_tri.obj",
+          "sha256": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+          "nodes": 953,
+          "quads": 784,
+          "triangles": 224,
+          "interior_nodes": 841,
+          "boundary_nodes": 112,
+          "absolute_difference_02": {
+            "count": 841,
+            "maximum": 0.8262281236999951,
+            "median": 0.00883590264075985
+          },
+          "absolute_difference_13": {
+            "count": 841,
+            "maximum": 0.9597981382770766,
+            "median": 0.008236637350813123
+          },
+          "diagonal_difference": {
+            "count": 841,
+            "maximum": 1.4683152160880197,
+            "median": 0.015961078528995577
+          },
+          "step": "2",
+          "epoch": "2",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "global_error_increased",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            -1.6164113953540717,
+            0.27834096585350415
+          ],
+          "closer_02_nodes": 410,
+          "closer_13_nodes": 431,
+          "sign_disagreements_between_diagonals": 180,
+          "worst_diagonal_node": {
+            "node": 230,
+            "u": 0.09375,
+            "v": 0.09375,
+            "boundary": false,
+            "analytical_gaussian": -0.601195785406575,
+            "density_02": -1.1097128632175182,
+            "density_13": 0.3586023528705016,
+            "area_02": 0.0033393075972327686,
+            "area_13": 0.0016664168261336472,
+            "abs_difference_02": 0.5085170778109431,
+            "abs_difference_13": 0.9597981382770766,
+            "diagonal_difference": 1.4683152160880197
+          }
+        },
+        {
+          "file": "step_3_retry_0_rejected_tri.obj",
+          "sha256": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+          "nodes": 337,
+          "quads": 0,
+          "triangles": 560,
+          "interior_nodes": 225,
+          "boundary_nodes": 112,
+          "absolute_difference_02": {
+            "count": 225,
+            "maximum": 0.8956603746109923,
+            "median": 0.0004657363603798592
+          },
+          "absolute_difference_13": {
+            "count": 225,
+            "maximum": 0.8956603746109923,
+            "median": 0.0004657363603798592
+          },
+          "diagonal_difference": {
+            "count": 225,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "3",
+          "epoch": "3",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "global_error_increased",
+          "scheme": "TRI",
+          "analytical_range": [
+            -3.7628001218257885,
+            0.271397495869484
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 113,
+            "u": 0.06412462968796444,
+            "v": 0.028134890228373236,
+            "boundary": false,
+            "analytical_gaussian": -2.5780617647835684,
+            "density_02": -2.389315525438225,
+            "density_13": -2.389315525438225,
+            "area_02": 0.005564848328556002,
+            "area_13": 0.005564848328556002,
+            "abs_difference_02": 0.18874623934534362,
+            "abs_difference_13": 0.18874623934534362,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_3_retry_0_rejected_quad_tri.obj",
+          "sha256": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+          "nodes": 953,
+          "quads": 784,
+          "triangles": 224,
+          "interior_nodes": 841,
+          "boundary_nodes": 112,
+          "absolute_difference_02": {
+            "count": 841,
+            "maximum": 0.8262281236999951,
+            "median": 0.00883590264075985
+          },
+          "absolute_difference_13": {
+            "count": 841,
+            "maximum": 0.9597981382770766,
+            "median": 0.008236637350813123
+          },
+          "diagonal_difference": {
+            "count": 841,
+            "maximum": 1.4683152160880197,
+            "median": 0.015961078528995577
+          },
+          "step": "3",
+          "epoch": "3",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "global_error_increased",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            -1.6164113953540717,
+            0.27834096585350415
+          ],
+          "closer_02_nodes": 410,
+          "closer_13_nodes": 431,
+          "sign_disagreements_between_diagonals": 180,
+          "worst_diagonal_node": {
+            "node": 230,
+            "u": 0.09375,
+            "v": 0.09375,
+            "boundary": false,
+            "analytical_gaussian": -0.601195785406575,
+            "density_02": -1.1097128632175182,
+            "density_13": 0.3586023528705016,
+            "area_02": 0.0033393075972327686,
+            "area_13": 0.0016664168261336472,
+            "abs_difference_02": 0.5085170778109431,
+            "abs_difference_13": 0.9597981382770766,
+            "diagonal_difference": 1.4683152160880197
+          }
+        }
+      ],
+      "stable-retry": [
+        {
+          "file": "step_0_retry_-1_accepted_tri.obj",
+          "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+          "nodes": 5,
+          "quads": 0,
+          "triangles": 4,
+          "interior_nodes": 1,
+          "boundary_nodes": 4,
+          "absolute_difference_02": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "absolute_difference_13": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "diagonal_difference": {
+            "count": 1,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "0",
+          "epoch": "0",
+          "retry": "-1",
+          "domain_generation": "0",
+          "reference_tri_accepted": "1",
+          "reason": "initial",
+          "scheme": "TRI",
+          "analytical_range": [
+            0.010262591804669133,
+            0.010262591804669133
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 5,
+            "u": 0.5,
+            "v": 0.5,
+            "boundary": false,
+            "analytical_gaussian": 0.010262591804669133,
+            "density_02": 0.007395404159223798,
+            "density_13": 0.007395404159223798,
+            "area_02": 1.3366287703266764,
+            "area_13": 1.3366287703266764,
+            "abs_difference_02": 0.0028671876454453354,
+            "abs_difference_13": 0.0028671876454453354,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_0_retry_-1_accepted_quad_tri.obj",
+          "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+          "nodes": 5,
+          "quads": 0,
+          "triangles": 4,
+          "interior_nodes": 1,
+          "boundary_nodes": 4,
+          "absolute_difference_02": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "absolute_difference_13": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "diagonal_difference": {
+            "count": 1,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "0",
+          "epoch": "0",
+          "retry": "-1",
+          "domain_generation": "0",
+          "reference_tri_accepted": "1",
+          "reason": "initial",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            0.010262591804669133,
+            0.010262591804669133
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 5,
+            "u": 0.5,
+            "v": 0.5,
+            "boundary": false,
+            "analytical_gaussian": 0.010262591804669133,
+            "density_02": 0.007395404159223798,
+            "density_13": 0.007395404159223798,
+            "area_02": 1.3366287703266764,
+            "area_13": 1.3366287703266764,
+            "abs_difference_02": 0.0028671876454453354,
+            "abs_difference_13": 0.0028671876454453354,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_1_retry_0_accepted_tri.obj",
+          "sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+          "nodes": 5,
+          "quads": 0,
+          "triangles": 4,
+          "interior_nodes": 1,
+          "boundary_nodes": 4,
+          "absolute_difference_02": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "absolute_difference_13": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "diagonal_difference": {
+            "count": 1,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "1",
+          "epoch": "1",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "scheme": "TRI",
+          "analytical_range": [
+            0.010262591804669133,
+            0.010262591804669133
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 5,
+            "u": 0.5,
+            "v": 0.5,
+            "boundary": false,
+            "analytical_gaussian": 0.010262591804669133,
+            "density_02": 0.007395404159223798,
+            "density_13": 0.007395404159223798,
+            "area_02": 1.3366287703266764,
+            "area_13": 1.3366287703266764,
+            "abs_difference_02": 0.0028671876454453354,
+            "abs_difference_13": 0.0028671876454453354,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_1_retry_0_accepted_quad_tri.obj",
+          "sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+          "nodes": 5,
+          "quads": 0,
+          "triangles": 4,
+          "interior_nodes": 1,
+          "boundary_nodes": 4,
+          "absolute_difference_02": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "absolute_difference_13": {
+            "count": 1,
+            "maximum": 0.0028671876454453354,
+            "median": 0.0028671876454453354
+          },
+          "diagonal_difference": {
+            "count": 1,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "1",
+          "epoch": "1",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            0.010262591804669133,
+            0.010262591804669133
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 5,
+            "u": 0.5,
+            "v": 0.5,
+            "boundary": false,
+            "analytical_gaussian": 0.010262591804669133,
+            "density_02": 0.007395404159223798,
+            "density_13": 0.007395404159223798,
+            "area_02": 1.3366287703266764,
+            "area_13": 1.3366287703266764,
+            "abs_difference_02": 0.0028671876454453354,
+            "abs_difference_13": 0.0028671876454453354,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_2_retry_1_rejected_tri.obj",
+          "sha256": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+          "nodes": 21,
+          "quads": 0,
+          "triangles": 28,
+          "interior_nodes": 9,
+          "boundary_nodes": 12,
+          "absolute_difference_02": {
+            "count": 9,
+            "maximum": 0.23040347929735816,
+            "median": 0.0073919443110487225
+          },
+          "absolute_difference_13": {
+            "count": 9,
+            "maximum": 0.23040347929735816,
+            "median": 0.0073919443110487225
+          },
+          "diagonal_difference": {
+            "count": 9,
+            "maximum": 0.0,
+            "median": 0.0
+          },
+          "step": "2",
+          "epoch": "3",
+          "retry": "1",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "hybrid_criterion_rejected",
+          "scheme": "TRI",
+          "analytical_range": [
+            -0.02294561581384028,
+            0.2794608534964086
+          ],
+          "closer_02_nodes": 0,
+          "closer_13_nodes": 0,
+          "sign_disagreements_between_diagonals": 0,
+          "worst_diagonal_node": {
+            "node": 13,
+            "u": 0.2175358899571858,
+            "v": 0.21546691010454988,
+            "boundary": false,
+            "analytical_gaussian": 0.2794608534964086,
+            "density_02": 0.04905737419905044,
+            "density_13": 0.04905737419905044,
+            "area_02": 0.15680877762790543,
+            "area_13": 0.15680877762790543,
+            "abs_difference_02": 0.23040347929735816,
+            "abs_difference_13": 0.23040347929735816,
+            "diagonal_difference": 0.0
+          }
+        },
+        {
+          "file": "step_2_retry_1_rejected_quad_tri.obj",
+          "sha256": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f",
+          "nodes": 37,
+          "quads": 16,
+          "triangles": 28,
+          "interior_nodes": 25,
+          "boundary_nodes": 12,
+          "absolute_difference_02": {
+            "count": 25,
+            "maximum": 0.24368054800984884,
+            "median": 0.009655465931462933
+          },
+          "absolute_difference_13": {
+            "count": 25,
+            "maximum": 0.2432113857933307,
+            "median": 0.007668940711849006
+          },
+          "diagonal_difference": {
+            "count": 25,
+            "maximum": 0.11355223324721958,
+            "median": 0.008057486726105116
+          },
+          "step": "2",
+          "epoch": "3",
+          "retry": "1",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "hybrid_criterion_rejected",
+          "scheme": "QUAD_TRI",
+          "analytical_range": [
+            -0.01943398003536335,
+            0.24975858065352693
+          ],
+          "closer_02_nodes": 11,
+          "closer_13_nodes": 14,
+          "sign_disagreements_between_diagonals": 3,
+          "worst_diagonal_node": {
+            "node": 10,
+            "u": 0.375,
+            "v": 0.25,
+            "boundary": false,
+            "analytical_gaussian": 0.17551800889784755,
+            "density_02": 0.36918261824192,
+            "density_13": 0.2556303849947004,
+            "area_02": 0.04296642170556234,
+            "area_13": 0.06203894233053522,
+            "abs_difference_02": 0.19366460934407245,
+            "abs_difference_13": 0.08011237609685287,
+            "diagonal_difference": 0.11355223324721958
+          }
+        }
+      ]
+    },
+    "cross_profile_max_absolute_density_difference": 2.0321522242738865e-12
+  },
+  "candidate_merge_exports": {
+    "msvc/article/comparison.json": "2264b30f4231738d794b8542b2d14236f0acb3f7529fb6fd45fd0bab9af0fdee",
+    "msvc/article/nodes.csv": "687488e8b42b0c6f5819e1dac47073a6bcddaca181e77214dd318f03d3996e30",
+    "msvc/original-rejected/comparison.json": "bcea81954d17a7a473d32836de517d181fd6ede0b8761ccb1e41c0124953a9dd",
+    "msvc/original-rejected/nodes.csv": "07a67a075422041f62f33b7c71bcff66281991b00392b159392ad3c2182d762f",
+    "msvc/stable-retry/comparison.json": "9f786b20e04bca458cdf11ad5bfc930144a513ff58cea7e5a76e08017edac348",
+    "msvc/stable-retry/nodes.csv": "b15012f8c0da626a23b147505562c59689847fe6843348c37795bb9e73c1bd62",
+    "gnu/article/comparison.json": "3696141c3c9f5fb34476206fe9380da909065de6a73ad3795c451ee0086f62a2",
+    "gnu/article/nodes.csv": "a47e0db0d15bd4f52bb367b99acf0c8de218a399007b6730c9c2feeedcd4c772",
+    "gnu/original-rejected/comparison.json": "6b5d46c08d67714c2673d8542ff8d14bce1069c9a23be7362d9bed85d4f872bb",
+    "gnu/original-rejected/nodes.csv": "f7b991d5d308729c0ee491684a31106f9ee422030fcd043637384224e25b043e",
+    "gnu/stable-retry/comparison.json": "29686c15d990723efb44bee5ed55f359359f72d6d9db0a7a8be7b0444de2b125",
+    "gnu/stable-retry/nodes.csv": "48a21edf017ed9d8b7a720be9e0e05096250c684e7fa293d2523f07a85126566",
+    "asan/article/comparison.json": "7288135aa60c07cb3fcf301fdb4dda7573ecb77f98f2eb1273d9db7358d4d5f4",
+    "asan/article/nodes.csv": "a47e0db0d15bd4f52bb367b99acf0c8de218a399007b6730c9c2feeedcd4c772",
+    "asan/original-rejected/comparison.json": "6eac5bbdac3f3e81976d4433a06d6e526a913e6f6b04a32bd3cffaa5b0860b2f",
+    "asan/original-rejected/nodes.csv": "f7b991d5d308729c0ee491684a31106f9ee422030fcd043637384224e25b043e",
+    "asan/stable-retry/comparison.json": "f555d8624c60198e3e0623bf56d4589fda24a825adbab4325e219ef69e8bc8e0",
+    "asan/stable-retry/nodes.csv": "48a21edf017ed9d8b7a720be9e0e05096250c684e7fa293d2523f07a85126566"
+  },
+  "visual": {
+    "path": "build/quad-diagonal-curvature-20261119/diagonal_curvature.png",
+    "sha256": "f0d009b1061c140b47541d77ac4dd228e7192e8174cbacb6074dccd41e14b6cd",
+    "visually_checked": true,
+    "scope": "Interior sites, common zero-centred colour scale within each step, analytical K and both witness densities. Local artifact only."
+  },
+  "raw_log_sha256": {
+    "build/quad-diagonal-curvature-20261119/baseline.command.json": "6eebbfca61cacc8d4cfe49a2c749379d6b2bbe80ea15289270848880ca3d2a1e",
+    "build/quad-diagonal-curvature-20261119/baseline.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/baseline.stdout": "a2dca00e2354756f8e14c6dedcca5fc1b25d370166fd146c0a2a17e89dc001c1",
+    "build/quad-diagonal-curvature-20261119/candidate-ci.json": "ae3ccc47bb6789ec9f55441d02b663273702e30f9a756270356b9245d7db4889",
+    "build/quad-diagonal-curvature-20261119/candidate-file-state.json": "283d377a5edec467c6486817ad4d3feac904ab0775af6bcbf9d41f9b345b357c",
+    "build/quad-diagonal-curvature-20261119/controls.command.json": "202084fcc303446d817bed5a0402c0c960033c5bb8f8249d43d07136d3c7536e",
+    "build/quad-diagonal-curvature-20261119/controls.stderr": "aacf208f1ab863125107cfa28f4216e6e104ebff3ccbb358ce0a2cdb6728e8d7",
+    "build/quad-diagonal-curvature-20261119/controls.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/export-identity.json": "41b7a06af250765f6fdbe5a64978a196e2274e515b0adc5f219a65dab92d4158",
+    "build/quad-diagonal-curvature-20261119/linux.command.json": "a401f4100966ea98bbea506fdc4496cc4603445d4bce559586d9fc7a3eab6190",
+    "build/quad-diagonal-curvature-20261119/linux.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/linux.stdout": "4a4a0e58d54bd96c46c4a26cd01e78079ad5ee46bcb57a6ca8ee5838235fe17f",
+    "build/quad-diagonal-curvature-20261119/merge-checkout.json": "483dc8660906ea7cea66ecb2f8d144a0cf2eb7b7bcdba4b6297e3b5e0fa54348",
+    "build/quad-diagonal-curvature-20261119/msvc-archives.command.json": "a75cbd18467ab6839c83fd2cf898566181ca2de8fecbe6849d269db8a9ead463",
+    "build/quad-diagonal-curvature-20261119/msvc-archives.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/msvc-archives.stdout": "e0073d6473a1b516454ea0aa5420671dfa97dfa79fbaf34249d8fd42a09e5f81",
+    "build/quad-diagonal-curvature-20261119/msvc-build.command.json": "b9962b6f27a1273c1f3427705e664ff9c21463b666bf0af66c7e6103423bc3b3",
+    "build/quad-diagonal-curvature-20261119/msvc-build.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/msvc-build.stdout": "e4a2befe7afdf336c03b00ae634a1fa6565a119f7e5eeed2ac4ee61eac33503e",
+    "build/quad-diagonal-curvature-20261119/msvc-configure.command.json": "e29ccfbd892aad97ff95b52003d3b03d3ce108dd4009c4568aa1ab49cd2e0ada",
+    "build/quad-diagonal-curvature-20261119/msvc-configure.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/msvc-configure.stdout": "b0899485f1bbabcd6e43831ee732e0a846d47a9b6842b2de4554bc4ad2263ce0",
+    "build/quad-diagonal-curvature-20261119/postmerge-ci.json": "c7e2129ea972affa115082c4a18c7e200c84c14883a1835f2ccb9cffdfb15497",
+    "build/quad-diagonal-curvature-20261119/progress.json": "4681cbc04b180ca773a3dbba51238a4375997ce8287c6d1ee96852763b7ebc7c",
+    "build/quad-diagonal-curvature-20261119/receipt.json": "445851aa9593de6b6fd0b2d18ca09faa88e7ed8c9d28a4b6e125600ad7ea32e5",
+    "build/quad-diagonal-curvature-20261119/source-identity.json": "fa5de1e0ae813d0c244a746e5f01ca7b310ac1979bd2a87726068f38cc599234",
+    "build/quad-diagonal-curvature-20261119/summary.json": "e717db5e8c9bd2fae78b6526b4fd5509a08b2415cf123c4dfcbeb4f979eb7a24",
+    "build/quad-diagonal-curvature-20261119/postmerge/baseline.command.json": "6eebbfca61cacc8d4cfe49a2c749379d6b2bbe80ea15289270848880ca3d2a1e",
+    "build/quad-diagonal-curvature-20261119/postmerge/baseline.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/postmerge/baseline.stdout": "7419fc4e1f27cfdd65c39fd81bd07224f7fe98827a89ba8618136736a2505e8f",
+    "build/quad-diagonal-curvature-20261119/postmerge/controls.command.json": "202084fcc303446d817bed5a0402c0c960033c5bb8f8249d43d07136d3c7536e",
+    "build/quad-diagonal-curvature-20261119/postmerge/controls.stderr": "581ebb837d24c55333a99f20a38601fbd189794816ec29408bb0274eccaba2df",
+    "build/quad-diagonal-curvature-20261119/postmerge/controls.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux.command.json": "29e6a5e636d09ed22bd966d5a9a6f51b9342c15fc948ca684e505b0d7480bf4e",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux.stdout": "7e22bd9c14ddc164623e1d4b8e7b1465388037236c7537d8bf66f94c54141d25",
+    "build/quad-diagonal-curvature-20261119/postmerge/msvc-archives.command.json": "3f9dee76fc9adf010a2e6b051643938111ae62c5ccfab1478644b2271236b4e6",
+    "build/quad-diagonal-curvature-20261119/postmerge/msvc-archives.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/postmerge/msvc-archives.stdout": "e0073d6473a1b516454ea0aa5420671dfa97dfa79fbaf34249d8fd42a09e5f81",
+    "build/quad-diagonal-curvature-20261119/postmerge/progress.json": "c3ba42e6929e034e3d4271b22167a4e6452bc16224681b466121af703532dcc1",
+    "build/quad-diagonal-curvature-20261119/postmerge/receipt.json": "8fac89e49d6f7507c649dec6f9fff9814a0329a80a943fde8f08ac9e9250210e",
+    "build/quad-diagonal-curvature-20261119/linux-output/asan-archives.command.json": "83f97cb40396e9207e966ff69d6ddae6cbd8cc8f3268d689a2c27a5dfa7163b8",
+    "build/quad-diagonal-curvature-20261119/linux-output/asan-archives.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/linux-output/asan-archives.stdout": "ee0fe87d45e8c8527cd7f7c7e71494350053c9261bcee95ecff27b442cda4b63",
+    "build/quad-diagonal-curvature-20261119/linux-output/asan-build.command.json": "c752671d25fe5b1bb9a09e0ef7c77adb7263ba3fe9eff43bf21bb3a873d67804",
+    "build/quad-diagonal-curvature-20261119/linux-output/asan-build.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/linux-output/asan-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/linux-output/asan-compiler.command.json": "dfafb9d557cfad422e7a369c3e8ad2babc9aedfda2a2229915a8e8b1633ec9b7",
+    "build/quad-diagonal-curvature-20261119/linux-output/asan-compiler.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/linux-output/asan-compiler.stdout": "3635b8631d4ebcd8ed7586f4e01e7a6b44407de9d38db6e01daca9c242ed7a53",
+    "build/quad-diagonal-curvature-20261119/linux-output/gnu-archives.command.json": "b30b5e50ab47fd938b712cab72bd52454e97f21150667b8d05ea9a150cdfbb53",
+    "build/quad-diagonal-curvature-20261119/linux-output/gnu-archives.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/linux-output/gnu-archives.stdout": "ee0fe87d45e8c8527cd7f7c7e71494350053c9261bcee95ecff27b442cda4b63",
+    "build/quad-diagonal-curvature-20261119/linux-output/gnu-build.command.json": "dc2fb3d82fe46db2cf9736f42e6d4994185b7b3b61d1d44b7e430385a82a2467",
+    "build/quad-diagonal-curvature-20261119/linux-output/gnu-build.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/linux-output/gnu-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/linux-output/gnu-compiler.command.json": "5fc1a2d865ce369b6158ea28342f54498483f8c8182e5ea47ba1456bbbf87b9f",
+    "build/quad-diagonal-curvature-20261119/linux-output/gnu-compiler.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/linux-output/gnu-compiler.stdout": "59d1cbef41d4ae78d5063d525b7aa13d18dc0493ea00537efc19b2ee398cb5a8",
+    "build/quad-diagonal-curvature-20261119/linux-output/progress.json": "2d925451fc49aaa859ebb27e1ca333c83916bb0d6fda0d083ada6e8b58f63f91",
+    "build/quad-diagonal-curvature-20261119/linux-output/receipt.json": "131736a9d7081cf8c674486da7e0298f937166c42ff247bf175d4c6445929db1",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux-output/asan.command.json": "bb3463631375f37e52ca961fb6e82f8cd44ba7f52ae64b4d146a42196c7133c4",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux-output/asan.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux-output/asan.stdout": "ee0fe87d45e8c8527cd7f7c7e71494350053c9261bcee95ecff27b442cda4b63",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux-output/gnu.command.json": "332029a6b99ec047fc71c67c42e16a44868f299407c393d1a5d37c32796abe58",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux-output/gnu.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux-output/gnu.stdout": "ee0fe87d45e8c8527cd7f7c7e71494350053c9261bcee95ecff27b442cda4b63",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux-output/progress.json": "295a84454ba57757ed7b60e6f1c98d09feec09cf39932613a34ac9687227b727",
+    "build/quad-diagonal-curvature-20261119/postmerge/linux-output/receipt.json": "48fbcbd86cfa4e78d64ad15280928dedf97b3c02545d6061fe5ae58ff15eb83e"
+  },
+  "preparation_observation": "Initial shell quoting failed while preparing CMake project text, before compiler/test launch. File-based preparation corrected the invocation; no qualification retry.",
+  "closure": {
+    "bounded_experiment": "complete",
+    "r3": false,
+    "mixed_global_error": null,
+    "accepted_mixed_epochs": 0,
+    "numerical_scope": "Same nodes per mesh, interior absolute Gaussian differences in inverse squared model units; boundary turning density excluded; no cross-mesh common-site convergence.",
+    "limits": "Generated probe executes locally in three profiles, not hosted. No new production-TU static analysis/native CRT/full-memory/historical equivalence claim. Existing enum/DrvFS/allocation/transaction/exact-tie/general-geometry/Doxygen limits retained."
+  },
+  "retained_failure_artifacts": [
+    {
+      "path": "build/quad-contour-clearance-20261118/analysis/interior_template_dispatch_contracts.command.json",
+      "sha256": "209e348718594491ae3ca82255f80a604e50d2cd0bcc86607c3b4a350f2b24fa"
+    },
+    {
+      "path": "build/quad-contour-clearance-20261118/analysis/interior_template_dispatch_contracts.result.json",
+      "sha256": "3fcf365c70bf262b9592ec1998f4c4609c36c75d846b67c5e86d7c9f03f07176"
+    },
+    {
+      "path": "build/quad-contour-clearance-20261118/analysis/interior_template_dispatch_contracts.stdout",
+      "sha256": "7e8b2d5cbbedf57880a9dff3afdfa48f82728edfc4e76a1ddd0640bebaee02a4"
+    },
+    {
+      "path": "build/quad-contour-clearance-20261118/analysis/interior_template_dispatch_contracts.stderr",
+      "sha256": "b3311c078530f5c36f9967842f8e3ab4130984824443fcd771e9861474b6abc9"
+    },
+    {
+      "path": "build/quad-article-front-20261118/qualification-gcc/progress.json",
+      "sha256": "88b17bd5b0a4c1a69cb024dbf875af9b967b43616b609e62727d27a7211f7489"
+    },
+    {
+      "path": "build/quad-article-front-20261118/qualification-asan/progress.json",
+      "sha256": "d2ce46ba45121ae85f572fc5dc6e9199d2a0c2c61559656b9dcc766347bd0bdf"
+    }
+  ],
+  "next_action": "Prepare a reference-backed mixed Gaussian/mean operator contract for explicit scientific alignment, with the observed same-node sign flips as validation cases; preserve TRI and adaptation/acceptance/stopping until adopted."
+}

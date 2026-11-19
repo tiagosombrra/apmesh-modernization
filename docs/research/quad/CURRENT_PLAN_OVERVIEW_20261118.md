@@ -1,7 +1,8 @@
 # Current QUAD plan at a glance
 
 Updated2026-11-19 against the verified canonical plan and exact research merge
-5fe2e6f/PR241 reporting prerequisite and51d51f6/PR240 static generator. This reading guide summarizes the existing approved sequence;
+7ccd8d7/PR242 diagonal experiment,5fe2e6f/PR241 reporting and51d51f6/PR240
+generator. This reading guide summarizes the existing approved sequence;
 it does not introduce a new scientific rule, milestone or authorization.
 
 ## Objective
@@ -22,6 +23,7 @@ and explicit separation between a static mixed output and mixed adaptive closure
 | Contour-clearance classification | Implemented in11dcaa7; exactly25 former violations removed | Boundary angle improves, but geometry error and worst edge ratio worsen |
 | Per-step geometry errors and element quality | Exported to Markdown/CSV/JSON and displayed in Blender | Original global curvature error is TRI-only; mixed RMS is a different diagnostic |
 | Source-history error/quality binding | Integrated PR241: full stage identity, accepted/rejected source lineage, hashes and changes versus previous accepted source | Original TRI errors on rejected attempts are reported; no mixed estimator or adaptive acceptance |
+| Both-diagonal Gaussian sensitivity | Adopted and measured in PR242;22 real observations/three native profiles | Sign flips and differing distribution results; no diagonal/global estimator/adaptive policy selected |
 | Mixed smoothing | Implemented: UV, distinct incident other vertices, five simultaneous passes, fixed contour | Angle gains coexist with worse QUAD J/stage2 RMS/stage3 boundary angle |
 | Current Blender presentation | New four-scene file: eight outputs,18 pass states, mean/area comparison and previous template reference | New four-scene area-centroid file adds six actual mean/area comparison meshes; retained catalog is labeled previous mean reference |
 
@@ -49,7 +51,8 @@ The modernization main branch stays separate. No full-stage closure follows.
 3. **Executed for clearance/smoothing:** real histories regenerated, before/after quality/error exported, all15 passes/negative controls retained, new Blender opened and change-relevant tests passed. Current area-centroid comparison is delivered in its own exact-source evidence.
 4. **Complete:** bounded static review, retained-finding disposition, research integration and exact post-merge verification at51d51f6. Main remains separate.
 5. **Complete:** source-history reporting prerequisite in PR241/5fe2e6f; actual accepted/rejected/retry observations remain associated with the correct previous accepted source.
-6. **Next scientific checkpoint:** proposed both-diagonal Gaussian diagnostic comparison awaits response. Then a scientifically aligned mixed estimator/acceptance and local boundary-transition/interior feedback package. Full M1/M5/R3/M7 and broader original gates remain open.
+6. **Complete:** approved both-diagonal Gaussian comparison in PR242/7ccd8d7; same-node sign flips and nonuniform stage results are retained.
+7. **Next scientific checkpoint:** specify a reference-backed mixed Gaussian/mean operator, with boundary and area/angle conventions, for alignment before global error/adaptation. Full M1/M5/R3/M7 and broader gates remain open.
 
 The previously proposed new balancing controller and broad global-factor sweeps
 are not the current next action. Preserve measured size mismatch as evidence.
@@ -63,12 +66,14 @@ Artifact polish and repeated audits are not default successors to this summary.
 - [Article conformance findings](ARTICLE_CONFORMANCE_REVALIDATION_20261118.md).
 - [Error/quality reporting](GENERATION_RESULT_METRICS_20261118.md).
 - [Current source-history bindings](MIXED_HISTORY_OBSERVATIONS_20261119.md).
+- [Measured both-diagonal comparison](DIAGONAL_CURVATURE_COMPARISON_20261119.md).
 - [Explained presentation](EXPLAINED_BLENDER_PRESENTATION_20261118.md).
 
 Repository roles: canonical current code and decisions/checkpoints are on
 `quad-templates`. PR240/51d51f6 integrates the static generator package;
-PR241/5fe2e6f integrates reporting bindings. Their source branches preserve the
-reviewed candidates. A later documentation checkpoint does not establish another
+PR241/5fe2e6f integrates reporting bindings; PR242/7ccd8d7 integrates the
+read-only diagonal experiment. Their source branches preserve the qualified
+candidates. A later documentation checkpoint does not establish another
 exact-revision native/scientific execution.
 
 Current [mixed smoothing delivery](MIXED_UV_SMOOTHING_20261118.md) preserves all tradeoffs and exact validation identities.
@@ -80,5 +85,6 @@ are complete in the [PR240 integration record](PR240_RESEARCH_INTEGRATION_202611
 The earlier [review-readiness checkpoint](PR240_REVIEW_READINESS_20261118.md)
 retains its pre-review status and Linux-filesystem qualification evidence.
 Old DrvFS failures and raw enum analysis remain visible; their scoped disposition
-is recorded by the later integration. The current pending question concerns the
-curvature diagnostic, as described in STATE.
+is recorded by the later integration. The adopted curvature comparison is
+complete. The next scientific contract concerns
+the mixed Gaussian/mean estimator, as described in STATE.

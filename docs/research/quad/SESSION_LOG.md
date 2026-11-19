@@ -3640,3 +3640,55 @@ adopted. Next await that alignment before dependent scientific implementation.
 Update STATE/roadmap/current summary/evidence, commit canonical checkpoint and
 verify remote readback. Documentation checkpoint does not relabel its own SHA
 as another exact native/scientific execution.
+
+## 2026-11-19 - approved same-node both-diagonal Gaussian comparison
+
+User explicitly adopts comparison of both diagonals without adaptation changes.
+Read current canonical3052a7c/main ef40c0f/plan/session and audit live remote PRs/
+checks before edits. Concurrent PR239 advances independently; never overwrite it.
+Add only read-only tools/quad_diagonal_curvature.py and six controls to the
+existing reporting suite. Generated native probe calls unchanged P2b header;
+rotate copied QUAD cycles for1-3, keep TRI and all source files intact. Independent
+cosine-law/Heron per-node primitive/density check plus exact Bernstein derivative
+Gaussian reference; plane/sphere/paraboloid/saddle, rotation/scaling/pure-TRI and
+malformed controls. Separate boundary turning from interior Gaussian differences.
+No normalization, diagonal selection, mixed operator or generation-policy change.
+
+An initial shell-quoting preparation error starts no compiler/test; correct with
+file-based CMake preparation and retain the observation. Exact d2eb15e/tree db83723
+qualification actually runs09:10:17-09:12:49 Fortaleza (announcement09:09).
+Local85/85 and17 controls pass. Compile actual MSVC19.44.35229/GNU13.3/Clang18.1
+ASan/UBSan/leak probes and compare22 retained real observations/4227 node
+observations per profile. Both diagonals verified against the independent oracle;
+three native malformed controls refused per profile. Input hashes/bytes unchanged.
+Pure TRI diagonals exactly equal; maximum cross-profile density delta2.0322e-12.
+Create/check UV scatter at common zero-centred per-step scales; raw node CSV/JSON,
+compiler commands and logs retained locally with portable hashes/summaries.
+
+Current mixed Steps1/2/3 diagonal gaps max0.345818/5.438697/1.819897; witness signs
+opposite at8/25,82/271,139/675 interior sites. Step2 node115 analytical-0.556463,
+0-2+4.270546,1-3-1.168151; Step3 node15 has the inverse sign-choice problem.
+No fixed diagonal wins every measure; these are diagnostic counterexamples, not
+a proof against all triangulated operators or a replacement scientific law.
+Candidate44521151484 passes4/4 with17 controls,native20,85/527, existing article
+histories and frozen Eistute5/Book4 exact OBJ/acceptance/boundary parity.
+
+Audit code/value ownership/tests/contracts/docs/scientific scope/known inventory,
+then integrate PR242 as7ccd8d769536b291a2264b140fa4acfc76f3960a. Verify parents
+3052a7c/d2eb15e and identical tree; preserve2679 tracked files' bytes/size/mtime.
+Exact post-merge09:18:27-09:20:14 local85/17 and all three current-source
+22-observation/negative checks pass with identical probe images. All18 numerical
+exports match the candidate byte for byte. Hosted exact44522539529 completes
+4/4 SUCCESS. Hosted checks do not run the specific generated both-diagonal native
+probe; that actual scope is local three-profile evidence. No new generation,
+Blender, production-TU analysis or broad native-CRT qualification claimed.
+
+Bounded diagnostic comparison complete. Retain old enum/DrvFS and historical/
+allocation/transaction/exact-tie/general-geometry/Doxygen limits, full R3/M7,
+unavailable mixed global error and accepted mixed epochs0. Original ErrorGlobal
+also uses mean curvature below the Gaussian threshold; this Gaussian-only witness
+cannot silently replace it. Next prepare a reference-backed mixed Gaussian/mean
+operator contract, including adjacency/area/angle/boundary conventions and these
+sign-flip fixtures, for explicit alignment before adoption. No further global-factor
+or generation sweep. Update STATE/roadmap/current summary/evidence, commit and
+verify canonical remote readback; docs checkpoint is not a new native execution.

@@ -3,7 +3,7 @@
 Updated 2026-11-19 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: history observations integrated; scientific curvature checkpoint pending
+## Active: diagonal comparison complete; mixed curvature operator contract next
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,38 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-19 - adopted both-diagonal Gaussian comparison completed
+
+User explicitly adopts both-diagonal comparison without changing adaptation.
+[Results and method](DIAGONAL_CURVATURE_COMPARISON_20261119.md) and
+[evidence](evidence/DIAGONAL_CURVATURE_COMPARISON_20261119.json) pin source d2eb15e,
+PR242 merge7ccd8d7/tree db83723. Unchanged P2b native header plus copied-cycle
+rotation and independent cosine-law/Heron oracle measure22 retained real TRI/
+mixed observations in three native profiles. Analytical Gaussian K uses the
+existing Bernstein source and exact derivatives;17 analytical/reporting controls
+pass. Boundary turning density is retained but excluded from Gaussian comparison.
+
+Current mixed Steps1/2/3 maximum diagonal gaps are0.345818/5.438697/1.819897
+inverse squared model units. Witness signs differ at8/25,82/271,139/675 interior
+sites. Step2 node115: analytical-0.556463,0-2+4.270546,1-3-1.168151. No diagonal
+wins all measures or is adopted. Pure TRI variants are exactly equal. All source
+input hashes/bytes remain unchanged. Cross-profile maximum density delta2.0322e-12.
+
+Exact candidate and merge each pass local85/85,17 controls, actual MSVC/GNU/
+Clang ASan/UBSan/leak22-observation checks and three native refusals per profile.
+All18 per-profile data exports match candidate/merge byte for byte. Hosted
+44521151484/44522539529 each complete4/4 SUCCESS:17 controls,native20,85/527,
+frozen Eistute5/Book4 parity and existing actual article histories. Specific
+both-diagonal native probe execution is local, not hosted. Identical-tree checkout
+preserves2679 tracked files. Main/concurrent work and prior failure limits remain.
+
+**Next:** prepare a reference-backed mixed Gaussian/mean operator contract for
+explicit scientific alignment, including adjacency/area/angle and boundary
+conventions and these sign-flip validation cases. The original global error also
+uses mean curvature when Gaussian curvature is small. Do not silently promote
+this Gaussian-only witness, choose a fixed diagonal or change adaptation/policies.
+Actual mixed global error/accepted mixed epochs0 and full R3/M7 remain open.
 
 ### 2026-11-19 - mixed history observations integrated; no new estimator
 
@@ -196,7 +228,9 @@ not adopted. Preserve contour positions, existing validity and rollback policies
 
 Read the [short current plan](CURRENT_PLAN_OVERVIEW_20261118.md) before historical
 entries below. Real mixed generation exists; complete paper conformance and
-mixed adaptive closure do not. The generator is integrated through PR240/51d51f6; current reporting through PR241/5fe2e6f.
+mixed adaptive closure do not. The generator is integrated through PR240/51d51f6,
+reporting through PR241/5fe2e6f and the read-only diagonal comparison through
+PR242/7ccd8d7.
 
 | Work | Status |
 | --- | --- |

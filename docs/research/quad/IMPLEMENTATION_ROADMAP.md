@@ -41,9 +41,15 @@ TRI errors on rejected attempts are exposed when logged mesh counts match.
 Exact candidate/merge85 baselines,11 reporting tests,22 actual observations and
 hosted4/4/frozen TRI pass. This does not accept mixed epochs or define their error.
 
-One active next action: await scientific response on the proposed both-diagonal
-Gaussian witness comparison against analytical curvature. It is not adopted.
-Ask before selecting a mixed global operator/controller or changing policies.
+The explicitly adopted [both-diagonal Gaussian experiment](DIAGONAL_CURVATURE_COMPARISON_20261119.md)
+is measured/integrated through PR242/7ccd8d7. Same-node sign flips and differing
+stage/distribution results prevent a universal diagonal choice in these outputs.
+Both exact local85/17/three-profile22-observation gates and hosted4/4 pass.
+No diagonal or global mixed estimator is adopted; boundary turning remains separate.
+
+One active next action: prepare a reference-backed mixed Gaussian/mean operator
+contract for scientific alignment, using the same-node counterexamples. Specify
+adjacency, area/angle and boundary conventions before estimator/adaptation changes.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
 package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope
 and original M0-M9/R0-R4 gates remain open. Existing selection S<=1.5, curves,
@@ -66,7 +72,7 @@ neighbor choice and one polygonal contour commit in a distinct opt-in path.
 Keep complete historical identity separate from this delivered behavior.
 
 With the static output and source-history observation binding integrated,
-resolve the current curvature scientific checkpoint before adopting mixed-error
+resolve the mixed Gaussian/mean operator contract after the measured diagonal comparison before adopting mixed-error
 adaptation and local bidirectional curve/transition/interior sizing.
 Preserve current acceptance/stopping policies; a new mixed estimator/controller
 requires scientific alignment. No global-factor sweep or generic re-questioning
