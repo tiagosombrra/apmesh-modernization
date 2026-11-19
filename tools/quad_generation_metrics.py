@@ -171,7 +171,7 @@ def collect_archive(archive, grid=24):
     references, reference_source = reference_metrics(archive)
     result, seen = [], set()
     for row in rows:
-        scope = tuple(row[x] for x in ("step", "epoch", "retry", "domain_generation", "reference_tri_accepted"))
+        scope = tuple(int(row[x]) for x in ("step", "epoch", "retry", "domain_generation"))
         if scope in seen:
             raise ValueError("Duplicate reporting stage")
         seen.add(scope)
@@ -184,7 +184,7 @@ def collect_archive(archive, grid=24):
             native_key = (0, 0)  # The initial manifest has no retry; the original log records zero.
         native = references.get(native_key)
         adaptive = None
-        if native and row["reference_tri_accepted"] == "1":
+        if native:
             if int(native["nodes"]) != len(tx) or int(native["elements"]) != len(tf):
                 raise ValueError("Reference metric belongs to another mesh")
             adaptive = float(native["error_global_surface_curvature"])
@@ -210,17 +210,72 @@ def collect_archive(archive, grid=24):
                                tri_reference_adaptive_error=adaptive,
                                tri_reference_native_quality={k: float(native[k]) for k in ("quality_min", "quality_mean") if k in native} if adaptive is not None else None,
                                mixed_adaptive_error=None))
+    history = bind_history(rows, result)
     return dict(schema="apmesh.quad.generation_metrics.v1", source="builtin:curva_bezier",
                 manifest_sha256=hashlib.sha256((archive/"manifest.csv").read_bytes()).hexdigest(),
-                reference_metrics_source=reference_source, stages=result,
+                reference_metrics_source=reference_source, stages=result, history=history,
                 definitions=dict(geometry_error="Sampled XYZ distance on fixed UV sites; source-area weighted RMS; model units",
-                                 adaptive_error="Original TRI relative 3D surface-curvature error; reference only; mixed estimator unavailable",
+                                 adaptive_error="Original TRI attempt relative 3D surface-curvature error, including rejected attempts when mesh counts match; reference only; mixed estimator unavailable",
+                                 history="Retained manifest order and full step/epoch/retry/domain identity; compare each reconstruction to the previous accepted TRI source, not to a rejected predecessor. No mixed epoch is accepted by this diagnostic.",
                                  tri_reference_native_quality="Original TRI quality as logged; separate from the diagnostic TRI area/edge score and QUAD corner Jacobian",
                                  tri_q="4*sqrt(3)*area/sum(edge_length_squared); equilateral TRI=1",
                                  quad_corner_jacobian="Minimum signed corner scaled Jacobian using analytic source normals; orthogonal aligned corners=1; not a continuous bound or aspect ratio",
                                  angle="Physical XYZ corner angle, degrees",
                                  edge_ratio="Longest/shortest physical edge; smaller is better; ideal equal lengths=1",
                                  scope="Diagnostics only; TRI and QUAD quality scales remain separate; no new acceptance threshold"))
+
+
+def bind_history(rows, stages):
+    """Bind existing diagnostics to source outcomes without accepting mixed states."""
+    if len(stages) != 2*len(rows):
+        raise ValueError("Incomplete reporting history")
+    events, previous, previous_pair = [], None, None
+    last_epoch = -1
+    for index, row in enumerate(rows):
+        identity = {key: int(row[key]) for key in ("step", "epoch", "retry", "domain_generation")}
+        accepted = row["reference_tri_accepted"]
+        if accepted not in ("0", "1") or not row["reason"]:
+            raise ValueError("Invalid source outcome")
+        initial = index == 0
+        if initial:
+            if identity != dict(step=0, epoch=0, retry=-1, domain_generation=0) or accepted != "1" or row["reason"] != "initial":
+                raise ValueError("Missing initial reporting source")
+        elif (identity["step"] < 1 or identity["retry"] < 0 or identity["domain_generation"] < 1 or
+              identity["epoch"] <= last_epoch or row["reason"] == "initial" or
+              (row["reason"] == "accepted") != (accepted == "1")):
+            raise ValueError("Inconsistent source history order or outcome")
+        last_epoch = identity["epoch"]
+        pair = stages[2*index:2*index+2]
+        observations = {}
+        for offset, scheme in enumerate(("TRI", "QUAD_TRI")):
+            stage = pair[offset]
+            if (any(stage[key] != value for key, value in identity.items()) or
+                    stage["scheme"] != scheme or stage["reason"] != row["reason"] or
+                    stage["reference_tri_accepted"] != (accepted == "1") or
+                    stage["file"] != row["tri_obj" if scheme == "TRI" else "quad_tri_obj"]):
+                raise ValueError("Observation belongs to another source stage")
+            change = None
+            if previous_pair is not None:
+                parent = previous_pair[offset]
+                change = dict(nodes_delta=stage["nodes"]-parent["nodes"],
+                              node_ratio=stage["nodes"]/parent["nodes"],
+                              elements_delta=stage["triangles"]+stage["quads"]-parent["triangles"]-parent["quads"],
+                              rms_source_area_delta=stage["geometry_error"]["rms_source_area"]-parent["geometry_error"]["rms_source_area"])
+            observations[scheme] = dict(metric_stage_index=2*index+offset, file=stage["file"], sha256=stage["sha256"],
+                                        nodes=stage["nodes"], triangles=stage["triangles"], quads=stage["quads"],
+                                        geometry_error=stage["geometry_error"], quality=stage["quality"],
+                                        change_from_previous_reference_accepted=change)
+        retained = identity if accepted == "1" else previous
+        events.append(dict(identity=identity, source_outcome="initial" if initial else "accepted" if accepted == "1" else "rejected",
+                           source_reason=row["reason"], previous_reference_accepted=previous,
+                           retained_reference_accepted=retained, observations=observations,
+                           tri_reference_adaptive_error=pair[0]["tri_reference_adaptive_error"],
+                           mixed_adaptive_error=None, accepted_mixed_adaptive_epochs=0))
+        if accepted == "1":
+            previous, previous_pair = identity, pair
+    return dict(schema="apmesh.quad.source_history_observations.v1", events=events,
+                last_reference_accepted=previous, accepted_mixed_adaptive_epochs=0,
+                scope="Only exported source stages; unexported internal retries are not reconstructed. Source acceptance is not mixed acceptance.")
 
 
 def write_report(report, output):
@@ -252,25 +307,50 @@ def write_report(report, output):
                 row = {k: s[k] for k in ("step", "epoch", "retry", "scheme")}
                 row.update(element, vertices="|".join(map(str, element["vertices"])))
                 writer.writerow(row)
+    with (output/"history.csv").open("w", newline="", encoding="utf-8") as handle:
+        fields = ["step", "epoch", "retry", "domain_generation", "source_outcome", "source_reason", "scheme",
+                  "previous_reference_accepted_epoch", "retained_reference_accepted_epoch", "nodes", "triangles", "quads",
+                  "nodes_delta", "node_ratio", "elements_delta", "rms_source_area_delta", "file", "sha256"]
+        writer = csv.DictWriter(handle, fields)
+        writer.writeheader()
+        for event in report["history"]["events"]:
+            for scheme, observation in event["observations"].items():
+                row = dict(event["identity"], source_outcome=event["source_outcome"], source_reason=event["source_reason"], scheme=scheme,
+                           previous_reference_accepted_epoch=(event["previous_reference_accepted"] or {}).get("epoch"),
+                           retained_reference_accepted_epoch=event["retained_reference_accepted"]["epoch"])
+                row.update({k: observation[k] for k in ("nodes", "triangles", "quads", "file", "sha256")})
+                row.update(observation["change_from_previous_reference_accepted"] or {})
+                writer.writerow(row)
     def show(x):
         return "N/A" if x is None else f"{x:.7g}"
     lines = ["# Per-stage geometry error and element quality", "",
              "Source: builtin:curva_bezier. Geometry errors use576 fixed UV sites by default and model coordinate units.",
              "The original adaptive curvature error is a TRI reference; mixed adaptive error is unavailable.", "",
-             "| Step | Scheme | Nodes | TRI | QUAD | Geometry RMS | Geometry max | TRI reference curvature error |",
-             "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |"]
+             "| Step | Epoch | Retry | TRI source accepted | Scheme | Nodes | TRI | QUAD | Geometry RMS | Geometry max | TRI reference curvature error |",
+             "| --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |"]
     for stage in report["stages"]:
         error = stage["geometry_error"]
-        lines.append(f"| {stage['step']} | {stage['scheme']} | {stage['nodes']} | {stage['triangles']} | {stage['quads']} | {show(error['rms_source_area'])} | {show(error['max_xyz'])} | {show(stage['tri_reference_adaptive_error'])} |")
+        lines.append(f"| {stage['step']} | {stage['epoch']} | {stage['retry']} | {stage['reference_tri_accepted']} | {stage['scheme']} | {stage['nodes']} | {stage['triangles']} | {stage['quads']} | {show(error['rms_source_area'])} | {show(error['max_xyz'])} | {show(stage['tri_reference_adaptive_error'])} |")
     lines += ["", "TRI area-Q and QUAD corner J are separate diagnostic scales; both have ideal reference1.",
               "Corner J does not measure aspect ratio or continuous bilinear validity; inspect the edge ratio too.", "",
-              "| Step | Scheme | TRI Q min | TRI Q mean | QUAD J min | QUAD J mean | Minimum angle (deg) | Maximum edge ratio |",
-              "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |"]
+              "| Step | Epoch | Retry | TRI source accepted | Scheme | TRI Q min | TRI Q mean | QUAD J min | QUAD J mean | Minimum angle (deg) | Maximum edge ratio |",
+              "| --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |"]
     for stage in report["stages"]:
         q = stage["quality"]
-        lines.append(f"| {stage['step']} | {stage['scheme']} | {show(q['tri_q']['minimum'])} | {show(q['tri_q']['mean'])} | {show(q['quad_corner_jacobian']['minimum'])} | {show(q['quad_corner_jacobian']['mean'])} | {show(q['min_angle_xyz'])} | {show(q['max_edge_ratio_xyz'])} |")
+        lines.append(f"| {stage['step']} | {stage['epoch']} | {stage['retry']} | {stage['reference_tri_accepted']} | {stage['scheme']} | {show(q['tri_q']['minimum'])} | {show(q['tri_q']['mean'])} | {show(q['quad_corner_jacobian']['minimum'])} | {show(q['quad_corner_jacobian']['mean'])} | {show(q['min_angle_xyz'])} | {show(q['max_edge_ratio_xyz'])} |")
     lines += ["", "Per-element values and source face IDs are in elements.csv; full definitions, native logged TRI quality, source hashes and stage identity are in metrics.json.",
               "These observations do not change acceptance, smoothing, node placement or the generator.", ""]
+    lines += ["## Source history binding", "",
+              "Acceptance below belongs to the original TRI source. Mixed reconstructions are observations, not accepted mixed adaptive epochs.",
+              "Deltas compare to the previous accepted TRI source's reconstruction; a rejected stage never becomes the next comparison base.",
+              "Only exported stages are covered; missing internal retries are not fabricated. Full identities and mesh hashes are in history.csv and metrics.json.", "",
+              "| Step | Epoch | Retry | Source outcome | Previous accepted epoch | Retained accepted epoch |",
+              "| --- | --- | --- | --- | --- | --- |"]
+    for event in report["history"]["events"]:
+        identity = event["identity"]
+        parent = (event["previous_reference_accepted"] or {}).get("epoch")
+        lines.append(f"| {identity['step']} | {identity['epoch']} | {identity['retry']} | {event['source_outcome']} | {show(parent)} | {event['retained_reference_accepted']['epoch']} |")
+    lines += ["", "The original TRI curvature error also covers rejected attempts when its logged mesh counts match. Mixed global curvature error remains unavailable.", ""]
     (output/"results.md").write_text("\n".join(lines), encoding="utf-8")
     return output
 
