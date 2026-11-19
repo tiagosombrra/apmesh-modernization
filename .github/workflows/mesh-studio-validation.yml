@@ -300,6 +300,15 @@ jobs:
         run: python -m tools.mesh_studio.native_active_generation_study --mode run --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --trials-directory build/r2726-original-generation-treatments --timeout 300
       - name: Independently re-open R2.7.26 actual source C++ gates, face receipts and curve budgets
         run: python -m tools.mesh_studio.native_active_generation_study --mode audit --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --trials-directory build/r2726-original-generation-treatments --output build/r2726-original-native-generation-audit.json
+      - name: Independently audit R2.7.27 actual original C++ transition coherence and preserved gate thresholds
+        run: python -m tools.mesh_studio.native_transition_coherence_audit --root . --exe build/r2712-native/bin/quad_generator_outcome_probe --original-directory build/r2712-native-evidence --trials-directory build/r2726-original-generation-treatments --r2726-audit build/r2726-original-native-generation-audit.json --output build/r2727-original-transition-coherence-audit.json
+      - name: Retain exact-source R2.7.27 read-only original C++ coherence and readiness forensic receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2727-original-transition-coherence-${{ github.sha }}
+          path: build/r2727-original-transition-coherence-audit.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Retain R2.7.26 raw native C++ separate-process treatment evidence even if experiment fails closed
         if: always()
         uses: actions/upload-artifact@v4
