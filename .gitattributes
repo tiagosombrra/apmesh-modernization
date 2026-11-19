@@ -35,3 +35,10 @@ docs/mesh-studio/R2_7_28B_ORIGINAL_REPEATED_LOCAL_SCOPE_MULTIPLICITY_20261119.md
 
 # Preserve the preregistered R2.7.29 classifier audit across Windows checkouts.
 docs/mesh-studio/R2_7_29_PREREGISTERED_ORIGINAL_AFT_TRANSITION_SEMANTICS_20261119.md text eol=lf
+
+# Preserve R2.7.30 original C++ Adapter event source and preregistered byte-level SHA on Windows.
+docs/mesh-studio/R2_7_30_PREREGISTERED_LOCAL_SELECTION_PROVENANCE_20261119.md text eol=lf
+docs/mesh-studio/R2_7_30A_ADAPTER_INVOCATION_EPOCH_SCOPE_CLARIFICATION_20261119.md text eol=lf
+research/quad/adapter_capture.h text eol=lf
+tests/quad/generator_outcome_probe.cpp text eol=lf
+tests/quad/generator_local_selection_probe.cpp text eol=lf
