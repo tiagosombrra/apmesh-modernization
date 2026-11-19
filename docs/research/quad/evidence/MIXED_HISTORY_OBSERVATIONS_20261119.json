@@ -1,0 +1,1492 @@
+{
+  "schema": "apmesh.quad.mixed_history_observations.v1",
+  "date": "2026-11-19 Fortaleza",
+  "classification": "Reporting engineering and reporting defect repair; no scientific formula/generator/policy change.",
+  "candidate": "b9717e47dbe8c8df9dfc47a284a22a7bbd88925a",
+  "merge": "5fe2e6fb102176657ca975286d22672709a6c755",
+  "tree": "2846af00e2cf357fcd5638d62d39c8138787a153",
+  "pr": 241,
+  "main": "ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89",
+  "source_identity": {
+    "source": "b9717e47dbe8c8df9dfc47a284a22a7bbd88925a",
+    "tree": "2846af00e2cf357fcd5638d62d39c8138787a153",
+    "base": "f470bbd006cd843556aeed6746359c859211733b",
+    "protected_files_unchanged": 2454,
+    "native_msvc_image_unchanged": true
+  },
+  "checkout": {
+    "source": "b9717e47dbe8c8df9dfc47a284a22a7bbd88925a",
+    "merge": "5fe2e6fb102176657ca975286d22672709a6c755",
+    "base": "f470bbd006cd843556aeed6746359c859211733b",
+    "tree": "2846af00e2cf357fcd5638d62d39c8138787a153",
+    "parents": [
+      "f470bbd006cd843556aeed6746359c859211733b",
+      "b9717e47dbe8c8df9dfc47a284a22a7bbd88925a"
+    ],
+    "all_tracked_bytes_size_mtime_preserved": 2676
+  },
+  "source_sha256": {
+    "tools/quad_generation_metrics.py": "83f953f1a3ddc9b7bacbf44cccf375b9a6e0f946a11620129fcbe2b6ebb7ba26",
+    "tests/quad/test_generation_metrics.py": "bc2e23545a99fcfdfede5706654f37befd56d9f3c1c90579a3534159e73effbb"
+  },
+  "local": {
+    "candidate": {
+      "executions": {
+        "source": "b9717e47dbe8c8df9dfc47a284a22a7bbd88925a",
+        "status": "passed",
+        "steps": [
+          {
+            "name": "reporting-controls",
+            "exit": 0,
+            "seconds": 0.4140458106994629,
+            "timeout": 60
+          },
+          {
+            "name": "retained-archives",
+            "exit": 0,
+            "seconds": 2.452563762664795,
+            "timeout": 180
+          },
+          {
+            "name": "delivery-baseline",
+            "exit": 0,
+            "seconds": 77.75480604171753,
+            "timeout": 900
+          }
+        ]
+      },
+      "baseline": {
+        "directory": "build/validation-session/1795081754942213100-b33db849",
+        "source": "b9717e47dbe8c8df9dfc47a284a22a7bbd88925a",
+        "tree": "2846af00e2cf357fcd5638d62d39c8138787a153",
+        "tests": 85,
+        "report_sha256": "1809a7d15fb585c4e1f8e3514ae100704bfcdf05190e7eee3785451f954654ed"
+      }
+    },
+    "merge": {
+      "executions": {
+        "source": "5fe2e6fb102176657ca975286d22672709a6c755",
+        "status": "passed",
+        "steps": [
+          {
+            "name": "reporting-controls",
+            "exit": 0,
+            "seconds": 0.6166787147521973,
+            "timeout": 60
+          },
+          {
+            "name": "retained-archives",
+            "exit": 0,
+            "seconds": 2.824002504348755,
+            "timeout": 180
+          },
+          {
+            "name": "delivery-baseline",
+            "exit": 0,
+            "seconds": 84.17715454101562,
+            "timeout": 900
+          }
+        ]
+      },
+      "baseline": {
+        "directory": "build/validation-session/1795082120741795900-e64c4ee7",
+        "source": "5fe2e6fb102176657ca975286d22672709a6c755",
+        "tree": "2846af00e2cf357fcd5638d62d39c8138787a153",
+        "tests": 85,
+        "report_sha256": "16f8357c09a91b8010dd8553dc3775df0efe794085a154891525249f3701de8a"
+      }
+    }
+  },
+  "archives": {
+    "candidate": {
+      "source": "b9717e47dbe8c8df9dfc47a284a22a7bbd88925a",
+      "status": "passed",
+      "cases": {
+        "article": {
+          "archive": "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps",
+          "source_sha256": {
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/curve_stages.csv": "49bcbae592ba8cc3649580fae557da4f99b17b94d0df99c446175e9f7dfd170d",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252_n.process__metrics_rank_-1.csv": "405de949913cc50776f6baec5273d5b971bd9bde8c036623b78015b38febbf16"
+          },
+          "events": [
+            {
+              "identity": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "outcome": "initial",
+              "reason": "initial",
+              "retained": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "tri_error": 0.314848,
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "rms": 0.07671966942907951,
+              "change": null
+            },
+            {
+              "identity": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "accepted",
+              "reason": "accepted",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.139436,
+              "nodes": 33,
+              "quads": 24,
+              "triangles": 8,
+              "rms": 0.02216856603163197,
+              "change": {
+                "nodes_delta": 28,
+                "node_ratio": 6.6,
+                "elements_delta": 28,
+                "rms_source_area_delta": -0.054551103397447544
+              }
+            },
+            {
+              "identity": {
+                "step": 2,
+                "epoch": 2,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "accepted",
+              "reason": "accepted",
+              "retained": {
+                "step": 2,
+                "epoch": 2,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.0538754,
+              "nodes": 281,
+              "quads": 249,
+              "triangles": 52,
+              "rms": 0.0128966713696097,
+              "change": {
+                "nodes_delta": 248,
+                "node_ratio": 8.515151515151516,
+                "elements_delta": 269,
+                "rms_source_area_delta": -0.009271894662022268
+              }
+            },
+            {
+              "identity": {
+                "step": 3,
+                "epoch": 3,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "accepted",
+              "reason": "accepted",
+              "retained": {
+                "step": 3,
+                "epoch": 3,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.0303172,
+              "nodes": 689,
+              "quads": 630,
+              "triangles": 102,
+              "rms": 0.009541729937291929,
+              "change": {
+                "nodes_delta": 408,
+                "node_ratio": 2.4519572953736657,
+                "elements_delta": 431,
+                "rms_source_area_delta": -0.003354941432317772
+              }
+            }
+          ],
+          "measured_stages": 8,
+          "existing_geometry_quality_counts_hashes_exact": true,
+          "source_bytes_unchanged": true
+        },
+        "original-rejected": {
+          "archive": "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps",
+          "source_sha256": {
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/curve_stages.csv": "24c3e3d82034ce85c44affb87bd8a96122e10e9afd9edebcd6e3ba1da97046f4",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted_n.process__metrics_rank_-1.csv": "8d8f4194d27ca7e1df4c184b8346f1f3107ea1f2e07881c6f871a8dda970fb42"
+          },
+          "events": [
+            {
+              "identity": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "outcome": "initial",
+              "reason": "initial",
+              "retained": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "tri_error": 0.314848,
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "rms": 0.07671966942907951,
+              "change": null
+            },
+            {
+              "identity": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "accepted",
+              "reason": "accepted",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.125829,
+              "nodes": 165,
+              "quads": 120,
+              "triangles": 68,
+              "rms": 0.005615507440058175,
+              "change": {
+                "nodes_delta": 160,
+                "node_ratio": 33.0,
+                "elements_delta": 184,
+                "rms_source_area_delta": -0.07110416198902134
+              }
+            },
+            {
+              "identity": {
+                "step": 2,
+                "epoch": 2,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "rejected",
+              "reason": "global_error_increased",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.382516,
+              "nodes": 953,
+              "quads": 784,
+              "triangles": 224,
+              "rms": 0.0006230618202084794,
+              "change": {
+                "nodes_delta": 788,
+                "node_ratio": 5.775757575757575,
+                "elements_delta": 820,
+                "rms_source_area_delta": -0.004992445619849696
+              }
+            },
+            {
+              "identity": {
+                "step": 3,
+                "epoch": 3,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "rejected",
+              "reason": "global_error_increased",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.382516,
+              "nodes": 953,
+              "quads": 784,
+              "triangles": 224,
+              "rms": 0.0006230618202084794,
+              "change": {
+                "nodes_delta": 788,
+                "node_ratio": 5.775757575757575,
+                "elements_delta": 820,
+                "rms_source_area_delta": -0.004992445619849696
+              }
+            }
+          ],
+          "measured_stages": 8,
+          "existing_geometry_quality_counts_hashes_exact": true,
+          "source_bytes_unchanged": true
+        },
+        "stable-retry": {
+          "archive": "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps",
+          "source_sha256": {
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/curve_stages.csv": "88af8817d679f6271624d2eb14c13505cc542e8c88b815b76b9151c19aae7f43",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted_n.process__metrics_rank_-1.csv": "a7ece8bd5b8636d10d7b55457484fcc84a78bdb20813ec00705dad1d79f00a10"
+          },
+          "events": [
+            {
+              "identity": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "outcome": "initial",
+              "reason": "initial",
+              "retained": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "tri_error": 0.314848,
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "rms": 0.07671966942907951,
+              "change": null
+            },
+            {
+              "identity": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "accepted",
+              "reason": "accepted",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.314848,
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "rms": 0.07671966942907951,
+              "change": {
+                "nodes_delta": 0,
+                "node_ratio": 1.0,
+                "elements_delta": 0,
+                "rms_source_area_delta": 0.0
+              }
+            },
+            {
+              "identity": {
+                "step": 2,
+                "epoch": 3,
+                "retry": 1,
+                "domain_generation": 1
+              },
+              "outcome": "rejected",
+              "reason": "hybrid_criterion_rejected",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.171223,
+              "nodes": 37,
+              "quads": 16,
+              "triangles": 28,
+              "rms": 0.015861770706682234,
+              "change": {
+                "nodes_delta": 32,
+                "node_ratio": 7.4,
+                "elements_delta": 40,
+                "rms_source_area_delta": -0.060857898722397274
+              }
+            }
+          ],
+          "measured_stages": 6,
+          "existing_geometry_quality_counts_hashes_exact": true,
+          "source_bytes_unchanged": true
+        }
+      }
+    },
+    "merge": {
+      "source": "5fe2e6fb102176657ca975286d22672709a6c755",
+      "status": "passed",
+      "cases": {
+        "article": {
+          "archive": "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps",
+          "source_sha256": {
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252.steps/curve_stages.csv": "49bcbae592ba8cc3649580fae557da4f99b17b94d0df99c446175e9f7dfd170d",
+            "build/quad-pr240-review-20261119/msvc/article/article-922d823a9a444a8cb523883788c7d252_n.process__metrics_rank_-1.csv": "405de949913cc50776f6baec5273d5b971bd9bde8c036623b78015b38febbf16"
+          },
+          "events": [
+            {
+              "identity": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "outcome": "initial",
+              "reason": "initial",
+              "retained": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "tri_error": 0.314848,
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "rms": 0.07671966942907951,
+              "change": null
+            },
+            {
+              "identity": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "accepted",
+              "reason": "accepted",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.139436,
+              "nodes": 33,
+              "quads": 24,
+              "triangles": 8,
+              "rms": 0.02216856603163197,
+              "change": {
+                "nodes_delta": 28,
+                "node_ratio": 6.6,
+                "elements_delta": 28,
+                "rms_source_area_delta": -0.054551103397447544
+              }
+            },
+            {
+              "identity": {
+                "step": 2,
+                "epoch": 2,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "accepted",
+              "reason": "accepted",
+              "retained": {
+                "step": 2,
+                "epoch": 2,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.0538754,
+              "nodes": 281,
+              "quads": 249,
+              "triangles": 52,
+              "rms": 0.0128966713696097,
+              "change": {
+                "nodes_delta": 248,
+                "node_ratio": 8.515151515151516,
+                "elements_delta": 269,
+                "rms_source_area_delta": -0.009271894662022268
+              }
+            },
+            {
+              "identity": {
+                "step": 3,
+                "epoch": 3,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "accepted",
+              "reason": "accepted",
+              "retained": {
+                "step": 3,
+                "epoch": 3,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.0303172,
+              "nodes": 689,
+              "quads": 630,
+              "triangles": 102,
+              "rms": 0.009541729937291929,
+              "change": {
+                "nodes_delta": 408,
+                "node_ratio": 2.4519572953736657,
+                "elements_delta": 431,
+                "rms_source_area_delta": -0.003354941432317772
+              }
+            }
+          ],
+          "measured_stages": 8,
+          "existing_geometry_quality_counts_hashes_exact": true,
+          "source_bytes_unchanged": true
+        },
+        "original-rejected": {
+          "archive": "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps",
+          "source_sha256": {
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted.steps/curve_stages.csv": "24c3e3d82034ce85c44affb87bd8a96122e10e9afd9edebcd6e3ba1da97046f4",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/accepted_n.process__metrics_rank_-1.csv": "8d8f4194d27ca7e1df4c184b8346f1f3107ea1f2e07881c6f871a8dda970fb42"
+          },
+          "events": [
+            {
+              "identity": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "outcome": "initial",
+              "reason": "initial",
+              "retained": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "tri_error": 0.314848,
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "rms": 0.07671966942907951,
+              "change": null
+            },
+            {
+              "identity": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "accepted",
+              "reason": "accepted",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.125829,
+              "nodes": 165,
+              "quads": 120,
+              "triangles": 68,
+              "rms": 0.005615507440058175,
+              "change": {
+                "nodes_delta": 160,
+                "node_ratio": 33.0,
+                "elements_delta": 184,
+                "rms_source_area_delta": -0.07110416198902134
+              }
+            },
+            {
+              "identity": {
+                "step": 2,
+                "epoch": 2,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "rejected",
+              "reason": "global_error_increased",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.382516,
+              "nodes": 953,
+              "quads": 784,
+              "triangles": 224,
+              "rms": 0.0006230618202084794,
+              "change": {
+                "nodes_delta": 788,
+                "node_ratio": 5.775757575757575,
+                "elements_delta": 820,
+                "rms_source_area_delta": -0.004992445619849696
+              }
+            },
+            {
+              "identity": {
+                "step": 3,
+                "epoch": 3,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "rejected",
+              "reason": "global_error_increased",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.382516,
+              "nodes": 953,
+              "quads": 784,
+              "triangles": 224,
+              "rms": 0.0006230618202084794,
+              "change": {
+                "nodes_delta": 788,
+                "node_ratio": 5.775757575757575,
+                "elements_delta": 820,
+                "rms_source_area_delta": -0.004992445619849696
+              }
+            }
+          ],
+          "measured_stages": 8,
+          "existing_geometry_quality_counts_hashes_exact": true,
+          "source_bytes_unchanged": true
+        },
+        "stable-retry": {
+          "archive": "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps",
+          "source_sha256": {
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted.steps/curve_stages.csv": "88af8817d679f6271624d2eb14c13505cc542e8c88b815b76b9151c19aae7f43",
+            "build/quad-pr240-review-20261119/msvc/history/run-916338c47eff4f2c845a0d59912334b9/stable-accepted_n.process__metrics_rank_-1.csv": "a7ece8bd5b8636d10d7b55457484fcc84a78bdb20813ec00705dad1d79f00a10"
+          },
+          "events": [
+            {
+              "identity": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "outcome": "initial",
+              "reason": "initial",
+              "retained": {
+                "step": 0,
+                "epoch": 0,
+                "retry": -1,
+                "domain_generation": 0
+              },
+              "tri_error": 0.314848,
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "rms": 0.07671966942907951,
+              "change": null
+            },
+            {
+              "identity": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "outcome": "accepted",
+              "reason": "accepted",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.314848,
+              "nodes": 5,
+              "quads": 0,
+              "triangles": 4,
+              "rms": 0.07671966942907951,
+              "change": {
+                "nodes_delta": 0,
+                "node_ratio": 1.0,
+                "elements_delta": 0,
+                "rms_source_area_delta": 0.0
+              }
+            },
+            {
+              "identity": {
+                "step": 2,
+                "epoch": 3,
+                "retry": 1,
+                "domain_generation": 1
+              },
+              "outcome": "rejected",
+              "reason": "hybrid_criterion_rejected",
+              "retained": {
+                "step": 1,
+                "epoch": 1,
+                "retry": 0,
+                "domain_generation": 1
+              },
+              "tri_error": 0.171223,
+              "nodes": 37,
+              "quads": 16,
+              "triangles": 28,
+              "rms": 0.015861770706682234,
+              "change": {
+                "nodes_delta": 32,
+                "node_ratio": 7.4,
+                "elements_delta": 40,
+                "rms_source_area_delta": -0.060857898722397274
+              }
+            }
+          ],
+          "measured_stages": 6,
+          "existing_geometry_quality_counts_hashes_exact": true,
+          "source_bytes_unchanged": true
+        }
+      }
+    }
+  },
+  "ci": {
+    "candidate": {
+      "head": "b9717e47dbe8c8df9dfc47a284a22a7bbd88925a",
+      "run_id": 44499733650,
+      "jobs": [
+        {
+          "id": 135476024735,
+          "name": "QUAD native (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135476024990,
+          "name": "QUAD native (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135476025266,
+          "name": "TRI scientific equivalence against frozen baseline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135476025357,
+          "name": "TRI baseline and tooling controls (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "frozen_tri": [
+        {
+          "model": "eistute",
+          "compared_meshes": 5,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 1168,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        },
+        {
+          "model": "book",
+          "compared_meshes": 4,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 4256,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        }
+      ],
+      "article": [
+        {
+          "job_id": 135476024735,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        },
+        {
+          "job_id": 135476024735,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        },
+        {
+          "job_id": 135476024990,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        }
+      ],
+      "excerpts": {
+        "QUAD native (ubuntu-24.04)": [
+          "2026-11-19T09:48:17.6134838Z Ran 11 tests in 0.094s",
+          "2026-11-19T09:48:54.5155157Z 100% tests passed, 0 tests failed out of 20"
+        ],
+        "QUAD native (windows-2022)": [
+          "2026-11-19T09:48:19.5087643Z Ran 11 tests in 0.185s\r",
+          "2026-11-19T09:49:15.0042906Z 100% tests passed, 0 tests failed out of 20\r"
+        ],
+        "TRI scientific equivalence against frozen baseline": [],
+        "TRI baseline and tooling controls (Linux)": [
+          "2026-11-19T09:53:42.7114843Z 100% tests passed, 0 tests failed out of 85",
+          "2026-11-19T09:53:44.1164409Z Ran 527 tests in 1.319s"
+        ]
+      },
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "merge": {
+      "head": "5fe2e6fb102176657ca975286d22672709a6c755",
+      "run_id": 44500775417,
+      "jobs": [
+        {
+          "id": 135479653025,
+          "name": "TRI baseline and tooling controls (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135479653377,
+          "name": "QUAD native (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135479653437,
+          "name": "QUAD native (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 135479654109,
+          "name": "TRI scientific equivalence against frozen baseline",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "frozen_tri": [
+        {
+          "model": "eistute",
+          "compared_meshes": 5,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 1168,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        },
+        {
+          "model": "book",
+          "compared_meshes": 4,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 4256,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        }
+      ],
+      "article": [
+        {
+          "job_id": 135479653377,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        },
+        {
+          "job_id": 135479653377,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        },
+        {
+          "job_id": 135479653437,
+          "report": {
+            "schema": "apmesh.quad.article_application.v1",
+            "stages": [
+              {
+                "step": 1,
+                "nodes": 33,
+                "quads": 24,
+                "triangles": 8,
+                "boundary": 8,
+                "source_step": 1,
+                "native_leaves": 16,
+                "domain_generation": 1,
+                "nonuniform_sides": 0,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 16,
+                "selected_quads": 8,
+                "retained_triangles": 8,
+                "rejected_unions": 8,
+                "competing_alternatives": 0,
+                "source_polygons": 4,
+                "centers_different_from_vertex_mean": 0
+              },
+              {
+                "step": 2,
+                "nodes": 281,
+                "quads": 249,
+                "triangles": 52,
+                "boundary": 10,
+                "source_step": 2,
+                "native_leaves": 67,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 0,
+                "commits": 59,
+                "selected_quads": 7,
+                "retained_triangles": 52,
+                "rejected_unions": 53,
+                "competing_alternatives": 1,
+                "source_polygons": 62,
+                "centers_different_from_vertex_mean": 18
+              },
+              {
+                "step": 3,
+                "nodes": 689,
+                "quads": 630,
+                "triangles": 102,
+                "boundary": 14,
+                "source_step": 3,
+                "native_leaves": 223,
+                "domain_generation": 1,
+                "nonuniform_sides": 1,
+                "reversed_sides": 0,
+                "reference_tri_accepted": true,
+                "mixed_adaptive_epochs": 0,
+                "clearance_excluded_cells": 25,
+                "commits": 108,
+                "selected_quads": 6,
+                "retained_triangles": 102,
+                "rejected_unions": 100,
+                "competing_alternatives": 2,
+                "source_polygons": 156,
+                "centers_different_from_vertex_mean": 0
+              }
+            ],
+            "rejected_forgeries": 11,
+            "rollback_verified": true,
+            "rejected_smoothing_forgeries": 5,
+            "smoothing_passes_per_stage": 5,
+            "rejected_point_forgeries": 3,
+            "mixed_adaptive_epochs": 0
+          }
+        }
+      ],
+      "excerpts": {
+        "QUAD native (ubuntu-24.04)": [
+          "2026-11-19T09:55:12.7325773Z Ran 11 tests in 0.084s",
+          "2026-11-19T09:55:48.1549090Z 100% tests passed, 0 tests failed out of 20"
+        ],
+        "QUAD native (windows-2022)": [
+          "2026-11-19T09:55:14.6033677Z Ran 11 tests in 0.161s\r",
+          "2026-11-19T09:55:57.7237107Z 100% tests passed, 0 tests failed out of 20\r"
+        ],
+        "TRI scientific equivalence against frozen baseline": [],
+        "TRI baseline and tooling controls (Linux)": [
+          "2026-11-19T10:01:34.4603794Z 100% tests passed, 0 tests failed out of 85",
+          "2026-11-19T10:01:36.3409578Z Ran 527 tests in 1.786s"
+        ]
+      },
+      "status": "completed",
+      "conclusion": "success"
+    }
+  },
+  "raw_output_sha256": {
+    "build/quad-history-observations-20261119/delivery-baseline.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-history-observations-20261119/delivery-baseline.stdout": "886ba6cbf74befb1219451d19603c2ece5ddaafe75d1c0610e886dbf0625eaf5",
+    "build/quad-history-observations-20261119/reporting-controls.stderr": "7bcabac4429f16bb830cf69c16ace492f447be4acb689deb2c81738e5f377645",
+    "build/quad-history-observations-20261119/reporting-controls.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-history-observations-20261119/retained-archives.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-history-observations-20261119/retained-archives.stdout": "4d1a7c1f1bfa402038b361a23c2a13bd6351ed92a27e4ef0f538418da2068342",
+    "build/quad-history-observations-20261119/article/elements.csv": "1b4e068e666036d7c56f1b1fd20f5a43fc98361741f9f8e2e7030de831b8a488",
+    "build/quad-history-observations-20261119/article/history.csv": "4b45df96fce451d62734f5a9c2d9af0df78851442a6aa52ae656edf32bee47e7",
+    "build/quad-history-observations-20261119/article/metrics.csv": "f3f3af5516998d02df3ba0cee43070c8717aceb6a04ae7f7325979bb477bd254",
+    "build/quad-history-observations-20261119/original-rejected/elements.csv": "b8e331f84265aee7472faf6e0d561a0e4fdbcad3ff35e67e866872f38f041f52",
+    "build/quad-history-observations-20261119/original-rejected/history.csv": "8649f5a36cec63fb32471ac4a7037123612e678ae422778a638d9ee54bc59fa9",
+    "build/quad-history-observations-20261119/original-rejected/metrics.csv": "c454f161149d1752774666fccdcaf02cf5a1c7430bef8df6a24e8771b9314c98",
+    "build/quad-history-observations-20261119/postmerge/delivery-baseline.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-history-observations-20261119/postmerge/delivery-baseline.stdout": "a35eb6d6a01ddc316a540c3784ad325730a8a6c514c6619689e2150445695f61",
+    "build/quad-history-observations-20261119/postmerge/reporting-controls.stderr": "1a38d22d47fc8f74455a92cad1245587ddbfe5bfbdc62b95558a46a4a500d5a7",
+    "build/quad-history-observations-20261119/postmerge/reporting-controls.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-history-observations-20261119/postmerge/retained-archives.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quad-history-observations-20261119/postmerge/retained-archives.stdout": "4d1a7c1f1bfa402038b361a23c2a13bd6351ed92a27e4ef0f538418da2068342",
+    "build/quad-history-observations-20261119/stable-retry/elements.csv": "0c64dfbae07cdfcd0afde0c5afe417c8cd073a794b56387fb0280a7276b8b028",
+    "build/quad-history-observations-20261119/stable-retry/history.csv": "a958ff55d1b34a5ca89bdddaf7959f98ce11577a45500facce3c7e3065d8de14",
+    "build/quad-history-observations-20261119/stable-retry/metrics.csv": "bf0cf2c8f5a1e36b8a73f39250201ac4f7ae02230f4453046c8b4ec4d6fe770f",
+    "build/quad-history-observations-20261119/postmerge/article/elements.csv": "1b4e068e666036d7c56f1b1fd20f5a43fc98361741f9f8e2e7030de831b8a488",
+    "build/quad-history-observations-20261119/postmerge/article/history.csv": "4b45df96fce451d62734f5a9c2d9af0df78851442a6aa52ae656edf32bee47e7",
+    "build/quad-history-observations-20261119/postmerge/article/metrics.csv": "f3f3af5516998d02df3ba0cee43070c8717aceb6a04ae7f7325979bb477bd254",
+    "build/quad-history-observations-20261119/postmerge/original-rejected/elements.csv": "b8e331f84265aee7472faf6e0d561a0e4fdbcad3ff35e67e866872f38f041f52",
+    "build/quad-history-observations-20261119/postmerge/original-rejected/history.csv": "8649f5a36cec63fb32471ac4a7037123612e678ae422778a638d9ee54bc59fa9",
+    "build/quad-history-observations-20261119/postmerge/original-rejected/metrics.csv": "c454f161149d1752774666fccdcaf02cf5a1c7430bef8df6a24e8771b9314c98",
+    "build/quad-history-observations-20261119/postmerge/stable-retry/elements.csv": "0c64dfbae07cdfcd0afde0c5afe417c8cd073a794b56387fb0280a7276b8b028",
+    "build/quad-history-observations-20261119/postmerge/stable-retry/history.csv": "a958ff55d1b34a5ca89bdddaf7959f98ce11577a45500facce3c7e3065d8de14",
+    "build/quad-history-observations-20261119/postmerge/stable-retry/metrics.csv": "bf0cf2c8f5a1e36b8a73f39250201ac4f7ae02230f4453046c8b4ec4d6fe770f"
+  },
+  "candidate_merge_export_equality": {
+    "article/metrics.json": "b1218d1f305ec0035123f5e9771a83091a96e45a37586f0dfdba9ec442657d37",
+    "article/metrics.csv": "f3f3af5516998d02df3ba0cee43070c8717aceb6a04ae7f7325979bb477bd254",
+    "article/history.csv": "4b45df96fce451d62734f5a9c2d9af0df78851442a6aa52ae656edf32bee47e7",
+    "article/elements.csv": "1b4e068e666036d7c56f1b1fd20f5a43fc98361741f9f8e2e7030de831b8a488",
+    "article/results.md": "7f29778e27e400348b5539b1c98fa199c76ae02ca390e01f832400b98793aa9a",
+    "original-rejected/metrics.json": "59e6a84d7e1c799f1ff469937c4c6a364b917b2aceb0e54237184d26caebc480",
+    "original-rejected/metrics.csv": "c454f161149d1752774666fccdcaf02cf5a1c7430bef8df6a24e8771b9314c98",
+    "original-rejected/history.csv": "8649f5a36cec63fb32471ac4a7037123612e678ae422778a638d9ee54bc59fa9",
+    "original-rejected/elements.csv": "b8e331f84265aee7472faf6e0d561a0e4fdbcad3ff35e67e866872f38f041f52",
+    "original-rejected/results.md": "021f0170d2e2df74448985d8b66b259eacc8b89007a68a4e12d83d1db5620a90",
+    "stable-retry/metrics.json": "8735615c8ffca179eecac4ebd1497f64f658dc17f0e501c2f930bc054a5337fc",
+    "stable-retry/metrics.csv": "bf0cf2c8f5a1e36b8a73f39250201ac4f7ae02230f4453046c8b4ec4d6fe770f",
+    "stable-retry/history.csv": "a958ff55d1b34a5ca89bdddaf7959f98ce11577a45500facce3c7e3065d8de14",
+    "stable-retry/elements.csv": "0c64dfbae07cdfcd0afde0c5afe417c8cd073a794b56387fb0280a7276b8b028",
+    "stable-retry/results.md": "552d2e04fda1c65a1092114e16e0d36dc00a7966733a6cbb428411b5c0461170"
+  },
+  "native_evidence_reuse": {
+    "scope": "Unchanged C++/config/build/instrument inputs; current candidate/merge hosted jobs actually build/run. No new local C++ build/analysis/sanitizer campaign claimed.",
+    "image_sha256": "a969ba714818f7984068ab266ca4479a2ebfd26c20036582a598d42d1cefb43b",
+    "prior_qualification": "PR240_RESEARCH_INTEGRATION_20261119.md"
+  },
+  "closure": {
+    "bounded_reporting_prerequisite": "complete",
+    "r3": false,
+    "mixed_global_curvature_error": "unavailable",
+    "accepted_mixed_adaptive_epochs": 0,
+    "controls": "11 reporting tests, including12 added malformed-history/reference/observation variants;22 actual retained observations in three cases.",
+    "native_reference_binding": "Original per-archive step/retry key and matching TRI node/element counts; raw artifacts hashed. This is not a new independent native CSV-to-OBJ content signature.",
+    "retained_limits": "PR240 enum analysis exit1, old DrvFS failures, historical identity, native CRT/allocation/transaction/exact-tie/general-geometry and full Doxygen limits remain."
+  },
+  "scientific_checkpoint": {
+    "status": "response_pending",
+    "proposal": "Compare the retained Gaussian diagonal-barycentric diagnostic on both QUAD diagonals against analytical Gaussian curvature on existing real archives; do not adopt a global operator/acceptance policy.",
+    "adopted": false
+  }
+}

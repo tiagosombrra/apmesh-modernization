@@ -3,7 +3,7 @@
 Updated 2026-11-19 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: static PR240 integrated; prepare the bounded mixed-history R3 prerequisite
+## Active: history observations integrated; scientific curvature checkpoint pending
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,33 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-19 - mixed history observations integrated; no new estimator
+
+[Reporting delivery](MIXED_HISTORY_OBSERVATIONS_20261119.md) and
+[evidence](evidence/MIXED_HISTORY_OBSERVATIONS_20261119.json) pin source b9717e4,
+PR241 merge5fe2e6f/tree2846af0. Full source identity, accepted/rejected reasons,
+previous/retained accepted TRI source and both reconstruction hashes now bind
+existing error/quality observations. Rejected stages never replace the comparison
+base; absent internal retries are not fabricated. Rejected original TRI curvature
+values are now shown after existing mesh-count/finiteness checks. Mixed error
+remains unavailable and accepted mixed epochs0.
+
+Exact candidate and merge each pass local85/85,11 reporting tests and22 real
+retained TRI/mixed observations across article/rejection/retry cases. Geometry,
+quality, counts, OBJ hashes and archived input bytes remain exact against f470bbd.
+Both exact hosted runs44499733650/44500775417 complete4/4 SUCCESS, native20,
+11 reporting controls,85 baseline/527 Python and frozen Eistute5/Book4 parity.
+Protected2454 input files/native image are unchanged; identical-tree research
+checkout preserves2676 tracked files. Main ef40c0f and prior failure inventory
+remain separate. No local C++ rebuild/analysis, generation or Blender claim.
+
+**Next:** await the descriptive scientific response on comparing the existing
+Gaussian diagonal-barycentric witness on both QUAD diagonals against analytical
+curvature on retained real archives. This scope is proposed, not adopted.
+Before selecting a global mixed Gaussian/mean estimator or changing adaptation,
+acceptance or stopping, obtain explicit scientific alignment. This completes one
+reporting prerequisite, not R3/M7, historical identity or full native qualification.
 
 ### 2026-11-19 - PR240 static integration qualified; independent reviews complete
 
@@ -169,7 +196,7 @@ not adopted. Preserve contour positions, existing validity and rollback policies
 
 Read the [short current plan](CURRENT_PLAN_OVERVIEW_20261118.md) before historical
 entries below. Real mixed generation exists; complete paper conformance and
-mixed adaptive closure do not. Current code is integrated PR240 exact research merge51d51f6.
+mixed adaptive closure do not. The generator is integrated through PR240/51d51f6; current reporting through PR241/5fe2e6f.
 
 | Work | Status |
 | --- | --- |

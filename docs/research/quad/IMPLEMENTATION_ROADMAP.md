@@ -34,10 +34,16 @@ enum/WSL dispositions. Exact post-merge baseline85, native20, three-profile actu
 histories/rollback/forgeries and hosted4/4/frozen TRI pass. Old failed prefixes,
 raw full-fixture enum exit1, DrvFS route and broader coverage limits remain.
 
-One active next action: bind actual mixed-state/error/quality observations to the
-retained source history as the bounded R3 prerequisite. Before choosing a mixed
-global curvature estimator/controller or changing acceptance/stopping, ask a
-descriptive scientific question. No new numerical rule is adopted by integration.
+The [source-history reporting prerequisite](MIXED_HISTORY_OBSERVATIONS_20261119.md)
+is integrated through PR241/5fe2e6f. Accepted/rejected/retry lineage and actual
+TRI/mixed hashes now bind unchanged geometric error/quality observations; original
+TRI errors on rejected attempts are exposed when logged mesh counts match.
+Exact candidate/merge85 baselines,11 reporting tests,22 actual observations and
+hosted4/4/frozen TRI pass. This does not accept mixed epochs or define their error.
+
+One active next action: await scientific response on the proposed both-diagonal
+Gaussian witness comparison against analytical curvature. It is not adopted.
+Ask before selecting a mixed global operator/controller or changing policies.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
 package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope
 and original M0-M9/R0-R4 gates remain open. Existing selection S<=1.5, curves,
@@ -59,8 +65,9 @@ identified the old TRI-first observer gap. PR240 now implements prospective
 neighbor choice and one polygonal contour commit in a distinct opt-in path.
 Keep complete historical identity separate from this delivered behavior.
 
-Only after this output, connect actual mixed-state/error observations to retained
-histories, then address local bidirectional curve/transition/interior sizing.
+With the static output and source-history observation binding integrated,
+resolve the current curvature scientific checkpoint before adopting mixed-error
+adaptation and local bidirectional curve/transition/interior sizing.
 Preserve current acceptance/stopping policies; a new mixed estimator/controller
 requires scientific alignment. No global-factor sweep or generic re-questioning
 of settled experimental pair choices. mixed_adaptive_epochs remains0; full

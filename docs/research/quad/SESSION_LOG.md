@@ -3598,3 +3598,45 @@ review/integration evidence; commit and verify canonical remote checkpoint.
 Next bounded R3 action binds actual mixed-state/error/quality observations to
 retained histories. Ask a descriptive scientific question before adopting mixed
 curvature estimator/controller or changing acceptance/stopping; no balancing law.
+
+## 2026-11-19 - bind actual mixed observations to retained source history
+
+User asks to continue the canonical next bounded R3 prerequisite. Audit live
+main ef40c0f/canonical f470bbd/open PRs/current checks; preserve concurrent work.
+Classify reporting engineering and a reporting defect repair: old report hides
+logged TRI error for rejected attempts. Change only tools/quad_generation_metrics.py
+and its existing reporting controls. Bind full step/epoch/retry/domain identity,
+source accepted/rejected reasons, previous/retained accepted source and actual
+TRI/mixed hashes; export history.csv/JSON and explicit Markdown identities.
+Measure changes against the previous accepted source, never a rejected predecessor.
+Expose rejected original TRI curvature values only after matching original CSV
+key, mesh counts and finiteness. No global mixed error or adaptive epoch inferred.
+
+Source b9717e4/tree2846af0 passes local85/85 and11 reporting tests including12 new
+malformed-history/reference/observation variants. Recompute only diagnostics on
+three already-qualified real archives: current article8, original-curvature
+rejection8 and stable-retry6 TRI/mixed observations. All22 geometry/quality/count/
+OBJ hashes are exact against f470bbd; source bytes are unchanged. Original rejected
+TRI errors0.382516 and retry0.171223 are newly exposed. Protected2454 non-document/
+non-reporting files and qualified native MSVC image are unchanged. Hosted exact
+44499733650 passes4/4, native20 GNU/MSVC,11 reporting controls,85/527 and frozen
+Eistute5/Book4 OBJ/acceptance/positive-boundary equality. Audit code/tests/contracts/
+explanations/scientific scope and retained failure/coverage inventory before merge.
+
+Integrate PR241 as5fe2e6fb102176657ca975286d22672709a6c755; verify parents f470bbd/
+b9717e4 and identical candidate tree. Direct guarded research checkout preserves
+all2676 tracked files' bytes/size/write-times. Start post-merge checks06:55 Fortaleza;
+actual85/85,11 controls/22 archive observations pass again. Exact push44500775417
+finishes4/4 with the same native/reporting/baseline/scientific scopes. No repeated
+local C++ build/analysis/sanitizer campaign, new generation or Blender display.
+Old enum-analysis/DrvFS and historical/native-CRT/allocation/transaction/exact-tie/
+Doxygen limitations remain; main/concurrent PRs untouched. Bounded reporting
+prerequisite complete; full R3/M7/mixed global error/accepted epochs0 remain open.
+
+Ask a descriptive scientific question proposing both-diagonal comparison of the
+existing Gaussian witness against analytical curvature on archived real meshes.
+Response is pending; no new operator, diagonal policy, acceptance or controller
+adopted. Next await that alignment before dependent scientific implementation.
+Update STATE/roadmap/current summary/evidence, commit canonical checkpoint and
+verify remote readback. Documentation checkpoint does not relabel its own SHA
+as another exact native/scientific execution.
