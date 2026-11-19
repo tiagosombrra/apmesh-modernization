@@ -342,6 +342,25 @@ jobs:
           path: build/r2731-selected-original-aft-gate-decomposition.json
           if-no-files-found: warn
           retention-days: 14
+      - name: Build separate unchanged-engine R2.7.32 original selected pre-AFT UV source observer
+        run: cmake --build build/r2712-native --target quad_generator_selected_uv_probe --parallel 2
+      - name: Execute original Eistute and min13 native C++ source with R2.7.32 provisional Quadtree UV read-only observation
+        run: python -m tools.mesh_studio.native_local_selection_provenance --mode capture --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --selection-exe build/r2712-native/bin/quad_generator_selected_uv_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --output-dir build/r2732-original-selected-preaft-uv --timeout 300
+      - name: Revalidate complete original Adapter final selections and original accepted step-1 TRI sidecars for distinct UV C++ observer
+        run: python -m tools.mesh_studio.native_local_selection_provenance --mode audit --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --selection-exe build/r2712-native/bin/quad_generator_selected_uv_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --r2728-report build/r2728-original-eistute-patch-audit.json --output-dir build/r2732-original-selected-preaft-uv --report build/r2732-original-selected-preaft-uv-local-selection-audit.json
+      - name: Independently correlate exact original selected local Adapter attempts with source Quadtree UV pre-AFT observations
+        run: python -m tools.mesh_studio.native_selected_uv_geometry --root . --capture-dir build/r2732-original-selected-preaft-uv --prior-report build/r2732-original-selected-preaft-uv-local-selection-audit.json --output build/r2732-original-selected-preaft-uv-geometry-audit.json
+      - name: Archive raw original C++ R2.7.32 pre-AFT UV candidates, accepted original TRI and independent selected provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2732-original-selected-preaft-uv-${{ github.sha }}
+          path: |
+            build/r2732-original-selected-preaft-uv/
+            build/r2732-original-selected-preaft-uv-local-selection-audit.json
+            build/r2732-original-selected-preaft-uv-geometry-audit.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Archive raw R2.7.28 original C++ Adapter per-patch CSV and independent source audit even on experimental failure
         if: always()
         uses: actions/upload-artifact@v4
