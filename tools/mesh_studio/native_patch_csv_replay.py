@@ -7,6 +7,7 @@ are not selected outer candidates, native commits, or scientific LOD epochs.
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import csv
 import hashlib
 import io
@@ -39,6 +40,7 @@ GENERATOR_BLOB = "844673ea764f3092330e5e9ebb01d8eb339869bc"
 ARTICLE_BLOB = "bd368dbad5b61515106b5d74d28cbde159780cd6"
 BOUNDARY_PARSER_BLOB = "0a9e555fa7d00282d83a8b4187a904851b66ea54"
 LOCAL_SCOPE_ADDENDUM_BLOB = "b82d03399d192362c0553a70e6be9c8835d4893e"
+REPEATED_SCOPE_ADDENDUM_BLOB = "0fdba88db47f9a12075dcc4c22f5467d5dc83d1b"
 MAX_CSV_BYTES = 2_000_000
 MAX_LOG_BYTES = 12_000_000
 MAX_SIDECAR_BYTES = 30_000_000
@@ -62,6 +64,8 @@ def attest_original_sources(root: Path) -> dict:
         "tools/mesh_studio/native_boundary_ownership.py": BOUNDARY_PARSER_BLOB,
         "docs/mesh-studio/R2_7_28A_ORIGINAL_LOCAL_PRECOMMIT_SCOPE_ADDENDUM_20261119.md":
             LOCAL_SCOPE_ADDENDUM_BLOB,
+        "docs/mesh-studio/R2_7_28B_ORIGINAL_REPEATED_LOCAL_SCOPE_MULTIPLICITY_20261119.md":
+            REPEATED_SCOPE_ADDENDUM_BLOB,
     }
     out = {}
     for name, expected in sources.items():
@@ -112,11 +116,11 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict],
             "r2728_not_original_seven_eistute_cpp_gate_attempts")
     require(type(adapter_events) is list and adapter_events,
             "r2728_original_native_adapter_witness_missing")
-    observed = {
+    observed = Counter(
         (row["adaptive_step"], row["retry_index"],
          row["patch_index"], row["local_attempt"])
         for row in adapter_events
-    }
+    )
     observed_scopes = {(s, r) for s, r, _p, _l in observed}
     gate_scopes = set(original_gate_keys)
     additional = observed_scopes - gate_scopes
@@ -128,7 +132,7 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict],
     by_outer = {}
     uncertain = 0
     clean_rows = []
-    unique = set()
+    csv_occurrences = Counter()
     for rec in rows:
         require(None not in rec and all(
                 type(value) is str and 0 < len(value) <= 100
@@ -152,10 +156,12 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict],
         key = (step, retry, patch, local)
         require((step, retry) in observed_scopes and key in observed and
                 0 <= patch < SOURCE_MODELS["eistute"][0] and
-                0 <= local <= 3 and key not in unique and
+                0 <= local <= 3 and
                 flagged in (0, 1) and generated >= 0 and leaves >= 0,
                 "r2728_original_adapter_csv_wrong_outer_or_duplicate_local_attempt")
-        unique.add(key)
+        csv_occurrences[key] += 1
+        require(csv_occurrences[key] <= observed[key],
+                "r2728_original_cpp_adapter_csv_boundary_multiplicity_mismatch")
         require(
             all(math.isfinite(value) for value in (
                 floor, transition, internal, imbalance, balance))
@@ -188,6 +194,8 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict],
         clean_rows.append({
             "step": step, "retry": retry, "patch_slot": patch,
             "local_regen_attempt": local,
+            "repeated_tuple_observation_ordinal_not_native_id":
+                csv_occurrences[key] - 1,
             "transition_underresolved": bool(flagged),
             "generation_status": rec["generation_status"],
             "internal_element_ratio": internal,
@@ -205,6 +213,8 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict],
             all(locals_ == set(range(max(locals_) + 1))
                 for locals_ in by_outer.values()),
             "r2728_original_adapter_missing_patch_or_noncontiguous_local_attempt")
+    require(csv_occurrences == observed,
+            "r2728_original_cpp_adapter_csv_boundary_multiplicity_mismatch")
     require(sum(r["step"] == 4 for r in clean_rows) >= 8,
             "r2728_original_step4_patch_attempts_missing")
     # Retain local fallback choices as an explicit SET of possible candidates;
@@ -229,7 +239,11 @@ def parse_original_patch_csv(raw: bytes, gate_rows: list[dict],
             [list(x) for x in sorted(additional)],
         "original_native_adapter_boundary_witness_events": len(adapter_events),
         "original_native_boundary_identity_slots": len(observed),
-        "original_native_boundary_slots_not_in_csv": len(observed - unique),
+        "original_native_boundary_slots_not_in_csv": 0,
+        "original_native_repeated_tuple_witness_occurrences":
+            len(adapter_events) - len(observed),
+        "original_csv_multiset_exactly_equals_cpp_R2718": True,
+        "repeated_tuple_ordinal_is_not_original_cpp_identity": True,
         "original_patch_slots_per_cpp_attempt": 4,
         "native_local_patch_attempt_rows": len(clean_rows),
         "local_attempts_not_assumed_selected": True,
