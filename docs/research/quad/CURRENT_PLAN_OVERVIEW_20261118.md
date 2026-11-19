@@ -24,6 +24,7 @@ and explicit separation between a static mixed output and mixed adaptive closure
 | Per-step geometry errors and element quality | Exported to Markdown/CSV/JSON and displayed in Blender | Original global curvature error is TRI-only; mixed RMS is a different diagnostic |
 | Source-history error/quality binding | Integrated PR241: full stage identity, accepted/rejected source lineage, hashes and changes versus previous accepted source | Original TRI errors on rejected attempts are reported; no mixed estimator or adaptive acceptance |
 | Both-diagonal Gaussian sensitivity | Adopted and measured in PR242;22 real observations/three native profiles | Sign flips and differing distribution results; no diagonal/global estimator/adaptive policy selected |
+| Nodal mixed Gaussian/mean diagnostic | Adopted candidate implemented in draft PR243; actual22-history/three-profile checks | Initial five-node coverage absent; large boundary errors; no qualified global error/adaptation |
 | Mixed smoothing | Implemented: UV, distinct incident other vertices, five simultaneous passes, fixed contour | Angle gains coexist with worse QUAD J/stage2 RMS/stage3 boundary angle |
 | Current Blender presentation | New four-scene file: eight outputs,18 pass states, mean/area comparison and previous template reference | New four-scene area-centroid file adds six actual mean/area comparison meshes; retained catalog is labeled previous mean reference |
 
@@ -52,7 +53,7 @@ The modernization main branch stays separate. No full-stage closure follows.
 4. **Complete:** bounded static review, retained-finding disposition, research integration and exact post-merge verification at51d51f6. Main remains separate.
 5. **Complete:** source-history reporting prerequisite in PR241/5fe2e6f; actual accepted/rejected/retry observations remain associated with the correct previous accepted source.
 6. **Complete:** approved both-diagonal Gaussian comparison in PR242/7ccd8d7; same-node sign flips and nonuniform stage results are retained.
-7. **Prepared, not adopted:** [mixed Gaussian/mean operator contract](MIXED_CURVATURE_OPERATOR_CONTRACT_20261119.md). Explicit adoption/revision of the bounded quadratic-jet candidate is next; legacy mean scaling/global aggregation questions stay separate. Full M1/M5/R3/M7 and broader gates remain open.
+7. **Adopted and implemented as a draft diagnostic:** [quadratic-jet candidate](MIXED_QUADRATIC_JET_CANDIDATE_20261119.md), PR243/source f2dbd47, measures real nodal K/H on22 retained observations with independent checks. Sparse/one-sided accuracy remains unqualified, despite full rank and numerical agreement. Await the explicit scientific decision on uniform two-ring comparison; no adaptation/global aggregation or legacy mean repair. Full M1/M5/R3/M7 and broader gates remain open.
 
 The previously proposed new balancing controller and broad global-factor sweeps
 are not the current next action. Preserve measured size mismatch as evidence.

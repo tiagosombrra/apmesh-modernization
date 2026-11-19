@@ -47,17 +47,24 @@ stage/distribution results prevent a universal diagonal choice in these outputs.
 Both exact local85/17/three-profile22-observation gates and hosted4/4 pass.
 No diagonal or global mixed estimator is adopted; boundary turning remains separate.
 
-The [mixed K/H operator contract](MIXED_CURVATURE_OPERATOR_CONTRACT_20261119.md)
-is prepared, not adopted. A published quadratic-jet family is the recommended
-nodal candidate with explicit sample/frame/rank/boundary/project choices. The
-read-only audit flags legacy mean scaling and global mixed-channel normalization
-as separate scientific questions; no source formula is repaired or replaced.
+The researcher adopts Section4 of the [mixed K/H operator contract](MIXED_CURVATURE_OPERATOR_CONTRACT_20261119.md).
+The [quadratic-jet implementation](MIXED_QUADRATIC_JET_CANDIDATE_20261119.md)
+is published as draft PR243/source f2dbd47. Actual22-history nodal K/H and
+independent matrix/QR/analytical/coverage controls execute on three native
+profiles. Exact local85/527 baseline and MSVC22 native pass; hosted44551769795
+completes4/4 with actual jet histories, sanitizers and frozen TRI parity. No generation, TRI formula or adaptive policy is changed.
 
-One active next action: obtain scientific adoption or revision of this bounded
-candidate. Then implement real nodal K/H/coverage with independent validation;
-do not enable adaptation or silently adopt a global aggregate. Prior diagonal
-approval does not approve this new method. No new native campaign accompanies
-this documentation proposal; prior evidence retains its measured scope.
+Sparse one-sided stencils are not accurate merely because rank is full. The
+retained paraboloid/cylinder counterexample and large actual boundary errors
+block estimator/global/adaptive adoption; initial five-node coverage is absent.
+Original failed expectation and stale-inventory regression prefix are preserved,
+with explicit test-expectation/inventory corrections and new exact evidence.
+
+One active next action: await the explicit scientific decision on comparing
+uniform complete two-ring support against the unchanged candidate, preserving
+all other choices and real histories. No variant is implemented or run yet.
+Keep PR243 draft; independent review/integration and global normalization remain
+separate. No accuracy-based fallback, new threshold or legacy mean repair.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
 package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope
 and original M0-M9/R0-R4 gates remain open. Existing selection S<=1.5, curves,

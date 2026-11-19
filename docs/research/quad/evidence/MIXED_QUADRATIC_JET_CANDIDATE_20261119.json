@@ -1,0 +1,4170 @@
+{
+  "schema": "apmesh.quad.quadratic_jet_candidate.v1",
+  "date": "2026-11-19 Fortaleza",
+  "classification": "Explicitly adopted scientific diagnostic candidate; no generator, legacy TRI, global-error or adaptation change.",
+  "adopted_contract": "MIXED_CURVATURE_OPERATOR_CONTRACT_20261119.md section4",
+  "canonical_base": "a72bdf1f57af05edde87ec70ab6f801314fcc2c9",
+  "source": "f2dbd4716d68b1b8cb9cf4d78143021b81e3ccda",
+  "tree": "7ef3e90a7a5897555aaa53955cae960fbc07524d",
+  "pull_request": 243,
+  "integration": "Draft; not merged; no post-merge qualification claimed.",
+  "main": "ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89",
+  "source_sha256": {
+    ".github/workflows/quad-research-validation.yml": "e15bce4132d91297eb4a0396b7e7a1933028056ed4606bdc287044ab86250f8d",
+    "docs/architecture/source_inventory.json": "eb9c92e2a5c654cbe4d6940ccf625bc8c9ada1ce1fa67f27abbcec05829b9643",
+    "research/quad/jet_small_matrix.h": "4e8793a4abe8dd5bbf2665c597bdc2ed62cdc2876b3b8eda8862f827affc151c",
+    "research/quad/quadratic_jet_curvature.h": "5c66e74e17b3f66eb56343d5d22b0ee534de1ac53c55a18ed15367904ca49b3b",
+    "tests/quad/CMakeLists.txt": "dee3f2452e9c1d7670f8131104dafca091548f6c9e9e671eed0a52d90656cc57",
+    "tests/quad/independent_jet_oracle.py": "2db0c53473606861ce6f63dfadca76fec222371c9ef98ada2dc6f354e6356bae",
+    "tests/quad/quadratic_jet_contracts.cpp": "80413b29d564f717af3d1f5975a35db666eaeb8078f869c1a8c9abc4c843b60c",
+    "tests/quad/quadratic_jet_probe.cpp": "16f66a101fd74c67c7447bdfa23644d0658048c4c907d4fa5490c96a8574afce",
+    "tests/quad/test_quadratic_jet_archive.py": "6fe74c844e50adb32939814c3b55fb760aed26f7049324362ed322cbd3cea666",
+    "tests/quad/test_quadratic_jet_python.py": "3dbb75891f7735047272815fa0060fd9f01aa6fd3d573e8904948531386ac015",
+    "tools/quad_quadratic_curvature.py": "6e1e0531e4b26104c4af76d4dcc932ca5cf374a596e03f2ed630412ab0028d4d"
+  },
+  "commands": {
+    "corrected-exact-baseline.command.json": [
+      "C:\\Users\\tiago\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+      "tools/validation_session.py",
+      "run",
+      "--scope",
+      "delivery"
+    ],
+    "corrected-exact-linux.command.json": [
+      "wsl",
+      "-d",
+      "Ubuntu-24.04",
+      "--",
+      "python3",
+      "/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/quad-quadratic-jet-20261119/linux_corrected_exact.py"
+    ],
+    "corrected-exact-msvc-archives.command.json": [
+      "C:\\Users\\tiago\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+      "tests/quad/test_quadratic_jet_archive.py",
+      "--probe",
+      "build/quad-contour-clearance-20261118/native-msvc/Debug/quad_quadratic_jet_probe.exe",
+      "--article-root",
+      "build/quad-pr240-review-20261119/msvc/article",
+      "--history-root",
+      "build/quad-pr240-review-20261119/msvc/history",
+      "--directory",
+      "<repo>\\build\\quad-quadratic-jet-20261119\\corrected-exact-msvc"
+    ],
+    "corrected-exact-msvc-tests.command.json": [
+      "ctest",
+      "--test-dir",
+      "build/quad-contour-clearance-20261118/native-msvc",
+      "-C",
+      "Debug",
+      "--output-on-failure",
+      "--no-tests=error"
+    ],
+    "staged-quality.command.json": [
+      "python",
+      "tools/validation_session.py",
+      "pre-commit"
+    ],
+    "tidy-quadratic_jet_contracts.command.json": [
+      "C:/msys64/ucrt64/bin/clang-tidy.exe",
+      "-p",
+      "build/quad-contour-clearance-20261118/analysis-gcc-profile",
+      "--header-filter=.*[/\\](research|tests)[/\\]quad[/\\].*",
+      "<repo>\\tests\\quad\\quadratic_jet_contracts.cpp"
+    ],
+    "tidy-quadratic_jet_probe.command.json": [
+      "C:/msys64/ucrt64/bin/clang-tidy.exe",
+      "-p",
+      "build/quad-contour-clearance-20261118/analysis-gcc-profile",
+      "--header-filter=.*[/\\](research|tests)[/\\]quad[/\\].*",
+      "<repo>\\tests\\quad\\quadratic_jet_probe.cpp"
+    ]
+  },
+  "exact_local": {
+    "source": "f2dbd4716d68b1b8cb9cf4d78143021b81e3ccda",
+    "status": "passed",
+    "jobs": [
+      {
+        "exit": 0,
+        "seconds": 3.7026631832122803,
+        "timeout": 180,
+        "label": "corrected-exact-msvc-tests"
+      },
+      {
+        "exit": 0,
+        "seconds": 5.272339582443237,
+        "timeout": 300,
+        "label": "corrected-exact-msvc-archives"
+      },
+      {
+        "exit": 0,
+        "seconds": 19.212466955184937,
+        "timeout": 900,
+        "label": "corrected-exact-linux"
+      },
+      {
+        "exit": 0,
+        "seconds": 84.45504522323608,
+        "timeout": 900,
+        "label": "corrected-exact-baseline"
+      }
+    ]
+  },
+  "baseline": {
+    "status": "passed",
+    "ctest": 85,
+    "tooling_python": 527,
+    "report": {
+      "path": "build/validation-session/1795101064017731200-c74f3671/report.json",
+      "sha256": "e6cf25ba82adac3aa1465b6b2b05db6c27bc773342d9223c11e946d019270561"
+    }
+  },
+  "profiles": {
+    "msvc": {
+      "probe_sha256": "cb28926fe900b925313e050ecda36c4c114575e9192df24253ff1fa8fc735b72",
+      "native_checks": 182,
+      "python_controls": 6,
+      "actual_observations": 22,
+      "altered_record_refusals": 30,
+      "cases": {
+        "article": {
+          "stages": [
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "TRI",
+              "file": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "QUAD_TRI",
+              "file": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "nodes": 17,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 17,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 17,
+                "maximum": 6.242456221646554,
+                "median": 0.007831830433817258
+              },
+              "H_absolute": {
+                "count": 17,
+                "maximum": 6.187290565548756,
+                "median": 0.02891048483929931
+              },
+              "boundary_K": {
+                "count": 8,
+                "maximum": 6.242456221646554,
+                "median": 0.00582787706245925
+              },
+              "boundary_H": {
+                "count": 8,
+                "maximum": 6.187290565548756,
+                "median": 0.03962419545211416
+              },
+              "interior_K": {
+                "count": 9,
+                "maximum": 0.2002580689084117,
+                "median": 0.007831830433817258
+              },
+              "interior_H": {
+                "count": 9,
+                "maximum": 0.15049707427488868,
+                "median": 0.022334951172966577
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+              "nodes": 33,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 33,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 33,
+                "maximum": 9.537788588518119,
+                "median": 0.004308047517943071
+              },
+              "H_absolute": {
+                "count": 33,
+                "maximum": 6.335873192737214,
+                "median": 0.0255958281869485
+              },
+              "boundary_K": {
+                "count": 8,
+                "maximum": 6.248160949737106,
+                "median": 0.14658140696785887
+              },
+              "boundary_H": {
+                "count": 8,
+                "maximum": 6.335873192737214,
+                "median": 0.09945149689547779
+              },
+              "interior_K": {
+                "count": 25,
+                "maximum": 9.537788588518119,
+                "median": 0.0028438124786258467
+              },
+              "interior_H": {
+                "count": 25,
+                "maximum": 0.37447707940866853,
+                "median": 0.01508500353583729
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_2_retry_0_accepted_tri.obj",
+              "sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+              "nodes": 78,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 78,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 78,
+                "maximum": 16.953275638263847,
+                "median": 0.0038337446541626442
+              },
+              "H_absolute": {
+                "count": 78,
+                "maximum": 6.305273163241748,
+                "median": 0.017720998587740403
+              },
+              "boundary_K": {
+                "count": 10,
+                "maximum": 6.3118881892335805,
+                "median": 0.028415041510187478
+              },
+              "boundary_H": {
+                "count": 10,
+                "maximum": 6.305273163241748,
+                "median": 0.8525253372477528
+              },
+              "interior_K": {
+                "count": 68,
+                "maximum": 16.953275638263847,
+                "median": 0.0033786724432067457
+              },
+              "interior_H": {
+                "count": 68,
+                "maximum": 1.2802608151939763,
+                "median": 0.013455143644793888
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_2_retry_0_accepted_quad_tri.obj",
+              "sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+              "nodes": 281,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 281,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 281,
+                "maximum": 6.430320982603153,
+                "median": 0.0013625631553467136
+              },
+              "H_absolute": {
+                "count": 281,
+                "maximum": 6.599995418194547,
+                "median": 0.004775359941983914
+              },
+              "boundary_K": {
+                "count": 10,
+                "maximum": 6.430320982603153,
+                "median": 0.014346711228082999
+              },
+              "boundary_H": {
+                "count": 10,
+                "maximum": 6.599995418194547,
+                "median": 0.9330535913299027
+              },
+              "interior_K": {
+                "count": 271,
+                "maximum": 0.7679036193922838,
+                "median": 0.0013539470883067132
+              },
+              "interior_H": {
+                "count": 271,
+                "maximum": 1.099413164475521,
+                "median": 0.004468695988779905
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_3_retry_0_accepted_tri.obj",
+              "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+              "nodes": 223,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 223,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 223,
+                "maximum": 6.121652466048991,
+                "median": 0.0011637179155196409
+              },
+              "H_absolute": {
+                "count": 223,
+                "maximum": 5.538321502477354,
+                "median": 0.006148709435033064
+              },
+              "boundary_K": {
+                "count": 14,
+                "maximum": 6.121652466048991,
+                "median": 1.2678025573886822
+              },
+              "boundary_H": {
+                "count": 14,
+                "maximum": 5.538321502477354,
+                "median": 1.0598027623199293
+              },
+              "interior_K": {
+                "count": 209,
+                "maximum": 1.5788233360614767,
+                "median": 0.0010139918279793714
+              },
+              "interior_H": {
+                "count": 209,
+                "maximum": 1.1553857546671173,
+                "median": 0.004530741201348561
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_3_retry_0_accepted_quad_tri.obj",
+              "sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+              "nodes": 689,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 689,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 689,
+                "maximum": 6.241405258881981,
+                "median": 0.00046318331280262304
+              },
+              "H_absolute": {
+                "count": 689,
+                "maximum": 6.209270830695165,
+                "median": 0.0016054007183118127
+              },
+              "boundary_K": {
+                "count": 14,
+                "maximum": 6.241405258881981,
+                "median": 1.309260200735673
+              },
+              "boundary_H": {
+                "count": 14,
+                "maximum": 6.209270830695165,
+                "median": 1.6863837671769566
+              },
+              "interior_K": {
+                "count": 675,
+                "maximum": 0.7579012492240966,
+                "median": 0.00043210670655766115
+              },
+              "interior_H": {
+                "count": 675,
+                "maximum": 0.9860333284843016,
+                "median": 0.001422315736734514
+              }
+            }
+          ],
+          "inputs_sha256": {
+            "manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+          },
+          "independent_agreement_max": {
+            "coefficient": 3.623767952376511e-13,
+            "K": 8.348877145181177e-14,
+            "H": 1.0769163338864018e-14
+          },
+          "rejected_forgeries": 10
+        },
+        "original-rejected": {
+          "stages": [
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "TRI",
+              "file": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "QUAD_TRI",
+              "file": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+              "nodes": 63,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 63,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 63,
+                "maximum": 7.114268992182648,
+                "median": 0.005190187415290446
+              },
+              "H_absolute": {
+                "count": 63,
+                "maximum": 6.075284124997309,
+                "median": 0.016735299742071663
+              },
+              "boundary_K": {
+                "count": 20,
+                "maximum": 7.114268992182648,
+                "median": 0.03385644797774488
+              },
+              "boundary_H": {
+                "count": 20,
+                "maximum": 6.075284124997309,
+                "median": 0.32290201394047613
+              },
+              "interior_K": {
+                "count": 43,
+                "maximum": 0.9493951291365724,
+                "median": 0.002876556782862713
+              },
+              "interior_H": {
+                "count": 43,
+                "maximum": 0.40912893906628245,
+                "median": 0.010193363580133175
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "nodes": 165,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 165,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 165,
+                "maximum": 7.116851022427101,
+                "median": 0.002905405630557245
+              },
+              "H_absolute": {
+                "count": 165,
+                "maximum": 7.890067766092401,
+                "median": 0.011509004605101014
+              },
+              "boundary_K": {
+                "count": 20,
+                "maximum": 7.116851022427101,
+                "median": 0.05550253414540389
+              },
+              "boundary_H": {
+                "count": 20,
+                "maximum": 7.890067766092401,
+                "median": 0.7140618809138699
+              },
+              "interior_K": {
+                "count": 145,
+                "maximum": 1.147899013396111,
+                "median": 0.002602412958701352
+              },
+              "interior_H": {
+                "count": 145,
+                "maximum": 0.6826017665070814,
+                "median": 0.009857965488340456
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "TRI",
+              "file": "step_2_retry_0_rejected_tri.obj",
+              "sha256": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "nodes": 337,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 337,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 337,
+                "maximum": 5.403318422752022,
+                "median": 0.0013413665633960348
+              },
+              "H_absolute": {
+                "count": 337,
+                "maximum": 3.7728142528882582,
+                "median": 0.005192455088440212
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.403318422752022,
+                "median": 0.3997899009905198
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.7728142528882582,
+                "median": 0.3871777238346302
+              },
+              "interior_K": {
+                "count": 225,
+                "maximum": 1.2694017235344623,
+                "median": 0.00047468662564603757
+              },
+              "interior_H": {
+                "count": 225,
+                "maximum": 1.0168578279869944,
+                "median": 0.0022210244100794307
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "QUAD_TRI",
+              "file": "step_2_retry_0_rejected_quad_tri.obj",
+              "sha256": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "nodes": 953,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 953,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 953,
+                "maximum": 5.731614317096068,
+                "median": 0.00017354395588591726
+              },
+              "H_absolute": {
+                "count": 953,
+                "maximum": 3.7924871044719572,
+                "median": 0.0007691322360799252
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.731614317096068,
+                "median": 0.4062067984512885
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.7924871044719572,
+                "median": 0.8510135924476281
+              },
+              "interior_K": {
+                "count": 841,
+                "maximum": 0.7145526993537796,
+                "median": 0.0001261578557308976
+              },
+              "interior_H": {
+                "count": 841,
+                "maximum": 0.6341062891271454,
+                "median": 0.0005283357782196792
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "TRI",
+              "file": "step_3_retry_0_rejected_tri.obj",
+              "sha256": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+              "nodes": 337,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 337,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 337,
+                "maximum": 5.403318422752022,
+                "median": 0.0013413665633960348
+              },
+              "H_absolute": {
+                "count": 337,
+                "maximum": 3.7728142528882582,
+                "median": 0.005192455088440212
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.403318422752022,
+                "median": 0.3997899009905198
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.7728142528882582,
+                "median": 0.3871777238346302
+              },
+              "interior_K": {
+                "count": 225,
+                "maximum": 1.2694017235344623,
+                "median": 0.00047468662564603757
+              },
+              "interior_H": {
+                "count": 225,
+                "maximum": 1.0168578279869944,
+                "median": 0.0022210244100794307
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "QUAD_TRI",
+              "file": "step_3_retry_0_rejected_quad_tri.obj",
+              "sha256": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "nodes": 953,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 953,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 953,
+                "maximum": 5.731614317096068,
+                "median": 0.00017354395588591726
+              },
+              "H_absolute": {
+                "count": 953,
+                "maximum": 3.7924871044719572,
+                "median": 0.0007691322360799252
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.731614317096068,
+                "median": 0.4062067984512885
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.7924871044719572,
+                "median": 0.8510135924476281
+              },
+              "interior_K": {
+                "count": 841,
+                "maximum": 0.7145526993537796,
+                "median": 0.0001261578557308976
+              },
+              "interior_H": {
+                "count": 841,
+                "maximum": 0.6341062891271454,
+                "median": 0.0005283357782196792
+              }
+            }
+          ],
+          "inputs_sha256": {
+            "manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb"
+          },
+          "independent_agreement_max": {
+            "coefficient": 4.382569022709504e-05,
+            "K": 1.9539925233402755e-14,
+            "H": 1.84510184908504e-11
+          },
+          "rejected_forgeries": 10
+        },
+        "stable-retry": {
+          "stages": [
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "TRI",
+              "file": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "QUAD_TRI",
+              "file": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "3",
+              "retry": "1",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "hybrid_criterion_rejected",
+              "scheme": "TRI",
+              "file": "step_2_retry_1_rejected_tri.obj",
+              "sha256": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+              "nodes": 21,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 21,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 21,
+                "maximum": 7.344459424127599,
+                "median": 0.007175721277038027
+              },
+              "H_absolute": {
+                "count": 21,
+                "maximum": 6.465840941894494,
+                "median": 0.0697609457953661
+              },
+              "boundary_K": {
+                "count": 12,
+                "maximum": 7.344459424127599,
+                "median": 0.008655776855111718
+              },
+              "boundary_H": {
+                "count": 12,
+                "maximum": 6.465840941894494,
+                "median": 0.2091839035353696
+              },
+              "interior_K": {
+                "count": 9,
+                "maximum": 0.43854503722523563,
+                "median": 0.004640184274760869
+              },
+              "interior_H": {
+                "count": 9,
+                "maximum": 0.2077528652795948,
+                "median": 0.006982267756817567
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "3",
+              "retry": "1",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "hybrid_criterion_rejected",
+              "scheme": "QUAD_TRI",
+              "file": "step_2_retry_1_rejected_quad_tri.obj",
+              "sha256": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f",
+              "nodes": 37,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 37,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 37,
+                "maximum": 7.277886074941449,
+                "median": 0.0061223134361463455
+              },
+              "H_absolute": {
+                "count": 37,
+                "maximum": 6.60598094374379,
+                "median": 0.028059324665000353
+              },
+              "boundary_K": {
+                "count": 12,
+                "maximum": 7.277886074941449,
+                "median": 0.01756961242531458
+              },
+              "boundary_H": {
+                "count": 12,
+                "maximum": 6.60598094374379,
+                "median": 0.3133046732727382
+              },
+              "interior_K": {
+                "count": 25,
+                "maximum": 0.16567349955489322,
+                "median": 0.003757948870114901
+              },
+              "interior_H": {
+                "count": 25,
+                "maximum": 0.3400721817538488,
+                "median": 0.00843792644002389
+              }
+            }
+          ],
+          "inputs_sha256": {
+            "manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f"
+          },
+          "independent_agreement_max": {
+            "coefficient": 1.2030909601890016e-10,
+            "K": 2.42861286636753e-15,
+            "H": 3.9190872769268026e-14
+          },
+          "rejected_forgeries": 10
+        }
+      }
+    },
+    "gnu": {
+      "probe_sha256": "3cc17ef5482d284d69c6726b3741fdf8b00ffdf6b490c6e38b7e1d9936438469",
+      "native_checks": 182,
+      "python_controls": 6,
+      "actual_observations": 22,
+      "altered_record_refusals": 30,
+      "cases": {
+        "article": {
+          "stages": [
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "TRI",
+              "file": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "QUAD_TRI",
+              "file": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "nodes": 17,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 17,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 17,
+                "maximum": 6.242456221646554,
+                "median": 0.007831830433817119
+              },
+              "H_absolute": {
+                "count": 17,
+                "maximum": 6.187290565548756,
+                "median": 0.02891048483929931
+              },
+              "boundary_K": {
+                "count": 8,
+                "maximum": 6.242456221646554,
+                "median": 0.005827877062459262
+              },
+              "boundary_H": {
+                "count": 8,
+                "maximum": 6.187290565548756,
+                "median": 0.039624195452114125
+              },
+              "interior_K": {
+                "count": 9,
+                "maximum": 0.2002580689084117,
+                "median": 0.007831830433817119
+              },
+              "interior_H": {
+                "count": 9,
+                "maximum": 0.15049707427488884,
+                "median": 0.022334951172966466
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+              "nodes": 33,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 33,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 33,
+                "maximum": 9.537788588518108,
+                "median": 0.004308047517943105
+              },
+              "H_absolute": {
+                "count": 33,
+                "maximum": 6.335873192737214,
+                "median": 0.02559582818694839
+              },
+              "boundary_K": {
+                "count": 8,
+                "maximum": 6.248160949737106,
+                "median": 0.14658140696785854
+              },
+              "boundary_H": {
+                "count": 8,
+                "maximum": 6.335873192737214,
+                "median": 0.09945149689547778
+              },
+              "interior_K": {
+                "count": 25,
+                "maximum": 9.537788588518108,
+                "median": 0.0028438124786258467
+              },
+              "interior_H": {
+                "count": 25,
+                "maximum": 0.37447707940866887,
+                "median": 0.01508500353583729
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_2_retry_0_accepted_tri.obj",
+              "sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+              "nodes": 78,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 78,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 78,
+                "maximum": 16.953275638263904,
+                "median": 0.003833744654162651
+              },
+              "H_absolute": {
+                "count": 78,
+                "maximum": 6.305273163241748,
+                "median": 0.017720998587740424
+              },
+              "boundary_K": {
+                "count": 10,
+                "maximum": 6.31188818923358,
+                "median": 0.028415041510187478
+              },
+              "boundary_H": {
+                "count": 10,
+                "maximum": 6.305273163241748,
+                "median": 0.8525253372477521
+              },
+              "interior_K": {
+                "count": 68,
+                "maximum": 16.953275638263904,
+                "median": 0.0033786724432067587
+              },
+              "interior_H": {
+                "count": 68,
+                "maximum": 1.280260815193978,
+                "median": 0.013455143644793971
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_2_retry_0_accepted_quad_tri.obj",
+              "sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+              "nodes": 281,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 281,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 281,
+                "maximum": 6.430320982603152,
+                "median": 0.0013625631553467205
+              },
+              "H_absolute": {
+                "count": 281,
+                "maximum": 6.599995418194546,
+                "median": 0.004775359941983914
+              },
+              "boundary_K": {
+                "count": 10,
+                "maximum": 6.430320982603152,
+                "median": 0.014346711228082992
+              },
+              "boundary_H": {
+                "count": 10,
+                "maximum": 6.599995418194546,
+                "median": 0.9330535913299033
+              },
+              "interior_K": {
+                "count": 271,
+                "maximum": 0.7679036193922832,
+                "median": 0.0013539470883067097
+              },
+              "interior_H": {
+                "count": 271,
+                "maximum": 1.0994131644755196,
+                "median": 0.004468695988779957
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_3_retry_0_accepted_tri.obj",
+              "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+              "nodes": 223,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 223,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 223,
+                "maximum": 6.12165246604899,
+                "median": 0.001163717915519502
+              },
+              "H_absolute": {
+                "count": 223,
+                "maximum": 5.538321502477353,
+                "median": 0.006148709435033036
+              },
+              "boundary_K": {
+                "count": 14,
+                "maximum": 6.12165246604899,
+                "median": 1.2678025573886818
+              },
+              "boundary_H": {
+                "count": 14,
+                "maximum": 5.538321502477353,
+                "median": 1.0598027623199309
+              },
+              "interior_K": {
+                "count": 209,
+                "maximum": 1.5788233360614767,
+                "median": 0.0010139918279793714
+              },
+              "interior_H": {
+                "count": 209,
+                "maximum": 1.1553857546671176,
+                "median": 0.004530741201348568
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_3_retry_0_accepted_quad_tri.obj",
+              "sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+              "nodes": 689,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 689,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 689,
+                "maximum": 6.241405258881983,
+                "median": 0.0004631833128025953
+              },
+              "H_absolute": {
+                "count": 689,
+                "maximum": 6.209270830695164,
+                "median": 0.0016054007183117225
+              },
+              "boundary_K": {
+                "count": 14,
+                "maximum": 6.241405258881983,
+                "median": 1.3092602007356733
+              },
+              "boundary_H": {
+                "count": 14,
+                "maximum": 6.209270830695164,
+                "median": 1.6863837671769528
+              },
+              "interior_K": {
+                "count": 675,
+                "maximum": 0.7579012492240955,
+                "median": 0.00043210670655760564
+              },
+              "interior_H": {
+                "count": 675,
+                "maximum": 0.9860333284843013,
+                "median": 0.001422315736734514
+              }
+            }
+          ],
+          "inputs_sha256": {
+            "manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+          },
+          "independent_agreement_max": {
+            "coefficient": 4.263256414560601e-14,
+            "K": 2.0961010704922955e-13,
+            "H": 9.089951014118469e-15
+          },
+          "rejected_forgeries": 10
+        },
+        "original-rejected": {
+          "stages": [
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "TRI",
+              "file": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "QUAD_TRI",
+              "file": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+              "nodes": 63,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 63,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 63,
+                "maximum": 7.114268992182648,
+                "median": 0.005190187415290447
+              },
+              "H_absolute": {
+                "count": 63,
+                "maximum": 6.075284124997309,
+                "median": 0.016735299742071552
+              },
+              "boundary_K": {
+                "count": 20,
+                "maximum": 7.114268992182648,
+                "median": 0.033856447977744876
+              },
+              "boundary_H": {
+                "count": 20,
+                "maximum": 6.075284124997309,
+                "median": 0.3229020139404762
+              },
+              "interior_K": {
+                "count": 43,
+                "maximum": 0.9493951291365722,
+                "median": 0.0028765567828627
+              },
+              "interior_H": {
+                "count": 43,
+                "maximum": 0.409128939066282,
+                "median": 0.010193363580133175
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "nodes": 165,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 165,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 165,
+                "maximum": 7.116851022427101,
+                "median": 0.0029054056305572538
+              },
+              "H_absolute": {
+                "count": 165,
+                "maximum": 7.890067766092401,
+                "median": 0.011509004605100959
+              },
+              "boundary_K": {
+                "count": 20,
+                "maximum": 7.116851022427101,
+                "median": 0.055502534145403876
+              },
+              "boundary_H": {
+                "count": 20,
+                "maximum": 7.890067766092401,
+                "median": 0.7140618809138675
+              },
+              "interior_K": {
+                "count": 145,
+                "maximum": 1.1478990133961098,
+                "median": 0.0026024129587013554
+              },
+              "interior_H": {
+                "count": 145,
+                "maximum": 0.6826017665070809,
+                "median": 0.009857965488340415
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "TRI",
+              "file": "step_2_retry_0_rejected_tri.obj",
+              "sha256": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "nodes": 337,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 337,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 337,
+                "maximum": 5.403318422752025,
+                "median": 0.0013413665633959099
+              },
+              "H_absolute": {
+                "count": 337,
+                "maximum": 3.772814252888257,
+                "median": 0.005192455088440268
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.403318422752025,
+                "median": 0.3997899009905204
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.772814252888257,
+                "median": 0.38717772383463056
+              },
+              "interior_K": {
+                "count": 225,
+                "maximum": 1.2694017235344615,
+                "median": 0.00047468662564602196
+              },
+              "interior_H": {
+                "count": 225,
+                "maximum": 1.0168578279869949,
+                "median": 0.0022210244100795418
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "QUAD_TRI",
+              "file": "step_2_retry_0_rejected_quad_tri.obj",
+              "sha256": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "nodes": 953,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 953,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 953,
+                "maximum": 5.731614317096067,
+                "median": 0.00017354395588591726
+              },
+              "H_absolute": {
+                "count": 953,
+                "maximum": 3.7924871044719577,
+                "median": 0.0007691322360798419
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.731614317096067,
+                "median": 0.40620679845128804
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.7924871044719577,
+                "median": 0.8510135924476274
+              },
+              "interior_K": {
+                "count": 841,
+                "maximum": 0.7145526993537805,
+                "median": 0.00012615785573088893
+              },
+              "interior_H": {
+                "count": 841,
+                "maximum": 0.634106289127145,
+                "median": 0.0005283357782196723
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "TRI",
+              "file": "step_3_retry_0_rejected_tri.obj",
+              "sha256": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+              "nodes": 337,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 337,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 337,
+                "maximum": 5.403318422752025,
+                "median": 0.0013413665633959099
+              },
+              "H_absolute": {
+                "count": 337,
+                "maximum": 3.772814252888257,
+                "median": 0.005192455088440268
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.403318422752025,
+                "median": 0.3997899009905204
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.772814252888257,
+                "median": 0.38717772383463056
+              },
+              "interior_K": {
+                "count": 225,
+                "maximum": 1.2694017235344615,
+                "median": 0.00047468662564602196
+              },
+              "interior_H": {
+                "count": 225,
+                "maximum": 1.0168578279869949,
+                "median": 0.0022210244100795418
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "QUAD_TRI",
+              "file": "step_3_retry_0_rejected_quad_tri.obj",
+              "sha256": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "nodes": 953,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 953,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 953,
+                "maximum": 5.731614317096067,
+                "median": 0.00017354395588591726
+              },
+              "H_absolute": {
+                "count": 953,
+                "maximum": 3.7924871044719577,
+                "median": 0.0007691322360798419
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.731614317096067,
+                "median": 0.40620679845128804
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.7924871044719577,
+                "median": 0.8510135924476274
+              },
+              "interior_K": {
+                "count": 841,
+                "maximum": 0.7145526993537805,
+                "median": 0.00012615785573088893
+              },
+              "interior_H": {
+                "count": 841,
+                "maximum": 0.634106289127145,
+                "median": 0.0005283357782196723
+              }
+            }
+          ],
+          "inputs_sha256": {
+            "manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb"
+          },
+          "independent_agreement_max": {
+            "coefficient": 0.0001968663764273515,
+            "K": 1.9761969838327786e-14,
+            "H": 1.4672241199775726e-10
+          },
+          "rejected_forgeries": 10
+        },
+        "stable-retry": {
+          "stages": [
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "TRI",
+              "file": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "QUAD_TRI",
+              "file": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "3",
+              "retry": "1",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "hybrid_criterion_rejected",
+              "scheme": "TRI",
+              "file": "step_2_retry_1_rejected_tri.obj",
+              "sha256": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+              "nodes": 21,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 21,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 21,
+                "maximum": 7.344459424127599,
+                "median": 0.007175721277038035
+              },
+              "H_absolute": {
+                "count": 21,
+                "maximum": 6.465840941894494,
+                "median": 0.06976094579536612
+              },
+              "boundary_K": {
+                "count": 12,
+                "maximum": 7.344459424127599,
+                "median": 0.008655776855111715
+              },
+              "boundary_H": {
+                "count": 12,
+                "maximum": 6.465840941894494,
+                "median": 0.20918390353536956
+              },
+              "interior_K": {
+                "count": 9,
+                "maximum": 0.43854503722523575,
+                "median": 0.004640184274760871
+              },
+              "interior_H": {
+                "count": 9,
+                "maximum": 0.2077528652795948,
+                "median": 0.0069822677568175395
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "3",
+              "retry": "1",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "hybrid_criterion_rejected",
+              "scheme": "QUAD_TRI",
+              "file": "step_2_retry_1_rejected_quad_tri.obj",
+              "sha256": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f",
+              "nodes": 37,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 37,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 37,
+                "maximum": 7.277886074941449,
+                "median": 0.006122313436146269
+              },
+              "H_absolute": {
+                "count": 37,
+                "maximum": 6.60598094374379,
+                "median": 0.028059324665000312
+              },
+              "boundary_K": {
+                "count": 12,
+                "maximum": 7.277886074941449,
+                "median": 0.017569612425314574
+              },
+              "boundary_H": {
+                "count": 12,
+                "maximum": 6.60598094374379,
+                "median": 0.31330467327274236
+              },
+              "interior_K": {
+                "count": 25,
+                "maximum": 0.16567349955489383,
+                "median": 0.00375794887011488
+              },
+              "interior_H": {
+                "count": 25,
+                "maximum": 0.34007218175384957,
+                "median": 0.008437926440023863
+              }
+            }
+          ],
+          "inputs_sha256": {
+            "manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f"
+          },
+          "independent_agreement_max": {
+            "coefficient": 8.060396794462577e-11,
+            "K": 1.4016565685892601e-15,
+            "H": 1.7752466163756253e-13
+          },
+          "rejected_forgeries": 10
+        }
+      }
+    },
+    "asan": {
+      "probe_sha256": "f9ad8b9faeef0ff1bae3bc5ed69343ebd9ba382f898e3ef5cc6260624b5dbaef",
+      "native_checks": 182,
+      "python_controls": 6,
+      "actual_observations": 22,
+      "altered_record_refusals": 30,
+      "cases": {
+        "article": {
+          "stages": [
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "TRI",
+              "file": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "QUAD_TRI",
+              "file": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+              "nodes": 17,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 17,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 17,
+                "maximum": 6.242456221646554,
+                "median": 0.007831830433817119
+              },
+              "H_absolute": {
+                "count": 17,
+                "maximum": 6.187290565548756,
+                "median": 0.02891048483929931
+              },
+              "boundary_K": {
+                "count": 8,
+                "maximum": 6.242456221646554,
+                "median": 0.005827877062459262
+              },
+              "boundary_H": {
+                "count": 8,
+                "maximum": 6.187290565548756,
+                "median": 0.039624195452114125
+              },
+              "interior_K": {
+                "count": 9,
+                "maximum": 0.2002580689084117,
+                "median": 0.007831830433817119
+              },
+              "interior_H": {
+                "count": 9,
+                "maximum": 0.15049707427488884,
+                "median": 0.022334951172966466
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+              "nodes": 33,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 33,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 33,
+                "maximum": 9.537788588518108,
+                "median": 0.004308047517943105
+              },
+              "H_absolute": {
+                "count": 33,
+                "maximum": 6.335873192737214,
+                "median": 0.02559582818694839
+              },
+              "boundary_K": {
+                "count": 8,
+                "maximum": 6.248160949737106,
+                "median": 0.14658140696785854
+              },
+              "boundary_H": {
+                "count": 8,
+                "maximum": 6.335873192737214,
+                "median": 0.09945149689547778
+              },
+              "interior_K": {
+                "count": 25,
+                "maximum": 9.537788588518108,
+                "median": 0.0028438124786258467
+              },
+              "interior_H": {
+                "count": 25,
+                "maximum": 0.37447707940866887,
+                "median": 0.01508500353583729
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_2_retry_0_accepted_tri.obj",
+              "sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+              "nodes": 78,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 78,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 78,
+                "maximum": 16.953275638263904,
+                "median": 0.003833744654162651
+              },
+              "H_absolute": {
+                "count": 78,
+                "maximum": 6.305273163241748,
+                "median": 0.017720998587740424
+              },
+              "boundary_K": {
+                "count": 10,
+                "maximum": 6.31188818923358,
+                "median": 0.028415041510187478
+              },
+              "boundary_H": {
+                "count": 10,
+                "maximum": 6.305273163241748,
+                "median": 0.8525253372477521
+              },
+              "interior_K": {
+                "count": 68,
+                "maximum": 16.953275638263904,
+                "median": 0.0033786724432067587
+              },
+              "interior_H": {
+                "count": 68,
+                "maximum": 1.280260815193978,
+                "median": 0.013455143644793971
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_2_retry_0_accepted_quad_tri.obj",
+              "sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+              "nodes": 281,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 281,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 281,
+                "maximum": 6.430320982603152,
+                "median": 0.0013625631553467205
+              },
+              "H_absolute": {
+                "count": 281,
+                "maximum": 6.599995418194546,
+                "median": 0.004775359941983914
+              },
+              "boundary_K": {
+                "count": 10,
+                "maximum": 6.430320982603152,
+                "median": 0.014346711228082992
+              },
+              "boundary_H": {
+                "count": 10,
+                "maximum": 6.599995418194546,
+                "median": 0.9330535913299033
+              },
+              "interior_K": {
+                "count": 271,
+                "maximum": 0.7679036193922832,
+                "median": 0.0013539470883067097
+              },
+              "interior_H": {
+                "count": 271,
+                "maximum": 1.0994131644755196,
+                "median": 0.004468695988779957
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_3_retry_0_accepted_tri.obj",
+              "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+              "nodes": 223,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 223,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 223,
+                "maximum": 6.12165246604899,
+                "median": 0.001163717915519502
+              },
+              "H_absolute": {
+                "count": 223,
+                "maximum": 5.538321502477353,
+                "median": 0.006148709435033036
+              },
+              "boundary_K": {
+                "count": 14,
+                "maximum": 6.12165246604899,
+                "median": 1.2678025573886818
+              },
+              "boundary_H": {
+                "count": 14,
+                "maximum": 5.538321502477353,
+                "median": 1.0598027623199309
+              },
+              "interior_K": {
+                "count": 209,
+                "maximum": 1.5788233360614767,
+                "median": 0.0010139918279793714
+              },
+              "interior_H": {
+                "count": 209,
+                "maximum": 1.1553857546671176,
+                "median": 0.004530741201348568
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_3_retry_0_accepted_quad_tri.obj",
+              "sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+              "nodes": 689,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 689,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 689,
+                "maximum": 6.241405258881983,
+                "median": 0.0004631833128025953
+              },
+              "H_absolute": {
+                "count": 689,
+                "maximum": 6.209270830695164,
+                "median": 0.0016054007183117225
+              },
+              "boundary_K": {
+                "count": 14,
+                "maximum": 6.241405258881983,
+                "median": 1.3092602007356733
+              },
+              "boundary_H": {
+                "count": 14,
+                "maximum": 6.209270830695164,
+                "median": 1.6863837671769528
+              },
+              "interior_K": {
+                "count": 675,
+                "maximum": 0.7579012492240955,
+                "median": 0.00043210670655760564
+              },
+              "interior_H": {
+                "count": 675,
+                "maximum": 0.9860333284843013,
+                "median": 0.001422315736734514
+              }
+            }
+          ],
+          "inputs_sha256": {
+            "manifest.csv": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+            "step_1_retry_0_accepted_quad_tri.obj": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+            "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+            "step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+          },
+          "independent_agreement_max": {
+            "coefficient": 4.263256414560601e-14,
+            "K": 2.0961010704922955e-13,
+            "H": 9.089951014118469e-15
+          },
+          "rejected_forgeries": 10
+        },
+        "original-rejected": {
+          "stages": [
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "TRI",
+              "file": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "QUAD_TRI",
+              "file": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+              "nodes": 63,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 63,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 63,
+                "maximum": 7.114268992182648,
+                "median": 0.005190187415290447
+              },
+              "H_absolute": {
+                "count": 63,
+                "maximum": 6.075284124997309,
+                "median": 0.016735299742071552
+              },
+              "boundary_K": {
+                "count": 20,
+                "maximum": 7.114268992182648,
+                "median": 0.033856447977744876
+              },
+              "boundary_H": {
+                "count": 20,
+                "maximum": 6.075284124997309,
+                "median": 0.3229020139404762
+              },
+              "interior_K": {
+                "count": 43,
+                "maximum": 0.9493951291365722,
+                "median": 0.0028765567828627
+              },
+              "interior_H": {
+                "count": 43,
+                "maximum": 0.409128939066282,
+                "median": 0.010193363580133175
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+              "nodes": 165,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 165,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 165,
+                "maximum": 7.116851022427101,
+                "median": 0.0029054056305572538
+              },
+              "H_absolute": {
+                "count": 165,
+                "maximum": 7.890067766092401,
+                "median": 0.011509004605100959
+              },
+              "boundary_K": {
+                "count": 20,
+                "maximum": 7.116851022427101,
+                "median": 0.055502534145403876
+              },
+              "boundary_H": {
+                "count": 20,
+                "maximum": 7.890067766092401,
+                "median": 0.7140618809138675
+              },
+              "interior_K": {
+                "count": 145,
+                "maximum": 1.1478990133961098,
+                "median": 0.0026024129587013554
+              },
+              "interior_H": {
+                "count": 145,
+                "maximum": 0.6826017665070809,
+                "median": 0.009857965488340415
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "TRI",
+              "file": "step_2_retry_0_rejected_tri.obj",
+              "sha256": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+              "nodes": 337,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 337,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 337,
+                "maximum": 5.403318422752025,
+                "median": 0.0013413665633959099
+              },
+              "H_absolute": {
+                "count": 337,
+                "maximum": 3.772814252888257,
+                "median": 0.005192455088440268
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.403318422752025,
+                "median": 0.3997899009905204
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.772814252888257,
+                "median": 0.38717772383463056
+              },
+              "interior_K": {
+                "count": 225,
+                "maximum": 1.2694017235344615,
+                "median": 0.00047468662564602196
+              },
+              "interior_H": {
+                "count": 225,
+                "maximum": 1.0168578279869949,
+                "median": 0.0022210244100795418
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "2",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "QUAD_TRI",
+              "file": "step_2_retry_0_rejected_quad_tri.obj",
+              "sha256": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+              "nodes": 953,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 953,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 953,
+                "maximum": 5.731614317096067,
+                "median": 0.00017354395588591726
+              },
+              "H_absolute": {
+                "count": 953,
+                "maximum": 3.7924871044719577,
+                "median": 0.0007691322360798419
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.731614317096067,
+                "median": 0.40620679845128804
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.7924871044719577,
+                "median": 0.8510135924476274
+              },
+              "interior_K": {
+                "count": 841,
+                "maximum": 0.7145526993537805,
+                "median": 0.00012615785573088893
+              },
+              "interior_H": {
+                "count": 841,
+                "maximum": 0.634106289127145,
+                "median": 0.0005283357782196723
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "TRI",
+              "file": "step_3_retry_0_rejected_tri.obj",
+              "sha256": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+              "nodes": 337,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 337,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 337,
+                "maximum": 5.403318422752025,
+                "median": 0.0013413665633959099
+              },
+              "H_absolute": {
+                "count": 337,
+                "maximum": 3.772814252888257,
+                "median": 0.005192455088440268
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.403318422752025,
+                "median": 0.3997899009905204
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.772814252888257,
+                "median": 0.38717772383463056
+              },
+              "interior_K": {
+                "count": 225,
+                "maximum": 1.2694017235344615,
+                "median": 0.00047468662564602196
+              },
+              "interior_H": {
+                "count": 225,
+                "maximum": 1.0168578279869949,
+                "median": 0.0022210244100795418
+              }
+            },
+            {
+              "step": "3",
+              "epoch": "3",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "global_error_increased",
+              "scheme": "QUAD_TRI",
+              "file": "step_3_retry_0_rejected_quad_tri.obj",
+              "sha256": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+              "nodes": 953,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 953,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 953,
+                "maximum": 5.731614317096067,
+                "median": 0.00017354395588591726
+              },
+              "H_absolute": {
+                "count": 953,
+                "maximum": 3.7924871044719577,
+                "median": 0.0007691322360798419
+              },
+              "boundary_K": {
+                "count": 112,
+                "maximum": 5.731614317096067,
+                "median": 0.40620679845128804
+              },
+              "boundary_H": {
+                "count": 112,
+                "maximum": 3.7924871044719577,
+                "median": 0.8510135924476274
+              },
+              "interior_K": {
+                "count": 841,
+                "maximum": 0.7145526993537805,
+                "median": 0.00012615785573088893
+              },
+              "interior_H": {
+                "count": 841,
+                "maximum": 0.634106289127145,
+                "median": 0.0005283357782196723
+              }
+            }
+          ],
+          "inputs_sha256": {
+            "manifest.csv": "b397350069e7ab0e2e70fa0451848ad02778088773fedc070095fb3467466eb8",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+            "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+            "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+            "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+            "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+            "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb"
+          },
+          "independent_agreement_max": {
+            "coefficient": 0.0001968663764273515,
+            "K": 1.9761969838327786e-14,
+            "H": 1.4672241199775726e-10
+          },
+          "rejected_forgeries": 10
+        },
+        "stable-retry": {
+          "stages": [
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "TRI",
+              "file": "step_0_retry_-1_accepted_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "0",
+              "epoch": "0",
+              "retry": "-1",
+              "domain_generation": "0",
+              "reference_tri_accepted": "1",
+              "reason": "initial",
+              "scheme": "QUAD_TRI",
+              "file": "step_0_retry_-1_accepted_quad_tri.obj",
+              "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "TRI",
+              "file": "step_1_retry_0_accepted_tri.obj",
+              "sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "1",
+              "epoch": "1",
+              "retry": "0",
+              "domain_generation": "1",
+              "reference_tri_accepted": "1",
+              "reason": "accepted",
+              "scheme": "QUAD_TRI",
+              "file": "step_1_retry_0_accepted_quad_tri.obj",
+              "sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+              "nodes": 5,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 0,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 5,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "H_absolute": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "boundary_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_K": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              },
+              "interior_H": {
+                "count": 0,
+                "maximum": null,
+                "median": null
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "3",
+              "retry": "1",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "hybrid_criterion_rejected",
+              "scheme": "TRI",
+              "file": "step_2_retry_1_rejected_tri.obj",
+              "sha256": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+              "nodes": 21,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 21,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 21,
+                "maximum": 7.344459424127599,
+                "median": 0.007175721277038035
+              },
+              "H_absolute": {
+                "count": 21,
+                "maximum": 6.465840941894494,
+                "median": 0.06976094579536612
+              },
+              "boundary_K": {
+                "count": 12,
+                "maximum": 7.344459424127599,
+                "median": 0.008655776855111715
+              },
+              "boundary_H": {
+                "count": 12,
+                "maximum": 6.465840941894494,
+                "median": 0.20918390353536956
+              },
+              "interior_K": {
+                "count": 9,
+                "maximum": 0.43854503722523575,
+                "median": 0.004640184274760871
+              },
+              "interior_H": {
+                "count": 9,
+                "maximum": 0.2077528652795948,
+                "median": 0.0069822677568175395
+              }
+            },
+            {
+              "step": "2",
+              "epoch": "3",
+              "retry": "1",
+              "domain_generation": "1",
+              "reference_tri_accepted": "0",
+              "reason": "hybrid_criterion_rejected",
+              "scheme": "QUAD_TRI",
+              "file": "step_2_retry_1_rejected_quad_tri.obj",
+              "sha256": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f",
+              "nodes": 37,
+              "coverage": {
+                "ambiguous_frame": 0,
+                "available": 37,
+                "degenerate_scale": 0,
+                "duplicate_samples": 0,
+                "insufficient_samples": 0,
+                "nonfinite": 0,
+                "rank_deficient": 0,
+                "solver_unconverged": 0,
+                "undefined_orientation": 0
+              },
+              "K_absolute": {
+                "count": 37,
+                "maximum": 7.277886074941449,
+                "median": 0.006122313436146269
+              },
+              "H_absolute": {
+                "count": 37,
+                "maximum": 6.60598094374379,
+                "median": 0.028059324665000312
+              },
+              "boundary_K": {
+                "count": 12,
+                "maximum": 7.277886074941449,
+                "median": 0.017569612425314574
+              },
+              "boundary_H": {
+                "count": 12,
+                "maximum": 6.60598094374379,
+                "median": 0.31330467327274236
+              },
+              "interior_K": {
+                "count": 25,
+                "maximum": 0.16567349955489383,
+                "median": 0.00375794887011488
+              },
+              "interior_H": {
+                "count": 25,
+                "maximum": 0.34007218175384957,
+                "median": 0.008437926440023863
+              }
+            }
+          ],
+          "inputs_sha256": {
+            "manifest.csv": "7321cd72fe0c1d0f9b528a4a00380644d105544731ea787d5aee2bc6aa4bce13",
+            "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+            "step_1_retry_0_accepted_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_1_retry_0_accepted_quad_tri.obj": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+            "step_2_retry_1_rejected_tri.obj": "e7cd78d871629ebd6bddd7a0748f71e7201bae6e8bb1a7f2dec53b61779a07cc",
+            "step_2_retry_1_rejected_quad_tri.obj": "31fe28b30c36e5be861a8d3d3761e914d7f07ab3f9215eeba57ef59b2655d56f"
+          },
+          "independent_agreement_max": {
+            "coefficient": 8.060396794462577e-11,
+            "K": 1.4016565685892601e-15,
+            "H": 1.7752466163756253e-13
+          },
+          "rejected_forgeries": 10
+        }
+      }
+    }
+  },
+  "cross_profile": {
+    "K": 5.684341886080802e-14,
+    "H": 4.40870118190162e-11
+  },
+  "required_diagonal_witnesses": [
+    {
+      "step": "2",
+      "obj_node": 115,
+      "scale": 0.39814506236290637,
+      "rank": 6.0,
+      "converged": 1.0,
+      "sigma_max": 2.8782509903985227,
+      "sigma_min": 0.033015806612559435,
+      "rank_guard": 5.1128008323049605e-15,
+      "condition": 87.17796975778313,
+      "residual": 0.0062129156766579634,
+      "eig0": 0.00031012602165118755,
+      "eig1": 0.01845383873359656,
+      "eig2": 0.18382661636495207,
+      "cov_guard": 3.265416672436886e-16,
+      "t1x": 0.009759294701340201,
+      "t1y": 0.9995779344949051,
+      "t1z": 0.027362548087339407,
+      "t2x": -0.9418840452751963,
+      "t2y": 0.0,
+      "t2z": 0.33593815689205764,
+      "nx": 0.33579636898418824,
+      "ny": -0.029050866956074953,
+      "nz": 0.9414865085098861,
+      "c0": -0.00013521249120892467,
+      "c1": -0.0417812520615826,
+      "c2": -0.011391764044710512,
+      "c3": -0.014283488968350161,
+      "c4": -0.40616348032404614,
+      "c5": -0.6159037022176512,
+      "offset": -5.383418574462124e-05,
+      "alignment": 0.9998706650452224,
+      "fit_nx": 0.32516962763872337,
+      "fit_ny": 0.012700846387693334,
+      "fit_nz": 0.9455704107904026,
+      "K": -0.815636825316409,
+      "H": -1.5805790317736086,
+      "node": 114,
+      "status": "available",
+      "ring": 1,
+      "boundary": false,
+      "support": [
+        9,
+        18,
+        91,
+        114,
+        115,
+        117,
+        273,
+        274
+      ],
+      "analytical_K": -0.5564634621079806,
+      "analytical_H": -1.6716444895654758,
+      "abs_K_difference": 0.25917336320842843,
+      "abs_H_difference": 0.09106545779186725
+    },
+    {
+      "step": "3",
+      "obj_node": 15,
+      "scale": 0.14771822519078762,
+      "rank": 6.0,
+      "converged": 1.0,
+      "sigma_max": 2.9776803863800185,
+      "sigma_min": 0.049247192431515825,
+      "rank_guard": 5.289422919894126e-15,
+      "condition": 60.463962296344974,
+      "residual": 0.0030533651815667306,
+      "eig0": 0.0002666852565250083,
+      "eig1": 0.04182662616135788,
+      "eig2": 0.31541301222378115,
+      "cov_guard": 5.602860614995485e-16,
+      "t1x": 0.015863197417289386,
+      "t1y": 0.9984703387863069,
+      "t1z": 0.05296547490259773,
+      "t2x": -0.9579578261779762,
+      "t2y": 1.734723475976807e-18,
+      "t2z": 0.2869090505096804,
+      "nx": 0.28647017686325826,
+      "ny": -0.05528998610921879,
+      "nz": 0.9564924752469179,
+      "c0": 0.0008933123812041627,
+      "c1": -0.024368716134441915,
+      "c2": -0.01149951258583639,
+      "c3": -0.03699026710087107,
+      "c4": -0.2199656053502057,
+      "c5": -0.19440604064652744,
+      "offset": 0.0001319585194924352,
+      "alignment": 0.9999901405066431,
+      "fit_nx": 0.27574060878188966,
+      "fit_ny": -0.030947312887348005,
+      "fit_nz": 0.9607337719127217,
+      "K": -0.8978586731816574,
+      "H": -1.5651633512727448,
+      "node": 14,
+      "status": "available",
+      "ring": 1,
+      "boundary": false,
+      "support": [
+        14,
+        207,
+        210,
+        211,
+        212,
+        215,
+        680,
+        681
+      ],
+      "analytical_K": -1.2456069095830433,
+      "analytical_H": -1.7936910723141626,
+      "abs_K_difference": 0.34774823640138597,
+      "abs_H_difference": 0.22852772104141783
+    }
+  ],
+  "exports_sha256": {
+    "msvc": {
+      "article": {
+        "jet.json": "4c4b8ff3ea9ccd337e1942fe76534bdd1e1f04eb38f2b070712e4e6a91ccaf07",
+        "nodes.csv": "0b15fe635026e1dd4e4fa6bd931cf7d34546e80d3ac5504ee14ba8b70f7d7d9b"
+      },
+      "original-rejected": {
+        "jet.json": "f7c30db306bcb04ed0a9eecce102284ca19d8588a1905c1461fc12a50add2788",
+        "nodes.csv": "5f2ea08ab03f811cfa188bfa8a318ea93afb029c69b7da96f60086f0fb220d09"
+      },
+      "stable-retry": {
+        "jet.json": "91c1be6d7c9a92e8ba1f483a88e86e3a6e76aeba1ff06fe4d0fa5a56a57240b8",
+        "nodes.csv": "7d8ad40a5b69925458951ac20d6b0427981befb4fc41afce5eb190b659a41e27"
+      }
+    },
+    "gnu": {
+      "article": {
+        "jet.json": "2ef3fa982017ee273d776b7f9f4042ca9e006d5efea7c708685583116a6ae2a9",
+        "nodes.csv": "5bc1290fcd6f7650953cc52ab6e81bfc08e92fa3eb516ec0f8b53d8e7e14274b"
+      },
+      "original-rejected": {
+        "jet.json": "3a3da7708b80a7b96b0bba913f0659e2e1407be61be1112da8091d8abe8e8e4a",
+        "nodes.csv": "94892216ba35e0294601da0d346740323938567d02773578fa04bc6f0c5ab8a5"
+      },
+      "stable-retry": {
+        "jet.json": "889114ac66eef2f4bda73d74bf8fc04bf0ed78974490d7f6463aac14bbaf87b0",
+        "nodes.csv": "7e1c882faa95e5a27838c7cd6215d3b1f268610a48c981a0cb8c6e8b8d609db8"
+      }
+    },
+    "asan": {
+      "article": {
+        "jet.json": "37a6f301dfe10c243d917fddd0ec42d3a30d448adc77d62de69f306cb34fc13f",
+        "nodes.csv": "5bc1290fcd6f7650953cc52ab6e81bfc08e92fa3eb516ec0f8b53d8e7e14274b"
+      },
+      "original-rejected": {
+        "jet.json": "c2e4614efc20a364f07d690c5df73d735edcaa6bb3290f40d1e2cb4b7a17050b",
+        "nodes.csv": "94892216ba35e0294601da0d346740323938567d02773578fa04bc6f0c5ab8a5"
+      },
+      "stable-retry": {
+        "jet.json": "aaae47021cc8d315a22caf660a1cef7b6c486d356a79fcbb0f2e1fdb85e0f23b",
+        "nodes.csv": "7e1c882faa95e5a27838c7cd6215d3b1f268610a48c981a0cb8c6e8b8d609db8"
+      }
+    }
+  },
+  "static_analysis": {
+    "version": "LLVM22.1.8",
+    "status": "passed",
+    "scope": "Two new translation units and new research headers using actual configured GNU compile commands; no suppressions or --fix.",
+    "results": [
+      {
+        "path": "build/quad-quadratic-jet-20261119/tidy-quadratic_jet_contracts.result.json",
+        "sha256": "df209a0b7541d0f700f2b0776a41b331db9c2d2616b3b1788f4bd3d15868361a"
+      },
+      {
+        "path": "build/quad-quadratic-jet-20261119/tidy-quadratic_jet_probe.result.json",
+        "sha256": "38a8a9bd40839dfca4d898d86582744f5a9361cdf4540fc27442d22bf962601e"
+      }
+    ]
+  },
+  "matrix_numerical_budget": "Independent coefficients/K/H agreement1e-7 absolute/relative; frame/eigen/residual1e-10; not an estimator accuracy budget.",
+  "accuracy": {
+    "status": "unqualified_for_global_or_adaptive_adoption",
+    "counterexample": "Six one-sided samples belong to both paraboloid and parabolic cylinder; rank6/condition2393.06 does not establish accuracy. K approximately0 versus analytical0.98029605.",
+    "final_mixed_boundary_nodes": 14,
+    "median_absolute_K": 1.309260200735673,
+    "median_absolute_H": 1.6863837671769566,
+    "initial_coverage": "All five nodes unavailable in each initial TRI/mixed observation; no zero fallback."
+  },
+  "failures": [
+    {
+      "label": "iteration-msvc-contracts",
+      "result": {
+        "exit": 1,
+        "seconds": 0.25391411781311035,
+        "timeout": 30
+      },
+      "artifacts": [
+        {
+          "path": "build/quad-quadratic-jet-20261119/iteration-msvc-contracts.command.json",
+          "sha256": "2aa0840b302eb8543398ac3c4b1b148f22527568f296c9a99dc3d83b2310cd43"
+        },
+        {
+          "path": "build/quad-quadratic-jet-20261119/iteration-msvc-contracts.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "build/quad-quadratic-jet-20261119/iteration-msvc-contracts.stderr",
+          "sha256": "789f36b3e66c7cc0e4c6902fc235365e72df13a3fda90e11b5b4f0eb129eb2fe"
+        },
+        {
+          "path": "build/quad-quadratic-jet-20261119/iteration-msvc-contracts.result.json",
+          "sha256": "599e68897392a06541955f7fbcc6646198efec940be177dd10419f1a7a99361f"
+        }
+      ],
+      "stderr": "Symmetric paraboloid full pipeline\n",
+      "disposition": "Invalid exact one-sided PCA/paraboloid expectation corrected only in tests; original algorithm unchanged; negative accuracy counterexample retained."
+    },
+    {
+      "label": "exact-baseline",
+      "result": {
+        "exit": 1,
+        "seconds": 2.7512805461883545,
+        "timeout": 900
+      },
+      "artifacts": [
+        {
+          "path": "build/quad-quadratic-jet-20261119/exact-baseline.command.json",
+          "sha256": "6eebbfca61cacc8d4cfe49a2c749379d6b2bbe80ea15289270848880ca3d2a1e"
+        },
+        {
+          "path": "build/quad-quadratic-jet-20261119/exact-baseline.stdout",
+          "sha256": "7daf9c11f04591c8e78d3558059c20912d60cf4b963e619291316696a0f09524"
+        },
+        {
+          "path": "build/quad-quadratic-jet-20261119/exact-baseline.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "build/quad-quadratic-jet-20261119/exact-baseline.result.json",
+          "sha256": "d732537e77aa9562e03e15c9f79909288296340cc29c6695222fdc0799dadde7"
+        }
+      ],
+      "source": "d1970a14e5c4667324cd176cfeaf5c0c45163e43",
+      "diagnostic": "Retained architecture inventory is stale or incomplete; no baseline CTest ran.",
+      "report": {
+        "path": "build/validation-session/1795100948761354800-4d15e92e/report.json",
+        "sha256": "d836fdf4b8e68223295dedd971b008ca75590c822e7fbc9eae65842263090dc0"
+      },
+      "disposition": "Regenerated inventory differs only in tests/quad/CMakeLists.txt hash; corrected source requalified separately."
+    }
+  ],
+  "staged_tools": "Direct checker outside configured environment reported missing clang-format; configured staged check/normal hook passed. No tool installation or hidden fallback.",
+  "hosted": {
+    "run_id": 44551769795,
+    "head": "f2dbd4716d68b1b8cb9cf4d78143021b81e3ccda",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44551769795",
+    "jobs": [
+      {
+        "id": 135657308385,
+        "name": "QUAD native (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "proof": [
+          "2026-11-19T15:11:27.5280630Z 100% tests passed, 0 tests failed out of 22",
+          "2026-11-19T15:12:25.4340874Z {\"case\": \"article\", \"stages\": 8, \"forgeries\": 10}",
+          "2026-11-19T15:12:26.8589054Z {\"case\": \"original-rejected\", \"stages\": 8, \"forgeries\": 10}",
+          "2026-11-19T15:12:26.9053087Z {\"case\": \"stable-retry\", \"stages\": 6, \"forgeries\": 10}",
+          "2026-11-19T15:14:56.5732616Z JET_CONTRACTS checks=182 passed=1",
+          "2026-11-19T15:14:56.6494191Z Ran 6 tests in 0.035s",
+          "2026-11-19T15:14:57.7247500Z {\"case\": \"article\", \"stages\": 8, \"forgeries\": 10}",
+          "2026-11-19T15:14:59.7807308Z {\"case\": \"original-rejected\", \"stages\": 8, \"forgeries\": 10}",
+          "2026-11-19T15:14:59.9030185Z {\"case\": \"stable-retry\", \"stages\": 6, \"forgeries\": 10}"
+        ]
+      },
+      {
+        "id": 135657308828,
+        "name": "TRI baseline and tooling controls (Linux)",
+        "status": "completed",
+        "conclusion": "success",
+        "proof": [
+          "2026-11-19T15:16:26.8967357Z 100% tests passed, 0 tests failed out of 85",
+          "2026-11-19T15:16:28.3125108Z Ran 527 tests in 1.328s"
+        ]
+      },
+      {
+        "id": 135657308854,
+        "name": "QUAD native (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "proof": [
+          "2026-11-19T15:11:34.1186322Z 100% tests passed, 0 tests failed out of 22",
+          "2026-11-19T15:14:13.0110931Z {\"case\": \"article\", \"stages\": 8, \"forgeries\": 10}",
+          "2026-11-19T15:14:15.1417555Z {\"case\": \"original-rejected\", \"stages\": 8, \"forgeries\": 10}",
+          "2026-11-19T15:14:15.3284622Z {\"case\": \"stable-retry\", \"stages\": 6, \"forgeries\": 10}"
+        ]
+      },
+      {
+        "id": 135657309081,
+        "name": "TRI scientific equivalence against frozen baseline",
+        "status": "completed",
+        "conclusion": "success",
+        "proof": [
+          "2026-11-19T15:12:25.8316238Z {\"model\": \"eistute\", \"status\": \"completed\", \"exit_code\": 0, \"wall_seconds\": 3.770925629999965, \"executable_sha256\": \"4d5861edfc3bd69cfc03f841550a0e55aa3f74f5b1403459836ffda9de707ab5\", \"source_config_sha256\": \"048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd\", \"input_model\": \"/home/runner/work/apmesh-modernization/apmesh-tri-reference/input_models/eistute2.fixed.bp\", \"input_model_sha256\": \"fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f\", \"relocated_keys\": [\"INPUT_MODEL\", \"OUTPUT_PREFIX\"], \"command\": [\"/home/runner/work/apmesh-modernization/apmesh-tri-reference/build/science-reference/bin/ap_mesh\", \"--config\", \"/home/runner/work/apmesh-modernization/apmesh-tri-reference/build/science-reference/eistute/article.conf\"]}",
+          "2026-11-19T15:12:29.6375386Z {\"model\": \"eistute\", \"status\": \"completed\", \"exit_code\": 0, \"wall_seconds\": 3.7721248790001027, \"executable_sha256\": \"2c60d795ee8c7866e193623b730da2807ebb2d6120b4514bd560ae3ade1d54ad\", \"source_config_sha256\": \"048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd\", \"input_model\": \"/home/runner/work/apmesh-modernization/apmesh-modernization/input_models/eistute2.fixed.bp\", \"input_model_sha256\": \"fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f\", \"relocated_keys\": [\"INPUT_MODEL\", \"OUTPUT_PREFIX\"], \"command\": [\"/home/runner/work/apmesh-modernization/apmesh-modernization/build/science-candidate/bin/ap_mesh\", \"--config\", \"/home/runner/work/apmesh-modernization/apmesh-modernization/build/science-candidate/eistute/article.conf\"]}",
+          "2026-11-19T15:12:31.7887306Z {\"model\": \"book\", \"status\": \"completed\", \"exit_code\": 0, \"wall_seconds\": 2.1185338220000176, \"executable_sha256\": \"4d5861edfc3bd69cfc03f841550a0e55aa3f74f5b1403459836ffda9de707ab5\", \"source_config_sha256\": \"355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99\", \"input_model\": \"/home/runner/work/apmesh-modernization/apmesh-tri-reference/input_models/book_v7a.bp\", \"input_model_sha256\": \"3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d\", \"relocated_keys\": [\"INPUT_MODEL\", \"OUTPUT_PREFIX\"], \"command\": [\"/home/runner/work/apmesh-modernization/apmesh-tri-reference/build/science-reference/bin/ap_mesh\", \"--config\", \"/home/runner/work/apmesh-modernization/apmesh-tri-reference/build/science-reference/book/article.conf\"]}",
+          "2026-11-19T15:12:33.9917210Z {\"model\": \"book\", \"status\": \"completed\", \"exit_code\": 0, \"wall_seconds\": 2.1693646019998596, \"executable_sha256\": \"2c60d795ee8c7866e193623b730da2807ebb2d6120b4514bd560ae3ade1d54ad\", \"source_config_sha256\": \"355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99\", \"input_model\": \"/home/runner/work/apmesh-modernization/apmesh-modernization/input_models/book_v7a.bp\", \"input_model_sha256\": \"3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d\", \"relocated_keys\": [\"INPUT_MODEL\", \"OUTPUT_PREFIX\"], \"command\": [\"/home/runner/work/apmesh-modernization/apmesh-modernization/build/science-candidate/bin/ap_mesh\", \"--config\", \"/home/runner/work/apmesh-modernization/apmesh-modernization/build/science-candidate/book/article.conf\"]}",
+          "2026-11-19T15:12:34.8205228Z {\"model\": \"eistute\", \"compared_meshes\": 5, \"all_obj_byte_identical\": true, \"all_acceptance_fields_equal\": true, \"last_accepted_step\": 1, \"last_accepted_triangles\": 1168, \"boundary_incidence_coverage\": \"verified\", \"boundary_regression\": \"exact\"}",
+          "2026-11-19T15:12:37.7598163Z {\"model\": \"book\", \"compared_meshes\": 4, \"all_obj_byte_identical\": true, \"all_acceptance_fields_equal\": true, \"last_accepted_step\": 1, \"last_accepted_triangles\": 4256, \"boundary_incidence_coverage\": \"verified\", \"boundary_regression\": \"exact\"}"
+        ]
+      }
+    ],
+    "prior_run": {
+      "id": 44551318672,
+      "head": "d1970a14e5c4667324cd176cfeaf5c0c45163e43",
+      "conclusion": "cancelled"
+    }
+  },
+  "scientific_next": "Await explicit decision on a uniform complete two-ring diagnostic comparison. No variant is implemented or measured.",
+  "mixed_global_error": null,
+  "accepted_mixed_epochs": 0,
+  "closure_audit": {
+    "code": "Isolated standard-library numerical candidate; explicit finite/rank/orientation outcomes.",
+    "ownership": "Immutable inputs and owned value containers; no model observers/owners changed.",
+    "tests": "Native/reference/actual archive/forgery/negative controls and full exact baseline; failures retained.",
+    "contracts": "Section4 sample order/expansion/rank/sign and unavailable contracts preserved.",
+    "documentation": "Adoption, per-node scope, errors, limitations and exact source distinguished from integration.",
+    "scientific_scope": "Nodal candidate only; accuracy unresolved; no mixed global acceptance.",
+    "inventory": "Only one retained CMake hash refreshed; production file counts/anchors unchanged."
+  },
+  "limits": [
+    "Unresolved sparse/one-sided curvature accuracy and initial coverage.",
+    "Legacy mean scaling source inference not repaired.",
+    "Global normalization/aggregation and mixed adaptation not defined.",
+    "Historical1993 numerical identity and full M1/M5/R3/M7 open.",
+    "Full native CRT/allocation/transaction/exact-tie/general-geometry/curved-metric qualification not run.",
+    "Retained prior enum-analysis exit1, DrvFS and Doxygen failures not erased.",
+    "No new generation or Blender scene this session.",
+    "Concurrent PR239/225/214 and main unchanged; independent review/integration not performed."
+  ]
+}

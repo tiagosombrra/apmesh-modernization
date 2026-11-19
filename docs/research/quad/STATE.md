@@ -3,7 +3,7 @@
 Updated 2026-11-19 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: mixed curvature contract prepared; scientific adoption pending
+## Active: quadratic-jet candidate implemented; scientific accuracy remains open
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,41 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-19 - adopted quadratic-jet candidate implemented; PR243 draft
+
+The researcher explicitly adopts Section4 of the prepared contract. The
+[implementation/results](MIXED_QUADRATIC_JET_CANDIDATE_20261119.md) and
+[evidence](evidence/MIXED_QUADRATIC_JET_CANDIDATE_20261119.json) pin exact
+source f2dbd47/tree7ef3e90 in [draft PR243](https://github.com/tiagosombrra/apmesh-modernization/pull/243).
+Separate value-owned K/H/support/rank/condition/residual/coverage records now
+execute on all22 existing article/rejection/retry observations. Original curves,
+generation, TRI curvature/state, selection/smoothing and adaptive policies stay.
+
+Exact local85/85 baseline (527 Python), MSVC22/22 native CTests and182 native
+checks/six Python controls/22 real observations/30 forgery refusals per MSVC,
+GNU13.3 and Clang18.1 ASan/UBSan/leak pass. Scoped LLVM22.1.8 analysis passes
+both new consumers/headers with actual compilation metadata. Exact
+[hosted44551769795](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44551769795)
+passes4/4: native22 on Linux/Windows, actual jet histories on both plus sanitized
+Linux,85/527 and frozen Eistute5/Book4 parity. Superseded d1970a1 run is
+cancelled, not passed. No integration/post-merge validation claimed.
+
+Accuracy remains unqualified. All initial five-node estimates are unavailable;
+later nodes in these archives are finite/full rank, but final mixed boundary
+median absolute errors are K=1.30926,H=1.68638. A retained six-sample paraboloid/
+cylinder counterexample shows rank6 can still give wrong physical curvature.
+First failed exact-paraboloid expectation is preserved, corrected only in tests;
+no accuracy cutoff/fallback is added. Initial exact regression stops before
+CTest at stale CMake inventory; one hash is corrected and new source passes.
+
+**Next:** await the descriptive scientific decision on comparing uniform
+complete two-ring support with this unchanged candidate on the same histories.
+No variant runs before that decision. Keep PR243 draft; do not equate nodal
+availability/numerical agreement with a qualified global error. Mixed global
+error unavailable/accepted epochs0, legacy mean question, broader historical/
+native/CRT/failure inventory and full R3/M7 remain open. Canonical checkpoint
+is documentation/evidence only and does not certify its own SHA natively.
 
 ### 2026-11-19 - mixed Gaussian/mean operator contract prepared, not adopted
 

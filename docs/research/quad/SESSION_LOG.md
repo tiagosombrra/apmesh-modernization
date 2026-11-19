@@ -3736,3 +3736,50 @@ current summary/evidence; commit and verify canonical remote checkpoint. Next
 request explicit scientific adoption/revision of the complete bounded candidate.
 Prior approval of the diagonal experiment is not approval of this method. Full
 R3/M7/global-error/accepted-epoch0/historical/native-CRT/retained failures stay open.
+
+## 2026-11-19 - adopted quadratic-jet implementation and retained accuracy limits
+
+Researcher explicitly adopts Section4 of the operator contract. Preserve one
+read-only scientific candidate, initial unavailability, original TRI/generation/
+selection/smoothing/acceptance and no global aggregate/adaptive acceptance.
+Read canonical a72bdf1/main ef40c0f and live PR239/225/214/prior exact checks;
+feature PR243 contains isolated standard-library PCA/SVD/value records, native
+probe, independent characteristic-eigenvalue/Householder-QR audit and exports.
+
+First MSVC contracts fail the exact one-sided paraboloid expectation (exit1).
+Stop, retain original streams/command/result, and prove six sampled points also
+belong to a cylinder. Full rank6/condition2393.06 does not identify the intended
+paraboloid. Keep estimator unchanged; exact symmetric support and mandatory
+negative accuracy counterexample replace the unjustified expectation. No new
+conditioning cutoff, error-based expansion, analytical or diagonal fallback.
+
+Initial published d1970a1 exact baseline stops at stale architecture before85
+CTest. Regenerate only the tests/quad CMake hash; reviewed production inventory/
+contracts unchanged. Publish corrected f2dbd47/tree7ef3e90 and align same-tree
+local source with2691 tracked bytes/sizes/mtimes preserved. Exact local85/85
+and527 tooling, MSVC22/22,182 native checks/six reference controls/22 actual
+histories/30 altered records per MSVC/GNU13.3/Clang18.1 ASan/UBSan/leak pass.
+Scoped LLVM22.1.8 analyzes both new consumers/headers using actual commands,
+no suppression. Direct staged call outside profile lacks clang-format; configured
+staged check and normal hook pass. No unavailable tool is called a pass.
+
+All18 numerical exports remain byte-identical to preliminary results. Cross-
+profile maximum K/H differences are5.69e-14/4.41e-11. All initial five-node
+snapshots unavailable; later archive nodes full rank. Current Step3 mixed
+boundary median absolute K/H errors1.30926/1.68638 remain visible. Both earlier
+diagonal witnesses now have explicit jet/analytical values; no universal accuracy
+claim. PR243 stays draft, estimator/global/adaptive adoption unqualified.
+
+Audit code/value ownership/tests/contracts/docs/scientific scope/known inventory;
+record commands/hashes/failures/results. Final hosted44551769795 readback
+completes4/4 SUCCESS on exact f2dbd47: native22 each Linux/Windows, actual
+22-observation/30-forgery jet archives on both plus sanitized Linux,85/527 and
+strict frozen Eistute5/Book4 OBJ/acceptance/boundary parity. Superseded d1970a1
+run44551318672 is cancelled, not a pass. No integration/main validation/new generation/
+Blender/full native CRT/transaction qualification. Keep historical M1/M5/R3/M7,
+legacy mean/normalization questions and prior enum/DrvFS/Doxygen failures.
+Ask descriptively for the next scientific decision: compare uniform complete
+two-ring support with the unchanged candidate on the same histories, with possible
+oversmoothing and no adaptation. Await answer; do not execute an unadopted variant.
+Update canonical state/roadmap/overview/evidence, commit and verify remote readback;
+the documentation checkpoint is not a new native exact-head qualification.
