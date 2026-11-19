@@ -5,42 +5,38 @@ Read the [current delivered/pending summary](CURRENT_PLAN_OVERVIEW_20261118.md) 
 The dated historical entries below preserve evidence and superseded priorities;
 they do not replace the current execution queue.
 
-Current correction: [approved mixed UV smoothing](MIXED_UV_SMOOTHING_20261118.md)
-is implemented in exactbeb2aee/draft PR240, following the confirmed contour
-clearance repair. Final local85/85 and hosted44408768431 all4 succeed;
-native20/20 and complete histories have explicit code/image identity reuse.
-Earlier missing-clearance/missing-smoothing entries retain their original scope.
+Current correction: [adopted area centroid in UV](AREA_CENTROID_DELIVERY_20261118.md)
+is implemented/compared in exact15e2915/draft PR240. Final local85/85,
+native20/20 and hosted44440173309 all4 succeed. Historical dated missing-stage
+entries below retain their original scope; no whole-stage closure follows.
 
 ## Current finite execution queue - 2026-11-18
 
-Original curves, native templates and prospective TRI/QUAD choice feed the
-confirmed minimum-cell UV clearance0.2 and now five simultaneous smoothing
-passes over distinct incident other vertices. Original contour is fixed; XYZ
-is lifted from the Bezier patch every pass. Current stages remain24/249/630 QUAD
-and8/52/102 TRI;183 commits/186 original frames plus15 smoothing frames exist.
-New Blender displays the current before/after history and retained templates.
+Original curves/native templates/prospective TRI-QUAD selection, confirmed
+clearance0.2, five simultaneous UV smoothing passes and the now adopted polygon
+area centroid in UV are implemented and tested. New named selector reuses the
+existing point routine; prior mean selector and default TRI remain intact.
+Stage counts remain24/249/630 QUAD and8/52/102 TRI. All183 prospective commits,
+186 initial/front frames and15 actual smoothing frames are retained. New Blender
+compares actual mean/area results; previous template catalog is labeled reference.
 
-All scientific tradeoffs remain: after smoothing global minimum angles improve,
-but minimum QUAD J falls in all stages, stage2 RMS increases and stage3 boundary
-angle falls. Clearance's own retained tradeoffs also remain. No overall quality,
-historical numeric reproduction or mixed convergence claim. Source TRI, angular
-selection S<=1.5, original curve policies and adaptation/acceptance/stopping stay
-unchanged. The user rejects invented balancing controllers and broad flag sweeps.
+Only Step2 positions change:18 source centers and271 smoothed interior sites,
+with identical contours/connectivity/front choices. RMS and minimum angle improve
+slightly; QUAD minimum J worsens slightly. Prior smoothing/clearance tradeoffs
+and measured boundary/interior mismatch remain. No optimality, global quality,
+historical numeric reproduction or mixed convergence claim. The experimental
+center choice is settled by the user's explicit aligned response; do not ask
+again to select it. Full historical equation/oracle identity remains open.
 
-One active next action: resolve the retained historical template-center
-interpretation against the primary source; ask a descriptive scientific question
-before modifying the current vertex mean if ambiguity remains. Then independent
-review and old adversarial-analysis/local-filesystem disposition, exact candidate
-research integration and post-merge gates. No merge is performed by this session.
-Actual mixed global curvature error and accepted adaptation remain separate
-future work (mixed accepted epochs0). Full M1/M5/R3/M7, curved-metric scope and
-original M0-M9/R0-R4 gates remain open. Dated historical queues below do not
-override this current user-directed conformance priority.
-
-The [boundary/center review](BOUNDARY_ORIGIN_AND_CENTERS_20261118.md) now explains
-Step1/Step2 provenance and measures 18 differing Step2 polygon centers. The
-descriptive area-centroid UV proposal is sent; await the scientific reply before
-changing the formula. No new generation or rule qualification follows this audit.
+One active next action: independent review of the static PR240 package and
+explicit disposition of old enum-analysis/WSL findings. Then required exact
+research integration and post-merge gates; no merge is performed here.
+Actual mixed global curvature error/accepted adaptation remain a later aligned
+package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope
+and original M0-M9/R0-R4 gates remain open. Existing selection S<=1.5, curves,
+adaptation/acceptance/stopping and scientific boundaries are preserved. No new
+balancing law or broad flag sweep. Dated historical queues below do not override
+this current user-directed conformance sequence.
 
 The [PR238 research integration](PR238_RESEARCH_INTEGRATION_20261117.md) is
 complete at exact merge d251f19, with identical qualified candidate tree81ecc5bf.

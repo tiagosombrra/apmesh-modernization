@@ -12,7 +12,33 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
-### 2026-11-18 - boundary provenance explained; center decision requested
+### 2026-11-18 - adopted area centroid implemented and compared
+
+User explicitly adopts area centroid in UV and real-history comparison.
+[Delivery](AREA_CENTROID_DELIVERY_20261118.md) and [evidence](evidence/AREA_CENTROID_DELIVERY_20261118.json)
+pin exact PR240 source15e2915. New explicit area selector reuses the existing
+point routine; earlier mean selector/other modes/default TRI stay available.
+The experimental choice is settled; historical numeric identity is not proven.
+
+Final local85/85, native20/20, four changed/full newly linked TUs analysis,
+source contracts/old live-pair/rollback and hosted44440173309 all4 pass. Actual
+222 polygons verify independently;3 point forgeries join11 front and5 smoothing
+controls. New image's old-mean control preserves all8 OBJ scopes byte for byte.
+
+Only Step2 changes:18 centers and271 smoothed interior positions. Contours,
+counts/connectivity/front choices remain identical; Steps1/3 are geometrically
+unchanged. Step2 RMS0.012898680->0.012896671 and min angle9.58769->9.59283deg
+improve slightly, QUAD minimum J0.224088->0.223537 worsens slightly. No broad
+quality/accuracy or transition repair claim. New Blender5.3 comparison is open;
+old catalog is explicitly labeled reference. All prior counterevidence retained.
+
+**Next:** independent static-package PR240 review and explicit old enum-analysis/
+WSL finding disposition, then exact research-integration/post-merge gates.
+No further centroid selection question is needed for this adopted experiment.
+Keep historical identity, broader native/CRT/oracle coverage and actual mixed
+global curvature error/adaptation0 open. No merge or modernization-main change.
+
+### 2026-11-18 - boundary provenance explained; center decision requested (previous checkpoint)
 
 [Read-only audit](BOUNDARY_ORIGIN_AND_CENTERS_20261118.md) and [evidence](evidence/BOUNDARY_ORIGIN_AND_CENTERS_20261118.json)
 reconcile all real faces and222 source polygons at unchanged PR240 beb2aee.
@@ -90,7 +116,7 @@ not adopted. Preserve contour positions, existing validity and rollback policies
 
 Read the [short current plan](CURRENT_PLAN_OVERVIEW_20261118.md) before historical
 entries below. Real mixed generation exists; complete paper conformance and
-mixed adaptive closure do not. Current code is draft PR240 exactbeb2aee.
+mixed adaptive closure do not. Current code is draft PR240 exact15e2915.
 
 | Work | Status |
 | --- | --- |
@@ -98,12 +124,12 @@ mixed adaptive closure do not. Current code is draft PR240 exactbeb2aee.
 | Per-step errors/quality and explained Blender | Delivered; presentation does not change generation |
 | Contour-clearance classification | Implemented and tested in11dcaa7; review limitations retained |
 | Actual mixed smoothing | Implemented/tested with explicit UV/distinct/five-pass interpretation; tradeoffs retained |
-| Historical template centers | Unresolved; clarify before changing vertex mean |
+| Template centers | Area centroid UV adopted/implemented/tested for the experiment; historical numeric identity remains unproven |
 | Actual mixed global curvature error/accepted adaptation | Not complete; original TRI still drives adaptation |
 | Independent review and research integration of PR240 | Pending; draft/unmerged |
 
-Order: clearance and mixed smoothing implemented -> center disposition ->
-real-history comparison and bounded gates -> reviewed research integration ->
+Order: clearance, smoothing and adopted area centroid implemented/compared ->
+independent static-package review and finding disposition -> research integration ->
 aligned mixed-state/error/adaptive work. No new balancing controller, broad flag
 sweep or modernization-main change. Previous local85/85 and exact hosted4/4 are
 retained source evidence, not coverage of omitted paper stages. This overview is updated by the repair entry above. Full roadmap gates remain open.

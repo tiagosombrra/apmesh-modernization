@@ -3470,3 +3470,47 @@ Next await center decision, implement/compare only the approved slice, then
 independent review/static research integration. Mixed global error/epochs0,
 old enum diagnostic/WSL failures and wider historical/native/exact merge gates
 remain. Commit/read back state and append-only log on quad-templates.
+
+## 2026-11-18 - adopt area-centroid UV policy and compare actual mixed histories
+
+User explicitly selects the proposed area centroid in UV as aligned experimental
+decision and asks to continue. Read canonicalf321ca3/sourcebeb2aee/main ef40c0f;
+verify concurrent PR239/225/214 advances and leave them intact. Reuse the existing
+signed-area point routine only through a new opt-in article selector. Preserve
+the old mean selector and all other modes, source TRI, curves/synchronization,
+quadtree/templates/order, S1.5, clearance0.2, approved five-pass smoothing and
+adaptive acceptance/stopping. Existing point validity/tolerance remains unchanged.
+
+Publish/read back exact15e2915, tree57e98001503559e458bf42cb3e3a1b8e594d1686,
+on draft PR240. Add independent exact-Fraction source-polygon centroid checking
+and three point forgeries, including a real asymmetric center replaced by the
+old mean; retain11 front and5 smoothing forgeries/nonempty owner rollback.
+Record choice in native trace and OBJ metadata; refresh retained architecture
+hashes before the stable exact baseline. No alternative formula or hidden retry.
+
+Final local85/85, native MSVC20/20, source6/3reversed/54 negatives, prior live-pair
+220 events/eight forgeries and all four configured changed/newly linked TU/header
+analyses pass. New image's old mean selector reproduces all8 old OBJ scopes
+byte-identically. Fresh area application reconciles222 polygons,183 commits,
+15 passes and11+5+3 negatives with rollback. Exact hosted44440173309 all4 pass:
+GNU/MSVC/ASan reports agree;85 baseline/527 Python controls and frozen Eistute5/
+Book4 exact OBJ/acceptance/boundaries pass. No required gate fails in this slice.
+
+Only Step2 changes:18 initial centers and271 post-smoothing interior sites;
+counts/contour/connectivity/source leaves/front choices remain identical. Step2
+RMS0.01289868039->0.01289667137 and angle9.58768997->9.59283006deg improve
+slightly, minimum QUAD J0.224087726->0.223536909 worsens slightly. Steps1/3
+geometrically identical. This does not repair transition quality or prove global
+benefit/historical equation/mixed convergence. Mixed global curvature error is
+still unavailable, accepted mixed epochs0; original TRI errors unchanged.
+
+Create a new four-scene Blender5.3 with current real outputs/all actual passes,
+six mean/area comparison meshes, metric guide and previous template reference
+explicitly labeled. Inspect comparison render/UV plot and observe the new file
+open in the GUI. Keep previous files intact. Update delivery/evidence/plan/state
+and PR; audit code/value ownership/tests/contracts/docs/scientific scope and
+known coverage. No merge or whole-stage closure. Experimental center choice is
+settled; no repeated scientific selection question. Next independent static PR240
+review and old enum-analysis/WSL disposition, then exact research integration/
+post-merge gates. Retain historical identity, full native/CRT/oracle and later
+actual mixed-global-error/adaptive work. Commit/read back canonical checkpoint.

@@ -1,0 +1,862 @@
+{
+  "schema": "apmesh.quad.area_centroid_application.v1",
+  "date": "2026-11-18 Fortaleza",
+  "source": "15e291579600a0a4b8076cab8d52f0c8841f3938",
+  "tree": "57e98001503559e458bf42cb3e3a1b8e594d1686",
+  "reference": "beb2aee2605110ec5c7a542bb45b10cb8c876b40",
+  "pr": 240,
+  "draft": true,
+  "merged": false,
+  "classification": "Explicitly adopted experimental scientific point policy; dispatch/reporting preservation is engineering.",
+  "approval": "User explicitly adopts area centroid in UV and real-history comparison as the aligned experimental decision.",
+  "policy": {
+    "selector": "curved_bezier_article_front_area_centroid_v1",
+    "point_rule": "polygon_area_centroid_uv_v1",
+    "implementation": "Existing ExperimentalInteriorPoint / PolygonAreaCentroid, unchanged",
+    "space": "UV",
+    "preconditions": "Existing strictly convex CCW finite polygons; existing 1e-12 relative tolerance unchanged",
+    "retained_mean_selector": "curved_bezier_article_front_vertex_mean_v1",
+    "smoothing": "UV/distinct incident other vertices/five simultaneous passes/fixed contour; unchanged",
+    "curve_front_adaptation_acceptance_stopping_changed": false,
+    "historical_numeric_identity_proven": false
+  },
+  "code": [
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "e66edef655d4391a31c2d0ae4a16b3e49e860b0dd173cad48008926c39d52e6b"
+    },
+    {
+      "path": "configs/quad/README.md",
+      "sha256": "3b5ad3800c3a0525ac7c2d8f01d6c5f769d4ef19abbbcfd1246e54670d4ce04c"
+    },
+    {
+      "path": "configs/quad/curved_patch_article_front.conf",
+      "sha256": "0c0fda2a48e60573103a55e8b729377d5c8a978bcf85e4da8c21028d94a4f769"
+    },
+    {
+      "path": "docs/architecture/source_inventory.json",
+      "sha256": "34f792c9f53948b123f7af7e0c8b2f4e627f9077a649f5f2ca610c8020c1ca26"
+    },
+    {
+      "path": "research/quad/controlled_patch_application.cpp",
+      "sha256": "f984ddac8038c5bcc4dfbd13cdfd32d89b9a2843222168d21eedc827ef7cdeec"
+    },
+    {
+      "path": "src/application/run_application.cpp",
+      "sha256": "400231f2457c81671e8f9372d9c9f681e930fe20321b635dc8fa145360eb240d"
+    },
+    {
+      "path": "src/application/runtime_config.cpp",
+      "sha256": "f622d7ea4ab08fd9f6d3ed029316326643e486d1563e0d00172b06d0da493b35"
+    },
+    {
+      "path": "tests/quad/test_article_front_application.py",
+      "sha256": "5ce6a4e170a1ac80409473517270bc4d60204fc71640b719a284c589d8d7e01b"
+    }
+  ],
+  "native": {
+    "source": "15e291579600a0a4b8076cab8d52f0c8841f3938",
+    "tree": "57e98001503559e458bf42cb3e3a1b8e594d1686",
+    "files": {
+      "CMakeLists.txt": "e66edef655d4391a31c2d0ae4a16b3e49e860b0dd173cad48008926c39d52e6b",
+      "configs/quad/README.md": "3b5ad3800c3a0525ac7c2d8f01d6c5f769d4ef19abbbcfd1246e54670d4ce04c",
+      "configs/quad/curved_patch_article_front.conf": "0c0fda2a48e60573103a55e8b729377d5c8a978bcf85e4da8c21028d94a4f769",
+      "docs/architecture/source_inventory.json": "34f792c9f53948b123f7af7e0c8b2f4e627f9077a649f5f2ca610c8020c1ca26",
+      "research/quad/controlled_patch_application.cpp": "f984ddac8038c5bcc4dfbd13cdfd32d89b9a2843222168d21eedc827ef7cdeec",
+      "src/application/run_application.cpp": "400231f2457c81671e8f9372d9c9f681e930fe20321b635dc8fa145360eb240d",
+      "src/application/runtime_config.cpp": "f622d7ea4ab08fd9f6d3ed029316326643e486d1563e0d00172b06d0da493b35",
+      "tests/quad/test_article_front_application.py": "5ce6a4e170a1ac80409473517270bc4d60204fc71640b719a284c589d8d7e01b"
+    },
+    "image_sha256": "a969ba714818f7984068ab266ca4479a2ebfd26c20036582a598d42d1cefb43b",
+    "steps": [
+      {
+        "stage": "native-build",
+        "exit": 0,
+        "seconds": 3.910281181335449
+      },
+      {
+        "stage": "native-contracts",
+        "exit": 0,
+        "seconds": 7.318761348724365
+      },
+      {
+        "stage": "application-build",
+        "exit": 0,
+        "seconds": 17.09736394882202
+      },
+      {
+        "stage": "application-history",
+        "exit": 0,
+        "seconds": 75.54850125312805
+      },
+      {
+        "stage": "source-boundary-contracts",
+        "exit": 0,
+        "seconds": 4.458805561065674
+      }
+    ]
+  },
+  "analysis": {
+    "analysis-exact-controlled_patch_application.result": {
+      "exit": 0
+    },
+    "analysis-exact-experimental_point_rule.result": {
+      "exit": 0
+    },
+    "analysis-exact-runtime_config.result": {
+      "exit": 0
+    },
+    "analysis-exact-run_application.result": {
+      "exit": 0
+    }
+  },
+  "application": {
+    "schema": "apmesh.quad.article_application.v1",
+    "stages": [
+      {
+        "step": 1,
+        "nodes": 33,
+        "quads": 24,
+        "triangles": 8,
+        "boundary": 8,
+        "source_step": 1,
+        "native_leaves": 16,
+        "domain_generation": 1,
+        "nonuniform_sides": 0,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "clearance_excluded_cells": 0,
+        "commits": 16,
+        "selected_quads": 8,
+        "retained_triangles": 8,
+        "rejected_unions": 8,
+        "competing_alternatives": 0,
+        "source_polygons": 4,
+        "centers_different_from_vertex_mean": 0
+      },
+      {
+        "step": 2,
+        "nodes": 281,
+        "quads": 249,
+        "triangles": 52,
+        "boundary": 10,
+        "source_step": 2,
+        "native_leaves": 67,
+        "domain_generation": 1,
+        "nonuniform_sides": 1,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "clearance_excluded_cells": 0,
+        "commits": 59,
+        "selected_quads": 7,
+        "retained_triangles": 52,
+        "rejected_unions": 53,
+        "competing_alternatives": 1,
+        "source_polygons": 62,
+        "centers_different_from_vertex_mean": 18
+      },
+      {
+        "step": 3,
+        "nodes": 689,
+        "quads": 630,
+        "triangles": 102,
+        "boundary": 14,
+        "source_step": 3,
+        "native_leaves": 223,
+        "domain_generation": 1,
+        "nonuniform_sides": 1,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "clearance_excluded_cells": 25,
+        "commits": 108,
+        "selected_quads": 6,
+        "retained_triangles": 102,
+        "rejected_unions": 100,
+        "competing_alternatives": 2,
+        "source_polygons": 156,
+        "centers_different_from_vertex_mean": 0
+      }
+    ],
+    "rejected_forgeries": 11,
+    "rollback_verified": true,
+    "rejected_smoothing_forgeries": 5,
+    "smoothing_passes_per_stage": 5,
+    "rejected_point_forgeries": 3,
+    "mixed_adaptive_epochs": 0
+  },
+  "mean_control": {
+    "source": "15e291579600a0a4b8076cab8d52f0c8841f3938",
+    "exit": 0,
+    "seconds": 28.13139033317566,
+    "prior_mean_source": "beb2aee2605110ec5c7a542bb45b10cb8c876b40",
+    "unchanged_obj_scopes": [
+      {
+        "step": 0,
+        "kind": "tri_obj",
+        "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42"
+      },
+      {
+        "step": 0,
+        "kind": "quad_tri_obj",
+        "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42"
+      },
+      {
+        "step": 1,
+        "kind": "tri_obj",
+        "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634"
+      },
+      {
+        "step": 1,
+        "kind": "quad_tri_obj",
+        "sha256": "4e1626172bdd8404f46aa5f16a9b3348ad9632160168ef20f89a65190d5cfbad"
+      },
+      {
+        "step": 2,
+        "kind": "tri_obj",
+        "sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f"
+      },
+      {
+        "step": 2,
+        "kind": "quad_tri_obj",
+        "sha256": "f9f9936260edcb84edfffa22053ebabe67bc49720747a3c0aa45d944dab1ef6b"
+      },
+      {
+        "step": 3,
+        "kind": "tri_obj",
+        "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c"
+      },
+      {
+        "step": 3,
+        "kind": "quad_tri_obj",
+        "sha256": "ac73d34a13f6363fdb7cb09e83c0e707c8595e91e47404d126e8b41fb15bfd6b"
+      }
+    ],
+    "exe_sha256": "a969ba714818f7984068ab266ca4479a2ebfd26c20036582a598d42d1cefb43b"
+  },
+  "comparison": {
+    "source": "15e291579600a0a4b8076cab8d52f0c8841f3938",
+    "reference": "beb2aee2605110ec5c7a542bb45b10cb8c876b40",
+    "all_tri_obj_byte_identical": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "stages": [
+      {
+        "step": 0,
+        "nodes": 5,
+        "quads": 0,
+        "triangles": 4,
+        "changed_sites_before_smoothing": 0,
+        "changed_sites_after_smoothing": 0,
+        "max_uv_difference": 0.0,
+        "max_xyz_difference": 0.0,
+        "before": {
+          "quality": {
+            "tri_q": {
+              "count": 4,
+              "minimum": 0.8459910324287993,
+              "mean": 0.8663828872940097
+            },
+            "quad_corner_jacobian": {
+              "count": 0,
+              "minimum": null,
+              "mean": null
+            },
+            "min_angle_xyz": 43.7028214605833,
+            "max_edge_ratio_xyz": 1.445866246747383,
+            "boundary_min_angle_xyz": 43.7028214605833
+          },
+          "geometry_error": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.33986094231271624,
+            "rms_uv": 0.09228344884218848,
+            "rms_source_area": 0.07671966942907951,
+            "tri_sites": 576,
+            "quad_sites": 0
+          }
+        },
+        "after": {
+          "quality": {
+            "tri_q": {
+              "count": 4,
+              "minimum": 0.8459910324287993,
+              "mean": 0.8663828872940097
+            },
+            "quad_corner_jacobian": {
+              "count": 0,
+              "minimum": null,
+              "mean": null
+            },
+            "min_angle_xyz": 43.7028214605833,
+            "max_edge_ratio_xyz": 1.445866246747383,
+            "boundary_min_angle_xyz": 43.7028214605833
+          },
+          "geometry_error": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.33986094231271624,
+            "rms_uv": 0.09228344884218848,
+            "rms_source_area": 0.07671966942907951,
+            "tri_sites": 576,
+            "quad_sites": 0
+          }
+        },
+        "boundary_exact": true,
+        "connectivity_exact": true
+      },
+      {
+        "step": 1,
+        "nodes": 33,
+        "quads": 24,
+        "triangles": 8,
+        "changed_sites_before_smoothing": 0,
+        "changed_sites_after_smoothing": 0,
+        "max_uv_difference": 0.0,
+        "max_xyz_difference": 0.0,
+        "before": {
+          "quality": {
+            "tri_q": {
+              "count": 8,
+              "minimum": 0.8662742354681201,
+              "mean": 0.8918852841744727
+            },
+            "quad_corner_jacobian": {
+              "count": 24,
+              "minimum": 0.47798949303341104,
+              "mean": 0.806468390551604
+            },
+            "min_angle_xyz": 31.54933773014362,
+            "max_edge_ratio_xyz": 6.233035576427598,
+            "boundary_min_angle_xyz": 31.54933773014362
+          },
+          "geometry_error": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.08970625875320964,
+            "rms_uv": 0.025226911793798386,
+            "rms_source_area": 0.02216856603163197,
+            "tri_sites": 96,
+            "quad_sites": 480
+          }
+        },
+        "after": {
+          "quality": {
+            "tri_q": {
+              "count": 8,
+              "minimum": 0.8662742354681201,
+              "mean": 0.8918852841744727
+            },
+            "quad_corner_jacobian": {
+              "count": 24,
+              "minimum": 0.47798949303341104,
+              "mean": 0.806468390551604
+            },
+            "min_angle_xyz": 31.54933773014362,
+            "max_edge_ratio_xyz": 6.233035576427598,
+            "boundary_min_angle_xyz": 31.54933773014362
+          },
+          "geometry_error": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.08970625875320964,
+            "rms_uv": 0.025226911793798386,
+            "rms_source_area": 0.02216856603163197,
+            "tri_sites": 96,
+            "quad_sites": 480
+          }
+        },
+        "boundary_exact": true,
+        "connectivity_exact": true
+      },
+      {
+        "step": 2,
+        "nodes": 281,
+        "quads": 249,
+        "triangles": 52,
+        "changed_sites_before_smoothing": 18,
+        "changed_sites_after_smoothing": 271,
+        "max_uv_difference": 0.00034669028959081024,
+        "max_xyz_difference": 0.0007229161031827093,
+        "before": {
+          "quality": {
+            "tri_q": {
+              "count": 52,
+              "minimum": 0.2718645565313056,
+              "mean": 0.5444736728705954
+            },
+            "quad_corner_jacobian": {
+              "count": 249,
+              "minimum": 0.22408772596202922,
+              "mean": 0.9022339711097588
+            },
+            "min_angle_xyz": 9.587689973228468,
+            "max_edge_ratio_xyz": 8.481493344240686,
+            "boundary_min_angle_xyz": 15.625551230233974
+          },
+          "geometry_error": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.04191832474131903,
+            "rms_uv": 0.0136264216184787,
+            "rms_source_area": 0.012898680386705967,
+            "tri_sites": 287,
+            "quad_sites": 289
+          }
+        },
+        "after": {
+          "quality": {
+            "tri_q": {
+              "count": 52,
+              "minimum": 0.2722013128560543,
+              "mean": 0.5445473786676378
+            },
+            "quad_corner_jacobian": {
+              "count": 249,
+              "minimum": 0.223536909395905,
+              "mean": 0.9022691075646652
+            },
+            "min_angle_xyz": 9.59283006256298,
+            "max_edge_ratio_xyz": 8.484445553328602,
+            "boundary_min_angle_xyz": 15.63811439615133
+          },
+          "geometry_error": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.04191818421444898,
+            "rms_uv": 0.01362431424755927,
+            "rms_source_area": 0.0128966713696097,
+            "tri_sites": 287,
+            "quad_sites": 289
+          }
+        },
+        "boundary_exact": true,
+        "connectivity_exact": true
+      },
+      {
+        "step": 3,
+        "nodes": 689,
+        "quads": 630,
+        "triangles": 102,
+        "changed_sites_before_smoothing": 0,
+        "changed_sites_after_smoothing": 0,
+        "max_uv_difference": 0.0,
+        "max_xyz_difference": 0.0,
+        "before": {
+          "quality": {
+            "tri_q": {
+              "count": 102,
+              "minimum": 0.05483599181146062,
+              "mean": 0.3213803502959145
+            },
+            "quad_corner_jacobian": {
+              "count": 630,
+              "minimum": 0.21082201029581682,
+              "mean": 0.9461180334055018
+            },
+            "min_angle_xyz": 1.8698820585022242,
+            "max_edge_ratio_xyz": 11.053262350571115,
+            "boundary_min_angle_xyz": 9.148954252531814
+          },
+          "geometry_error": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.03907911808051273,
+            "rms_uv": 0.010017303249174823,
+            "rms_source_area": 0.009541729937291929,
+            "tri_sites": 199,
+            "quad_sites": 377
+          }
+        },
+        "after": {
+          "quality": {
+            "tri_q": {
+              "count": 102,
+              "minimum": 0.05483599181146062,
+              "mean": 0.3213803502959145
+            },
+            "quad_corner_jacobian": {
+              "count": 630,
+              "minimum": 0.21082201029581682,
+              "mean": 0.9461180334055018
+            },
+            "min_angle_xyz": 1.8698820585022242,
+            "max_edge_ratio_xyz": 11.053262350571115,
+            "boundary_min_angle_xyz": 9.148954252531814
+          },
+          "geometry_error": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.03907911808051273,
+            "rms_uv": 0.010017303249174823,
+            "rms_source_area": 0.009541729937291929,
+            "tri_sites": 199,
+            "quad_sites": 377
+          }
+        },
+        "boundary_exact": true,
+        "connectivity_exact": true
+      }
+    ]
+  },
+  "ci": {
+    "head": "15e291579600a0a4b8076cab8d52f0c8841f3938",
+    "run_id": 44440173309,
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44440173309",
+    "jobs": [
+      {
+        "id": 135278750830,
+        "name": "TRI scientific equivalence against frozen baseline",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 135278751126,
+        "name": "TRI baseline and tooling controls (Linux)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 135278751198,
+        "name": "QUAD native (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 135278751385,
+        "name": "QUAD native (windows-2022)",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "ordinary_gnu": {
+      "schema": "apmesh.quad.article_application.v1",
+      "stages": [
+        {
+          "step": 1,
+          "nodes": 33,
+          "quads": 24,
+          "triangles": 8,
+          "boundary": 8,
+          "source_step": 1,
+          "native_leaves": 16,
+          "domain_generation": 1,
+          "nonuniform_sides": 0,
+          "reversed_sides": 0,
+          "reference_tri_accepted": true,
+          "mixed_adaptive_epochs": 0,
+          "clearance_excluded_cells": 0,
+          "commits": 16,
+          "selected_quads": 8,
+          "retained_triangles": 8,
+          "rejected_unions": 8,
+          "competing_alternatives": 0,
+          "source_polygons": 4,
+          "centers_different_from_vertex_mean": 0
+        },
+        {
+          "step": 2,
+          "nodes": 281,
+          "quads": 249,
+          "triangles": 52,
+          "boundary": 10,
+          "source_step": 2,
+          "native_leaves": 67,
+          "domain_generation": 1,
+          "nonuniform_sides": 1,
+          "reversed_sides": 0,
+          "reference_tri_accepted": true,
+          "mixed_adaptive_epochs": 0,
+          "clearance_excluded_cells": 0,
+          "commits": 59,
+          "selected_quads": 7,
+          "retained_triangles": 52,
+          "rejected_unions": 53,
+          "competing_alternatives": 1,
+          "source_polygons": 62,
+          "centers_different_from_vertex_mean": 18
+        },
+        {
+          "step": 3,
+          "nodes": 689,
+          "quads": 630,
+          "triangles": 102,
+          "boundary": 14,
+          "source_step": 3,
+          "native_leaves": 223,
+          "domain_generation": 1,
+          "nonuniform_sides": 1,
+          "reversed_sides": 0,
+          "reference_tri_accepted": true,
+          "mixed_adaptive_epochs": 0,
+          "clearance_excluded_cells": 25,
+          "commits": 108,
+          "selected_quads": 6,
+          "retained_triangles": 102,
+          "rejected_unions": 100,
+          "competing_alternatives": 2,
+          "source_polygons": 156,
+          "centers_different_from_vertex_mean": 0
+        }
+      ],
+      "rejected_forgeries": 11,
+      "rollback_verified": true,
+      "rejected_smoothing_forgeries": 5,
+      "smoothing_passes_per_stage": 5,
+      "rejected_point_forgeries": 3,
+      "mixed_adaptive_epochs": 0
+    },
+    "asan_ubsan": {
+      "schema": "apmesh.quad.article_application.v1",
+      "stages": [
+        {
+          "step": 1,
+          "nodes": 33,
+          "quads": 24,
+          "triangles": 8,
+          "boundary": 8,
+          "source_step": 1,
+          "native_leaves": 16,
+          "domain_generation": 1,
+          "nonuniform_sides": 0,
+          "reversed_sides": 0,
+          "reference_tri_accepted": true,
+          "mixed_adaptive_epochs": 0,
+          "clearance_excluded_cells": 0,
+          "commits": 16,
+          "selected_quads": 8,
+          "retained_triangles": 8,
+          "rejected_unions": 8,
+          "competing_alternatives": 0,
+          "source_polygons": 4,
+          "centers_different_from_vertex_mean": 0
+        },
+        {
+          "step": 2,
+          "nodes": 281,
+          "quads": 249,
+          "triangles": 52,
+          "boundary": 10,
+          "source_step": 2,
+          "native_leaves": 67,
+          "domain_generation": 1,
+          "nonuniform_sides": 1,
+          "reversed_sides": 0,
+          "reference_tri_accepted": true,
+          "mixed_adaptive_epochs": 0,
+          "clearance_excluded_cells": 0,
+          "commits": 59,
+          "selected_quads": 7,
+          "retained_triangles": 52,
+          "rejected_unions": 53,
+          "competing_alternatives": 1,
+          "source_polygons": 62,
+          "centers_different_from_vertex_mean": 18
+        },
+        {
+          "step": 3,
+          "nodes": 689,
+          "quads": 630,
+          "triangles": 102,
+          "boundary": 14,
+          "source_step": 3,
+          "native_leaves": 223,
+          "domain_generation": 1,
+          "nonuniform_sides": 1,
+          "reversed_sides": 0,
+          "reference_tri_accepted": true,
+          "mixed_adaptive_epochs": 0,
+          "clearance_excluded_cells": 25,
+          "commits": 108,
+          "selected_quads": 6,
+          "retained_triangles": 102,
+          "rejected_unions": 100,
+          "competing_alternatives": 2,
+          "source_polygons": 156,
+          "centers_different_from_vertex_mean": 0
+        }
+      ],
+      "rejected_forgeries": 11,
+      "rollback_verified": true,
+      "rejected_smoothing_forgeries": 5,
+      "smoothing_passes_per_stage": 5,
+      "rejected_point_forgeries": 3,
+      "mixed_adaptive_epochs": 0
+    },
+    "msvc": {
+      "schema": "apmesh.quad.article_application.v1",
+      "stages": [
+        {
+          "step": 1,
+          "nodes": 33,
+          "quads": 24,
+          "triangles": 8,
+          "boundary": 8,
+          "source_step": 1,
+          "native_leaves": 16,
+          "domain_generation": 1,
+          "nonuniform_sides": 0,
+          "reversed_sides": 0,
+          "reference_tri_accepted": true,
+          "mixed_adaptive_epochs": 0,
+          "clearance_excluded_cells": 0,
+          "commits": 16,
+          "selected_quads": 8,
+          "retained_triangles": 8,
+          "rejected_unions": 8,
+          "competing_alternatives": 0,
+          "source_polygons": 4,
+          "centers_different_from_vertex_mean": 0
+        },
+        {
+          "step": 2,
+          "nodes": 281,
+          "quads": 249,
+          "triangles": 52,
+          "boundary": 10,
+          "source_step": 2,
+          "native_leaves": 67,
+          "domain_generation": 1,
+          "nonuniform_sides": 1,
+          "reversed_sides": 0,
+          "reference_tri_accepted": true,
+          "mixed_adaptive_epochs": 0,
+          "clearance_excluded_cells": 0,
+          "commits": 59,
+          "selected_quads": 7,
+          "retained_triangles": 52,
+          "rejected_unions": 53,
+          "competing_alternatives": 1,
+          "source_polygons": 62,
+          "centers_different_from_vertex_mean": 18
+        },
+        {
+          "step": 3,
+          "nodes": 689,
+          "quads": 630,
+          "triangles": 102,
+          "boundary": 14,
+          "source_step": 3,
+          "native_leaves": 223,
+          "domain_generation": 1,
+          "nonuniform_sides": 1,
+          "reversed_sides": 0,
+          "reference_tri_accepted": true,
+          "mixed_adaptive_epochs": 0,
+          "clearance_excluded_cells": 25,
+          "commits": 108,
+          "selected_quads": 6,
+          "retained_triangles": 102,
+          "rejected_unions": 100,
+          "competing_alternatives": 2,
+          "source_polygons": 156,
+          "centers_different_from_vertex_mean": 0
+        }
+      ],
+      "rejected_forgeries": 11,
+      "rollback_verified": true,
+      "rejected_smoothing_forgeries": 5,
+      "smoothing_passes_per_stage": 5,
+      "rejected_point_forgeries": 3,
+      "mixed_adaptive_epochs": 0
+    },
+    "frozen_tri": [
+      {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      }
+    ],
+    "root_tooling": [
+      "2026-11-19T01:58:23.8283389Z 100% tests passed, 0 tests failed out of 85",
+      "2026-11-19T01:58:25.2150330Z Ran 527 tests in 1.299s"
+    ]
+  },
+  "baseline": {
+    "tests": 85,
+    "status": "passed",
+    "receipt": {
+      "path": "build/validation-session/1795053162171748300-0bf03566/report.json",
+      "sha256": "18d3036fc2ec5f109849ae61ccb7073aec98ef88e98cd15e1bd39a65e41ee803"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "build/quad-area-centroid-20261118/comparison.json",
+      "sha256": "d015683e894df707dd1d1f75250fa04de1486f4d4879d48103acc4ac9dcf8137"
+    },
+    {
+      "path": "build/quad-area-centroid-20261118/exact/article/smoothing_report.json",
+      "sha256": "b46997553f77604ffcbb058e0ac2d151c8ddd0198db06f42c20e2a9b0f034c7f"
+    },
+    {
+      "path": "build/quad-area-centroid-20261118/exact/article/generation-metrics/metrics.json",
+      "sha256": "cb67016b1195107bc0001e728d15c775876f7d9c38ce1ada3d1d068ba9429f2d"
+    },
+    {
+      "path": "build/quad-area-centroid-20261118/mean-control/receipt.json",
+      "sha256": "e6d93536a9f9c103bbca3b2d20ee9ed79382a0234f6b92f34dee9e9b204f1bb0"
+    },
+    {
+      "path": "build/quad-area-centroid-20261118/presentation/QUAD_TRI_centroide_area_5_passadas.blend",
+      "sha256": "1dc67901c57f2a7d87e561ec1a153d393542a9c25da3ff747c33ba6cd2e61a00"
+    },
+    {
+      "path": "build/quad-area-centroid-20261118/presentation/media_vs_area.png",
+      "sha256": "1efe31c0fded56aa7db21b486a4a061c601abaab44a878d3083a59bd7c121fb3"
+    },
+    {
+      "path": "build/quad-area-centroid-20261118/mean_vs_area_step2.png",
+      "sha256": "0a9cbbdcfab3c10ef56e099cac2d9598fff8911b013a4068387b11188d69fcca"
+    }
+  ],
+  "blender": {
+    "version": "5.3.0",
+    "scenes": [
+      "00 Resultados TRI e QUAD TRI",
+      "01 Antes e 5 passadas UV",
+      "02 Catalogo anterior - media vertices",
+      "03 Media versus centroide de area"
+    ],
+    "current_outputs": 8,
+    "real_smoothing_states": 18,
+    "real_mean_area_comparison_meshes": 6,
+    "gui_open_observed": true,
+    "inspected": "Mean/area comparison render and two-panel UV plot; current GUI comparison observed.",
+    "catalog": "Retained previous vertex-mean diagrams explicitly labeled as reference; not regenerated area-centroid diagrams."
+  },
+  "closure": {
+    "code_and_ownership": "Existing pure value-owned centroid routine; no new owner/observer publication; current rollback preserved.",
+    "scientific_scope": "Adopted curved-surface UV interpretation only; no historical equation proof or universal quality benefit.",
+    "this_change_failed_required_gates": [],
+    "retained_findings": [
+      "Prior deliberately invalid-enum adversarial-fixture analysis needs review disposition.",
+      "Prior WSL output-publication failures remain.",
+      "Independent approval/research integration/post-merge gates remain.",
+      "Full historical/native CRT/general-geometry scope remains.",
+      "Actual mixed global curvature estimator and accepted adaptive epochs remain unavailable/zero."
+    ]
+  }
+}
