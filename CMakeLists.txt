@@ -54,6 +54,7 @@ if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD)
     research/quad/controlled_patch_application.cpp
     research/quad/real_boundary_source.cpp
     research/quad/physical_quadrilateral_adaptive.cpp
+    research/quad/experimental_point_rule.cpp
     research/quad/uv_mesh.cpp research/quad/quadtree_quad.cpp
     research/quad/interior_template_dispatch.cpp
     research/quad/front_interface_audit.cpp research/quad/owned_aft_front.cpp)
@@ -377,4 +378,9 @@ if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD AND BUILD_TESTING)
       --exe "$<TARGET_FILE:ap_mesh>" --directory "${CMAKE_CURRENT_BINARY_DIR}/live-pairs")
   set_tests_properties(quad.application.live_pairs PROPERTIES
     TIMEOUT 180 LABELS "research-quad;application;required-gate")
+  add_test(NAME quad.application.article_front
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_article_front_application.py"
+      --exe "$<TARGET_FILE:ap_mesh>" --directory "${CMAKE_CURRENT_BINARY_DIR}/article_front")
+  set_tests_properties(quad.application.article_front PROPERTIES
+    TIMEOUT 240 LABELS "research-quad;application;required-gate")
 endif()

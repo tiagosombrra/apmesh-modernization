@@ -52,7 +52,9 @@ std::unordered_map<std::string, std::string> ReadConfigFile(const std::string& p
       if (value != "curved_bezier_fixed16_vertex_mean_v1" &&
           value != "curved_bezier_original_curves_vertex_mean_v1" &&
           value != "curved_bezier_bounded_domain_vertex_mean_v1" &&
-          value != "curved_bezier_live_pairs_vertex_mean_v1")
+          value != "curved_bezier_live_pairs_vertex_mean_v1" &&
+          value != "curved_bezier_article_front_vertex_mean_v1" &&
+          value != "curved_bezier_article_front_area_centroid_v1")
         throw std::runtime_error("Unsupported QUAD experimental case");
     } else if (key == "QUAD_VERIFY_ROLLBACK") {
       if (value != "0" && value != "1")

@@ -1,6 +1,9 @@
 #include "controlled_patch_application.h"
 #include "boundary_pair_candidates.h"
 #include "live_boundary_pairing.h"
+#include "article_mixed_front.h"
+#include "mixed_uv_smoothing.h"
+#include "experimental_point_rule.h"
 #include "application/runtime_config.h"
 #include "physical_quadrilateral_adaptive.h"
 #include "data/mesh/sub_mesh.h"
@@ -39,6 +42,7 @@
 #include <map>
 #include <limits>
 #include <memory>
+#include <optional>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -124,6 +128,11 @@ UvVertex PointRule(const apmesh::quad::LeafPolygonOrigin&, const std::vector<UvV
   return center;
 }
 
+UvVertex AreaPointRule(const apmesh::quad::LeafPolygonOrigin&,
+                       const std::vector<UvVertex>& polygon) {
+  return ExperimentalInteriorPoint(polygon, ExperimentalPointRule::PolygonAreaCentroid);
+}
+
 Xyz Evaluate(PatchBezier& patch, UvVertex uv) {
   Require(std::isfinite(uv.u) && std::isfinite(uv.v) && uv.u >= 0.0 && uv.u <= 1.0 && uv.v >= 0.0 &&
               uv.v <= 1.0,
@@ -189,6 +198,14 @@ struct Candidate {
   std::vector<LeafPolygonOrigin> quad_origins;
   std::vector<BoundaryPairCandidate> aft_pair_origins;
   std::vector<LivePairEvent> live_pair_events;
+  std::vector<ArticleFrontCommit> article_commits;
+  std::vector<ArticleMixedFront::Box> article_leaves;
+  std::vector<UvVertex> article_uv_before_smoothing;
+  std::vector<Xyz> article_xyz_before_smoothing;
+  MixedUvSmoothingTrace article_smoothing;
+  std::vector<std::vector<Xyz>> article_smoothing_xyz;
+  std::size_t clearance_excluded_cells = 0;
+  bool article_area_centroid = false;
   std::vector<std::vector<std::size_t>> source_faces;
   std::size_t seed_quads = 0;
   std::size_t quads = 0;
@@ -209,19 +226,40 @@ using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
 
 Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    const ResearchSourceTreeFactory& source_tree_factory = {},
-                   const RealBoundarySource* source = nullptr, bool pair_during_front = false) {
+                   const RealBoundarySource* source = nullptr, bool pair_during_front = false,
+                   bool article_front = false, bool article_area_centroid = false) {
   ValidateSourceCurves(patch);
-  auto original = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
-  Require(original->makeTemplateBasedMesh() == Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
-          "Original interior TRI reference failed");
-  const auto front = SnapshotLegacyFront(*original);
+  Require(!article_front || !pair_during_front, "Article and TRI-observer modes are exclusive");
+  Require(!article_area_centroid || article_front, "Area centroid requires the article mode");
+  std::unique_ptr<Quadtree> original;
+  std::vector<UvFrontSegment> front;
+  if (!article_front) {
+    original = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
+    Require(original->makeTemplateBasedMesh() ==
+                Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
+            "Original interior TRI reference failed");
+    front = SnapshotLegacyFront(*original);
+  }
   auto tree = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
+  std::vector<UvVertex> contour;
+  std::optional<UvContourClearance> clearance;
+  if (article_front) {
+    for (auto* vertex : tree->getBoundary()->getBoundary())
+      contour.push_back({vertex->getX(), vertex->getY()});
+    clearance.emplace(contour);
+  }
   InteriorTemplateDispatcher dispatch(*tree);
-  const auto selected = dispatch.Select(InteriorTemplateMode::ExperimentalQuad, PointRule);
+  const auto selected = dispatch.Select(InteriorTemplateMode::ExperimentalQuad,
+                                        article_area_centroid ? AreaPointRule : PointRule,
+                                        clearance ? &*clearance : nullptr);
   auto* raw = tree.get();
-  auto aft = std::make_unique<OwnedQuadAftFront>(raw->getBoundary(), raw);
-  tree.release();
-  const auto seeded = aft->Seed(selected, front);
+  std::unique_ptr<OwnedQuadAftFront> aft;
+  OwnedAftFrontReport seeded;
+  if (!article_front) {
+    aft = std::make_unique<OwnedQuadAftFront>(raw->getBoundary(), raw);
+    tree.release();
+    seeded = aft->Seed(selected, front);
+  }
   LiveBoundaryPairing pairing;
   std::map<Vertex*, std::size_t> live_ids;
   const auto physical_point = [&](UvVertex uv) {
@@ -258,15 +296,81 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
       pairing.ObserveTriangle(ids);
     });
   }
-  for (auto* edge : aft->getBoundary()->getEdges())
-    aft->getQuadtree()->findCell(edge);
-  const auto report = aft->AttemptExteriorTriangulation(selected);
-  Require(report.front_drained && report.triangles_positive && report.seam_orientation_complete &&
-              report.seam_vertices_unchanged && report.uv_area_balanced &&
-              report.spatial_overlap_tested && report.no_spatial_overlap &&
-              report.exterior_triangles > 0,
-          "Original AFT failed complete nonoverlapping UV coverage");
+  if (aft)
+    for (auto* edge : aft->getBoundary()->getEdges())
+      aft->getQuadtree()->findCell(edge);
   Candidate result;
+  result.article_area_centroid = article_area_centroid;
+  ArticleFrontResult article;
+  if (article_front) {
+    // This front derives its exact inner interface from the selected QUAD seed.
+    // The older TRI bridge requires missing-neighbor classification and must not
+    // be seeded with a different, clearance-filtered interior region.
+    std::vector<ArticleMixedFront::Box> boxes;
+    for (auto* leaf : raw->getLeaves())
+      boxes.push_back({leaf->getMin()->getX(), leaf->getMin()->getY(), leaf->getMax()->getX(),
+                       leaf->getMax()->getY()});
+    article = ArticleMixedFront(selected.uv_quads, contour, std::move(boxes)).Run();
+    std::vector<std::array<UvVertex, 3>> audit_triangles;
+    for (std::size_t i = article.seed_quads; i < article.faces.size(); ++i) {
+      const auto& face = article.faces[i];
+      audit_triangles.push_back(
+          {article.vertices[face[0]], article.vertices[face[1]], article.vertices[face[2]]});
+      if (face.size() == 4)
+        audit_triangles.push_back(
+            {article.vertices[face[0]], article.vertices[face[2]], article.vertices[face[3]]});
+    }
+    Require(!article.commits.empty() &&
+                AuditUvOverlap(selected.uv_quads, audit_triangles).no_overlap,
+            "Article contraction has incomplete or overlapping output");
+    result.article_uv_before_smoothing = article.vertices;
+    for (const auto uv : article.vertices)
+      result.article_xyz_before_smoothing.push_back(physical_point(uv));
+    result.article_smoothing = SmoothMixedUv(
+        article.vertices, article.faces, [&](std::size_t, const std::vector<UvVertex>& positions) {
+          std::vector<Xyz> physical;
+          for (const auto uv : positions)
+            physical.push_back(physical_point(uv));
+          std::vector<std::array<UvVertex, 3>> facets;
+          double alignment = 1.0;
+          for (const auto& face : article.faces) {
+            const auto check = [&](std::size_t a, std::size_t b, std::size_t c) {
+              const std::array<UvVertex, 3> triangle{positions[face[a]], positions[face[b]],
+                                                     positions[face[c]]};
+              CheckFacet(patch, FaceUv{triangle}, alignment);
+              facets.push_back(triangle);
+            };
+            check(0, 1, 2);
+            if (face.size() == 4) {
+              check(0, 2, 3);
+              research::PhysicalQuadCorners corners{}, normals{};
+              for (std::size_t i = 0; i < 4; ++i) {
+                const auto uv = positions[face[i]];
+                const auto next = positions[face[(i + 1) % 4]], prev = positions[face[(i + 3) % 4]];
+                Require((next.u - uv.u) * (prev.v - uv.v) - (next.v - uv.v) * (prev.u - uv.u) >
+                            1e-14,
+                        "Mixed smoothing inverted or collapsed a UV quad");
+                corners[i] = physical[face[i]];
+                normals[i] = Cross(Values(patch.Qu(uv.u, uv.v)), Values(patch.Qv(uv.u, uv.v)));
+              }
+              (void)research::ObservePhysicalQuadQuality(corners, normals);
+            }
+          }
+          // Reuse the existing complete TRI intersection audit for all facets,
+          // including the two halves of each QUAD, with unchanged tolerances.
+          Require(AuditUvOverlap({}, facets).no_overlap,
+                  "Mixed smoothing overlaps physical facets");
+          result.article_smoothing_xyz.push_back(std::move(physical));
+        });
+    article.vertices = result.article_smoothing.passes.back();
+  } else {
+    const auto report = aft->AttemptExteriorTriangulation(selected);
+    Require(report.front_drained && report.triangles_positive && report.seam_orientation_complete &&
+                report.seam_vertices_unchanged && report.uv_area_balanced &&
+                report.spatial_overlap_tested && report.no_spatial_overlap &&
+                report.exterior_triangles > 0,
+            "Original AFT failed complete nonoverlapping UV coverage");
+  }
   result.real_boundary = source != nullptr;
   result.source_witness = source;
   unsigned long source_max_id = 0;
@@ -298,30 +402,46 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
     result.uv.push_back(uv);
     return id;
   };
-  for (const auto& uv : selected.uv_quads.vertices)
+  for (const auto& uv : (article_front ? article.vertices : selected.uv_quads.vertices))
     add_node(uv);
   for (const auto& quad : selected.uv_quads.quads)
     result.faces.emplace_back(quad.vertices.begin(), quad.vertices.end());
   result.quads = result.faces.size();
   result.seed_quads = result.quads;
   result.quad_origins = selected.quad_face_origins;
+  result.clearance_excluded_cells = selected.excluded_clearance_leaves;
   Require(result.quad_origins.size() == result.quads,
           "Mixed residual leaf provenance differs from the real native tree");
-  std::map<Vertex*, std::size_t> aft_ids;
-  // Only the already-audited seam may bridge source pointer identities to QUAD IDs.
-  for (auto* v : aft->OwnedSeamVertices())
-    aft_ids.emplace(v, uv_ids.at({v->getX(), v->getY()}));
-  Require(aft_ids.size() == seeded.distinct_quad_front_vertices,
-          "Incomplete canonical QUAD/AFT seam");
-  for (auto* face : aft->Triangles()) {
-    std::vector<std::size_t> ids;
-    for (auto* v : {face->getV1(), face->getV2(), face->getV3()}) {
-      auto it = aft_ids.find(v);
-      if (it == aft_ids.end())
-        it = aft_ids.emplace(v, add_node({v->getX(), v->getY()})).first;
-      ids.push_back(it->second);
+  if (aft) {
+    std::map<Vertex*, std::size_t> aft_ids;
+    // Only the already-audited seam may bridge source pointer identities to QUAD IDs.
+    for (auto* v : aft->OwnedSeamVertices())
+      aft_ids.emplace(v, uv_ids.at({v->getX(), v->getY()}));
+    Require(aft_ids.size() == seeded.distinct_quad_front_vertices,
+            "Incomplete canonical QUAD/AFT seam");
+    for (auto* face : aft->Triangles()) {
+      std::vector<std::size_t> ids;
+      for (auto* v : {face->getV1(), face->getV2(), face->getV3()}) {
+        auto it = aft_ids.find(v);
+        if (it == aft_ids.end())
+          it = aft_ids.emplace(v, add_node({v->getX(), v->getY()})).first;
+        ids.push_back(it->second);
+      }
+      result.faces.push_back(std::move(ids));
     }
-    result.faces.push_back(std::move(ids));
+  }
+  if (article_front) {
+    for (std::size_t i = result.uv.size(); i < article.vertices.size(); ++i)
+      add_node(article.vertices[i]);
+    result.faces = article.faces;
+    result.article_commits = std::move(article.commits);
+    result.article_leaves = std::move(article.leaves);
+    // Preserve seed-first output; mixed commits retain their independent order.
+    std::stable_partition(result.faces.begin() + static_cast<std::ptrdiff_t>(result.seed_quads),
+                          result.faces.end(), [](const auto& face) { return face.size() == 4; });
+    result.quads =
+        static_cast<std::size_t>(std::count_if(result.faces.begin(), result.faces.end(),
+                                               [](const auto& face) { return face.size() == 4; }));
   }
   if (pair_during_front) {
     Require(pairing.Triangles().size() == aft->Triangles().size(),
@@ -448,6 +568,139 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
   if (fail_before_commit)
     throw PublicationFailure("Injected failure before physical publication");
   return result;
+}
+
+// The entire history lives inside the caller's unpublished staging directory.
+// These are actual polygon commits, not successive snapshots of a TRI matcher.
+void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path& directory) {
+  Require(!candidate.article_commits.empty(), "Missing article contraction history");
+  Require(candidate.article_uv_before_smoothing.size() == candidate.uv.size() &&
+              candidate.article_smoothing.passes.size() == 5 &&
+              candidate.article_smoothing_xyz.size() == 5,
+          "Missing complete mixed smoothing history");
+  Require(std::filesystem::create_directory(directory), "Article history already exists");
+  std::ofstream trace(directory / "front.json", std::ios::binary);
+  trace.imbue(std::locale::classic());
+  trace << std::setprecision(17);
+  const auto ids = [&](const auto& values) {
+    trace << '[';
+    bool first = true;
+    for (auto value : values) {
+      if (!first)
+        trace << ',';
+      trace << value;
+      first = false;
+    }
+    trace << ']';
+  };
+  trace << "{\"schema\":\"apmesh.quad.article_front.v1\",\"point_rule\":\""
+        << (candidate.article_area_centroid ? "polygon_area_centroid_uv_v1" : "vertex_mean_uv_v1")
+        << "\",\"clearance\":{"
+        << "\"policy\":\"minimum_cell_segment_uv_v1\",\"factor\":0.2,\"excluded_cells\":"
+        << candidate.clearance_excluded_cells << "},\"vertices\":[";
+  for (std::size_t i = 0; i < candidate.article_uv_before_smoothing.size(); ++i) {
+    if (i)
+      trace << ',';
+    const auto uv = candidate.article_uv_before_smoothing[i];
+    trace << '[' << uv.u << ',' << uv.v << ']';
+  }
+  trace << "],\"leaves\":[";
+  for (std::size_t i = 0; i < candidate.article_leaves.size(); ++i) {
+    if (i)
+      trace << ',';
+    ids(candidate.article_leaves[i]);
+  }
+  trace << "],\"seed_faces\":[";
+  std::vector<std::vector<VertexId>> faces;
+  for (std::size_t i = 0; i < candidate.seed_quads; ++i) {
+    if (i)
+      trace << ',';
+    ids(candidate.faces[i]);
+    faces.push_back(candidate.faces[i]);
+  }
+  trace << "],\"commits\":[";
+  const auto snapshot = [&](const std::string& name, const std::string& caption,
+                            const std::vector<UvVertex>& positions,
+                            const std::vector<Xyz>& physical,
+                            const std::vector<std::vector<VertexId>>& snapshot_faces) {
+    std::ofstream out(directory / name, std::ios::binary);
+    out.imbue(std::locale::classic());
+    out << std::setprecision(17) << "# " << caption << '\n';
+    for (const auto& p : physical)
+      out << "v " << p[0] << ' ' << p[1] << ' ' << p[2] << '\n';
+    for (const auto& uv : positions)
+      out << "vt " << uv.u << ' ' << uv.v << '\n';
+    for (const auto& face : snapshot_faces) {
+      out << 'f';
+      for (auto id : face)
+        out << ' ' << id + 1 << '/' << id + 1;
+      out << '\n';
+    }
+    out.close();
+    Require(bool(out), "Cannot write article commit frame");
+  };
+  const auto frame = [&](std::size_t step) {
+    snapshot("commit_" + std::to_string(step) + ".obj",
+             "actual prospective mixed-front commit " + std::to_string(step),
+             candidate.article_uv_before_smoothing, candidate.article_xyz_before_smoothing, faces);
+  };
+  frame(0);
+  for (std::size_t i = 0; i < candidate.article_commits.size(); ++i) {
+    const auto& step = candidate.article_commits[i];
+    if (i)
+      trace << ',';
+    trace << "{\"before\":[";
+    for (std::size_t j = 0; j < step.before.size(); ++j) {
+      if (j)
+        trace << ',';
+      ids(std::array<VertexId, 2>{step.before[j].first, step.before[j].second});
+    }
+    trace << "],\"best\":";
+    ids(step.best);
+    trace << ",\"selected_side\":" << step.selected_side << ",\"polygon\":";
+    ids(step.polygon);
+    trace << ",\"alternatives\":[";
+    for (std::size_t j = 0; j < step.alternatives.size(); ++j) {
+      const auto& choice = step.alternatives[j];
+      if (j)
+        trace << ',';
+      trace << "{\"side\":" << choice.side << ",\"triangle\":";
+      ids(choice.triangle);
+      trace << ",\"quad\":";
+      ids(choice.quad);
+      trace << ",\"eligible\":" << (choice.eligible ? "true" : "false") << ",\"score\":";
+      if (std::isfinite(choice.score))
+        trace << choice.score;
+      else
+        trace << "null";
+      trace << '}';
+    }
+    trace << "]}";
+    faces.push_back(step.polygon);
+    frame(i + 1);
+  }
+  trace
+      << "],\"smoothing\":{\"policy\":\"uv_distinct_incident_vertices_jacobi_5_v1\",\"boundary\":";
+  ids(candidate.article_smoothing.boundary);
+  trace << ",\"passes\":[";
+  for (std::size_t pass = 0; pass < 5; ++pass) {
+    if (pass)
+      trace << ',';
+    trace << '[';
+    const auto& positions = candidate.article_smoothing.passes[pass];
+    for (std::size_t i = 0; i < positions.size(); ++i) {
+      if (i)
+        trace << ',';
+      trace << '[' << positions[i].u << ',' << positions[i].v << ']';
+    }
+    trace << ']';
+    snapshot("smoothing_" + std::to_string(pass + 1) + ".obj",
+             "approved mixed UV smoothing pass " + std::to_string(pass + 1), positions,
+             candidate.article_smoothing_xyz[pass], candidate.faces);
+  }
+  trace << "]}}\n";
+  trace.close();
+  Require(bool(trace), "Cannot complete article front trace");
 }
 
 // Capture exactly the live non-owning element links, including their order.
@@ -1041,6 +1294,11 @@ void Export(const Candidate& result, const std::filesystem::path& path,
     const auto& faces =
         source_scaffold && !result.source_faces.empty() ? result.source_faces : result.faces;
     const auto quads = source_scaffold ? result.seed_quads : result.quads;
+    if (!result.article_commits.empty())
+      out << "# article_front planar_UV_1993_rule prospective_choice_before_front_update=1"
+             " smoothing=uv_distinct_incident_vertices_jacobi_5_v1 curved_XYZ_lift=experimental\n";
+    if (result.article_area_centroid)
+      out << "# point_rule=polygon_area_centroid_uv_v1 historical_numeric_identity=unproven\n";
     if (!result.source_faces.empty()) {
       out << "# live_pair_policy physical_angle_pair_v1 source_scaffold=" << source_scaffold
           << " seed_quads=" << result.seed_quads
@@ -1661,7 +1919,13 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   GeneratorAdaptive generator(application::MakeGenerationContext(config, NUMBER_PROCESS));
   const bool live_pairs =
       config.quad_experimental_case == "curved_bezier_live_pairs_vertex_mean_v1";
-  if (config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1" || live_pairs)
+  const bool article_area_centroid =
+      config.quad_experimental_case == "curved_bezier_article_front_area_centroid_v1";
+  const bool article_front =
+      config.quad_experimental_case == "curved_bezier_article_front_vertex_mean_v1" ||
+      article_area_centroid;
+  if (config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1" ||
+      live_pairs || article_front)
     generator.EnforceResearchDomainFactorBounds();
   Timer timer(config.num_processes, config.num_threads, 12);
   timer.InitTimerParallel(0, 0, 10);
@@ -1824,18 +2088,20 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
       if (has_interior)
         layout = Generate(
             *patch, false, [&]() { return ReplayRealSourceTree(*patch, *source); }, source,
-            live_pairs);
+            live_pairs, article_front, article_area_centroid);
     }
     layout.source_witness = source;
     layout.generation_step = stage.step;
     layout.reference_accepted = stage.accepted;
     layout.stage_reason = stage.reason;
     Export(layout, staging / (stem + "_quad_tri.obj"));
+    if (article_front && !layout.article_commits.empty())
+      ExportArticleSteps(layout, staging / (stem + "_article_front"));
     if (live_pairs)
       Export(layout, staging / (stem + "_aft_source.obj"), true);
     // Completed-output diagnostics only. No candidate replaces any mesh element.
     std::vector<std::array<std::size_t, 3>> exterior;
-    if (layout.quads > 0) {
+    if (layout.quads > 0 && !article_front) {
       const auto& scaffold = layout.source_faces.empty() ? layout.faces : layout.source_faces;
       for (std::size_t i = layout.seed_quads; i < scaffold.size(); ++i) {
         const auto& face = scaffold[i];
@@ -1851,8 +2117,9 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     pair_stages << prefix << layout.seed_quads << ',' << exterior.size() << ',' << pairs.size()
                 << ",0,"
                 << (layout.quads > 0
-                        ? (live_pairs ? "source_scaffold_inventory_live_selection_separate"
-                                      : "topology_only_policy_pending")
+                        ? (article_front ? "not_applicable_prospective_polygon_commits"
+                           : live_pairs  ? "source_scaffold_inventory_live_selection_separate"
+                                         : "topology_only_policy_pending")
                         : "not_applicable_without_quad_seed")
                 << '\n';
     for (const auto& pair : pairs) {
@@ -1941,10 +2208,10 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     const auto bytes = ReadRehearsalOutput(file);
     bool rejected = false;
     try {
-      if (live_pairs) {
+      if (live_pairs || article_front) {
         auto failed = Generate(
             *patch, true, [&]() { return ReplayRealSourceTree(*patch, *selected); }, selected,
-            true);
+            live_pairs, article_front, article_area_centroid);
         (void)failed;
       } else {
         auto failed = CloneTypedHistory(*accepted, candidate, *patch, 0);

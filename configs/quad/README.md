@@ -79,6 +79,19 @@ Run `python tests/quad/test_domain_factor_bounds_application.py --exe <ap_mesh>
 --directory <new-results>` for the old/new comparison, original in-range control,
 source/topology corruptions and nonempty rollback.
 
+## Article-front polygon centers
+
+`curved_patch_article_front.conf` explicitly selects
+`curved_bezier_article_front_area_centroid_v1`: the existing signed-area polygon
+centroid in UV, followed by analytical XYZ lifting and the confirmed five-pass
+mixed smoothing. This adopted research interpretation does not certify the
+numerical formula used by the 1993 authors or guarantee better error/quality.
+The existing strict-convexity/tolerance contract of the point routine applies.
+For a controlled comparison, the earlier
+`curved_bezier_article_front_vertex_mean_v1` selector remains available; all
+other configurations preserve their existing point rules. The default TRI
+workflow and its adaptive acceptance/stopping criteria are unchanged.
+
 ## Fixed16 regression
 
 Build serial C++17 with `AP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON`,

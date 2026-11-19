@@ -2,6 +2,7 @@
 #define APMESH_RESEARCH_QUAD_QUADTREE_QUAD_H
 
 #include "uv_mesh.h"
+#include "contour_clearance.h"
 
 #include <functional>
 
@@ -26,6 +27,7 @@ struct LeafPolygonMesh {
   std::vector<LeafPolygonOrigin> origins;
   std::size_t source_leaves = 0;
   std::size_t excluded_boundary_leaves = 0;
+  std::size_t excluded_clearance_leaves = 0;
   long double interior_area = 0;
 };
 
@@ -37,13 +39,17 @@ using PolygonPointSelector =
 // Canonical IDs come from the root's dyadic hierarchy, not coordinate welding.
 // Require a consistent reciprocal 2:1 tree, at most 30 levels below the root,
 // and at least one included leaf. Throws on malformed/unsupported input.
-LeafPolygonMesh CaptureLeafPolygons(Par2DJMesh::AFT::Quadtree& tree);
+// An explicit optional policy additionally excludes contour-clearance cells;
+// null preserves the original classification, source ordering and topology.
+LeafPolygonMesh CaptureLeafPolygons(Par2DJMesh::AFT::Quadtree& tree,
+                                    const UvContourClearance* clearance = nullptr);
 
 // The selector supplies the scientific point rule; no centroid is chosen here.
 // It receives only value metadata/coordinates and must not mutate the source.
 // Current UvMesh validation requires the included region to be a single disk.
 UvMesh EmitLeafQuads(Par2DJMesh::AFT::Quadtree& tree, const PolygonPointSelector& selector,
-                     long double relative_tolerance = 1.0e-12L);
+                     long double relative_tolerance = 1.0e-12L,
+                     const UvContourClearance* clearance = nullptr);
 
 } // namespace apmesh::quad
 

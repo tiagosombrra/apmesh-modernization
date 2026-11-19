@@ -19,11 +19,13 @@ using apmesh::quad::ExperimentalPointRule;
 using apmesh::quad::InteriorTemplateDispatcher;
 using apmesh::quad::InteriorTemplateMode;
 using apmesh::quad::InteriorTemplateSelection;
+using apmesh::quad::UvContourClearance;
 using apmesh::quad::UvVertex;
 using apmesh::quad::VertexId;
 
 void Check(bool condition, const char* reason) {
-  if (!condition) throw std::runtime_error(reason);
+  if (!condition)
+    throw std::runtime_error(reason);
 }
 
 UvVertex SyntheticMean(const apmesh::quad::LeafPolygonOrigin&,
@@ -40,12 +42,11 @@ UvVertex SyntheticMean(const apmesh::quad::LeafPolygonOrigin&,
 
 UvVertex SyntheticCentroid(const apmesh::quad::LeafPolygonOrigin&,
                            const std::vector<UvVertex>& polygon) {
-  return apmesh::quad::ExperimentalInteriorPoint(
-      polygon, ExperimentalPointRule::PolygonAreaCentroid);
+  return apmesh::quad::ExperimentalInteriorPoint(polygon,
+                                                 ExperimentalPointRule::PolygonAreaCentroid);
 }
 
-template <typename Fn>
-void ExpectReject(Fn&& op, const std::string& fragment) {
+template <typename Fn> void ExpectReject(Fn&& op, const std::string& fragment) {
   try {
     op();
   } catch (const std::invalid_argument& e) {
@@ -60,22 +61,19 @@ std::vector<const void*> Leaves(const quad_test::TreeFixture& fixture) {
   // Test source-cell identities without reordering or borrowing ownership.
   auto& nonconst = const_cast<quad_test::TreeFixture&>(fixture);
   std::vector<const void*> result;
-  for (const auto* cell : nonconst.tree.getLeaves()) result.push_back(cell);
+  for (const auto* cell : nonconst.tree.getLeaves())
+    result.push_back(cell);
   return result;
 }
 
-void CheckResearchResult(const InteriorTemplateSelection& result,
-                         std::size_t expected_quads,
+void CheckResearchResult(const InteriorTemplateSelection& result, std::size_t expected_quads,
                          std::size_t expected_front) {
-  Check(result.mode == InteriorTemplateMode::ExperimentalQuad &&
-            result.legacy_tri_faces == 0 &&
-            !result.live_aft_interface_published &&
-            !result.physical_elements_published,
+  Check(result.mode == InteriorTemplateMode::ExperimentalQuad && result.legacy_tri_faces == 0 &&
+            !result.live_aft_interface_published && !result.physical_elements_published,
         "Research-only QUAD mode mislabeled physical/live publication");
   Check(result.uv_quads.quads.size() == expected_quads &&
             result.quad_region_boundary.size() == expected_front &&
-            result.excluded_boundary_leaves == 12 &&
-            result.source_leaves > 0 &&
+            result.excluded_boundary_leaves == 12 && result.source_leaves > 0 &&
             std::abs(result.quad_region_area - 0.25L) <= 1e-12L,
         "Actual refined Quadtree QUAD counts or physical bounds changed");
   apmesh::quad::Validate(result.uv_quads, result.quad_region_area);
@@ -88,35 +86,30 @@ void CheckResearchResult(const InteriorTemplateSelection& result,
     }
   }
   for (const auto& edge : result.quad_region_boundary) {
-    Check(edge[0] < result.uv_quads.vertices.size() &&
-              edge[1] < result.uv_quads.vertices.size() &&
-              edge[0] != edge[1] &&
-              owner_count[std::minmax(edge[0], edge[1])] == 1,
+    Check(edge[0] < result.uv_quads.vertices.size() && edge[1] < result.uv_quads.vertices.size() &&
+              edge[0] != edge[1] && owner_count[std::minmax(edge[0], edge[1])] == 1,
           "QUAD front is not a uniquely incident oriented UV segment");
   }
-  const auto external = std::count_if(
-      owner_count.begin(), owner_count.end(),
-      [](const auto& edge) { return edge.second == 1; });
+  const auto external = std::count_if(owner_count.begin(), owner_count.end(),
+                                      [](const auto& edge) { return edge.second == 1; });
   Check(static_cast<std::size_t>(external) == expected_front,
         "QUAD front does not cover all exterior edges exactly once");
 }
 
-void CheckFaceOrigins(quad_test::TreeFixture& fixture,
-                      const InteriorTemplateSelection& selection) {
+void CheckFaceOrigins(quad_test::TreeFixture& fixture, const InteriorTemplateSelection& selection,
+                      const UvContourClearance* clearance = nullptr) {
   // Each source polygon contributes one QUAD for each ordered polygon corner.
   // Cross-check the emitted face trace against a second real-tree capture.
-  const auto source = apmesh::quad::CaptureLeafPolygons(fixture.tree);
+  const auto source = apmesh::quad::CaptureLeafPolygons(fixture.tree, clearance);
   std::size_t emitted = 0;
   for (std::size_t polygon_index = 0; polygon_index < source.input.polygons.size();
        ++polygon_index) {
     const auto& expected = source.origins.at(polygon_index);
-    for (std::size_t corner = 0;
-         corner < source.input.polygons[polygon_index].size(); ++corner) {
+    for (std::size_t corner = 0; corner < source.input.polygons[polygon_index].size(); ++corner) {
       Check(emitted < selection.quad_face_origins.size(),
             "QUAD missing an ordered source-cell origin");
       const auto& actual = selection.quad_face_origins[emitted++];
-      Check(actual.cell_id == expected.cell_id &&
-                actual.leaf_ordinal == expected.leaf_ordinal &&
+      Check(actual.cell_id == expected.cell_id && actual.leaf_ordinal == expected.leaf_ordinal &&
                 actual.relative_depth == expected.relative_depth &&
                 actual.pattern == expected.pattern &&
                 actual.polygon_ordinal == expected.polygon_ordinal &&
@@ -130,7 +123,7 @@ void CheckFaceOrigins(quad_test::TreeFixture& fixture,
         "QUAD face origin cardinality differs from the same source leaf mask");
 }
 
-}  // namespace
+} // namespace
 
 int main() {
   std::size_t outcomes = 0;
@@ -147,10 +140,8 @@ int main() {
       auto result = selection.Select(InteriorTemplateMode::ExperimentalQuad, SyntheticMean);
       CheckResearchResult(result, 16, 16);
       CheckFaceOrigins(fixture, result);
-      Check(before == Leaves(fixture) &&
-                fixture.tree.GetTemplateFaces().empty() &&
-                fixture.tree.GetTemplateEdges().empty() &&
-                fixture.tree.GetFrontEdges().empty(),
+      Check(before == Leaves(fixture) && fixture.tree.GetTemplateFaces().empty() &&
+                fixture.tree.GetTemplateEdges().empty() && fixture.tree.GetFrontEdges().empty(),
             "QUAD selection mutated source or also published legacy TRI");
       Check(selection.HasSelected(), "Successful research mode did not commit its choice");
     });
@@ -172,8 +163,7 @@ int main() {
       auto result = selection.Select(InteriorTemplateMode::ExperimentalQuad, SyntheticCentroid);
       CheckResearchResult(result, 42, 20);
       CheckFaceOrigins(fixture, result);
-      Check(fixture.tree.GetTemplateFaces().empty(),
-            "Experimental centroid published legacy TRI");
+      Check(fixture.tree.GetTemplateFaces().empty(), "Experimental centroid published legacy TRI");
     });
     run("legacy-tri-selection-preserves-production-template-path", [] {
       quad_test::TreeFixture expected;
@@ -185,19 +175,19 @@ int main() {
       const auto result = selection.Select(InteriorTemplateMode::LegacyTri);
       Check(result.legacy_tri_faces > 0 &&
                 result.legacy_tri_faces == expected.tree.GetTemplateFaces().size() &&
-                observed.tree.GetTemplateEdges().size() == expected.tree.GetTemplateEdges().size() &&
+                observed.tree.GetTemplateEdges().size() ==
+                    expected.tree.GetTemplateEdges().size() &&
                 observed.tree.GetFrontEdges().size() == expected.tree.GetFrontEdges().size() &&
-                observed.tree.GetTemplateVertices().size() == expected.tree.GetTemplateVertices().size() &&
-                result.uv_quads.quads.empty() &&
-                result.quad_region_boundary.empty(),
+                observed.tree.GetTemplateVertices().size() ==
+                    expected.tree.GetTemplateVertices().size() &&
+                result.uv_quads.quads.empty() && result.quad_region_boundary.empty(),
             "Dispatched TRI is not the same original Quadtree publication");
     });
     run("reject-double-selection-of-same-attempt", [] {
       quad_test::TreeFixture fixture;
       InteriorTemplateDispatcher choice(fixture.tree);
       choice.Select(InteriorTemplateMode::ExperimentalQuad, SyntheticMean);
-      ExpectReject([&] { choice.Select(InteriorTemplateMode::LegacyTri); },
-                   "already committed");
+      ExpectReject([&] { choice.Select(InteriorTemplateMode::LegacyTri); }, "already committed");
       Check(fixture.tree.GetTemplateFaces().empty(), "TRI published after research QUAD choice");
     });
     run("reject-quad-after-legacy-published-templates", [] {
@@ -229,21 +219,23 @@ int main() {
     run("reject-unsupported-mesh-element-kind", [] {
       quad_test::TreeFixture fixture;
       InteriorTemplateDispatcher choice(fixture.tree);
-      ExpectReject([&] {
-        choice.Select(static_cast<InteriorTemplateMode>(127), SyntheticMean);
-      }, "Unsupported");
+      ExpectReject([&] { choice.Select(static_cast<InteriorTemplateMode>(127), SyntheticMean); },
+                   "Unsupported");
       Check(!choice.HasSelected(), "Invalid dispatcher enum was published");
     });
     run("reject-outside-polygon-then-retry", [] {
       quad_test::TreeFixture fixture;
       InteriorTemplateDispatcher choice(fixture.tree);
       const auto before = Leaves(fixture);
-      ExpectReject([&] {
-        choice.Select(InteriorTemplateMode::ExperimentalQuad,
-                      [](const auto&, const auto&) { return UvVertex{9.0, 9.0}; });
-      }, "strictly inside");
+      ExpectReject(
+          [&] {
+            choice.Select(InteriorTemplateMode::ExperimentalQuad,
+                          [](const auto&, const auto&) { return UvVertex{9.0, 9.0}; });
+          },
+          "strictly inside");
       Check(!choice.HasSelected() && fixture.tree.GetTemplateFaces().empty() &&
-                Leaves(fixture) == before, "Invalid QUAD point modified the source tree");
+                Leaves(fixture) == before,
+            "Invalid QUAD point modified the source tree");
       const auto accepted = choice.Select(InteriorTemplateMode::ExperimentalQuad, SyntheticMean);
       CheckResearchResult(accepted, 16, 16);
       CheckFaceOrigins(fixture, accepted);
@@ -253,9 +245,10 @@ int main() {
       InteriorTemplateDispatcher choice(fixture.tree);
       bool caught = false;
       try {
-        choice.Select(InteriorTemplateMode::ExperimentalQuad, [](const auto&, const auto&) -> UvVertex {
-          throw std::runtime_error("intentional callback failure");
-        });
+        choice.Select(InteriorTemplateMode::ExperimentalQuad,
+                      [](const auto&, const auto&) -> UvVertex {
+                        throw std::runtime_error("intentional callback failure");
+                      });
       } catch (const std::runtime_error& e) {
         caught = std::string(e.what()) == "intentional callback failure";
       }
@@ -275,7 +268,29 @@ int main() {
       Check(faces > 0 && faces == fixture.tree.GetTemplateFaces().size(),
             "Completed TRI template ownership changed on second selection");
     });
-    Check(outcomes == 12, "Not all positive and adversarial dispatch contracts ran");
+    run("research-clearance-selection-and-provenance", [] {
+      quad_test::TreeFixture fixture(3);
+      UvContourClearance policy({{0, 0}, {1, 0}, {1, 1}, {0, 1}});
+      InteriorTemplateDispatcher choice(fixture.tree);
+      const auto result =
+          choice.Select(InteriorTemplateMode::ExperimentalQuad, SyntheticMean, &policy);
+      Check(result.excluded_clearance_leaves == 20 && result.uv_quads.quads.size() == 64 &&
+                result.quad_face_origins.size() == 64 && result.quad_region_area == 0.25L,
+            "Dispatcher lost clearance scope or source origins");
+      CheckFaceOrigins(fixture, result, &policy);
+    });
+    run("legacy-tri-rejects-clearance-and-remains-retryable", [] {
+      quad_test::TreeFixture fixture;
+      UvContourClearance policy({{0, 0}, {1, 0}, {1, 1}, {0, 1}});
+      InteriorTemplateDispatcher choice(fixture.tree);
+      ExpectReject([&] { choice.Select(InteriorTemplateMode::LegacyTri, {}, &policy); },
+                   "clearance");
+      Check(!choice.HasSelected() && fixture.tree.GetTemplateFaces().empty(),
+            "Rejected scientific policy affected legacy publication");
+      choice.Select(InteriorTemplateMode::LegacyTri);
+      Check(choice.HasSelected(), "Legacy retry was blocked by rejected policy");
+    });
+    Check(outcomes == 14, "Not all positive and adversarial dispatch contracts ran");
     std::cout << "r1_live_quadtree_template_dispatch=ok outcomes=" << outcomes
               << " quad_faces_uniform=16 quad_faces_refined=42"
               << " legacy_tri_unmodified=1 overlap_prevented_per_attempt=1"
