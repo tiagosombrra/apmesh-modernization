@@ -84,7 +84,7 @@ int Run(const std::string& config_path) {
               << ",patch=" << event.attempt.patch_index
               << ",local=" << event.attempt.local_attempt
               << ",kind=" << kind
-              << ",status=" << event.generation_status << '\\n';
+              << ",status=" << event.generation_status << '\n';
   };
   generator.SetResearchUvCapture(std::move(hooks), session);
   Require(generator.GetResearchGlobalOutcomeLog() != nullptr,
@@ -165,7 +165,7 @@ int Run(const std::string& config_path) {
 
 int main(int argc, char** argv) {
   if (argc != 2) {
-    std::cerr << "Usage: quad_generator_outcome_probe CONFIG_PATH\n";
+    std::cerr << "Usage: quad_generator_local_selection_probe CONFIG_PATH\n";
     return 2;
   }
   try {
