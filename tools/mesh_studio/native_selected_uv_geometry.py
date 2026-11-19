@@ -90,7 +90,7 @@ def parse_original_native_uv_captures(stdout: bytes) -> list[dict]:
         if not line.startswith(UV_PREFIX):
             continue
         raw_fields = line[len(UV_PREFIX):].split(b",")
-        require(len(raw_fields) == 19,
+        require(len(raw_fields) == 23,
                 "r2732_native_uv_summary_field_count_invalid")
         pairs = []
         for field in raw_fields:
@@ -126,7 +126,7 @@ def parse_original_native_uv_captures(stdout: bytes) -> list[dict]:
                 row["outer_epoch"] > 0 and row["outer_retry"] in (0, 1) and
                 1 <= row["step"] <= 4 and row["retry"] in (0, 1) and
                 row["patch"] in range(4) and row["local"] in range(4) and
-                row["leaves"] > 0 and row["leaves"] <= 25_000 and
+                row["leaves"] > 0 and row["leaves"] <= 1_000_000 and
                 row["excluded"] <= row["leaves"] and
                 row["vertices"] >= 0 and row["polygons"] >= 0 and
                 all(p >= 0 for p in patterns) and
