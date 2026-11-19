@@ -72,6 +72,16 @@ def attest_cpp_acceptance_source(root: Path) -> dict:
     return receipts
 
 
+def infer_every_patch_flagged(fraction: float, native_patch_count: int) -> list[int]:
+    """Infer all patch slots only from the certified original C++ count loop."""
+    require(type(native_patch_count) is int and
+            1 <= native_patch_count <= 128 and
+            type(fraction) in (int, float) and
+            math.isfinite(fraction) and fraction == 1.0,
+            "r2727_partial_fraction_cannot_prove_all_source_patch_slots")
+    return list(range(native_patch_count))
+
+
 def diagnose_gate(row: dict) -> dict:
     """Rederive only observable necessary gates; never relax the C++ policy."""
     require(
@@ -273,7 +283,8 @@ def audit(root: Path, executable: Path, original: Path, trials: Path,
             # The original C++ loop can increment at most once per patch,
             # and its denominator is ALL geometry patches. A fraction of
             # exactly 1.0 proves every original Eistute patch was flagged.
-            deduced_step_four_patch_slots = list(range(patch_count))
+            deduced_step_four_patch_slots = infer_every_patch_flagged(
+                step_four[1][0]["underresolved_fraction"], patch_count)
         else:
             require(all(not r["stable_mode"] for r in source + variant),
                     "r2727_original_book_negative_mode_control_changed")
