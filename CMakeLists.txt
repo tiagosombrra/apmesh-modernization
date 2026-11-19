@@ -357,6 +357,16 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
     "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
   target_link_libraries(quad_generator_local_selection_probe PRIVATE ap_mesh_engine)
   target_compile_features(quad_generator_local_selection_probe PRIVATE cxx_std_17)
+  # R2.7.32: distinct opt-in research executable reading original pre-AFT
+  # Quadtree cells by value, with the original generator source unchanged.
+  add_executable(quad_generator_selected_uv_probe
+    tests/quad/generator_selected_uv_probe.cpp
+    research/quad/quadtree_quad.cpp
+    research/quad/uv_mesh.cpp)
+  target_include_directories(quad_generator_selected_uv_probe PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_generator_selected_uv_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_generator_selected_uv_probe PRIVATE cxx_std_17)
   add_test(NAME quad.generator.real_global_outcomes
     COMMAND "${Python3_EXECUTABLE}"
       "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_generator_outcomes.py"
