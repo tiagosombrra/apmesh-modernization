@@ -8,7 +8,7 @@ import tempfile
 import unittest
 
 from tools.mesh_studio.native_transition_coherence_audit import (
-    attest_cpp_acceptance_source, diagnose_gate,
+    attest_cpp_acceptance_source, diagnose_gate, infer_every_patch_flagged,
 )
 from tools.mesh_studio.verify_native_lineage import NativeLineageValidationError
 
@@ -35,6 +35,9 @@ class OriginalTransitionGateContracts(unittest.TestCase):
         self.assertIn("src/generator/generator_adaptive.cpp", verified)
         self.assertIn(
             "docs/mesh-studio/R2_7_27_ORIGINAL_TRANSITION_COHERENCE_FORENSICS_PROTOCOL_20261118.md",
+            verified)
+        self.assertIn(
+            "docs/mesh-studio/R2_7_27A_ORIGINAL_PATCH_COUNT_SEMANTICS_ADDENDUM_20261118.md",
             verified)
 
     def test_registered_step4_source_underresolution_is_decisive(self):
@@ -153,6 +156,27 @@ class OriginalTransitionGateContracts(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix="r2727-fake-source-") as tmp:
             with self.assertRaises(FileNotFoundError):
                 attest_cpp_acceptance_source(Path(tmp))
+
+
+    def test_source_loop_proves_all_four_eistute_patch_flags(self):
+        self.assertEqual(
+            infer_every_patch_flagged(1.0, 4), [0, 1, 2, 3])
+
+    def test_subunit_fraction_cannot_identify_all_patch_flags(self):
+        for fraction in (0.0, 0.25, 0.75, 0.999999):
+            with self.subTest(fraction=fraction):
+                with self.assertRaisesRegex(
+                        NativeLineageValidationError,
+                        "r2727_partial_fraction_cannot_prove_all_source_patch_slots"):
+                    infer_every_patch_flagged(fraction, 4)
+
+    def test_patch_count_and_fraction_forgery_fail_closed(self):
+        for patch_count in (0, -1, True, "4", 200):
+            with self.subTest(count=patch_count):
+                with self.assertRaisesRegex(
+                        NativeLineageValidationError,
+                        "r2727_partial_fraction_cannot_prove_all_source_patch_slots"):
+                    infer_every_patch_flagged(1.0, patch_count)
 
 
 if __name__ == "__main__":
