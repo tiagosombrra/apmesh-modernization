@@ -80,6 +80,9 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
         self.assertIn(
             "docs/mesh-studio/R2_7_28_PREREGISTERED_EXISTING_ADAPTER_PATCH_CSV_20261119.md",
             evidence)
+        self.assertIn(
+            "docs/mesh-studio/R2_7_28B_ORIGINAL_REPEATED_LOCAL_SCOPE_MULTIPLICITY_20261119.md",
+            evidence)
 
     def test_genuine_shape_synthetic_eistute_candidate_inventory(self):
         result = parse_original_patch_csv(encode(fake_rows()), gates(), fake_events())
@@ -114,13 +117,27 @@ class OriginalAdapterPatchCsvContracts(unittest.TestCase):
             len(result["step4_local_candidate_sets_by_patch"][-1][
                 "local_attempts"]), 2)
 
-    def test_duplicate_local_identity_rejected(self):
+    def test_unwitnessed_extra_local_occurrence_rejected(self):
         rows = fake_rows()
         rows.append(rows[0].copy())
         with self.assertRaisesRegex(
                 NativeLineageValidationError,
-                "r2728_original_adapter_csv_wrong_outer_or_duplicate"):
+                "r2728_original_cpp_adapter_csv_boundary_multiplicity_mismatch"):
             parse_original_patch_csv(encode(rows), gates(), fake_events())
+
+    def test_real_source_style_repeated_identity_is_not_fake_duplicate(self):
+        rows = fake_rows()
+        repeated = rows[-1].copy()
+        rows.append(repeated)
+        report = parse_original_patch_csv(
+            encode(rows), gates(), fake_events([repeated]))
+        self.assertEqual(report["native_local_patch_attempt_rows"], 33)
+        self.assertTrue(report["original_csv_multiset_exactly_equals_cpp_R2718"])
+        source_tuple = report["step4_local_candidate_sets_by_patch"][-1][
+            "local_attempts"]
+        self.assertEqual(
+            [x["repeated_tuple_observation_ordinal_not_native_id"]
+             for x in source_tuple], [0, 1])
 
     def test_missing_patch_scope_rejected(self):
         rows = fake_rows()
