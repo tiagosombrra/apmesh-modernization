@@ -377,6 +377,25 @@ jobs:
             build/r2733-original-selected-post-aft-tri-independent-audit.json
           if-no-files-found: warn
           retention-days: 14
+      - name: Build separate original R2.7.34 serial Linux source curve pointer-incidence and post-AFT selected TRI observer
+        run: cmake --build build/r2712-native --target quad_generator_selected_curve_seam_probe --parallel 2
+      - name: Replay original native Eistute and min13 with new R2.7.34 source curve ownership witness and exact unwrapped scientific parity
+        run: python -m tools.mesh_studio.native_selected_tri_return --mode capture --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --baseline-exe build/r2712-native/bin/quad_generator_local_selection_probe --wrapper-exe build/r2712-native/bin/quad_generator_selected_curve_seam_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --output-dir build/r2734-original-source-curves-selected-tri-seams --timeout 300
+      - name: Re-open complete original R2.7.34 native TRI and all unwrapped-versus-wrapped raw scientific files
+        run: python -m tools.mesh_studio.native_selected_tri_return --mode audit --root . --output-dir build/r2734-original-source-curves-selected-tri-seams --audit-report build/r2734-raw-original-tri-parity-independent-audit.json
+      - name: Verify source C++ curve object equality mapping and true fan-wise selected TRI boundary XYZ diagnostics
+        run: python -m tools.mesh_studio.native_selected_curve_seam --root . --selected-directory build/r2734-original-source-curves-selected-tri-seams --output build/r2734-source-curve-identity-and-provisional-seam-audit.json
+      - name: Archive R2.7.34 complete source curve pointer-incidence/selected TRI raw files, numerical parity and source-attested audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2734-original-source-curves-selected-tri-seams-${{ github.sha }}
+          path: |
+            build/r2734-original-source-curves-selected-tri-seams/
+            build/r2734-raw-original-tri-parity-independent-audit.json
+            build/r2734-source-curve-identity-and-provisional-seam-audit.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Archive raw R2.7.28 original C++ Adapter per-patch CSV and independent source audit even on experimental failure
         if: always()
         uses: actions/upload-artifact@v4
