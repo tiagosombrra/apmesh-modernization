@@ -1,0 +1,66 @@
+{
+  "schema": "apmesh-thingi10k-source-catalog-audit-v1",
+  "status": "CATALOG_METADATA_JOINED_ONLY_NO_MESH_OR_RIGHTS_APPROVAL",
+  "audit_date": "2026-11-20",
+  "catalog_source_repository": "larsbrubaker/Thingi10K",
+  "catalog_source_path": "docs/data/models.json",
+  "catalog_commit": "6c29395a9c14766eb04a9a27746f681e2eb584c7",
+  "catalog_git_blob_sha1": "ac376cc8604436f9460cac39b5171ce8d99b2e74",
+  "catalog_record_count": 9997,
+  "roster_count": 23,
+  "missing_roster_ids": [],
+  "quadwild_count": 12,
+  "badia_count": 11,
+  "badia_original_triangle_counts_matching_catalog": 11,
+  "quadwild_catalog_flags": {
+    "closed": 8,
+    "edge_manifold": 9,
+    "vertex_manifold": 6,
+    "single_component": 9,
+    "degenerate_faces": 2,
+    "duplicated_faces": 3,
+    "clean_all_flags": 4
+  },
+  "badia_catalog_flags": {
+    "closed": 11,
+    "edge_manifold": 11,
+    "vertex_manifold": 11,
+    "single_component": 9,
+    "degenerate_faces": 0,
+    "duplicated_faces": 0,
+    "clean_all_flags": 9
+  },
+  "declared_licenses": {
+    "Creative Commons - Attribution - Share Alike": 10,
+    "GNU - GPL": 1,
+    "Attribution - Non-Commercial - Share Alike": 4,
+    "Creative Commons - Attribution": 7,
+    "Creative Commons - Attribution - No Derivatives": 1
+  },
+  "license_no_derivatives_file_ids": [
+    230923
+  ],
+  "license_noncommercial_file_ids": [
+    44503,
+    58012,
+    81877,
+    252119
+  ],
+  "license_gpl_file_ids": [
+    37266
+  ],
+  "pilot_regular_quad_ids": [
+    67792,
+    94884
+  ],
+  "pilot_small_geometry_ids": [
+    293137,
+    37881
+  ],
+  "pilot_adversarial_quad_id": 61394,
+  "raw_stl_bytes_checked": false,
+  "individual_licenses_independently_verified": false,
+  "quadwild_individual_input_output_pairs_checked": false,
+  "actual_apmesh_mesh_generation_executed": false,
+  "new_admissions": 0
+}
