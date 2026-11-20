@@ -40,7 +40,7 @@ PROTOCOL = (
 )
 PROTOCOL_BLOB = "44184636157167e5a09548d65e4ab3d18efe3758"
 PROBE = "tests/quad/generator_selected_tri_return_probe.cpp"
-PROBE_BLOB = "13c0095c852273f1126791c896faa94ad60295d2"
+PROBE_BLOB = "00aff08731cd0a819a8acbca197d0c64fdd270d2"
 ROLES = ("original", "variant")
 EVENT = re.compile(
     rb"^R2733_TRI_RETURN=return_index=(\d+),outer_epoch=(\d+),"
