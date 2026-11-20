@@ -143,6 +143,13 @@ class OriginalNativeCurveAndSeamSyntheticTests(unittest.TestCase):
         self.assertGreater(result["max_vertex_to_vertex_xyz_distance"], 0)
         self.assertLess(result["exact_double_vertex_jaccard"], 1)
 
+    def test_large_finite_seam_refuses_quadratic_distance_explosion(self):
+        # A source with 1,001 points per side would require >1e6 comparisons.
+        a = {(float(i), 0.0, 0.0) for i in range(1001)}
+        b = {(float(i), 1.0, 0.0) for i in range(1001)}
+        with self.assertRaises(NativeLineageValidationError):
+            symmetric_seam_pair(a, b)
+
     def test_empty_source_boundary_does_not_get_fabricated(self):
         a = {(0.0, 0.0, 0.0)}
         b = {(0.0, 0.0, 0.0), (1.0, 0.0, 0.0)}
