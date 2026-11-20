@@ -32,34 +32,53 @@ export default function App() {
   const model = useMemo(() => catalog.find((item) => item.id === modelId), [catalog, modelId]);
 
   useEffect(() => {
-    studyApi.catalog().then((data) => setCatalog(data.models))
-      .catch((e: Error) => setError(e.message));
+    const controller = new AbortController();
+    studyApi.catalog(controller.signal)
+      .then((data) => { if (!controller.signal.aborted) setCatalog(data.models); })
+      .catch((e: Error) => { if (!controller.signal.aborted) setError(e.message); });
+    return () => controller.abort();
   }, []);
   useEffect(() => {
-    let cancelled = false;
+    const controller = new AbortController();
     setLoading(true);
     setError(null);
     setXyz(null); setUv(null); setSelected(null); setDetail(null); setCameraStatus('');
-    Promise.all([studyApi.geometry(modelId, 'xyz'), studyApi.geometry(modelId, 'uv')])
+    Promise.all([
+      studyApi.geometry(modelId, 'xyz', controller.signal),
+      studyApi.geometry(modelId, 'uv', controller.signal),
+    ])
       .then(([a, b]) => {
-        if (cancelled) return;
+        if (controller.signal.aborted) return;
         if (a.source_sha256 !== b.source_sha256 || meshFaceCount(a) !== meshFaceCount(b)) {
           throw new Error('As vistas não possuem a mesma origem científica.');
         }
         setXyz(a); setUv(b);
       })
-      .catch((e: Error) => { if (!cancelled) setError(e.message); })
-      .finally(() => { if (!cancelled) setLoading(false); });
-    return () => { cancelled = true; };
+      .catch((e: Error) => {
+        if (!controller.signal.aborted) setError(e.message);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
+      });
+    return () => controller.abort();
   }, [modelId]);
   useEffect(() => {
-    let cancelled = false;
-    if (selected === null) { setDetail(null); return; }
-    studyApi.face(modelId, selected)
-      .then((value) => { if (!cancelled) setDetail(value); })
-      .catch((e: Error) => { if (!cancelled) setError(e.message); });
-    return () => { cancelled = true; };
-  }, [modelId, selected]);
+    const controller = new AbortController();
+    setDetail(null);
+    if (selected === null || !xyz) return () => controller.abort();
+    studyApi.face(modelId, selected, controller.signal)
+      .then((value) => {
+        if (controller.signal.aborted) return;
+        if (value.source_face_id !== selected || value.source_sha256 !== xyz.source_sha256) {
+          throw new Error('Identidade da face diferente da origem científica.');
+        }
+        setDetail(value);
+      })
+      .catch((e: Error) => {
+        if (!controller.signal.aborted) setError(e.message);
+      });
+    return () => controller.abort();
+  }, [modelId, selected, xyz]);
   const toggleLayer = (kind: 'triangle' | 'quad') => {
     const visible = kind === 'triangle' ? !showTri : !showQuad;
     if (kind === 'triangle') setShowTri(visible);
@@ -140,7 +159,7 @@ export default function App() {
             <Viewer ref={uvRef} key={`${modelId}-uv`} space="uv" modelId={modelId} geometry={uv} showTri={showTri} showQuad={showQuad} edges={edges} selectedId={selected} onSelect={setSelected}/>
           </div>}
           <div className="model-foot"><div><small>ORIGEM</small><strong>{model ? statuses[model.source_status] : '—'}</strong></div>
-          <div><small>ÉPOCAS ADAPTATIVAS ACEITAS</small><strong>0</strong></div>
+          <div><small>ÉPOCAS ADAPTATIVAS ACEITAS</small><strong>{model?.accepted_adaptive_epochs ?? '—'}</strong></div>
           <div><small>IDENTIDADE SHA-256</small><code title={model?.sha256}>{model?.sha256.slice(0, 24) ?? '...'}</code></div></div>
           <div className="caution">Os resultados são de uma superfície Bézier controlada. Candidatas em estágio não são épocas adaptativas aceitas. All-quad e anisotropia não estão disponíveis.</div>
           {new URLSearchParams(window.location.search).get('nativeInspector') === '1' &&
