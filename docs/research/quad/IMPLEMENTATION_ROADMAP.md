@@ -70,10 +70,15 @@ gains, and is not promoted as a replacement. Original data remain byte-identical
 The failed repeated-eigenvalue reference prefix and bounded independent repair
 are retained; estimator formulas and numerical budgets are unchanged.
 
-One active next action: scientific disposition of the measured tradeoffs and an
-explicit boundary-locality/initial-coverage contract before selecting another
-estimator experiment or global-error formula. Keep original bounded diagnostic,
-opt-in comparison and PR243 draft; no new rule, broad sweep or legacy mean repair.
+Current priority, 2026-11-20: the [curve and transition audit](BOUNDARY_GENERATION_AUDIT_20261120.md)
+localizes a coarse contour inherited from the original curve workflow and stronger
+mixed transition fans. Track contour-edge quality separately from faces touching
+only a contour vertex. The exact1.5 clamp masks a sensitivity-only flag change.
+Next obtain alignment for one same-case legacy default-bound comparison, with
+the original core and mixed front rules held fixed. The previous default-bound
+legacy reconstruction's growth and source rejections remain comparison evidence.
+Keep PR243 draft. Further jet variants, initialization changes and mixed-global
+aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
 package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope
 and original M0-M9/R0-R4 gates remain open. Existing selection S<=1.5, curves,

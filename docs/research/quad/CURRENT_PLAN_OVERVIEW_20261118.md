@@ -35,6 +35,12 @@ native20/20, actual three-profile histories and four successful hosted checks
 (including527 Python/frozen TRI). Source/config/image identities are preserved.
 The modernization main branch stays separate. No full-stage closure follows.
 
+The [20 November generation audit](BOUNDARY_GENERATION_AUDIT_20261120.md)
+prioritizes the contour/interior transition. The current profile preserves the
+original two straight segments per side as the mixed interior refines. One
+same-case configuration comparison with the existing legacy defaults is proposed
+for alignment. Further curvature estimator changes wait for this generation work.
+
 ## What prevents calling the technique complete
 
 1. **Historical smoothing identity:** adopted UV/distinct/five-pass smoothing is implemented and tested; numeric identity with the historical planar method is not proven.
@@ -54,7 +60,7 @@ The modernization main branch stays separate. No full-stage closure follows.
 4. **Complete:** bounded static review, retained-finding disposition, research integration and exact post-merge verification at51d51f6. Main remains separate.
 5. **Complete:** source-history reporting prerequisite in PR241/5fe2e6f; actual accepted/rejected/retry observations remain associated with the correct previous accepted source.
 6. **Complete:** approved both-diagonal Gaussian comparison in PR242/7ccd8d7; same-node sign flips and nonuniform stage results are retained.
-7. **Adopted and implemented as a draft diagnostic:** [quadratic-jet candidate](MIXED_QUADRATIC_JET_CANDIDATE_20261119.md), PR243/source f2dbd47, measures real nodal K/H on22 retained observations with independent checks. Sparse/one-sided accuracy remains unqualified, despite full rank and numerical agreement. The complete two-ring comparison is now adopted/measured: selected gains coexist with widespread deterioration. Next settle boundary locality/initial coverage explicitly; no uniform replacement, adaptation/global aggregate or legacy mean repair. Full M1/M5/R3/M7 and broader gates remain open.
+7. **Adopted and implemented as a draft diagnostic:** [quadratic-jet candidate](MIXED_QUADRATIC_JET_CANDIDATE_20261119.md), PR243/source f2dbd47, measures real nodal K/H on22 retained observations with independent checks. Sparse/one-sided accuracy remains unqualified, despite full rank and numerical agreement. The complete two-ring comparison is now adopted/measured: selected gains coexist with widespread deterioration. The generation audit now takes priority; boundary curvature locality and initial coverage remain open; no uniform replacement, adaptation/global aggregate or legacy mean repair. Full M1/M5/R3/M7 and broader gates remain open.
 
 The previously proposed new balancing controller and broad global-factor sweeps
 are not the current next action. Preserve measured size mismatch as evidence.

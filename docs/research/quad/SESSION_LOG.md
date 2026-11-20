@@ -3830,3 +3830,31 @@ M1/M5/R3/M7 scope. Next present scientific tradeoffs and explicitly settle bound
 locality/initial coverage before any new formula/experiment/global aggregation;
 do not silently promote uniform rings or start another sweep. Save canonical
 checkpoint and verify remote readback; docs SHA is not newly tested natively.
+
+## 2026-11-20 Fortaleza - original curve and mixed transition quality audit
+
+The researcher requests a renewed plan and source audit with the original core
+preserved, prioritizing poor elements near curves. Read canonical cb3d1cd,
+main ef40c0f and draft PR243 c93a383 with four successful exact source checks.
+Keep one read-only diagnosis. Measure four archived steps,48 curve-pass events,
+six source contour audits,32 paired intervals and14 final boundary curvature
+queries. The initial list-order check fails because the final OBJ lists faces
+in a different order. Compare oriented face multisets as the existing smoothing
+contract does and complete the audit with unchanged inputs.
+
+The three straight sides each keep two segments of physical length1. Final mixed
+interior median edge is0.06549. Straight-side midpoint fan reaches22 faces vs9
+in TRI. Under two degree minimum angles occur in faces that only touch the
+boundary at vertices. These already exist before smoothing. Smoothing worsens the
+worst contour-edge angle but improves the worst vertex-only angle on this case.
+The largest bounded curvature errors occur on curved side0. Both existing fits
+stay unavailable on Step0 and neither drives the generated mesh.
+
+Verify all12 realized curve factors and three domain factors equal1.5. The common
+clamp masks a sensitivity-only adjustment. Keep prior default-bound legacy
+reconstruction growth to112 intervals and rejected Steps2/3 visible. Recommend
+one opt-in article-front comparison with the existing legacy default bounds after
+scientific alignment, preserving acceptance and all generation formulas. Report
+quality/growth and failed candidates. Further estimator sweeps are deferred.
+Update state, plan, overview, diagnostic and evidence. No native rebuild, new
+generation, application changes, integration or phase closure is claimed.

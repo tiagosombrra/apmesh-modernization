@@ -1,9 +1,9 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-19 Fortaleza. Canonical branch: `quad-templates`.
+Updated 2026-11-20 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: complete two-ring comparison measured; estimator choice remains open
+## Active: curve and transition quality audited; configuration comparison proposed
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,30 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-20 - generation audit prioritizes curve and transition quality
+
+The [audit](BOUNDARY_GENERATION_AUDIT_20261120.md) and its
+[receipt](evidence/BOUNDARY_GENERATION_AUDIT_20261120.json) bind the retained
+PR240 article-front history and current PR243 source c93a383. Inspect original
+curve and surface passes, actual TRI and mixed contours, mixed pre/post smoothing
+and all14 final boundary curvature nodes. The three straight sides have two
+segments of length1 each across Steps1–3. Final mixed interior median edge length
+0.06549 gives a15.27 gap against each straight segment. The midpoint on side3
+touches22 mixed faces vs9 TRI. Vertex-only boundary-face angles below2 degrees
+expose transition problems missed by the contour-edge-only view. Original source
+curve factors and domain factors are pinned to1.5 in this configuration.
+
+**Next:** seek scientific alignment for one same-case article-front comparison
+using the existing legacy default factor bounds instead of the fixed1.5 pair.
+Keep the original generator semantics and all mixed reconstruction choices.
+Measure actual curve/interior growth, contour and vertex-only transition quality,
+and source rejection evidence. Previous default-bound legacy reconstruction
+rejected Steps2/3 after reaching112 boundary intervals. Stop if that behavior
+recurs. Defer further jet variants and mixed-global/acceptance adoption. The
+initial five-node snapshot is explicitly unavailable for the current diagnostic.
+No native build or generation was run in this audit. Draft PR243/unavailable mixed
+global error/accepted mixed epochs0 and previous qualification limits remain.
 
 ### 2026-11-19 - adopted complete two-ring comparison measured; no uniform replacement
 
