@@ -361,6 +361,22 @@ jobs:
             build/r2732-original-selected-preaft-uv-geometry-audit.json
           if-no-files-found: warn
           retention-days: 14
+      - name: Build R2.7.33 isolated Linux GNU ELF original Adapter selected TRI return observer
+        run: cmake --build build/r2712-native --target quad_generator_selected_tri_return_probe --parallel 2
+      - name: Real R2.7.33 original/min13 separate native C++ selected post-AFT TRI and unwrapped-vs-wrapped scientific parity
+        run: python -m tools.mesh_studio.native_selected_tri_return --mode capture --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --baseline-exe build/r2712-native/bin/quad_generator_local_selection_probe --wrapper-exe build/r2712-native/bin/quad_generator_selected_tri_return_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --output-dir build/r2733-original-eistute-selected-post-aft-tri --timeout 300
+      - name: Independently re-open every real original R2.7.33 selected TRI UV XYZ native ID plus control parity hash
+        run: python -m tools.mesh_studio.native_selected_tri_return --mode audit --root . --output-dir build/r2733-original-eistute-selected-post-aft-tri --audit-report build/r2733-original-selected-post-aft-tri-independent-audit.json
+      - name: Archive raw original R2.7.33 provisional selected post-AFT TRI source faces, native stdout, control and audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2733-original-selected-post-aft-tri-${{ github.sha }}
+          path: |
+            build/r2733-original-eistute-selected-post-aft-tri/
+            build/r2733-original-selected-post-aft-tri-independent-audit.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Archive raw R2.7.28 original C++ Adapter per-patch CSV and independent source audit even on experimental failure
         if: always()
         uses: actions/upload-artifact@v4
