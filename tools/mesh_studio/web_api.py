@@ -14,7 +14,7 @@ from fastapi import FastAPI, HTTPException, Query, Response
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 
-from .import_obj import import_obj
+from .import_obj import MAX_SOURCE_BYTES, import_obj
 from .quality_analysis import analyze_mesh
 from .scene_model import build_batch, face_detail, initial_scene
 from .scene_transport import pack_geometry, SceneTransportError
@@ -65,7 +65,7 @@ def load_document(model_id: str):
     relative, _, expected = CATALOG[model_id]
     path = ROOT / relative
     if (not path.is_file() or
-            path.stat().st_size > 20 * 1024 * 1024 or
+            path.stat().st_size > MAX_SOURCE_BYTES or
             sha256(path.read_bytes()).hexdigest() != expected):
         raise HTTPException(status_code=409, detail='source_sha_mismatch')
     return _verified_document(path, expected)
