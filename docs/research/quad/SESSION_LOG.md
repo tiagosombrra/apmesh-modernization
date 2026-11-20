@@ -3858,3 +3858,27 @@ scientific alignment, preserving acceptance and all generation formulas. Report
 quality/growth and failed candidates. Further estimator sweeps are deferred.
 Update state, plan, overview, diagnostic and evidence. No native rebuild, new
 generation, application changes, integration or phase closure is claimed.
+
+## 2026-11-20 Fortaleza - one same-case legacy bound comparison
+
+Researcher adopts comparison of legacy default0.80–1.12 against fixed1.5 and
+prioritizes graded curve-to-interior and interior-to-curve influence. Read
+canonical0387aaa, main ef40c0f and draft PR243 c93a383 exact four-check status.
+Run the same qualified PR240 MSVC Debug application image once, with only the
+bound pair and output path changed in an untracked config. Exit0 in81.18s within
+existing180s. Archives all four stages. No candidate rerun or configuration sweep.
+
+Source Step1 accepts (0.125829) and provides the published165-node mixed mesh.
+Step2/3 each reach953 nodes/112 contour segments and are source-rejected at
+0.382516. Both rejected mixed geometries match. Original curve passes show
+Step2 curved9→17→65 points and straight5→5→17 each. Legacy Step2 improves the
+vertex-only transition angle and neighbor size ratio, but worsens the worst
+contour-edge angle. Accepted Step1 is also worse by both angle minima. Validate
+12 archived contour bindings, fixed smoothing contour/connectivity,96 staged
+curve records and accepted-output byte equality. Retain all rejected data.
+
+Close the shared bound trial. Next trace the local native surface-informed
+subdivision at Step1→2 before proposing a coordinated sizing change. Preserve
+original core and distinct regional refinement. No new native build, default
+policy, mixed acceptance, integration or broad test campaign. Update and verify
+canonical state, roadmap, overview, session and scoped archive evidence.

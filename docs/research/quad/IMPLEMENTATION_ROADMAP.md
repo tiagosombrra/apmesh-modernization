@@ -74,9 +74,13 @@ Current priority, 2026-11-20: the [curve and transition audit](BOUNDARY_GENERATI
 localizes a coarse contour inherited from the original curve workflow and stronger
 mixed transition fans. Track contour-edge quality separately from faces touching
 only a contour vertex. The exact1.5 clamp masks a sensitivity-only flag change.
-Next obtain alignment for one same-case legacy default-bound comparison, with
-the original core and mixed front rules held fixed. The previous default-bound
-legacy reconstruction's growth and source rejections remain comparison evidence.
+The aligned [same-case legacy bound comparison](LEGACY_BOUNDS_COMPARISON_20261120.md)
+confirms Step2/3 source rejections at112 contour segments after the Step1
+acceptance. Transition size/angle gains on the rejected candidate coexist with
+worse contour minima and excessive growth. Close this global configuration
+comparison. Next trace the surface-informed Step1→2 growth at original curve
+intervals against neighboring native sizes, then seek alignment for a local
+change if the trace supports it. Preserve original curve/domain restrictions.
 Keep PR243 draft. Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned

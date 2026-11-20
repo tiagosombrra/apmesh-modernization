@@ -3,7 +3,7 @@
 Updated 2026-11-20 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: curve and transition quality audited; configuration comparison proposed
+## Active: legacy bound comparison closed; surface-informed curve growth to trace
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,33 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-20 - single legacy bound comparison completed
+
+The researcher adopts the same-case legacy bounds comparison and requests
+gradual influence between neighboring regions, with distinct refinement levels.
+[Results](LEGACY_BOUNDS_COMPARISON_20261120.md) and
+[evidence](evidence/LEGACY_BOUNDS_COMPARISON_20261120.json) bind the same
+qualified PR240 MSVC image, archive and legacy/default configuration. One run
+exits0 in81.18s and produces a complete mixed archive. Step1 TRI is accepted and
+its mixed output has165 nodes/138 QUAD/32 TRI/20 contour segments. Steps2/3
+produce953 mixed nodes/112 contour segments and the original TRI rejects both
+for global error increase from0.125829 to0.382516. Published output is Step1.
+
+Candidate Step2 vertex-only transition minimum angle improves9.59→38.34 degrees
+against fixed1.5 and its median neighboring size ratio decreases2.64→1.47.
+Worst contour-edge angle slips15.64→13.66 degrees. Accepted Step1 has worse
+minimum angles in both contour groups. Growth and the source rejection stop
+this bound experiment. No new core behavior, mixed-global error or mixed
+adaptive epoch. Twelve contour checks and96 curve stage records were verified.
+
+**Next:** trace the Step1→2 surface-informed pass on the curved side and its
+straight neighbors. The curved pass goes9→17→65 points and the straight passes
+5→5→17. Bind native midpoint/endpoint curvature, requested spacing, emitted
+subdivisions and neighboring domain sizes to those attempts before proposing a
+local policy. Retain original neighbor propagation and separate draft PR243.
+The sole native run and its read-only archive audit are measured here. Prior
+CTest and hosted receipts retain their exact source scope. No stage closure.
 
 ### 2026-11-20 - generation audit prioritizes curve and transition quality
 
