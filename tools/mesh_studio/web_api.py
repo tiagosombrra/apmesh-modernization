@@ -8,7 +8,10 @@ from __future__ import annotations
 from copy import deepcopy
 from functools import lru_cache
 from hashlib import sha256
+import json
 from pathlib import Path
+from tempfile import TemporaryDirectory
+import xml.etree.ElementTree as ET
 
 from fastapi import FastAPI, HTTPException, Query, Response
 from fastapi.responses import StreamingResponse
@@ -19,6 +22,7 @@ from .quality_analysis import analyze_mesh
 from .scene_model import build_batch, face_detail, initial_scene
 from .scene_transport import pack_geometry, SceneTransportError
 from .scene_transport_v2 import prepare_geometry_v2, stream_geometry_v2, GeometryV2Error
+from .svg_figure import URI as SVG_URI, audit_svg, render_uv_svg
 
 SCHEMA = 'apmesh.meshstudio.web.v1'
 ROOT = Path(__file__).resolve().parent / 'fixtures'
@@ -151,6 +155,57 @@ def binary_geometry_v2(model_id: str, space: str = Query('xyz', pattern='^(xyz|u
         headers={'Cache-Control': 'no-store', 'Content-Length': str(prepared.total_bytes),
                  'X-Source-SHA256': payload['source_sha256'],
                  'X-Visualization-Only': 'float32-not-scientific-source'})
+
+
+
+@app.get('/api/v1/models/{model_id}/publication.svg')
+def publication_svg(model_id: str):
+    """Serve the independently audited, pure-vector UV figure for a pinned source.
+
+    This is the original imported source mesh, never a manufactured adaptive
+    epoch or a shaded 3D raster export. No filesystem path is user-controlled.
+    """
+    document = load_document(model_id)
+    source_status = CATALOG[model_id][1]
+    with TemporaryDirectory(prefix='apmesh-v5-source-figure-') as temporary:
+        path = Path(temporary) / 'source_uv.svg'
+        receipt = render_uv_svg(document, path, width_mm=155, height_mm=120)
+        root = ET.parse(path).getroot()
+        for item in root.iter(f'{{{SVG_URI}}}text'):
+            if item.attrib.get('y') == '684':
+                item.text = ('STAGED CANDIDATE — NOT AN ACCEPTED ADAPTIVE EPOCH'
+                             if source_status == 'STAGED_UNACCEPTED'
+                             else 'CONTROLLED ORIGINAL — NO ADAPTIVE EPOCH')
+        ET.SubElement(root, f'{{{SVG_URI}}}metadata').text = json.dumps({
+            'schema': 'apmesh.meshstudio.v5.web_source_uv_publication.v1',
+            'source_sha256': document.source_sha256,
+            'source_status': source_status,
+            'source_kind': document.source_kind,
+            'accepted_adaptive_epochs': 0,
+            'source_patch_ownership': document.patch_ownership,
+            'render_class': receipt['render_class'],
+            'physical_size_mm': [155, 120],
+            'source_surface_continuously_certified': False,
+            'scientific_lod_qualified': False,
+        }, sort_keys=True, separators=(',', ':'))
+        ET.ElementTree(root).write(path, encoding='utf-8',
+                                   xml_declaration=True)
+        audit = audit_svg(path, expected_faces=len(document.faces))
+        if not audit['vector_only'] or audit['raster_image_count'] != 0:
+            raise HTTPException(status_code=409, detail='unqualified_svg')
+        output = path.read_bytes()
+    output_sha = sha256(output).hexdigest()
+    filename = f'apmesh_{model_id}_{document.source_sha256[:12]}_uv_source.svg'
+    return Response(
+        content=output, media_type='image/svg+xml',
+        headers={
+            'Cache-Control': 'no-store',
+            'Content-Disposition': f'attachment; filename="{filename}"',
+            'X-Source-SHA256': document.source_sha256,
+            'X-Source-Status': source_status,
+            'X-Vector-Figure-SHA256': output_sha,
+            'X-Visualization-Only': 'source-uv-not-continuous-surface-or-lod',
+        })
 
 
 @app.get('/api/v1/models/{model_id}/faces/{face_id}')
