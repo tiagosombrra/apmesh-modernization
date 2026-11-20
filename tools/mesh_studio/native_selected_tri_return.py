@@ -266,6 +266,23 @@ def inspect_selected_tri_stream(stdout: bytes, raw_csv: bytes,
     }
 
 
+def _retain_scientific_outputs(workspace: Path, inventory: dict,
+                               destination: Path) -> None:
+    """Preserve the raw native numerical outputs for independent byte readback."""
+    require(not destination.exists() and 0 < len(inventory) <= 600,
+            "r2733_invalid_or_existing_scientific_source_archive")
+    destination.mkdir(parents=True)
+    for relative in sorted(inventory):
+        source = workspace / relative
+        original = _read(source, 100_000_000)
+        require(len(original) == inventory[relative]["bytes"] and
+                _sha(original) == inventory[relative]["sha256"],
+                "r2733_original_cpp_scientific_source_changed_while_retaining")
+        target = destination / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(original)
+
+
 def _execute(exe: Path, config: Path, root: Path, output_prefix: Path,
              lineage_dir: Path, selected_dir: Path | None,
              timeout: int) -> dict:
@@ -340,6 +357,8 @@ def capture(root: Path, original_exe: Path, baseline_exe: Path,
                 baseline_exe, config, root, prefix, lineage, None, timeout)
             require(control["csv"] == role_csv,
                     "r2733_original_unwrapped_adapter_csv_not_prior_source")
+            _retain_scientific_outputs(
+                same, control["scientific"], role_dir / "scientific_unwrapped")
             config_raw = config.read_bytes()
             shutil.rmtree(same)
             config, lineage, tri = prepare()
@@ -352,6 +371,8 @@ def capture(root: Path, original_exe: Path, baseline_exe: Path,
                     "r2733_original_adapter_wrapper_changed_native_csv_or_commit")
             compared = compare_exact_scientific_inventories(
                 control["scientific"], observed["scientific"])
+            _retain_scientific_outputs(
+                same, observed["scientific"], role_dir / "scientific_wrapped")
             require(len(compared["scientific_file_sha256"]) >= 1,
                     "r2733_missing_native_scientific_parity_files")
             gates = parse_original_gate_stderr(observed["stderr"])
@@ -449,6 +470,16 @@ def audit(root: Path, out: Path) -> dict:
         tri_files = {f.name: _read(f, MAX_TRI_BYTES)
                      for f in sorted(tri_dir.iterdir())}
         result = inspect_selected_tri_stream(stdout, csv, tri_files, role)
+        observed_inventory, observed_excluded = output_inventory(
+            folder / "scientific_wrapped")
+        control_inventory, control_excluded = output_inventory(
+            folder / "scientific_unwrapped")
+        independently_compared = compare_exact_scientific_inventories(
+            control_inventory, observed_inventory)
+        require(not observed_excluded and not control_excluded and
+                independently_compared ==
+                row["real_cpp_scientific_output_parity"],
+                "r2733_independent_raw_original_scientific_bytes_not_equal")
         require(result == row["source_original_selected_native_tri"] and
                 row["wrapped_original_cpp_stdout_sha256"] == _sha(stdout) and
                 row["source_native_cpp_adapter_csv_sha256"] == _sha(csv) and
