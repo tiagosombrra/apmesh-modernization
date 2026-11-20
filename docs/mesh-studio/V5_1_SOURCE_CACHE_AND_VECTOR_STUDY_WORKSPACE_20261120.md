@@ -8,7 +8,7 @@ Added `tools/mesh_studio/benchmark_web_cache.py`, independent offline tests `tes
 
 Method preregistered in benchmark docstring/source: 16 pairs for each real original **P1** and staged, **unaccepted Band**; API `/faces/0` and `/quality`. Alternating cache-disabled-proxy/warm ordering, full cache clear before each disabled sample, and one untimed priming call before each warm sample. **All** timed requests include source SHA-256 re-reading and validating the pinned original OBJ. Request response JSON must match exactly across every sample; missing/mutated/foreign source aborts the benchmark. Percentile: sorted nearest-rank p95. P50 is median; keep raw times per case in the Actions artifact.
 
-The measurements below are an actually executed **Linux scientific-regression job in run [#44747081730](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44747081730)**, where source benchmark output was printed after **528 Python tests passed with 4 optional skips** (Windows same revision **528 tests passed with 10 documented environment skips**). The pipeline's native/browser job state is separately tracked; **do not represent an in-progress/cancelled full run as 4/4 success**. The final exact V5 source HEAD needs a further complete CI qualification.
+The measurements below come from **actual [GitHub Actions #44747081730](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44747081730)**, exact tested code SHA `0bc9d3fac0024da8d9d4f62e247ac8123c7091df`: **4/4 completed SUCCESS** — scientific Python **528 passed / 4 optional skipped Linux**, **528 passed / 10 environment-skipped Windows**, source-native original C++ PASS and **60 Chromium passed / 5 intentionally skipped**. This code includes the cache, source-vector SVG export, browser cancellation and research study control. The subsequent offline-font-removal change and its dedicated new Chromium case require **separate final-head CI** [#44747343921](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44747343921), not covered by the first green run.
 
 | Real input / endpoint | Cache-disabled-proxy p50 / p95 (ms) | Warm cache p50 / p95 (ms) | Interpretation |
 | --- | ---: | ---: | --- |
@@ -28,6 +28,12 @@ The measurements below are an actually executed **Linux scientific-regression jo
 - **Offline-first:** removed the sole observed remote Google Fonts CSS `@import`. No external font files are bundled. Browser test refuses any external HTTP(S) domain request when loading original source. Standard locally installed/system font fallback remains. Network behavior is a tested scope, **not an assertion about every optional browser integration**.
 
 **New regression files:** `test_benchmark_web_cache.py` (4), `test_web_publication.py` (4), `web/tests/viewport-v5-source-request-races.spec.ts` (2), `web/tests/viewport-v5-article-source-export.spec.ts` (4). Browser specs require actual Chromium test execution before any pass claim. Existing Web tests, scientific Python and original-source C++/model parity remain required.
+
+### Preserved original raw benchmark distributions
+
+- Exact original [GitHub Actions V5 benchmark artifact #14633327746](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44747081730/artifacts/14633327746), original ZIP **2,423 bytes** containing the **15,602-byte source-bound JSON** with raw observations, alternating AB/BA order, original source SHA and full limitation labels.
+- Original downloaded ZIP SHA-256 `7b8853e2b93f7bc0f32ed9d494daadb1e99efb54d2d0a53fba39ea5b0191e649`. Retained **byte-identical** in private personal doctoral Google Drive `Doutorado/DOUTORADO_APMESH_ACOMPANHAMENTO/05_Experimentos_e_Resultados` as `apmesh-studio-v51-source-web-cache-0bc9d3f.zip`, then downloaded back and rehashed at **2,423 bytes** with the **identical SHA-256**. No private Drive URL is published in public repository documentation.
+- These receipts demonstrate one hosted Linux source-verified TestClient benchmark run, **not** independent cross-host or complete user event-to-GPU measurement.
 
 ## 3. Open end-to-end P0.B gates
 
