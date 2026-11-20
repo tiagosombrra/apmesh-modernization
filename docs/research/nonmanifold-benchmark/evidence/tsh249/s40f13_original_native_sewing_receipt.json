@@ -1,0 +1,250 @@
+{
+  "after_conventional_sewing": {
+    "edge_face_incidence_histogram": {
+      "1": 9,
+      "2": 3
+    },
+    "faces": 3,
+    "native_unique_edges": 12,
+    "nonmanifold_mode": false,
+    "occt_brepcheck_valid": true,
+    "occt_contiguous_edge_counter": 3,
+    "occt_free_edge_counter": 9,
+    "occt_multiple_edge_counter": 0,
+    "shared_axis_sections": [
+      {
+        "distinct_native_face_incidence": 2,
+        "source_face_ids": [
+          27,
+          55
+        ],
+        "x_interval": [
+          2.0,
+          4.0
+        ]
+      },
+      {
+        "distinct_native_face_incidence": 2,
+        "source_face_ids": [
+          27,
+          55
+        ],
+        "x_interval": [
+          4.0,
+          6.0
+        ]
+      },
+      {
+        "distinct_native_face_incidence": 2,
+        "source_face_ids": [
+          55,
+          83
+        ],
+        "x_interval": [
+          6.0,
+          8.0
+        ]
+      }
+    ],
+    "shells": 1,
+    "source_faces": [
+      {
+        "area_source_units_squared": 9.000000000000004,
+        "centroid": [
+          2.9999999999999996,
+          1.0,
+          0.0
+        ],
+        "source_advanced_face_id": 27,
+        "source_boundary_vertices_after_split": 10,
+        "source_fin_index": 0
+      },
+      {
+        "area_source_units_squared": 9.000000000000004,
+        "centroid": [
+          5.0,
+          0.0,
+          1.0
+        ],
+        "source_advanced_face_id": 55,
+        "source_boundary_vertices_after_split": 10,
+        "source_fin_index": 1
+      },
+      {
+        "area_source_units_squared": 9.000000000000004,
+        "centroid": [
+          7.0,
+          -1.0,
+          0.0
+        ],
+        "source_advanced_face_id": 83,
+        "source_boundary_vertices_after_split": 10,
+        "source_fin_index": 2
+      }
+    ],
+    "total_source_face_area": 27.00000000000001
+  },
+  "after_nonmanifold_sewing": {
+    "edge_face_incidence_histogram": {
+      "1": 8,
+      "2": 2,
+      "3": 1
+    },
+    "faces": 3,
+    "native_unique_edges": 11,
+    "nonmanifold_mode": true,
+    "occt_brepcheck_valid": true,
+    "occt_contiguous_edge_counter": 2,
+    "occt_free_edge_counter": 8,
+    "occt_multiple_edge_counter": 1,
+    "shared_axis_sections": [
+      {
+        "distinct_native_face_incidence": 2,
+        "source_face_ids": [
+          27,
+          55
+        ],
+        "x_interval": [
+          2.0,
+          4.0
+        ]
+      },
+      {
+        "distinct_native_face_incidence": 3,
+        "source_face_ids": [
+          27,
+          55,
+          83
+        ],
+        "x_interval": [
+          4.0,
+          6.0
+        ]
+      },
+      {
+        "distinct_native_face_incidence": 2,
+        "source_face_ids": [
+          55,
+          83
+        ],
+        "x_interval": [
+          6.0,
+          8.0
+        ]
+      }
+    ],
+    "shells": 1,
+    "source_faces": [
+      {
+        "area_source_units_squared": 9.000000000000004,
+        "centroid": [
+          2.9999999999999996,
+          1.0,
+          0.0
+        ],
+        "source_advanced_face_id": 27,
+        "source_boundary_vertices_after_split": 10,
+        "source_fin_index": 0
+      },
+      {
+        "area_source_units_squared": 9.000000000000004,
+        "centroid": [
+          5.0,
+          0.0,
+          1.0
+        ],
+        "source_advanced_face_id": 55,
+        "source_boundary_vertices_after_split": 10,
+        "source_fin_index": 1
+      },
+      {
+        "area_source_units_squared": 9.000000000000004,
+        "centroid": [
+          7.0,
+          -1.0,
+          0.0
+        ],
+        "source_advanced_face_id": 83,
+        "source_boundary_vertices_after_split": 10,
+        "source_fin_index": 2
+      }
+    ],
+    "total_source_face_area": 27.00000000000001
+  },
+  "apmesh_cpp_tri_quad_executed": false,
+  "before_native_sewing": {
+    "edge_face_incidence_histogram": {
+      "1": 9
+    },
+    "faces": 3,
+    "native_unique_edges": 9,
+    "occt_brepcheck_valid": true,
+    "shared_axis_sections": [],
+    "shells": 3,
+    "source_faces": [
+      {
+        "area_source_units_squared": 9.000000000000004,
+        "centroid": [
+          2.9999999999999996,
+          1.0000000000000002,
+          0.0
+        ],
+        "source_advanced_face_id": 27,
+        "source_boundary_vertices_after_split": 6,
+        "source_fin_index": 0
+      },
+      {
+        "area_source_units_squared": 9.000000000000004,
+        "centroid": [
+          5.0,
+          0.0,
+          1.0000000000000002
+        ],
+        "source_advanced_face_id": 55,
+        "source_boundary_vertices_after_split": 6,
+        "source_fin_index": 1
+      },
+      {
+        "area_source_units_squared": 9.000000000000004,
+        "centroid": [
+          7.0,
+          -1.0000000000000002,
+          0.0
+        ],
+        "source_advanced_face_id": 83,
+        "source_boundary_vertices_after_split": 6,
+        "source_fin_index": 2
+      }
+    ],
+    "total_source_face_area": 27.00000000000001
+  },
+  "classification": "POST_SEWING_THREE_FACE_NATIVE_EDGE_CONFIRMED_NOT_ORIGINAL_SOURCE_POSITIVE",
+  "formal_continuous_surface_equivalence_certified": false,
+  "kernel": {
+    "cadquery_ocp_version": "7.9.3.1.1",
+    "native_sewing_tolerance_source_units": 1e-07
+  },
+  "native_nonmanifold_three_face_edge_confirmed": true,
+  "native_real_original_step_import_executed": true,
+  "native_sewn_to_apmesh_bezier_conversion_executed": false,
+  "new_s40_source_faces_admitted": 0,
+  "schema": "apmesh-s40f13-tsh249-native-occt-sewing-v1",
+  "source": {
+    "git_blob_sha1": "ce612e8959c3e8954e2c0e565e291ecbbe6cd5ff",
+    "independent_original_edges": [
+      10,
+      38,
+      66
+    ],
+    "original_advanced_faces": [
+      27,
+      55,
+      83
+    ],
+    "original_source_edge_three_plus_count": 0,
+    "original_source_git_commit": "2a27aed219fbf930218aac5f24b07c131411b3de",
+    "raw_sha256": "d966aa342fea76d6027890fa4fee89283e5bcb2cbcbb9552cc3240d6bbad380d",
+    "source_original_edge_identity_census": "F12_PINNED_STRUCTURAL_AUDIT_NOT_REPEATED_BY_F13"
+  },
+  "source_original_three_plus_edge_confirmed": false
+}
