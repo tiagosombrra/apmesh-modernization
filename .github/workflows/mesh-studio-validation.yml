@@ -6,6 +6,10 @@ on:
       - feature/mesh-studio-r27-bvh-20261116
     paths:
       - 'tools/mesh_studio/**'
+      # Documentation-only edits do not change Python/TS/native behavior.
+      - '!tools/mesh_studio/README.md'
+      - '!tools/mesh_studio/web/README.md'
+      - '!tools/mesh_studio/fixtures/README.md'
       - 'research/mesh_studio/**'
       - 'src/generator/generator_adaptive.cpp'
       - 'CMakeLists.txt'
@@ -34,6 +38,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+          cache: pip
+          cache-dependency-path: tools/mesh_studio/requirements-web-ci.txt
       - name: Install fixed direct research dependencies
         run: python -m pip install -r tools/mesh_studio/requirements-web-ci.txt
       - name: Install Linux OpenGL software rendering context
