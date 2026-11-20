@@ -38,9 +38,9 @@ PROTOCOL = (
     "docs/mesh-studio/"
     "R2_7_33_PREREGISTERED_ORIGINAL_SELECTED_POST_AFT_TRI_WRAPPER_20261119.md"
 )
-PROTOCOL_BLOB = ""  # Pinned before first genuine C++ execution.
+PROTOCOL_BLOB = "44184636157167e5a09548d65e4ab3d18efe3758"
 PROBE = "tests/quad/generator_selected_tri_return_probe.cpp"
-PROBE_BLOB = ""  # Pinned only after the separate observer source is frozen.
+PROBE_BLOB = "13c0095c852273f1126791c896faa94ad60295d2"
 ROLES = ("original", "variant")
 EVENT = re.compile(
     rb"^R2733_TRI_RETURN=return_index=(\d+),outer_epoch=(\d+),"
