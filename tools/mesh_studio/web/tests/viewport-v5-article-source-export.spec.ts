@@ -62,3 +62,20 @@ test('V5 genuine original TRI study is discoverable and isolated from P1 by defa
   await page.getByTestId('v5-toggle-native-tri').click();
   await expect(page.getByTestId('r2720-panel')).toHaveCount(0);
 });
+
+test('V5 read-only source viewer requests no external font or third-party network resources', async ({ page }) => {
+  const external: string[] = [];
+  page.on('request', (request) => {
+    const address = new URL(request.url());
+    if ((address.protocol === 'http:' || address.protocol === 'https:') &&
+        address.hostname !== '127.0.0.1' && address.hostname !== 'localhost') {
+      external.push(request.url());
+    }
+  });
+  await page.goto('/');
+  await expect(page.locator('.main-status')).toHaveText('Dados verificados');
+  await expect(page.getByTestId('viewport-xyz').locator('canvas').first()).toBeVisible();
+  await expect(page.getByTestId('viewport-uv').locator('canvas').first()).toBeVisible();
+  expect(external).toEqual([]);
+});
+
