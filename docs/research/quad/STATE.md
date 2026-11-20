@@ -3,7 +3,7 @@
 Updated 2026-11-19 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: quadratic-jet candidate implemented; scientific accuracy remains open
+## Active: complete two-ring comparison measured; estimator choice remains open
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,42 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-19 - adopted complete two-ring comparison measured; no uniform replacement
+
+The researcher explicitly adopts comparison with complete second-ring support
+at every query, holding degree2/uniform weights/nodes/all other fit choices.
+[Results](TWO_RING_CURVATURE_COMPARISON_20261119.md) and
+[evidence](evidence/TWO_RING_CURVATURE_COMPARISON_20261119.json) pin source
+c93a383/tree55da4ba in draft PR243. Actual22 paired stages/44 evaluations and
+60 forged-record refusals per MSVC/GNU13.3/Clang18.1 ASan/UBSan/leak execute.
+203 native/9 Python controls, exact85/527 baseline, MSVC22 CTests and scoped
+LLVM22.1.8 analysis pass. Exact
+[hosted44658134604](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44658134604)
+completes4/4 SUCCESS: Linux/Windows native22, both-policy actual archives on
+both plus sanitized Linux,85/527 and frozen Eistute5/Book4 exact parity.
+
+Uniform enlargement is not a general improvement here. Final mixed boundary
+median K error1.30926->1.49756 worsens; H1.68638->0.996686 improves, despite
+9/14 boundary H sites worsening. Interior median K0.000432107->0.00145775,
+H0.00142232->0.00491119 worsen. Across689 sites K/H worsen at620/607. Keep
+gains/outliers visible, not only medians. Larger physical support and better
+boundary conditioning do not guarantee local accuracy; analytic quartic control
+shows increased bias. Initial five-node coverage remains unavailable in both.
+
+First Python prefix fails because the cubic eigen reference splits an exactly
+repeated diagonal spectrum; preserve failure/diagnosis. Stable independent
+Givens/Sturm reference and known-spectrum controls repair the checker without
+changing native math or numerical budgets. All22 original nodal observations
+per profile and nine CSV exports remain exact; mesh/input bytes unchanged.
+
+**Next:** present the paired tradeoffs for scientific disposition. Recommend
+retaining the bounded diagnostic and the uniform variant as comparison only;
+explicitly settle boundary locality and initial coverage before another estimator
+or global-error change. No replacement, next formula, weight, cutoff or sweep is
+selected. PR243 remains draft/unmerged; mixed global error unavailable/epochs0.
+Full historical/R3/M7/native-CRT/failure inventory remains. This checkpoint
+updates documentation/evidence and is not a new native qualification of its SHA.
 
 ### 2026-11-19 - adopted quadratic-jet candidate implemented; PR243 draft
 

@@ -3783,3 +3783,50 @@ two-ring support with the unchanged candidate on the same histories, with possib
 oversmoothing and no adaptation. Await answer; do not execute an unadopted variant.
 Update canonical state/roadmap/overview/evidence, commit and verify remote readback;
 the documentation checkpoint is not a new native exact-head qualification.
+
+## 2026-11-19 Fortaleza /2026-11-20 UTC - complete second-ring comparison
+
+Researcher explicitly adopts uniform complete two-ring comparison on the same
+histories, degree2/uniform weights/all other fit choices; no movement/generation/
+adaptation. Read canonical ef122c7/main ef40c0f and current source f2dbd47/PR243.
+Concurrent PR239/225 heads advanced independently; preserve them and PR214.
+Keep one diagnostic item. Add separately selected immutable complete-two-ring
+path, probe/report option, paired coverage/error/support/radius/condition exports
+and controls showing both resolved ambiguity and increased quartic local bias.
+
+First Python run fails at covariance eigen audit on exactly diagonal repeated
+tangent spectrum, spurious cubic-acos split9.5591e-10>unchanged1e-10 budget.
+Stop, preserve original streams/result/command and native exact diagonal evidence.
+Repair independent reference with scaled Givens/Sturm, repeated/zero/dense-known
+controls; Householder QR/native estimator/budgets unchanged. No silent retry,
+new condition/accuracy cutoff or support fallback. Nine Python and203 native
+checks pass, including the retained original sparse ambiguity.
+
+Publish c93a383/tree55da4ba on existing draft PR243; exact same-tree local
+alignment preserves2692 tracked bytes/sizes/mtimes. Exact local85/85 (527 tooling),
+MSVC22/22 CTests, and203 native/9 Python/22 paired stages/44 evaluations/60
+altered-record refusals per MSVC/GNU13.3/Clang18.1 ASan/UBSan/leak pass. Scoped
+LLVM22.1.8 analysis passes both actual consumers/header; CMake/inventory unchanged.
+All22 original per-node observations per profile and all nine CSV files remain
+exact against f2dbd47. Cross-profile max K/H differences5.69e-14/4.41e-11.
+
+Actual final mixed boundary K median error worsens1.30926->1.49756; H improves
+1.68638->0.996686 while9/14 boundary H queries worsen. Interior median K/H
+worsen0.000432107->0.00145775 /0.00142232->0.00491119. Among689 sites, K/H errors worsen
+at620/607 respectively, with selected gains retained. Boundary maximum
+errors worsen despite improved conditioning and larger physical sample radius.
+This is not a global error or a proof of one unique failure cause. Initial five
+nodes remain unavailable; later archive nodes available under both policies.
+
+Audit code/value ownership/contracts/tests/docs/scientific scope/known inventory.
+Final hosted44658134604 readback completes4/4 SUCCESS at exact c93a383:
+Linux/Windows native22,44 two-policy evaluations/60 refusals on each and sanitized
+Linux, root85/527 and frozen Eistute5/Book4 exact OBJ/acceptance/boundary parity.
+PR243 stays draft; no independent integration approval/research merge/post-merge
+or main closure claimed. No new meshes/Blender, estimator/global/adaptive adoption,
+legacy mean repair or full CRT/allocation/transaction/geometry qualification.
+Retain prior failed expectations/inventory/enum/DrvFS/Doxygen evidence and full
+M1/M5/R3/M7 scope. Next present scientific tradeoffs and explicitly settle boundary
+locality/initial coverage before any new formula/experiment/global aggregation;
+do not silently promote uniform rings or start another sweep. Save canonical
+checkpoint and verify remote readback; docs SHA is not newly tested natively.

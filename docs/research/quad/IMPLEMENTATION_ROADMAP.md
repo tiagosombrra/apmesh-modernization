@@ -60,11 +60,20 @@ block estimator/global/adaptive adoption; initial five-node coverage is absent.
 Original failed expectation and stale-inventory regression prefix are preserved,
 with explicit test-expectation/inventory corrections and new exact evidence.
 
-One active next action: await the explicit scientific decision on comparing
-uniform complete two-ring support against the unchanged candidate, preserving
-all other choices and real histories. No variant is implemented or run yet.
-Keep PR243 draft; independent review/integration and global normalization remain
-separate. No accuracy-based fallback, new threshold or legacy mean repair.
+The researcher adopts and executes the [complete two-ring comparison](TWO_RING_CURVATURE_COMPARISON_20261119.md),
+source c93a383 in draft PR243. Per profile203 native/9 Python/22 paired stages/
+44 evaluations/60 forgeries and exact85/527 pass. Hosted44658134604 completes4/4
+with actual both-policy archives, sanitizers and frozen TRI parity. Numerical agreement and complete
+later-node coverage do not establish physical accuracy; initial coverage stays
+unavailable. Uniform support worsens most final mixed sites despite selected
+gains, and is not promoted as a replacement. Original data remain byte-identical.
+The failed repeated-eigenvalue reference prefix and bounded independent repair
+are retained; estimator formulas and numerical budgets are unchanged.
+
+One active next action: scientific disposition of the measured tradeoffs and an
+explicit boundary-locality/initial-coverage contract before selecting another
+estimator experiment or global-error formula. Keep original bounded diagnostic,
+opt-in comparison and PR243 draft; no new rule, broad sweep or legacy mean repair.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
 package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope
 and original M0-M9/R0-R4 gates remain open. Existing selection S<=1.5, curves,
