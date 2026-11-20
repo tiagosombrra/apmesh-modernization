@@ -34,7 +34,7 @@ PROTOCOL = (
 )
 PROBE = "tests/quad/generator_selected_curve_seam_probe.cpp"
 PROTOCOL_BLOB = "d0c7f8fcbd148a4406d48f80d1fc51e43177c94e"
-PROBE_BLOB = "98f369bdd1f039dc6f167e9101ffec380122502e"
+PROBE_BLOB = "c493b62ba7be2c8aecdd6078fe9b4238322d7a15"
 UV_TOL = 1.0e-8
 MAX_SAMPLE_POINTS = 200_000
 
