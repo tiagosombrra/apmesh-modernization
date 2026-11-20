@@ -137,6 +137,14 @@ jobs:
         with:
           name: mesh-studio-r2720-native-accepted-scene-${{ github.sha }}
           path: build
+      - name: Recover same-run original C++ source-attested Eistute/Book vector article figures
+        uses: actions/download-artifact@v4
+        with:
+          name: mesh-studio-v52-original-native-accepted-uv-vector-${{ github.sha }}
+          path: build/v52-native-publication-artifact
+      - name: Reject missing same-run original accepted TRI SVG and manifest before browser tests
+        run: |
+          python -c "from pathlib import Path; root=Path('build/v52-native-publication-artifact'); assert list(root.rglob('manifest.json')) and list(root.rglob('eistute-accepted-step1-uv.svg')) and list(root.rglob('book-accepted-step1-uv.svg'))"
       - name: Recover same-run source-bound typed-buffer capacity receipt
         uses: actions/download-artifact@v4
         with:
