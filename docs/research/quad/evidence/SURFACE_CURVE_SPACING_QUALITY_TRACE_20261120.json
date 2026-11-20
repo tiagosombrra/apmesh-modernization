@@ -1,0 +1,4648 @@
+{
+  "date": "2026-11-20 Fortaleza",
+  "canonical_base": "533c85a068167520534de83c59b7c8618d018c11",
+  "observer_base": "c93a383e2775d33eb8a7e5f28cbc410e3d98593d",
+  "local_observer_source_sha256": {
+    "src/adapter/adapter.cpp": "953a38f966d95de66c5b47da46690e881a2895ed5da3a32d6b1c2313658b439d",
+    "src/generator/generator_adaptive.cpp": "ef45fdb018aff8c02bebe2e8d941a64681ded194e71904595df286a5af846c28"
+  },
+  "original_source_sha256": {
+    "src/adapter/adapter.cpp": "bd31eeb99a23814b60aa54d362e9f40c2f3027741e044261d3b22bf5f96dc121",
+    "src/generator/generator_adaptive.cpp": "71b55cba23a8e5f0bbe885712c7a9734188acfb43890c1660b3dae8c2c2a5cc5",
+    "src/adapter/curve_samples.cpp": "2ce46dcb00d83b6baa996181ae35d60fec884ad2720607fee269c81bd4b45e55",
+    "src/data/node_adaptive.cpp": "76f4ba8b1df33655561e3d91bb6bbc1253f54d99186692c1339d0284c076eccd"
+  },
+  "retained_provenance_binary_sha256": "e9ea7c2a09af561e478f2213e076c3df6acc490e662d6874f8ce976b948dc543",
+  "first_generator_observer_sha256": "d7474c66c61e39dde2215ee2173df51005465306defbd9d69bef76ceef5065ed",
+  "local_artifacts_sha256": {
+    "instrument.py": "dabb281229d67147b46c1676a16ddc1a18ab3c13cf79ef634f94e93bc72461b9",
+    "analyze.py": "5ead21cf65bf62fec5e34fa1036b16d627fdb2df9469242d4985681ca168c3b7",
+    "quality.py": "557d141bb5ffc01e4060805d724f8a13cd278b205180e6b8ebc45331c0fac6bd",
+    "trace.conf": "ef578ad474eda0536540ff96b38ed0af0c50da69f5c3e2c17f882334bec05da7",
+    "trace-application.stdout": "0659c4f0f4a69b8d1399cdef8734d1d649a5e6ef5285ffcec23b30daaadf7539",
+    "trace-application.stderr": "c4d8bd1932898ba28658024d9c510de3b44a06af60f5b1ccbfe65269ff04212a",
+    "trace-report.json": "6862cd3c4ee8b79817d62f3b67b98a05e99355329f603688d7035d9dac7fe6a9",
+    "elements.csv": "14ac1873a33c77a966776841e0632fb55fb3fb08542c335ce6b192ce91d868d8",
+    "quality.json": "cdb4a3035dbcc3bda0bfe28cdb11e5499db6486e771fa78c071805e89a6ac9e9",
+    "instrument_provenance.py": "7cf5e2dfdf21e48292de14aeb50536241ee1767106c76f51b3ab8b4250b3beca",
+    "analyze_provenance.py": "bf484953369935517764ad2d536658969ce014f080bdf8a4566fdf106b3bf920",
+    "provenance.conf": "651ad76031a7bb5728a78ce5263c0fbe459982b8f940dece41e86f9e5688d250",
+    "provenance-application.stdout": "52a2f6bdf48d2fcd02ebdf5923890131ecdc00c6e19ec2562a7076d4f865e2a0",
+    "provenance-application.stderr": "a4f5afb35125529f76fb2196dc89a5b81eaa4e4b7dfa8f2d86e862bdb582ddfb",
+    "provenance-report.json": "37bfeea460e22217977647bd00bd48a0f3c3876f7bd48993609c50cc7cb3ec8c"
+  },
+  "runs": {
+    "configure": {
+      "command": [
+        "cmake",
+        "-S",
+        "build/quad-curve-trace-20261120/source",
+        "-B",
+        "build/quad-curve-trace-20261120/msvc",
+        "-G",
+        "Visual Studio 17 2022",
+        "-A",
+        "x64",
+        "-DCMAKE_CXX_STANDARD=17",
+        "-DAP_MESH_USE_MPI=OFF",
+        "-DAP_MESH_USE_OPENMP=OFF",
+        "-DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON",
+        "-DAP_MESH_ENABLE_LTO=OFF",
+        "-DAP_MESH_DISABLE_STRICT_ALIASING=ON",
+        "-DAP_MESH_ENABLE_WARNINGS=ON",
+        "-DAP_MESH_STATIC_MINGW_RUNTIME=ON",
+        "-DBUILD_TESTING=OFF"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 6.256413698196411,
+        "timeout": 90
+      }
+    },
+    "build": {
+      "command": [
+        "cmake",
+        "--build",
+        "build/quad-curve-trace-20261120/msvc",
+        "--target",
+        "ap_mesh",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 118.12635684013367,
+        "timeout": 600
+      }
+    },
+    "trace-application": {
+      "command": [
+        "build/quad-curve-trace-20261120/msvc/bin/Debug/ap_mesh.exe",
+        "--config",
+        "build/quad-curve-trace-20261120/trace.conf"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 47.94482064247131,
+        "timeout": 180
+      }
+    },
+    "trace-analysis": {
+      "command": [
+        "python",
+        "build/quad-curve-trace-20261120/analyze.py"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 0.13333892822265625,
+        "timeout": 60
+      }
+    },
+    "quality-reassessment": {
+      "command": [
+        "python",
+        "build/quad-curve-trace-20261120/quality.py"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 1.7421815395355225,
+        "timeout": 60
+      }
+    },
+    "build-provenance": {
+      "command": [
+        "cmake",
+        "--build",
+        "build/quad-curve-trace-20261120/msvc",
+        "--target",
+        "ap_mesh",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 5.641218900680542,
+        "timeout": 180
+      }
+    },
+    "provenance-application": {
+      "command": [
+        "build/quad-curve-trace-20261120/msvc/bin/Debug/ap_mesh.exe",
+        "--config",
+        "build/quad-curve-trace-20261120/provenance.conf"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 44.71051216125488,
+        "timeout": 180
+      }
+    },
+    "provenance-analysis": {
+      "command": [
+        "python",
+        "build/quad-curve-trace-20261120/analyze_provenance.py"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 0.07785248756408691,
+        "timeout": 60
+      }
+    }
+  },
+  "trace": {
+    "source_executable_matches_geometry": true,
+    "matched_files_sha256": {
+      "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+      "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+      "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+      "step_1_retry_0_accepted_quad_tri.obj": "0f7e90729a7c059b03958a829281c9f95559248726a5222e07614773cafc37eb",
+      "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+      "step_2_retry_0_rejected_quad_tri.obj": "242d59f609a783e92cea136dbb081193e6f1828db72051f1abd57cb2cc4eb759",
+      "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+      "step_3_retry_0_rejected_quad_tri.obj": "d9f45d0e2fa2d630640fba1b87a4529cb7f4b36bd2c32b20cb757d5db32e5893",
+      "manifest.csv": "aa4dd171c6d6df0742f83eb850d2762d5fa1a8071b93903ff52dd724cf8ce0bc",
+      "curve_stages.csv": "24c3e3d82034ce85c44affb87bd8a96122e10e9afd9edebcd6e3ba1da97046f4",
+      "boundary_pair_stages.csv": "3e84a37776502843c631e9e5aa9e37c568fa602558da04905b0276edda8c9c01",
+      "boundary_pair_candidates.csv": "c24308348a691e5b6919265569e7b358818ac74a1390c1693f79e25844222afb"
+    },
+    "all_pass_summaries": [
+      {
+        "step": 1,
+        "side": 0,
+        "input_points": 0,
+        "curve_only_points": 3,
+        "before_neighbor_restriction": 9,
+        "surface_points": 9,
+        "zero_endpoint_pairs": 2,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "K": 2
+        },
+        "requested_over_old": {
+          "min": 0.28284271254923804,
+          "median": 0.28284271254923804,
+          "max": 0.28284271254923804
+        },
+        "requested_physical_spacing": {
+          "min": 0.3097735976880968,
+          "median": 0.30977359768809687,
+          "max": 0.30977359768809687
+        },
+        "adjacent_domain_size_proxy": null
+      },
+      {
+        "step": 1,
+        "side": 1,
+        "input_points": 0,
+        "curve_only_points": 2,
+        "before_neighbor_restriction": 5,
+        "surface_points": 5,
+        "zero_endpoint_pairs": 1,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "H": 1
+        },
+        "requested_over_old": {
+          "min": 0.28284271254923804,
+          "median": 0.28284271254923804,
+          "max": 0.28284271254923804
+        },
+        "requested_physical_spacing": {
+          "min": 0.5656854250987438,
+          "median": 0.5656854250987438,
+          "max": 0.5656854250987438
+        },
+        "adjacent_domain_size_proxy": null
+      },
+      {
+        "step": 1,
+        "side": 2,
+        "input_points": 0,
+        "curve_only_points": 2,
+        "before_neighbor_restriction": 5,
+        "surface_points": 5,
+        "zero_endpoint_pairs": 1,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "H": 1
+        },
+        "requested_over_old": {
+          "min": 0.28284271254923804,
+          "median": 0.28284271254923804,
+          "max": 0.28284271254923804
+        },
+        "requested_physical_spacing": {
+          "min": 0.5656854250987438,
+          "median": 0.5656854250987438,
+          "max": 0.5656854250987438
+        },
+        "adjacent_domain_size_proxy": null
+      },
+      {
+        "step": 1,
+        "side": 3,
+        "input_points": 0,
+        "curve_only_points": 2,
+        "before_neighbor_restriction": 5,
+        "surface_points": 5,
+        "zero_endpoint_pairs": 1,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "K": 1
+        },
+        "requested_over_old": {
+          "min": 0.28284271254923804,
+          "median": 0.28284271254923804,
+          "max": 0.28284271254923804
+        },
+        "requested_physical_spacing": {
+          "min": 0.5656854250987438,
+          "median": 0.5656854250987438,
+          "max": 0.5656854250987438
+        },
+        "adjacent_domain_size_proxy": null
+      },
+      {
+        "step": 2,
+        "side": 0,
+        "input_points": 9,
+        "curve_only_points": 17,
+        "before_neighbor_restriction": 65,
+        "surface_points": 65,
+        "zero_endpoint_pairs": 16,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "K": 16
+        },
+        "requested_over_old": {
+          "min": 0.2969848481766999,
+          "median": 0.29698484817669996,
+          "max": 0.29698484817669996
+        },
+        "requested_physical_spacing": {
+          "min": 0.040631785588888546,
+          "median": 0.040658220987164054,
+          "max": 0.04068691198495436
+        },
+        "adjacent_domain_size_proxy": {
+          "min": 0.05024014475339481,
+          "median": 0.055175105037803776,
+          "max": 0.06106748450708879
+        }
+      },
+      {
+        "step": 2,
+        "side": 1,
+        "input_points": 5,
+        "curve_only_points": 5,
+        "before_neighbor_restriction": 17,
+        "surface_points": 17,
+        "zero_endpoint_pairs": 4,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "H": 4
+        },
+        "requested_over_old": {
+          "min": 0.2969848481766999,
+          "median": 0.2969848481766999,
+          "max": 0.29698484817669996
+        },
+        "requested_physical_spacing": {
+          "min": 0.14847061630210087,
+          "median": 0.14849242408835445,
+          "max": 0.14851423187460805
+        },
+        "adjacent_domain_size_proxy": {
+          "min": 0.061655010827054116,
+          "median": 0.06532290987052367,
+          "max": 0.067396302993247
+        }
+      },
+      {
+        "step": 2,
+        "side": 2,
+        "input_points": 5,
+        "curve_only_points": 5,
+        "before_neighbor_restriction": 17,
+        "surface_points": 17,
+        "zero_endpoint_pairs": 4,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "H": 4
+        },
+        "requested_over_old": {
+          "min": 0.2969848481766999,
+          "median": 0.2969848481766999,
+          "max": 0.29698484817669996
+        },
+        "requested_physical_spacing": {
+          "min": 0.14847061630210087,
+          "median": 0.14849242408835445,
+          "max": 0.14851423187460805
+        },
+        "adjacent_domain_size_proxy": {
+          "min": 0.061525484343087945,
+          "median": 0.06787431271731711,
+          "max": 0.08840232090583781
+        }
+      },
+      {
+        "step": 2,
+        "side": 3,
+        "input_points": 5,
+        "curve_only_points": 5,
+        "before_neighbor_restriction": 17,
+        "surface_points": 17,
+        "zero_endpoint_pairs": 4,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "K": 4
+        },
+        "requested_over_old": {
+          "min": 0.2969848481766999,
+          "median": 0.2969848481766999,
+          "max": 0.29698484817669996
+        },
+        "requested_physical_spacing": {
+          "min": 0.14847061630210087,
+          "median": 0.14849242408835445,
+          "max": 0.14851423187460805
+        },
+        "adjacent_domain_size_proxy": {
+          "min": 0.06207675307936817,
+          "median": 0.0885787876634219,
+          "max": 0.11164551089392755
+        }
+      },
+      {
+        "step": 3,
+        "side": 0,
+        "input_points": 65,
+        "curve_only_points": 17,
+        "before_neighbor_restriction": 65,
+        "surface_points": 65,
+        "zero_endpoint_pairs": 16,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "K": 16
+        },
+        "requested_over_old": {
+          "min": 0.2969848481766999,
+          "median": 0.29698484817669996,
+          "max": 0.29698484817669996
+        },
+        "requested_physical_spacing": {
+          "min": 0.040631785588888546,
+          "median": 0.040658220987164054,
+          "max": 0.04068691198495436
+        },
+        "adjacent_domain_size_proxy": null
+      },
+      {
+        "step": 3,
+        "side": 1,
+        "input_points": 17,
+        "curve_only_points": 5,
+        "before_neighbor_restriction": 17,
+        "surface_points": 17,
+        "zero_endpoint_pairs": 4,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "H": 4
+        },
+        "requested_over_old": {
+          "min": 0.2969848481766999,
+          "median": 0.2969848481766999,
+          "max": 0.29698484817669996
+        },
+        "requested_physical_spacing": {
+          "min": 0.14847061630210087,
+          "median": 0.14849242408835445,
+          "max": 0.14851423187460805
+        },
+        "adjacent_domain_size_proxy": null
+      },
+      {
+        "step": 3,
+        "side": 2,
+        "input_points": 17,
+        "curve_only_points": 5,
+        "before_neighbor_restriction": 17,
+        "surface_points": 17,
+        "zero_endpoint_pairs": 4,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "H": 4
+        },
+        "requested_over_old": {
+          "min": 0.2969848481766999,
+          "median": 0.2969848481766999,
+          "max": 0.29698484817669996
+        },
+        "requested_physical_spacing": {
+          "min": 0.14847061630210087,
+          "median": 0.14849242408835445,
+          "max": 0.14851423187460805
+        },
+        "adjacent_domain_size_proxy": null
+      },
+      {
+        "step": 3,
+        "side": 3,
+        "input_points": 17,
+        "curve_only_points": 5,
+        "before_neighbor_restriction": 17,
+        "surface_points": 17,
+        "zero_endpoint_pairs": 4,
+        "nonzero_endpoint_count": 0,
+        "channel_counts": {
+          "K": 4
+        },
+        "requested_over_old": {
+          "min": 0.2969848481766999,
+          "median": 0.2969848481766999,
+          "max": 0.29698484817669996
+        },
+        "requested_physical_spacing": {
+          "min": 0.14847061630210087,
+          "median": 0.14849242408835445,
+          "max": 0.14851423187460805
+        },
+        "adjacent_domain_size_proxy": null
+      }
+    ],
+    "step2_intervals": [
+      {
+        "side": 0,
+        "midpoint": 0.0322265625,
+        "uses_mean": 0.0,
+        "analytical": -3.9975722431482485,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13689703301451087,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.04840041019720855,
+        "requested_parameter_size": 0.018560895546149696,
+        "left_id": 70,
+        "right_id": 72,
+        "left_xyz": [
+          1.0,
+          -1.0,
+          0.0
+        ],
+        "right_xyz": [
+          0.9095705579196303,
+          -0.897381116966233,
+          0.0
+        ],
+        "parameters": [
+          0.0,
+          0.06443863201639033
+        ],
+        "requested_physical_spacing": 0.040656344565655186,
+        "requested_over_old": 0.2969848481766999,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": false,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.128500796854496,
+                0.0
+              ],
+              [
+                0.12595516507864835,
+                0.12944908044492842
+              ]
+            ],
+            "raw_h": 0.025401658857966,
+            "smoothed_h": 0.02754068539322448,
+            "smoothed_physical_proxy": 0.05168152819649879
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.0965576171875,
+        "uses_mean": 0.0,
+        "analytical": -4.012558267740273,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13699995886910188,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.04843679998208852,
+        "requested_parameter_size": 0.018574850531104407,
+        "left_id": 72,
+        "right_id": 73,
+        "left_xyz": [
+          0.9095705579196303,
+          -0.897381116966233,
+          0.0
+        ],
+        "right_xyz": [
+          0.8320174869066166,
+          -0.784601986128722,
+          0.0
+        ],
+        "parameters": [
+          0.06443863201639033,
+          0.128500796854496
+        ],
+        "requested_physical_spacing": 0.04068691198495436,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": false,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.128500796854496,
+                0.0
+              ],
+              [
+                0.12595516507864835,
+                0.12944908044492842
+              ]
+            ],
+            "raw_h": 0.025401658857966,
+            "smoothed_h": 0.02754068539322448,
+            "smoothed_physical_proxy": 0.05168152819649879
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.1602783203125,
+        "uses_mean": 0.0,
+        "analytical": -4.0446692122015415,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13681433863829126,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.048371173320105404,
+        "requested_parameter_size": 0.018549683603527805,
+        "left_id": 73,
+        "right_id": 74,
+        "left_xyz": [
+          0.8320174869066166,
+          -0.784601986128722,
+          0.0
+        ],
+        "right_xyz": [
+          0.7673804822794776,
+          -0.6639615529072228,
+          0.0
+        ],
+        "parameters": [
+          0.128500796854496,
+          0.1919085825284128
+        ],
+        "requested_physical_spacing": 0.040631785588888546,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": false,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.128500796854496,
+                0.0
+              ],
+              [
+                0.25457763671875,
+                0.0
+              ],
+              [
+                0.22080548524576793,
+                0.12099572513227343
+              ]
+            ],
+            "raw_h": 0.031233719110450846,
+            "smoothed_h": 0.02986181237638733,
+            "smoothed_physical_proxy": 0.05603724367399003
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.22332763671875,
+        "uses_mean": 0.0,
+        "analytical": -4.075336487931661,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13690835788300992,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.048404414142865476,
+        "requested_parameter_size": 0.018562431004564364,
+        "left_id": 74,
+        "right_id": 75,
+        "left_xyz": [
+          0.7673804822794776,
+          -0.6639615529072228,
+          0.0
+        ],
+        "right_xyz": [
+          0.7153482045978308,
+          -0.5374180041224008,
+          0.0
+        ],
+        "parameters": [
+          0.1919085825284128,
+          0.25457763671875
+        ],
+        "requested_physical_spacing": 0.040659707880007,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": false,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.128500796854496,
+                0.0
+              ],
+              [
+                0.25457763671875,
+                0.0
+              ],
+              [
+                0.22080548524576793,
+                0.12099572513227343
+              ]
+            ],
+            "raw_h": 0.031233719110450846,
+            "smoothed_h": 0.02986181237638733,
+            "smoothed_physical_proxy": 0.05603724367399003
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.28564453125,
+        "uses_mean": 0.0,
+        "analytical": -4.119802073304835,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13690345696155726,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.0484026814054684,
+        "requested_parameter_size": 0.01856176652346379,
+        "left_id": 75,
+        "right_id": 76,
+        "left_xyz": [
+          0.7153482045978308,
+          -0.5374180041224008,
+          0.0
+        ],
+        "right_xyz": [
+          0.6754566234751247,
+          -0.4064940633939124,
+          0.0
+        ],
+        "parameters": [
+          0.25457763671875,
+          0.3165940323124232
+        ],
+        "requested_physical_spacing": 0.04065825238059346,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": false,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.25457763671875,
+                0.0
+              ],
+              [
+                0.378067746758461,
+                0.0
+              ],
+              [
+                0.33485281441128506,
+                0.12932364478550187
+              ]
+            ],
+            "raw_h": 0.03338364809458558,
+            "smoothed_h": 0.03254238868809766,
+            "smoothed_physical_proxy": 0.06106748450708879
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.347412109375,
+        "uses_mean": 0.0,
+        "analytical": -4.490751725731408,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.1369032455472067,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.04840260665920792,
+        "requested_parameter_size": 0.01856173785929488,
+        "left_id": 76,
+        "right_id": 77,
+        "left_xyz": [
+          0.6754566234751247,
+          -0.4064940633939124,
+          0.0
+        ],
+        "right_xyz": [
+          0.6473012115708383,
+          -0.2725347451422303,
+          0.0
+        ],
+        "parameters": [
+          0.3165940323124232,
+          0.378067746758461
+        ],
+        "requested_physical_spacing": 0.040658189593734656,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": false,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.25457763671875,
+                0.0
+              ],
+              [
+                0.378067746758461,
+                0.0
+              ],
+              [
+                0.33485281441128506,
+                0.12932364478550187
+              ]
+            ],
+            "raw_h": 0.03338364809458558,
+            "smoothed_h": 0.03254238868809766,
+            "smoothed_physical_proxy": 0.06106748450708879
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.40863037109375,
+        "uses_mean": 0.0,
+        "analytical": -4.866011138625107,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13694636645195082,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.04841785220128968,
+        "requested_parameter_size": 0.01856758431623545,
+        "left_id": 77,
+        "right_id": 78,
+        "left_xyz": [
+          0.6473012115708383,
+          -0.2725347451422303,
+          0.0
+        ],
+        "right_xyz": [
+          0.6305535456338776,
+          -0.1366805894275529,
+          0.0
+        ],
+        "parameters": [
+          0.378067746758461,
+          0.4391529478452867
+        ],
+        "requested_physical_spacing": 0.04067099584908333,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": false,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.378067746758461,
+                0.0
+              ],
+              [
+                0.5,
+                0.0
+              ],
+              [
+                0.5,
+                0.125
+              ]
+            ],
+            "raw_h": 0.02987749697246248,
+            "smoothed_h": 0.030758085866278977,
+            "smoothed_physical_proxy": 0.05771914748205595
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.4696044921875,
+        "uses_mean": 0.0,
+        "analytical": -5.49109595245921,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13684230013446738,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.04838105920188714,
+        "requested_parameter_size": 0.018553474704024367,
+        "left_id": 78,
+        "right_id": 79,
+        "left_xyz": [
+          0.6305535456338776,
+          -0.1366805894275529,
+          0.0
+        ],
+        "right_xyz": [
+          0.625,
+          0.0,
+          0.0
+        ],
+        "parameters": [
+          0.4391529478452867,
+          0.5
+        ],
+        "requested_physical_spacing": 0.0406400897295852,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": false,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.378067746758461,
+                0.0
+              ],
+              [
+                0.5,
+                0.0
+              ],
+              [
+                0.5,
+                0.125
+              ]
+            ],
+            "raw_h": 0.02987749697246248,
+            "smoothed_h": 0.030758085866278977,
+            "smoothed_physical_proxy": 0.05771914748205595
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.5303955078125,
+        "uses_mean": 0.0,
+        "analytical": -6.326239728122728,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13684230013446735,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.04838105920188713,
+        "requested_parameter_size": 0.018553474704024363,
+        "left_id": 79,
+        "right_id": 80,
+        "left_xyz": [
+          0.625,
+          0.0,
+          0.0
+        ],
+        "right_xyz": [
+          0.6305535456338776,
+          0.1366805894275529,
+          0.0
+        ],
+        "parameters": [
+          0.5,
+          0.5608470521547133
+        ],
+        "requested_physical_spacing": 0.040640089729585195,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": false,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.5,
+                0.0
+              ],
+              [
+                0.621932253241539,
+                0.0
+              ],
+              [
+                0.5,
+                0.125
+              ]
+            ],
+            "raw_h": 0.029988178616919766,
+            "smoothed_h": 0.030447913858398915,
+            "smoothed_physical_proxy": 0.057137093580995016
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.59136962890625,
+        "uses_mean": 0.0,
+        "analytical": -6.25094181775383,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13694636645195082,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.04841785220128968,
+        "requested_parameter_size": 0.01856758431623545,
+        "left_id": 80,
+        "right_id": 81,
+        "left_xyz": [
+          0.6305535456338776,
+          0.1366805894275529,
+          0.0
+        ],
+        "right_xyz": [
+          0.6473012115708383,
+          0.2725347451422303,
+          0.0
+        ],
+        "parameters": [
+          0.5608470521547133,
+          0.621932253241539
+        ],
+        "requested_physical_spacing": 0.04067099584908333,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": false,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.5,
+                0.0
+              ],
+              [
+                0.621932253241539,
+                0.0
+              ],
+              [
+                0.5,
+                0.125
+              ]
+            ],
+            "raw_h": 0.029988178616919766,
+            "smoothed_h": 0.030447913858398915,
+            "smoothed_physical_proxy": 0.057137093580995016
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.652587890625,
+        "uses_mean": 0.0,
+        "analytical": -5.849491743442583,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13690324554720668,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.04840260665920791,
+        "requested_parameter_size": 0.018561737859294877,
+        "left_id": 81,
+        "right_id": 82,
+        "left_xyz": [
+          0.6473012115708383,
+          0.2725347451422303,
+          0.0
+        ],
+        "right_xyz": [
+          0.6754566234751247,
+          0.4064940633939125,
+          0.0
+        ],
+        "parameters": [
+          0.621932253241539,
+          0.6834059676875768
+        ],
+        "requested_physical_spacing": 0.04065818959373465,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": false,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.621932253241539,
+                0.0
+              ],
+              [
+                0.74542236328125,
+                0.0
+              ],
+              [
+                0.636064076873039,
+                0.1264290260250502
+              ]
+            ],
+            "raw_h": 0.028742153353368667,
+            "smoothed_h": 0.02894295839613069,
+            "smoothed_physical_proxy": 0.05431296640161752
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.71435546875,
+        "uses_mean": 0.0,
+        "analytical": -4.135545751745465,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13690345696155726,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.0484026814054684,
+        "requested_parameter_size": 0.01856176652346379,
+        "left_id": 82,
+        "right_id": 83,
+        "left_xyz": [
+          0.6754566234751247,
+          0.4064940633939125,
+          0.0
+        ],
+        "right_xyz": [
+          0.7153482045978308,
+          0.5374180041224008,
+          0.0
+        ],
+        "parameters": [
+          0.6834059676875768,
+          0.74542236328125
+        ],
+        "requested_physical_spacing": 0.04065825238059346,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": false,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.621932253241539,
+                0.0
+              ],
+              [
+                0.74542236328125,
+                0.0
+              ],
+              [
+                0.636064076873039,
+                0.1264290260250502
+              ]
+            ],
+            "raw_h": 0.028742153353368667,
+            "smoothed_h": 0.02894295839613069,
+            "smoothed_physical_proxy": 0.05431296640161752
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.77667236328125,
+        "uses_mean": 0.0,
+        "analytical": -2.1091275647194774,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13690835788300992,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.048404414142865476,
+        "requested_parameter_size": 0.018562431004564364,
+        "left_id": 83,
+        "right_id": 84,
+        "left_xyz": [
+          0.7153482045978308,
+          0.5374180041224008,
+          0.0
+        ],
+        "right_xyz": [
+          0.7673804822794776,
+          0.6639615529072228,
+          0.0
+        ],
+        "parameters": [
+          0.74542236328125,
+          0.8080914174715872
+        ],
+        "requested_physical_spacing": 0.040659707880007,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": false,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.74542236328125,
+                0.0
+              ],
+              [
+                0.871499203145504,
+                0.0
+              ],
+              [
+                0.7615135186360604,
+                0.12168828611973946
+              ]
+            ],
+            "raw_h": 0.02585905845640697,
+            "smoothed_h": 0.026772583339690032,
+            "smoothed_physical_proxy": 0.05024014475339481
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.8397216796875,
+        "uses_mean": 0.0,
+        "analytical": -0.799774514472266,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13681433863829126,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.048371173320105404,
+        "requested_parameter_size": 0.018549683603527805,
+        "left_id": 84,
+        "right_id": 85,
+        "left_xyz": [
+          0.7673804822794776,
+          0.6639615529072228,
+          0.0
+        ],
+        "right_xyz": [
+          0.8320174869066168,
+          0.784601986128722,
+          0.0
+        ],
+        "parameters": [
+          0.8080914174715872,
+          0.871499203145504
+        ],
+        "requested_physical_spacing": 0.040631785588888546,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": false,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.74542236328125,
+                0.0
+              ],
+              [
+                0.871499203145504,
+                0.0
+              ],
+              [
+                0.7615135186360604,
+                0.12168828611973946
+              ]
+            ],
+            "raw_h": 0.02585905845640697,
+            "smoothed_h": 0.026772583339690032,
+            "smoothed_physical_proxy": 0.05024014475339481
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.9034423828125,
+        "uses_mean": 0.0,
+        "analytical": -0.2133353358680523,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13699995886910188,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.04843679998208852,
+        "requested_parameter_size": 0.018574850531104407,
+        "left_id": 85,
+        "right_id": 86,
+        "left_xyz": [
+          0.8320174869066168,
+          0.784601986128722,
+          0.0
+        ],
+        "right_xyz": [
+          0.90957055791963,
+          0.8973811169662329,
+          0.0
+        ],
+        "parameters": [
+          0.871499203145504,
+          0.9355613679836097
+        ],
+        "requested_physical_spacing": 0.04068691198495436,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": false,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.871499203145504,
+                0.0
+              ],
+              [
+                1.0,
+                0.0
+              ],
+              [
+                0.8682290560425012,
+                0.1441430866338087
+              ]
+            ],
+            "raw_h": 0.026114470258760358,
+            "smoothed_h": 0.02824222252363099,
+            "smoothed_physical_proxy": 0.05299799910012106
+          }
+        ]
+      },
+      {
+        "side": 0,
+        "midpoint": 0.9677734375,
+        "uses_mean": 0.0,
+        "analytical": -0.019771303989345092,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.13689703301451084,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.048400410197208546,
+        "requested_parameter_size": 0.018560895546149696,
+        "left_id": 86,
+        "right_id": 71,
+        "left_xyz": [
+          0.90957055791963,
+          0.8973811169662329,
+          0.0
+        ],
+        "right_xyz": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "parameters": [
+          0.9355613679836097,
+          1.0
+        ],
+        "requested_physical_spacing": 0.04065634456565518,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": false,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.871499203145504,
+                0.0
+              ],
+              [
+                1.0,
+                0.0
+              ],
+              [
+                0.8682290560425012,
+                0.1441430866338087
+              ]
+            ],
+            "raw_h": 0.026114470258760358,
+            "smoothed_h": 0.02824222252363099,
+            "smoothed_physical_proxy": 0.05299799910012106
+          }
+        ]
+      },
+      {
+        "side": 1,
+        "midpoint": 0.1470947265625,
+        "uses_mean": 1.0,
+        "analytical": 0.20906182062954795,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.5000734306359128,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.176802656993581,
+        "requested_parameter_size": 0.07425711593726889,
+        "left_id": 71,
+        "right_id": 151,
+        "left_xyz": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "right_xyz": [
+          0.4999904983104386,
+          1.0,
+          0.0
+        ],
+        "parameters": [
+          0.0,
+          0.272552490234375
+        ],
+        "requested_physical_spacing": 0.14851423187460805,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                1.0,
+                0.0
+              ],
+              [
+                1.0,
+                0.272552490234375
+              ],
+              [
+                0.8682290560425012,
+                0.1441430866338087
+              ]
+            ],
+            "raw_h": 0.0482461150112225,
+            "smoothed_h": 0.03420769120619483,
+            "smoothed_physical_proxy": 0.06419251127442963
+          }
+        ]
+      },
+      {
+        "side": 1,
+        "midpoint": 0.3883056640625,
+        "uses_mean": 1.0,
+        "analytical": 0.2864302760240511,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.4999265693641175,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.17675073369297722,
+        "requested_parameter_size": 0.07423530815101531,
+        "left_id": 151,
+        "right_id": 152,
+        "left_xyz": [
+          0.4999904983104386,
+          1.0,
+          0.0
+        ],
+        "right_xyz": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "parameters": [
+          0.272552490234375,
+          0.5
+        ],
+        "requested_physical_spacing": 0.14847061630210087,
+        "requested_over_old": 0.2969848481766999,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                1.0,
+                0.272552490234375
+              ],
+              [
+                1.0,
+                0.5
+              ],
+              [
+                0.8641391002206518,
+                0.3962803343956932
+              ]
+            ],
+            "raw_h": 0.03800073549287844,
+            "smoothed_h": 0.03591496695581836,
+            "smoothed_physical_proxy": 0.067396302993247
+          }
+        ]
+      },
+      {
+        "side": 1,
+        "midpoint": 0.6116943359375,
+        "uses_mean": 1.0,
+        "analytical": 0.1819791160349263,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.4999265693641175,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.17675073369297722,
+        "requested_parameter_size": 0.07423530815101531,
+        "left_id": 152,
+        "right_id": 153,
+        "left_xyz": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "right_xyz": [
+          -0.4999904983104386,
+          1.0,
+          0.0
+        ],
+        "parameters": [
+          0.5,
+          0.727447509765625
+        ],
+        "requested_physical_spacing": 0.14847061630210087,
+        "requested_over_old": 0.2969848481766999,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                1.0,
+                0.5
+              ],
+              [
+                1.0,
+                0.727447509765625
+              ],
+              [
+                0.8695279910091411,
+                0.655350140697203
+              ]
+            ],
+            "raw_h": 0.03681509224755259,
+            "smoothed_h": 0.03541245248901144,
+            "smoothed_physical_proxy": 0.06645330846661769
+          }
+        ]
+      },
+      {
+        "side": 1,
+        "midpoint": 0.8529052734375,
+        "uses_mean": 1.0,
+        "analytical": 0.036707718294715294,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.5000734306359128,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.176802656993581,
+        "requested_parameter_size": 0.07425711593726889,
+        "left_id": 153,
+        "right_id": 150,
+        "left_xyz": [
+          -0.4999904983104386,
+          1.0,
+          0.0
+        ],
+        "right_xyz": [
+          -1.0,
+          1.0,
+          0.0
+        ],
+        "parameters": [
+          0.727447509765625,
+          1.0
+        ],
+        "requested_physical_spacing": 0.14851423187460805,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                1.0,
+                0.727447509765625
+              ],
+              [
+                1.0,
+                1.0
+              ],
+              [
+                0.8773807142978474,
+                0.7964553756159395
+              ]
+            ],
+            "raw_h": 0.03176221213043756,
+            "smoothed_h": 0.03285547690555289,
+            "smoothed_physical_proxy": 0.061655010827054116
+          }
+        ]
+      },
+      {
+        "side": 2,
+        "midpoint": 0.1470947265625,
+        "uses_mean": 1.0,
+        "analytical": 0.21221315826826678,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.5000734306359128,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.176802656993581,
+        "requested_parameter_size": 0.07425711593726889,
+        "left_id": 169,
+        "right_id": 170,
+        "left_xyz": [
+          -1.0,
+          -1.0,
+          0.0
+        ],
+        "right_xyz": [
+          -1.0,
+          -0.4999904983104386,
+          0.0
+        ],
+        "parameters": [
+          0.0,
+          0.272552490234375
+        ],
+        "requested_physical_spacing": 0.14851423187460805,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.272552490234375,
+                1.0
+              ],
+              [
+                0.0,
+                1.0
+              ],
+              [
+                0.2323043154272942,
+                0.8638717371872593
+              ]
+            ],
+            "raw_h": 0.06470146508760741,
+            "smoothed_h": 0.04710891092155221,
+            "smoothed_physical_proxy": 0.08840232090583781
+          }
+        ]
+      },
+      {
+        "side": 2,
+        "midpoint": 0.3883056640625,
+        "uses_mean": 1.0,
+        "analytical": 0.28699266002402446,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.4999265693641175,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.17675073369297722,
+        "requested_parameter_size": 0.07423530815101531,
+        "left_id": 170,
+        "right_id": 171,
+        "left_xyz": [
+          -1.0,
+          -0.4999904983104386,
+          0.0
+        ],
+        "right_xyz": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "parameters": [
+          0.272552490234375,
+          0.5
+        ],
+        "requested_physical_spacing": 0.14847061630210087,
+        "requested_over_old": 0.2969848481766999,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.5,
+                1.0
+              ],
+              [
+                0.272552490234375,
+                1.0
+              ],
+              [
+                0.3941301263085305,
+                0.8563509272956691
+              ]
+            ],
+            "raw_h": 0.03759626891671011,
+            "smoothed_h": 0.03727012237664745,
+            "smoothed_physical_proxy": 0.0699393226055856
+          }
+        ]
+      },
+      {
+        "side": 2,
+        "midpoint": 0.6116943359375,
+        "uses_mean": 1.0,
+        "analytical": 0.18233429546318167,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.4999265693641175,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.17675073369297722,
+        "requested_parameter_size": 0.07423530815101531,
+        "left_id": 171,
+        "right_id": 172,
+        "left_xyz": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "right_xyz": [
+          -1.0,
+          0.4999904983104386,
+          0.0
+        ],
+        "parameters": [
+          0.5,
+          0.727447509765625
+        ],
+        "requested_physical_spacing": 0.14847061630210087,
+        "requested_over_old": 0.2969848481766999,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.727447509765625,
+                1.0
+              ],
+              [
+                0.5,
+                1.0
+              ],
+              [
+                0.6526560040412512,
+                0.8690140582268098
+              ]
+            ],
+            "raw_h": 0.03616308509481974,
+            "smoothed_h": 0.03506926688141259,
+            "smoothed_physical_proxy": 0.06580930282904862
+          }
+        ]
+      },
+      {
+        "side": 2,
+        "midpoint": 0.8529052734375,
+        "uses_mean": 1.0,
+        "analytical": 0.036859782722807245,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.5000734306359128,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.176802656993581,
+        "requested_parameter_size": 0.07425711593726889,
+        "left_id": 172,
+        "right_id": 150,
+        "left_xyz": [
+          -1.0,
+          0.4999904983104386,
+          0.0
+        ],
+        "right_xyz": [
+          -1.0,
+          1.0,
+          0.0
+        ],
+        "parameters": [
+          0.727447509765625,
+          1.0
+        ],
+        "requested_physical_spacing": 0.14851423187460805,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                1.0,
+                1.0
+              ],
+              [
+                0.727447509765625,
+                1.0
+              ],
+              [
+                0.7907747696661171,
+                0.8783688858106854
+              ]
+            ],
+            "raw_h": 0.03171664750819053,
+            "smoothed_h": 0.0327864532472075,
+            "smoothed_physical_proxy": 0.061525484343087945
+          }
+        ]
+      },
+      {
+        "side": 3,
+        "midpoint": 0.1470947265625,
+        "uses_mean": 0.0,
+        "analytical": -0.4694217224602727,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.5000734306359128,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.176802656993581,
+        "requested_parameter_size": 0.07425711593726889,
+        "left_id": 70,
+        "right_id": 188,
+        "left_xyz": [
+          1.0,
+          -1.0,
+          0.0
+        ],
+        "right_xyz": [
+          0.4999904983104386,
+          -1.0,
+          0.0
+        ],
+        "parameters": [
+          0.0,
+          0.272552490234375
+        ],
+        "requested_physical_spacing": 0.14851423187460805,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.0,
+                0.272552490234375
+              ],
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.12595516507864835,
+                0.12944908044492842
+              ]
+            ],
+            "raw_h": 0.044707943155398486,
+            "smoothed_h": 0.033080220079629505,
+            "smoothed_physical_proxy": 0.06207675307936817
+          }
+        ]
+      },
+      {
+        "side": 3,
+        "midpoint": 0.3883056640625,
+        "uses_mean": 0.0,
+        "analytical": -0.00998977961287629,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.4999265693641175,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.17675073369297722,
+        "requested_parameter_size": 0.07423530815101531,
+        "left_id": 188,
+        "right_id": 189,
+        "left_xyz": [
+          0.4999904983104386,
+          -1.0,
+          0.0
+        ],
+        "right_xyz": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "parameters": [
+          0.272552490234375,
+          0.5
+        ],
+        "requested_physical_spacing": 0.14847061630210087,
+        "requested_over_old": 0.2969848481766999,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.0,
+                0.5
+              ],
+              [
+                0.0,
+                0.272552490234375
+              ],
+              [
+                0.13934529077412433,
+                0.35714642547214354
+              ]
+            ],
+            "raw_h": 0.0766515417817011,
+            "smoothed_h": 0.047327460688443915,
+            "smoothed_physical_proxy": 0.08881244090752559
+          }
+        ]
+      },
+      {
+        "side": 3,
+        "midpoint": 0.6116943359375,
+        "uses_mean": 0.0,
+        "analytical": -0.16354336914016238,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.4999265693641175,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.17675073369297722,
+        "requested_parameter_size": 0.07423530815101531,
+        "left_id": 189,
+        "right_id": 190,
+        "left_xyz": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "right_xyz": [
+          -0.4999904983104386,
+          -1.0,
+          0.0
+        ],
+        "parameters": [
+          0.5,
+          0.727447509765625
+        ],
+        "requested_physical_spacing": 0.14847061630210087,
+        "requested_over_old": 0.2969848481766999,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.0,
+                0.727447509765625
+              ],
+              [
+                0.0,
+                0.5
+              ],
+              [
+                0.1459767684636711,
+                0.6044201185458985
+              ]
+            ],
+            "raw_h": 0.06557698820836096,
+            "smoothed_h": 0.05949502652871978,
+            "smoothed_physical_proxy": 0.11164551089392755
+          }
+        ]
+      },
+      {
+        "side": 3,
+        "midpoint": 0.8529052734375,
+        "uses_mean": 0.0,
+        "analytical": -0.1321083244501163,
+        "discrete_average": 0.0,
+        "discrete_left": 0.0,
+        "discrete_right": 0.0,
+        "old_length": 0.5000734306359128,
+        "local_factor": 2.828427124,
+        "global_factor": 0.8400000000000001,
+        "new_length_before_global": 0.176802656993581,
+        "requested_parameter_size": 0.07425711593726889,
+        "left_id": 190,
+        "right_id": 169,
+        "left_xyz": [
+          -0.4999904983104386,
+          -1.0,
+          0.0
+        ],
+        "right_xyz": [
+          -1.0,
+          -1.0,
+          0.0
+        ],
+        "parameters": [
+          0.727447509765625,
+          1.0
+        ],
+        "requested_physical_spacing": 0.14851423187460805,
+        "requested_over_old": 0.29698484817669996,
+        "unrestricted_midpoints_inside": 3,
+        "restricted_midpoints_inside": 3,
+        "left_site_in_prior_tri": true,
+        "right_site_in_prior_tri": true,
+        "adjacent_prior_tri_targets": [
+          {
+            "uv": [
+              [
+                0.0,
+                1.0
+              ],
+              [
+                0.0,
+                0.727447509765625
+              ],
+              [
+                0.1369308555093159,
+                0.7626479872010135
+              ]
+            ],
+            "raw_h": 0.04443201231622198,
+            "smoothed_h": 0.047078436686580065,
+            "smoothed_physical_proxy": 0.08834513441931822
+          }
+        ]
+      }
+    ],
+    "domain_step2": {
+      "raw_h": {
+        "min": 0.021769070312663313,
+        "median": 0.04702924632871855,
+        "max": 0.09055677286883543
+      },
+      "smoothed_h": {
+        "min": 0.026772583339690032,
+        "median": 0.03993813961243402,
+        "max": 0.0729143973078774
+      },
+      "source_tri_faces": 104,
+      "physical_proxy_definition": "h * sqrt(area of prior TRI patch). A scale diagnostic, not physical spacing delivered by AFT."
+    },
+    "outputs_sha256": {
+      "trace.obj": "0f7e90729a7c059b03958a829281c9f95559248726a5222e07614773cafc37eb",
+      "trace-application.stderr": "c4d8bd1932898ba28658024d9c510de3b44a06af60f5b1ccbfe65269ff04212a",
+      "trace-application.stdout": "0659c4f0f4a69b8d1399cdef8734d1d649a5e6ef5285ffcec23b30daaadf7539",
+      "trace.conf": "ef578ad474eda0536540ff96b38ed0af0c50da69f5c3e2c17f882334bec05da7"
+    }
+  },
+  "provenance": {
+    "same_native_outputs": true,
+    "same_interval_and_domain_rows": true,
+    "matched_patch_nodes": 63,
+    "curve_incidences": 24,
+    "unique_contour_nodes": 20,
+    "accepted_nonzero_nodes": 20,
+    "matches": [
+      {
+        "side": 0,
+        "parameter": 0.0,
+        "source_id": 6,
+        "xyz": [
+          1.0,
+          -1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": 91.84065781083935,
+        "tri_Hd": 19.54723650004641
+      },
+      {
+        "side": 0,
+        "parameter": 0.128500796854496,
+        "source_id": 9,
+        "xyz": [
+          0.8320174869066166,
+          -0.784601986128722,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -13.101230427486554,
+        "tri_Hd": 3.214808038838563
+      },
+      {
+        "side": 0,
+        "parameter": 0.25457763671875,
+        "source_id": 10,
+        "xyz": [
+          0.7153482045978308,
+          -0.5374180041224008,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -10.355297047633456,
+        "tri_Hd": -3.712636335464713
+      },
+      {
+        "side": 0,
+        "parameter": 0.378067746758461,
+        "source_id": 11,
+        "xyz": [
+          0.6473012115708383,
+          -0.2725347451422303,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -8.364680001840444,
+        "tri_Hd": -8.091032392298535
+      },
+      {
+        "side": 0,
+        "parameter": 0.5,
+        "source_id": 12,
+        "xyz": [
+          0.625,
+          0.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -15.058395012117382,
+        "tri_Hd": -9.532131031119556
+      },
+      {
+        "side": 0,
+        "parameter": 0.621932253241539,
+        "source_id": 13,
+        "xyz": [
+          0.6473012115708383,
+          0.2725347451422303,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -11.490761590320577,
+        "tri_Hd": 4.107347320715515
+      },
+      {
+        "side": 0,
+        "parameter": 0.74542236328125,
+        "source_id": 14,
+        "xyz": [
+          0.7153482045978308,
+          0.5374180041224008,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -13.327892664863198,
+        "tri_Hd": 6.983522394000475
+      },
+      {
+        "side": 0,
+        "parameter": 0.871499203145504,
+        "source_id": 15,
+        "xyz": [
+          0.8320174869066168,
+          0.784601986128722,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -12.661882906759724,
+        "tri_Hd": 4.943403046413629
+      },
+      {
+        "side": 0,
+        "parameter": 1.0,
+        "source_id": 7,
+        "xyz": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": 89.63664462295566,
+        "tri_Hd": 3.010204728607569
+      },
+      {
+        "side": 1,
+        "parameter": 0.0,
+        "source_id": 7,
+        "xyz": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": 89.63664462295566,
+        "tri_Hd": 3.010204728607569
+      },
+      {
+        "side": 1,
+        "parameter": 0.272552490234375,
+        "source_id": 17,
+        "xyz": [
+          0.4999904983104386,
+          1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -0.0022257466988630675,
+        "tri_Hd": -0.008243819034321887
+      },
+      {
+        "side": 1,
+        "parameter": 0.5,
+        "source_id": 18,
+        "xyz": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -0.002228959766038831,
+        "tri_Hd": -0.22678470536640988
+      },
+      {
+        "side": 1,
+        "parameter": 0.727447509765625,
+        "source_id": 19,
+        "xyz": [
+          -0.4999904983104386,
+          1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -0.0015958806674923546,
+        "tri_Hd": -0.0030015276695326727
+      },
+      {
+        "side": 1,
+        "parameter": 1.0,
+        "source_id": 16,
+        "xyz": [
+          -1.0,
+          1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": 31.99407264803552,
+        "tri_Hd": 0.29299777788549264
+      },
+      {
+        "side": 2,
+        "parameter": 0.0,
+        "source_id": 20,
+        "xyz": [
+          -1.0,
+          -1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": 26.531088901812208,
+        "tri_Hd": 1.598707434796361
+      },
+      {
+        "side": 2,
+        "parameter": 0.272552490234375,
+        "source_id": 21,
+        "xyz": [
+          -1.0,
+          -0.4999904983104386,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -0.00012375542257797565,
+        "tri_Hd": 0.02339800417427919
+      },
+      {
+        "side": 2,
+        "parameter": 0.5,
+        "source_id": 22,
+        "xyz": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -0.002193518124110986,
+        "tri_Hd": -0.15938210729964777
+      },
+      {
+        "side": 2,
+        "parameter": 0.727447509765625,
+        "source_id": 23,
+        "xyz": [
+          -1.0,
+          0.4999904983104386,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -0.0016007016307149704,
+        "tri_Hd": 0.01147210353116253
+      },
+      {
+        "side": 2,
+        "parameter": 1.0,
+        "source_id": 16,
+        "xyz": [
+          -1.0,
+          1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": 31.99407264803552,
+        "tri_Hd": 0.29299777788549264
+      },
+      {
+        "side": 3,
+        "parameter": 0.0,
+        "source_id": 6,
+        "xyz": [
+          1.0,
+          -1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": 91.84065781083935,
+        "tri_Hd": 19.54723650004641
+      },
+      {
+        "side": 3,
+        "parameter": 0.272552490234375,
+        "source_id": 24,
+        "xyz": [
+          0.4999904983104386,
+          -1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -0.040806721081349744,
+        "tri_Hd": -0.12856017989415489
+      },
+      {
+        "side": 3,
+        "parameter": 0.5,
+        "source_id": 25,
+        "xyz": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -0.03775414789895739,
+        "tri_Hd": 0.10667653513128714
+      },
+      {
+        "side": 3,
+        "parameter": 0.727447509765625,
+        "source_id": 26,
+        "xyz": [
+          -0.4999904983104386,
+          -1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": -0.06418218747599377,
+        "tri_Hd": 0.49812654204988777
+      },
+      {
+        "side": 3,
+        "parameter": 1.0,
+        "source_id": 20,
+        "xyz": [
+          -1.0,
+          -1.0,
+          0.0
+        ],
+        "curve_Gd": 0.0,
+        "curve_Hd": 0.0,
+        "tri_Gd": 26.531088901812208,
+        "tri_Hd": 1.598707434796361
+      }
+    ],
+    "publication_sha256": "0f7e90729a7c059b03958a829281c9f95559248726a5222e07614773cafc37eb"
+  },
+  "quality": {
+    "fixed": [
+      {
+        "profile": "fixed",
+        "step": 1,
+        "phase": "before",
+        "tri_accepted": true,
+        "sha256": "c5876182c72864a8d748660b987e5b62e5e533daf9cd1fc7ec8ab160fc69cd60",
+        "nodes": 33,
+        "elements": 32,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 8,
+              "min_angle_xyz": {
+                "min": 31.12614083693293,
+                "p05": 31.34132182317086,
+                "median": 41.82645616048894,
+                "p95": 45.32138563423063,
+                "max": 45.34043657960187
+              },
+              "max_angle_xyz": {
+                "min": 134.43450909345648,
+                "p05": 134.53581218415812,
+                "median": 134.8740195660253,
+                "p95": 141.45525840420163,
+                "max": 141.5641536018938
+              },
+              "edge_ratio_xyz": {
+                "min": 3.735242807005081,
+                "p05": 3.735912043099372,
+                "median": 3.917732131351163,
+                "p95": 4.59551074066675,
+                "max": 4.595718286656775
+              },
+              "quad_corner_jacobian": {
+                "min": 0.5119563503207104,
+                "p05": 0.5131354018542333,
+                "median": 0.6617386398733518,
+                "p95": 0.709594943445037,
+                "max": 0.7098296631590377
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 16,
+              "min_angle_xyz": {
+                "min": 83.6621507692889,
+                "p05": 83.66964785788377,
+                "median": 88.46616697588658,
+                "p95": 89.72073432164514,
+                "max": 89.93855364657172
+              },
+              "max_angle_xyz": {
+                "min": 90.07060800635927,
+                "p05": 90.20143191584924,
+                "median": 91.45353506183119,
+                "p95": 96.34395885525036,
+                "max": 96.35863464701042
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0455145782938589,
+                "p05": 1.0486513583297294,
+                "median": 1.1171566516653817,
+                "p95": 1.3931789019587395,
+                "max": 1.3956211821070355
+              },
+              "quad_corner_jacobian": {
+                "min": 0.9909813433098008,
+                "p05": 0.9925556845600385,
+                "median": 0.9991446710632597,
+                "p95": 0.9999376334886871,
+                "max": 0.9999596810774757
+              }
+            }
+          },
+          "vertex_only": {
+            "TRI": {
+              "count": 8,
+              "min_angle_xyz": {
+                "min": 28.5514192674082,
+                "p05": 28.551638438305712,
+                "median": 30.60994898514559,
+                "p95": 42.790543547137766,
+                "max": 43.13608653937869
+              },
+              "max_angle_xyz": {
+                "min": 85.63309784749185,
+                "p05": 85.8245246915509,
+                "median": 89.47203276102331,
+                "p95": 94.02438820179637,
+                "max": 94.32643460375853
+              },
+              "edge_ratio_xyz": {
+                "min": 1.459922297368393,
+                "p05": 1.470428149887981,
+                "median": 1.9643087943382205,
+                "p95": 2.0876957587386067,
+                "max": 2.0884596476249757
+              },
+              "tri_q": {
+                "min": 0.7191319563478131,
+                "p05": 0.7197590906624931,
+                "median": 0.7612945781426652,
+                "p95": 0.8789119376833566,
+                "max": 0.8848356658129531
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 31,
+          "region": "vertex_only",
+          "vertices": [
+            4,
+            24,
+            33
+          ],
+          "kind": "TRI",
+          "tri_q": 0.7209237686754705,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 28.5514192674082,
+          "max_angle_xyz": 93.46344488386661,
+          "edge_ratio_xyz": 2.0884596476249757,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.25,
+              0.5
+            ],
+            [
+              0.25,
+              0.625
+            ],
+            [
+              0.0,
+              0.5
+            ]
+          ]
+        }
+      },
+      {
+        "profile": "fixed",
+        "step": 1,
+        "phase": "after",
+        "tri_accepted": true,
+        "sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+        "nodes": 33,
+        "elements": 32,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 8,
+              "min_angle_xyz": {
+                "min": 31.54933773014362,
+                "p05": 31.76952501334157,
+                "median": 41.63706982795246,
+                "p95": 45.28333468055133,
+                "max": 45.300998868098105
+              },
+              "max_angle_xyz": {
+                "min": 134.9077526599178,
+                "p05": 135.3548870515754,
+                "median": 140.93399230746996,
+                "p95": 149.48816305228675,
+                "max": 149.73684923974605
+              },
+              "edge_ratio_xyz": {
+                "min": 4.92600461371032,
+                "p05": 4.926437297330997,
+                "median": 5.1806159127261076,
+                "p95": 6.2323511174356145,
+                "max": 6.233035576427598
+              },
+              "quad_corner_jacobian": {
+                "min": 0.47798949303341104,
+                "p05": 0.48017256317346524,
+                "median": 0.6179555446547169,
+                "p95": 0.6301307869882509,
+                "max": 0.6303224859619649
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 16,
+              "min_angle_xyz": {
+                "min": 57.371944145795226,
+                "p05": 57.4255449534489,
+                "median": 64.61776736010445,
+                "p95": 88.26297467987837,
+                "max": 88.50661063996773
+              },
+              "max_angle_xyz": {
+                "min": 90.83163388637033,
+                "p05": 90.85808035490118,
+                "median": 105.34100343259041,
+                "p95": 109.31104675920324,
+                "max": 109.38870997756332
+              },
+              "edge_ratio_xyz": {
+                "min": 1.1207643215707541,
+                "p05": 1.1216214818580057,
+                "median": 1.5332632084498585,
+                "p95": 2.149324603962098,
+                "max": 2.155710371072304
+              },
+              "quad_corner_jacobian": {
+                "min": 0.8413017432669943,
+                "p05": 0.8416307910477357,
+                "median": 0.9032032576930189,
+                "p95": 0.9994625558705224,
+                "max": 0.9994682690634746
+              }
+            }
+          },
+          "vertex_only": {
+            "TRI": {
+              "count": 8,
+              "min_angle_xyz": {
+                "min": 37.623026562717,
+                "p05": 37.78773267550041,
+                "median": 39.65583129792286,
+                "p95": 43.131288395910346,
+                "max": 43.15504320357189
+              },
+              "max_angle_xyz": {
+                "min": 73.4338434891427,
+                "p05": 73.61924714596034,
+                "median": 79.47219547395,
+                "p95": 82.30337558172644,
+                "max": 82.5455918513707
+              },
+              "edge_ratio_xyz": {
+                "min": 1.4371685690044742,
+                "p05": 1.437988294903786,
+                "median": 1.5293962740043563,
+                "p95": 1.606114281264908,
+                "max": 1.61581010622948
+              },
+              "tri_q": {
+                "min": 0.8662742354681201,
+                "p05": 0.8693161816146286,
+                "median": 0.8898835104739375,
+                "p95": 0.9150739952209215,
+                "max": 0.9153443709738158
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 18,
+          "region": "contour_edge",
+          "vertices": [
+            27,
+            28,
+            5,
+            15
+          ],
+          "kind": "QUAD",
+          "tri_q": null,
+          "quad_corner_jacobian": 0.47798949303341104,
+          "min_angle_xyz": 31.54933773014362,
+          "max_angle_xyz": 149.73684923974605,
+          "edge_ratio_xyz": 5.287065928564524,
+          "S_uv": 1.4999999999999998,
+          "S_xyz": 1.6637427693305118,
+          "uv": [
+            [
+              0.5,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              0.7624359589844655,
+              0.23756404101553463
+            ],
+            [
+              0.6671245511878524,
+              0.223953065191091
+            ]
+          ]
+        }
+      },
+      {
+        "profile": "fixed",
+        "step": 2,
+        "phase": "before",
+        "tri_accepted": true,
+        "sha256": "ff29f3674759a03a559d10e53ddf3ec050f4991dedd22596b64a83b40a10ab05",
+        "nodes": 281,
+        "elements": 301,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 2,
+              "min_angle_xyz": {
+                "min": 23.279958547561126,
+                "p05": 23.408605738428708,
+                "median": 24.566430456236958,
+                "p95": 25.724255174045208,
+                "max": 25.852902364912794
+              },
+              "max_angle_xyz": {
+                "min": 125.64636134660935,
+                "p05": 127.0118243843252,
+                "median": 139.30099172376768,
+                "p95": 151.59015906321017,
+                "max": 152.955622100926
+              },
+              "edge_ratio_xyz": {
+                "min": 3.9016496580836777,
+                "p05": 4.168524527891359,
+                "median": 6.570398356160484,
+                "p95": 8.97227218442961,
+                "max": 9.239147054237291
+              },
+              "quad_corner_jacobian": {
+                "min": 0.39446628989456517,
+                "p05": 0.3958734818334315,
+                "median": 0.40853820928322876,
+                "p95": 0.421202936733026,
+                "max": 0.42261012867189235
+              }
+            },
+            "TRI": {
+              "count": 8,
+              "min_angle_xyz": {
+                "min": 9.832344817515402,
+                "p05": 11.437240483856247,
+                "median": 20.872885587188705,
+                "p95": 22.33739256085827,
+                "max": 22.61439964844213
+              },
+              "max_angle_xyz": {
+                "min": 116.36234841274377,
+                "p05": 122.14896306230045,
+                "median": 134.34344084723386,
+                "p95": 145.30082422832854,
+                "max": 151.1011000946841
+              },
+              "edge_ratio_xyz": {
+                "min": 1.9051856760972523,
+                "p05": 1.909576751595743,
+                "median": 2.004781006409501,
+                "p95": 4.1152168159384495,
+                "max": 5.24697554574879
+              },
+              "tri_q": {
+                "min": 0.28838089026995783,
+                "p05": 0.2893307210545078,
+                "median": 0.45440179168109923,
+                "p95": 0.4668243236047558,
+                "max": 0.4723550233830066
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 246,
+              "min_angle_xyz": {
+                "min": 24.055602614203252,
+                "p05": 39.71892547594589,
+                "median": 83.42784252933468,
+                "p95": 89.90110638485957,
+                "max": 89.98586639661495
+              },
+              "max_angle_xyz": {
+                "min": 90.01683401228281,
+                "p05": 90.08455559595652,
+                "median": 96.58860072559361,
+                "p95": 139.27873343552395,
+                "max": 154.26008659017455
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0160264424749488,
+                "p05": 1.0440437758780718,
+                "median": 1.4204954402770391,
+                "p95": 3.131786637350712,
+                "max": 5.300638274163364
+              },
+              "quad_corner_jacobian": {
+                "min": 0.40506114101199564,
+                "p05": 0.6052236066671914,
+                "median": 0.9927158227891234,
+                "p95": 0.9999856472317863,
+                "max": 0.9999958539749942
+              }
+            },
+            "TRI": {
+              "count": 7,
+              "min_angle_xyz": {
+                "min": 15.150057601483107,
+                "p05": 15.537850861690117,
+                "median": 24.016514863904614,
+                "p95": 44.371611918558635,
+                "max": 44.42010729386885
+              },
+              "max_angle_xyz": {
+                "min": 79.81492994142624,
+                "p05": 82.7019738175106,
+                "median": 90.319985804904,
+                "p95": 128.94015594813322,
+                "max": 143.5740112340948
+              },
+              "edge_ratio_xyz": {
+                "min": 1.4287361574462059,
+                "p05": 1.429971978239044,
+                "median": 1.9313131737637206,
+                "p95": 3.738000961119009,
+                "max": 3.8259888693421185
+              },
+              "tri_q": {
+                "min": 0.366563918730117,
+                "p05": 0.3876419136297153,
+                "median": 0.6390329440096415,
+                "p95": 0.8798193773794394,
+                "max": 0.8865017442456139
+              }
+            }
+          },
+          "vertex_only": {
+            "QUAD": {
+              "count": 1,
+              "min_angle_xyz": {
+                "min": 32.78083495010544,
+                "p05": 32.78083495010544,
+                "median": 32.78083495010544,
+                "p95": 32.78083495010544,
+                "max": 32.78083495010544
+              },
+              "max_angle_xyz": {
+                "min": 154.28211302328967,
+                "p05": 154.28211302328967,
+                "median": 154.28211302328967,
+                "p95": 154.28211302328967,
+                "max": 154.28211302328967
+              },
+              "edge_ratio_xyz": {
+                "min": 4.016275645160728,
+                "p05": 4.016275645160728,
+                "median": 4.016275645160728,
+                "p95": 4.016275645160728,
+                "max": 4.016275645160728
+              },
+              "quad_corner_jacobian": {
+                "min": 0.43169096869696677,
+                "p05": 0.43169096869696677,
+                "median": 0.43169096869696677,
+                "p95": 0.43169096869696677,
+                "max": 0.43169096869696677
+              }
+            },
+            "TRI": {
+              "count": 37,
+              "min_angle_xyz": {
+                "min": 4.824378954243407,
+                "p05": 5.471666633300002,
+                "median": 17.627508421578625,
+                "p95": 39.55801130623085,
+                "max": 40.41787163223917
+              },
+              "max_angle_xyz": {
+                "min": 70.06640950359598,
+                "p05": 81.5542447632246,
+                "median": 126.37563905097623,
+                "p95": 153.62875786556478,
+                "max": 160.08014779747492
+              },
+              "edge_ratio_xyz": {
+                "min": 1.449953994173132,
+                "p05": 1.5491861956723998,
+                "median": 2.5280892837325997,
+                "p95": 4.603739819578548,
+                "max": 5.278759196244474
+              },
+              "tri_q": {
+                "min": 0.13535804124346085,
+                "p05": 0.15687625328848281,
+                "median": 0.45735671399720274,
+                "p95": 0.8530198200463619,
+                "max": 0.9066031808884603
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 291,
+          "region": "vertex_only",
+          "vertices": [
+            48,
+            171,
+            273
+          ],
+          "kind": "TRI",
+          "tri_q": 0.13535804124346085,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 4.824378954243407,
+          "max_angle_xyz": 160.08014779747492,
+          "edge_ratio_xyz": 4.051104481222039,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.375,
+              0.0625
+            ],
+            [
+              0.34375,
+              0.0625
+            ],
+            [
+              0.25457763671875,
+              0.0
+            ]
+          ]
+        }
+      },
+      {
+        "profile": "fixed",
+        "step": 2,
+        "phase": "after",
+        "tri_accepted": true,
+        "sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+        "nodes": 281,
+        "elements": 301,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 2,
+              "min_angle_xyz": {
+                "min": 15.63811439615133,
+                "p05": 16.013838743396377,
+                "median": 19.395357868601803,
+                "p95": 22.776876993807228,
+                "max": 23.152601341052275
+              },
+              "max_angle_xyz": {
+                "min": 156.54756481205865,
+                "p05": 156.95850248784075,
+                "median": 160.65694156987945,
+                "p95": 164.35538065191818,
+                "max": 164.76631832770025
+              },
+              "edge_ratio_xyz": {
+                "min": 5.1893215743828405,
+                "p05": 5.354077773330128,
+                "median": 6.8368835638557215,
+                "p95": 8.319689354381314,
+                "max": 8.484445553328602
+              },
+              "quad_corner_jacobian": {
+                "min": 0.223536909395905,
+                "p05": 0.22502995504985268,
+                "median": 0.23846736593538154,
+                "p95": 0.2519047768209105,
+                "max": 0.2533978224748581
+              }
+            },
+            "TRI": {
+              "count": 8,
+              "min_angle_xyz": {
+                "min": 15.996461740995871,
+                "p05": 16.338253960944265,
+                "median": 25.59253337168847,
+                "p95": 27.147305733316188,
+                "max": 27.162129765281815
+              },
+              "max_angle_xyz": {
+                "min": 85.28903874474247,
+                "p05": 98.52332286102703,
+                "median": 123.44496035806775,
+                "p95": 141.069920041059,
+                "max": 145.40361691131042
+              },
+              "edge_ratio_xyz": {
+                "min": 1.828424439581967,
+                "p05": 1.8292656339042828,
+                "median": 1.8726976553130357,
+                "p95": 2.9402344179481803,
+                "max": 3.414009223453885
+              },
+              "tri_q": {
+                "min": 0.3457254533378022,
+                "p05": 0.38959631849492427,
+                "median": 0.5439002747469781,
+                "p95": 0.5679911010961406,
+                "max": 0.5682131640180933
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 246,
+              "min_angle_xyz": {
+                "min": 20.284892570428223,
+                "p05": 48.96542312105327,
+                "median": 75.54119189335282,
+                "p95": 88.21437681049699,
+                "max": 89.18384691454521
+              },
+              "max_angle_xyz": {
+                "min": 90.59668376820234,
+                "p05": 92.2391286571375,
+                "median": 105.61624764680136,
+                "p95": 136.8500797661984,
+                "max": 149.9328165738709
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0220685837433656,
+                "p05": 1.0996849927800008,
+                "median": 1.3369283279400626,
+                "p95": 2.325420491388106,
+                "max": 3.6869843866924317
+              },
+              "quad_corner_jacobian": {
+                "min": 0.3466618479657439,
+                "p05": 0.6649652751191073,
+                "median": 0.9597003786765457,
+                "p95": 0.9986539448041942,
+                "max": 0.9998749022353214
+              }
+            },
+            "TRI": {
+              "count": 7,
+              "min_angle_xyz": {
+                "min": 26.220930946163833,
+                "p05": 27.425515476511954,
+                "median": 41.017340670855425,
+                "p95": 49.90748330856105,
+                "max": 51.54738905101463
+              },
+              "max_angle_xyz": {
+                "min": 74.25892374013215,
+                "p05": 75.86331003691501,
+                "median": 86.60914910978047,
+                "p95": 101.072737812339,
+                "max": 103.77940418077642
+              },
+              "edge_ratio_xyz": {
+                "min": 1.2290505918079209,
+                "p05": 1.2759815522749485,
+                "median": 1.5184736037057107,
+                "p95": 2.1537153311977106,
+                "max": 2.2261618956591507
+              },
+              "tri_q": {
+                "min": 0.6935689152927048,
+                "p05": 0.7064799024964679,
+                "median": 0.8272071338120985,
+                "p95": 0.9422512955742736,
+                "max": 0.9636757896889727
+              }
+            }
+          },
+          "vertex_only": {
+            "QUAD": {
+              "count": 1,
+              "min_angle_xyz": {
+                "min": 31.057729362864926,
+                "p05": 31.057729362864926,
+                "median": 31.057729362864926,
+                "p95": 31.057729362864926,
+                "max": 31.057729362864926
+              },
+              "max_angle_xyz": {
+                "min": 158.91141836391236,
+                "p05": 158.91141836391236,
+                "median": 158.91141836391236,
+                "p95": 158.91141836391236,
+                "max": 158.91141836391236
+              },
+              "edge_ratio_xyz": {
+                "min": 3.2979688360501287,
+                "p05": 3.2979688360501287,
+                "median": 3.2979688360501287,
+                "p95": 3.2979688360501287,
+                "max": 3.2979688360501287
+              },
+              "quad_corner_jacobian": {
+                "min": 0.3595903894275011,
+                "p05": 0.3595903894275011,
+                "median": 0.3595903894275011,
+                "p95": 0.3595903894275011,
+                "max": 0.3595903894275011
+              }
+            },
+            "TRI": {
+              "count": 37,
+              "min_angle_xyz": {
+                "min": 9.59283006256298,
+                "p05": 11.573831032923547,
+                "median": 16.681201078209547,
+                "p95": 39.196128575683915,
+                "max": 53.71121471511706
+              },
+              "max_angle_xyz": {
+                "min": 63.69556883200312,
+                "p05": 74.26421797132583,
+                "median": 115.42072615800633,
+                "p95": 142.1989211499711,
+                "max": 152.02627324155617
+              },
+              "edge_ratio_xyz": {
+                "min": 1.1121626131947084,
+                "p05": 1.5567842545068953,
+                "median": 2.8892663706216757,
+                "p95": 3.646092588492563,
+                "max": 5.7056906569596135
+              },
+              "tri_q": {
+                "min": 0.2722013128560543,
+                "p05": 0.3111660120969214,
+                "median": 0.4460113606250363,
+                "p95": 0.8834173472793543,
+                "max": 0.9913863468515958
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 297,
+          "region": "vertex_only",
+          "vertices": [
+            74,
+            270,
+            272
+          ],
+          "kind": "TRI",
+          "tri_q": 0.2832605737732096,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 9.59283006256298,
+          "max_angle_xyz": 108.04253140392625,
+          "edge_ratio_xyz": 5.7056906569596135,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.16790337107321765,
+              0.08919937264501794
+            ],
+            [
+              0.14804035660365644,
+              0.1500599099343549
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        }
+      },
+      {
+        "profile": "fixed",
+        "step": 3,
+        "phase": "before",
+        "tri_accepted": true,
+        "sha256": "f56b1a640733e6109d97c6f185a8584f62397116ee8fe05afb9b3583031dc4fd",
+        "nodes": 689,
+        "elements": 732,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 6,
+              "min_angle_xyz": {
+                "min": 19.438606955832434,
+                "p05": 19.564402772735214,
+                "median": 21.455562295846278,
+                "p95": 23.820205267400176,
+                "max": 23.965788535441387
+              },
+              "max_angle_xyz": {
+                "min": 152.24715804094598,
+                "p05": 152.53558340128566,
+                "median": 155.36072469088953,
+                "p95": 159.3634465503169,
+                "max": 159.9974520971535
+              },
+              "edge_ratio_xyz": {
+                "min": 3.893679673284863,
+                "p05": 3.893948269065762,
+                "median": 3.972048684841268,
+                "p95": 4.129987298776419,
+                "max": 4.13010962636515
+              },
+              "quad_corner_jacobian": {
+                "min": 0.32843100153567506,
+                "p05": 0.3315493819675441,
+                "median": 0.35842348773661514,
+                "p95": 0.40220578920337624,
+                "max": 0.4057201336638564
+              }
+            },
+            "TRI": {
+              "count": 8,
+              "min_angle_xyz": {
+                "min": 10.367272360473434,
+                "p05": 10.658869147728726,
+                "median": 20.846105420915567,
+                "p95": 21.50459957274104,
+                "max": 21.822950826773944
+              },
+              "max_angle_xyz": {
+                "min": 120.38390263813768,
+                "p05": 121.08944469449133,
+                "median": 134.19477292454212,
+                "p95": 134.4943277403931,
+                "max": 134.5288833336682
+              },
+              "edge_ratio_xyz": {
+                "min": 1.9177316060929395,
+                "p05": 1.9481519865096764,
+                "median": 2.0125656047421403,
+                "p95": 4.604098755678162,
+                "max": 4.691837500019713
+              },
+              "tri_q": {
+                "min": 0.30088697922437296,
+                "p05": 0.3088625606000931,
+                "median": 0.45394001618177904,
+                "p95": 0.4564054552144191,
+                "max": 0.45655302401657577
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 624,
+              "min_angle_xyz": {
+                "min": 64.40510702872767,
+                "p05": 74.47716306598457,
+                "median": 88.36246098025515,
+                "p95": 89.94880185521785,
+                "max": 89.99202691392522
+              },
+              "max_angle_xyz": {
+                "min": 90.00386995527147,
+                "p05": 90.04884530865505,
+                "median": 91.62276466993694,
+                "p95": 105.5560331595797,
+                "max": 115.54335568404512
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0020952190226766,
+                "p05": 1.0190539617371386,
+                "median": 1.1318004350839348,
+                "p95": 2.090698730275688,
+                "max": 2.6546557519835043
+              },
+              "quad_corner_jacobian": {
+                "min": 0.9014446997284595,
+                "p05": 0.9629809278641817,
+                "median": 0.9994568499570722,
+                "p95": 0.9999965962928521,
+                "max": 0.9999989996323075
+              }
+            }
+          },
+          "vertex_only": {
+            "TRI": {
+              "count": 94,
+              "min_angle_xyz": {
+                "min": 1.4181974567977775,
+                "p05": 2.431390646904579,
+                "median": 6.419662689275707,
+                "p95": 34.97162235640795,
+                "max": 43.88674635973171
+              },
+              "max_angle_xyz": {
+                "min": 83.35555682403783,
+                "p05": 87.61672682755429,
+                "median": 141.14573343167154,
+                "p95": 156.36739866469037,
+                "max": 158.0797132942892
+              },
+              "edge_ratio_xyz": {
+                "min": 1.4345832405600298,
+                "p05": 1.6828539581334687,
+                "median": 5.9131402179095165,
+                "p95": 9.971664218682672,
+                "max": 15.083676342784383
+              },
+              "tri_q": {
+                "min": 0.04268083753878802,
+                "p05": 0.0726649762995284,
+                "median": 0.18869755837970836,
+                "p95": 0.8081321395396868,
+                "max": 0.9008232751882351
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 730,
+          "region": "vertex_only",
+          "vertices": [
+            689,
+            14,
+            350
+          ],
+          "kind": "TRI",
+          "tri_q": 0.04268083753878802,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 1.4181974567977775,
+          "max_angle_xyz": 158.0797132942892,
+          "edge_ratio_xyz": 15.083676342784383,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.0,
+              0.5
+            ],
+            [
+              0.125,
+              0.125
+            ],
+            [
+              0.125,
+              0.15625
+            ]
+          ]
+        }
+      },
+      {
+        "profile": "fixed",
+        "step": 3,
+        "phase": "after",
+        "tri_accepted": true,
+        "sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+        "nodes": 689,
+        "elements": 732,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 6,
+              "min_angle_xyz": {
+                "min": 18.919169902242185,
+                "p05": 19.01994396479469,
+                "median": 20.629857742667298,
+                "p95": 23.908029249008894,
+                "max": 24.296101214930506
+              },
+              "max_angle_xyz": {
+                "min": 152.754060641141,
+                "p05": 153.3427558662992,
+                "median": 157.85621898905967,
+                "p95": 159.99570354506017,
+                "max": 160.4172895981796
+              },
+              "edge_ratio_xyz": {
+                "min": 4.980683167021837,
+                "p05": 4.980754059953851,
+                "median": 5.030697239457554,
+                "p95": 5.252472464301919,
+                "max": 5.253280199929759
+              },
+              "quad_corner_jacobian": {
+                "min": 0.3201263972154247,
+                "p05": 0.3227760846233011,
+                "median": 0.3455561131949602,
+                "p95": 0.4036572347679635,
+                "max": 0.41095680670963086
+              }
+            },
+            "TRI": {
+              "count": 8,
+              "min_angle_xyz": {
+                "min": 9.148954252531814,
+                "p05": 10.015563264734629,
+                "median": 15.800115473617169,
+                "p95": 16.641591870570974,
+                "max": 17.058761344185104
+              },
+              "max_angle_xyz": {
+                "min": 92.58086816823072,
+                "p05": 96.13190466451081,
+                "median": 145.14077291747446,
+                "p95": 145.35514039369954,
+                "max": 145.3824090248954
+              },
+              "edge_ratio_xyz": {
+                "min": 1.9365670746090038,
+                "p05": 1.9896996652851633,
+                "median": 2.0958689208646373,
+                "p95": 5.722741351955286,
+                "max": 6.134728328613804
+              },
+              "tri_q": {
+                "min": 0.271273531575981,
+                "p05": 0.2959225629754927,
+                "median": 0.3460144081589288,
+                "p95": 0.3500369598427144,
+                "max": 0.35088434186064643
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 624,
+              "min_angle_xyz": {
+                "min": 12.171116287204043,
+                "p05": 48.83196896192912,
+                "median": 85.65354388006736,
+                "p95": 89.74935134593359,
+                "max": 89.98804861472993
+              },
+              "max_angle_xyz": {
+                "min": 90.02051294226605,
+                "p05": 90.24014184298099,
+                "median": 94.3570804222066,
+                "p95": 133.58066103310247,
+                "max": 162.29163286712097
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0038933399817451,
+                "p05": 1.0281878015721335,
+                "median": 1.2139334451223196,
+                "p95": 2.23171481369187,
+                "max": 3.9617162234895096
+              },
+              "quad_corner_jacobian": {
+                "min": 0.21082201029581682,
+                "p05": 0.7167272165574818,
+                "median": 0.9969533637837891,
+                "p95": 0.9999807989708872,
+                "max": 0.9999989996323075
+              }
+            }
+          },
+          "vertex_only": {
+            "TRI": {
+              "count": 94,
+              "min_angle_xyz": {
+                "min": 1.8698820585022242,
+                "p05": 2.964300110502337,
+                "median": 8.84169653983242,
+                "p95": 37.02929454771606,
+                "max": 47.13619573733626
+              },
+              "max_angle_xyz": {
+                "min": 78.03769482256234,
+                "p05": 81.23172379541452,
+                "median": 134.36381030173362,
+                "p95": 154.69415492368788,
+                "max": 168.37399456018758
+              },
+              "edge_ratio_xyz": {
+                "min": 1.347396203101424,
+                "p05": 1.634778463092772,
+                "median": 5.049157057853172,
+                "p95": 9.346274621075024,
+                "max": 11.053262350571115
+              },
+              "tri_q": {
+                "min": 0.05483599181146062,
+                "p05": 0.08889142960345486,
+                "median": 0.25499707375516045,
+                "p95": 0.8512675748836098,
+                "max": 0.9256012718402717
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 672,
+          "region": "vertex_only",
+          "vertices": [
+            52,
+            279,
+            686
+          ],
+          "kind": "TRI",
+          "tri_q": 0.05483599181146062,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 1.8698820585022242,
+          "max_angle_xyz": 168.37399456018758,
+          "edge_ratio_xyz": 6.176025475632036,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.9140781086378418,
+              0.9140781086378418
+            ],
+            [
+              0.9021518444888806,
+              0.896019165828465
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ]
+        }
+      }
+    ],
+    "legacy": [
+      {
+        "profile": "legacy",
+        "step": 1,
+        "phase": "before",
+        "tri_accepted": true,
+        "sha256": "24b3aeb7274d06b239400ff59d08bd0db882943ba0f58cedec9317c8f5687297",
+        "nodes": 165,
+        "elements": 170,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 16,
+              "min_angle_xyz": {
+                "min": 18.831908305542832,
+                "p05": 19.53018280891959,
+                "median": 37.529055987070585,
+                "p95": 44.70669487184496,
+                "max": 45.0462561871764
+              },
+              "max_angle_xyz": {
+                "min": 135.05555903755888,
+                "p05": 135.32706299517665,
+                "median": 138.61184739380522,
+                "p95": 155.20810975301282,
+                "max": 157.7240880994801
+              },
+              "edge_ratio_xyz": {
+                "min": 2.1298842986503814,
+                "p05": 2.316158624939511,
+                "median": 3.313960370320053,
+                "p95": 5.151166731594684,
+                "max": 5.180696799537295
+              },
+              "quad_corner_jacobian": {
+                "min": 0.3205939731941119,
+                "p05": 0.32196597011520983,
+                "median": 0.5886667186748678,
+                "p95": 0.7011934070371363,
+                "max": 0.7016678751518487
+              }
+            },
+            "TRI": {
+              "count": 4,
+              "min_angle_xyz": {
+                "min": 24.70425744188114,
+                "p05": 24.706754398805607,
+                "median": 24.803157635612745,
+                "p95": 24.97010042217296,
+                "max": 24.9850455349362
+              },
+              "max_angle_xyz": {
+                "min": 77.9454226877196,
+                "p05": 77.94932671478034,
+                "median": 78.11944759864397,
+                "p95": 78.40166668993432,
+                "max": 78.42535275359977
+              },
+              "edge_ratio_xyz": {
+                "min": 2.31806311738107,
+                "p05": 2.3195644997636364,
+                "median": 2.3332764850056824,
+                "p95": 2.339928614319965,
+                "max": 2.3401841397741023
+              },
+              "tri_q": {
+                "min": 0.6631834172194969,
+                "p05": 0.6632352206473928,
+                "median": 0.6652165334233473,
+                "p95": 0.6686523230263985,
+                "max": 0.6689607988355469
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 122,
+              "min_angle_xyz": {
+                "min": 40.271310117666026,
+                "p05": 44.307175418981046,
+                "median": 83.33056456731663,
+                "p95": 89.91439378986122,
+                "max": 89.98586639661495
+              },
+              "max_angle_xyz": {
+                "min": 90.01683401228281,
+                "p05": 90.0743781468231,
+                "median": 96.7125180773968,
+                "p95": 135.8453368113532,
+                "max": 142.4808199145517
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0160264424749488,
+                "p05": 1.0325078662952767,
+                "median": 1.2704071796069991,
+                "p95": 2.1403339005305186,
+                "max": 2.9351968799214068
+              },
+              "quad_corner_jacobian": {
+                "min": 0.6088161983735212,
+                "p05": 0.6806562887838612,
+                "median": 0.9920578639227959,
+                "p95": 0.999981429152934,
+                "max": 0.9999935269847631
+              }
+            },
+            "TRI": {
+              "count": 2,
+              "min_angle_xyz": {
+                "min": 44.258456042834794,
+                "p05": 44.26653860538649,
+                "median": 44.33928166835182,
+                "p95": 44.41202473131715,
+                "max": 44.42010729386885
+              },
+              "max_angle_xyz": {
+                "min": 90.22210395124044,
+                "p05": 90.22699804392362,
+                "median": 90.27104487807222,
+                "p95": 90.3150917122208,
+                "max": 90.319985804904
+              },
+              "edge_ratio_xyz": {
+                "min": 1.4287361574462059,
+                "p05": 1.4289421275783456,
+                "median": 1.430795858767603,
+                "p95": 1.4326495899568603,
+                "max": 1.432855560089
+              },
+              "tri_q": {
+                "min": 0.8634209591951442,
+                "p05": 0.8634612706366387,
+                "median": 0.8638240736100881,
+                "p95": 0.8641868765835374,
+                "max": 0.864227188025032
+              }
+            }
+          },
+          "vertex_only": {
+            "TRI": {
+              "count": 26,
+              "min_angle_xyz": {
+                "min": 17.779039001952004,
+                "p05": 19.46875316889408,
+                "median": 33.0745524843275,
+                "p95": 40.4168505679509,
+                "max": 40.42129354166984
+              },
+              "max_angle_xyz": {
+                "min": 70.06640950359598,
+                "p05": 71.76512546699354,
+                "median": 90.9650767920484,
+                "p95": 119.68649355709526,
+                "max": 123.415566964375
+              },
+              "edge_ratio_xyz": {
+                "min": 1.449953994173132,
+                "p05": 1.470795649164868,
+                "median": 1.8252933269252842,
+                "p95": 2.608467676974437,
+                "max": 2.770844829509078
+              },
+              "tri_q": {
+                "min": 0.4690262027800012,
+                "p05": 0.5052564342079551,
+                "median": 0.7960209898580228,
+                "p95": 0.8916657385226268,
+                "max": 0.9066031808884603
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 164,
+          "region": "vertex_only",
+          "vertices": [
+            135,
+            40,
+            165
+          ],
+          "kind": "TRI",
+          "tri_q": 0.4706752442443554,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 17.779039001952004,
+          "max_angle_xyz": 122.2133435170461,
+          "edge_ratio_xyz": 2.770844829509078,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.125,
+              0.3125
+            ],
+            [
+              0.125,
+              0.375
+            ],
+            [
+              0.0,
+              0.272552490234375
+            ]
+          ]
+        }
+      },
+      {
+        "profile": "legacy",
+        "step": 1,
+        "phase": "after",
+        "tri_accepted": true,
+        "sha256": "0f7e90729a7c059b03958a829281c9f95559248726a5222e07614773cafc37eb",
+        "nodes": 165,
+        "elements": 170,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 16,
+              "min_angle_xyz": {
+                "min": 23.671401625216546,
+                "p05": 24.136850642184154,
+                "median": 38.167615871393025,
+                "p95": 45.71016073020608,
+                "max": 47.174150103658086
+              },
+              "max_angle_xyz": {
+                "min": 133.8931293961387,
+                "p05": 134.08588542285383,
+                "median": 138.76023725013187,
+                "p95": 166.22159143858235,
+                "max": 166.28938739080863
+              },
+              "edge_ratio_xyz": {
+                "min": 2.446766872196928,
+                "p05": 2.560650415228445,
+                "median": 4.119289121027945,
+                "p95": 5.848110435103769,
+                "max": 5.890221283849384
+              },
+              "quad_corner_jacobian": {
+                "min": 0.23320805149557255,
+                "p05": 0.23555503924765464,
+                "median": 0.6109326133338228,
+                "p95": 0.7122266980379361,
+                "max": 0.7194713379992559
+              }
+            },
+            "TRI": {
+              "count": 4,
+              "min_angle_xyz": {
+                "min": 33.0813708234901,
+                "p05": 33.08476477888376,
+                "median": 33.19408964490337,
+                "p95": 33.33476210714959,
+                "max": 33.34368799128912
+              },
+              "max_angle_xyz": {
+                "min": 84.19769842997012,
+                "p05": 84.20114575360604,
+                "median": 84.24208238912705,
+                "p95": 84.30335742520313,
+                "max": 84.31039387834876
+              },
+              "edge_ratio_xyz": {
+                "min": 1.809985662862711,
+                "p05": 1.8104688581618813,
+                "median": 1.8174321650594107,
+                "p95": 1.8227126266116744,
+                "max": 1.8228988492028568
+              },
+              "tri_q": {
+                "min": 0.8046039562986917,
+                "p05": 0.8046609617055289,
+                "median": 0.8061266208077643,
+                "p95": 0.8081138009590507,
+                "max": 0.8082628394921908
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 122,
+              "min_angle_xyz": {
+                "min": 40.056269865569526,
+                "p05": 47.72501800634804,
+                "median": 75.64343145632506,
+                "p95": 87.43593485478411,
+                "max": 88.12848042213037
+              },
+              "max_angle_xyz": {
+                "min": 91.0592231706755,
+                "p05": 92.62198210028859,
+                "median": 104.0508604172539,
+                "p95": 128.51082039064303,
+                "max": 135.6105813551311
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0627970110086438,
+                "p05": 1.1002021158165936,
+                "median": 1.3579021853112674,
+                "p95": 2.265035122361281,
+                "max": 2.4925356926639313
+              },
+              "quad_corner_jacobian": {
+                "min": 0.6433232823258506,
+                "p05": 0.7350278968644642,
+                "median": 0.9602018051373494,
+                "p95": 0.9969463368856069,
+                "max": 0.9991157552437729
+              }
+            },
+            "TRI": {
+              "count": 2,
+              "min_angle_xyz": {
+                "min": 59.15074576108777,
+                "p05": 59.15373947608907,
+                "median": 59.18068291110073,
+                "p95": 59.2076263461124,
+                "max": 59.21062006111369
+              },
+              "max_angle_xyz": {
+                "min": 61.25144250441743,
+                "p05": 61.2589741110058,
+                "median": 61.32675857030105,
+                "p95": 61.394543029596306,
+                "max": 61.40207463618468
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0212219576110242,
+                "p05": 1.0212635551696254,
+                "median": 1.0216379331970362,
+                "p95": 1.022012311224447,
+                "max": 1.0220539087830482
+              },
+              "tri_q": {
+                "min": 0.9996042024801838,
+                "p05": 0.9996075879771686,
+                "median": 0.9996380574500323,
+                "p95": 0.999668526922896,
+                "max": 0.9996719124198808
+              }
+            }
+          },
+          "vertex_only": {
+            "TRI": {
+              "count": 26,
+              "min_angle_xyz": {
+                "min": 22.917874803052438,
+                "p05": 23.638108165152865,
+                "median": 36.69417092104646,
+                "p95": 41.864194547215,
+                "max": 41.945591704533
+              },
+              "max_angle_xyz": {
+                "min": 70.33599955757465,
+                "p05": 72.5319931867622,
+                "median": 80.13755172775926,
+                "p95": 101.95664921057094,
+                "max": 104.11484133997462
+              },
+              "edge_ratio_xyz": {
+                "min": 1.4088083282497734,
+                "p05": 1.4410668379303473,
+                "median": 1.657350101656889,
+                "p95": 2.4567509309670017,
+                "max": 2.536878780451849
+              },
+              "tri_q": {
+                "min": 0.6121836302359612,
+                "p05": 0.6216012872443476,
+                "median": 0.8519986554905925,
+                "p95": 0.9165537316011102,
+                "max": 0.9213852738729998
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 163,
+          "region": "vertex_only",
+          "vertices": [
+            10,
+            135,
+            165
+          ],
+          "kind": "TRI",
+          "tri_q": 0.6121836302359612,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 22.917874803052438,
+          "max_angle_xyz": 98.9260927272805,
+          "edge_ratio_xyz": 2.536878780451849,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.13273909889514726,
+              0.24580134800761821
+            ],
+            [
+              0.1365799081314046,
+              0.30329786233642814
+            ],
+            [
+              0.0,
+              0.272552490234375
+            ]
+          ]
+        }
+      },
+      {
+        "profile": "legacy",
+        "step": 2,
+        "phase": "before",
+        "tri_accepted": false,
+        "sha256": "8cd43542809f96493dbc732c78a525936d422e8225a7d03d54a47ae23ff28a3b",
+        "nodes": 953,
+        "elements": 934,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 74,
+              "min_angle_xyz": {
+                "min": 42.89946362833868,
+                "p05": 47.25659596638501,
+                "median": 62.03051527828239,
+                "p95": 72.96891313276791,
+                "max": 75.55640712573695
+              },
+              "max_angle_xyz": {
+                "min": 106.44712963811794,
+                "p05": 108.54017574362149,
+                "median": 118.84130464445299,
+                "p95": 134.53381437927538,
+                "max": 153.2718358843452
+              },
+              "edge_ratio_xyz": {
+                "min": 1.217881245816607,
+                "p05": 1.787404655417495,
+                "median": 2.004539440840544,
+                "p95": 2.763048160291624,
+                "max": 3.9469422563952956
+              },
+              "quad_corner_jacobian": {
+                "min": 0.44781399474198086,
+                "p05": 0.7120053553075523,
+                "median": 0.8755338521198717,
+                "p95": 0.946541036615401,
+                "max": 0.9589806994229144
+              }
+            },
+            "TRI": {
+              "count": 34,
+              "min_angle_xyz": {
+                "min": 8.820997210620703,
+                "p05": 13.656490756706248,
+                "median": 31.91246366035675,
+                "p95": 38.005231617135465,
+                "max": 38.06700166650962
+              },
+              "max_angle_xyz": {
+                "min": 74.58803126365687,
+                "p05": 78.27572136891649,
+                "median": 91.74693370105717,
+                "p95": 126.06215708645509,
+                "max": 142.70842010062628
+              },
+              "edge_ratio_xyz": {
+                "min": 1.6217911525757682,
+                "p05": 1.6235689111045162,
+                "median": 1.8917173720663252,
+                "p95": 3.652247306618116,
+                "max": 3.9509583512384827
+              },
+              "tri_q": {
+                "min": 0.24832532583374495,
+                "p05": 0.38516563317953767,
+                "median": 0.7754343428839647,
+                "p95": 0.8543000802512172,
+                "max": 0.8577999506509556
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 784,
+              "min_angle_xyz": {
+                "min": 58.40019270530869,
+                "p05": 71.51207254127921,
+                "median": 88.41260401574905,
+                "p95": 89.97936310573084,
+                "max": 89.99868372934789
+              },
+              "max_angle_xyz": {
+                "min": 90.00185160431096,
+                "p05": 90.01730539242155,
+                "median": 91.57753063160527,
+                "p95": 108.43214799451857,
+                "max": 121.64157850811253
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0011011520512965,
+                "p05": 1.0202702816884872,
+                "median": 1.145735732354848,
+                "p95": 1.9893277060957986,
+                "max": 2.6546557519835043
+              },
+              "quad_corner_jacobian": {
+                "min": 0.8510674897913958,
+                "p05": 0.9481391024332855,
+                "median": 0.9995147148213523,
+                "p95": 0.9999968726993783,
+                "max": 0.9999996473242808
+              }
+            }
+          },
+          "vertex_only": {
+            "TRI": {
+              "count": 42,
+              "min_angle_xyz": {
+                "min": 17.871975650840263,
+                "p05": 24.34602088147036,
+                "median": 33.74695355138087,
+                "p95": 37.73264857834896,
+                "max": 38.326169677008934
+              },
+              "max_angle_xyz": {
+                "min": 71.14246966996718,
+                "p05": 73.55294333382378,
+                "median": 80.57042406898935,
+                "p95": 100.85423346624616,
+                "max": 115.76048852073278
+              },
+              "edge_ratio_xyz": {
+                "min": 1.54620674951921,
+                "p05": 1.5487080973370302,
+                "median": 1.7848206054040543,
+                "p95": 2.38239701332619,
+                "max": 2.9346519919819523
+              },
+              "tri_q": {
+                "min": 0.4848905649548609,
+                "p05": 0.6359109821349396,
+                "median": 0.8146867240564186,
+                "p95": 0.8764493927649422,
+                "max": 0.8828821954921292
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 787,
+          "region": "contour_edge",
+          "vertices": [
+            844,
+            845,
+            1
+          ],
+          "kind": "TRI",
+          "tri_q": 0.24832532583374495,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 8.820997210620703,
+          "max_angle_xyz": 142.70842010062628,
+          "edge_ratio_xyz": 3.9509583512384827,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.03225078018398442,
+              0.0
+            ],
+            [
+              0.04834470610018737,
+              0.0
+            ],
+            [
+              0.0625,
+              0.0625
+            ]
+          ]
+        }
+      },
+      {
+        "profile": "legacy",
+        "step": 2,
+        "phase": "after",
+        "tri_accepted": false,
+        "sha256": "242d59f609a783e92cea136dbb081193e6f1828db72051f1abd57cb2cc4eb759",
+        "nodes": 953,
+        "elements": 934,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 74,
+              "min_angle_xyz": {
+                "min": 38.43443930103772,
+                "p05": 45.765961692144884,
+                "median": 55.76887959900888,
+                "p95": 65.25114200666772,
+                "max": 67.10546008728537
+              },
+              "max_angle_xyz": {
+                "min": 110.22332705401219,
+                "p05": 113.60761734933911,
+                "median": 125.48266202629978,
+                "p95": 140.54764993540977,
+                "max": 157.0477534761267
+              },
+              "edge_ratio_xyz": {
+                "min": 1.3359854608415467,
+                "p05": 1.7630574041890288,
+                "median": 2.457002642172725,
+                "p95": 2.73932881553221,
+                "max": 3.0410929548988963
+              },
+              "quad_corner_jacobian": {
+                "min": 0.3887965454600952,
+                "p05": 0.620971252826242,
+                "median": 0.7998220865565875,
+                "p95": 0.9071050094301032,
+                "max": 0.9209532899436024
+              }
+            },
+            "TRI": {
+              "count": 34,
+              "min_angle_xyz": {
+                "min": 13.65649075670619,
+                "p05": 15.862769284439207,
+                "median": 48.272975678173445,
+                "p95": 54.35869907283452,
+                "max": 55.63341846796831
+              },
+              "max_angle_xyz": {
+                "min": 65.27741275542435,
+                "p05": 65.77089849078915,
+                "median": 72.6878356574159,
+                "p95": 122.69188562972651,
+                "max": 138.24849194254364
+              },
+              "edge_ratio_xyz": {
+                "min": 1.1169410015923857,
+                "p05": 1.1392698666125884,
+                "median": 1.2857767242100395,
+                "p95": 3.2549969780006434,
+                "max": 3.652247306618132
+              },
+              "tri_q": {
+                "min": 0.3851656331795364,
+                "p05": 0.3957646151607519,
+                "median": 0.9545249954536109,
+                "p95": 0.9870592953466752,
+                "max": 0.991909598251393
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 784,
+              "min_angle_xyz": {
+                "min": 51.07447012666012,
+                "p05": 72.08703340354289,
+                "median": 87.30659755265319,
+                "p95": 89.87181986474926,
+                "max": 89.98804861472993
+              },
+              "max_angle_xyz": {
+                "min": 90.0131950435417,
+                "p05": 90.12139261396638,
+                "median": 92.65176119951886,
+                "p95": 108.00878047242296,
+                "max": 128.0037302823333
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0020952190226766,
+                "p05": 1.017849367026714,
+                "median": 1.1359405646542797,
+                "p95": 1.7501445844195722,
+                "max": 2.025783923046599
+              },
+              "quad_corner_jacobian": {
+                "min": 0.7775745629587333,
+                "p05": 0.9490705345330843,
+                "median": 0.9987822983534153,
+                "p95": 0.9999928455423566,
+                "max": 0.9999989996323075
+              }
+            }
+          },
+          "vertex_only": {
+            "TRI": {
+              "count": 42,
+              "min_angle_xyz": {
+                "min": 38.342376573290665,
+                "p05": 38.84151507388586,
+                "median": 47.21422463381498,
+                "p95": 51.91475457180835,
+                "max": 52.306997606488856
+              },
+              "max_angle_xyz": {
+                "min": 65.99060589146825,
+                "p05": 66.21488289391911,
+                "median": 70.97210291487986,
+                "p95": 86.68132233681567,
+                "max": 92.03947779573132
+              },
+              "edge_ratio_xyz": {
+                "min": 1.1592128914484194,
+                "p05": 1.1849914047140007,
+                "median": 1.2823164219432301,
+                "p95": 1.5937647260333399,
+                "max": 1.6068395300608433
+              },
+              "tri_q": {
+                "min": 0.8356732382381583,
+                "p05": 0.8607021854301262,
+                "median": 0.9583567527031348,
+                "p95": 0.979978476593048,
+                "max": 0.985123415070266
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 859,
+          "region": "contour_edge",
+          "vertices": [
+            842,
+            843,
+            953
+          ],
+          "kind": "TRI",
+          "tri_q": 0.3851656331795364,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 13.65649075670619,
+          "max_angle_xyz": 120.4245577683883,
+          "edge_ratio_xyz": 3.652247306618132,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.01612539009199221,
+              0.0
+            ],
+            [
+              0.0,
+              0.07758410458336584
+            ]
+          ]
+        }
+      },
+      {
+        "profile": "legacy",
+        "step": 3,
+        "phase": "before",
+        "tri_accepted": false,
+        "sha256": "8cd43542809f96493dbc732c78a525936d422e8225a7d03d54a47ae23ff28a3b",
+        "nodes": 953,
+        "elements": 934,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 74,
+              "min_angle_xyz": {
+                "min": 42.89946362833868,
+                "p05": 47.25659596638501,
+                "median": 62.03051527828239,
+                "p95": 72.96891313276791,
+                "max": 75.55640712573695
+              },
+              "max_angle_xyz": {
+                "min": 106.44712963811794,
+                "p05": 108.54017574362149,
+                "median": 118.84130464445299,
+                "p95": 134.53381437927538,
+                "max": 153.2718358843452
+              },
+              "edge_ratio_xyz": {
+                "min": 1.217881245816607,
+                "p05": 1.787404655417495,
+                "median": 2.004539440840544,
+                "p95": 2.763048160291624,
+                "max": 3.9469422563952956
+              },
+              "quad_corner_jacobian": {
+                "min": 0.44781399474198086,
+                "p05": 0.7120053553075523,
+                "median": 0.8755338521198717,
+                "p95": 0.946541036615401,
+                "max": 0.9589806994229144
+              }
+            },
+            "TRI": {
+              "count": 34,
+              "min_angle_xyz": {
+                "min": 8.820997210620703,
+                "p05": 13.656490756706248,
+                "median": 31.91246366035675,
+                "p95": 38.005231617135465,
+                "max": 38.06700166650962
+              },
+              "max_angle_xyz": {
+                "min": 74.58803126365687,
+                "p05": 78.27572136891649,
+                "median": 91.74693370105717,
+                "p95": 126.06215708645509,
+                "max": 142.70842010062628
+              },
+              "edge_ratio_xyz": {
+                "min": 1.6217911525757682,
+                "p05": 1.6235689111045162,
+                "median": 1.8917173720663252,
+                "p95": 3.652247306618116,
+                "max": 3.9509583512384827
+              },
+              "tri_q": {
+                "min": 0.24832532583374495,
+                "p05": 0.38516563317953767,
+                "median": 0.7754343428839647,
+                "p95": 0.8543000802512172,
+                "max": 0.8577999506509556
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 784,
+              "min_angle_xyz": {
+                "min": 58.40019270530869,
+                "p05": 71.51207254127921,
+                "median": 88.41260401574905,
+                "p95": 89.97936310573084,
+                "max": 89.99868372934789
+              },
+              "max_angle_xyz": {
+                "min": 90.00185160431096,
+                "p05": 90.01730539242155,
+                "median": 91.57753063160527,
+                "p95": 108.43214799451857,
+                "max": 121.64157850811253
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0011011520512965,
+                "p05": 1.0202702816884872,
+                "median": 1.145735732354848,
+                "p95": 1.9893277060957986,
+                "max": 2.6546557519835043
+              },
+              "quad_corner_jacobian": {
+                "min": 0.8510674897913958,
+                "p05": 0.9481391024332855,
+                "median": 0.9995147148213523,
+                "p95": 0.9999968726993783,
+                "max": 0.9999996473242808
+              }
+            }
+          },
+          "vertex_only": {
+            "TRI": {
+              "count": 42,
+              "min_angle_xyz": {
+                "min": 17.871975650840263,
+                "p05": 24.34602088147036,
+                "median": 33.74695355138087,
+                "p95": 37.73264857834896,
+                "max": 38.326169677008934
+              },
+              "max_angle_xyz": {
+                "min": 71.14246966996718,
+                "p05": 73.55294333382378,
+                "median": 80.57042406898935,
+                "p95": 100.85423346624616,
+                "max": 115.76048852073278
+              },
+              "edge_ratio_xyz": {
+                "min": 1.54620674951921,
+                "p05": 1.5487080973370302,
+                "median": 1.7848206054040543,
+                "p95": 2.38239701332619,
+                "max": 2.9346519919819523
+              },
+              "tri_q": {
+                "min": 0.4848905649548609,
+                "p05": 0.6359109821349396,
+                "median": 0.8146867240564186,
+                "p95": 0.8764493927649422,
+                "max": 0.8828821954921292
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 787,
+          "region": "contour_edge",
+          "vertices": [
+            844,
+            845,
+            1
+          ],
+          "kind": "TRI",
+          "tri_q": 0.24832532583374495,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 8.820997210620703,
+          "max_angle_xyz": 142.70842010062628,
+          "edge_ratio_xyz": 3.9509583512384827,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.03225078018398442,
+              0.0
+            ],
+            [
+              0.04834470610018737,
+              0.0
+            ],
+            [
+              0.0625,
+              0.0625
+            ]
+          ]
+        }
+      },
+      {
+        "profile": "legacy",
+        "step": 3,
+        "phase": "after",
+        "tri_accepted": false,
+        "sha256": "d9f45d0e2fa2d630640fba1b87a4529cb7f4b36bd2c32b20cb757d5db32e5893",
+        "nodes": 953,
+        "elements": 934,
+        "groups": {
+          "contour_edge": {
+            "QUAD": {
+              "count": 74,
+              "min_angle_xyz": {
+                "min": 38.43443930103772,
+                "p05": 45.765961692144884,
+                "median": 55.76887959900888,
+                "p95": 65.25114200666772,
+                "max": 67.10546008728537
+              },
+              "max_angle_xyz": {
+                "min": 110.22332705401219,
+                "p05": 113.60761734933911,
+                "median": 125.48266202629978,
+                "p95": 140.54764993540977,
+                "max": 157.0477534761267
+              },
+              "edge_ratio_xyz": {
+                "min": 1.3359854608415467,
+                "p05": 1.7630574041890288,
+                "median": 2.457002642172725,
+                "p95": 2.73932881553221,
+                "max": 3.0410929548988963
+              },
+              "quad_corner_jacobian": {
+                "min": 0.3887965454600952,
+                "p05": 0.620971252826242,
+                "median": 0.7998220865565875,
+                "p95": 0.9071050094301032,
+                "max": 0.9209532899436024
+              }
+            },
+            "TRI": {
+              "count": 34,
+              "min_angle_xyz": {
+                "min": 13.65649075670619,
+                "p05": 15.862769284439207,
+                "median": 48.272975678173445,
+                "p95": 54.35869907283452,
+                "max": 55.63341846796831
+              },
+              "max_angle_xyz": {
+                "min": 65.27741275542435,
+                "p05": 65.77089849078915,
+                "median": 72.6878356574159,
+                "p95": 122.69188562972651,
+                "max": 138.24849194254364
+              },
+              "edge_ratio_xyz": {
+                "min": 1.1169410015923857,
+                "p05": 1.1392698666125884,
+                "median": 1.2857767242100395,
+                "p95": 3.2549969780006434,
+                "max": 3.652247306618132
+              },
+              "tri_q": {
+                "min": 0.3851656331795364,
+                "p05": 0.3957646151607519,
+                "median": 0.9545249954536109,
+                "p95": 0.9870592953466752,
+                "max": 0.991909598251393
+              }
+            }
+          },
+          "interior": {
+            "QUAD": {
+              "count": 784,
+              "min_angle_xyz": {
+                "min": 51.07447012666012,
+                "p05": 72.08703340354289,
+                "median": 87.30659755265319,
+                "p95": 89.87181986474926,
+                "max": 89.98804861472993
+              },
+              "max_angle_xyz": {
+                "min": 90.0131950435417,
+                "p05": 90.12139261396638,
+                "median": 92.65176119951886,
+                "p95": 108.00878047242296,
+                "max": 128.0037302823333
+              },
+              "edge_ratio_xyz": {
+                "min": 1.0020952190226766,
+                "p05": 1.017849367026714,
+                "median": 1.1359405646542797,
+                "p95": 1.7501445844195722,
+                "max": 2.025783923046599
+              },
+              "quad_corner_jacobian": {
+                "min": 0.7775745629587333,
+                "p05": 0.9490705345330843,
+                "median": 0.9987822983534153,
+                "p95": 0.9999928455423566,
+                "max": 0.9999989996323075
+              }
+            }
+          },
+          "vertex_only": {
+            "TRI": {
+              "count": 42,
+              "min_angle_xyz": {
+                "min": 38.342376573290665,
+                "p05": 38.84151507388586,
+                "median": 47.21422463381498,
+                "p95": 51.91475457180835,
+                "max": 52.306997606488856
+              },
+              "max_angle_xyz": {
+                "min": 65.99060589146825,
+                "p05": 66.21488289391911,
+                "median": 70.97210291487986,
+                "p95": 86.68132233681567,
+                "max": 92.03947779573132
+              },
+              "edge_ratio_xyz": {
+                "min": 1.1592128914484194,
+                "p05": 1.1849914047140007,
+                "median": 1.2823164219432301,
+                "p95": 1.5937647260333399,
+                "max": 1.6068395300608433
+              },
+              "tri_q": {
+                "min": 0.8356732382381583,
+                "p05": 0.8607021854301262,
+                "median": 0.9583567527031348,
+                "p95": 0.979978476593048,
+                "max": 0.985123415070266
+              }
+            }
+          }
+        },
+        "worst_min_angle": {
+          "face": 859,
+          "region": "contour_edge",
+          "vertices": [
+            842,
+            843,
+            953
+          ],
+          "kind": "TRI",
+          "tri_q": 0.3851656331795364,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 13.65649075670619,
+          "max_angle_xyz": 120.4245577683883,
+          "edge_ratio_xyz": 3.652247306618132,
+          "S_uv": null,
+          "S_xyz": null,
+          "uv": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.01612539009199221,
+              0.0
+            ],
+            [
+              0.0,
+              0.07758410458336584
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "quality_observations": 6206,
+  "limitations": "Two observational runs of a single existing configuration. The incremental build replaced the first observer executable. Its original source hash and raw output are retained. A normalized native sizing proxy is not an output edge length. Prior full and hosted regression receipts retain their original scope.",
+  "next_action": "Seek explicit adoption for a single-patch opt-in accepted-TRI handoff: exact matches by provenance, linear signed-channel interpolation at new bracketed parameters, compare final element quality.",
+  "mixed_global_error": null,
+  "accepted_mixed_epochs": 0
+}

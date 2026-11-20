@@ -78,9 +78,15 @@ The aligned [same-case legacy bound comparison](LEGACY_BOUNDS_COMPARISON_2026112
 confirms Step2/3 source rejections at112 contour segments after the Step1
 acceptance. Transition size/angle gains on the rejected candidate coexist with
 worse contour minima and excessive growth. Close this global configuration
-comparison. Next trace the surface-informed Step1→2 growth at original curve
-intervals against neighboring native sizes, then seek alignment for a local
-change if the trace supports it. Preserve original curve/domain restrictions.
+comparison. The [native curve spacing and quality trace](SURFACE_CURVE_SPACING_QUALITY_TRACE_20261120.md)
+finds zero discrete endpoints in28 intervals and the full point jump before
+neighbor restriction. Exact geometry/source lineage reproduction and6206 shape
+measurements separate contour-edge, vertex-only and interior TRI/QUAD quality.
+The second observational replay identifies the handoff mismatch at all20
+accepted contour sites by ID/XYZ. Next seek adoption for a single-patch opt-in
+handoff with accepted exact matches and interpolation at new bracketed sites.
+Preserve original curve/domain restrictions and report worst final shape as well
+as distributions before and after smoothing.
 Keep PR243 draft. Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned

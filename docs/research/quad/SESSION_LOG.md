@@ -3882,3 +3882,29 @@ subdivision at Step1→2 before proposing a coordinated sizing change. Preserve
 original core and distinct regional refinement. No new native build, default
 policy, mixed acceptance, integration or broad test campaign. Update and verify
 canonical state, roadmap, overview, session and scoped archive evidence.
+
+## 2026-11-20 Fortaleza - native interval trace and final element quality
+
+Researcher requests the planned trace and emphasizes final shape and angle
+quality. Read canonical533c85a and draft PR243/c93a383 with exact original
+checks. Build one isolated C++17 MSVC Debug observer, no production or
+configuration-rule edits. Native replay exits0 in47.94s with identical eight
+snapshots, manifest, curve stages, pair CSVs and last accepted mixed output.
+Reproduce both original rejections. The native interval audit verifies28 Step2
+requests, zero endpoints,29.6985% length requests and no new points from
+neighbor restriction. Match raw/smoothed native sizing to104 accepted TRI
+faces by UV overlap. A second incrementally instrumented replay exits0 in44.71s
+with identical geometry and trace rows. All63 prior accepted TRI nodes match the
+Step1 OBJ. All20 unique matched contour sites carry a nonzero TRI Gd or Hd while
+their curve copies already hold zeros before reconstruction. Fresh interior
+curve nodes also initialize their discrete curvature fields to zero.
+
+Evaluate6206 archived mixed faces, by region/type and smoothing phase. Keep
+TRI angle/shape gains alongside contour QUAD angle/Jacobian losses. Worst
+elements and distributions are required comparative evidence for next fixes.
+Next seek adoption of single-patch opt-in accepted TRI values at exact sites,
+with linear interpolation of signed channels on new bracketed same-side sites.
+No production change, new acceptance cutoff,
+fresh full baseline or hosted campaign, or phase closure. Retain the isolated
+debugger-free observer and raw logs locally, publish the scoped evidence and
+verify the canonical documentation checkpoint.

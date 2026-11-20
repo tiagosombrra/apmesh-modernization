@@ -3,7 +3,7 @@
 Updated 2026-11-20 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: legacy bound comparison closed; surface-informed curve growth to trace
+## Active: accepted curvature handoff diagnosed; local trial proposed
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,37 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-20 - native surface-curve trace and mixed quality reassessment
+
+[Report](SURFACE_CURVE_SPACING_QUALITY_TRACE_20261120.md) and
+[evidence](evidence/SURFACE_CURVE_SPACING_QUALITY_TRACE_20261120.json) use one
+isolated observational MSVC build/replay based on c93a383. Exit0 in47.94s under
+the existing180s. Eight mesh snapshots, manifest, curve stages and pair CSVs
+match the retained run byte for byte. Step2/3 original TRI rejection remains.
+
+All28 Step2 surface intervals read zero discrete curvature at both endpoints and
+nonzero analytical midpoint curvature. The request is29.6985% of old spacing.
+The curved side already has65 points and the straight sides17 each before
+neighbor restriction. Adjacent native sizing was bound to104 prior TRI faces.
+The curved-side median request0.04066 is smaller than its domain proxy0.05518,
+whereas straight-side0.14849 exceeds their domain proxies0.06532–0.08858.
+
+Review6206 mixed elements by type and region before/after smoothing. Fixed Step2
+contour QUAD angle23.28→15.64 and corner Jacobian0.394→0.224 worsen. Vertex-only
+TRI angle4.82→9.59 and area score0.135→0.272 improve. Retain angle extrema,
+edge ratios and separate TRI/QUAD quality scores in comparisons of final meshes.
+
+A second observational replay matches all63 accepted TRI nodes by ID/XYZ and
+matches all20 unique contour sites. Every matched accepted TRI node has nonzero
+Gd or Hd. The matching curve copies already hold zeros before the rebuild.
+The replay exits0, preserving mesh and trace bytes.
+
+**Next:** obtain explicit alignment for one single-patch opt-in handoff trial.
+Use accepted TRI values at matching parameters and signed-channel linear
+interpolation at new bracketed sites. Retain sizing formulas, initial history,
+source acceptance and final mixed shape checks by type and region. No sizing
+change or adaptive acceptance was implemented. Draft PR243 stays separate.
 
 ### 2026-11-20 - single legacy bound comparison completed
 

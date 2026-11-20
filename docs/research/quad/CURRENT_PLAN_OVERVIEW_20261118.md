@@ -39,8 +39,11 @@ The [20 November generation audit](BOUNDARY_GENERATION_AUDIT_20261120.md)
 prioritizes the contour/interior transition. The current profile preserves the
 original two straight segments per side as the mixed interior refines. The [single legacy bound comparison](LEGACY_BOUNDS_COMPARISON_20261120.md)
 reproduces Step2/3 source rejections at112 contour segments despite measurable
-transition gains. Keep fixed1.5 as the retained reference. Next trace the
-surface-informed growth before proposing a local curve/transition adjustment.
+transition gains. Keep fixed1.5 as the retained reference. The [native trace](SURFACE_CURVE_SPACING_QUALITY_TRACE_20261120.md)
+locates growth before curve neighbor restriction and matches20 curve inputs
+with zero values to accepted TRI nodes with measured curvature. Next align a
+local handoff experiment using the accepted values.
+Track final angle extremes, edge ratio and separate TRI/QUAD shape metrics.
 Further curvature estimator changes wait for this generation work.
 
 ## What prevents calling the technique complete
