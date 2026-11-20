@@ -114,3 +114,35 @@ This diagnostic uses original P1 and unaccepted Band source OBJ and measures
 in-process FastAPI TestClient request duration with cache forcibly cleared
 versus warm; it is **not** a TCP, browser paint or GPU performance benchmark.
 Browser and numerical integration tests remain required before release.
+
+## V5.2 original accepted Eistute and Book TRI vector article figures
+
+V5.2 is **a separate real original C++ accepted-TRI source track**.
+Its [method, source hashes, figure inventory and limitations](../../../docs/mesh-studio/V5_2_ORIGINAL_ACCEPTED_NATIVE_TRI_VECTOR_RESULTS_20261120.md)
+are not interchangeable with P1's earlier vector export.
+
+1. In Mesh Studio choose **Abrir estudo TRI original aceito**, or open
+   `/?nativeScene=1`. Upload `r2720-native-accepted-scene.json` from the
+   **same** original GitHub Actions V5.2 research ZIP.
+2. In the native panel, upload **all three** other files together:
+   `manifest.json`, `eistute-accepted-step1-uv.svg` and
+   `book-accepted-step1-uv.svg`. The source artifact's original native
+   C++ pipeline regenerated and audited these exact files from its retained
+   postcommit `r2712` NDJSON; the browser will not do an unauthenticated
+   raw JSON -> SVG source certification.
+3. The client hashes the exact uploaded scene and each SVG, checks original
+   source model/config/raw face SHAs against the scene, verifies all original
+   per-patch source face identities and UV coordinates in the vector polygons,
+   and rejects raster/scripts/external dependencies or false LOD claims.
+   The browser then previews and permits downloading the current model's
+   **genuine 2D vector patch-local UV** figure.
+
+**Caveat:** a sufficiently malicious user could forge a mutually matching
+scene JSON, manifest and SVG; the browser only guarantees **internal file
+integrity**, not authentic original C++ execution. Original source acceptance
+is established by the upstream same-run native generator and independent raw
+NDJSON audit in CI, not by file declarations or user-controlled hashes.
+No physical native seam welding, multi-accepted-epoch lineage, continuous
+geometric error, anisotropic/ALL-QUAD method, vectorized 3D renderer, or
+scientific R2.8 LOD is implied. Browser test fixtures based on synthetic
+generated inputs never substitute the real same-run original C++ artifacts.

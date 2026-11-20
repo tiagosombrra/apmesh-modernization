@@ -8,6 +8,7 @@
 
 | Evidence | Exact-source checkpoint | Meaning / limitation |
 | --- | --- | --- |
+| V5.2 original accepted C++ TRI vector publication | [Real Eistute/Book source-native UV SVG and provenance](V5_2_ORIGINAL_ACCEPTED_NATIVE_TRI_VECTOR_RESULTS_20261120.md) | **1,168** Eistute and **4,256** Book original globally accepted TRI faces, per-source-patch vector SVG, original face/curve/sample identities and exact source SHA; scientifically distinct from P1, not welded LOD. |
 | V5.1 measured Web cache and vector workflow | [Cache measurements, source SVG and bounded Web UI](V5_1_SOURCE_CACHE_AND_VECTOR_STUDY_WORKSPACE_20261120.md) | 16 paired real P1/Band cold/warm source-locked measurements; separate original TRI inspector, pure UV vector export and abortable fetches. This is **product engineering**, not source-native accepted LOD. |
 | R2.7.31 original accepted gate | [Original native AFT transition study](R2_7_31_SELECTED_ORIGINAL_AFT_GATE_RESULTS_20261119.md) | 16 actually selected step-4 local returns per original and min13 process remain underresolved; they are not committed epochs |
 | R2.7.32 original pre-AFT UV | [Actual Quadtree UV source observations](R2_7_32_ORIGINAL_SELECTED_PREAFT_UV_RESULTS_20261119.md) | Selected local Quadtree UV input, not post-AFT selected TRI |
