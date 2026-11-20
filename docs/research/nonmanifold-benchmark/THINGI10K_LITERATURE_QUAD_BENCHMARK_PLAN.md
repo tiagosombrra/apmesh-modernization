@@ -94,3 +94,7 @@ The APMesh method and QuadWild solve **not automatically identical problems**. I
 ## Next concrete deliverable and safeguards
 
 The CSV is a **literature-grounded roster**, not an admission certificate. Next, query *per-ID* dataset metadata and rights, use the six-item smoke test, verify the exact QuadWild per-ID archives, determine which inputs the APMesh pipeline can represent, and add selected geometric previews with clear source attribution. Preserve historical Book/Eistute/Decor Shelf and all four selected original MAMBO models. Keep PR #225 DRAFT; no `main` merge or claim of executed comparative APMesh results without actual runs.
+
+## Adjacent high-order Bézier literature (not a Thingi10K QUAD reference)
+
+Martorell and Badia, *High order unfitted finite element discretizations for explicit boundary representations*, **Journal of Computational Physics** (2024), [DOI 10.1016/j.jcp.2024.113127](https://doi.org/10.1016/j.jcp.2024.113127), also uses CAD B-Rep and Bézier patch approximations for higher-order unfitted geometric integration. It is technically relevant to the **CAD→Bézier approximation and geometric-fidelity** discussion, but **is not an established pure-quad surface-mesh comparator** for these 23 Thingi10K IDs. Keep it as an adjacent method and do not collapse its high-order integration errors into quad shape-quality scores.
