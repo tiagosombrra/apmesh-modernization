@@ -1,16 +1,16 @@
 import type { FaceDetail, MeshGeometry, ModelCatalog, Space } from './contracts';
 import { decodeGeometryV2 } from './binaryGeometryV2';
 
-async function query<T>(path: string): Promise<T> {
-  const response = await fetch(`/api/v1/${path}`, { headers: { Accept: 'application/json' } });
+async function query<T>(path: string, signal?: AbortSignal): Promise<T> {
+  const response = await fetch(`/api/v1/${path}`, { headers: { Accept: 'application/json' }, signal });
   if (!response.ok) throw new Error(`API ${response.status}: ${path}`);
   return await response.json() as T;
 }
 
-async function binaryGeometry(id: string, space: Space): Promise<MeshGeometry> {
+async function binaryGeometry(id: string, space: Space, signal?: AbortSignal): Promise<MeshGeometry> {
   const path = `models/${encodeURIComponent(id)}/geometry.v2.bin?space=${space}`;
   const response = await fetch(`/api/v1/${path}`, {
-    headers: { Accept: 'application/vnd.apmesh.geometry.v2' },
+    headers: { Accept: 'application/vnd.apmesh.geometry.v2' }, signal,
   });
   if (!response.ok) throw new Error(`API ${response.status}: ${path}`);
   const result = decodeGeometryV2(await response.arrayBuffer(), space);
@@ -21,8 +21,8 @@ async function binaryGeometry(id: string, space: Space): Promise<MeshGeometry> {
 }
 
 export const studyApi = {
-  catalog: (): Promise<ModelCatalog> => query('models'),
+  catalog: (signal?: AbortSignal): Promise<ModelCatalog> => query('models', signal),
   geometry: binaryGeometry,
-  face: (id: string, faceId: number): Promise<FaceDetail> =>
-    query(`models/${encodeURIComponent(id)}/faces/${faceId}`),
+  face: (id: string, faceId: number, signal?: AbortSignal): Promise<FaceDetail> =>
+    query(`models/${encodeURIComponent(id)}/faces/${faceId}`, signal),
 };
