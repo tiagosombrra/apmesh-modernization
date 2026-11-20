@@ -1,0 +1,25 @@
+{
+  "source": "AUTHOR_CONSTRUCTED_SYNTHETIC_CYLINDER_NOT_M5",
+  "raw_sha256": "cd5979b3ad1ae719bb2182cd8e2b0589b058e2fa2c3af6b9b4faceb331876f41",
+  "native_step_source_face": [
+    17
+  ],
+  "audit": [
+    {
+      "schema": "apmesh-s3h-independent-cylinder-audit-v1",
+      "source_face_id": 17,
+      "source_sweep_rad_verified": 2.102093169775145,
+      "original_generator_edges_checked": 2,
+      "derived_seams_verified": 3,
+      "independent_samples": 4900,
+      "maximum_sampled_distance_mm": 0.0003954273701707701,
+      "rms_sampled_distance_mm": 0.00024841938509168727,
+      "prespecified_budget_mm": 0.001,
+      "sampled_budget_pass": true,
+      "continuous_error_bound": "NOT_CERTIFIED",
+      "native_source_face_trim": "NOT_RUN",
+      "apmesh_generation": "NOT_RUN"
+    }
+  ],
+  "source_original_m5_native": "NOT_RUN"
+}

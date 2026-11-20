@@ -1,0 +1,19 @@
+{
+  "apmesh_generation": "NOT_RUN",
+  "case": "cross_junction",
+  "classification": "PINNED_SOURCE_RECIPE_CONTROL_ONLY",
+  "curve_incidence_histogram": {
+    "1": 28,
+    "3": 4
+  },
+  "external_model_admission": "NOT_GRANTED",
+  "max_analytic_coordinate_error": 3.552713678800501e-15,
+  "max_native_surface_distance": 0.0,
+  "native_interior_samples": 250,
+  "patch_count": 10,
+  "schema": "apmesh-r3c2-independent-validation-v1",
+  "shared_three_face_curves": 4,
+  "surface_samples": 490,
+  "unique_boundary_curves": 32,
+  "unique_control_vertices": 128
+}

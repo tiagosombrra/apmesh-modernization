@@ -1,0 +1,143 @@
+{
+  "schema": "apmesh-s3h-independent-pinned-original-m5-cylindrical-bounded-sampling-v1",
+  "original_source_file": "i05o_m5.step",
+  "upstream_repository": "cgg-bern/hex-me-if-you-can",
+  "upstream_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "upstream_git_blob_sha1": "d72e5e3cb3de9ebdec80253cfa9b57fa1b7132f7",
+  "scope": "ORIGINAL_STEP_SOURCE_ENTITY_GEOMETRY_ONLY_NOT_NATIVE_BREP",
+  "method": "Independent STEP graph arc orientation plus Hermite cubic U section vs analytic cylinder sampled at 65x65 grid per patch",
+  "prespecified_sampled_budget_mm": 0.001,
+  "original_face_ids": [
+    3493,
+    3976
+  ],
+  "original_original_step_bytes_redistributed": false,
+  "face_records": [
+    {
+      "face_id": 3493,
+      "original_support_entity_id": 423,
+      "source_anchored_generator_edge_curve_ids": [
+        3473,
+        3497
+      ],
+      "original_arc_edge_curve_ids": [
+        406,
+        3522
+      ],
+      "raw_original_step_sha256_recomputed": false,
+      "source_generator_pcurve_u_parameters": [
+        {
+          "edge_id": 3497,
+          "u": 5.243685823365
+        },
+        {
+          "edge_id": 3473,
+          "u": 3.14159265359
+        }
+      ],
+      "signed_sector_sweep_rad": -2.102093169774461,
+      "sector_angle_absolute_rad": 2.102093169774461,
+      "axial_height_mm": 15,
+      "radius_mm": 2,
+      "arc_direction_agreement": true,
+      "original_arc_u_closure_residual_rad": -5.400124791776761e-13,
+      "segment_trials": [
+        {
+          "sectors": 2,
+          "patch_count": 2,
+          "source_face_id": 3493,
+          "sample_count": 8450,
+          "maximum_sampled_distance_mm": 0.006239877152630269,
+          "rms_sampled_distance_mm": 0.003945599027124245,
+          "predeclared_pilot_budget_mm": 0.001,
+          "sampled_budget_pass": false
+        },
+        {
+          "sectors": 4,
+          "patch_count": 4,
+          "source_face_id": 3493,
+          "sample_count": 16900,
+          "maximum_sampled_distance_mm": 0.0003954273703054815,
+          "rms_sampled_distance_mm": 0.00025009980434112793,
+          "predeclared_pilot_budget_mm": 0.001,
+          "sampled_budget_pass": true
+        },
+        {
+          "sectors": 6,
+          "patch_count": 6,
+          "source_face_id": 3493,
+          "sample_count": 25350,
+          "maximum_sampled_distance_mm": 0.00007830923532520943,
+          "rms_sampled_distance_mm": 0.0000495313125209451,
+          "predeclared_pilot_budget_mm": 0.001,
+          "sampled_budget_pass": true
+        }
+      ]
+    },
+    {
+      "face_id": 3976,
+      "original_support_entity_id": 282,
+      "source_anchored_generator_edge_curve_ids": [
+        3954,
+        3982
+      ],
+      "original_arc_edge_curve_ids": [
+        261,
+        4005
+      ],
+      "raw_original_step_sha256_recomputed": false,
+      "source_generator_pcurve_u_parameters": [
+        {
+          "edge_id": 3954,
+          "u": 3.14159265359
+        },
+        {
+          "edge_id": 3982,
+          "u": 5.243685823365
+        }
+      ],
+      "signed_sector_sweep_rad": 2.102093169774461,
+      "sector_angle_absolute_rad": 2.102093169774461,
+      "axial_height_mm": 15,
+      "radius_mm": 2,
+      "arc_direction_agreement": true,
+      "original_arc_u_closure_residual_rad": 5.400124791776761e-13,
+      "segment_trials": [
+        {
+          "sectors": 2,
+          "patch_count": 2,
+          "source_face_id": 3976,
+          "sample_count": 8450,
+          "maximum_sampled_distance_mm": 0.006239877152359886,
+          "rms_sampled_distance_mm": 0.003945599027124302,
+          "predeclared_pilot_budget_mm": 0.001,
+          "sampled_budget_pass": false
+        },
+        {
+          "sectors": 4,
+          "patch_count": 4,
+          "source_face_id": 3976,
+          "sample_count": 16900,
+          "maximum_sampled_distance_mm": 0.00039542737016521413,
+          "rms_sampled_distance_mm": 0.0002500998043406016,
+          "predeclared_pilot_budget_mm": 0.001,
+          "sampled_budget_pass": true
+        },
+        {
+          "sectors": 6,
+          "patch_count": 6,
+          "source_face_id": 3976,
+          "sample_count": 25350,
+          "maximum_sampled_distance_mm": 0.0000783092352310961,
+          "rms_sampled_distance_mm": 0.0000495313125209173,
+          "predeclared_pilot_budget_mm": 0.001,
+          "sampled_budget_pass": true
+        }
+      ]
+    }
+  ],
+  "original_occt_uv_trim_oracle": "NOT_RUN",
+  "source_native_face_bijection": "NOT_RUN",
+  "apmesh_generation": "NOT_RUN",
+  "continuous_error_bound": "NOT_CERTIFIED"
+}

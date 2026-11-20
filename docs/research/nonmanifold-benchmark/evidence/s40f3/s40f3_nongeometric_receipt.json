@@ -1,0 +1,49 @@
+{
+  "schema": "apmesh-s40f3-native-trimmed-arc-metric-correction-v1",
+  "date": "2026-11-18",
+  "source_step_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "source_edge_ids": [
+    1307,
+    1336,
+    1415,
+    1444
+  ],
+  "original_source_arc_radii_mm": [
+    6.0,
+    6.0,
+    6.0,
+    6.0
+  ],
+  "source_arc_sweeps_deg": [
+    45.0,
+    45.0,
+    45.0,
+    45.0
+  ],
+  "measurement_source": "pinned upstream STEP entity inspection; no new native imported full CAD test",
+  "sampled_original_arc_primitive_radius_mm": 6.0,
+  "sampled_original_arc_primitive_sweep_deg": 45.0,
+  "previous_synchronized_parameter_distance_mm": 0.005739118302,
+  "corrected_sampled_trimmed_edge_distance_mm": 2.5473041e-05,
+  "old_synthetic_single_arc_under_budget": false,
+  "new_synthetic_single_arc_under_budget": true,
+  "new_synthetic_single_arc_cubic_segments": 1,
+  "budget_mm": 0.001,
+  "s40f1_f2_f3_tests": {
+    "passed": 79,
+    "failed": 0
+  },
+  "s3z4_separate_regression": {
+    "passed": 102,
+    "failed": 0
+  },
+  "source_derived_BP_data_included": false,
+  "new_original_s40_BP_created": false,
+  "new_original_s40_face_admissions": 0,
+  "baseline_s3y_patches": 156,
+  "baseline_s3y_face_coverage": 22,
+  "source_faces_total": 43,
+  "real_original_native_trim_reaudit_run": false,
+  "apmesh_cpp_tri_quad_meshing_run": false,
+  "continuous_hausdorff_certified": false
+}

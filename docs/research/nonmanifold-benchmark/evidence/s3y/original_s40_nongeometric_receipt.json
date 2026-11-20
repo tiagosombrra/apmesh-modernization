@@ -1,0 +1,88 @@
+{
+  "apmesh_tri_quad_meshing": "NOT_RUN",
+  "complete_research_suite_rerun": false,
+  "derived_bp_controls_embedded": false,
+  "directed_original_s40_test_runs": {
+    "S3W": {
+      "failed": 0,
+      "passed": 36,
+      "skipped": 0
+    },
+    "S3X": {
+      "failed": 0,
+      "passed": 23,
+      "skipped": 0
+    },
+    "S3Y": {
+      "failed": 0,
+      "passed": 31,
+      "skipped": 0
+    }
+  },
+  "formal_continuous_trim_certificate": false,
+  "frozen_admitted_parent_bp_sha256": "c826487d8cee76f6649100c59e5ce84fa6cb43c9004f53c68e3e565e86cdb174",
+  "original_source_edge_three_plus_incidence_count": 0,
+  "original_source_face_total": 43,
+  "production_cpp_regression": "NOT_RUN",
+  "rejected_joint_advanced_face_ids": [
+    1827,
+    1907,
+    3044
+  ],
+  "rejected_joint_boundary_out_by_face": {
+    "1827": 18,
+    "1907": 18
+  },
+  "rejected_joint_candidate_control_count": 1685,
+  "rejected_joint_candidate_patch_count": 160,
+  "rejected_joint_native_boundary_out": 36,
+  "represented_original_faces_before": 21,
+  "represented_original_faces_pilot_after": 22,
+  "schema": "apmesh-s3y-original-s40-nongeometric-research-receipt-v1",
+  "selected_child_private_bp_sha256": "af50597db4b8d7b3bcb2fc381596fefc95ba6b6e00ed169576bec7a6b7873177",
+  "selected_combined_patches": 156,
+  "selected_declared_global_controls": 1665,
+  "selected_global_open_indexed_sides": 96,
+  "selected_global_two_sided_seams": 264,
+  "selected_native_audit": {
+    "apmesh_cpp_tri_quad": "NOT_RUN",
+    "by_face": {
+      "3044": {
+        "area_and_orientation": {
+          "approximate_integrated_bp_area_mm2": 578.45226876477,
+          "continuous_coverage_certified": false,
+          "min_sampled_oriented_jacobian": 0.22367256684432757,
+          "native_area_mm2": 578.4690049407732,
+          "sampled_2d_patch_overlap_area": 3.410605131648481e-13,
+          "sampled_2d_union_component_count": 1,
+          "sampled_integrated_area_difference_mm2": -0.016736176003178116,
+          "sampled_numerical_hole_area_mm2": 3.9525899595669024e-14,
+          "sampled_relative_area_difference": 2.8931845717285504e-05
+        },
+        "max_native_curve_distance_mm": 0.0005559481871036685,
+        "max_plane_distance_mm": 5.329070518200751e-15,
+        "native_boundary_IN_or_ON": 992,
+        "native_boundary_OUT": 0,
+        "native_interior_IN": 2312,
+        "native_original_edge_samples": 378
+      }
+    },
+    "continuous_trim_hausdorff_certified": false,
+    "experimental_budget_mm": 0.001,
+    "max_boundary_native_curve_distance_mm": 0.0005559481871036685,
+    "max_plane_distance_mm": 5.329070518200751e-15,
+    "native_boundary_IN_or_ON": 992,
+    "native_boundary_OUT": 0,
+    "native_boundary_out_by_face": {},
+    "native_interior_IN": 2312,
+    "original_native_curve_samples": 378,
+    "status": "PASS"
+  },
+  "selected_native_face_index": 29,
+  "selected_new_patches": 8,
+  "selected_original_advanced_face_ids": [
+    3044
+  ],
+  "source_original_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "third_party_step_embedded": false
+}

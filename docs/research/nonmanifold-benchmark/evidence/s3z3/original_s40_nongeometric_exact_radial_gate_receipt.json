@@ -1,0 +1,32 @@
+{
+  "schema": "apmesh-s3z3-original-s40-exact-rational-nongeometric-receipt-v1",
+  "date": "2026-11-18",
+  "source_step_sha256_required": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "parent_s3w_bp_sha256_required": "c826487d8cee76f6649100c59e5ce84fa6cb43c9004f53c68e3e565e86cdb174",
+  "accepted_child_s3y_bp_sha256": "af50597db4b8d7b3bcb2fc381596fefc95ba6b6e00ed169576bec7a6b7873177",
+  "admitted_research_patches": 156,
+  "admitted_source_step_faces": 22,
+  "blocked_source_faces": [
+    1827,
+    1907
+  ],
+  "source_native_original_trial_executed": false,
+  "new_source_faces_admitted": 0,
+  "source_CAD_files_not_available_in_current_container": true,
+  "hermetic_unit_tests": {
+    "passed": 83,
+    "failed": 0,
+    "skipped": 0,
+    "new_in_S3Z3": 28
+  },
+  "gate": "exact_rational_bivariate_degree_6_6_Bernstein_radial_band",
+  "gate_scope": "exact_arithmetic_over_supplied_IEEE754_floats_not_original_CAD_uncertainties",
+  "unchanged_geometric_budget_mm": 0.001,
+  "exact_subdivision_depth_limit": 16,
+  "exact_subdivision_node_limit": 8192,
+  "gate_integrated_into_trial_runner": true,
+  "STEP_or_BP_published": false,
+  "Cpp_production_regression": "NOT_RUN",
+  "apmesh_TRI_QUAD_meshing": "NOT_RUN",
+  "full_CAD_Hausdorff_certification": false
+}

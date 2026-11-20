@@ -1,0 +1,43 @@
+{
+  "schema": "apmesh-s3v-original-s40-nongeometric-native-admission-receipt-v1",
+  "status": "BLOCKED_NATIVE_TRIM_BOUNDARY",
+  "original_source_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "previous_approved_bp_sha256": "988d8ed29867927f736838dde20db9efb358c0ee04a202a4f4810ae0e23aa40d",
+  "candidate_not_admitted_bp_sha256": "ba18b866fd70d25b8b9b116354c2673c0294efc6dba8e1e7dca48e8d6536070d",
+  "approved_baseline_patches": 132,
+  "unadmitted_candidate_patches": 148,
+  "candidate_controls": 1619,
+  "approved_source_faces": 19,
+  "total_source_faces": 43,
+  "candidate_faces": [
+    17,
+    2092
+  ],
+  "native_interior_IN": 1296,
+  "native_boundary_IN_or_ON": 569,
+  "native_boundary_OUT": 135,
+  "native_boundary_OUT_source_edge_counts": {
+    "85": 63,
+    "2096": 72
+  },
+  "native_boundary_OUT_on_derived_diagonals": 0,
+  "native_original_curve_samples": 396,
+  "sampled_maximum_original_native_edge_distance_mm": 0.0008926686164463639,
+  "max_native_plane_support_deviation_mm": 1.0409451078885468e-12,
+  "experimental_budget_mm": 0.001,
+  "strict_native_trim_membership_pass": false,
+  "source_hole_218_preserved": true,
+  "previous_132_patch_nets_unchanged": true,
+  "directed_tests": {
+    "new_s3v": 30,
+    "s3s_s3t": 45,
+    "s3u_s3v": 55,
+    "disjoint_total": 100,
+    "failures": 0,
+    "skips": 0,
+    "one_shot": "TIMED_OUT"
+  },
+  "apmesh_tri_quad_generated": false,
+  "production_cpp_regression": "NOT_RUN",
+  "continuous_trim_hausdorff_certified": false
+}

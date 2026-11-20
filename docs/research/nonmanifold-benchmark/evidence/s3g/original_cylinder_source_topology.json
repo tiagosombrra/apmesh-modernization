@@ -1,0 +1,1217 @@
+{
+  "schema": "apmesh-s3g-original-cylindrical-feature-constraints-v1",
+  "upstream": "cgg-bern/hex-me-if-you-can",
+  "revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "records": [
+    {
+      "model": "M5",
+      "source_file": "i05o_m5.step",
+      "git_blob_sha1": "d72e5e3cb3de9ebdec80253cfa9b57fa1b7132f7",
+      "cylindrical_direct_faces": 2,
+      "planar_to_cylinder_edges": 4,
+      "source_candidate_histogram": {
+        "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE": 2
+      },
+      "faces": [
+        {
+          "original_advanced_face_id": 3493,
+          "anchors": [
+            3473,
+            3497
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "origin": [
+            -10,
+            0,
+            -2.5
+          ],
+          "radius_mm": 2,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 3473,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 15
+            },
+            {
+              "edge_curve_id": 3497,
+              "radius_max_residual_mm": 1.2878587085651816e-13,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 15
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": 0,
+          "minimum_radial_angle_between_anchors_rad": 2.102093169774461,
+          "source_topology_status": "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE"
+        },
+        {
+          "original_advanced_face_id": 3976,
+          "anchors": [
+            3954,
+            3982
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "origin": [
+            10,
+            0,
+            -2.5
+          ],
+          "radius_mm": 2,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 3954,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 15
+            },
+            {
+              "edge_curve_id": 3982,
+              "radius_max_residual_mm": 1.2878587085651816e-13,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 15
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": 0,
+          "minimum_radial_angle_between_anchors_rad": 2.102093169774461,
+          "source_topology_status": "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE"
+        }
+      ]
+    },
+    {
+      "model": "S40",
+      "source_file": "i25o_s40.step",
+      "git_blob_sha1": "917ef72a0a91b8b3e7d16e8009a1b1655154174a",
+      "cylindrical_direct_faces": 8,
+      "planar_to_cylinder_edges": 12,
+      "source_candidate_histogram": {
+        "NEEDS_NATIVE_TRIM_RECONSTRUCTION": 8
+      },
+      "faces": [
+        {
+          "original_advanced_face_id": 218,
+          "anchors": [
+            281,
+            303
+          ],
+          "wire_count": 2,
+          "wire_edge_counts": [
+            8,
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 5,
+            "CIRCLE": 5,
+            "B_SPLINE_CURVE_WITH_KNOTS": 2
+          },
+          "axis": [
+            1.0097419586833836e-32,
+            0.866025403784329,
+            -0.50000000000019
+          ],
+          "origin": [
+            0,
+            26.444234376656,
+            43.509063434181
+          ],
+          "radius_mm": 25,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 281,
+              "radius_max_residual_mm": 2.589217729109805e-11,
+              "axis_parallel_lateral_residual_mm": 2.12851958281135e-12,
+              "edge_length_mm": 5.999999999973397
+            },
+            {
+              "edge_curve_id": 303,
+              "radius_max_residual_mm": 2.589217729109805e-11,
+              "axis_parallel_lateral_residual_mm": 2.12851958281135e-12,
+              "edge_length_mm": 5.999999999973397
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 1519,
+          "anchors": [
+            1548,
+            1570
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            8
+          ],
+          "curve_histogram": {
+            "CIRCLE": 2,
+            "LINE": 4,
+            "B_SPLINE_CURVE_WITH_KNOTS": 2
+          },
+          "axis": [
+            0,
+            0.866025403784329,
+            -0.50000000000019
+          ],
+          "origin": [
+            0,
+            26.444234376656,
+            43.509063434181
+          ],
+          "radius_mm": 16,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 1548,
+              "radius_max_residual_mm": 3.672440129776078e-11,
+              "axis_parallel_lateral_residual_mm": 2.12851958281135e-12,
+              "edge_length_mm": 5.999999999973397
+            },
+            {
+              "edge_curve_id": 1570,
+              "radius_max_residual_mm": 3.672440129776078e-11,
+              "axis_parallel_lateral_residual_mm": 2.12851958281135e-12,
+              "edge_length_mm": 5.999999999973397
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 1986,
+          "anchors": [
+            2019,
+            2071
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            8
+          ],
+          "curve_histogram": {
+            "LINE": 4,
+            "CIRCLE": 4
+          },
+          "axis": [
+            0,
+            0.866025403784329,
+            -0.50000000000019
+          ],
+          "origin": [
+            0,
+            26.444234376656,
+            43.509063434181
+          ],
+          "radius_mm": 25,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 2019,
+              "radius_max_residual_mm": 4.079936388734495e-11,
+              "axis_parallel_lateral_residual_mm": 6.937783680882603e-11,
+              "edge_length_mm": 6.000000000043552
+            },
+            {
+              "edge_curve_id": 2071,
+              "radius_max_residual_mm": 4.079936388734495e-11,
+              "axis_parallel_lateral_residual_mm": 6.937783680882603e-11,
+              "edge_length_mm": 6.000000000043552
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 2457,
+          "anchors": [
+            2407,
+            2434
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            9
+          ],
+          "curve_histogram": {
+            "B_SPLINE_CURVE_WITH_KNOTS": 3,
+            "LINE": 4,
+            "CIRCLE": 2
+          },
+          "axis": [
+            0,
+            0.866025403784329,
+            -0.50000000000019
+          ],
+          "origin": [
+            0,
+            26.444234376656,
+            43.509063434181
+          ],
+          "radius_mm": 16,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 2407,
+              "radius_max_residual_mm": 3.445066454332846e-11,
+              "axis_parallel_lateral_residual_mm": 6.937783680882603e-11,
+              "edge_length_mm": 6.000000000043552
+            },
+            {
+              "edge_curve_id": 2434,
+              "radius_max_residual_mm": 3.445066454332846e-11,
+              "axis_parallel_lateral_residual_mm": 6.937783680882603e-11,
+              "edge_length_mm": 6.000000000043552
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 2936,
+          "anchors": [
+            2810
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "CIRCLE": 2,
+            "LINE": 2
+          },
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "origin": [
+            0,
+            -27.17767,
+            -13.75
+          ],
+          "radius_mm": 9,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 2810,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 2882,
+          "anchors": [
+            2861
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "CIRCLE": 2,
+            "LINE": 2
+          },
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "origin": [
+            0,
+            -45.17767,
+            -13.75
+          ],
+          "radius_mm": 9,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 2861,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 2990,
+          "anchors": [
+            3022
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "CIRCLE": 2,
+            "LINE": 2
+          },
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "origin": [
+            0,
+            -27.17767,
+            -13.75
+          ],
+          "radius_mm": 9,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 3022,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 3127,
+          "anchors": [
+            3104
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "CIRCLE": 2,
+            "LINE": 2
+          },
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "origin": [
+            0,
+            -45.17767,
+            -13.75
+          ],
+          "radius_mm": 9,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 3104,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        }
+      ]
+    },
+    {
+      "model": "S27",
+      "source_file": "i22o_s27.step",
+      "git_blob_sha1": "48ada34a4d2fb038ff91131300c6262a9faec217",
+      "cylindrical_direct_faces": 4,
+      "planar_to_cylinder_edges": 8,
+      "source_candidate_histogram": {
+        "NEEDS_NATIVE_TRIM_RECONSTRUCTION": 2,
+        "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE": 2
+      },
+      "faces": [
+        {
+          "original_advanced_face_id": 3741,
+          "anchors": [
+            861,
+            2437
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            8
+          ],
+          "curve_histogram": {
+            "LINE": 4,
+            "CIRCLE": 4
+          },
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "origin": [
+            20,
+            120,
+            27.5
+          ],
+          "radius_mm": 12.4,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 861,
+              "radius_max_residual_mm": 1.4352075083934324e-10,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            },
+            {
+              "edge_curve_id": 2437,
+              "radius_max_residual_mm": 1.057003373716725e-10,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 1374,
+          "anchors": [
+            1353,
+            1403
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "origin": [
+            5,
+            60,
+            20
+          ],
+          "radius_mm": 20,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 1353,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            },
+            {
+              "edge_curve_id": 1403,
+              "radius_max_residual_mm": 1.7763568394002505e-14,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": 0,
+          "minimum_radial_angle_between_anchors_rad": 3.141592653589793,
+          "source_topology_status": "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE"
+        },
+        {
+          "original_advanced_face_id": 2899,
+          "anchors": [
+            1844,
+            2877
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            8
+          ],
+          "curve_histogram": {
+            "LINE": 4,
+            "CIRCLE": 4
+          },
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "origin": [
+            20,
+            120,
+            12.5
+          ],
+          "radius_mm": 12.4,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 1844,
+              "radius_max_residual_mm": 1.4352075083934324e-10,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10.000000000000004
+            },
+            {
+              "edge_curve_id": 2877,
+              "radius_max_residual_mm": 1.057003373716725e-10,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10.000000000000004
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 3378,
+          "anchors": [
+            3355,
+            3382
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "origin": [
+            5,
+            60,
+            20
+          ],
+          "radius_mm": 20,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 3355,
+              "radius_max_residual_mm": 1.7763568394002505e-14,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            },
+            {
+              "edge_curve_id": 3382,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": 0,
+          "minimum_radial_angle_between_anchors_rad": 3.141592653589793,
+          "source_topology_status": "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE"
+        }
+      ]
+    },
+    {
+      "model": "M3",
+      "source_file": "i03o_m3.step",
+      "git_blob_sha1": "e472dd5b717b2fdbc7d2bd3e030a856a257d0cb3",
+      "cylindrical_direct_faces": 15,
+      "planar_to_cylinder_edges": 20,
+      "source_candidate_histogram": {
+        "NEEDS_NATIVE_TRIM_RECONSTRUCTION": 11,
+        "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE": 4
+      },
+      "faces": [
+        {
+          "original_advanced_face_id": 232,
+          "anchors": [
+            236
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "origin": [
+            -75,
+            44,
+            0
+          ],
+          "radius_mm": 6,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 236,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 1023,
+          "anchors": [
+            1062,
+            1084
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "CIRCLE": 2,
+            "LINE": 2
+          },
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "origin": [
+            -33,
+            37,
+            0
+          ],
+          "radius_mm": 12,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 1062,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            },
+            {
+              "edge_curve_id": 1084,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": 0,
+          "minimum_radial_angle_between_anchors_rad": 1.5707963267948966,
+          "source_topology_status": "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE"
+        },
+        {
+          "original_advanced_face_id": 3917,
+          "anchors": [
+            1132
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "origin": [
+            -51,
+            44,
+            0
+          ],
+          "radius_mm": 6,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 1132,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 1931,
+          "anchors": [
+            2018
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            12
+          ],
+          "curve_histogram": {
+            "CIRCLE": 6,
+            "B_SPLINE_CURVE_WITH_KNOTS": 4,
+            "LINE": 2
+          },
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "origin": [
+            0,
+            0,
+            -66
+          ],
+          "radius_mm": 19,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 2018,
+              "radius_max_residual_mm": 1.0054179711005418e-12,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 2401,
+          "anchors": [
+            2561
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            12
+          ],
+          "curve_histogram": {
+            "CIRCLE": 6,
+            "B_SPLINE_CURVE_WITH_KNOTS": 4,
+            "LINE": 2
+          },
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "origin": [
+            0,
+            0,
+            -66
+          ],
+          "radius_mm": 19,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 2561,
+              "radius_max_residual_mm": 1.0054179711005418e-12,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 2649,
+          "anchors": [
+            2653,
+            2675
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            7
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 3,
+            "B_SPLINE_CURVE_WITH_KNOTS": 2
+          },
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "radius_mm": 25,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 2653,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            },
+            {
+              "edge_curve_id": 2675,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": 0,
+          "minimum_radial_angle_between_anchors_rad": 3.141592653589793,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 3565,
+          "anchors": [
+            3518
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "origin": [
+            0,
+            60,
+            -35
+          ],
+          "radius_mm": 25,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 3518,
+              "radius_max_residual_mm": 2.383870878475136e-12,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 3613,
+          "anchors": [
+            3543
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "origin": [
+            0,
+            60,
+            -35
+          ],
+          "radius_mm": 25,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 3543,
+              "radius_max_residual_mm": 2.383870878475136e-12,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 3843,
+          "anchors": [
+            3848,
+            3870
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "CIRCLE": 2,
+            "LINE": 2
+          },
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "origin": [
+            33,
+            37,
+            0
+          ],
+          "radius_mm": 12,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 3848,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            },
+            {
+              "edge_curve_id": 3870,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": 0,
+          "minimum_radial_angle_between_anchors_rad": 1.5707963267948966,
+          "source_topology_status": "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE"
+        },
+        {
+          "original_advanced_face_id": 4087,
+          "anchors": [
+            3896
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "origin": [
+            51,
+            44,
+            0
+          ],
+          "radius_mm": 6,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 3896,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 4114,
+          "anchors": [
+            4118,
+            4140
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "origin": [
+            -28,
+            22,
+            0
+          ],
+          "radius_mm": 3,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 4118,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            },
+            {
+              "edge_curve_id": 4140,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": 0,
+          "minimum_radial_angle_between_anchors_rad": 1.5707963267948966,
+          "source_topology_status": "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE"
+        },
+        {
+          "original_advanced_face_id": 4168,
+          "anchors": [
+            4172,
+            4194
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "origin": [
+            28,
+            22,
+            0
+          ],
+          "radius_mm": 3,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 4172,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            },
+            {
+              "edge_curve_id": 4194,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 25
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": 0,
+          "minimum_radial_angle_between_anchors_rad": 1.5707963267948966,
+          "source_topology_status": "SOURCE_TOPOLOGY_TWO_GENERATOR_RECTANGLE_CANDIDATE"
+        },
+        {
+          "original_advanced_face_id": 4442,
+          "anchors": [
+            4468
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "LINE": 2,
+            "CIRCLE": 2
+          },
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "origin": [
+            75,
+            44,
+            0
+          ],
+          "radius_mm": 6,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 4468,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 4590,
+          "anchors": [
+            4495
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "CIRCLE": 2,
+            "LINE": 2
+          },
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "origin": [
+            57,
+            24,
+            0
+          ],
+          "radius_mm": 12,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 4495,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        },
+        {
+          "original_advanced_face_id": 4516,
+          "anchors": [
+            4543
+          ],
+          "wire_count": 1,
+          "wire_edge_counts": [
+            4
+          ],
+          "curve_histogram": {
+            "CIRCLE": 2,
+            "LINE": 2
+          },
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "origin": [
+            -57,
+            24,
+            0
+          ],
+          "radius_mm": 12,
+          "anchored_endpoint_tests": [
+            {
+              "edge_curve_id": 4543,
+              "radius_max_residual_mm": 0,
+              "axis_parallel_lateral_residual_mm": 0,
+              "edge_length_mm": 10
+            }
+          ],
+          "source_generator_z_span_mismatch_mm": null,
+          "minimum_radial_angle_between_anchors_rad": null,
+          "source_topology_status": "NEEDS_NATIVE_TRIM_RECONSTRUCTION"
+        }
+      ]
+    }
+  ],
+  "native_original_import": "NOT_RUN",
+  "original_face_parameter_trim_oracle": "NOT_RUN",
+  "full_atlas": "NOT_RUN",
+  "source_input_bytes_distributed": false
+}

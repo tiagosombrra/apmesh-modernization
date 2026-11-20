@@ -1,0 +1,283 @@
+{
+  "apmesh_tri_quad_generation": "NOT_RUN",
+  "bp_sha256": "24652d2517a206e821b3eaa346e90c8ed44b65c1c7970ca968febf41c5f9938e",
+  "cylindrical_bp_patch_count": 8,
+  "fixed_budget_mm": 0.001,
+  "full_original_CAD_atlas": false,
+  "guarded_radial_support_bound_mm": 0.0003954283703068445,
+  "joint_original_controls_checked": 16,
+  "maximum_native_projection_distance_mm": 0.0003954273703068376,
+  "native_boundary_uv_samples": 352,
+  "native_face_coverage_envelopes": [
+    {
+      "native_trimmed_uv_bounds": [
+        3.1415926535897922,
+        5.243685823365,
+        -7.5,
+        7.5
+      ],
+      "no_sampled_U_interval_gaps": true,
+      "observed_patch_union_uv_bounds": [
+        3.141592653589793,
+        5.243685823364255,
+        -7.5,
+        7.5
+      ],
+      "segments_checked": 4,
+      "source_advanced_face_id": 3493
+    },
+    {
+      "native_trimmed_uv_bounds": [
+        3.141592653589793,
+        5.243685823365,
+        -7.5,
+        7.5
+      ],
+      "no_sampled_U_interval_gaps": true,
+      "observed_patch_union_uv_bounds": [
+        3.141592653589793,
+        5.243685823364254,
+        -7.5,
+        7.5
+      ],
+      "segments_checked": 4,
+      "source_advanced_face_id": 3976
+    }
+  ],
+  "native_interior_uv_samples": 648,
+  "native_uv_claim": "DISCRETE_TRIM_MEMBERSHIP_ONLY_NOT_CONTINUOUS_CERTIFICATE",
+  "original_face_ids": [
+    3493,
+    3976
+  ],
+  "original_nonmanifold_3plus_admission": "NOT_ESTABLISHED",
+  "patch_results": [
+    {
+      "boundary_sample_count": 44,
+      "classification_histogram": {
+        "BOUNDARY_IN": 9,
+        "BOUNDARY_ON": 35,
+        "INTERIOR_IN": 81
+      },
+      "continuous_trim_topology_certified": false,
+      "derived_patch_segment": 0,
+      "interior_sample_count": 81,
+      "max_native_cylinder_projection_distance_mm": 0.00039542736985884603,
+      "native_trim_bounds_uv": [
+        3.1415926535897922,
+        5.243685823365,
+        -7.5,
+        7.5
+      ],
+      "native_trim_scope": "DISCRETE_OCCT_BREPCLASS_FACECLASSIFIER_WITH_PERIODIC_U_EQUIVALENTS",
+      "observed_patch_uv_bounds": [
+        4.718162530921385,
+        5.243685823364255,
+        -7.5,
+        7.5
+      ],
+      "source_advanced_face_id": 3493,
+      "source_native_face_index": 24,
+      "source_support_type": "CYLINDER"
+    },
+    {
+      "boundary_sample_count": 44,
+      "classification_histogram": {
+        "BOUNDARY_IN": 18,
+        "BOUNDARY_ON": 26,
+        "INTERIOR_IN": 81
+      },
+      "continuous_trim_topology_certified": false,
+      "derived_patch_segment": 1,
+      "interior_sample_count": 81,
+      "max_native_cylinder_projection_distance_mm": 0.0003954273701141369,
+      "native_trim_bounds_uv": [
+        3.1415926535897922,
+        5.243685823365,
+        -7.5,
+        7.5
+      ],
+      "native_trim_scope": "DISCRETE_OCCT_BREPCLASS_FACECLASSIFIER_WITH_PERIODIC_U_EQUIVALENTS",
+      "observed_patch_uv_bounds": [
+        4.192639238477769,
+        4.718162530921385,
+        -7.5,
+        7.5
+      ],
+      "source_advanced_face_id": 3493,
+      "source_native_face_index": 24,
+      "source_support_type": "CYLINDER"
+    },
+    {
+      "boundary_sample_count": 44,
+      "classification_histogram": {
+        "BOUNDARY_IN": 18,
+        "BOUNDARY_ON": 26,
+        "INTERIOR_IN": 81
+      },
+      "continuous_trim_topology_certified": false,
+      "derived_patch_segment": 2,
+      "interior_sample_count": 81,
+      "max_native_cylinder_projection_distance_mm": 0.000395427370113146,
+      "native_trim_bounds_uv": [
+        3.1415926535897922,
+        5.243685823365,
+        -7.5,
+        7.5
+      ],
+      "native_trim_scope": "DISCRETE_OCCT_BREPCLASS_FACECLASSIFIER_WITH_PERIODIC_U_EQUIVALENTS",
+      "observed_patch_uv_bounds": [
+        3.6671159460341523,
+        4.192639238477769,
+        -7.5,
+        7.5
+      ],
+      "source_advanced_face_id": 3493,
+      "source_native_face_index": 24,
+      "source_support_type": "CYLINDER"
+    },
+    {
+      "boundary_sample_count": 44,
+      "classification_histogram": {
+        "BOUNDARY_IN": 9,
+        "BOUNDARY_ON": 35,
+        "INTERIOR_IN": 81
+      },
+      "continuous_trim_topology_certified": false,
+      "derived_patch_segment": 3,
+      "interior_sample_count": 81,
+      "max_native_cylinder_projection_distance_mm": 0.0003954273703068376,
+      "native_trim_bounds_uv": [
+        3.1415926535897922,
+        5.243685823365,
+        -7.5,
+        7.5
+      ],
+      "native_trim_scope": "DISCRETE_OCCT_BREPCLASS_FACECLASSIFIER_WITH_PERIODIC_U_EQUIVALENTS",
+      "observed_patch_uv_bounds": [
+        3.141592653589793,
+        3.667115946034154,
+        -7.5,
+        7.5
+      ],
+      "source_advanced_face_id": 3493,
+      "source_native_face_index": 24,
+      "source_support_type": "CYLINDER"
+    },
+    {
+      "boundary_sample_count": 44,
+      "classification_histogram": {
+        "BOUNDARY_IN": 9,
+        "BOUNDARY_ON": 35,
+        "INTERIOR_IN": 81
+      },
+      "continuous_trim_topology_certified": false,
+      "derived_patch_segment": 0,
+      "interior_sample_count": 81,
+      "max_native_cylinder_projection_distance_mm": 0.00039542737016552476,
+      "native_trim_bounds_uv": [
+        3.141592653589793,
+        5.243685823365,
+        -7.5,
+        7.5
+      ],
+      "native_trim_scope": "DISCRETE_OCCT_BREPCLASS_FACECLASSIFIER_WITH_PERIODIC_U_EQUIVALENTS",
+      "observed_patch_uv_bounds": [
+        3.141592653589793,
+        3.667115946033615,
+        -7.5,
+        7.5
+      ],
+      "source_advanced_face_id": 3976,
+      "source_native_face_index": 33,
+      "source_support_type": "CYLINDER"
+    },
+    {
+      "boundary_sample_count": 44,
+      "classification_histogram": {
+        "BOUNDARY_IN": 18,
+        "BOUNDARY_ON": 26,
+        "INTERIOR_IN": 81
+      },
+      "continuous_trim_topology_certified": false,
+      "derived_patch_segment": 1,
+      "interior_sample_count": 81,
+      "max_native_cylinder_projection_distance_mm": 0.00039542737011126006,
+      "native_trim_bounds_uv": [
+        3.141592653589793,
+        5.243685823365,
+        -7.5,
+        7.5
+      ],
+      "native_trim_scope": "DISCRETE_OCCT_BREPCLASS_FACECLASSIFIER_WITH_PERIODIC_U_EQUIVALENTS",
+      "observed_patch_uv_bounds": [
+        3.667115946033615,
+        4.192639238477231,
+        -7.5,
+        7.5
+      ],
+      "source_advanced_face_id": 3976,
+      "source_native_face_index": 33,
+      "source_support_type": "CYLINDER"
+    },
+    {
+      "boundary_sample_count": 44,
+      "classification_histogram": {
+        "BOUNDARY_IN": 18,
+        "BOUNDARY_ON": 26,
+        "INTERIOR_IN": 81
+      },
+      "continuous_trim_topology_certified": false,
+      "derived_patch_segment": 2,
+      "interior_sample_count": 81,
+      "max_native_cylinder_projection_distance_mm": 0.0003954273701102493,
+      "native_trim_bounds_uv": [
+        3.141592653589793,
+        5.243685823365,
+        -7.5,
+        7.5
+      ],
+      "native_trim_scope": "DISCRETE_OCCT_BREPCLASS_FACECLASSIFIER_WITH_PERIODIC_U_EQUIVALENTS",
+      "observed_patch_uv_bounds": [
+        4.192639238477231,
+        4.718162530920846,
+        -7.5,
+        7.5
+      ],
+      "source_advanced_face_id": 3976,
+      "source_native_face_index": 33,
+      "source_support_type": "CYLINDER"
+    },
+    {
+      "boundary_sample_count": 44,
+      "classification_histogram": {
+        "BOUNDARY_IN": 9,
+        "BOUNDARY_ON": 35,
+        "INTERIOR_IN": 81
+      },
+      "continuous_trim_topology_certified": false,
+      "derived_patch_segment": 3,
+      "interior_sample_count": 81,
+      "max_native_cylinder_projection_distance_mm": 0.0003954273699969008,
+      "native_trim_bounds_uv": [
+        3.141592653589793,
+        5.243685823365,
+        -7.5,
+        7.5
+      ],
+      "native_trim_scope": "DISCRETE_OCCT_BREPCLASS_FACECLASSIFIER_WITH_PERIODIC_U_EQUIVALENTS",
+      "observed_patch_uv_bounds": [
+        4.718162530920846,
+        5.243685823364254,
+        -7.5,
+        7.5
+      ],
+      "source_advanced_face_id": 3976,
+      "source_native_face_index": 33,
+      "source_support_type": "CYLINDER"
+    }
+  ],
+  "schema": "apmesh-s3k-original-native-cylindrical-uv-trim-sampled-audit-v1",
+  "source_model": "M5",
+  "source_raw_sha256": "895f67c0669096b287077ac1bb56dad0e117cd96f78334d3129d783fd78b96cb"
+}
