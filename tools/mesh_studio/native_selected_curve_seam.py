@@ -37,6 +37,7 @@ PROTOCOL_BLOB = "d0c7f8fcbd148a4406d48f80d1fc51e43177c94e"
 PROBE_BLOB = "c493b62ba7be2c8aecdd6078fe9b4238322d7a15"
 UV_TOL = 1.0e-8
 MAX_SAMPLE_POINTS = 200_000
+MAX_PAIRWISE_DISTANCE_EVALUATIONS = 1_000_000
 
 
 def _sha(raw: bytes) -> str:
@@ -172,8 +173,11 @@ def _nearest_xyz(source: set[tuple], other: set[tuple]) -> tuple[float, float]:
     """Finite, source-unit nearest-vertex distances without coordinate welding."""
     require(len(source) >= 2 and len(other) >= 2 and
             len(source) <= MAX_SAMPLE_POINTS and
-            len(other) <= MAX_SAMPLE_POINTS,
-            "r2734_selected_source_curve_side_missing_or_oversized")
+            len(other) <= MAX_SAMPLE_POINTS and
+            len(source) * len(other) <= MAX_PAIRWISE_DISTANCE_EVALUATIONS,
+            "r2734_selected_source_curve_side_missing_or_unbounded_distance_work")
+    # This exhaustive metric is admitted only for explicitly bounded samples.
+    # Larger real seams need a separately audited spatial index, not a quadratic scan.
     minima = []
     for x in source:
         minimum = min(math.dist(x, y) for y in other)
