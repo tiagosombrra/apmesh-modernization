@@ -5,6 +5,7 @@ Scientific verification remains in the original Python engine, not the UI.
 """
 from __future__ import annotations
 
+from functools import lru_cache
 from hashlib import sha256
 from pathlib import Path
 
@@ -41,15 +42,32 @@ app.add_middleware(CORSMiddleware,
                    allow_credentials=False, allow_methods=['GET'], allow_headers=['Accept'])
 
 
+@lru_cache(maxsize=8)
+def _verified_document(path: Path, expected_sha256: str):
+    """Parse only once per exact source path and source hash in each process."""
+    document = import_obj(path, auto_sidecar=False)
+    if document.source_sha256 != expected_sha256:
+        raise HTTPException(status_code=409, detail='source_sha_mismatch')
+    return document
+
+
+@lru_cache(maxsize=8)
+def _verified_quality(path: Path, expected_sha256: str):
+    """Reuse deterministic full-mesh metrics without changing the scientific oracle."""
+    return analyze_mesh(_verified_document(path, expected_sha256))
+
+
 def load_document(model_id: str):
-    """Check fixture identity on every request, even if a local file changed."""
+    """Rehash the current fixture on every request before using cached results."""
     if model_id not in CATALOG:
         raise HTTPException(status_code=404, detail='unknown_model')
     relative, _, expected = CATALOG[model_id]
     path = ROOT / relative
-    if not path.is_file() or sha256(path.read_bytes()).hexdigest() != expected:
+    if (not path.is_file() or
+            path.stat().st_size > 20 * 1024 * 1024 or
+            sha256(path.read_bytes()).hexdigest() != expected):
         raise HTTPException(status_code=409, detail='source_sha_mismatch')
-    return import_obj(path, auto_sidecar=False)
+    return _verified_document(path, expected)
 
 
 @app.get('/api/v1/health')
@@ -140,10 +158,12 @@ def face(model_id: str, face_id: int):
     if not 0 <= face_id < len(doc.faces):
         raise HTTPException(status_code=404, detail='unknown_face_id')
     result = face_detail(doc, face_id)
-    result['quality'] = analyze_mesh(doc)['cells'][face_id]
+    result['quality'] = _verified_quality(ROOT / CATALOG[model_id][0],
+                                         doc.source_sha256)['cells'][face_id]
     return result
 
 
 @app.get('/api/v1/models/{model_id}/quality')
 def quality(model_id: str):
-    return analyze_mesh(load_document(model_id))
+    document = load_document(model_id)
+    return _verified_quality(ROOT / CATALOG[model_id][0], document.source_sha256)
