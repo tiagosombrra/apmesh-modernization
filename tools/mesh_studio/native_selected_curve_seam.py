@@ -33,8 +33,8 @@ PROTOCOL = (
     "R2_7_34_PREREGISTERED_SOURCE_CURVE_IDENTITY_AND_SELECTED_TRI_SEAMS_20261120.md"
 )
 PROBE = "tests/quad/generator_selected_curve_seam_probe.cpp"
-PROTOCOL_BLOB = ""  # Pinned to the preregistration source before native execution.
-PROBE_BLOB = ""  # Pinned to the isolated observer source before native execution.
+PROTOCOL_BLOB = "d0c7f8fcbd148a4406d48f80d1fc51e43177c94e"
+PROBE_BLOB = "98f369bdd1f039dc6f167e9101ffec380122502e"
 UV_TOL = 1.0e-8
 MAX_SAMPLE_POINTS = 200_000
 
