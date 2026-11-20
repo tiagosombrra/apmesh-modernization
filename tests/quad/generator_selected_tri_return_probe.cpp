@@ -37,7 +37,7 @@ thread_local std::size_t actual_adapter_returns = 0;
 constexpr std::size_t kMaxNativeSelectedFaces = 120000;
 constexpr std::size_t kMaxNativeSelectedNodes = 240000;
 
-void WriteSelectedTri(const SubMesh& sub, PatchCoons& patch,
+void WriteSelectedTri(SubMesh& sub, PatchCoons& patch,
                       const apmesh::quad::PatchAttemptIdentity& selected,
                       std::size_t return_ordinal) {
   const char* dir = std::getenv("APMESH_R2733_SELECTED_TRI_DIR");
@@ -94,7 +94,8 @@ void WriteSelectedTri(const SubMesh& sub, PatchCoons& patch,
 
   for (std::size_t element_slot = 0; element_slot < faces; ++element_slot) {
     auto* base = sub.GetElement(static_cast<unsigned int>(element_slot));
-    auto* tri = dynamic_cast<const TriangleAdaptive*>(base);
+    // Legacy GetId() is non-const; this observer still calls accessors only.
+    auto* tri = dynamic_cast<TriangleAdaptive*>(base);
     if (!tri) throw std::runtime_error("R2733 non-TRI native selected element");
     const std::array<std::tuple<double, double>, 3> uv{{
         tri->GetParametersN1(), tri->GetParametersN2(),
