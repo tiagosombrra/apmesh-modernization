@@ -10,6 +10,7 @@
 #include <iostream>
 #include <memory>
 #include <queue>
+#include <sstream>
 #include <unordered_map>
 #include <vector>
 
@@ -1363,9 +1364,63 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
       }
     }
 
+#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE
+    // Observe the executed native close on this provisional local attempt.
+    // This event is NOT a globally accepted native generation commit.
+    const bool r2718_closed = avanco.getBoundary()->close(
+        static_cast<CurveAdaptiveParametric*>(
+            coons_patch->GetCurve(coons_patch->GetNumBerCurves() - 1)),
+        coons_patch->IsCurveReversed(coons_patch->GetNumBerCurves() - 1));
+    try {
+      const auto vertices = avanco.getBoundary()->getBoundary();
+      if (!vertices.empty() && coons_patch->GetNumBerCurves() == 4) {
+        const auto iterator = vertex_to_node.find(vertices.front());
+        CurveAdaptive* edge0 = coons_patch->GetCurve(0);
+        CurveAdaptive* edge3 = coons_patch->GetCurve(3);
+        if (iterator != vertex_to_node.end() && iterator->second &&
+            edge0 && edge3 && edge0->GetNumBerPoints() >= 2 &&
+            edge3->GetNumBerPoints() >= 2) {
+          PointAdaptive* source0 = edge0->GetPoint(
+              coons_patch->IsCurveReversed(0) ? edge0->GetNumBerPoints() - 1 : 0);
+          PointAdaptive* source3 = edge3->GetPoint(
+              coons_patch->IsCurveReversed(3) ? edge3->GetNumBerPoints() - 1 : 0);
+          if (source0 && source3) {
+            // No pointer values escape: only logical sample IDs and local UV.
+            std::ostringstream event;
+            event << "{\"adaptive_step\":" << adaptive_step
+                  << ",\"retry_index\":" << retry_index
+                  << ",\"local_attempt\":" << local_attempt
+                  << ",\"patch_index\":" << patch_index
+                  << ",\"actual_boundary_close_returned\":"
+                  << (r2718_closed ? "true" : "false")
+                  << ",\"boundary_vertex_count\":" << vertices.size()
+                  << ",\"first_uv\":[" << vertices.front()->getX()
+                  << ',' << vertices.front()->getY() << ']'
+                  << ",\"last_uv\":[" << vertices.back()->getX()
+                  << ',' << vertices.back()->getY() << ']'
+                  << ",\"first_mapped_native_node_id\":" << iterator->second->GetId()
+                  << ",\"edge0_original_source_local_t0_id\":" << source0->GetId()
+                  << ",\"edge3_original_source_local_t0_id\":" << source3->GetId()
+                  << ",\"first_vertex_maps_to_edge0_source_id\":"
+                  << (iterator->second->GetId() == source0->GetId() ? "true" : "false")
+                  << ",\"first_vertex_maps_to_edge3_source_id\":"
+                  << (iterator->second->GetId() == source3->GetId() ? "true" : "false")
+                  << ",\"first_vertex_was_reused_by_boundary_close\":"
+                  << (r2718_closed ? "true" : "false")
+                  << ",\"is_globally_accepted_commit\":false}";
+            std::cerr << "R2718_ADAPTER_BOUNDARY_CLOSE=" << event.str() << '\n';
+          }
+        }
+      }
+    } catch (...) {
+      // The optional trace must not change the native TRI attempt result.
+      std::cerr << "R2718_ADAPTER_BOUNDARY_TRACE_ERROR=observation_failed\n";
+    }
+#else
     avanco.getBoundary()->close(static_cast<CurveAdaptiveParametric*>(
                                     coons_patch->GetCurve(coons_patch->GetNumBerCurves() - 1)),
                                 coons_patch->IsCurveReversed(coons_patch->GetNumBerCurves() - 1));
+#endif
 
     SubMesh* sub_mesh_old = coons_patch->GetSubMesh();
     FaceList& mesh_old = cache.BorrowFaces();

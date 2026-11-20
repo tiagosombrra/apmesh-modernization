@@ -15,6 +15,8 @@ import { isCameraPose } from './camera';
 import { asVtkCells, vtkPointBuffer } from './geometry';
 import { buildUvSpatialIndex } from './uvSpatialIndex';
 import { buildSyntheticXyzRayPicker } from './xyzSyntheticRayPicker';
+import { createXyzBvhWorker } from './xyzBvhClient';
+import { createBoundedXyzBvhMain, MAIN_BVH_METHOD } from './xyzBvhMain';
 import { meshCellKind, meshFaceCorners, meshFaceIds, meshPointAt } from './meshAccess';
 
 interface ViewerProps {
@@ -178,7 +180,29 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       geometry.source_sha256 === '0'.repeat(64) &&
       geometry.source_patch_ownership === 'NOT_APMESH_SOURCE';
     let xyzPicker: ReturnType<typeof buildSyntheticXyzRayPicker> | undefined;
-    const displayCoordinate = (uvIndex || syntheticXyzEligible) ? vtkCoordinate.newInstance() : null;
+    // R2.7 is opt-in until independent real-model A/B qualification.
+    const xyzPickerFlag = space === 'xyz'
+      ? new URLSearchParams(window.location.search).get('xyzPicker') : null;
+    const bvhClient = xyzPickerFlag === 'bvh' ? createXyzBvhWorker(geometry) : null;
+    // Synchronous index construction is opt-in and bounded before buffer copies.
+    const mainBvh = xyzPickerFlag === 'sync' ? createBoundedXyzBvhMain(geometry) : null;
+    host.dataset.mainBvhReady = String(mainBvh !== null);
+    if (mainBvh) {
+      host.dataset.mainBvhIndexedFaces = String(mainBvh.profile.indexedFaces);
+      host.dataset.mainBvhExcludedQuads = String(mainBvh.profile.excludedQuads);
+      host.dataset.mainBvhBuildMs = String(mainBvh.profile.totalBuildMs);
+    }
+    bvhClient?.ready.then(qualified => {
+      if (renderRef.current !== grw) return;
+      host.dataset.bvhReady = String(qualified);
+      const coverage = bvhClient.coverage();
+      if (coverage) {
+        host.dataset.bvhIndexedFaces = String(coverage.indexedFaces);
+        host.dataset.bvhExcludedQuads = String(coverage.excludedQuadFaces);
+      }
+    });
+    const displayCoordinate = (uvIndex || syntheticXyzEligible || bvhClient || mainBvh)
+      ? vtkCoordinate.newInstance() : null;
     displayCoordinate?.setCoordinateSystemToDisplay();
     dataRef.current = data;
     const mapper = vtkMapper.newInstance();
@@ -230,8 +254,10 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
     picker.setPickFromList(true);
     picker.addPickList(actor);
     let pointerDown: [number, number] | null = null;
+    let clickSerial = 0;
     const down = (e: PointerEvent) => { pointerDown = [e.clientX, e.clientY]; };
-    const click = (event: MouseEvent) => {
+    const click = async (event: MouseEvent) => {
+      const serial = ++clickSerial;
       if (pointerDown && Math.hypot(event.clientX - pointerDown[0], event.clientY - pointerDown[1]) > 5) {
         pointerDown = null;
         return;
@@ -242,9 +268,16 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       const pixelY = rect.height - (event.clientY - rect.top);
       const started = performance.now();
       let sourceId: number | null = null;
-      let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' | 'SYNTHETIC_XYZ_GRID_RAY' = 'VTK_CELL_PICKER';
+      let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' | 'SYNTHETIC_XYZ_GRID_RAY' |
+        'EXPERIMENTAL_XYZ_BVH_WORKER' | typeof MAIN_BVH_METHOD = 'VTK_CELL_PICKER';
       let spatialCandidates: number | null = null;
       let resolved = false;
+      // Reset last-worker metrics on each valid click so no prior hit is reused.
+      delete host.dataset.lastWorkerQueryMs;
+      delete host.dataset.lastWorkerRoundTripMs;
+      delete host.dataset.lastWorkerNoncomputeMs;
+      delete host.dataset.lastWorkerStatus;
+      delete host.dataset.lastMainBvhQueryMs;
       if (space === 'uv' && uvIndex && displayCoordinate && pickingModeRef.current !== 'native') {
         try {
           // Transform a display ray onto the flat UV z=0 plane. Never guess a
@@ -295,12 +328,78 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
           // The general VTK picker remains authoritative on unsupported conditions.
         }
       }
+      if (!resolved && mainBvh && displayCoordinate &&
+          pickingModeRef.current !== 'native') {
+        try {
+          displayCoordinate.setValue([pixelX, pixelY, 0]);
+          const near = [...displayCoordinate.getComputedWorldValue(renderer)];
+          displayCoordinate.setValue([pixelX, pixelY, 1]);
+          const far = [...displayCoordinate.getComputedWorldValue(renderer)];
+          const queryStarted = performance.now();
+          const hit = mainBvh.pick(near, far, visibleRef.current.showTri,
+            visibleRef.current.showQuad);
+          host.dataset.lastMainBvhQueryMs = String(performance.now()-queryStarted);
+          if (hit.kind === 'hit') {
+            sourceId = hit.sourceFaceId;
+            spatialCandidates = hit.testedFaces;
+            method = MAIN_BVH_METHOD;
+            resolved = true;
+          }
+          // Curved visible QUADs, boundaries, misses and invalid rays use native VTK.
+        } catch {
+          // A synchronous index never overrides the known-good native selector.
+        }
+      }
+      if (!resolved && bvhClient?.isReady() && displayCoordinate &&
+          pickingModeRef.current !== 'native') {
+        try {
+          // The ray is captured from one immutable camera/pixel state.
+          const camera = renderer.getActiveCamera();
+          const cameraBefore = [...camera.getPosition(), ...camera.getFocalPoint(),
+            ...camera.getViewUp(), camera.getParallelScale()];
+          const visibleBefore = { ...visibleRef.current };
+          displayCoordinate.setValue([pixelX, pixelY, 0]);
+          const near = [...displayCoordinate.getComputedWorldValue(renderer)] as [number,number,number];
+          displayCoordinate.setValue([pixelX, pixelY, 1]);
+          const far = [...displayCoordinate.getComputedWorldValue(renderer)] as [number,number,number];
+          const workerMeasurement = await bvhClient.pickWithMeasurement(
+            near, far, visibleBefore.showTri, visibleBefore.showQuad);
+          const hit = workerMeasurement.outcome;
+          if (serial !== clickSerial || renderRef.current !== grw) return;
+          const cameraAfter = [...camera.getPosition(), ...camera.getFocalPoint(),
+            ...camera.getViewUp(), camera.getParallelScale()];
+          if (cameraBefore.some((v, i) => v !== cameraAfter[i]) ||
+              visibleBefore.showTri !== visibleRef.current.showTri ||
+              visibleBefore.showQuad !== visibleRef.current.showQuad) return;
+          // Message/scheduling residual is not an independently isolated transfer cost.
+          host.dataset.lastWorkerStatus = workerMeasurement.status;
+          if (workerMeasurement.workerQueryWallMs !== null) {
+            host.dataset.lastWorkerQueryMs = String(workerMeasurement.workerQueryWallMs);
+            host.dataset.lastWorkerRoundTripMs = String(workerMeasurement.roundTripWallMs);
+            host.dataset.lastWorkerNoncomputeMs = String(Math.max(0,
+              workerMeasurement.roundTripWallMs - workerMeasurement.workerQueryWallMs));
+          }
+          if (hit.kind === 'hit') {
+            sourceId = hit.sourceFaceId;
+            spatialCandidates = hit.testedFaces;
+            method = 'EXPERIMENTAL_XYZ_BVH_WORKER';
+            resolved = true;
+          }
+          // Misses, overlap, numeric ambiguity and worker errors remain VTK-owned.
+        } catch {
+          // Never replace the native selector with an unqualified result.
+        }
+      }
       if (!resolved) {
         picker.pick([pixelX, pixelY, 0], renderer);
         const picked = picker.getCellId();
         sourceId = picked >= 0 ? sourceIds.current[picked] ?? null : null;
       }
       const pickerMs = performance.now() - started;
+      host.dataset.lastPickerMethod = method;
+      // Diagnostic only: this is pick-call wall time, not React commit or GPU paint.
+      host.dataset.lastPickerWallMs = String(Math.round(pickerMs * 1000) / 1000);
+      host.dataset.lastPickerSourceId = sourceId === null ? '' : String(sourceId);
       onSelectRef.current(sourceId);
       onPickMeasuredRef.current?.({
         space, source_face_id: sourceId, hit: sourceId !== null,
@@ -310,6 +409,10 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
           ? 'UV_PLANE_SPATIAL_QUERY_NOT_END_TO_END_UI_LATENCY'
           : method === 'SYNTHETIC_XYZ_GRID_RAY'
           ? 'SYNTHETIC_XYZ_GRID_RAY_QUERY_NOT_END_TO_END_UI_LATENCY'
+          : method === 'EXPERIMENTAL_XYZ_BVH_WORKER'
+          ? 'EXPERIMENTAL_XYZ_BVH_WORKER_QUERY_NOT_END_TO_END_UI_LATENCY'
+          : method === MAIN_BVH_METHOD
+          ? 'EXPERIMENTAL_XYZ_BVH_MAIN_QUERY_NOT_END_TO_END_UI_LATENCY'
           : 'VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY',
       });
     };
@@ -333,6 +436,8 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       actorRef.current = null;
       dataRef.current = null;
       sourceIds.current = [];
+      clickSerial += 1;
+      bvhClient?.dispose();
       picker.delete();
       displayCoordinate?.delete();
       grw.delete();

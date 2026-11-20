@@ -3,8 +3,29 @@ on:
   push:
     branches:
       - feature/mesh-studio-fixture-first-20261114
+      - feature/mesh-studio-r27-bvh-20261116
     paths:
       - 'tools/mesh_studio/**'
+      # Documentation-only edits do not change Python/TS/native behavior.
+      - '!tools/mesh_studio/README.md'
+      - '!tools/mesh_studio/web/README.md'
+      - '!tools/mesh_studio/fixtures/README.md'
+      - 'research/mesh_studio/**'
+      # Original geometry, native ABI, data and research hooks are exact-source
+      # scientific dependencies; none may silently bypass the native gates.
+      - 'research/quad/**'
+      - 'src/**'
+      - 'include/**'
+      - 'tests/quad/**'
+      - 'configs/**'
+      - 'input_models/**'
+      - 'reference/**'
+      - 'libs/**'
+      - 'cmake/**'
+      - 'MANIFEST.sha256'
+      - 'CMakeLists.txt'
+      - 'CMakePresets.json'
+      - 'docs/mesh-studio/*PREREGISTERED*.md'
       - '.github/workflows/mesh-studio-validation.yml'
       - '.gitattributes'
   workflow_dispatch:
@@ -30,6 +51,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+          cache: pip
+          cache-dependency-path: tools/mesh_studio/requirements-web-ci.txt
       - name: Install fixed direct research dependencies
         run: python -m pip install -r tools/mesh_studio/requirements-web-ci.txt
       - name: Install Linux OpenGL software rendering context
@@ -40,6 +63,17 @@ jobs:
       - name: Linux complete scientific/VTK regression under virtual X server
         if: runner.os == 'Linux'
         run: xvfb-run -a -s '-screen 0 1920x1080x24' python -m unittest discover -s tools/mesh_studio -p 'test_*.py' -t . -v
+      - name: Measure V5 exact-source original P1 and staged Band API cache impact
+        if: runner.os == 'Linux'
+        run: python -m tools.mesh_studio.benchmark_web_cache --pairs 16 --output build/mesh-studio/v5-source-web-cache-benchmark.json
+      - name: Retain actual source SHA pinned V5 cold and warm API timings
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-v5-source-web-cache-${{ github.sha }}
+          path: build/mesh-studio/v5-source-web-cache-benchmark.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Windows scientific regression; hosted GPU renderer explicitly unqualified
         if: runner.os == 'Windows'
         run: python -m unittest discover -s tools/mesh_studio -p 'test_*.py' -t . -v
@@ -51,6 +85,28 @@ jobs:
       - name: Measure bounded synthetic transfer size (not GPU or generator performance)
         if: runner.os == 'Linux'
         run: python -m tools.mesh_studio.scene_benchmark --cells 1000 50000 --output build/mesh-studio/transfer-size.json
+      - name: Audit pinned real candidates and legacy archive without accepting adaptive epochs
+        if: runner.os == 'Linux'
+        run: python -m tools.mesh_studio.source_epoch_inventory --output build/mesh-studio/r2710-source-epoch-inventory.json
+      - name: Retain read-only source/epoch qualification ledger
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-source-epoch-inventory-${{ github.sha }}
+          path: build/mesh-studio/r2710-source-epoch-inventory.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Audit original TRI accepted/rejected native CI evidence (archived, not replayed)
+        if: runner.os == 'Linux'
+        run: python -m tools.mesh_studio.native_epoch_bridge --output build/mesh-studio/r2711-native-epoch-bridge.json
+      - name: Retain original-native-epoch bridge without inventing a second accepted epoch
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-native-epoch-bridge-${{ github.sha }}
+          path: build/mesh-studio/r2711-native-epoch-bridge.json
+          if-no-files-found: error
+          retention-days: 7
       - name: Retain transport-size preflight receipt
         if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4
@@ -60,6 +116,9 @@ jobs:
           if-no-files-found: error
           retention-days: 7
   browser-spike:
+    # Measure only the scene just qualified by the same original compiled C++
+    # GeneratorAdaptive job, never a fixture or an unbound prior run artifact.
+    needs: native-lineage-optin
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
@@ -73,6 +132,27 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Recover same-run original compiled accepted TRI for real Chromium performance
+        uses: actions/download-artifact@v4
+        with:
+          name: mesh-studio-r2720-native-accepted-scene-${{ github.sha }}
+          path: build
+      - name: Recover same-run original C++ source-attested Eistute/Book vector article figures
+        uses: actions/download-artifact@v4
+        with:
+          name: mesh-studio-v52-original-native-accepted-uv-vector-${{ github.sha }}
+          path: build/v52-native-publication-artifact
+      - name: Reject missing same-run original accepted TRI SVG and manifest before browser tests
+        run: |
+          python -c "from pathlib import Path; root=Path('build/v52-native-publication-artifact'); assert list(root.rglob('manifest.json')) and list(root.rglob('eistute-accepted-step1-uv.svg')) and list(root.rglob('book-accepted-step1-uv.svg'))"
+      - name: Recover same-run source-bound typed-buffer capacity receipt
+        uses: actions/download-artifact@v4
+        with:
+          name: mesh-studio-r2722-original-visual-transfer-budget-${{ github.sha }}
+          path: build/mesh-studio
+      - name: Reject missing actual compiled original accepted TRI performance inputs
+        run: |
+          python -c "from pathlib import Path; assert Path('build/r2720-native-accepted-scene.json').is_file(); assert Path('build/mesh-studio/r2722-visual-transfer-budget.json').is_file()"
       - name: Install API dependencies
         run: python -m pip install fastapi==0.128.2 httpx==0.28.1 uvicorn==0.48.0
       - name: Install pinned top-level frontend packages
@@ -87,9 +167,20 @@ jobs:
       - name: Install Chromium and dependencies
         working-directory: tools/mesh_studio/web
         run: npx playwright install --with-deps chromium
-      - name: Execute real Chromium dual-view smoke
+      - name: Execute real Chromium dual-view smoke and authentic original TRI performance
         working-directory: tools/mesh_studio/web
         run: npm run test:e2e
+      - name: Independently audit actual original Chromium performance receipt and source SHA
+        run: python -m tools.mesh_studio.native_browser_perf_audit --report build/mesh-studio/r2722-original-chromium-performance.json --scene build/r2720-native-accepted-scene.json --budget build/mesh-studio/r2722-visual-transfer-budget.json --output build/mesh-studio/r2722-chromium-audit.json
+      - name: Retain exact-source original Chromium import interaction and JS heap measurements
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2722-real-native-chromium-${{ github.sha }}
+          path: |
+            build/mesh-studio/r2722-original-chromium-performance.json
+            build/mesh-studio/r2722-chromium-audit.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Retain bounded browser screenshots and test logs
         if: always()
         uses: actions/upload-artifact@v4
@@ -98,3 +189,300 @@ jobs:
           path: tools/mesh_studio/web/test-results/
           if-no-files-found: ignore
           retention-days: 7
+  native-lineage-optin:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Configure isolated serial C++ original-generator research capture
+        run: |
+          cmake -S . -B build/r2712-native -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_RESEARCH_LINEAGE=ON
+      - name: Build original GeneratorAdaptive with research-only post-commit observation
+        run: cmake --build build/r2712-native --target quad_generator_outcome_probe --parallel 3
+      - name: Verify original Eistute native accepted-epoch face, patch, UV and source-curve records
+        run: python -m tools.mesh_studio.verify_native_lineage --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --model eistute --out-dir build/r2712-native-evidence
+      - name: Verify original Book native accepted-epoch face, patch, UV and source-curve records
+        run: python -m tools.mesh_studio.verify_native_lineage --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --model book --out-dir build/r2712-native-evidence
+      - name: Reparse retained original face/patch/curve bytes against source-bound digests
+        run: python -m tools.mesh_studio.audit_retained_native_lineage --directory build/r2712-native-evidence
+      - name: Audit genuine C++ original precommit acceptance gates against independently accepted native commits
+        run: python -m tools.mesh_studio.native_acceptance_gate_forensics --directory build/r2712-native-evidence --output build/r2723-original-native-acceptance-gates.json
+      - name: Retain R2.7.23 original C++ source-bound acceptance predicates without promoting rejected trials
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2723-original-acceptance-gate-forensics-${{ github.sha }}
+          path: build/r2723-original-native-acceptance-gates.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Audit original native shared-source-curve patch adjacency (not physical node welding)
+        run: python -m tools.mesh_studio.native_source_adjacency --directory build/r2712-native-evidence --output build/r2714-source-adjacency.json
+      - name: Audit sampled UV XYZ and logical-node seams on real accepted native TRI faces
+        run: python -m tools.mesh_studio.native_seam_samples --directory build/r2712-native-evidence --output build/r2715-native-sampled-seams.json
+      - name: Derive original native read-only nonwelded many-patch seam sample correspondences
+        run: python -m tools.mesh_studio.native_seam_correspondence --directory build/r2712-native-evidence --output build/r2716-native-correspondence.json
+      - name: Audit original accepted native UV00 ID versus real postcommit source curve endpoints
+        run: python -m tools.mesh_studio.native_corner_origin --directory build/r2712-native-evidence --output build/r2717-native-corner-origin.json
+      - name: Audit actual provisional Adapter boundary closure against accepted C++ submesh ownership
+        run: python -m tools.mesh_studio.native_boundary_ownership --directory build/r2712-native-evidence --output build/r2718-boundary-cpp-ownership.json
+      - name: Generate source-bound read-only native nonwelded Inspector bundle
+        run: python -m tools.mesh_studio.native_identity_inspector --directory build/r2712-native-evidence --output build/r2719-native-inspector.json
+      - name: Export real accepted native TRI per-face XYZ UV and original source IDs
+        run: python -m tools.mesh_studio.native_accepted_scene --directory build/r2712-native-evidence --output build/r2720-native-accepted-scene.json
+      - name: Export original C++ accepted Eistute and Book TRI patch-local UV true-vector publication
+        run: python -m tools.mesh_studio.native_accepted_vector_publication --mode export --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --output-dir build/v52-native-accepted-uv-publication
+      - name: Independently re-open original C++ NDJSON and exact SVG native face/curve/patch receipts
+        run: python -m tools.mesh_studio.native_accepted_vector_publication --mode audit --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --output-dir build/v52-native-accepted-uv-publication
+      - name: Archive original source-attested accepted Eistute/Book SVG figure and source manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-v52-original-native-accepted-uv-vector-${{ github.sha }}
+          path: |
+            build/v52-native-accepted-uv-publication/
+            build/r2720-native-accepted-scene.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Independently audit source-sha-pinned accepted TRI seam edges across every patch
+        run: python -m tools.mesh_studio.native_seam_edges --directory build/r2712-native-evidence --output build/r2721-original-native-seam-edges.json
+      - name: Compute R2.7.22 real native scene CPU typed-buffer capacity from original source bytes
+        run: python -m tools.mesh_studio.native_scene_perf_budget --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --output build/mesh-studio/r2722-visual-transfer-budget.json
+      - name: Retain original-source R2.7.22 deterministic CPU transfer budget
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2722-original-visual-transfer-budget-${{ github.sha }}
+          path: build/mesh-studio/r2722-visual-transfer-budget.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain native R2.7.21 read-only per-patch actual TRI edge qualification
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2721-original-native-seam-edges-${{ github.sha }}
+          path: build/r2721-original-native-seam-edges.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain R2.7.20 independent original Eistute Book accepted TRI scene bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2720-native-accepted-scene-${{ github.sha }}
+          path: build/r2720-native-accepted-scene.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain original R2.7.19 Inspector import manifest for independent local viewer
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2719-native-inspector-${{ github.sha }}
+          path: build/r2719-native-inspector.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain original R2.7.18 C++ pointer-comparison receipt without raw addresses
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2718-native-boundary-ownership-${{ github.sha }}
+          path: build/r2718-boundary-cpp-ownership.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain native R2.7.17 original source-corner witness without numeric changes
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2717-original-corner-origin-${{ github.sha }}
+          path: build/r2717-native-corner-origin.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain R2.7.16 original native sample associations without overwriting any node IDs
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2716-nonwelded-correspondence-${{ github.sha }}
+          path: build/r2716-native-correspondence.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain R2.7.15 original-source sampled interface report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2715-sampled-seams-${{ github.sha }}
+          path: build/r2715-native-sampled-seams.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain original-source adjacency evidence with explicit LOD exclusions
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2714-source-adjacency-${{ github.sha }}
+          path: build/r2714-source-adjacency.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain original NDJSON face records and source-bound summaries together
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2712-native-original-source-${{ github.sha }}
+          path: build/r2712-native-evidence/*
+          if-no-files-found: error
+          retention-days: 7
+      - name: Configure native serial generator with research lineage disabled for numerical parity
+        run: |
+          cmake -S . -B build/r2713-default-off -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_RESEARCH_LINEAGE=OFF
+      - name: Build original serial GeneratorAdaptive with instrumentation OFF
+        run: cmake --build build/r2713-default-off --target quad_generator_outcome_probe --parallel 3
+      - name: Prove Eistute real C++ original acceptance, OBJ and scientific CSV/JSON byte parity OFF vs ON
+        run: python -m tools.mesh_studio.native_lineage_parity --exe-off build/r2713-default-off/bin/quad_generator_outcome_probe --exe-on build/r2712-native/bin/quad_generator_outcome_probe --root . --model eistute --out-dir build/r2713-parity-evidence
+      - name: Prove Book real C++ original acceptance, OBJ and scientific CSV/JSON byte parity OFF vs ON
+        run: python -m tools.mesh_studio.native_lineage_parity --exe-off build/r2713-default-off/bin/quad_generator_outcome_probe --exe-on build/r2712-native/bin/quad_generator_outcome_probe --root . --model book --out-dir build/r2713-parity-evidence
+      - name: Retain native OFF/ON numerical parity receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2713-native-numerical-parity-${{ github.sha }}
+          path: build/r2713-parity-evidence/*.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Run R2.7.24 preregistered original native Eistute and Book isolated single-factor generation experiments
+        run: python -m tools.mesh_studio.native_controlled_sensitivity --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --out-dir build/r2724-controlled-native-treatment-evidence --timeout 300
+      - name: Independently re-audit R2.7.24 original model/config/executable SHAs and genuine native postcommit trial sidecars
+        run: python -m tools.mesh_studio.native_sensitivity_audit --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --treatments build/r2724-controlled-native-treatment-evidence --output build/r2724-controlled-native-sensitivity-audit.json
+      - name: Audit R2.7.25 original effective C++ curve point floors and element targets for both real source/trial runs
+        run: python -m tools.mesh_studio.native_effective_budget_audit --original-directory build/r2712-native-evidence --trials-directory build/r2724-controlled-native-treatment-evidence --output build/r2725-original-effective-budget-audit.json
+      - name: Retain source-verified R2.7.25 effective native C++ budget and per-curve comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2725-original-effective-budgets-${{ github.sha }}
+          path: build/r2725-original-effective-budget-audit.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Execute R2.7.26 preregistered original-native generation-controls on real Eistute and Book
+        run: python -m tools.mesh_studio.native_active_generation_study --mode run --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --trials-directory build/r2726-original-generation-treatments --timeout 300
+      - name: Independently re-open R2.7.26 actual source C++ gates, face receipts and curve budgets
+        run: python -m tools.mesh_studio.native_active_generation_study --mode audit --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --trials-directory build/r2726-original-generation-treatments --output build/r2726-original-native-generation-audit.json
+      - name: Independently audit R2.7.27 actual original C++ transition coherence and preserved gate thresholds
+        run: python -m tools.mesh_studio.native_transition_coherence_audit --root . --exe build/r2712-native/bin/quad_generator_outcome_probe --original-directory build/r2712-native-evidence --trials-directory build/r2726-original-generation-treatments --r2726-audit build/r2726-original-native-generation-audit.json --output build/r2727-original-transition-coherence-audit.json
+      - name: Replay Eistute original and existing min13 variant with original Adapter CSV retention only
+        run: python -m tools.mesh_studio.native_patch_csv_replay --mode capture --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --output-dir build/r2728-original-eistute-patch-csv --timeout 300
+      - name: Independently audit real original Adapter per-patch CSV, local candidates and accepted TRI source
+        run: python -m tools.mesh_studio.native_patch_csv_replay --mode audit --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --output-dir build/r2728-original-eistute-patch-csv --report build/r2728-original-eistute-patch-audit.json
+      - name: Independently verify R2.7.29 original AFT elongated-face transition versus Adapter spatial-or-shape classification
+        run: python -m tools.mesh_studio.native_transition_classifier_semantics --root . --exe build/r2712-native/bin/quad_generator_outcome_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --r2728-report build/r2728-original-eistute-patch-audit.json --output build/r2729-original-aft-adapter-metric-semantics.json
+      - name: Retain source-verified R2.7.29 independently recalculated AFT and regional original C++ transition metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2729-original-aft-regional-semantics-${{ github.sha }}
+          path: build/r2729-original-aft-adapter-metric-semantics.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Build standalone original-engine R2.7.30 Adapter selected-local observer without touching prior compiled outcome probe
+        run: cmake --build build/r2712-native --target quad_generator_local_selection_probe --parallel 2
+      - name: Replay exact Eistute article and predeclared min13 on original engine with final selected-local C++ observer
+        run: python -m tools.mesh_studio.native_local_selection_provenance --mode capture --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --selection-exe build/r2712-native/bin/quad_generator_local_selection_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --output-dir build/r2730-original-eistute-selected-local --timeout 300
+      - name: Independently verify real R2.7.30 selected-local Adapter returns, accepted TRI source and complete local CSV chronology
+        run: python -m tools.mesh_studio.native_local_selection_provenance --mode audit --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --selection-exe build/r2712-native/bin/quad_generator_local_selection_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --r2728-report build/r2728-original-eistute-patch-audit.json --output-dir build/r2730-original-eistute-selected-local --report build/r2730-original-eistute-selected-local-audit.json
+      - name: Archive raw original C++ R2.7.30 selected-local witness and fail-closed independent source audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2730-original-selected-adapter-local-${{ github.sha }}
+          path: |
+            build/r2730-original-eistute-selected-local/
+            build/r2730-original-eistute-selected-local-audit.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Independently re-open original C++ selected Adapter returns and decompose actual R2.7.31 AFT floor deficits
+        run: python -m tools.mesh_studio.native_selected_gate_decomposition --root . --selected-directory build/r2730-original-eistute-selected-local --prior-report build/r2730-original-eistute-selected-local-audit.json --output build/r2731-selected-original-aft-gate-decomposition.json
+      - name: Retain source-hash-bound R2.7.31 selected original native AFT gate decomposition
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2731-selected-original-aft-gate-${{ github.sha }}
+          path: build/r2731-selected-original-aft-gate-decomposition.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Build separate unchanged-engine R2.7.32 original selected pre-AFT UV source observer
+        run: cmake --build build/r2712-native --target quad_generator_selected_uv_probe --parallel 2
+      - name: Execute original Eistute and min13 native C++ source with R2.7.32 provisional Quadtree UV read-only observation
+        run: python -m tools.mesh_studio.native_local_selection_provenance --mode capture --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --selection-exe build/r2712-native/bin/quad_generator_selected_uv_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --output-dir build/r2732-original-selected-preaft-uv --timeout 300
+      - name: Revalidate complete original Adapter final selections and original accepted step-1 TRI sidecars for distinct UV C++ observer
+        run: python -m tools.mesh_studio.native_local_selection_provenance --mode audit --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --selection-exe build/r2712-native/bin/quad_generator_selected_uv_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --r2728-report build/r2728-original-eistute-patch-audit.json --output-dir build/r2732-original-selected-preaft-uv --report build/r2732-original-selected-preaft-uv-local-selection-audit.json
+      - name: Independently correlate exact original selected local Adapter attempts with source Quadtree UV pre-AFT observations
+        run: python -m tools.mesh_studio.native_selected_uv_geometry --root . --capture-dir build/r2732-original-selected-preaft-uv --prior-report build/r2732-original-selected-preaft-uv-local-selection-audit.json --output build/r2732-original-selected-preaft-uv-geometry-audit.json
+      - name: Archive raw original C++ R2.7.32 pre-AFT UV candidates, accepted original TRI and independent selected provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2732-original-selected-preaft-uv-${{ github.sha }}
+          path: |
+            build/r2732-original-selected-preaft-uv/
+            build/r2732-original-selected-preaft-uv-local-selection-audit.json
+            build/r2732-original-selected-preaft-uv-geometry-audit.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Build R2.7.33 isolated Linux GNU ELF original Adapter selected TRI return observer
+        run: cmake --build build/r2712-native --target quad_generator_selected_tri_return_probe --parallel 2
+      - name: Real R2.7.33 original/min13 separate native C++ selected post-AFT TRI and unwrapped-vs-wrapped scientific parity
+        run: python -m tools.mesh_studio.native_selected_tri_return --mode capture --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --baseline-exe build/r2712-native/bin/quad_generator_local_selection_probe --wrapper-exe build/r2712-native/bin/quad_generator_selected_tri_return_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --output-dir build/r2733-original-eistute-selected-post-aft-tri --timeout 300
+      - name: Independently re-open every real original R2.7.33 selected TRI UV XYZ native ID plus control parity hash
+        run: python -m tools.mesh_studio.native_selected_tri_return --mode audit --root . --output-dir build/r2733-original-eistute-selected-post-aft-tri --audit-report build/r2733-original-selected-post-aft-tri-independent-audit.json
+      - name: Archive raw original R2.7.33 provisional selected post-AFT TRI source faces, native stdout, control and audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2733-original-selected-post-aft-tri-${{ github.sha }}
+          path: |
+            build/r2733-original-eistute-selected-post-aft-tri/
+            build/r2733-original-selected-post-aft-tri-independent-audit.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Build separate original R2.7.34 serial Linux source curve pointer-incidence and post-AFT selected TRI observer
+        run: cmake --build build/r2712-native --target quad_generator_selected_curve_seam_probe --parallel 2
+      - name: Replay original native Eistute and min13 with new R2.7.34 source curve ownership witness and exact unwrapped scientific parity
+        run: python -m tools.mesh_studio.native_selected_tri_return --mode capture --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --baseline-exe build/r2712-native/bin/quad_generator_local_selection_probe --wrapper-exe build/r2712-native/bin/quad_generator_selected_curve_seam_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --output-dir build/r2734-original-source-curves-selected-tri-seams --timeout 300
+      - name: Re-open complete original R2.7.34 native TRI and all unwrapped-versus-wrapped raw scientific files
+        run: python -m tools.mesh_studio.native_selected_tri_return --mode audit --root . --output-dir build/r2734-original-source-curves-selected-tri-seams --audit-report build/r2734-raw-original-tri-parity-independent-audit.json
+      - name: Verify source C++ curve object equality mapping and true fan-wise selected TRI boundary XYZ diagnostics
+        run: python -m tools.mesh_studio.native_selected_curve_seam --root . --selected-directory build/r2734-original-source-curves-selected-tri-seams --output build/r2734-source-curve-identity-and-provisional-seam-audit.json
+      - name: Archive R2.7.34 complete source curve pointer-incidence/selected TRI raw files, numerical parity and source-attested audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2734-original-source-curves-selected-tri-seams-${{ github.sha }}
+          path: |
+            build/r2734-original-source-curves-selected-tri-seams/
+            build/r2734-raw-original-tri-parity-independent-audit.json
+            build/r2734-source-curve-identity-and-provisional-seam-audit.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Archive raw R2.7.28 original C++ Adapter per-patch CSV and independent source audit even on experimental failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2728-original-eistute-adapter-patch-csv-${{ github.sha }}
+          path: |
+            build/r2728-original-eistute-patch-csv/
+            build/r2728-original-eistute-patch-audit.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Retain exact-source R2.7.27 read-only original C++ coherence and readiness forensic receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2727-original-transition-coherence-${{ github.sha }}
+          path: build/r2727-original-transition-coherence-audit.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain R2.7.26 raw native C++ separate-process treatment evidence even if experiment fails closed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2726-source-native-trials-${{ github.sha }}
+          path: |
+            build/r2726-original-generation-treatments/
+            build/r2726-original-native-generation-audit.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Preserve exact R2.7.24 original C++ controlled-treatment attempts and independently verified native source outcomes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2724-native-controlled-sensitivity-${{ github.sha }}
+          path: |
+            build/r2724-controlled-native-treatment-evidence/
+            build/r2724-controlled-native-sensitivity-audit.json
+          if-no-files-found: warn
+          retention-days: 14
+
+
