@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { basename, join, resolve } from 'node:path';
 
 /** These tests load actual C++ same-run original accepted source artifacts.
  * Missing artifacts skip local dev only; CI separately requires their presence.
@@ -37,6 +37,14 @@ async function importScene(page: import('@playwright/test').Page) {
 function filenames() {
   return ['manifest.json', 'eistute-accepted-step1-uv.svg',
     'book-accepted-step1-uv.svg'].map(name => join(packageDir, name));
+}
+
+function uploadBuffer(path: string) {
+  return {
+    name: basename(path),
+    mimeType: path.endsWith('.svg') ? 'image/svg+xml' : 'application/json',
+    buffer: readFileSync(path),
+  };
 }
 
 test('V5.2 actual compiled C++ Eistute and Book original accepted patch UV vector figures load, preview and download', async ({page}) => {
@@ -91,7 +99,7 @@ test('V5.2 original native C++ source figure refuses forged LOD, corrupted SVG a
   await page.getByTestId('v52-native-vector-import').setInputFiles([
     {name:'manifest.json', mimeType:'application/json',
       buffer:Buffer.from(JSON.stringify(forged))},
-    files[1], files[2],
+    uploadBuffer(files[1]), uploadBuffer(files[2]),
   ]);
   await expect(page.getByTestId('v52-native-vector-error'))
     .toContainText('v52_manifest_not_bound_to_imported_original_native_scene');
@@ -103,10 +111,10 @@ test('V5.2 original native C++ source figure refuses forged LOD, corrupted SVG a
   expect(index).toBeGreaterThan(0);
   wrongSvg[index] = 0x78;
   await page.getByTestId('v52-native-vector-import').setInputFiles([
-    files[0],
+    uploadBuffer(files[0]),
     {name:'eistute-accepted-step1-uv.svg', mimeType:'image/svg+xml',
       buffer:wrongSvg},
-    files[2],
+    uploadBuffer(files[2]),
   ]);
   await expect(page.getByTestId('v52-native-vector-error'))
     .toContainText('v52_native_original_vector_bytes_changed');
@@ -116,7 +124,7 @@ test('V5.2 original native C++ source figure refuses forged LOD, corrupted SVG a
   await page.getByTestId('v52-native-vector-import').setInputFiles([
     {name:'manifest.json',mimeType:'application/json',
       buffer:Buffer.from(JSON.stringify(mismatched))},
-    files[1], files[2],
+    uploadBuffer(files[1]), uploadBuffer(files[2]),
   ]);
   await expect(page.getByTestId('v52-native-vector-error'))
     .toContainText('v52_manifest_not_bound_to_imported_original_native_scene');
