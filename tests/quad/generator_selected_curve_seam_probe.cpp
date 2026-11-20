@@ -106,9 +106,10 @@ void WriteSelectedTri(SubMesh& sub, PatchCoons& patch,
     }
     const std::size_t object_group = OriginalCurveObjectOrdinal(curve);
     // GetPoint lacks a const overload in the original code; we only read it.
-    const PointAdaptive* first = curve->GetPoint(0);
-    const PointAdaptive* last =
-        curve->GetPoint(curve->GetNumBerPoints() - 1);
+    const PointAdaptive* first =
+        const_cast<CurveAdaptive*>(curve)->GetPoint(0);
+    const PointAdaptive* last = const_cast<CurveAdaptive*>(curve)->GetPoint(
+        curve->GetNumBerPoints() - 1);
     if (first == nullptr || last == nullptr ||
         !std::isfinite(first->GetX()) || !std::isfinite(first->GetY()) ||
         !std::isfinite(first->GetZ()) || !std::isfinite(last->GetX()) ||
