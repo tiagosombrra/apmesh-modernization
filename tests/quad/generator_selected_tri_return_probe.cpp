@@ -94,7 +94,7 @@ void WriteSelectedTri(const SubMesh& sub, PatchCoons& patch,
 
   for (std::size_t element_slot = 0; element_slot < faces; ++element_slot) {
     auto* base = sub.GetElement(static_cast<unsigned int>(element_slot));
-    auto* tri = dynamic_cast<TriangleAdaptive*>(base);
+    auto* tri = dynamic_cast<const TriangleAdaptive*>(base);
     if (!tri) throw std::runtime_error("R2733 non-TRI native selected element");
     const std::array<std::tuple<double, double>, 3> uv{{
         tri->GetParametersN1(), tri->GetParametersN2(),
