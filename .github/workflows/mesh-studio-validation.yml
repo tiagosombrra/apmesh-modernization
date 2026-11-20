@@ -223,6 +223,19 @@ jobs:
         run: python -m tools.mesh_studio.native_identity_inspector --directory build/r2712-native-evidence --output build/r2719-native-inspector.json
       - name: Export real accepted native TRI per-face XYZ UV and original source IDs
         run: python -m tools.mesh_studio.native_accepted_scene --directory build/r2712-native-evidence --output build/r2720-native-accepted-scene.json
+      - name: Export original C++ accepted Eistute and Book TRI patch-local UV true-vector publication
+        run: python -m tools.mesh_studio.native_accepted_vector_publication --mode export --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --output-dir build/v52-native-accepted-uv-publication
+      - name: Independently re-open original C++ NDJSON and exact SVG native face/curve/patch receipts
+        run: python -m tools.mesh_studio.native_accepted_vector_publication --mode audit --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --output-dir build/v52-native-accepted-uv-publication
+      - name: Archive original source-attested accepted Eistute/Book SVG figure and source manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-v52-original-native-accepted-uv-vector-${{ github.sha }}
+          path: |
+            build/v52-native-accepted-uv-publication/
+            build/r2720-native-accepted-scene.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Independently audit source-sha-pinned accepted TRI seam edges across every patch
         run: python -m tools.mesh_studio.native_seam_edges --directory build/r2712-native-evidence --output build/r2721-original-native-seam-edges.json
       - name: Compute R2.7.22 real native scene CPU typed-buffer capacity from original source bytes
