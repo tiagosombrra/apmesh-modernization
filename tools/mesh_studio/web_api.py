@@ -5,6 +5,7 @@ Scientific verification remains in the original Python engine, not the UI.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 from functools import lru_cache
 from hashlib import sha256
 from pathlib import Path
@@ -158,12 +159,14 @@ def face(model_id: str, face_id: int):
     if not 0 <= face_id < len(doc.faces):
         raise HTTPException(status_code=404, detail='unknown_face_id')
     result = face_detail(doc, face_id)
-    result['quality'] = _verified_quality(ROOT / CATALOG[model_id][0],
-                                         doc.source_sha256)['cells'][face_id]
+    result['quality'] = dict(_verified_quality(ROOT / CATALOG[model_id][0],
+                                              doc.source_sha256)['cells'][face_id])
     return result
 
 
 @app.get('/api/v1/models/{model_id}/quality')
 def quality(model_id: str):
     document = load_document(model_id)
-    return _verified_quality(ROOT / CATALOG[model_id][0], document.source_sha256)
+    # Return an isolated report, never the mutable canonical cached source.
+    return deepcopy(_verified_quality(ROOT / CATALOG[model_id][0],
+                                      document.source_sha256))
