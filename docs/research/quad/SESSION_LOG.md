@@ -3956,3 +3956,23 @@ Next specify one local pre-front spacing comparison based on the native
 curve subdivision and neighboring quadtree sizes, then seek alignment.
 Defer testing the literature-backed smoothing guard until after transition
 work. No mixed global error/adaptation adoption or integration.
+
+## 2026-11-20 Fortaleza - define a bounded native contour spacing trial
+
+Bind the planned local transition comparison to the retained Step 3
+curve-3 sample and exposed template edge [13, 349]. Recompute its physical
+edge sizes and check the stored arc midpoint against the analytic patch.
+The original 1-unit straight interval would become two approximately
+0.5-unit chords using one binary split. Record the existing parametric
+curve-stage partition and distinguish the hypothetical triangle from an
+actual generated face.
+
+Propose one Step 3, attempt 0, native post-restriction split followed by
+the same restriction and curve sample publication. Ask for explicit
+scientific alignment before making that C++ change. The isolated trial
+would recalculate the native source tree and follow the original TRI
+step decision. The planned comparison checks growth, original and mixed
+error diagnostics, degree and shape tails and spacing across regions.
+The [design receipt](LOCAL_CONTOUR_SPACING_TRIAL_DESIGN_20261120.md)
+records the evidence and exact scope. No new native build, test, or
+candidate generation. The prior negative front order result is retained.

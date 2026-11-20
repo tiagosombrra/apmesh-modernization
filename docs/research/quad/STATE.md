@@ -3,7 +3,7 @@
 Updated 2026-11-20 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: front-order trial closed; target local transition spacing
+## Active: one local contour split proposed; scientific decision pending
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,26 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-20 - one native contour subdivision specified
+
+[Design](LOCAL_CONTOUR_SPACING_TRIAL_DESIGN_20261120.md) and
+[archive receipt](evidence/LOCAL_CONTOUR_SPACING_TRIAL_DESIGN_20261120.json)
+tie the Step 3 pocket to native curve 3, interval [0, 0.5]. The native
+arc midpoint at 0.272552490234375 yields two approximately 0.5-unit chords.
+The adjacent exposed edge is 0.04731 long and touches 0.0625-wide leaves
+in UV. A direct hypothetical triangle using this midpoint instead of the
+old contour apex measures 8.43 degrees in XYZ versus 1.42 originally.
+This is a geometric calculation on retained data.
+
+**Next:** obtain scientific alignment to apply one native binary split
+after the ordinary Step 3 curve restriction, then run one isolated fixed
+1.5 replay with the original remeshing, acceptance and smoothing.
+Track both source TRI and mixed candidate outcomes, including candidate
+count, shape and size changes and any rejection. The live source tree
+and derived clearance can change as the native generator sees the new
+sample. No C++ source, native build or new scientific run for this design
+checkpoint. The smoothing-guard trial stays queued. PR243 remains draft.
 
 ### 2026-11-20 - transition closure and approved front-order trial
 
