@@ -41,8 +41,9 @@ original two straight segments per side as the mixed interior refines. The [sing
 reproduces Step2/3 source rejections at112 contour segments despite measurable
 transition gains. Keep fixed1.5 as the retained reference. The [native trace](SURFACE_CURVE_SPACING_QUALITY_TRACE_20261120.md)
 locates growth before curve neighbor restriction and matches20 curve inputs
-with zero values to accepted TRI nodes with measured curvature. Next align a
-local handoff experiment using the accepted values.
+with zero values to accepted TRI nodes with measured curvature. The approved [handoff experiment](ACCEPTED_TRI_CURVE_HANDOFF_TRIAL_20261120.md)
+changes spacing requests but does not improve the accepted mixed history.
+Next target the exposed template transition where the worst TRI forms.
 Track final angle extremes, edge ratio and separate TRI/QUAD shape metrics.
 Further curvature estimator changes wait for this generation work.
 

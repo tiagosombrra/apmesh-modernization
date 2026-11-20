@@ -3,7 +3,7 @@
 Updated 2026-11-20 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: accepted curvature handoff diagnosed; local trial proposed
+## Active: curvature handoff trial closed; focus on mixed transition shape
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,28 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-20 - approved accepted TRI handoff trial completed
+
+[Trial report](ACCEPTED_TRI_CURVE_HANDOFF_TRIAL_20261120.md) and
+[evidence](evidence/ACCEPTED_TRI_CURVE_HANDOFF_TRIAL_20261120.json) bind one
+local MSVC replay. All24 exact side incidences/eight interpolated Step2 sites
+and28 consumed pairs pass independent checks. Step0/1 bytes match the control.
+All28 requests change, but point counts before restriction evolve from
+65/17/17/17 to65/18/17/17. Mixed Step2 grows953→954 nodes and112→113 contour
+segments. Original TRI error0.382516→0.381381 still causes rejection against
+0.125829. Worst physical quality effectively unchanged. Last published Step1
+is unchanged. Retain the negative result and do not promote this trial.
+
+Fixed1.5 Step2 contour QUAD J falls0.394→0.158 on the first smoothing pass and
+ends0.224. Fixed Step3 front commit106 initially makes a1.42-degree TRI from
+the straight-side midpoint to a short exposed template edge; after smoothing
+another face from commit48 has the1.87-degree regional/global minimum.
+
+**Next:** audit the native sizes around these two mixed-front commits to prepare
+one local transition proposal with shape judged after smoothing. Preserve the
+legacy TRI source, and seek statistical/numerical alignment before changing
+scientific rules. No new accepted mixed epochs, global error or integration.
 
 ### 2026-11-20 - native surface-curve trace and mixed quality reassessment
 

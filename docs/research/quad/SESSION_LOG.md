@@ -3908,3 +3908,27 @@ No production change, new acceptance cutoff,
 fresh full baseline or hosted campaign, or phase closure. Retain the isolated
 debugger-free observer and raw logs locally, publish the scoped evidence and
 verify the canonical documentation checkpoint.
+
+## 2026-11-20 Fortaleza - adopted accepted-TRI handoff trial and shape evidence
+
+Researcher explicitly adopts one opt-in same-side interpolation comparison.
+Use separate local MSVC C++17 executable and Step2 research guard. Hand off
+accepted TRI contour measurements by identity and XYZ, use exact parameter
+matches or linear signed-channel interpolation inside the same curve side.
+Capture values without editing accepted nodes. Single execution completes in
+42.31s under180s. Check24 exact/eight interpolated sample values,28 consumed
+pairs, four identical Step0/1 mesh files and original contour bindings.
+
+Requests change on every interval but restriction still adds no points.
+Step2 grows by one additional straight interval/node and is source-rejected
+at0.381381 vs accepted0.125829, as is Step3. Worst Step2 shape changes
+negligibly. Last published Step1 is byte-identical to the retained control.
+Close this trial and retain negative evidence without a new scientific run.
+
+Read archived smoothing passes. Step2 fixed contour QUAD minimum J loses shape
+on the first pass (0.394→0.158), while vertex-only TRI benefits. Map Step3
+worst early TRI to commit106, curved surface lifted from a long edge to a
+short exposed template edge, and the final worst TRI to commit48. Target the
+local transition for the next bounded size audit and proposal. Preserve default
+TRI and keep final shape by type/region and worst tails visible. No new baseline
+CTest or CI qualification, no tracked app changes, no accepted mixed epochs.

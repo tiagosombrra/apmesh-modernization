@@ -82,11 +82,12 @@ comparison. The [native curve spacing and quality trace](SURFACE_CURVE_SPACING_Q
 finds zero discrete endpoints in28 intervals and the full point jump before
 neighbor restriction. Exact geometry/source lineage reproduction and6206 shape
 measurements separate contour-edge, vertex-only and interior TRI/QUAD quality.
-The second observational replay identifies the handoff mismatch at all20
-accepted contour sites by ID/XYZ. Next seek adoption for a single-patch opt-in
-handoff with accepted exact matches and interpolation at new bracketed sites.
-Preserve original curve/domain restrictions and report worst final shape as well
-as distributions before and after smoothing.
+The explicitly adopted [accepted-TRI handoff trial](ACCEPTED_TRI_CURVE_HANDOFF_TRIAL_20261120.md)
+verifies exact/interpolated data and changes native size requests. The discrete
+partition and unacceptable Step2 shape barely change, and the source rejects
+Steps2/3. Close the handoff trial. Target the template interface around the
+worst mixed-front commits106 and48 next. Preserve original curve/domain
+restrictions and compare worst final shape and quantitative distributions.
 Keep PR243 draft. Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
