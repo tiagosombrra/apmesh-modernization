@@ -1,4 +1,6 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { sha256File, verifyNativeVectorPackage } from './nativeAcceptedPublicationContract';
+import type { NativeAcceptedVector } from './nativeAcceptedPublicationContract';
 import { NativeAcceptedTriViewer } from './NativeAcceptedTriViewer';
 import { parseNativeAcceptedScene } from './nativeAcceptedSceneContract';
 import type { NativeSceneBundle } from './nativeAcceptedSceneContract';
@@ -14,7 +16,46 @@ export function NativeAcceptedScenePanel() {
   const [patchSlot, setPatchSlot] = useState(0);
   const [sampleOrdinal, setSampleOrdinal] = useState(0);
   const [faceIndex, setFaceIndex] = useState<number | null>(null);
+  const [nativeSceneFileSha, setNativeSceneFileSha] = useState<string | null>(null);
+  const [nativeFigureError, setNativeFigureError] = useState<string | null>(null);
+  const [figures, setFigures] = useState<Array<NativeAcceptedVector & { objectUrl: string }>>([]);
+  const nativeFigureUrls = useRef<string[]>([]);
+  const nativeUploadSerial = useRef(0);
+  useEffect(() => () => {
+    for (const uri of nativeFigureUrls.current) URL.revokeObjectURL(uri);
+  }, []);
+  function clearFigures() {
+    for (const uri of nativeFigureUrls.current) URL.revokeObjectURL(uri);
+    nativeFigureUrls.current = [];
+    setFigures([]);
+    setNativeFigureError(null);
+  }
+  async function importFigurePackage(files: FileList | null) {
+    clearFigures();
+    const token = nativeUploadSerial.current;
+    if (!data || !nativeSceneFileSha || !files) {
+      setNativeFigureError('v52_original_scene_and_figure_files_required');
+      return;
+    }
+    try {
+      const verified = await verifyNativeVectorPackage(
+        Array.from(files), data, nativeSceneFileSha);
+      if (token !== nativeUploadSerial.current) return;
+      const prepared = verified.map(figure => ({
+        ...figure, objectUrl: URL.createObjectURL(figure.file),
+      }));
+      nativeFigureUrls.current = prepared.map(figure => figure.objectUrl);
+      setFigures(prepared);
+    } catch (reason) {
+      if (token === nativeUploadSerial.current) {
+        setNativeFigureError(reason instanceof Error ?
+          reason.message : 'v52_invalid_original_vector_package');
+      }
+    }
+  }
   const scene = data?.scenes[sceneIndex];
+  const activeFigure = figures.find(item => scene &&
+    item.model === scene.model && item.step === scene.accepted_native_step);
   const identity = scene && data?.identity.documents.find(d =>
     d.model === scene.model &&
     d.accepted_native_step === scene.accepted_native_step &&
@@ -36,6 +77,9 @@ export function NativeAcceptedScenePanel() {
   }, [identity, selected]);
 
   async function importNative(file: File | undefined) {
+    const token = ++nativeUploadSerial.current;
+    clearFigures();
+    setNativeSceneFileSha(null);
     const importStart = performance.now();
     if (perfHostRef.current) {
       for (const key of Object.keys(perfHostRef.current.dataset))
@@ -49,6 +93,8 @@ export function NativeAcceptedScenePanel() {
         throw new Error('r2720_bounded_native_scene_file_required');
       }
       const input = await file.text();
+      const sceneFileSha = await sha256File(file);
+      if (token !== nativeUploadSerial.current) return;
       const readEnd = performance.now();
       const result = parseNativeAcceptedScene(input);
       const parseEnd = performance.now();
@@ -74,11 +120,15 @@ export function NativeAcceptedScenePanel() {
           (performance.now() - importStart).toFixed(3);
         host.dataset.nativePerfJsonBytes = String(file.size);
       }
+      if (token !== nativeUploadSerial.current) return;
+      setNativeSceneFileSha(sceneFileSha);
       setData(result);
       setPatchSlot(result.identity.documents[0]
         .qualified_shared_source_curves[0].patch_slots[0]);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : 'r2720_invalid_native_scene');
+      if (token === nativeUploadSerial.current) {
+        setError(cause instanceof Error ? cause.message : 'r2720_invalid_native_scene');
+      }
     }
   }
 
@@ -180,6 +230,39 @@ export function NativeAcceptedScenePanel() {
           </select>
         </label>
       </div>
+      <section className="native-vector-figures" data-testid="v52-accepted-native-vector-package">
+        <h3>Figuras UV vetoriais — TRI original realmente aceita</h3>
+        <p className="small-note">
+          Carregue juntos o manifesto <code>manifest.json</code> e os dois SVGs
+          obtidos do artefato V5.2 do mesmo CI C++. O navegador confere SHA-256
+          dos SVGs, o SHA do JSON nativo carregado, os IDs das faces, os patches,
+          as UV originais e o inventário das amostras da curva-fonte.
+        </p>
+        <label className="native-identity-upload">Manifesto e figuras de Eistute/Book
+          <input type="file" data-testid="v52-native-vector-import" multiple
+            accept=".json,.svg,application/json,image/svg+xml"
+            onChange={event => {void importFigurePackage(event.currentTarget.files);}}/>
+        </label>
+        {nativeFigureError && <div role="alert" data-testid="v52-native-vector-error"
+          className="native-identity-error">Pacote recusado: {nativeFigureError}</div>}
+        {activeFigure && <div className="native-vector-preview"
+          data-testid="v52-native-vector-ready">
+          <img src={activeFigure.objectUrl}
+            data-testid="v52-native-vector-image"
+            alt={'Malha TRI originalmente aceita ' + scene.model +
+              ', UV locais de cada patch; figura vetorial sem soldagem presumida'}/>
+          <a href={activeFigure.objectUrl} download={activeFigure.filename}
+            data-testid="v52-native-vector-download">
+            Baixar SVG vetorial original de {scene.model.toUpperCase()}
+          </a>
+          <code data-testid="v52-native-vector-sha">{activeFigure.svgSha}</code>
+        </div>}
+        <p className="small-note">Integridade verificada em relação ao JSON importado.
+          A autenticação do NDJSON C++ bruto ocorre no CI científico original;
+          um manifesto e SVG enviados pelo usuário não a substituem.
+          A figura mostra UV por patch, não uma malha globalmente soldada,
+          não um segundo nível LOD e não um limite de erro contínuo.</p>
+      </section>
       <div className="native-identity-evidence">
         <div><small>TRI NATIVAS ACEITAS</small>
           <strong data-testid="r2720-tri-count">{scene.native_tri_faces}</strong></div>
