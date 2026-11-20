@@ -11,8 +11,21 @@ on:
       - '!tools/mesh_studio/web/README.md'
       - '!tools/mesh_studio/fixtures/README.md'
       - 'research/mesh_studio/**'
-      - 'src/generator/generator_adaptive.cpp'
+      # Original geometry, native ABI, data and research hooks are exact-source
+      # scientific dependencies; none may silently bypass the native gates.
+      - 'research/quad/**'
+      - 'src/**'
+      - 'include/**'
+      - 'tests/quad/**'
+      - 'configs/**'
+      - 'input_models/**'
+      - 'reference/**'
+      - 'libs/**'
+      - 'cmake/**'
+      - 'MANIFEST.sha256'
       - 'CMakeLists.txt'
+      - 'CMakePresets.json'
+      - 'docs/mesh-studio/*PREREGISTERED*.md'
       - '.github/workflows/mesh-studio-validation.yml'
       - '.gitattributes'
   workflow_dispatch:
