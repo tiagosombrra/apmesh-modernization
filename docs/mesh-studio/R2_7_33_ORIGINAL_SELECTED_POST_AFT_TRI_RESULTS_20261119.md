@@ -1,0 +1,46 @@
+# Mesh Studio R2.7.33 — genuine original post-AFT selected Adapter TRI, exact native parity and limitations
+
+**Research date (Fortaleza): 2026-11-19.** **FULL EXACT-SOURCE CI QUALIFICATION: PASS, 4/4 jobs.** Tested code SHA `e94d66c66ba88d2298c857170de0fd317a82fbae`, [GitHub Actions #44658983855](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44658983855). Source-first preregistration [R2.7.33](R2_7_33_PREREGISTERED_ORIGINAL_SELECTED_POST_AFT_TRI_WRAPPER_20261119.md) (immutable Git blob `44184636157167e5a09548d65e4ab3d18efe3758`) was committed **before** this observer and scientific experiment.
+
+The source original `Adapter::AdaptDomain` (`78f821411f33a8ca7594c8e357bbe4a79e5d33f9`), original `GeneratorAdaptive` (`844673ea764f3092330e5e9ebb01d8eb339869bc`) and original AFT, CAD input, acceptance predicates and prior R2.7.30 executable remain **unchanged**. A separate Linux serial research binary uses GNU ELF `--wrap=_ZN7Adapter11AdaptDomainEP10PatchCoonsPN9Performer9IdManagerEddiiii` to call the original function first, then inspect its actual *returned* `SubMesh*` through accessors and forward the identical original pointer without taking ownership or changing connectivity. No production or Windows binary enables this wrapper.
+
+## Genuine source-scoped independent native results
+
+Original Eistute article and the separate, single-factor `CURVE_POINT_MIN 11→13` Eistute intention config were executed as **independent original C++ processes**. Within each source role, the same original native generator was also invoked in a **paired unwrapped vs. wrapped** run with exactly the same cleaned absolute `OUTPUT_PREFIX` and original input. The R2.7.30 source callback and chronological selected-return identity were independently replayed, and the R2.7.12 postcommit accepted step-1 TRI sidecar hashes and all original source C++ gate outcomes were preserved. Raw output inventories were compared by byte count and SHA-256 without normalization, then **both full sets of raw scientific files** were archived and re-opened independently.
+
+| Actual original C++ property | Eistute article | Original one-factor min13 |
+| --- | ---: | ---: |
+| Source-native Adapter return selections (all steps) | **40** | **40** |
+| Real selected *post-AFT* TRI Adapter return SubMeshes on step 4 | **16** | **16** |
+| Sum of per-return local TRI face records across those 16 snapshots | **27,864** | **20,512** |
+| TRI face records per selected Adapter return: minimum–maximum | **1,676–1,810** | **856–1,708** |
+| TRI face records per local return: arithmetic mean | **1,741.5** | **1,282** |
+| Exact scientific raw file parity with unwrapped generator | **21/21** | **21/21** |
+| Exact output classes per source process | 5 OBJ + 11 CSV + 5 JSON | 5 OBJ + 11 CSV + 5 JSON |
+| Genuine original C++ globally accepted TRI adaptive steps in each process | **[1]** | **[1]** |
+| Original C++ globally rejected/restored later steps | **3** | **3** |
+| Accepted same-process second global source TRI epoch | **NO** | **NO** |
+
+**Important statistical/counting limit:** the totals **27,864** and **20,512** are total *face records across 16 repeated, locally selected observations per process*, **not 27,864/20,512 unique faces in one final accepted mesh**, and not independent statistical samples. R2.7.33 accesses the original post-AFT triangles **only at Adapter return**, *before* the outer global `GeneratorAdaptive` acceptance; it does not promote rejected candidates to committed LOD epochs.
+
+The actual returned face observations include: native local element slot and element ID, three native logical node IDs, full double XYZ and local UV corners, actual CAD patch argument slot, typed outer epoch/global retry, local retry and selected local attempt index. An independent Python reader verifies bounded raw NDJSON, exactly one matching source selection/return, element-local distinct IDs, finite corners, consistent XYZ per native logical node, complete face counts, and **local** 1/2-face edge incidences. **No pointer address is exported**, no node or face is modified or cloned, no seam is physically welded. The hosted browser was exercised only against prior accepted source TRI scenes; the source step-4 return meshes were preserved as research evidence, **not** exposed as accepted new LOD.
+
+### Critical source identity limitation found in the actual archived bytes
+
+The original live `PatchCoons::GetId()` and each `CurveAdaptive::GetId()` observed by this wrapper returned **0 in all selected step-4 return records**, for **both source processes**. Therefore these native fields are **not unique source patch/curve identifiers** in this scope. Their appearance in the retained per-return header is an original source observation, **not** certified canonical patch or shared-curve ownership. The original source **patch slot** (original generator argument `patch_index`) and selected return-order/outer epoch remain identity qualifiers. The separately certified real step-1 *accepted* source sidecar uses **source-geometry pointer-mapped canonical curve slots**; its Eistute shared source curve slot 3 is incident to all four patches, but a new **in-process pointer-equality source ownership witness** would be needed to establish the same mapping for selected *provisional* step-4 returns. Do not match them by native curve ID 0 or claim welded shared-C++ node ownership.
+
+A further semantics limit persists: original AFT's step-1 elongated nonboundary transition ratio and Adapter's separately computed postgeneration spatial-or-elongated regional ratio are different classifiers. Selected post-AFT TRI face counts alone do **not** tell which stage-1 transition predicate would be physically appropriate. The selected TRI geometry permits later direct topology/quality tests, but does not itself prove physical seam quality or original global acceptance.
+
+## Audit qualification, negative history and archive chain
+
+- **Final exact tested SHA `e94d66c66ba88d2298c857170de0fd317a82fbae`: [4/4 successful jobs #44658983855](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44658983855)** — **497 Python regressions on Linux (4 optional skipped), 497 on Windows (10 environmental skipped), genuine original serial C++ native capture and independent 42/42 scientific-file byte parity, Chromium 55 passed + 5 intentional skips, frontend build and earlier source checks PASS.**
+- The earlier [Actions #44658373234](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44658373234) was **not fully successful**: initial dedicated C++ compilation detected that legacy `ElementAdaptive::GetId()` lacked a `const` overload. R2.7.33 only adjusted the separately compiled probe's pointer/view constness for accessor calls; original engine never changed. The final source observer Git blob `00aff08731cd0a819a8acbca197d0c64fdd270d2` was re-pinned and genuinely retested on Linux/Windows.
+- [**Actions original raw R2.7.33 artifact #14594453981**](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44658983855/artifacts/14594453981), complete ZIP **5,454,821 bytes**, **134 entries**, including every retained actual selected local step-4 TRI NDJSON, both full original scientific output inventories, original control/wrapped C++ stderr/stdout and raw source scientific CSV, original accepted TRI step-1 sidecars, executed original configs, complete independent SHA-pinned JSON manifests and forensic auditor receipt.
+- The ZIP was uploaded unchanged into personal private doctoral Drive `Doutorado/DOUTORADO_APMESH_ACOMPANHAMENTO/05_Experimentos_e_Resultados` as `apmesh-studio-r2733-original-selected-post-aft-tri-e94d66c.zip`, then downloaded again and independently compared byte-by-byte to the original GitHub ZIP: identical **SHA-256 `57eb9dbb661c1dfc20d62e074f6788d5dab0d0c10fc3b56a02b0c1b111968d5e`**. The public repository deliberately omits private Google Drive links.
+- Only the **research** `quad_generator_selected_tri_return_probe` links GNU `--wrap`. Default VTK, worker/picker behavior, original source numerical C++ and `main` are unaffected by this evidence stage.
+
+## Decision / next prospective R2.7.34 gate
+
+**R2.7.33 PASS, limited to actual *selected for Adapter return* original post-AFT TRI face/UV/XYZ records and source-paired numerical neutrality in the tested two serial configurations.** The next prospective R2.7.34 must (a) attest true in-process live original curve pointer-equality/source patch edge incidence *without exporting pointers*, (b) compare with original step-1 accepted canonical source slots **without conflating patch-local native IDs**, (c) analyze boundary edge UV/XYZ matching, shared-curve multi-patch fan incidence and potential geometric nonconformity on these **provisional** returned TRI; and (d) separately define mathematical geometric error controls. Passing those tests cannot manufacture an accepted new global epoch.
+
+**Still OPEN:** no source-native same-process second committed step; no cross-accepted-epoch descendant identity, no certified physical shared-curve welding, no continuous original-surface error bound and no physical Windows GPU-present/RSS/VRAM qualification. **R2.8 remains BLOCKED; PR #239 DRAFT / UNMERGED; no tag, release, default-on experimental picker or main merge.**
