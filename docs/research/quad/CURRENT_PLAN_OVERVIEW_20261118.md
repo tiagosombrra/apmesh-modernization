@@ -43,9 +43,13 @@ transition gains. Keep fixed1.5 as the retained reference. The [native trace](SU
 locates growth before curve neighbor restriction and matches20 curve inputs
 with zero values to accepted TRI nodes with measured curvature. The approved [handoff experiment](ACCEPTED_TRI_CURVE_HANDOFF_TRIAL_20261120.md)
 changes spacing requests but does not improve the accepted mixed history.
-Next target the exposed template transition where the worst TRI forms.
-Track final angle extremes, edge ratio and separate TRI/QUAD shape metrics.
-Further curvature estimator changes wait for this generation work.
+The [transition shape experiment](MIXED_TRANSITION_SHAPE_20261120.md)
+locates the forced three-TRI closure at front commit 73. Local base deferral
+changes its order and yields the same physical shape. Next target local
+pre-front spacing, bounded by the existing curve subdivision and quadtree
+sizes. Track final angle extremes, edge ratio and separate TRI/QUAD shape
+metrics. Quality-constrained smoothing and further curvature estimator
+changes wait for this transition work.
 
 ## What prevents calling the technique complete
 

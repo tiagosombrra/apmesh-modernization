@@ -3,7 +3,7 @@
 Updated 2026-11-20 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: curvature handoff trial closed; focus on mixed transition shape
+## Active: front-order trial closed; target local transition spacing
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,35 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-20 - transition closure and approved front-order trial
+
+The [transition report](MIXED_TRANSITION_SHAPE_20261120.md) and
+[numeric receipt](evidence/MIXED_TRANSITION_SHAPE_20261120.json) tie the
+isolated Step 3 pocket to commit 73. Four collinear seed points and one
+contour point force three TRI once that pocket closes. The thin commit-106
+face improves 1.42 to 6.99 degrees after smoothing. A different fixed-corner
+face from commit 48 worsens 6.95 to 1.87 degrees.
+
+The researcher prioritized transition generation and approved one local
+mixed-front replay using the original TRI radius ratio threshold to defer
+critical transition bases. MSVC C++17 config/build/application pass;
+one native run exits zero in 22.08s under 180s. Steps 1/2 have no deferrals.
+Step 3 produces 221 deferrals and 15 full-rotation releases and changes
+commit order only. All three final XYZ/UV arrays and cyclic oriented face
+multisets match the reference. The original 1.42-degree TRI still forms,
+the final minimum remains 1.87 degrees, and shape/gradation/error agree.
+All four TRI OBJ files match and nine independent boundary forgeries are
+rejected. Close the trial and retain this negative result without promotion.
+The source changes remain local. No new full CTest or hosted qualification.
+
+**Next:** use the archived long straight-side intervals and exposed seed edge
+[13, 349] to specify one local spacing comparison before front initialization.
+Use existing curve subdivision and quadtree sizes to bound growth, then obtain
+explicit alignment for that rule. Evaluate final angle and shape tails, neighbor
+size ratio and sampled XYZ error together. The quality-constrained smoothing
+trial is queued behind transition work. Mixed global curvature error remains
+unavailable, with zero mixed adaptive epochs. PR243 stays draft.
 
 ### 2026-11-20 - approved accepted TRI handoff trial completed
 

@@ -85,9 +85,14 @@ measurements separate contour-edge, vertex-only and interior TRI/QUAD quality.
 The explicitly adopted [accepted-TRI handoff trial](ACCEPTED_TRI_CURVE_HANDOFF_TRIAL_20261120.md)
 verifies exact/interpolated data and changes native size requests. The discrete
 partition and unacceptable Step2 shape barely change, and the source rejects
-Steps2/3. Close the handoff trial. Target the template interface around the
-worst mixed-front commits106 and48 next. Preserve original curve/domain
-restrictions and compare worst final shape and quantitative distributions.
+Steps2/3. Close the handoff trial. The [transition shape experiment](MIXED_TRANSITION_SHAPE_20261120.md)
+finds the constrained pocket left by commit 73 and distinguishes it from the
+smoothing regression at commit 48. The approved local edge deferral changes
+execution order and preserves the same critical faces, shape and sizes.
+Close this ordering trial without adoption. Next specify a single local
+pre-front spacing comparison using existing curve subdivision and quadtree
+sizes, then seek scientific alignment. The quality-constrained UV smoothing
+candidate is queued after transition work.
 Keep PR243 draft. Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned

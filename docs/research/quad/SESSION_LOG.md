@@ -3932,3 +3932,27 @@ short exposed template edge, and the final worst TRI to commit48. Target the
 local transition for the next bounded size audit and proposal. Preserve default
 TRI and keep final shape by type/region and worst tails visible. No new baseline
 CTest or CI qualification, no tracked app changes, no accepted mixed epochs.
+
+## 2026-11-20 Fortaleza - local transition shape and front-order experiment
+
+Read the Step 2/3 native archive and match individual faces through all
+five smoothing passes. Observe the distinct 1.42-to-6.99 and 6.95-to-1.87
+degree TRI witnesses and the contour QUAD loss. Trace the isolated
+five-vertex, four-collinear-site pocket back to front commit 73.
+
+The researcher prioritizes transition generation and approves one bounded
+deferral trial. Use the existing TRI radius score threshold 0.05 for a TRI
+connecting an original contour vertex to an exposed seed interface.
+Build an isolated MSVC Debug C++17 application based on c93a383 and run the
+fixed 1.5 case once. Exit zero in 22.08s. Step 3 changes order after 221
+deferrals and 15 full-sweep releases. Exact final coordinates, cyclic
+oriented connectivity, smoothing trace, numerical quality and four original
+TRI OBJ files are preserved. Nine boundary forgeries are rejected. The
+same critical faces survive. Preserve the negative trial without promotion.
+The [report](MIXED_TRANSITION_SHAPE_20261120.md) gives comparison and scope;
+no full CTest, frozen additional models or hosted candidate qualification.
+
+Next specify one local pre-front spacing comparison based on the native
+curve subdivision and neighboring quadtree sizes, then seek alignment.
+Defer testing the literature-backed smoothing guard until after transition
+work. No mixed global error/adaptation adoption or integration.

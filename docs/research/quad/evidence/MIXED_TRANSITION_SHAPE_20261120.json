@@ -1,0 +1,2799 @@
+{
+  "date_fortaleza": "2026-11-20",
+  "research_source": "c93a383e2775d33eb8a7e5f28cbc410e3d98593d",
+  "trial_disposition": "Local, negative scientific result; archive preserved",
+  "compiler": "MSVC 19.44.35229.0, Windows x64 Debug C++17",
+  "archive_observations": {
+    "source": "curva_bezier fixed-1.5 archived article-front histories",
+    "scope": "Read-only Python archive replay; OBJ coordinates and element identities",
+    "manifest_sha256": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+    "steps": [
+      {
+        "step": 2,
+        "nodes": 281,
+        "faces": 301,
+        "contour_edges": 10,
+        "median_non_contour_edge_xyz": 0.09424962419287995,
+        "sha256": {
+          "step_2_retry_0_accepted_article_front/front.json": "bc78b876c5ac8c72ff617cf88e61a9872a58f39f6462eaf27659e2424dc5e68b",
+          "step_2_retry_0_accepted_article_front/commit_59.obj": "ff29f3674759a03a559d10e53ddf3ec050f4991dedd22596b64a83b40a10ab05",
+          "step_2_retry_0_accepted_article_front/smoothing_1.obj": "e60510eb335d450f8a90e0f0038d341b096fd05ddf59e40975c4b7c84282391d",
+          "step_2_retry_0_accepted_article_front/smoothing_2.obj": "5c9c517fc77258ba989ab43931b3e85376a84419127c39132c8fa40780240985",
+          "step_2_retry_0_accepted_article_front/smoothing_3.obj": "e14c9a6daee8155d7ecb1418d1b2040dbfa6d50681ea854df3517de609cd407c",
+          "step_2_retry_0_accepted_article_front/smoothing_4.obj": "af2d62533626dfb7522258412bffd2070cfd14221ba97e2a16cb61797871aab8",
+          "step_2_retry_0_accepted_article_front/smoothing_5.obj": "db3f73f0fe0c227d20ecd1674ac3ff2ce80fe9845e2a7be75c8e63abaad0dd40",
+          "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f"
+        },
+        "regional_minima": {
+          "contour_quads": {
+            "face_count": 2,
+            "minima_before_through_pass_5": [
+              {
+                "min_angle_xyz": 23.279958547561126,
+                "quad_corner_jacobian": 0.39446628989456517
+              },
+              {
+                "min_angle_xyz": 16.23726528690796,
+                "quad_corner_jacobian": 0.15808867833029278
+              },
+              {
+                "min_angle_xyz": 16.537071804791953,
+                "quad_corner_jacobian": 0.2686070634729532
+              },
+              {
+                "min_angle_xyz": 15.803367363706974,
+                "quad_corner_jacobian": 0.25402780605214476
+              },
+              {
+                "min_angle_xyz": 15.746369547872535,
+                "quad_corner_jacobian": 0.23998466204197538
+              },
+              {
+                "min_angle_xyz": 15.63811439615133,
+                "quad_corner_jacobian": 0.223536909395905
+              }
+            ]
+          },
+          "vertex_only_triangles": {
+            "face_count": 37,
+            "minima_before_through_pass_5": [
+              {
+                "min_angle_xyz": 4.824378954243407,
+                "tri_q": 0.13535804124346085
+              },
+              {
+                "min_angle_xyz": 8.882249642300959,
+                "tri_q": 0.2035027569963578
+              },
+              {
+                "min_angle_xyz": 9.479949880666755,
+                "tri_q": 0.22824333213730136
+              },
+              {
+                "min_angle_xyz": 10.008277821218872,
+                "tri_q": 0.24314249998049556
+              },
+              {
+                "min_angle_xyz": 9.633768416958953,
+                "tri_q": 0.2609628646895689
+              },
+              {
+                "min_angle_xyz": 9.59283006256298,
+                "tri_q": 0.2722013128560543
+              }
+            ]
+          }
+        },
+        "witnesses": [
+          {
+            "witness": "Step 2 contour QUAD with lowest corner Jacobian after pass 1",
+            "node_ids_zero_based": [
+              271,
+              272,
+              48,
+              73
+            ],
+            "initial_uv": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.25457763671875,
+                0.0
+              ],
+              [
+                0.25,
+                0.0625
+              ],
+              [
+                0.125,
+                0.125
+              ]
+            ],
+            "metrics_from_before_through_pass_5": [
+              {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.42261012867189235,
+                "min_angle_xyz": 25.852902364912794,
+                "max_angle_xyz": 125.64636134660935,
+                "edge_ratio_xyz": 9.239147054237291,
+                "S_uv": 1.5,
+                "S_xyz": 1.7127455292787468
+              },
+              {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.15808867833029278,
+                "min_angle_xyz": 16.23726528690796,
+                "max_angle_xyz": 167.10920626628817,
+                "edge_ratio_xyz": 9.349353905436013,
+                "S_uv": 1.8422504183840847,
+                "S_xyz": 1.856768958514313
+              },
+              {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.2686070634729532,
+                "min_angle_xyz": 16.537071804791953,
+                "max_angle_xyz": 155.57759574967608,
+                "edge_ratio_xyz": 6.530427845124364,
+                "S_uv": 1.688839577108899,
+                "S_xyz": 1.816254757724534
+              },
+              {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.25620566311323756,
+                "min_angle_xyz": 15.803367363706974,
+                "max_angle_xyz": 157.83536443172991,
+                "edge_ratio_xyz": 8.08355989456894,
+                "S_uv": 1.710927274798568,
+                "S_xyz": 1.8244070292921448
+              },
+              {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.25526639772337584,
+                "min_angle_xyz": 15.746369547872535,
+                "max_angle_xyz": 156.58926089841262,
+                "edge_ratio_xyz": 8.09047761878158,
+                "S_uv": 1.693672460428851,
+                "S_xyz": 1.8250403383569718
+              },
+              {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.2533978224748581,
+                "min_angle_xyz": 15.63811439615133,
+                "max_angle_xyz": 156.54756481205865,
+                "edge_ratio_xyz": 8.484445553328602,
+                "S_uv": 1.6921537910716578,
+                "S_xyz": 1.8262431733760962
+              }
+            ],
+            "raw_uv_and_xyz_edge_lengths": [
+              {
+                "node_ids": [
+                  271,
+                  272
+                ],
+                "uv": 0.25457763671875,
+                "xyz": 0.5431470772597249,
+                "seed_uses": 0,
+                "contour": true
+              },
+              {
+                "node_ids": [
+                  48,
+                  272
+                ],
+                "uv": 0.06266741384426876,
+                "xyz": 0.05878757790857164,
+                "seed_uses": 0,
+                "contour": false
+              },
+              {
+                "node_ids": [
+                  48,
+                  73
+                ],
+                "uv": 0.13975424859373686,
+                "xyz": 0.2445311899621192,
+                "seed_uses": 0,
+                "contour": false
+              },
+              {
+                "node_ids": [
+                  73,
+                  271
+                ],
+                "uv": 0.1767766952966369,
+                "xyz": 0.3834921648398915,
+                "seed_uses": 0,
+                "contour": false
+              }
+            ],
+            "contour_nodes": [
+              271,
+              272
+            ],
+            "initial_corner_leaf_side_lengths_uv": [
+              [
+                0.125
+              ],
+              [
+                0.0625
+              ],
+              [
+                0.0625,
+                0.125
+              ],
+              [
+                0.125
+              ]
+            ],
+            "uv_displacement_after_pass_5": [
+              0.0,
+              0.0,
+              0.05060144655062856,
+              0.05587829783070077
+            ]
+          }
+        ],
+        "closed_pocket": null
+      },
+      {
+        "step": 3,
+        "nodes": 689,
+        "faces": 732,
+        "contour_edges": 14,
+        "median_non_contour_edge_xyz": 0.06411734659655396,
+        "sha256": {
+          "step_3_retry_0_accepted_article_front/front.json": "41c4a429088fc166f21ec9668dae2beb02bc2d3c5a6eaf53f36d8408da85e73f",
+          "step_3_retry_0_accepted_article_front/commit_108.obj": "f56b1a640733e6109d97c6f185a8584f62397116ee8fe05afb9b3583031dc4fd",
+          "step_3_retry_0_accepted_article_front/smoothing_1.obj": "aeeecf26845e92a0c18aa5007996a0d27c993a7bff4f683c0fab57d0c666a482",
+          "step_3_retry_0_accepted_article_front/smoothing_2.obj": "15a62e02a67accac8f40e6f35b246bef3a560eab0c2cd7c81a2b9102a948e470",
+          "step_3_retry_0_accepted_article_front/smoothing_3.obj": "48a1d9c0f1d672f6fc922a21dd6fcdb11df7bdb22368f6cb89e8aebb8a7932c6",
+          "step_3_retry_0_accepted_article_front/smoothing_4.obj": "87916cb5ecd7f908fc7ebb75904c8e8d2ccc6de95ecdea43781deab332bdb113",
+          "step_3_retry_0_accepted_article_front/smoothing_5.obj": "237d7062d4116c48ab54c3748d3df3aa56616d889c3c504a8d92db9b216ce93b",
+          "step_3_retry_0_accepted_quad_tri.obj": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+        },
+        "regional_minima": {},
+        "witnesses": [
+          {
+            "witness": "Step 3 triangle with worst starting angle",
+            "node_ids_zero_based": [
+              688,
+              13,
+              349
+            ],
+            "initial_uv": [
+              [
+                0.0,
+                0.5
+              ],
+              [
+                0.125,
+                0.125
+              ],
+              [
+                0.125,
+                0.15625
+              ]
+            ],
+            "metrics_from_before_through_pass_5": [
+              {
+                "kind": "TRI",
+                "tri_q": 0.04268083753878802,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 1.4181974567977775,
+                "max_angle_xyz": 158.0797132942892,
+                "edge_ratio_xyz": 15.083676342784383,
+                "S_uv": null,
+                "S_xyz": null
+              },
+              {
+                "kind": "TRI",
+                "tri_q": 0.16817474194709375,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 5.700466630632878,
+                "max_angle_xyz": 140.53913744841262,
+                "edge_ratio_xyz": 6.398517323222347,
+                "S_uv": null,
+                "S_xyz": null
+              },
+              {
+                "kind": "TRI",
+                "tri_q": 0.16919181561603228,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 5.784475543827579,
+                "max_angle_xyz": 145.28213648553182,
+                "edge_ratio_xyz": 5.650901011875095,
+                "S_uv": null,
+                "S_xyz": null
+              },
+              {
+                "kind": "TRI",
+                "tri_q": 0.18744490392660787,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 6.463222453593241,
+                "max_angle_xyz": 145.09570948612634,
+                "edge_ratio_xyz": 5.0833306559625795,
+                "S_uv": null,
+                "S_xyz": null
+              },
+              {
+                "kind": "TRI",
+                "tri_q": 0.19364817169394852,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 6.718005556070663,
+                "max_angle_xyz": 145.93928546411416,
+                "edge_ratio_xyz": 4.787634559663812,
+                "S_uv": null,
+                "S_xyz": null
+              },
+              {
+                "kind": "TRI",
+                "tri_q": 0.20040614122638267,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 6.988623135722181,
+                "max_angle_xyz": 146.20206877897456,
+                "edge_ratio_xyz": 4.571836037193177,
+                "S_uv": null,
+                "S_xyz": null
+              }
+            ],
+            "raw_uv_and_xyz_edge_lengths": [
+              {
+                "node_ids": [
+                  13,
+                  688
+                ],
+                "uv": 0.39528470752104744,
+                "xyz": 0.7136381262651341,
+                "seed_uses": 0,
+                "contour": false
+              },
+              {
+                "node_ids": [
+                  13,
+                  349
+                ],
+                "uv": 0.03125,
+                "xyz": 0.04731194902670522,
+                "seed_uses": 1,
+                "contour": false
+              },
+              {
+                "node_ids": [
+                  349,
+                  688
+                ],
+                "uv": 0.3657718722099883,
+                "xyz": 0.6695280337171943,
+                "seed_uses": 0,
+                "contour": false
+              }
+            ],
+            "contour_nodes": [
+              688
+            ],
+            "initial_corner_leaf_side_lengths_uv": [
+              [
+                0.0625
+              ],
+              [
+                0.0625
+              ],
+              [
+                0.0625
+              ]
+            ],
+            "uv_displacement_after_pass_5": [
+              0.0,
+              0.06409370297435041,
+              0.09854229217422103
+            ],
+            "front": {
+              "commit": 106,
+              "before_edge_count": 5,
+              "base": [
+                688,
+                13
+              ],
+              "alternatives": [
+                {
+                  "side": 0,
+                  "triangle": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quad": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "eligible": false,
+                  "score": 0
+                },
+                {
+                  "side": 1,
+                  "triangle": [
+                    688,
+                    349,
+                    82
+                  ],
+                  "quad": [
+                    688,
+                    13,
+                    349,
+                    82
+                  ],
+                  "eligible": false,
+                  "score": null
+                }
+              ],
+              "second_quad_signed_uv_corner_crosses": [
+                0.0078125,
+                0.00390625,
+                -0.0,
+                0.00390625
+              ]
+            }
+          },
+          {
+            "witness": "Step 3 triangle with worst final angle",
+            "node_ids_zero_based": [
+              51,
+              278,
+              685
+            ],
+            "initial_uv": [
+              [
+                0.875,
+                0.875
+              ],
+              [
+                0.875,
+                0.84375
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ],
+            "metrics_from_before_through_pass_5": [
+              {
+                "kind": "TRI",
+                "tri_q": 0.20415266796803447,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 6.94702147787149,
+                "max_angle_xyz": 134.95595605599894,
+                "edge_ratio_xyz": 5.850691679610752,
+                "S_uv": null,
+                "S_xyz": null
+              },
+              {
+                "kind": "TRI",
+                "tri_q": 0.07664895887216976,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 2.5933551721029384,
+                "max_angle_xyz": 161.4775171972781,
+                "edge_ratio_xyz": 7.020925558934004,
+                "S_uv": null,
+                "S_xyz": null
+              },
+              {
+                "kind": "TRI",
+                "tri_q": 0.07485179127121176,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 2.536661248969075,
+                "max_angle_xyz": 162.46181301023546,
+                "edge_ratio_xyz": 6.808646851430209,
+                "S_uv": null,
+                "S_xyz": null
+              },
+              {
+                "kind": "TRI",
+                "tri_q": 0.054613779270344415,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 1.8557039971438891,
+                "max_angle_xyz": 167.77639349418476,
+                "edge_ratio_xyz": 6.538333953073528,
+                "S_uv": null,
+                "S_xyz": null
+              },
+              {
+                "kind": "TRI",
+                "tri_q": 0.05671218307105341,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 1.9298398075942857,
+                "max_angle_xyz": 167.59946514781763,
+                "edge_ratio_xyz": 6.3768386507840695,
+                "S_uv": null,
+                "S_xyz": null
+              },
+              {
+                "kind": "TRI",
+                "tri_q": 0.05483599181146062,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 1.8698820585022242,
+                "max_angle_xyz": 168.37399456018758,
+                "edge_ratio_xyz": 6.176025475632036,
+                "S_uv": null,
+                "S_xyz": null
+              }
+            ],
+            "raw_uv_and_xyz_edge_lengths": [
+              {
+                "node_ids": [
+                  51,
+                  278
+                ],
+                "uv": 0.03125,
+                "xyz": 0.05789317613498091,
+                "seed_uses": 1,
+                "contour": false
+              },
+              {
+                "node_ids": [
+                  278,
+                  685
+                ],
+                "uv": 0.20009763241977652,
+                "xyz": 0.3387151239191726,
+                "seed_uses": 0,
+                "contour": false
+              },
+              {
+                "node_ids": [
+                  51,
+                  685
+                ],
+                "uv": 0.1767766952966369,
+                "xyz": 0.29532324078463784,
+                "seed_uses": 0,
+                "contour": false
+              }
+            ],
+            "contour_nodes": [
+              685
+            ],
+            "initial_corner_leaf_side_lengths_uv": [
+              [
+                0.0625,
+                0.125
+              ],
+              [
+                0.0625,
+                0.125
+              ],
+              [
+                0.125
+              ]
+            ],
+            "uv_displacement_after_pass_5": [
+              0.05526479122752504,
+              0.05890066515373089,
+              0.0
+            ],
+            "front": {
+              "commit": 48,
+              "before_edge_count": 81,
+              "base": [
+                51,
+                278
+              ],
+              "alternatives": [
+                {
+                  "side": 0,
+                  "triangle": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quad": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "eligible": false,
+                  "score": 0
+                },
+                {
+                  "side": 1,
+                  "triangle": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quad": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "eligible": false,
+                  "score": 0
+                }
+              ]
+            }
+          }
+        ],
+        "closed_pocket": {
+          "isolated_by_commit": 73,
+          "earlier_bridge_commit": 14,
+          "vertices_uv": {
+            "688": [
+              0.0,
+              0.5
+            ],
+            "13": [
+              0.125,
+              0.125
+            ],
+            "349": [
+              0.125,
+              0.15625
+            ],
+            "82": [
+              0.125,
+              0.1875
+            ],
+            "359": [
+              0.125,
+              0.21875
+            ]
+          },
+          "boundary_edges": [
+            [
+              688,
+              13
+            ],
+            [
+              13,
+              349
+            ],
+            [
+              349,
+              82
+            ],
+            [
+              82,
+              359
+            ],
+            [
+              359,
+              688
+            ]
+          ],
+          "outermost_node": 688,
+          "chain_seed_incidences": [
+            1,
+            1,
+            1
+          ],
+          "strictly_convex_quad_candidates": 0,
+          "forced_triangles": [
+            [
+              688,
+              13,
+              349
+            ],
+            [
+              688,
+              349,
+              82
+            ],
+            [
+              688,
+              82,
+              359
+            ]
+          ],
+          "legacy_tri_radius_score_uv": {
+            "14": 0.41715296747420677,
+            "48": 0.1352915258602034,
+            "73": 0.03670579566128166,
+            "106": 0.017049688869860496,
+            "107": 0.02790780924336178,
+            "108": 0.021626415797090376
+          },
+          "other_active_vertices_within_or_on_pocket_after_commit_73": 0
+        }
+      }
+    ]
+  },
+  "application": {
+    "config": [
+      "# Opt-in prospective planar mixed contraction with an experimental curved XYZ lift.",
+      "INPUT_MODEL=builtin:curva_bezier",
+      "OUTPUT_PREFIX=build/quad-transition-order-20261120/candidate",
+      "MESH_ELEMENT_KIND=quad_uv",
+      "QUAD_EXPERIMENTAL_CASE=curved_bezier_article_front_area_centroid_v1",
+      "NUM_PROCESSES=1",
+      "NUM_THREADS=1",
+      "USE_TEMPLATE=y",
+      "ADAPTIVE_MODE=legacy",
+      "PATCH_FACTOR_MIN=1.5",
+      "PATCH_FACTOR_MAX=1.5"
+    ],
+    "binary_sha256": "e706f8622b1ef9428208585274b14430f8cac0707a9d010106bf6ff25456b2f0",
+    "local_sources_sha256": {
+      "research/quad/article_mixed_front.h": "eeef09857b3162c6ac3ab4a8ad2fb2ad37d8a87eae689fa672833bdd7da255ea",
+      "research/quad/controlled_patch_application.cpp": "ecbe1952b313924b22c8a8d2f33cdb1c2d38e5c6ecf0fb2f1dd2117e07306968"
+    },
+    "stages": {
+      "configure": {
+        "exit": 0,
+        "seconds": 4.218060731887817,
+        "timeout": 90,
+        "argv": [
+          "cmake",
+          "-S",
+          "build/quad-transition-order-20261120/source",
+          "-B",
+          "build/quad-transition-order-20261120/msvc",
+          "-G",
+          "Visual Studio 17 2022",
+          "-A",
+          "x64",
+          "-DCMAKE_CXX_STANDARD=17",
+          "-DAP_MESH_USE_MPI=OFF",
+          "-DAP_MESH_USE_OPENMP=OFF",
+          "-DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON",
+          "-DAP_MESH_ENABLE_LTO=OFF",
+          "-DAP_MESH_DISABLE_STRICT_ALIASING=ON",
+          "-DAP_MESH_ENABLE_WARNINGS=ON",
+          "-DAP_MESH_STATIC_MINGW_RUNTIME=ON",
+          "-DBUILD_TESTING=OFF"
+        ],
+        "stdout_sha256": "49f95a557236a2cda45edf4405ed645134f5c61900c5a750beac0e09da769939",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "build": {
+        "exit": 0,
+        "seconds": 215.8796100616455,
+        "timeout": 600,
+        "argv": [
+          "cmake",
+          "--build",
+          "build/quad-transition-order-20261120/msvc",
+          "--target",
+          "ap_mesh",
+          "--config",
+          "Debug",
+          "--parallel",
+          "4"
+        ],
+        "stdout_sha256": "cb23859a5df5fe4de8a080494e04f01b237e280d06ae0057f59dd96d29b6575f",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "application": {
+        "exit": 0,
+        "seconds": 22.084129810333252,
+        "timeout": 180,
+        "argv": [
+          "build/quad-transition-order-20261120/msvc/bin/Debug/ap_mesh.exe",
+          "--config",
+          "build/quad-transition-order-20261120/candidate.conf"
+        ],
+        "stdout_sha256": "afb2831b8c4bffdb366ccbeca08c0ba8a4fbae27159adf035869f234b53ed714",
+        "stderr_sha256": "df93f554ba4d839d4342c9ccf0be1be3d54569d04a9ed65c2e6618cd8d9477b4"
+      },
+      "comparison": {
+        "exit": 0,
+        "seconds": 2.270657539367676,
+        "timeout": 60,
+        "argv": [
+          "python",
+          "build/quad-transition-order-20261120/compare.py"
+        ],
+        "stdout_sha256": "e603e83bd78010e280c038d0f0611a28f04e33fca0204796a992504f834cc09c",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "mesh-equality": {
+        "exit": 0,
+        "seconds": 0.3047513961791992,
+        "timeout": 60,
+        "argv": [
+          "python",
+          "build/quad-transition-order-20261120/mesh_equality.py"
+        ],
+        "stdout_sha256": "171af036b935b13671a8a0440e4a7e0e55ae43affe4b06cecfc897de1514cc72",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "comparison": {
+    "reference_archive": "article-922d823a9a444a8cb523883788c7d252.steps",
+    "reference_manifest_sha256": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+    "candidate_manifest_sha256": "d7a4a45e743c4c29f54228f61e2dc6394b70acba44e38260a0ba12e5569fd859",
+    "step_0_identical": {
+      "tri_sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+      "mixed_sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42"
+    },
+    "rejected_boundary_forgeries": 9,
+    "defer_summary": [
+      {
+        "nodes": 33,
+        "commits": 16,
+        "deferrals": 0,
+        "fallbacks": 0
+      },
+      {
+        "nodes": 281,
+        "commits": 59,
+        "deferrals": 0,
+        "fallbacks": 0
+      },
+      {
+        "nodes": 689,
+        "commits": 108,
+        "deferrals": 221,
+        "fallbacks": 15
+      }
+    ],
+    "first_defer_event": {
+      "commit": 32,
+      "base": [
+        25,
+        225
+      ],
+      "triangle": [
+        25,
+        225,
+        683
+      ]
+    },
+    "witness_pocket_closure_deferred": [
+      {
+        "commit": 66,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 94,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 95,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 96,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 97,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 98,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 99,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 100,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 101,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 102,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 103,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 104,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      },
+      {
+        "commit": 105,
+        "base": [
+          359,
+          86
+        ],
+        "triangle": [
+          359,
+          86,
+          688
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "reference_tri_sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+        "reference_tri_accepted": 1,
+        "first_different_polygon_commit": null,
+        "mesh_equality": {
+          "xyz": true,
+          "uv": true,
+          "ordered_faces": true,
+          "oriented_faces": true,
+          "unordered_faces": true,
+          "final_bytes": true,
+          "smoothing_traces": true,
+          "cyclic_oriented_faces": true
+        },
+        "reference": {
+          "before": {
+            "sha256": "c5876182c72864a8d748660b987e5b62e5e533daf9cd1fc7ec8ab160fc69cd60",
+            "nodes": 33,
+            "faces": 32,
+            "boundary_edges": 8,
+            "regions": {
+              "contour_edge": {
+                "QUAD": {
+                  "count": 8,
+                  "min_angle_xyz": {
+                    "count": 8,
+                    "min": 31.12614083693293,
+                    "p05": 31.34132182317086,
+                    "median": 41.82645616048894,
+                    "p95": 45.32138563423063,
+                    "max": 45.34043657960187
+                  },
+                  "max_angle_xyz": {
+                    "count": 8,
+                    "min": 134.43450909345648,
+                    "p05": 134.53581218415812,
+                    "median": 134.8740195660253,
+                    "p95": 141.45525840420163,
+                    "max": 141.5641536018938
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 8,
+                    "min": 3.735242807005081,
+                    "p05": 3.735912043099372,
+                    "median": 3.917732131351163,
+                    "p95": 4.59551074066675,
+                    "max": 4.595718286656775
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 8,
+                    "min": 0.5119563503207104,
+                    "p05": 0.5131354018542333,
+                    "median": 0.6617386398733518,
+                    "p95": 0.709594943445037,
+                    "max": 0.7098296631590377
+                  }
+                }
+              },
+              "interior": {
+                "QUAD": {
+                  "count": 16,
+                  "min_angle_xyz": {
+                    "count": 16,
+                    "min": 83.6621507692889,
+                    "p05": 83.66964785788377,
+                    "median": 88.46616697588658,
+                    "p95": 89.72073432164514,
+                    "max": 89.93855364657172
+                  },
+                  "max_angle_xyz": {
+                    "count": 16,
+                    "min": 90.07060800635927,
+                    "p05": 90.20143191584924,
+                    "median": 91.45353506183119,
+                    "p95": 96.34395885525036,
+                    "max": 96.35863464701042
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 16,
+                    "min": 1.0455145782938589,
+                    "p05": 1.0486513583297294,
+                    "median": 1.1171566516653817,
+                    "p95": 1.3931789019587395,
+                    "max": 1.3956211821070355
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 16,
+                    "min": 0.9909813433098008,
+                    "p05": 0.9925556845600385,
+                    "median": 0.9991446710632597,
+                    "p95": 0.9999376334886871,
+                    "max": 0.9999596810774757
+                  }
+                }
+              },
+              "vertex_only": {
+                "TRI": {
+                  "count": 8,
+                  "min_angle_xyz": {
+                    "count": 8,
+                    "min": 28.5514192674082,
+                    "p05": 28.551638438305712,
+                    "median": 30.60994898514559,
+                    "p95": 42.790543547137766,
+                    "max": 43.13608653937869
+                  },
+                  "max_angle_xyz": {
+                    "count": 8,
+                    "min": 85.63309784749185,
+                    "p05": 85.8245246915509,
+                    "median": 89.47203276102331,
+                    "p95": 94.02438820179637,
+                    "max": 94.32643460375853
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 8,
+                    "min": 1.459922297368393,
+                    "p05": 1.470428149887981,
+                    "median": 1.9643087943382205,
+                    "p95": 2.0876957587386067,
+                    "max": 2.0884596476249757
+                  },
+                  "tri_q": {
+                    "count": 8,
+                    "min": 0.7191319563478131,
+                    "p05": 0.7197590906624931,
+                    "median": 0.7612945781426652,
+                    "p95": 0.8789119376833566,
+                    "max": 0.8848356658129531
+                  }
+                }
+              }
+            },
+            "adjacent_element_size_ratios": {
+              "contour_edge": {
+                "count": 20,
+                "min": 1.0108005599257275,
+                "p05": 1.0123850350953374,
+                "median": 1.6510801651133349,
+                "p95": 2.528501271272815,
+                "max": 2.5591458561839096
+              },
+              "interior": {
+                "count": 40,
+                "min": 1.0004785112312449,
+                "p05": 1.0009244401602064,
+                "median": 1.0447052447638805,
+                "p95": 2.2898104801528985,
+                "max": 2.5591458561839096
+              },
+              "vertex_only": {
+                "count": 20,
+                "min": 1.0,
+                "p05": 1.0,
+                "median": 1.324833489643117,
+                "p95": 1.9517030112216578,
+                "max": 1.9768919107848801
+              }
+            },
+            "worst_min_angle": {
+              "kind": "TRI",
+              "tri_q": 0.7209237686754705,
+              "quad_corner_jacobian": null,
+              "min_angle_xyz": 28.5514192674082,
+              "max_angle_xyz": 93.46344488386661,
+              "edge_ratio_xyz": 2.0884596476249757,
+              "S_uv": null,
+              "S_xyz": null,
+              "region": "vertex_only",
+              "node_ids_zero_based": [
+                3,
+                23,
+                32
+              ],
+              "uv": [
+                [
+                  0.25,
+                  0.5
+                ],
+                [
+                  0.25,
+                  0.625
+                ],
+                [
+                  0.0,
+                  0.5
+                ]
+              ]
+            }
+          },
+          "final": {
+            "sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "nodes": 33,
+            "faces": 32,
+            "boundary_edges": 8,
+            "regions": {
+              "contour_edge": {
+                "QUAD": {
+                  "count": 8,
+                  "min_angle_xyz": {
+                    "count": 8,
+                    "min": 31.54933773014362,
+                    "p05": 31.76952501334157,
+                    "median": 41.63706982795246,
+                    "p95": 45.28333468055133,
+                    "max": 45.300998868098105
+                  },
+                  "max_angle_xyz": {
+                    "count": 8,
+                    "min": 134.9077526599178,
+                    "p05": 135.3548870515754,
+                    "median": 140.93399230746996,
+                    "p95": 149.48816305228675,
+                    "max": 149.73684923974605
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 8,
+                    "min": 4.92600461371032,
+                    "p05": 4.926437297330997,
+                    "median": 5.1806159127261076,
+                    "p95": 6.2323511174356145,
+                    "max": 6.233035576427598
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 8,
+                    "min": 0.47798949303341104,
+                    "p05": 0.48017256317346524,
+                    "median": 0.6179555446547169,
+                    "p95": 0.6301307869882509,
+                    "max": 0.6303224859619649
+                  }
+                }
+              },
+              "interior": {
+                "QUAD": {
+                  "count": 16,
+                  "min_angle_xyz": {
+                    "count": 16,
+                    "min": 57.371944145795226,
+                    "p05": 57.4255449534489,
+                    "median": 64.61776736010445,
+                    "p95": 88.26297467987837,
+                    "max": 88.50661063996773
+                  },
+                  "max_angle_xyz": {
+                    "count": 16,
+                    "min": 90.83163388637033,
+                    "p05": 90.85808035490118,
+                    "median": 105.34100343259041,
+                    "p95": 109.31104675920324,
+                    "max": 109.38870997756332
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 16,
+                    "min": 1.1207643215707541,
+                    "p05": 1.1216214818580057,
+                    "median": 1.5332632084498585,
+                    "p95": 2.149324603962098,
+                    "max": 2.155710371072304
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 16,
+                    "min": 0.8413017432669943,
+                    "p05": 0.8416307910477357,
+                    "median": 0.9032032576930189,
+                    "p95": 0.9994625558705224,
+                    "max": 0.9994682690634746
+                  }
+                }
+              },
+              "vertex_only": {
+                "TRI": {
+                  "count": 8,
+                  "min_angle_xyz": {
+                    "count": 8,
+                    "min": 37.623026562717,
+                    "p05": 37.78773267550041,
+                    "median": 39.65583129792286,
+                    "p95": 43.131288395910346,
+                    "max": 43.15504320357189
+                  },
+                  "max_angle_xyz": {
+                    "count": 8,
+                    "min": 73.4338434891427,
+                    "p05": 73.61924714596034,
+                    "median": 79.47219547395,
+                    "p95": 82.30337558172644,
+                    "max": 82.5455918513707
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 8,
+                    "min": 1.4371685690044742,
+                    "p05": 1.437988294903786,
+                    "median": 1.5293962740043563,
+                    "p95": 1.606114281264908,
+                    "max": 1.61581010622948
+                  },
+                  "tri_q": {
+                    "count": 8,
+                    "min": 0.8662742354681201,
+                    "p05": 0.8693161816146286,
+                    "median": 0.8898835104739375,
+                    "p95": 0.9150739952209215,
+                    "max": 0.9153443709738158
+                  }
+                }
+              }
+            },
+            "adjacent_element_size_ratios": {
+              "contour_edge": {
+                "count": 20,
+                "min": 1.0081380990773274,
+                "p05": 1.0091275786085045,
+                "median": 1.3620260567377342,
+                "p95": 2.6723691642320686,
+                "max": 2.7035385282720656
+              },
+              "interior": {
+                "count": 40,
+                "min": 1.000450413171966,
+                "p05": 1.0009732944858991,
+                "median": 1.2079966439184906,
+                "p95": 2.5275363012335776,
+                "max": 2.7035385282720656
+              },
+              "vertex_only": {
+                "count": 20,
+                "min": 1.0,
+                "p05": 1.0,
+                "median": 1.323261109583017,
+                "p95": 1.669094818342953,
+                "max": 1.6918524394663679
+              }
+            },
+            "worst_min_angle": {
+              "kind": "QUAD",
+              "tri_q": null,
+              "quad_corner_jacobian": 0.47798949303341104,
+              "min_angle_xyz": 31.54933773014362,
+              "max_angle_xyz": 149.73684923974605,
+              "edge_ratio_xyz": 5.287065928564524,
+              "S_uv": 1.4999999999999998,
+              "S_xyz": 1.6637427693305118,
+              "region": "contour_edge",
+              "node_ids_zero_based": [
+                26,
+                27,
+                4,
+                14
+              ],
+              "uv": [
+                [
+                  0.5,
+                  0.0
+                ],
+                [
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.7624359589844655,
+                  0.23756404101553463
+                ],
+                [
+                  0.6671245511878524,
+                  0.223953065191091
+                ]
+              ]
+            },
+            "sampled_xyz_error": {
+              "grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.08970625875320964,
+              "rms_uv": 0.025226911793798386,
+              "rms_source_area": 0.02216856603163197,
+              "tri_sites": 96,
+              "quad_sites": 480
+            }
+          },
+          "final_quad_count": 24,
+          "source_boundary": {
+            "nodes": 33,
+            "quads": 24,
+            "triangles": 8,
+            "boundary": 8,
+            "source_step": 1,
+            "native_leaves": 16,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0
+          },
+          "front_trace_sha256": "436552b3120984312a0176e66def3cda51182faaa055c34a8609cbabc9aec026",
+          "front_commits": 16
+        },
+        "deferral": {
+          "final_quad_count": 24,
+          "source_boundary": {
+            "nodes": 33,
+            "quads": 24,
+            "triangles": 8,
+            "boundary": 8,
+            "source_step": 1,
+            "native_leaves": 16,
+            "domain_generation": 1,
+            "nonuniform_sides": 0,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0
+          },
+          "front_trace_sha256": "436552b3120984312a0176e66def3cda51182faaa055c34a8609cbabc9aec026",
+          "front_commits": 16,
+          "before": {
+            "sha256": "c5876182c72864a8d748660b987e5b62e5e533daf9cd1fc7ec8ab160fc69cd60",
+            "nodes": 33,
+            "faces": 32,
+            "boundary_edges": 8,
+            "worst_min_angle": {
+              "kind": "TRI",
+              "tri_q": 0.7209237686754705,
+              "quad_corner_jacobian": null,
+              "min_angle_xyz": 28.5514192674082,
+              "max_angle_xyz": 93.46344488386661,
+              "edge_ratio_xyz": 2.0884596476249757,
+              "S_uv": null,
+              "S_xyz": null,
+              "region": "vertex_only",
+              "node_ids_zero_based": [
+                3,
+                23,
+                32
+              ],
+              "uv": [
+                [
+                  0.25,
+                  0.5
+                ],
+                [
+                  0.25,
+                  0.625
+                ],
+                [
+                  0.0,
+                  0.5
+                ]
+              ]
+            }
+          },
+          "final": {
+            "sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+            "nodes": 33,
+            "faces": 32,
+            "boundary_edges": 8,
+            "worst_min_angle": {
+              "kind": "QUAD",
+              "tri_q": null,
+              "quad_corner_jacobian": 0.47798949303341104,
+              "min_angle_xyz": 31.54933773014362,
+              "max_angle_xyz": 149.73684923974605,
+              "edge_ratio_xyz": 5.287065928564524,
+              "S_uv": 1.4999999999999998,
+              "S_xyz": 1.6637427693305118,
+              "region": "contour_edge",
+              "node_ids_zero_based": [
+                26,
+                27,
+                4,
+                14
+              ],
+              "uv": [
+                [
+                  0.5,
+                  0.0
+                ],
+                [
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.7624359589844655,
+                  0.23756404101553463
+                ],
+                [
+                  0.6671245511878524,
+                  0.223953065191091
+                ]
+              ]
+            },
+            "sampled_xyz_error": {
+              "grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.08970625875320964,
+              "rms_uv": 0.025226911793798386,
+              "rms_source_area": 0.02216856603163197,
+              "tri_sites": 96,
+              "quad_sites": 480
+            }
+          }
+        },
+        "region_and_gradation_statistics_identical_by_phase": true
+      },
+      {
+        "step": 2,
+        "reference_tri_sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+        "reference_tri_accepted": 1,
+        "first_different_polygon_commit": null,
+        "mesh_equality": {
+          "xyz": true,
+          "uv": true,
+          "ordered_faces": true,
+          "oriented_faces": true,
+          "unordered_faces": true,
+          "final_bytes": true,
+          "smoothing_traces": true,
+          "cyclic_oriented_faces": true
+        },
+        "reference": {
+          "before": {
+            "sha256": "ff29f3674759a03a559d10e53ddf3ec050f4991dedd22596b64a83b40a10ab05",
+            "nodes": 281,
+            "faces": 301,
+            "boundary_edges": 10,
+            "regions": {
+              "contour_edge": {
+                "QUAD": {
+                  "count": 2,
+                  "min_angle_xyz": {
+                    "count": 2,
+                    "min": 23.279958547561126,
+                    "p05": 23.408605738428708,
+                    "median": 24.566430456236958,
+                    "p95": 25.724255174045208,
+                    "max": 25.852902364912794
+                  },
+                  "max_angle_xyz": {
+                    "count": 2,
+                    "min": 125.64636134660935,
+                    "p05": 127.0118243843252,
+                    "median": 139.30099172376768,
+                    "p95": 151.59015906321017,
+                    "max": 152.955622100926
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 2,
+                    "min": 3.9016496580836777,
+                    "p05": 4.168524527891359,
+                    "median": 6.570398356160484,
+                    "p95": 8.97227218442961,
+                    "max": 9.239147054237291
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 2,
+                    "min": 0.39446628989456517,
+                    "p05": 0.3958734818334315,
+                    "median": 0.40853820928322876,
+                    "p95": 0.421202936733026,
+                    "max": 0.42261012867189235
+                  }
+                },
+                "TRI": {
+                  "count": 8,
+                  "min_angle_xyz": {
+                    "count": 8,
+                    "min": 9.832344817515402,
+                    "p05": 11.437240483856247,
+                    "median": 20.872885587188705,
+                    "p95": 22.33739256085827,
+                    "max": 22.61439964844213
+                  },
+                  "max_angle_xyz": {
+                    "count": 8,
+                    "min": 116.36234841274377,
+                    "p05": 122.14896306230045,
+                    "median": 134.34344084723386,
+                    "p95": 145.30082422832854,
+                    "max": 151.1011000946841
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 8,
+                    "min": 1.9051856760972523,
+                    "p05": 1.909576751595743,
+                    "median": 2.004781006409501,
+                    "p95": 4.1152168159384495,
+                    "max": 5.24697554574879
+                  },
+                  "tri_q": {
+                    "count": 8,
+                    "min": 0.28838089026995783,
+                    "p05": 0.2893307210545078,
+                    "median": 0.45440179168109923,
+                    "p95": 0.4668243236047558,
+                    "max": 0.4723550233830066
+                  }
+                }
+              },
+              "interior": {
+                "QUAD": {
+                  "count": 246,
+                  "min_angle_xyz": {
+                    "count": 246,
+                    "min": 24.055602614203252,
+                    "p05": 39.71892547594589,
+                    "median": 83.42784252933468,
+                    "p95": 89.90110638485957,
+                    "max": 89.98586639661495
+                  },
+                  "max_angle_xyz": {
+                    "count": 246,
+                    "min": 90.01683401228281,
+                    "p05": 90.08455559595652,
+                    "median": 96.58860072559361,
+                    "p95": 139.27873343552395,
+                    "max": 154.26008659017455
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 246,
+                    "min": 1.0160264424749488,
+                    "p05": 1.0440437758780718,
+                    "median": 1.4204954402770391,
+                    "p95": 3.131786637350712,
+                    "max": 5.300638274163364
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 246,
+                    "min": 0.40506114101199564,
+                    "p05": 0.6052236066671914,
+                    "median": 0.9927158227891234,
+                    "p95": 0.9999856472317863,
+                    "max": 0.9999958539749942
+                  }
+                },
+                "TRI": {
+                  "count": 7,
+                  "min_angle_xyz": {
+                    "count": 7,
+                    "min": 15.150057601483107,
+                    "p05": 15.537850861690117,
+                    "median": 24.016514863904614,
+                    "p95": 44.371611918558635,
+                    "max": 44.42010729386885
+                  },
+                  "max_angle_xyz": {
+                    "count": 7,
+                    "min": 79.81492994142624,
+                    "p05": 82.7019738175106,
+                    "median": 90.319985804904,
+                    "p95": 128.94015594813322,
+                    "max": 143.5740112340948
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 7,
+                    "min": 1.4287361574462059,
+                    "p05": 1.429971978239044,
+                    "median": 1.9313131737637206,
+                    "p95": 3.738000961119009,
+                    "max": 3.8259888693421185
+                  },
+                  "tri_q": {
+                    "count": 7,
+                    "min": 0.366563918730117,
+                    "p05": 0.3876419136297153,
+                    "median": 0.6390329440096415,
+                    "p95": 0.8798193773794394,
+                    "max": 0.8865017442456139
+                  }
+                }
+              },
+              "vertex_only": {
+                "QUAD": {
+                  "count": 1,
+                  "min_angle_xyz": {
+                    "count": 1,
+                    "min": 32.78083495010544,
+                    "p05": 32.78083495010544,
+                    "median": 32.78083495010544,
+                    "p95": 32.78083495010544,
+                    "max": 32.78083495010544
+                  },
+                  "max_angle_xyz": {
+                    "count": 1,
+                    "min": 154.28211302328967,
+                    "p05": 154.28211302328967,
+                    "median": 154.28211302328967,
+                    "p95": 154.28211302328967,
+                    "max": 154.28211302328967
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 1,
+                    "min": 4.016275645160728,
+                    "p05": 4.016275645160728,
+                    "median": 4.016275645160728,
+                    "p95": 4.016275645160728,
+                    "max": 4.016275645160728
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 1,
+                    "min": 0.43169096869696677,
+                    "p05": 0.43169096869696677,
+                    "median": 0.43169096869696677,
+                    "p95": 0.43169096869696677,
+                    "max": 0.43169096869696677
+                  }
+                },
+                "TRI": {
+                  "count": 37,
+                  "min_angle_xyz": {
+                    "count": 37,
+                    "min": 4.824378954243407,
+                    "p05": 5.471666633300002,
+                    "median": 17.627508421578625,
+                    "p95": 39.55801130623085,
+                    "max": 40.41787163223917
+                  },
+                  "max_angle_xyz": {
+                    "count": 37,
+                    "min": 70.06640950359598,
+                    "p05": 81.5542447632246,
+                    "median": 126.37563905097623,
+                    "p95": 153.62875786556478,
+                    "max": 160.08014779747492
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 37,
+                    "min": 1.449953994173132,
+                    "p05": 1.5491861956723998,
+                    "median": 2.5280892837325997,
+                    "p95": 4.603739819578548,
+                    "max": 5.278759196244474
+                  },
+                  "tri_q": {
+                    "count": 37,
+                    "min": 0.13535804124346085,
+                    "p05": 0.15687625328848281,
+                    "median": 0.45735671399720274,
+                    "p95": 0.8530198200463619,
+                    "max": 0.9066031808884603
+                  }
+                }
+              }
+            },
+            "adjacent_element_size_ratios": {
+              "contour_edge": {
+                "count": 22,
+                "min": 1.0,
+                "p05": 1.0430061601172835,
+                "median": 1.2595619065287145,
+                "p95": 3.9608691053263407,
+                "max": 4.642838550316631
+              },
+              "interior": {
+                "count": 523,
+                "min": 1.0,
+                "p05": 1.0016924323012621,
+                "median": 1.0294247243547332,
+                "p95": 2.0944081232637592,
+                "max": 4.309910398174322
+              },
+              "vertex_only": {
+                "count": 87,
+                "min": 1.0,
+                "p05": 1.0629730062282414,
+                "median": 1.3969833777664973,
+                "p95": 3.9638314387596765,
+                "max": 4.642838550316631
+              }
+            },
+            "worst_min_angle": {
+              "kind": "TRI",
+              "tri_q": 0.13535804124346085,
+              "quad_corner_jacobian": null,
+              "min_angle_xyz": 4.824378954243407,
+              "max_angle_xyz": 160.08014779747492,
+              "edge_ratio_xyz": 4.051104481222039,
+              "S_uv": null,
+              "S_xyz": null,
+              "region": "vertex_only",
+              "node_ids_zero_based": [
+                47,
+                170,
+                272
+              ],
+              "uv": [
+                [
+                  0.375,
+                  0.0625
+                ],
+                [
+                  0.34375,
+                  0.0625
+                ],
+                [
+                  0.25457763671875,
+                  0.0
+                ]
+              ]
+            }
+          },
+          "final": {
+            "sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "nodes": 281,
+            "faces": 301,
+            "boundary_edges": 10,
+            "regions": {
+              "contour_edge": {
+                "QUAD": {
+                  "count": 2,
+                  "min_angle_xyz": {
+                    "count": 2,
+                    "min": 15.63811439615133,
+                    "p05": 16.013838743396377,
+                    "median": 19.395357868601803,
+                    "p95": 22.776876993807228,
+                    "max": 23.152601341052275
+                  },
+                  "max_angle_xyz": {
+                    "count": 2,
+                    "min": 156.54756481205865,
+                    "p05": 156.95850248784075,
+                    "median": 160.65694156987945,
+                    "p95": 164.35538065191818,
+                    "max": 164.76631832770025
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 2,
+                    "min": 5.1893215743828405,
+                    "p05": 5.354077773330128,
+                    "median": 6.8368835638557215,
+                    "p95": 8.319689354381314,
+                    "max": 8.484445553328602
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 2,
+                    "min": 0.223536909395905,
+                    "p05": 0.22502995504985268,
+                    "median": 0.23846736593538154,
+                    "p95": 0.2519047768209105,
+                    "max": 0.2533978224748581
+                  }
+                },
+                "TRI": {
+                  "count": 8,
+                  "min_angle_xyz": {
+                    "count": 8,
+                    "min": 15.996461740995871,
+                    "p05": 16.338253960944265,
+                    "median": 25.59253337168847,
+                    "p95": 27.147305733316188,
+                    "max": 27.162129765281815
+                  },
+                  "max_angle_xyz": {
+                    "count": 8,
+                    "min": 85.28903874474247,
+                    "p05": 98.52332286102703,
+                    "median": 123.44496035806775,
+                    "p95": 141.069920041059,
+                    "max": 145.40361691131042
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 8,
+                    "min": 1.828424439581967,
+                    "p05": 1.8292656339042828,
+                    "median": 1.8726976553130357,
+                    "p95": 2.9402344179481803,
+                    "max": 3.414009223453885
+                  },
+                  "tri_q": {
+                    "count": 8,
+                    "min": 0.3457254533378022,
+                    "p05": 0.38959631849492427,
+                    "median": 0.5439002747469781,
+                    "p95": 0.5679911010961406,
+                    "max": 0.5682131640180933
+                  }
+                }
+              },
+              "interior": {
+                "QUAD": {
+                  "count": 246,
+                  "min_angle_xyz": {
+                    "count": 246,
+                    "min": 20.284892570428223,
+                    "p05": 48.96542312105327,
+                    "median": 75.54119189335282,
+                    "p95": 88.21437681049699,
+                    "max": 89.18384691454521
+                  },
+                  "max_angle_xyz": {
+                    "count": 246,
+                    "min": 90.59668376820234,
+                    "p05": 92.2391286571375,
+                    "median": 105.61624764680136,
+                    "p95": 136.8500797661984,
+                    "max": 149.9328165738709
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 246,
+                    "min": 1.0220685837433656,
+                    "p05": 1.0996849927800008,
+                    "median": 1.3369283279400626,
+                    "p95": 2.325420491388106,
+                    "max": 3.6869843866924317
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 246,
+                    "min": 0.3466618479657439,
+                    "p05": 0.6649652751191073,
+                    "median": 0.9597003786765457,
+                    "p95": 0.9986539448041942,
+                    "max": 0.9998749022353214
+                  }
+                },
+                "TRI": {
+                  "count": 7,
+                  "min_angle_xyz": {
+                    "count": 7,
+                    "min": 26.220930946163833,
+                    "p05": 27.425515476511954,
+                    "median": 41.017340670855425,
+                    "p95": 49.90748330856105,
+                    "max": 51.54738905101463
+                  },
+                  "max_angle_xyz": {
+                    "count": 7,
+                    "min": 74.25892374013215,
+                    "p05": 75.86331003691501,
+                    "median": 86.60914910978047,
+                    "p95": 101.072737812339,
+                    "max": 103.77940418077642
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 7,
+                    "min": 1.2290505918079209,
+                    "p05": 1.2759815522749485,
+                    "median": 1.5184736037057107,
+                    "p95": 2.1537153311977106,
+                    "max": 2.2261618956591507
+                  },
+                  "tri_q": {
+                    "count": 7,
+                    "min": 0.6935689152927048,
+                    "p05": 0.7064799024964679,
+                    "median": 0.8272071338120985,
+                    "p95": 0.9422512955742736,
+                    "max": 0.9636757896889727
+                  }
+                }
+              },
+              "vertex_only": {
+                "QUAD": {
+                  "count": 1,
+                  "min_angle_xyz": {
+                    "count": 1,
+                    "min": 31.057729362864926,
+                    "p05": 31.057729362864926,
+                    "median": 31.057729362864926,
+                    "p95": 31.057729362864926,
+                    "max": 31.057729362864926
+                  },
+                  "max_angle_xyz": {
+                    "count": 1,
+                    "min": 158.91141836391236,
+                    "p05": 158.91141836391236,
+                    "median": 158.91141836391236,
+                    "p95": 158.91141836391236,
+                    "max": 158.91141836391236
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 1,
+                    "min": 3.2979688360501287,
+                    "p05": 3.2979688360501287,
+                    "median": 3.2979688360501287,
+                    "p95": 3.2979688360501287,
+                    "max": 3.2979688360501287
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 1,
+                    "min": 0.3595903894275011,
+                    "p05": 0.3595903894275011,
+                    "median": 0.3595903894275011,
+                    "p95": 0.3595903894275011,
+                    "max": 0.3595903894275011
+                  }
+                },
+                "TRI": {
+                  "count": 37,
+                  "min_angle_xyz": {
+                    "count": 37,
+                    "min": 9.59283006256298,
+                    "p05": 11.573831032923547,
+                    "median": 16.681201078209547,
+                    "p95": 39.196128575683915,
+                    "max": 53.71121471511706
+                  },
+                  "max_angle_xyz": {
+                    "count": 37,
+                    "min": 63.69556883200312,
+                    "p05": 74.26421797132583,
+                    "median": 115.42072615800633,
+                    "p95": 142.1989211499711,
+                    "max": 152.02627324155617
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 37,
+                    "min": 1.1121626131947084,
+                    "p05": 1.5567842545068953,
+                    "median": 2.8892663706216757,
+                    "p95": 3.646092588492563,
+                    "max": 5.7056906569596135
+                  },
+                  "tri_q": {
+                    "count": 37,
+                    "min": 0.2722013128560543,
+                    "p05": 0.3111660120969214,
+                    "median": 0.4460113606250363,
+                    "p95": 0.8834173472793543,
+                    "max": 0.9913863468515958
+                  }
+                }
+              }
+            },
+            "adjacent_element_size_ratios": {
+              "contour_edge": {
+                "count": 22,
+                "min": 1.0198889681775523,
+                "p05": 1.0806731535067102,
+                "median": 1.441344747852411,
+                "p95": 3.0332349225760535,
+                "max": 3.4017743996046246
+              },
+              "interior": {
+                "count": 523,
+                "min": 1.0,
+                "p05": 1.0100175537883156,
+                "median": 1.1109446552116904,
+                "p95": 2.5282563069232173,
+                "max": 4.379402160106977
+              },
+              "vertex_only": {
+                "count": 87,
+                "min": 1.0,
+                "p05": 1.0230360142981172,
+                "median": 1.5175174062937355,
+                "p95": 3.879530175197778,
+                "max": 4.379402160106977
+              }
+            },
+            "worst_min_angle": {
+              "kind": "TRI",
+              "tri_q": 0.2832605737732096,
+              "quad_corner_jacobian": null,
+              "min_angle_xyz": 9.59283006256298,
+              "max_angle_xyz": 108.04253140392625,
+              "edge_ratio_xyz": 5.7056906569596135,
+              "S_uv": null,
+              "S_xyz": null,
+              "region": "vertex_only",
+              "node_ids_zero_based": [
+                73,
+                269,
+                271
+              ],
+              "uv": [
+                [
+                  0.16790337107321765,
+                  0.08919937264501794
+                ],
+                [
+                  0.14804035660365644,
+                  0.1500599099343549
+                ],
+                [
+                  0.0,
+                  0.0
+                ]
+              ]
+            },
+            "sampled_xyz_error": {
+              "grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.04191818421444898,
+              "rms_uv": 0.01362431424755927,
+              "rms_source_area": 0.0128966713696097,
+              "tri_sites": 287,
+              "quad_sites": 289
+            }
+          },
+          "final_quad_count": 249,
+          "source_boundary": {
+            "nodes": 281,
+            "quads": 249,
+            "triangles": 52,
+            "boundary": 10,
+            "source_step": 2,
+            "native_leaves": 67,
+            "domain_generation": 1,
+            "nonuniform_sides": 1,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0
+          },
+          "front_trace_sha256": "bc78b876c5ac8c72ff617cf88e61a9872a58f39f6462eaf27659e2424dc5e68b",
+          "front_commits": 59
+        },
+        "deferral": {
+          "final_quad_count": 249,
+          "source_boundary": {
+            "nodes": 281,
+            "quads": 249,
+            "triangles": 52,
+            "boundary": 10,
+            "source_step": 2,
+            "native_leaves": 67,
+            "domain_generation": 1,
+            "nonuniform_sides": 1,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0
+          },
+          "front_trace_sha256": "bc78b876c5ac8c72ff617cf88e61a9872a58f39f6462eaf27659e2424dc5e68b",
+          "front_commits": 59,
+          "before": {
+            "sha256": "ff29f3674759a03a559d10e53ddf3ec050f4991dedd22596b64a83b40a10ab05",
+            "nodes": 281,
+            "faces": 301,
+            "boundary_edges": 10,
+            "worst_min_angle": {
+              "kind": "TRI",
+              "tri_q": 0.13535804124346085,
+              "quad_corner_jacobian": null,
+              "min_angle_xyz": 4.824378954243407,
+              "max_angle_xyz": 160.08014779747492,
+              "edge_ratio_xyz": 4.051104481222039,
+              "S_uv": null,
+              "S_xyz": null,
+              "region": "vertex_only",
+              "node_ids_zero_based": [
+                47,
+                170,
+                272
+              ],
+              "uv": [
+                [
+                  0.375,
+                  0.0625
+                ],
+                [
+                  0.34375,
+                  0.0625
+                ],
+                [
+                  0.25457763671875,
+                  0.0
+                ]
+              ]
+            }
+          },
+          "final": {
+            "sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+            "nodes": 281,
+            "faces": 301,
+            "boundary_edges": 10,
+            "worst_min_angle": {
+              "kind": "TRI",
+              "tri_q": 0.2832605737732096,
+              "quad_corner_jacobian": null,
+              "min_angle_xyz": 9.59283006256298,
+              "max_angle_xyz": 108.04253140392625,
+              "edge_ratio_xyz": 5.7056906569596135,
+              "S_uv": null,
+              "S_xyz": null,
+              "region": "vertex_only",
+              "node_ids_zero_based": [
+                73,
+                269,
+                271
+              ],
+              "uv": [
+                [
+                  0.16790337107321765,
+                  0.08919937264501794
+                ],
+                [
+                  0.14804035660365644,
+                  0.1500599099343549
+                ],
+                [
+                  0.0,
+                  0.0
+                ]
+              ]
+            },
+            "sampled_xyz_error": {
+              "grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.04191818421444898,
+              "rms_uv": 0.01362431424755927,
+              "rms_source_area": 0.0128966713696097,
+              "tri_sites": 287,
+              "quad_sites": 289
+            }
+          }
+        },
+        "region_and_gradation_statistics_identical_by_phase": true
+      },
+      {
+        "step": 3,
+        "reference_tri_sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+        "reference_tri_accepted": 1,
+        "first_different_polygon_commit": 32,
+        "contains_original_1_42_degree_triangle": [
+          true,
+          true
+        ],
+        "mesh_equality": {
+          "xyz": true,
+          "uv": true,
+          "ordered_faces": false,
+          "oriented_faces": false,
+          "unordered_faces": true,
+          "final_bytes": false,
+          "smoothing_traces": true,
+          "cyclic_oriented_faces": true
+        },
+        "witness_commit_control_to_trial": [
+          [
+            73,
+            105
+          ],
+          [
+            106,
+            104
+          ]
+        ],
+        "reference": {
+          "before": {
+            "sha256": "f56b1a640733e6109d97c6f185a8584f62397116ee8fe05afb9b3583031dc4fd",
+            "nodes": 689,
+            "faces": 732,
+            "boundary_edges": 14,
+            "regions": {
+              "contour_edge": {
+                "QUAD": {
+                  "count": 6,
+                  "min_angle_xyz": {
+                    "count": 6,
+                    "min": 19.438606955832434,
+                    "p05": 19.564402772735214,
+                    "median": 21.455562295846278,
+                    "p95": 23.820205267400176,
+                    "max": 23.965788535441387
+                  },
+                  "max_angle_xyz": {
+                    "count": 6,
+                    "min": 152.24715804094598,
+                    "p05": 152.53558340128566,
+                    "median": 155.36072469088953,
+                    "p95": 159.3634465503169,
+                    "max": 159.9974520971535
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 6,
+                    "min": 3.893679673284863,
+                    "p05": 3.893948269065762,
+                    "median": 3.972048684841268,
+                    "p95": 4.129987298776419,
+                    "max": 4.13010962636515
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 6,
+                    "min": 0.32843100153567506,
+                    "p05": 0.3315493819675441,
+                    "median": 0.35842348773661514,
+                    "p95": 0.40220578920337624,
+                    "max": 0.4057201336638564
+                  }
+                },
+                "TRI": {
+                  "count": 8,
+                  "min_angle_xyz": {
+                    "count": 8,
+                    "min": 10.367272360473434,
+                    "p05": 10.658869147728726,
+                    "median": 20.846105420915567,
+                    "p95": 21.50459957274104,
+                    "max": 21.822950826773944
+                  },
+                  "max_angle_xyz": {
+                    "count": 8,
+                    "min": 120.38390263813768,
+                    "p05": 121.08944469449133,
+                    "median": 134.19477292454212,
+                    "p95": 134.4943277403931,
+                    "max": 134.5288833336682
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 8,
+                    "min": 1.9177316060929395,
+                    "p05": 1.9481519865096764,
+                    "median": 2.0125656047421403,
+                    "p95": 4.604098755678162,
+                    "max": 4.691837500019713
+                  },
+                  "tri_q": {
+                    "count": 8,
+                    "min": 0.30088697922437296,
+                    "p05": 0.3088625606000931,
+                    "median": 0.45394001618177904,
+                    "p95": 0.4564054552144191,
+                    "max": 0.45655302401657577
+                  }
+                }
+              },
+              "interior": {
+                "QUAD": {
+                  "count": 624,
+                  "min_angle_xyz": {
+                    "count": 624,
+                    "min": 64.40510702872767,
+                    "p05": 74.47716306598457,
+                    "median": 88.36246098025515,
+                    "p95": 89.94880185521785,
+                    "max": 89.99202691392522
+                  },
+                  "max_angle_xyz": {
+                    "count": 624,
+                    "min": 90.00386995527147,
+                    "p05": 90.04884530865505,
+                    "median": 91.62276466993694,
+                    "p95": 105.5560331595797,
+                    "max": 115.54335568404512
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 624,
+                    "min": 1.0020952190226766,
+                    "p05": 1.0190539617371386,
+                    "median": 1.1318004350839348,
+                    "p95": 2.090698730275688,
+                    "max": 2.6546557519835043
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 624,
+                    "min": 0.9014446997284595,
+                    "p05": 0.9629809278641817,
+                    "median": 0.9994568499570722,
+                    "p95": 0.9999965962928521,
+                    "max": 0.9999989996323075
+                  }
+                }
+              },
+              "vertex_only": {
+                "TRI": {
+                  "count": 94,
+                  "min_angle_xyz": {
+                    "count": 94,
+                    "min": 1.4181974567977775,
+                    "p05": 2.431390646904579,
+                    "median": 6.419662689275707,
+                    "p95": 34.97162235640795,
+                    "max": 43.88674635973171
+                  },
+                  "max_angle_xyz": {
+                    "count": 94,
+                    "min": 83.35555682403783,
+                    "p05": 87.61672682755429,
+                    "median": 141.14573343167154,
+                    "p95": 156.36739866469037,
+                    "max": 158.0797132942892
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 94,
+                    "min": 1.4345832405600298,
+                    "p05": 1.6828539581334687,
+                    "median": 5.9131402179095165,
+                    "p95": 9.971664218682672,
+                    "max": 15.083676342784383
+                  },
+                  "tri_q": {
+                    "count": 94,
+                    "min": 0.04268083753878802,
+                    "p05": 0.0726649762995284,
+                    "median": 0.18869755837970836,
+                    "p95": 0.8081321395396868,
+                    "max": 0.9008232751882351
+                  }
+                }
+              }
+            },
+            "adjacent_element_size_ratios": {
+              "contour_edge": {
+                "count": 34,
+                "min": 1.065882368364835,
+                "p05": 1.1071085700710328,
+                "median": 1.3458053573394317,
+                "p95": 2.932524545394619,
+                "max": 4.079417628821444
+              },
+              "interior": {
+                "count": 1298,
+                "min": 1.0000001324722205,
+                "p05": 1.0004663725839995,
+                "median": 1.0076689210960157,
+                "p95": 3.6435790164841535,
+                "max": 12.238209200218554
+              },
+              "vertex_only": {
+                "count": 202,
+                "min": 1.0,
+                "p05": 1.018896404882312,
+                "median": 1.368768768536042,
+                "p95": 8.081971434443643,
+                "max": 12.238209200218554
+              }
+            },
+            "worst_min_angle": {
+              "kind": "TRI",
+              "tri_q": 0.04268083753878802,
+              "quad_corner_jacobian": null,
+              "min_angle_xyz": 1.4181974567977775,
+              "max_angle_xyz": 158.0797132942892,
+              "edge_ratio_xyz": 15.083676342784383,
+              "S_uv": null,
+              "S_xyz": null,
+              "region": "vertex_only",
+              "node_ids_zero_based": [
+                688,
+                13,
+                349
+              ],
+              "uv": [
+                [
+                  0.0,
+                  0.5
+                ],
+                [
+                  0.125,
+                  0.125
+                ],
+                [
+                  0.125,
+                  0.15625
+                ]
+              ]
+            }
+          },
+          "final": {
+            "sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+            "nodes": 689,
+            "faces": 732,
+            "boundary_edges": 14,
+            "regions": {
+              "contour_edge": {
+                "QUAD": {
+                  "count": 6,
+                  "min_angle_xyz": {
+                    "count": 6,
+                    "min": 18.919169902242185,
+                    "p05": 19.01994396479469,
+                    "median": 20.629857742667298,
+                    "p95": 23.908029249008894,
+                    "max": 24.296101214930506
+                  },
+                  "max_angle_xyz": {
+                    "count": 6,
+                    "min": 152.754060641141,
+                    "p05": 153.3427558662992,
+                    "median": 157.85621898905967,
+                    "p95": 159.99570354506017,
+                    "max": 160.4172895981796
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 6,
+                    "min": 4.980683167021837,
+                    "p05": 4.980754059953851,
+                    "median": 5.030697239457554,
+                    "p95": 5.252472464301919,
+                    "max": 5.253280199929759
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 6,
+                    "min": 0.3201263972154247,
+                    "p05": 0.3227760846233011,
+                    "median": 0.3455561131949602,
+                    "p95": 0.4036572347679635,
+                    "max": 0.41095680670963086
+                  }
+                },
+                "TRI": {
+                  "count": 8,
+                  "min_angle_xyz": {
+                    "count": 8,
+                    "min": 9.148954252531814,
+                    "p05": 10.015563264734629,
+                    "median": 15.800115473617169,
+                    "p95": 16.641591870570974,
+                    "max": 17.058761344185104
+                  },
+                  "max_angle_xyz": {
+                    "count": 8,
+                    "min": 92.58086816823072,
+                    "p05": 96.13190466451081,
+                    "median": 145.14077291747446,
+                    "p95": 145.35514039369954,
+                    "max": 145.3824090248954
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 8,
+                    "min": 1.9365670746090038,
+                    "p05": 1.9896996652851633,
+                    "median": 2.0958689208646373,
+                    "p95": 5.722741351955286,
+                    "max": 6.134728328613804
+                  },
+                  "tri_q": {
+                    "count": 8,
+                    "min": 0.271273531575981,
+                    "p05": 0.2959225629754927,
+                    "median": 0.3460144081589288,
+                    "p95": 0.3500369598427144,
+                    "max": 0.35088434186064643
+                  }
+                }
+              },
+              "interior": {
+                "QUAD": {
+                  "count": 624,
+                  "min_angle_xyz": {
+                    "count": 624,
+                    "min": 12.171116287204043,
+                    "p05": 48.83196896192912,
+                    "median": 85.65354388006736,
+                    "p95": 89.74935134593359,
+                    "max": 89.98804861472993
+                  },
+                  "max_angle_xyz": {
+                    "count": 624,
+                    "min": 90.02051294226605,
+                    "p05": 90.24014184298099,
+                    "median": 94.3570804222066,
+                    "p95": 133.58066103310247,
+                    "max": 162.29163286712097
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 624,
+                    "min": 1.0038933399817451,
+                    "p05": 1.0281878015721335,
+                    "median": 1.2139334451223196,
+                    "p95": 2.23171481369187,
+                    "max": 3.9617162234895096
+                  },
+                  "quad_corner_jacobian": {
+                    "count": 624,
+                    "min": 0.21082201029581682,
+                    "p05": 0.7167272165574818,
+                    "median": 0.9969533637837891,
+                    "p95": 0.9999807989708872,
+                    "max": 0.9999989996323075
+                  }
+                }
+              },
+              "vertex_only": {
+                "TRI": {
+                  "count": 94,
+                  "min_angle_xyz": {
+                    "count": 94,
+                    "min": 1.8698820585022242,
+                    "p05": 2.964300110502337,
+                    "median": 8.84169653983242,
+                    "p95": 37.02929454771606,
+                    "max": 47.13619573733626
+                  },
+                  "max_angle_xyz": {
+                    "count": 94,
+                    "min": 78.03769482256234,
+                    "p05": 81.23172379541452,
+                    "median": 134.36381030173362,
+                    "p95": 154.69415492368788,
+                    "max": 168.37399456018758
+                  },
+                  "edge_ratio_xyz": {
+                    "count": 94,
+                    "min": 1.347396203101424,
+                    "p05": 1.634778463092772,
+                    "median": 5.049157057853172,
+                    "p95": 9.346274621075024,
+                    "max": 11.053262350571115
+                  },
+                  "tri_q": {
+                    "count": 94,
+                    "min": 0.05483599181146062,
+                    "p05": 0.08889142960345486,
+                    "median": 0.25499707375516045,
+                    "p95": 0.8512675748836098,
+                    "max": 0.9256012718402717
+                  }
+                }
+              }
+            },
+            "adjacent_element_size_ratios": {
+              "contour_edge": {
+                "count": 34,
+                "min": 1.0,
+                "p05": 1.1516731180429107,
+                "median": 1.4869608175668987,
+                "p95": 2.8238933164064237,
+                "max": 3.180351029960946
+              },
+              "interior": {
+                "count": 1298,
+                "min": 1.0000001324722205,
+                "p05": 1.0004086833831878,
+                "median": 1.0101093452278511,
+                "p95": 3.2322126831411935,
+                "max": 5.428011630217681
+              },
+              "vertex_only": {
+                "count": 202,
+                "min": 1.0,
+                "p05": 1.0072995303271233,
+                "median": 1.4427003527100428,
+                "p95": 4.399196013800504,
+                "max": 5.428011630217681
+              }
+            },
+            "worst_min_angle": {
+              "kind": "TRI",
+              "tri_q": 0.05483599181146062,
+              "quad_corner_jacobian": null,
+              "min_angle_xyz": 1.8698820585022242,
+              "max_angle_xyz": 168.37399456018758,
+              "edge_ratio_xyz": 6.176025475632036,
+              "S_uv": null,
+              "S_xyz": null,
+              "region": "vertex_only",
+              "node_ids_zero_based": [
+                51,
+                278,
+                685
+              ],
+              "uv": [
+                [
+                  0.9140781086378418,
+                  0.9140781086378418
+                ],
+                [
+                  0.9021518444888806,
+                  0.896019165828465
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            },
+            "sampled_xyz_error": {
+              "grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.03907911808051273,
+              "rms_uv": 0.010017303249174823,
+              "rms_source_area": 0.009541729937291929,
+              "tri_sites": 199,
+              "quad_sites": 377
+            }
+          },
+          "final_quad_count": 630,
+          "source_boundary": {
+            "nodes": 689,
+            "quads": 630,
+            "triangles": 102,
+            "boundary": 14,
+            "source_step": 3,
+            "native_leaves": 223,
+            "domain_generation": 1,
+            "nonuniform_sides": 1,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0
+          },
+          "front_trace_sha256": "41c4a429088fc166f21ec9668dae2beb02bc2d3c5a6eaf53f36d8408da85e73f",
+          "front_commits": 108
+        },
+        "deferral": {
+          "final_quad_count": 630,
+          "source_boundary": {
+            "nodes": 689,
+            "quads": 630,
+            "triangles": 102,
+            "boundary": 14,
+            "source_step": 3,
+            "native_leaves": 223,
+            "domain_generation": 1,
+            "nonuniform_sides": 1,
+            "reversed_sides": 0,
+            "reference_tri_accepted": true,
+            "mixed_adaptive_epochs": 0
+          },
+          "front_trace_sha256": "c4c4512818bc54da04afa6b7b440d86535f464adc20a1d4f43109cf7c80c824c",
+          "front_commits": 108,
+          "before": {
+            "sha256": "02f8cc568e1e2ff19695ed8f657f4996ca3131e4eb0dedf720cae816731223fd",
+            "nodes": 689,
+            "faces": 732,
+            "boundary_edges": 14,
+            "worst_min_angle": {
+              "kind": "TRI",
+              "tri_q": 0.04268083753878802,
+              "quad_corner_jacobian": null,
+              "min_angle_xyz": 1.4181974567977775,
+              "max_angle_xyz": 158.0797132942892,
+              "edge_ratio_xyz": 15.083676342784383,
+              "S_uv": null,
+              "S_xyz": null,
+              "region": "vertex_only",
+              "node_ids_zero_based": [
+                688,
+                13,
+                349
+              ],
+              "uv": [
+                [
+                  0.0,
+                  0.5
+                ],
+                [
+                  0.125,
+                  0.125
+                ],
+                [
+                  0.125,
+                  0.15625
+                ]
+              ]
+            }
+          },
+          "final": {
+            "sha256": "4253514c271086687840e66381f771c50b7b55fb52e42fa818c782eb6be896e7",
+            "nodes": 689,
+            "faces": 732,
+            "boundary_edges": 14,
+            "worst_min_angle": {
+              "kind": "TRI",
+              "tri_q": 0.05483599181146062,
+              "quad_corner_jacobian": null,
+              "min_angle_xyz": 1.8698820585022242,
+              "max_angle_xyz": 168.37399456018758,
+              "edge_ratio_xyz": 6.176025475632036,
+              "S_uv": null,
+              "S_xyz": null,
+              "region": "vertex_only",
+              "node_ids_zero_based": [
+                51,
+                278,
+                685
+              ],
+              "uv": [
+                [
+                  0.9140781086378418,
+                  0.9140781086378418
+                ],
+                [
+                  0.9021518444888806,
+                  0.896019165828465
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            },
+            "sampled_xyz_error": {
+              "grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.03907911808051273,
+              "rms_uv": 0.010017303249174821,
+              "rms_source_area": 0.009541729937291929,
+              "tri_sites": 199,
+              "quad_sites": 377
+            }
+          }
+        },
+        "region_and_gradation_statistics_identical_by_phase": true
+      }
+    ]
+  },
+  "full_local_comparison_sha256": "850cddce6804334129be2c0a7d131f185bdf000b64b34454cebf4d3339319409"
+}
