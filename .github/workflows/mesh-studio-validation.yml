@@ -63,6 +63,17 @@ jobs:
       - name: Linux complete scientific/VTK regression under virtual X server
         if: runner.os == 'Linux'
         run: xvfb-run -a -s '-screen 0 1920x1080x24' python -m unittest discover -s tools/mesh_studio -p 'test_*.py' -t . -v
+      - name: Measure V5 exact-source original P1 and staged Band API cache impact
+        if: runner.os == 'Linux'
+        run: python -m tools.mesh_studio.benchmark_web_cache --pairs 16 --output build/mesh-studio/v5-source-web-cache-benchmark.json
+      - name: Retain actual source SHA pinned V5 cold and warm API timings
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-v5-source-web-cache-${{ github.sha }}
+          path: build/mesh-studio/v5-source-web-cache-benchmark.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Windows scientific regression; hosted GPU renderer explicitly unqualified
         if: runner.os == 'Windows'
         run: python -m unittest discover -s tools/mesh_studio -p 'test_*.py' -t . -v
