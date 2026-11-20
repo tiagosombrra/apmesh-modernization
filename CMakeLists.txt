@@ -367,6 +367,18 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
     "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
   target_link_libraries(quad_generator_selected_uv_probe PRIVATE ap_mesh_engine)
   target_compile_features(quad_generator_selected_uv_probe PRIVATE cxx_std_17)
+  # R2.7.33 is Linux ELF-only: wrap the undefined original Adapter symbol
+  # at the final research executable link. Never patch/recompile the engine.
+  if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    add_executable(quad_generator_selected_tri_return_probe
+      tests/quad/generator_selected_tri_return_probe.cpp)
+    target_include_directories(quad_generator_selected_tri_return_probe PRIVATE
+      "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+    target_link_libraries(quad_generator_selected_tri_return_probe PRIVATE ap_mesh_engine)
+    target_compile_features(quad_generator_selected_tri_return_probe PRIVATE cxx_std_17)
+    target_link_options(quad_generator_selected_tri_return_probe PRIVATE
+      "LINKER:--wrap=_ZN7Adapter11AdaptDomainEP10PatchCoonsPN9Performer9IdManagerEddiiii")
+  endif()
   add_test(NAME quad.generator.real_global_outcomes
     COMMAND "${Python3_EXECUTABLE}"
       "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_generator_outcomes.py"
