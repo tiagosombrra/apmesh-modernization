@@ -27,7 +27,8 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [cameraStatus, setCameraStatus] = useState('');
-  const [showOriginalNativeTri, setShowOriginalNativeTri] = useState(false);
+  const [showOriginalNativeTri, setShowOriginalNativeTri] = useState(
+    () => new URLSearchParams(window.location.search).get('nativeScene') === '1');
   const xyzRef = useRef<ViewerHandle>(null);
   const uvRef = useRef<ViewerHandle>(null);
   const model = useMemo(() => catalog.find((item) => item.id === modelId), [catalog, modelId]);
@@ -175,8 +176,7 @@ export default function App() {
             <p>Trilha científica separada do P1 e das candidatas QUAD acima. A etapa nativa
               realmente aceita é a 1; não existe segundo LOD científico qualificado.</p>
             <button type="button" data-testid="v5-toggle-native-tri"
-              aria-expanded={showOriginalNativeTri ||
-                new URLSearchParams(window.location.search).get('nativeScene') === '1'}
+              aria-expanded={showOriginalNativeTri}
               onClick={() => setShowOriginalNativeTri(value => !value)}>
               {showOriginalNativeTri ? 'Ocultar estudo nativo'
                 : 'Abrir estudo TRI original aceito'}
@@ -185,8 +185,7 @@ export default function App() {
               Os SHA declarados são verificados estruturalmente no navegador,
               mas esta importação não autentica por si só os arquivos C++ brutos.</p>
           </section>
-          {(new URLSearchParams(window.location.search).get('nativeScene') === '1' ||
-            showOriginalNativeTri) && <NativeAcceptedScenePanel/>}
+          {showOriginalNativeTri && <NativeAcceptedScenePanel/>}
         </main>
         <aside className="right-sidebar"><div className="sidebar-eyebrow">INSPECTOR / 02</div><h2>Face selecionada</h2>
           {selected === null ? <div className="inspector-empty"><span className="empty-icon">⌖</span><strong>Selecione uma face</strong><p>Clique em qualquer elemento no espaço físico ou UV para inspecionar os dados originais.</p></div>
