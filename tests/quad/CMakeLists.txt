@@ -39,6 +39,15 @@ add_executable(quad_mixed_uv_smoothing_contracts mixed_uv_smoothing_contracts.cp
 target_include_directories(quad_mixed_uv_smoothing_contracts PRIVATE ../../research/quad)
 target_compile_features(quad_mixed_uv_smoothing_contracts PRIVATE cxx_std_17)
 add_test(NAME quad.article.mixed_uv_smoothing COMMAND quad_mixed_uv_smoothing_contracts)
+add_executable(quad_quadratic_jet_contracts quadratic_jet_contracts.cpp)
+add_executable(quad_quadratic_jet_probe quadratic_jet_probe.cpp)
+foreach(target IN ITEMS quad_quadratic_jet_contracts quad_quadratic_jet_probe)
+  target_include_directories(${target} PRIVATE ../../research/quad)
+  target_compile_features(${target} PRIVATE cxx_std_17)
+endforeach()
+add_test(NAME quad.curvature.quadratic_jet COMMAND quad_quadratic_jet_contracts)
+set_tests_properties(quad.curvature.quadratic_jet PROPERTIES
+  TIMEOUT 30 LABELS "research-quad;quadratic-jet;negative-controls")
 set_tests_properties(quad.article.mixed_uv_smoothing PROPERTIES
   TIMEOUT 30 LABELS "research-quad;mixed-smoothing;negative-controls")
 set_tests_properties(quad.article.prospective_front PROPERTIES
@@ -48,6 +57,7 @@ foreach(target IN ITEMS apmesh_quad_uv quad_uv_contracts quad_mesh_mode_contract
   apmesh_quad_experimental_point quad_experimental_point_contracts quad_visual_export
   quad_article_front_contracts
   quad_mixed_uv_smoothing_contracts
+  quad_quadratic_jet_contracts quad_quadratic_jet_probe
   quad_epoch_admission_contracts quad_mixed_surface_residual_contracts)
   if(MSVC)
     target_compile_options(${target} PRIVATE /W4 /WX /EHsc /utf-8)
@@ -76,6 +86,12 @@ set_tests_properties(quad.m1.visual_obj_export PROPERTIES
 # Independent exact-rational schematic audit of the Figure 7 transcription.
 # This is a documentary contract, not a numerical centroid or physical QUAD gate.
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
+add_test(NAME quad.curvature.quadratic_jet_python
+  COMMAND "${Python3_EXECUTABLE}" -W error::ResourceWarning
+    "${CMAKE_CURRENT_SOURCE_DIR}/test_quadratic_jet_python.py"
+    "$<TARGET_FILE:quad_quadratic_jet_probe>")
+set_tests_properties(quad.curvature.quadratic_jet_python PROPERTIES
+  TIMEOUT 60 LABELS "research-quad;quadratic-jet;independent-oracle")
 add_test(NAME quad.m1.figure7.oracle
   COMMAND "${Python3_EXECUTABLE}"
     "${CMAKE_CURRENT_SOURCE_DIR}/test_m1_figure7_oracle.py"
