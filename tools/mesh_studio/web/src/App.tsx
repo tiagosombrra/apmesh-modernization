@@ -27,6 +27,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [cameraStatus, setCameraStatus] = useState('');
+  const [showOriginalNativeTri, setShowOriginalNativeTri] = useState(false);
   const xyzRef = useRef<ViewerHandle>(null);
   const uvRef = useRef<ViewerHandle>(null);
   const model = useMemo(() => catalog.find((item) => item.id === modelId), [catalog, modelId]);
@@ -150,6 +151,11 @@ export default function App() {
             <button type="button" data-testid="save-cameras" disabled={!xyz || !uv} onClick={saveCameras}>Salvar vistas</button>
             <button type="button" data-testid="restore-cameras" disabled={!xyz || !uv} onClick={restoreCameras}>Restaurar vistas</button>
             <button type="button" data-testid="reset-cameras" disabled={!xyz || !uv} onClick={resetCameras}>Redefinir câmeras</button>
+            {model && <a className="source-publication-link" data-testid="v5-source-uv-export"
+              href={`/api/v1/models/${encodeURIComponent(modelId)}/publication.svg`}
+              download={`apmesh_${modelId}_${model.sha256.slice(0,12)}_uv_source.svg`}>
+              Exportar figura UV vetorial (SVG)
+            </a>}
             <span role="status" data-testid="camera-status">{cameraStatus}</span>
           </div>
           {error && <div role="alert" className="error">{error}</div>}
@@ -164,8 +170,23 @@ export default function App() {
           <div className="caution">Os resultados são de uma superfície Bézier controlada. Candidatas em estágio não são épocas adaptativas aceitas. All-quad e anisotropia não estão disponíveis.</div>
           {new URLSearchParams(window.location.search).get('nativeInspector') === '1' &&
             <NativeIdentityInspector/>}
-          {new URLSearchParams(window.location.search).get('nativeScene') === '1' &&
-            <NativeAcceptedScenePanel/>}
+          <section className="original-native-launch" aria-label="Experimentos TRI originais aceitos">
+            <h2>Malhas TRI originais — Eistute e Book</h2>
+            <p>Trilha científica separada do P1 e das candidatas QUAD acima. A etapa nativa
+              realmente aceita é a 1; não existe segundo LOD científico qualificado.</p>
+            <button type="button" data-testid="v5-toggle-native-tri"
+              aria-expanded={showOriginalNativeTri ||
+                new URLSearchParams(window.location.search).get('nativeScene') === '1'}
+              onClick={() => setShowOriginalNativeTri(value => !value)}>
+              {showOriginalNativeTri ? 'Ocultar estudo nativo'
+                : 'Abrir estudo TRI original aceito'}
+            </button>
+            <p className="small-note">Carregamento do JSON de evidências do CI é manual.
+              Os SHA declarados são verificados estruturalmente no navegador,
+              mas esta importação não autentica por si só os arquivos C++ brutos.</p>
+          </section>
+          {(new URLSearchParams(window.location.search).get('nativeScene') === '1' ||
+            showOriginalNativeTri) && <NativeAcceptedScenePanel/>}
         </main>
         <aside className="right-sidebar"><div className="sidebar-eyebrow">INSPECTOR / 02</div><h2>Face selecionada</h2>
           {selected === null ? <div className="inspector-empty"><span className="empty-icon">⌖</span><strong>Selecione uma face</strong><p>Clique em qualquer elemento no espaço físico ou UV para inspecionar os dados originais.</p></div>
