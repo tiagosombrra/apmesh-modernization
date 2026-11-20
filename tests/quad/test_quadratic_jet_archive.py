@@ -6,7 +6,7 @@ from pathlib import Path
 import sys
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'tools'))
-from quad_quadratic_curvature import measure_archive
+from quad_two_ring_comparison import compare_archive
 
 
 def unique(paths):
@@ -27,16 +27,22 @@ def main():
               'stable-retry':unique(args.history_root.rglob('stable-accepted.steps'))}
     receipt=dict(schema='apmesh.quad.jet_archives.v1',cases={})
     for label,archive in archives.items():
-        report=measure_archive(archive,args.probe.resolve(),args.directory/label)
+        comparison=compare_archive(archive,args.probe.resolve(),args.directory/label)
+        report=json.loads((args.directory/label/'jet.json').read_text(encoding='utf-8'))
+        if comparison['rejected_forgeries']!=20:raise ValueError('Missing two-policy jet forgery controls')
+        if not all(sum(s['all_nodes']['coverage'].values())==s['nodes'] for s in comparison['stages']):
+            raise ValueError('Incomplete two-policy coverage inventory')
         if report['rejected_forgeries']!=10:raise ValueError('Missing actual jet forgery controls')
         unavailable=[s for s in report['stages'] if s['step']=='0']
         if not all(s['coverage']['insufficient_samples']==5 for s in unavailable):raise ValueError('Initial jet unavailability changed')
         receipt['cases'][label]=dict(stages=[{k:v for k,v in s.items() if k!='per_node'} for s in report['stages']],
                                     inputs_sha256=report['inputs_sha256'],independent_agreement_max=report['independent_agreement_max'],
                                     rejected_forgeries=report['rejected_forgeries'])
-        print(json.dumps(dict(case=label,stages=len(report['stages']),forgeries=report['rejected_forgeries'])),flush=True)
+        receipt['cases'][label]['comparison']=comparison
+        print(json.dumps(dict(case=label,paired_stages=len(report['stages']),policy_observations=2*len(report['stages']),forgeries=comparison['rejected_forgeries'])),flush=True)
     if sum(len(v['stages']) for v in receipt['cases'].values())!=22:raise ValueError('Incomplete actual jet histories')
-    receipt.update(status='passed',probe_sha256=hashlib.sha256(args.probe.read_bytes()).hexdigest(),
+    receipt.update(status='passed',policy_observations=44,paired_stages=22,rejected_forgeries=60,
+                   probe_sha256=hashlib.sha256(args.probe.read_bytes()).hexdigest(),
                    mixed_global_error=None,accepted_mixed_epochs=0,
                    accuracy='Unqualified for estimator adoption: retained full-rank one-sided paraboloid counterexample and real errors must remain visible.')
     (args.directory/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')

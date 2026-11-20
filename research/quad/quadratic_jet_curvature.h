@@ -314,5 +314,21 @@ inline Estimate EstimateNode(const std::vector<Point>& positions, const Neighbor
   result.ring = 2;
   return result;
 }
+
+// Separately adopted diagnostic comparison; the original bounded policy above stays unchanged.
+inline Estimate EstimateNodeCompleteTwoRing(const std::vector<Point>& positions,
+                                            const Neighborhood& graph, std::size_t query,
+                                            const Point& reference) {
+  if (query >= positions.size() || graph.coface.size() != positions.size())
+    throw std::invalid_argument("Foreign jet neighborhood");
+  std::set<std::size_t> first = graph.coface[query];
+  first.insert(query);
+  auto second = first;
+  for (auto id : first)
+    second.insert(graph.coface.at(id).begin(), graph.coface.at(id).end());
+  auto result = FitSamples(positions, query, {second.begin(), second.end()}, reference);
+  result.ring = 2;
+  return result;
+}
 } // namespace apmesh::quad::research::jet
 #endif

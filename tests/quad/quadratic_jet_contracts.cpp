@@ -211,12 +211,60 @@ void Charts() {
   }
   Check(refused, "Malformed chart refused");
 }
+void CompleteTwoRing() {
+  const std::vector<std::vector<std::size_t>> faces{
+      {0, 1, 4, 3}, {1, 2, 5, 4}, {3, 4, 7, 6}, {4, 5, 8, 7}};
+  const auto graph = BuildNeighborhood(9, faces);
+  std::vector<Point> positions;
+  for (double y : {-0.1, 0.0, 0.1})
+    for (double x : {-0.1, 0.0, 0.1})
+      positions.push_back({x, y, (x * x + y * y) / 2});
+  for (std::size_t i = 0; i < positions.size(); ++i) {
+    const auto p = positions[i];
+    const double d = 1 + p[0] * p[0] + p[1] * p[1];
+    const auto fitted = EstimateNodeCompleteTwoRing(positions, graph, i, {-p[0], -p[1], 1});
+    Check(fitted.ring == 2 && fitted.support.size() == 9,
+          "Complete two-ring policy includes the full stencil even when one-ring rank is six");
+    Check(fitted.value && Close(fitted.value->gaussian, 1 / (d * d)) &&
+              Close(fitted.value->mean, (d + 1) / (2 * d * std::sqrt(d))),
+          "Additional samples distinguish the retained boundary counterexample");
+  }
+  const auto first = EstimateNode(positions, graph, 4, {0, 0, 1});
+  const auto second = EstimateNodeCompleteTwoRing(positions, graph, 4, {0, 0, 1});
+  Check(first.value && second.value && first.support == second.support &&
+            first.value->gaussian == second.value->gaussian &&
+            first.value->mean == second.value->mean,
+        "Identical support keeps exact numerical results");
+  std::vector<Point> quartic;
+  std::vector<std::vector<std::size_t>> cells;
+  for (std::size_t r = 0; r < 5; ++r)
+    for (std::size_t c = 0; c < 5; ++c) {
+      const double x = (static_cast<double>(c) - 2) * 0.1;
+      const double y = (static_cast<double>(r) - 2) * 0.1;
+      quartic.push_back({x, y, x * x * x * x});
+      if (r < 4 && c < 4) {
+        const auto a = r * 5 + c;
+        cells.push_back({a, a + 1, a + 6, a + 5});
+      }
+    }
+  const auto regular = BuildNeighborhood(25, cells);
+  const auto narrow = EstimateNode(quartic, regular, 12, {0, 0, 1});
+  const auto wide = EstimateNodeCompleteTwoRing(quartic, regular, 12, {0, 0, 1});
+  Check(narrow.support.size() == 9 && wide.support.size() == 25,
+        "Complete two-ring expands an already full-rank interior stencil");
+  // At the query z=x^4 has analytical K=H=0. Larger support increases local bias.
+  Check(narrow.value && wide.value && Close(narrow.value->mean, 0.01) &&
+            Close(wide.value->mean, 31.0 / 700) &&
+            std::abs(wide.value->mean) > std::abs(narrow.value->mean) + 0.03,
+        "Retain oversmoothing counterexample instead of requiring universal improvement");
+}
 } // namespace
 int main() {
   try {
     Matrices();
     Graphs();
     Charts();
+    CompleteTwoRing();
     std::cout << "JET_CONTRACTS checks=" << checks << " passed=1\n";
   } catch (const std::exception& error) {
     std::cerr << error.what() << '\n';

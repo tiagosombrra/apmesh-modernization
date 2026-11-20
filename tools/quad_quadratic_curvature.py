@@ -25,6 +25,7 @@ from test_m4_real_model_hybrid import CONTROLS, basis, golden
 
 STATUSES = {'available','insufficient_samples','duplicate_samples','degenerate_scale','ambiguous_frame',
             'undefined_orientation','rank_deficient','solver_unconverged','nonfinite'}
+POLICIES = ('bounded', 'complete_two_ring')
 
 
 def source_mean(u, v, controls=CONTROLS):
@@ -40,11 +41,14 @@ def source_mean(u, v, controls=CONTROLS):
     return (dot(normal,quu)*dot(qv,qv)-2*dot(normal,quv)*dot(qu,qv)+dot(normal,qvv)*dot(qu,qu))/(2*size**3)
 
 
-def native_records(probe, xyz, normals, faces):
+def native_records(probe, xyz, normals, faces, policy='bounded'):
+    if policy not in POLICIES:
+        raise ValueError('Unknown jet neighborhood policy')
     data=f'{len(xyz)} {len(faces)}\n'
     data+=''.join(' '.join(map(repr,(*p,*n)))+'\n' for p,n in zip(xyz,normals))
     data+=''.join(' '.join(map(str,(len(f),*f)))+'\n' for f in faces)
-    process=subprocess.run([str(probe)],input=data,text=True,capture_output=True,timeout=120)
+    command=[str(probe)]+(['--complete-two-ring'] if policy=='complete_two_ring' else [])
+    process=subprocess.run(command,input=data,text=True,capture_output=True,timeout=120)
     if process.returncode:
         raise ValueError('Native jet probe failed: '+process.stderr)
     rows=list(csv.DictReader(io.StringIO(process.stdout)))
@@ -60,16 +64,17 @@ def native_records(probe, xyz, normals, faces):
         record.update(node=int(row['node']),status=row['status'],ring=int(row['ring']),boundary=row['boundary']=='1',
                       support=list(map(int,row['support'].split('|'))))
         result.append(record)
-    audit=audit_records(xyz,normals,faces,result)
+    audit=audit_records(xyz,normals,faces,result,required_ring=2 if policy=='complete_two_ring' else None)
     return result,audit
 
 
-def forgery_controls(xyz, normals, faces, rows):
+def forgery_controls(xyz, normals, faces, rows, policy='bounded'):
+    required_ring=2 if policy=='complete_two_ring' else None
     available=next((i for i,r in enumerate(rows) if r['status']=='available' and abs(r['H'])>1e-5),None)
     if available is None:
         forged=copy.deepcopy(rows)
         forged[0]['K']=forged[0]['H']=0.0
-        try:audit_records(xyz,normals,faces,forged)
+        try:audit_records(xyz,normals,faces,forged,required_ring)
         except ValueError:return 1
         raise ValueError('Zero fallback escaped unavailable-node audit')
     for fault in ('missing','duplicate','support','K','H','status','normal','ring','masked_available'):
@@ -83,13 +88,13 @@ def forgery_controls(xyz, normals, faces, rows):
         elif fault=='normal':r['fit_nz']+=1
         elif fault=='ring':r['ring']=3
         else:r.update(status='rank_deficient',K=None,H=None)
-        try:audit_records(xyz,normals,faces,forged)
+        try:audit_records(xyz,normals,faces,forged,required_ring)
         except ValueError:continue
         raise ValueError('Forged jet observation escaped: '+fault)
     return 9
 
 
-def measure_archive(archive, probe, output):
+def measure_archive(archive, probe, output, policy='bounded'):
     archive,output=Path(archive).resolve(),Path(output).resolve()
     with (archive/'manifest.csv').open(encoding='utf-8') as handle:manifest=list(csv.DictReader(handle))
     if not manifest:raise ValueError('Empty jet archive')
@@ -107,16 +112,16 @@ def measure_archive(archive, probe, output):
                 if not all(0<=t<=1 for t in at) or math.dist(p,expected)>2e-7*max(1,norm(p)):
                     raise ValueError('Jet archive requires builtin:curva_bezier')
                 normals.append(cross(du,dv))
-            rows,maximum=native_records(probe,xyz,normals,faces)
+            rows,maximum=native_records(probe,xyz,normals,faces,policy)
             for k,v in maximum.items():agreement[k]=max(agreement[k],v)
             # Fixed QUAD representation: cyclic rotation changes no stencil/order/value.
             rotated=[f[1:]+f[:1] if len(f)==4 else f for f in faces]
             if any(len(f)==4 for f in faces):
-                other,_=native_records(probe,xyz,normals,rotated)
+                other,_=native_records(probe,xyz,normals,rotated,policy)
                 if rows!=other:raise ValueError('QUAD cycle changed the jet estimator')
             has_available=any(r['status']=='available' and abs(r['H'])>1e-5 for r in rows)
             if forgeries==0 or (has_available and not available_controls):
-                forgeries+=forgery_controls(xyz,normals,faces,rows)
+                forgeries+=forgery_controls(xyz,normals,faces,rows,policy)
                 available_controls=available_controls or has_available
             for i,row in enumerate(rows):
                 row.update(analytical_K=source_gaussian(*uv[i]),analytical_H=source_mean(*uv[i]))
@@ -138,6 +143,8 @@ def measure_archive(archive, probe, output):
                 inputs_sha256={p.name:h for p,h in hashes.items()},probe_sha256=hashlib.sha256(Path(probe).read_bytes()).hexdigest(),
                 independent_agreement_max=agreement,rejected_forgeries=forgeries,mixed_global_error=None,accepted_mixed_epochs=0,
                 scope='Adopted nodal candidate only. Available means finite/full rank, not accurate. K and H errors remain separate; boundary fits are one-sided; no global aggregation, adaptation or legacy mean repair.')
+    if policy != 'bounded':
+        report['neighborhood_policy']=policy
     output.mkdir(parents=True,exist_ok=False)
     (output/'jet.json').write_text(json.dumps(report,indent=2,allow_nan=False)+'\n',encoding='utf-8')
     with (output/'nodes.csv').open('w',newline='',encoding='utf-8') as handle:
@@ -152,7 +159,8 @@ def measure_archive(archive, probe, output):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--archive',type=Path,required=True);parser.add_argument('--probe',type=Path,required=True);parser.add_argument('--output',type=Path,required=True)
-    args=parser.parse_args();report=measure_archive(args.archive,args.probe,args.output)
+    parser.add_argument('--policy',choices=POLICIES,default='bounded')
+    args=parser.parse_args();report=measure_archive(args.archive,args.probe,args.output,args.policy)
     print(json.dumps(dict(stages=len(report['stages']),rejected_forgeries=report['rejected_forgeries'],agreement=report['independent_agreement_max'])))
 
 

@@ -1,4 +1,4 @@
-"""Independent characteristic-eigenvalue and Householder-QR jet audit.
+"""Independent tridiagonal/Sturm eigenvalue and Householder-QR jet audit.
 
 The C++ estimator uses Jacobi eigen/SVD. This checker does not solve normal
 equations or fit to analytical curvatures. Agreement bounds are instrument
@@ -16,17 +16,52 @@ def close(a, b, tolerance=1e-7):
 
 
 def eigenvalues3(c):
-    q = sum(c[i][i] for i in range(3))/3
-    square = sum((c[i][i]-q)**2 for i in range(3))+2*sum(c[i][j]**2 for i in range(3) for j in range(i+1,3))
-    p = math.sqrt(max(0, square/6))
-    if p == 0:
-        return [q, q, q]
-    b = [[(c[i][j]-(q if i == j else 0))/p for j in range(3)] for i in range(3)]
-    determinant = dot(b[0], cross(b[1], b[2]))
-    angle = math.acos(max(-1, min(1, determinant/2)))/3
-    largest = q+2*p*math.cos(angle)
-    smallest = q+2*p*math.cos(angle+2*math.pi/3)
-    return sorted([smallest, 3*q-largest-smallest, largest])
+    """One Givens reduction, then indexed Sturm bisection; no Jacobi iteration.
+
+    The previous acos cubic formula lost digits near a repeated spectrum,
+    including a diagonal covariance. Scaling and pivot protection here are
+    numerical safeguards for this reference, not new estimator thresholds.
+    """
+    scale = max(abs(x) for row in c for x in row)
+    if scale == 0:
+        return [0.0, 0.0, 0.0]
+    a = [[x/scale for x in row] for row in c]
+    radius = math.hypot(a[0][1], a[0][2])
+    cosine, sine = (a[0][1]/radius, a[0][2]/radius) if radius else (1.0, 0.0)
+    diagonal = [a[0][0],
+                cosine*cosine*a[1][1]+2*cosine*sine*a[1][2]+sine*sine*a[2][2],
+                sine*sine*a[1][1]-2*cosine*sine*a[1][2]+cosine*cosine*a[2][2]]
+    off = [radius, cosine*sine*(a[2][2]-a[1][1])+(cosine*cosine-sine*sine)*a[1][2]]
+    radii = [abs(off[0]), abs(off[0])+abs(off[1]), abs(off[1])]
+    lower = math.nextafter(min(d-r for d,r in zip(diagonal,radii)), -math.inf)
+    upper = math.nextafter(max(d+r for d,r in zip(diagonal,radii)), math.inf)
+    pivot_floor = 16*sys.float_info.min
+
+    def count_below(x):
+        pivot = diagonal[0]-x
+        if abs(pivot) < pivot_floor:
+            pivot = -pivot_floor
+        count = int(pivot < 0)
+        for i in (1,2):
+            pivot = diagonal[i]-x-off[i-1]*off[i-1]/pivot
+            if abs(pivot) < pivot_floor:
+                pivot = -pivot_floor
+            count += int(pivot < 0)
+        return count
+
+    result = []
+    for index in range(3):
+        lo, hi = lower, upper
+        for _ in range(160):
+            mid = lo+(hi-lo)/2
+            if mid == lo or mid == hi:
+                break
+            if count_below(mid) <= index:
+                lo = mid
+            else:
+                hi = mid
+        result.append((lo+(hi-lo)/2)*scale)
+    return result
 
 
 def qr_solve(design, values):
@@ -82,7 +117,7 @@ def coface_support(faces, count, query, ring, neighbors=None):
     return sorted(first if ring == 1 else first | set().union(*(neighbors[i] for i in first)))
 
 
-def audit_records(xyz, normals, faces, records):
+def audit_records(xyz, normals, faces, records, required_ring=None):
     if len(records) != len(xyz):
         raise ValueError('Incomplete jet node inventory')
     maximum = dict(coefficient=0.0, K=0.0, H=0.0)
@@ -98,6 +133,8 @@ def audit_records(xyz, normals, faces, records):
     for i, row in enumerate(records):
         if row['node'] != i or row['ring'] not in (1,2):
             raise ValueError('Foreign jet node or ring')
+        if required_ring is not None and row['ring'] != required_ring:
+            raise ValueError('Jet output violates the explicitly selected ring policy')
         if row['boundary'] != (i in boundary):
             raise ValueError('Incorrect jet boundary classification')
         expected = coface_support(faces, len(xyz), i, row['ring'], neighbors)

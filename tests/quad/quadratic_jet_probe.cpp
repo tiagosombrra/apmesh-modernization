@@ -3,9 +3,12 @@
 #include <iomanip>
 #include <iostream>
 
-int main() {
+int main(int argc, char** argv) {
   using namespace apmesh::quad::research::jet;
   try {
+    const bool complete_two_ring = argc == 2 && std::string_view(argv[1]) == "--complete-two-ring";
+    if (argc != 1 && !complete_two_ring)
+      throw std::invalid_argument("Unknown jet probe neighborhood policy");
     std::size_t n = 0, m = 0;
     if (!(std::cin >> n >> m) || n == 0 || m == 0 || n > 1000000 || m > 1000000)
       throw std::invalid_argument("Invalid jet probe dimensions");
@@ -37,7 +40,9 @@ int main() {
                  "guard,condition,residual,eig0,eig1,eig2,cov_guard,t1x,t1y,t1z,t2x,t2y,t2z,nx,ny,"
                  "nz,c0,c1,c2,c3,c4,c5,offset,alignment,fit_nx,fit_ny,fit_nz,K,H\n";
     for (std::size_t i = 0; i < n; ++i) {
-      const auto r = EstimateNode(positions, graph, i, normals[i]);
+      const auto r = complete_two_ring
+                         ? EstimateNodeCompleteTwoRing(positions, graph, i, normals[i])
+                         : EstimateNode(positions, graph, i, normals[i]);
       const bool fitted = !r.fit.orthogonal_columns.empty();
       auto number = [&](double value, bool computed = true) {
         std::cout << ',';
