@@ -46,6 +46,17 @@ class StudioCiScopePolicyTests(unittest.TestCase):
         self.assertIn("  native-lineage-optin:", self.source)
         self.assertIn("mesh-studio-r2720-native-accepted-scene-", self.source)
 
+    def test_new_push_drops_stale_automatic_run_but_preserves_manual_capture(self):
+        # Only superseded automatic pushes may be cancelled.
+        self.assertIn(
+            "group: ${{ github.event_name == 'workflow_dispatch' && format('mesh-studio-manual-{0}', github.ref) || format('mesh-studio-{0}', github.ref) }}",
+            self.source)
+        self.assertIn(
+            "cancel-in-progress: ${{ github.event_name == 'push' }}",
+            self.source)
+        self.assertIn("  workflow_dispatch:", self.source)
+        self.assertIn("  native-lineage-optin:", self.source)
+
     def test_original_native_audits_and_wrapper_are_not_casually_removed(self):
         for anchor in (
             "quad_generator_outcome_probe",
