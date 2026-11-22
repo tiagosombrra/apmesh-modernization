@@ -4061,3 +4061,40 @@ comparison and in the adaptive feedback work. Existing TRI size
 gradation is a candidate prerequisite, while a mixed two-way size rule
 requires scientific alignment. No new C++ change or native run. No CI
 or CTest qualification.
+
+## 2026-11-22 Fortaleza - run first mixed-state geometric feedback experiment
+
+The researcher asks for functional mixed adaptation and selects the bounded
+geometric pilot. Publish the policy-neutral topology of previous mixed faces
+and original intervals in draft PR247, source 94dc35a. Native MSVC graph probe
+and independent archive audit agree on all 46 intervals and 3,518 links.
+Reject four malformed connectivity cases per mesh. Keep exact integration
+and scientific gates open.
+
+Run the local single native pilot from the actual Step 2 mixed mesh. Use
+its highest residual of each typed face, three local 1.35 size passes and
+the original curve interval subdivision. Record eight face-to-curve
+decreases and 39 decreases total. Two candidate face requests reach the
+same depth-4 leaf. The first stops the attempt before tree edits or front.
+An independent archive diagnostic finds seven distinct eligible cells and
+binds the failed face to the capped leaf. All eight earlier/current TRI and
+mixed reference snapshots and original curve trace match bytes. No new
+candidate geometry, error/shape comparison or accepted mixed epoch.
+
+The [pilot report](MIXED_GEOMETRY_FEEDBACK_PILOT_20261122.md) preserves
+the first failure and its hashes. Seek alignment for one attempt preserving
+the cap while applying eligible requests. Keep the smoothing trial queued.
+
+### Same session - approved second replay preserving depth cap
+
+Keep depth 4, retain the first failure unchanged and run the approved second
+pilot on a distinct archive. Preserve a first C2662 build failure; the
+non-const legacy depth getter needs the same observer type as existing
+callers. The corrected native executable exits zero in 25.39s. Log two
+capped requests, seven direct eligible edits, 88 instead of 67 leaves and
+eight transient native interval divisions. The accepted source TRI outputs,
+mixed reference history and source curve trace remain byte-identical.
+Native front reaches smoothing. Its current geometry check rejects an
+inverted or collapsed UV QUAD. No published pilot mesh, comparable final
+error, or accepted mixed epoch. The next decision is a one-comparison
+last-valid-position safeguard for the existing geometric validator.

@@ -1,0 +1,931 @@
+{
+  "canonical_entry": "7ae940a04320c6d2a35ea7eb817797872a663fc9",
+  "graph_prototype": {
+    "pr": 247,
+    "source": "94dc35a6c84899fb36eea86c1d352b0842ba3bcf",
+    "probe_sha256": "d7bbb76ddd36e18bf54af88424b81257b9bd16f1e659dcbe64a363fe49cc908d",
+    "archive": [
+      {
+        "mesh": "step_1_retry_0_accepted_quad_tri.obj",
+        "mesh_sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+        "source_tri_accepted": true,
+        "faces": 32,
+        "source_intervals": 8,
+        "graph_edges": 72,
+        "interval_face_links": 8,
+        "negative_controls": [
+          "omitted_interval",
+          "reversed_contour",
+          "duplicate_interval",
+          "duplicated_face"
+        ]
+      },
+      {
+        "mesh": "step_2_retry_0_accepted_quad_tri.obj",
+        "mesh_sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+        "source_tri_accepted": true,
+        "faces": 301,
+        "source_intervals": 10,
+        "graph_edges": 591,
+        "interval_face_links": 10,
+        "negative_controls": [
+          "omitted_interval",
+          "reversed_contour",
+          "duplicate_interval",
+          "duplicated_face"
+        ]
+      },
+      {
+        "mesh": "step_3_retry_0_accepted_quad_tri.obj",
+        "mesh_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+        "source_tri_accepted": true,
+        "faces": 732,
+        "source_intervals": 14,
+        "graph_edges": 1434,
+        "interval_face_links": 14,
+        "negative_controls": [
+          "omitted_interval",
+          "reversed_contour",
+          "duplicate_interval",
+          "duplicated_face"
+        ]
+      },
+      {
+        "mesh": "step_3_retry_0_accepted_quad_tri.obj",
+        "mesh_sha256": "c5d38c9c49c04013e9eeda5721ccb57b96a8463c294d5abbf4c7da32b554b6f8",
+        "source_tri_accepted": true,
+        "faces": 725,
+        "source_intervals": 14,
+        "graph_edges": 1421,
+        "interval_face_links": 14,
+        "negative_controls": [
+          "omitted_interval",
+          "reversed_contour",
+          "duplicate_interval",
+          "duplicated_face"
+        ]
+      }
+    ],
+    "checks": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-22T22:51:32Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45079634216/job/137384644616",
+        "name": "QUAD native (ubuntu-24.04)",
+        "startedAt": "2026-11-22T22:47:13Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-22T22:52:14Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45079634216/job/137384644717",
+        "name": "QUAD native (windows-2022)",
+        "startedAt": "2026-11-22T22:47:13Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-22T22:55:18Z",
+        "conclusion": "FAILURE",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45079634216/job/137384644707",
+        "name": "TRI baseline and tooling controls (Linux)",
+        "startedAt": "2026-11-22T22:47:13Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-22T22:49:48Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45079634216/job/137384644339",
+        "name": "TRI scientific equivalence against frozen baseline",
+        "startedAt": "2026-11-22T22:47:13Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      }
+    ],
+    "inventory_correction": {
+      "pr": {
+        "headRefOid": "d2068628218b51b0bfe485df9b1ca5cb30588676",
+        "isDraft": true,
+        "state": "OPEN",
+        "statusCheckRollup": [
+          {
+            "__typename": "CheckRun",
+            "completedAt": "0001-01-01T00:00:00Z",
+            "conclusion": "",
+            "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45080831115/job/137388404166",
+            "name": "QUAD native (ubuntu-24.04)",
+            "startedAt": "2026-11-22T23:00:33Z",
+            "status": "IN_PROGRESS",
+            "workflowName": "QUAD research native validation"
+          },
+          {
+            "__typename": "CheckRun",
+            "completedAt": "0001-01-01T00:00:00Z",
+            "conclusion": "",
+            "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45080831115/job/137388404184",
+            "name": "QUAD native (windows-2022)",
+            "startedAt": "2026-11-22T23:00:33Z",
+            "status": "IN_PROGRESS",
+            "workflowName": "QUAD research native validation"
+          },
+          {
+            "__typename": "CheckRun",
+            "completedAt": "0001-01-01T00:00:00Z",
+            "conclusion": "",
+            "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45080831115/job/137388404443",
+            "name": "TRI baseline and tooling controls (Linux)",
+            "startedAt": "2026-11-22T23:00:33Z",
+            "status": "IN_PROGRESS",
+            "workflowName": "QUAD research native validation"
+          },
+          {
+            "__typename": "CheckRun",
+            "completedAt": "0001-01-01T00:00:00Z",
+            "conclusion": "",
+            "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45080831115/job/137388403948",
+            "name": "TRI scientific equivalence against frozen baseline",
+            "startedAt": "2026-11-22T23:00:33Z",
+            "status": "IN_PROGRESS",
+            "workflowName": "QUAD research native validation"
+          }
+        ]
+      },
+      "local_inventory_tests_passed": 10,
+      "changed_inventory_record": "tests/quad/CMakeLists.txt",
+      "prior_failure_run": 45079634216
+    }
+  },
+  "local_pilot_source_sha256": {
+    "controlled_patch_application.cpp": "7d0722afa2b9c5eaf84f9c6e0abc686ff9ed5a2b914054e681b0f540768b4562",
+    "mixed_surface_residual.h": "9816cee1d946146843783d4f4b65d1a5c58bfe12ed93d25fcd5fdcf62410f9e3",
+    "real_boundary_source.cpp": "f8f65164a3cc01db2a35027e0d2bc284f0f8c31034c44e399ee2b6e0ef91f5b7",
+    "real_boundary_source.h": "c3d0b475503ea1e4fde47672e7982ae7c104b519d3bb293d1d0024d537b39dbd"
+  },
+  "local_pilot_binary_sha256": "ac15cf67b00ae26dfd189e8d25e89bbabe566444bdfcbde278b5ba7615143084",
+  "config": [
+    "# Opt-in prospective planar mixed contraction with an experimental curved XYZ lift.",
+    "INPUT_MODEL=builtin:curva_bezier",
+    "OUTPUT_PREFIX=build/quad-feedback-pilot-20261122/trial",
+    "MESH_ELEMENT_KIND=quad_uv",
+    "QUAD_EXPERIMENTAL_CASE=curved_bezier_article_front_area_centroid_v1",
+    "NUM_PROCESSES=1",
+    "NUM_THREADS=1",
+    "USE_TEMPLATE=y",
+    "ADAPTIVE_MODE=legacy",
+    "PATCH_FACTOR_MIN=1.5",
+    "PATCH_FACTOR_MAX=1.5"
+  ],
+  "compiler": "MSVC 19.44.35229.0, Windows x64 Debug C++17",
+  "stages": {
+    "configure": {
+      "exit": 0,
+      "seconds": 3.141220808029175,
+      "timeout": 90,
+      "argv": [
+        "cmake",
+        "-S",
+        "build/quad-feedback-pilot-20261122/source",
+        "-B",
+        "build/quad-feedback-pilot-20261122/msvc",
+        "-G",
+        "Visual Studio 17 2022",
+        "-A",
+        "x64",
+        "-DCMAKE_CXX_STANDARD=17",
+        "-DAP_MESH_USE_MPI=OFF",
+        "-DAP_MESH_USE_OPENMP=OFF",
+        "-DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON",
+        "-DAP_MESH_ENABLE_LTO=OFF",
+        "-DAP_MESH_DISABLE_STRICT_ALIASING=ON",
+        "-DAP_MESH_ENABLE_WARNINGS=ON",
+        "-DAP_MESH_STATIC_MINGW_RUNTIME=ON",
+        "-DBUILD_TESTING=OFF"
+      ],
+      "stdout_sha256": "ef1cd7e4c0f5eeae8bc56227e425e1ca3cb04aeb3fc2435bfe72f311606a7984",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build": {
+      "exit": 0,
+      "seconds": 141.20882058143616,
+      "timeout": 600,
+      "argv": [
+        "cmake",
+        "--build",
+        "build/quad-feedback-pilot-20261122/msvc",
+        "--target",
+        "ap_mesh",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "stdout_sha256": "ba7ade213923686ffc0a31e9030b4fe3e0806086f9eb302a5dde182939984187",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "application": {
+      "exit": 0,
+      "seconds": 16.166079998016357,
+      "timeout": 180,
+      "argv": [
+        "build/quad-feedback-pilot-20261122/msvc/bin/Debug/ap_mesh.exe",
+        "--config",
+        "build/quad-feedback-pilot-20261122/trial.conf"
+      ],
+      "stdout_sha256": "6562bbdae9ff534644f26eeed874dc6e32de7378a996d6439dacb4fe4e81d0be",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "audit": {
+      "exit": 0,
+      "seconds": 0.22142243385314941,
+      "timeout": 90,
+      "argv": [
+        "python",
+        "build/quad-feedback-pilot-20261122/audit.py"
+      ],
+      "stdout_sha256": "402c941faa8ee5d035861881d9ff051b539c709c1b17b6f4e9b38dc513c4f7d2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cap-diagnosis": {
+      "exit": 0,
+      "seconds": 0.17119812965393066,
+      "timeout": 60,
+      "argv": [
+        "python",
+        "build/quad-feedback-pilot-20261122/cap_diagnosis.py"
+      ],
+      "stdout_sha256": "5a5479cdfc18de6721cb5f27ff50dd3e14abf724d487aa66dec04e55081d00d6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "local_pilot_result": {
+    "reference_artifacts_unchanged": [
+      {
+        "file": "step_0_retry_-1_accepted_tri.obj",
+        "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42"
+      },
+      {
+        "file": "step_0_retry_-1_accepted_quad_tri.obj",
+        "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42"
+      },
+      {
+        "file": "step_1_retry_0_accepted_tri.obj",
+        "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634"
+      },
+      {
+        "file": "step_1_retry_0_accepted_quad_tri.obj",
+        "sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765"
+      },
+      {
+        "file": "step_2_retry_0_accepted_tri.obj",
+        "sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f"
+      },
+      {
+        "file": "step_2_retry_0_accepted_quad_tri.obj",
+        "sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f"
+      },
+      {
+        "file": "step_3_retry_0_accepted_tri.obj",
+        "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c"
+      },
+      {
+        "file": "step_3_retry_0_accepted_quad_tri.obj",
+        "sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+      }
+    ],
+    "reference_curve_trace_hash": "49bcbae592ba8cc3649580fae557da4f99b17b94d0df99c446175e9f7dfd170d",
+    "previous_mixed_mesh": "step_2_retry_0_accepted_quad_tri.obj",
+    "previous_mixed_mesh_sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+    "accepted_mixed_epochs": 0,
+    "request_directions": {
+      "curve-to-curve": 9,
+      "face-to-curve": 8,
+      "face-to-face": 22
+    },
+    "requests_sha256": "54ca5a5db3ff4d02396585027e6b04dc1fb9a95627c9452dddafb80028c31c36",
+    "target_requests": [
+      {
+        "face": "102",
+        "kind": "4",
+        "residual": "0.0011848547078028753",
+        "u": "0.22423538575920221",
+        "v": "0.08335454525945743",
+        "old_h": "0.081318255521403204",
+        "requested_h": "0.065460541812691814",
+        "leaf_id": "87"
+      },
+      {
+        "face": "241",
+        "kind": "4",
+        "residual": "0.0032556780955430692",
+        "u": "0.16676299013153545",
+        "v": "0.20726505638778725",
+        "old_h": "0.13113590387293325",
+        "requested_h": "0.12979469798387203",
+        "leaf_id": "88"
+      },
+      {
+        "face": "242",
+        "kind": "4",
+        "residual": "0.024515179008007124",
+        "u": "0.091750794728516993",
+        "v": "0.021307609550199322",
+        "old_h": "0.26946421162327444",
+        "requested_h": "0.10693733415528699",
+        "leaf_id": "86"
+      },
+      {
+        "face": "254",
+        "kind": "3",
+        "residual": "0.036068078388727415",
+        "u": "0.15218579238713353",
+        "v": "0.96854685251682748",
+        "old_h": "0.58892020659995981",
+        "requested_h": "0.23817759987644141",
+        "leaf_id": "49"
+      },
+      {
+        "face": "255",
+        "kind": "3",
+        "residual": "0.035576247620984977",
+        "u": "0.031449440283397564",
+        "v": "0.84781633266135537",
+        "old_h": "0.59296798172928689",
+        "requested_h": "0.23669952351159276",
+        "leaf_id": "49"
+      },
+      {
+        "face": "256",
+        "kind": "3",
+        "residual": "0.029681451883873573",
+        "u": "0.041545617976023005",
+        "v": "0.25010059875153207",
+        "old_h": "0.56592770181440288",
+        "requested_h": "0.23655083707560678",
+        "leaf_id": "22"
+      },
+      {
+        "face": "281",
+        "kind": "3",
+        "residual": "0.0073427969810674308",
+        "u": "0.45437373725628183",
+        "v": "0.93941632224092264",
+        "old_h": "0.31987443064849513",
+        "requested_h": "0.15981453369266188",
+        "leaf_id": "52"
+      },
+      {
+        "face": "282",
+        "kind": "3",
+        "residual": "0.0081900613436371519",
+        "u": "0.42401624842994168",
+        "v": "0.93780885943797565",
+        "old_h": "0.408665058034059",
+        "requested_h": "0.17642785176032696",
+        "leaf_id": "52"
+      },
+      {
+        "face": "284",
+        "kind": "3",
+        "residual": "0.0069647569301282339",
+        "u": "0.47413006501433003",
+        "v": "0.94071737290183877",
+        "old_h": "0.26649355527781327",
+        "requested_h": "0.21574962048509355",
+        "leaf_id": "52"
+      },
+      {
+        "face": "288",
+        "kind": "3",
+        "residual": "0.015941998473941496",
+        "u": "0.062165806723101485",
+        "v": "0.57599861643232453",
+        "old_h": "0.41820804616432472",
+        "requested_h": "0.17533298037895759",
+        "leaf_id": "54"
+      }
+    ],
+    "target_requests_sha256": "77f805d3f9e3f4eb20ea552aa0ed6a04d86af4f14806b86489b56cc7c041fc60",
+    "trial_disposition": "candidate_unavailable",
+    "native_failure": "Feedback position has no eligible native source leaf"
+  },
+  "depth_diagnosis": {
+    "connected_source_mesh_faces": 301,
+    "independent_selected_faces": {
+      "3": 254,
+      "4": 242
+    },
+    "failed_face_zero_based": 289,
+    "sample_uv": [
+      0.2760209239550909,
+      0.030988589021362617
+    ],
+    "sample_error": 0.0016020091658850207,
+    "matched_native_leaf_boxes_ordinals": [
+      [
+        37,
+        [
+          0.25,
+          0,
+          0.3125,
+          0.0625
+        ]
+      ]
+    ],
+    "matched_native_leaf_depths": [
+      4
+    ],
+    "source_records_of_reduced_intervals": [
+      [
+        0,
+        {
+          "pass": "2",
+          "to": "301",
+          "from": "242",
+          "old_h": "0.18188834284571026",
+          "new_h": "0.14436540110963744"
+        }
+      ],
+      [
+        1,
+        {
+          "pass": "3",
+          "to": "302",
+          "from": "301",
+          "old_h": "0.24554926284170886",
+          "new_h": "0.19489329149801057"
+        }
+      ],
+      [
+        2,
+        {
+          "pass": "3",
+          "to": "303",
+          "from": "302",
+          "old_h": "0.54759536909518558",
+          "new_h": "0.33149150483630696"
+        }
+      ],
+      [
+        5,
+        {
+          "pass": "3",
+          "to": "306",
+          "from": "307",
+          "old_h": "1.0000000000001183",
+          "new_h": "0.72448227665668818"
+        }
+      ],
+      [
+        6,
+        {
+          "pass": "2",
+          "to": "307",
+          "from": "308",
+          "old_h": "0.79450515207681305",
+          "new_h": "0.53665353826421347"
+        }
+      ],
+      [
+        7,
+        {
+          "pass": "3",
+          "to": "308",
+          "from": "254",
+          "old_h": "0.39752113945497292",
+          "new_h": "0.32153975983319594"
+        }
+      ],
+      [
+        8,
+        {
+          "pass": "3",
+          "to": "309",
+          "from": "255",
+          "old_h": "0.53665353826421347",
+          "new_h": "0.31954435674065024"
+        }
+      ],
+      [
+        9,
+        {
+          "pass": "3",
+          "to": "310",
+          "from": "301",
+          "old_h": "0.24554926284170886",
+          "new_h": "0.19489329149801057"
+        }
+      ]
+    ],
+    "native_failure_artifacts_sha256": {
+      "size-requests.csv": "54ca5a5db3ff4d02396585027e6b04dc1fb9a95627c9452dddafb80028c31c36",
+      "tree-requests.csv": "77f805d3f9e3f4eb20ea552aa0ed6a04d86af4f14806b86489b56cc7c041fc60",
+      "unpublished.txt": "1c7337b7145454d9b5a001bb6005f3a0006985556069903a0deb2bcd036b6c25"
+    },
+    "disposition": "The sample is in a retained depth-4 leaf. The adapter resolves the negative input cap to configured Step-N depth 4; the observed native pilot disallows an extra direct level.",
+    "all_face_requests": [
+      {
+        "face": 102,
+        "leaf_ordinal": 64,
+        "depth": 3
+      },
+      {
+        "face": 241,
+        "leaf_ordinal": 65,
+        "depth": 3
+      },
+      {
+        "face": 242,
+        "leaf_ordinal": 63,
+        "depth": 3
+      },
+      {
+        "face": 254,
+        "leaf_ordinal": 28,
+        "depth": 2
+      },
+      {
+        "face": 255,
+        "leaf_ordinal": 28,
+        "depth": 2
+      },
+      {
+        "face": 256,
+        "leaf_ordinal": 7,
+        "depth": 3
+      },
+      {
+        "face": 281,
+        "leaf_ordinal": 31,
+        "depth": 3
+      },
+      {
+        "face": 282,
+        "leaf_ordinal": 31,
+        "depth": 3
+      },
+      {
+        "face": 284,
+        "leaf_ordinal": 31,
+        "depth": 3
+      },
+      {
+        "face": 288,
+        "leaf_ordinal": 33,
+        "depth": 3
+      },
+      {
+        "face": 289,
+        "leaf_ordinal": 37,
+        "depth": 4
+      },
+      {
+        "face": 291,
+        "leaf_ordinal": 64,
+        "depth": 3
+      },
+      {
+        "face": 293,
+        "leaf_ordinal": 37,
+        "depth": 4
+      },
+      {
+        "face": 294,
+        "leaf_ordinal": 64,
+        "depth": 3
+      },
+      {
+        "face": 296,
+        "leaf_ordinal": 63,
+        "depth": 3
+      },
+      {
+        "face": 297,
+        "leaf_ordinal": 63,
+        "depth": 3
+      },
+      {
+        "face": 300,
+        "leaf_ordinal": 28,
+        "depth": 2
+      }
+    ],
+    "eligible_distinct_leaves_under_current_cap": 7
+  },
+  "accepted_mixed_epochs": 0,
+  "cap_preserved_trial": {
+    "stages": {
+      "cap-build": {
+        "exit": 1,
+        "seconds": 4.8619465827941895,
+        "timeout": 180,
+        "argv": [
+          "cmake",
+          "--build",
+          "build/quad-feedback-pilot-20261122/msvc",
+          "--target",
+          "ap_mesh",
+          "--config",
+          "Debug",
+          "--parallel",
+          "4"
+        ],
+        "stdout_sha256": "d13b932f70c4bca6e6ae6b4621c31057712fae925b798100de0e0a76a11a2930",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "cap-build-corrected": {
+        "exit": 0,
+        "seconds": 8.141087293624878,
+        "timeout": 180,
+        "argv": [
+          "cmake",
+          "--build",
+          "build/quad-feedback-pilot-20261122/msvc",
+          "--target",
+          "ap_mesh",
+          "--config",
+          "Debug",
+          "--parallel",
+          "4"
+        ],
+        "stdout_sha256": "6ac058ec17423207d3721858ff4c8624967b2720b873bd81701b3784d846becd",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "cap-application": {
+        "exit": 0,
+        "seconds": 25.3912250995636,
+        "timeout": 180,
+        "argv": [
+          "build/quad-feedback-pilot-20261122/msvc/bin/Debug/ap_mesh.exe",
+          "--config",
+          "build/quad-feedback-pilot-20261122/trial-cap-respected.conf"
+        ],
+        "stdout_sha256": "094956560c4d7811af54bcb4c7b1ba25d189ba89b5a1f8235082d6579ac39725",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "cap-audit": {
+        "exit": 0,
+        "seconds": 0.30180954933166504,
+        "timeout": 180,
+        "argv": [
+          "python",
+          "build/quad-feedback-pilot-20261122/audit-cap.py"
+        ],
+        "stdout_sha256": "dc261181a254caca46e5d2d869e4cd786f00a898106d0418883e6932ffa7110a",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "source_sha256": {
+      "controlled_patch_application.cpp": "8ce64f91826afc3a582b0178913fedcc73a9d7f7913815436f446c44bbfb6ecf",
+      "mixed_surface_residual.h": "9816cee1d946146843783d4f4b65d1a5c58bfe12ed93d25fcd5fdcf62410f9e3",
+      "real_boundary_source.cpp": "f8f65164a3cc01db2a35027e0d2bc284f0f8c31034c44e399ee2b6e0ef91f5b7",
+      "real_boundary_source.h": "c3d0b475503ea1e4fde47672e7982ae7c104b519d3bb293d1d0024d537b39dbd"
+    },
+    "capped_attempt_binary_sha256": "390eab8fe27258565d5e3ea16c7bd326a96062dfd68b190cf664d4afe7163e43",
+    "config_sha256": "2d4704abd5fc9c78460dfeaac3c582069f1eb7600f06955657dda40fdf537964",
+    "results": {
+      "reference_artifacts_unchanged": [
+        {
+          "file": "step_0_retry_-1_accepted_tri.obj",
+          "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42"
+        },
+        {
+          "file": "step_0_retry_-1_accepted_quad_tri.obj",
+          "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42"
+        },
+        {
+          "file": "step_1_retry_0_accepted_tri.obj",
+          "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634"
+        },
+        {
+          "file": "step_1_retry_0_accepted_quad_tri.obj",
+          "sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765"
+        },
+        {
+          "file": "step_2_retry_0_accepted_tri.obj",
+          "sha256": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f"
+        },
+        {
+          "file": "step_2_retry_0_accepted_quad_tri.obj",
+          "sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f"
+        },
+        {
+          "file": "step_3_retry_0_accepted_tri.obj",
+          "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c"
+        },
+        {
+          "file": "step_3_retry_0_accepted_quad_tri.obj",
+          "sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402"
+        }
+      ],
+      "reference_curve_trace_hash": "49bcbae592ba8cc3649580fae557da4f99b17b94d0df99c446175e9f7dfd170d",
+      "previous_mixed_mesh": "step_2_retry_0_accepted_quad_tri.obj",
+      "previous_mixed_mesh_sha256": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+      "accepted_mixed_epochs": 0,
+      "request_directions": {
+        "curve-to-curve": 9,
+        "face-to-curve": 8,
+        "face-to-face": 22
+      },
+      "requests_sha256": "54ca5a5db3ff4d02396585027e6b04dc1fb9a95627c9452dddafb80028c31c36",
+      "target_requests": [
+        {
+          "face": "102",
+          "kind": "4",
+          "residual": "0.0011848547078028753",
+          "u": "0.22423538575920221",
+          "v": "0.08335454525945743",
+          "old_h": "0.081318255521403204",
+          "requested_h": "0.065460541812691814",
+          "leaf_id": "87"
+        },
+        {
+          "face": "241",
+          "kind": "4",
+          "residual": "0.0032556780955430692",
+          "u": "0.16676299013153545",
+          "v": "0.20726505638778725",
+          "old_h": "0.13113590387293325",
+          "requested_h": "0.12979469798387203",
+          "leaf_id": "88"
+        },
+        {
+          "face": "242",
+          "kind": "4",
+          "residual": "0.024515179008007124",
+          "u": "0.091750794728516993",
+          "v": "0.021307609550199322",
+          "old_h": "0.26946421162327444",
+          "requested_h": "0.10693733415528699",
+          "leaf_id": "86"
+        },
+        {
+          "face": "254",
+          "kind": "3",
+          "residual": "0.036068078388727415",
+          "u": "0.15218579238713353",
+          "v": "0.96854685251682748",
+          "old_h": "0.58892020659995981",
+          "requested_h": "0.23817759987644141",
+          "leaf_id": "49"
+        },
+        {
+          "face": "255",
+          "kind": "3",
+          "residual": "0.035576247620984977",
+          "u": "0.031449440283397564",
+          "v": "0.84781633266135537",
+          "old_h": "0.59296798172928689",
+          "requested_h": "0.23669952351159276",
+          "leaf_id": "49"
+        },
+        {
+          "face": "256",
+          "kind": "3",
+          "residual": "0.029681451883873573",
+          "u": "0.041545617976023005",
+          "v": "0.25010059875153207",
+          "old_h": "0.56592770181440288",
+          "requested_h": "0.23655083707560678",
+          "leaf_id": "22"
+        },
+        {
+          "face": "281",
+          "kind": "3",
+          "residual": "0.0073427969810674308",
+          "u": "0.45437373725628183",
+          "v": "0.93941632224092264",
+          "old_h": "0.31987443064849513",
+          "requested_h": "0.15981453369266188",
+          "leaf_id": "52"
+        },
+        {
+          "face": "282",
+          "kind": "3",
+          "residual": "0.0081900613436371519",
+          "u": "0.42401624842994168",
+          "v": "0.93780885943797565",
+          "old_h": "0.408665058034059",
+          "requested_h": "0.17642785176032696",
+          "leaf_id": "52"
+        },
+        {
+          "face": "284",
+          "kind": "3",
+          "residual": "0.0069647569301282339",
+          "u": "0.47413006501433003",
+          "v": "0.94071737290183877",
+          "old_h": "0.26649355527781327",
+          "requested_h": "0.21574962048509355",
+          "leaf_id": "52"
+        },
+        {
+          "face": "288",
+          "kind": "3",
+          "residual": "0.015941998473941496",
+          "u": "0.062165806723101485",
+          "v": "0.57599861643232453",
+          "old_h": "0.41820804616432472",
+          "requested_h": "0.17533298037895759",
+          "leaf_id": "54"
+        },
+        {
+          "face": "291",
+          "kind": "3",
+          "residual": "0.0038990038880936232",
+          "u": "0.24509558601992082",
+          "v": "0.030189985605026684",
+          "old_h": "0.11787421530506589",
+          "requested_h": "0.08837173144713395",
+          "leaf_id": "87"
+        },
+        {
+          "face": "294",
+          "kind": "3",
+          "residual": "0.00049103212118921629",
+          "u": "0.23702854291267786",
+          "v": "0.12256282911965898",
+          "old_h": "0.074534189171674328",
+          "requested_h": "0.065460541812691814",
+          "leaf_id": "87"
+        },
+        {
+          "face": "296",
+          "kind": "3",
+          "residual": "0.019862563847608834",
+          "u": "0.063188745535374818",
+          "v": "0.04785185651587457",
+          "old_h": "0.42105420794148296",
+          "requested_h": "0.12979469798387203",
+          "leaf_id": "86"
+        },
+        {
+          "face": "297",
+          "kind": "3",
+          "residual": "0.014339562474826506",
+          "u": "0.054535442106345089",
+          "v": "0.080072341237790237",
+          "old_h": "0.45190400247016771",
+          "requested_h": "0.17522284227822724",
+          "leaf_id": "86"
+        },
+        {
+          "face": "300",
+          "kind": "3",
+          "residual": "0.019493340791878724",
+          "u": "0.083635232670531107",
+          "v": "0.91636318517818294",
+          "old_h": "0.54407125735729023",
+          "requested_h": "0.18435059605200269",
+          "leaf_id": "49"
+        }
+      ],
+      "target_requests_sha256": "99948abc2424ba6014addb0418d61e6acc646572177b837a08c9a0b6c03168a9",
+      "native_attempt": {
+        "previous_faces": 301,
+        "previous_intervals": 10,
+        "split_intervals": 8,
+        "previous_leaves": 67,
+        "direct_leaf_edits": 7,
+        "balanced_leaves": 88,
+        "seed_tri_face": 254,
+        "seed_quad_face": 242,
+        "capped_face_requests": 2
+      },
+      "capped_face_requests": [
+        {
+          "face": "289",
+          "kind": "3",
+          "residual": "0.0016020091658850255",
+          "u": "0.27602092395509092",
+          "v": "0.030988589021362617",
+          "old_h": "0.12270239444505603",
+          "requested_h": "0.097162228819819507",
+          "leaf_id": "58",
+          "level": "4",
+          "cap": "4"
+        },
+        {
+          "face": "293",
+          "kind": "3",
+          "residual": "0.0026538347040600155",
+          "u": "0.26342594601439773",
+          "v": "0.030963290112657898",
+          "old_h": "0.080857322582371341",
+          "requested_h": "0.071972021348014448",
+          "leaf_id": "58",
+          "level": "4",
+          "cap": "4"
+        }
+      ],
+      "trial_disposition": "candidate_unavailable",
+      "native_failure": "Mixed smoothing inverted or collapsed a UV quad"
+    },
+    "compile_blocker": "C2662: legacy QuadtreeCell::getLevel() is not const-qualified. Corrected the observer type before the only cap-preserved native invocation."
+  }
+}

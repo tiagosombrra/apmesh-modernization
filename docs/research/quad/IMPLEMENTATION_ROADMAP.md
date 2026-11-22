@@ -107,9 +107,15 @@ The researcher requires both directions of local curve/interior size
 gradation. The [gradation audit](MIXED_BOUNDARY_GRADATION_20261122.md) fixes
 the measurement baseline across curved/straight junctions, transitions
 and interior adjacency. Include these size and per-kind shape measurements
-in smoothing and in eventual adaptive admission. Choose the two-way size
-rule before changing curve sampling or interior refinement.
-Keep PR243 draft. Further jet variants, initialization changes and mixed-global
+in smoothing and in eventual adaptive admission. The researcher prioritizes
+the [native mixed geometric feedback pilot](MIXED_GEOMETRY_FEEDBACK_PILOT_20261122.md)
+before the pending smoothing experiment. Draft PR247 supplies typed incidence.
+The first native attempt measures face-to-curve propagation and stops at the
+existing Step 2 depth cap. The approved capped replay applies seven native
+edits and eight transient curve divisions and reaches mixed smoothing.
+An inverted or collapsed UV QUAD prevents a valid successor. Preserve both
+failures. Next align one smoothing validation/rollback comparison. Mixed
+error and accepted epochs remain separate. Keep PR243 draft. Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
 package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope

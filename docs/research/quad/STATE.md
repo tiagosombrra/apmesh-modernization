@@ -3,7 +3,7 @@
 Updated 2026-11-22 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: local shape-aware smoothing comparison proposed
+## Active: mixed feedback reaches the front; smoothing validity blocks successor
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,38 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-22 - implement typed feedback and run the first native pilot
+
+The researcher prioritizes actual mixed feedback and approves the bounded
+geometric pilot. Draft [PR247](https://github.com/tiagosombrra/apmesh-modernization/pull/247)
+head 94dc35a adds the typed graph with 46 original interval owners and 3,518
+links independently checked on four meshes. Sixteen malformed cases are
+rejected. The local [pilot](MIXED_GEOMETRY_FEEDBACK_PILOT_20261122.md) starts
+from the actual Step 2 mixed mesh and uses the retained physical residuals
+on TRI and QUAD to request sizes in three local passes.
+
+There are 39 reductions, including eight face-to-curve changes and none
+from curve-to-face in this attempt. The first failing face sample is in
+a leaf at the existing cap of 4. Record the failed request and seven
+distinct reachable leaf edits identified independently. No actual pilot
+tree edit or successor mesh; all eight TRI/mixed reference outputs
+and the underlying curve trace are byte-identical. Soft science failure is
+preserved in the [receipt](evidence/MIXED_GEOMETRY_FEEDBACK_PILOT_20261122.json).
+
+The researcher approves the second replay with cap 4 preserved. Log two
+saturated requests, apply seven direct edits, and observe 67 to 88 leaves
+and eight transient original binary interval splits. Native contraction
+reaches smoothing; an inverted/collapsed UV QUAD rejects the candidate.
+All original outputs match again. No final candidate mesh, error comparison
+or accepted mixed epoch. A compiler observer-type failure and both original
+runtime failures are preserved.
+
+**Next:** obtain alignment on one experiment validating the pre-smoothing
+mesh and retaining the last geometrically valid positions if an existing
+smoothing pass fails. Measure the final geometry, shape and size gradients.
+No numerical adaptation policy is integrated. PR247 contains the typed
+adjacency, while PR243 remains independent.
 
 ### 2026-11-22 - measure and require local curve/interior gradation
 
