@@ -1,0 +1,77 @@
+name: Mesh Studio V5.4 / fast frontend and source-contract smoke
+on:
+  push:
+    branches:
+      - feature/mesh-studio-fixture-first-20261114
+      - feature/mesh-studio-r27-bvh-20261116
+    paths:
+      - 'tools/mesh_studio/web/**'
+      - '!tools/mesh_studio/web/README.md'
+      - 'tools/mesh_studio/web_api.py'
+      - 'tools/mesh_studio/scene_transport_v2.py'
+      - 'tools/mesh_studio/dependency_lock_audit.py'
+      - 'tools/mesh_studio/locks/**'
+      - '.github/workflows/mesh-studio-fast-web.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mesh-studio-fast-web-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fast-source-web:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    env:
+      MPLBACKEND: Agg
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: tools/mesh_studio/locks/requirements-web-ci-linux-py313.lock
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: tools/mesh_studio/web/package-lock.json
+      - name: Audit complete npm and Python Linux Windows native source hash locks
+        run: python -m tools.mesh_studio.dependency_lock_audit
+      - name: Install exact SHA256-hashed Python research API on the original source
+        run: |
+          python -m pip install --require-hashes -r tools/mesh_studio/locks/requirements-web-ci-linux-py313.lock
+          python -m pip check
+      - name: Install exact npm integrity lock (no resolver upgrade)
+        working-directory: tools/mesh_studio/web
+        run: npm ci --no-audit --no-fund
+      - name: Verify deterministic source buffer contracts and typed original face IDs
+        working-directory: tools/mesh_studio/web
+        run: npm run test:contracts
+      - name: Verify frontend TypeScript build
+        working-directory: tools/mesh_studio/web
+        run: npm run build
+      - name: Install hosted software-rendered Chromium browser
+        working-directory: tools/mesh_studio/web
+        run: npx playwright install --with-deps chromium
+      - name: Run verified P1 and staged candidate browser source smoke only
+        working-directory: tools/mesh_studio/web
+        run: |
+          npx playwright test tests/mesh-view.spec.ts tests/transport-v2-r24.spec.ts tests/viewport-v5-source-request-races.spec.ts tests/viewport-v5-article-source-export.spec.ts
+      - name: Explicitly report source-native research qualification remains separate
+        run: |
+          echo 'V54_FAST_ONLY_SOURCE_SCOPED_WEB=PASS'
+          echo 'V54_ORIGINAL_CPP_NATIVE_CI_QUALIFICATION=NOT_EXECUTED'
+          echo 'V54_PHYISCAL_GPU_AND_ACCEPTED_TRI_LOD=NOT_QUALIFIED'
+      - name: Preserve bounded fast browser report on success or failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-v54-fast-web-${{ github.sha }}
+          path: tools/mesh_studio/web/test-results/
+          if-no-files-found: ignore
+          retention-days: 7
