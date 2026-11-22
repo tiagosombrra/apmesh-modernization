@@ -35,8 +35,10 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: mesh-studio-${{ github.ref }}
-  cancel-in-progress: false
+  # A newer push supersedes a stale automatic source-ci run on this branch.
+  # Manually dispatched scientific captures use a separate non-cancelling group.
+  group: ${{ github.event_name == 'workflow_dispatch' && format('mesh-studio-manual-{0}', github.ref) || format('mesh-studio-{0}', github.ref) }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 jobs:
   scientific-regression:
     strategy:
