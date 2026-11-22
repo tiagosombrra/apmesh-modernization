@@ -37,6 +37,7 @@ class StudioCiScopePolicyTests(unittest.TestCase):
             "- '!tools/mesh_studio/README.md'",
             "- '!tools/mesh_studio/web/README.md'",
             "- '!tools/mesh_studio/fixtures/README.md'",
+            "- '!tools/mesh_studio/web/src/style.css'",
         ])
 
     def test_real_browser_scientific_provenance_depends_on_native_run(self):
