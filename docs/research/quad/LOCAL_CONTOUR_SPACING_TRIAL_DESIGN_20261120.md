@@ -6,6 +6,11 @@ the native curve partition and the exposed quadtree templates. The previous
 physical mesh and three narrow triangles. This document specifies the
 next comparison on the same native `curva_bezier` fixed-`1.5` history.
 
+**2026-11-22 disposition.** The researcher chose to retain the original
+curve partition and investigate the template sizes. This curve experiment
+was neither implemented nor run. Continue with the
+[template interface audit](TEMPLATE_INTERFACE_SIZE_AUDIT_20261122.md).
+
 ## Locate the native interval
 
 The Step 3 witness comes from the left side `u=0`, curve 3 with no

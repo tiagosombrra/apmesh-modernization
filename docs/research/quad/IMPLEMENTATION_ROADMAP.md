@@ -89,10 +89,13 @@ Steps2/3. Close the handoff trial. The [transition shape experiment](MIXED_TRANS
 finds the constrained pocket left by commit 73 and distinguishes it from the
 smoothing regression at commit 48. The approved local edge deferral changes
 execution order and preserves the same critical faces, shape and sizes.
-Close this ordering trial without adoption. Next specify a single local
-pre-front spacing comparison using existing curve subdivision and quadtree
-sizes, then seek scientific alignment. The quality-constrained UV smoothing
-candidate is queued after transition work.
+Close this ordering trial without adoption. The researcher chooses to
+preserve the original curve partition. The [template interface audit](TEMPLATE_INTERFACE_SIZE_AUDIT_20261122.md)
+traces the pocket to T1 half-sides on native leaves. Its local geometry
+calculation shows why grouping only the seed block preserves the interface
+and identifies a bounded two-block alternative respecting 2:1. Obtain
+scientific alignment before one derived tree replay. The quality-constrained
+UV smoothing candidate is queued after transition work.
 Keep PR243 draft. Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned

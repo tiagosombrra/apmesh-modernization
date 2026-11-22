@@ -3976,3 +3976,25 @@ error diagnostics, degree and shape tails and spacing across regions.
 The [design receipt](LOCAL_CONTOUR_SPACING_TRIAL_DESIGN_20261120.md)
 records the evidence and exact scope. No new native build, test, or
 candidate generation. The prior negative front order result is retained.
+
+## 2026-11-22 Fortaleza - preserve the curve and audit template sizes
+
+The researcher chose to keep the native contour partition and investigate
+template size. Close the proposed curve subdivision without a native run.
+Inspect and hash-bind Steps 1-3 of the retained fixed 1.5 application.
+Attribute all 172 exposed seed edges to their intermediate polygon
+half-sides. Check the area-centroid oracle, clearance and exact fixed
+contour coordinates. The three short Step 3 pocket edges come from T1
+on width-0.0625 native leaves. The existing clearance removes a closer
+fine strip. The front bridges the remaining scale mismatch.
+
+On the archived boxes, group the four seeded siblings in a read-only
+layout calculation. The existing T6 regenerates the same 16 QUADs and
+boundary segments. Grouping the adjacent excluded siblings as well
+preserves the 2:1 condition and gives a T5 interface of two 0.0625-UV
+edges in place of four 0.03125 edges. Check equal seed UV area and exact
+identity of all other exposed edges in the calculation. The
+[audit report](TEMPLATE_INTERFACE_SIZE_AUDIT_20261122.md) records the
+limits, candidate scope and evidence. No C++ changes, new native runs,
+CTest or hosted qualification. The next scientific decision is one
+two-block opt-in replay with the original contour retained.

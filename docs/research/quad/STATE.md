@@ -1,9 +1,9 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-20 Fortaleza. Canonical branch: `quad-templates`.
+Updated 2026-11-22 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: one local contour split proposed; scientific decision pending
+## Active: retain the native contour; local template layout comparison proposed
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,32 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-22 - preserve the curve and trace the template interface
+
+The researcher chooses to keep the original curve partition. Close the pending
+binary-split proposal without implementation. The [template size audit](TEMPLATE_INTERFACE_SIZE_AUDIT_20261122.md)
+and [receipt](evidence/TEMPLATE_INTERFACE_SIZE_AUDIT_20261122.json) identify
+the three short pocket edges as ordinary T1 half-sides on the Step 3 native
+0.0625-UV leaves. The existing clearance excludes the fine strip nearer
+the curve. The front joins the exposed 0.04731 physical edge to a contour
+vertex across links of 0.670 and 0.714, creating the 1.42-degree TRI.
+
+The read-only layout calculation applies the current catalog to archived boxes.
+Replacing only the four included children gives T6 and reproduces all 16 local
+QUADs exactly. Replacing the neighboring four excluded children by their parent
+as well preserves the 2:1 condition and gives T5 on the seed parent. It predicts
+two 0.0625-UV exposed edges in place of four 0.03125 edges. Total seed area and
+all other exposed seed edges agree in the reconstruction. Final front and
+smoothing shape for the new layout are unmeasured.
+
+**Next:** obtain scientific alignment for one opt-in Step 3 replay changing
+only the two recorded parent boxes on a separate reconstructed tree. Keep
+curve samples, native TRI state, selected clearance and template/front/smoothing
+rules. Compare full final physical shape, neighboring size ratios, error and
+counts while retaining both the control and any candidate failure. No C++ changes,
+native builds, baseline CTest or hosted checks for this audit. PR243 remains
+draft. Mixed global curvature error and adaptation remain open.
 
 ### 2026-11-20 - one native contour subdivision specified
 
@@ -23,14 +49,9 @@ in UV. A direct hypothetical triangle using this midpoint instead of the
 old contour apex measures 8.43 degrees in XYZ versus 1.42 originally.
 This is a geometric calculation on retained data.
 
-**Next:** obtain scientific alignment to apply one native binary split
-after the ordinary Step 3 curve restriction, then run one isolated fixed
-1.5 replay with the original remeshing, acceptance and smoothing.
-Track both source TRI and mixed candidate outcomes, including candidate
-count, shape and size changes and any rejection. The live source tree
-and derived clearance can change as the native generator sees the new
-sample. No C++ source, native build or new scientific run for this design
-checkpoint. The smoothing-guard trial stays queued. PR243 remains draft.
+**Historical disposition:** the researcher chose to retain the original
+curve partition on 2026-11-22. The split remained a documented design and
+was never implemented or run. See the current template size audit above.
 
 ### 2026-11-20 - transition closure and approved front-order trial
 

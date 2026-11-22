@@ -45,11 +45,12 @@ with zero values to accepted TRI nodes with measured curvature. The approved [ha
 changes spacing requests but does not improve the accepted mixed history.
 The [transition shape experiment](MIXED_TRANSITION_SHAPE_20261120.md)
 locates the forced three-TRI closure at front commit 73. Local base deferral
-changes its order and yields the same physical shape. Next target local
-pre-front spacing, bounded by the existing curve subdivision and quadtree
-sizes. Track final angle extremes, edge ratio and separate TRI/QUAD shape
-metrics. Quality-constrained smoothing and further curvature estimator
-changes wait for this transition work.
+changes its order and yields the same physical shape. Retain the original
+curve partition. The [template-size audit](TEMPLATE_INTERFACE_SIZE_AUDIT_20261122.md)
+identifies a local two-block layout that would enlarge the exposed template
+edges under the existing catalog and 2:1 rule. A native comparison awaits
+scientific alignment. Track final angles, edge ratio and separate TRI/QUAD
+shape metrics. Smoothing and curvature work wait for this transition step.
 
 ## What prevents calling the technique complete
 
