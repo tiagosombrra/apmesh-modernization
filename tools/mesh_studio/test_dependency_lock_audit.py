@@ -91,8 +91,8 @@ class TransitiveDependencyLockTests(unittest.TestCase):
             with self.subTest(source=source.name):
                 raw = source.read_bytes()
                 self.assertGreater(len(raw), 100)
-                self.assertIn(b"\\n", raw)
-                self.assertNotIn(b"\\r\\n", raw)
+                self.assertIn(bytes([10]), raw)
+                self.assertNotIn(bytes([13, 10]), raw)
 
     def test_each_lock_must_exist_and_be_bounded(self):
         with TemporaryDirectory(prefix="apmesh-v54-absence-") as temporary:
