@@ -1,0 +1,366 @@
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { sha256File, verifyNativeVectorPackage } from './nativeAcceptedPublicationContract';
+import type { NativeAcceptedVector } from './nativeAcceptedPublicationContract';
+import { NativeAcceptedTriViewer } from './NativeAcceptedTriViewer';
+import { parseNativeAcceptedScene } from './nativeAcceptedSceneContract';
+import type { NativeSceneBundle } from './nativeAcceptedSceneContract';
+import { buildNativeSeamTrace, firstActualNativeFaceForSample,
+  sourceSampleOrdinalsOnFace } from './nativeSeamTrace';
+
+export function NativeAcceptedScenePanel() {
+  const perfHostRef = useRef<HTMLElement>(null);
+  const [data, setData] = useState<NativeSceneBundle | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [sceneIndex, setSceneIndex] = useState(0);
+  const [curveIndex, setCurveIndex] = useState(0);
+  const [patchSlot, setPatchSlot] = useState(0);
+  const [sampleOrdinal, setSampleOrdinal] = useState(0);
+  const [faceIndex, setFaceIndex] = useState<number | null>(null);
+  const [nativeSceneFileSha, setNativeSceneFileSha] = useState<string | null>(null);
+  const [nativeFigureError, setNativeFigureError] = useState<string | null>(null);
+  const [figures, setFigures] = useState<Array<NativeAcceptedVector & { objectUrl: string }>>([]);
+  const nativeFigureUrls = useRef<string[]>([]);
+  const nativeUploadSerial = useRef(0);
+  useEffect(() => () => {
+    for (const uri of nativeFigureUrls.current) URL.revokeObjectURL(uri);
+  }, []);
+  function clearFigures() {
+    for (const uri of nativeFigureUrls.current) URL.revokeObjectURL(uri);
+    nativeFigureUrls.current = [];
+    setFigures([]);
+    setNativeFigureError(null);
+  }
+  async function importFigurePackage(files: FileList | null) {
+    clearFigures();
+    const token = nativeUploadSerial.current;
+    if (!data || !nativeSceneFileSha || !files) {
+      setNativeFigureError('v52_original_scene_and_figure_files_required');
+      return;
+    }
+    try {
+      const verified = await verifyNativeVectorPackage(
+        Array.from(files), data, nativeSceneFileSha);
+      if (token !== nativeUploadSerial.current) return;
+      const prepared = verified.map(figure => ({
+        ...figure, objectUrl: URL.createObjectURL(figure.file),
+      }));
+      nativeFigureUrls.current = prepared.map(figure => figure.objectUrl);
+      setFigures(prepared);
+    } catch (reason) {
+      if (token === nativeUploadSerial.current) {
+        setNativeFigureError(reason instanceof Error ?
+          reason.message : 'v52_invalid_original_vector_package');
+      }
+    }
+  }
+  const scene = data?.scenes[sceneIndex];
+  const activeFigure = figures.find(item => scene &&
+    item.model === scene.model && item.step === scene.accepted_native_step);
+  const identity = scene && data?.identity.documents.find(d =>
+    d.model === scene.model &&
+    d.accepted_native_step === scene.accepted_native_step &&
+    d.source_ndjson_sha256 === scene.source_ndjson_sha256);
+  const curve = identity?.qualified_shared_source_curves[curveIndex];
+  const seamTrace = useMemo(() => scene && curve
+    ? buildNativeSeamTrace(scene,curve) : null, [scene,curve]);
+  const sample = curve?.sample_groups[sampleOrdinal];
+  const member = sample?.members.find(m => m.patch_slot === patchSlot);
+  const selected = faceIndex === null ? null : scene?.native_faces[faceIndex] ?? null;
+  const linkedSourceSamples = useMemo(() => {
+    if (!selected || !identity) return [];
+    const ids = new Set(selected[4].map(node => node[0]));
+    return identity.qualified_shared_source_curves.flatMap(c =>
+      c.sample_groups.flatMap(group => group.members
+        .filter(m => m.patch_slot === selected[0] && ids.has(m.native_node_id))
+        .map(m => ({curve_slot:c.source_curve_slot, ordinal:group.ordinal,
+          native_id:m.native_node_id, t:group.canonical_t}))));
+  }, [identity, selected]);
+
+  async function importNative(file: File | undefined) {
+    const token = ++nativeUploadSerial.current;
+    clearFigures();
+    setNativeSceneFileSha(null);
+    const importStart = performance.now();
+    if (perfHostRef.current) {
+      for (const key of Object.keys(perfHostRef.current.dataset))
+        if (key.startsWith('nativePerf')) delete perfHostRef.current.dataset[key];
+    }
+    setData(null); setError(null); setSceneIndex(0); setCurveIndex(0); setPatchSlot(0);
+    setSampleOrdinal(0); setFaceIndex(null);
+    if (!file) return;
+    try {
+      if (file.size < 10 || file.size > 9_000_000) {
+        throw new Error('r2720_bounded_native_scene_file_required');
+      }
+      const input = await file.text();
+      const sceneFileSha = await sha256File(file);
+      if (token !== nativeUploadSerial.current) return;
+      const readEnd = performance.now();
+      const result = parseNativeAcceptedScene(input);
+      const parseEnd = performance.now();
+      // Every displayed source segment must be an actual original accepted
+      // native TRI edge, not a guessed chord between matching XYZ samples.
+      for (const originalScene of result.scenes) {
+        const originalIdentity = result.identity.documents.find(d =>
+          d.model === originalScene.model &&
+          d.accepted_native_step === originalScene.accepted_native_step &&
+          d.source_ndjson_sha256 === originalScene.source_ndjson_sha256);
+        if (!originalIdentity) throw new Error('r2721_missing_original_source_scope');
+        for (const qualifiedCurve of originalIdentity.qualified_shared_source_curves)
+          buildNativeSeamTrace(originalScene,qualifiedCurve);
+      }
+      if (new URLSearchParams(window.location.search).get('nativePerf') === '1' &&
+          perfHostRef.current) {
+        const host = perfHostRef.current;
+        host.dataset.nativePerfFileReadMs = (readEnd - importStart).toFixed(3);
+        host.dataset.nativePerfContractMs = (parseEnd - readEnd).toFixed(3);
+        host.dataset.nativePerfActualSeamCheckMs =
+          (performance.now() - parseEnd).toFixed(3);
+        host.dataset.nativePerfPreReactMs =
+          (performance.now() - importStart).toFixed(3);
+        host.dataset.nativePerfJsonBytes = String(file.size);
+      }
+      if (token !== nativeUploadSerial.current) return;
+      setNativeSceneFileSha(sceneFileSha);
+      setData(result);
+      setPatchSlot(result.identity.documents[0]
+        .qualified_shared_source_curves[0].patch_slots[0]);
+    } catch (cause) {
+      if (token === nativeUploadSerial.current) {
+        setError(cause instanceof Error ? cause.message : 'r2720_invalid_native_scene');
+      }
+    }
+  }
+
+  function changePatch(slot: number) {
+    setPatchSlot(slot);
+    setFaceIndex(scene && curve
+      ? firstActualNativeFaceForSample(scene,curve,slot,sampleOrdinal) : null);
+  }
+
+  function selectSourceSampleFace() {
+    if (!scene || !curve || !member) return;
+    setFaceIndex(firstActualNativeFaceForSample(
+      scene,curve,patchSlot,sampleOrdinal));
+  }
+
+  function selectSample(ordinal: number) {
+    setSampleOrdinal(ordinal);
+    setFaceIndex(scene && curve
+      ? firstActualNativeFaceForSample(scene,curve,patchSlot,ordinal) : null);
+  }
+
+  function selectNativeFace(index: number | null) {
+    setFaceIndex(index);
+    if (index === null || !scene || !curve) return;
+    const face=scene.native_faces[index];
+    setPatchSlot(face[0]);
+    const sourceOrdinals=sourceSampleOrdinalsOnFace(face,curve);
+    if(sourceOrdinals.length>0) {
+      setSampleOrdinal(sourceOrdinals.includes(sampleOrdinal)
+        ? sampleOrdinal : sourceOrdinals[0]);
+    }
+  }
+
+  return <section ref={perfHostRef}
+    className="native-identity-panel native-accepted-scene-panel"
+    data-testid="r2720-panel" aria-label="R2.7.21 cena TRI nativa com interfaces">
+    <div className="native-identity-heading">
+      <div><div className="eyebrow">RESEARCH / R2.7.21 · OPT-IN</div>
+        <h2>Malha TRI nativa aceita — Eistute e Book</h2>
+        <p>Identidades reais de faces, nós e patches · visão independente de P1</p>
+      </div>
+      <span className="native-identity-tag">Fonte C++ · Somente leitura</span>
+    </div>
+    <p className="native-identity-caution">
+      Estas são faces da etapa adaptativa TRI nativa genuinamente aceita,
+      não o catálogo P1 ou uma candidata QUAD. As duas vistas abaixo usam
+      os mesmos IDs de face, mas UV pertence apenas ao patch selecionado.
+      O transporte Float32 é somente visual; a fonte JSON conserva os números originais.
+    </p>
+    <label className="native-identity-upload">
+      Carregar JSON R2.7.20 gerado pelo CI com os registros nativos originais
+      <input type="file" data-testid="r2720-import" accept=".json,application/json"
+        onChange={e => {void importNative(e.currentTarget.files?.[0]);}}/>
+    </label>
+    <p className="small-note">O manifesto importado é validado estruturalmente
+      contra os IDs e os SHA-256 declarados do inspetor R2.7.19. O navegador
+      não verifica criptograficamente os NDJSON brutos sem seus arquivos originais.</p>
+    {error && <div role="alert" className="native-identity-error"
+      data-testid="r2720-error">Fonte recusada: {error}</div>}
+    {!data && !error && <p className="small-note" data-testid="r2720-empty">
+      Nenhuma malha nativa carregada. Exporte ou extraia o JSON do artefato
+      R2.7.20 do GitHub Actions.</p>}
+    {scene && identity && curve && <>
+      <div className="native-identity-controls">
+        <label>Modelo / etapa realmente aceita
+          <select data-testid="r2720-model" value={sceneIndex} onChange={e => {
+            const index = Number(e.currentTarget.value);
+            setSceneIndex(index); setPatchSlot(0); setCurveIndex(0);
+            setFaceIndex(null); setSampleOrdinal(0);
+          }}>
+            {data.scenes.map((s,i) => <option key={s.model+':'+s.accepted_native_step}
+              value={i}>{s.model.toUpperCase()} · aceita {s.accepted_native_step}
+              {' · '}{s.native_tri_faces} TRI</option>)}
+          </select>
+        </label>
+        <label>Patch local para UV e identidade
+          <select data-testid="r2720-patch" value={patchSlot} onChange={e =>
+            changePatch(Number(e.currentTarget.value))}>
+            {Array.from({length:scene.native_source_patches},(_,slot)=>
+              <option key={slot} value={slot}>Patch {slot} ·
+                {' '}{scene.source_patch_face_counts[slot]} TRI</option>)}
+          </select>
+        </label>
+        <label>Amostra da curva de origem ({sampleOrdinal + 1}/{curve.sample_count})
+          <input data-testid="r2720-sample" type="range" min="0"
+            max={curve.sample_count-1} value={sampleOrdinal}
+            onChange={e => selectSample(Number(e.currentTarget.value))}/>
+        </label>
+        <label>Curva nativa compartilhada
+          <select data-testid="r2721-curve" value={curveIndex} onChange={e => {
+            const index=Number(e.currentTarget.value);
+            setCurveIndex(index); setSampleOrdinal(0);setFaceIndex(null);
+            setPatchSlot(identity.qualified_shared_source_curves[index].patch_slots[0]);
+          }}>
+            {identity.qualified_shared_source_curves.map((item,i) =>
+              <option key={item.source_curve_slot} value={i}>
+                Curva {item.source_curve_slot} · {item.patch_slots.length} patches
+              </option>)}
+          </select>
+        </label>
+      </div>
+      <section className="native-vector-figures" data-testid="v52-accepted-native-vector-package">
+        <h3>Figuras UV vetoriais — TRI original realmente aceita</h3>
+        <p className="small-note">
+          Carregue juntos o manifesto <code>manifest.json</code> e os dois SVGs
+          obtidos do artefato V5.2 do mesmo CI C++. O navegador confere SHA-256
+          dos SVGs, o SHA do JSON nativo carregado, os IDs das faces, os patches,
+          as UV originais e o inventário das amostras da curva-fonte.
+        </p>
+        <label className="native-identity-upload">Manifesto e figuras de Eistute/Book
+          <input type="file" data-testid="v52-native-vector-import" multiple
+            accept=".json,.svg,application/json,image/svg+xml"
+            onChange={event => {void importFigurePackage(event.currentTarget.files);}}/>
+        </label>
+        {nativeFigureError && <div role="alert" data-testid="v52-native-vector-error"
+          className="native-identity-error">Pacote recusado: {nativeFigureError}</div>}
+        {activeFigure && <div className="native-vector-preview"
+          data-testid="v52-native-vector-ready">
+          <img src={activeFigure.objectUrl}
+            data-testid="v52-native-vector-image"
+            alt={'Malha TRI originalmente aceita ' + scene.model +
+              ', UV locais de cada patch; figura vetorial sem soldagem presumida'}/>
+          <a href={activeFigure.objectUrl} download={activeFigure.filename}
+            data-testid="v52-native-vector-download">
+            Baixar SVG vetorial original de {scene.model.toUpperCase()}
+          </a>
+          <code data-testid="v52-native-vector-sha">{activeFigure.svgSha}</code>
+        </div>}
+        <p className="small-note">Integridade verificada em relação ao JSON importado.
+          A autenticação do NDJSON C++ bruto ocorre no CI científico original;
+          um manifesto e SVG enviados pelo usuário não a substituem.
+          A figura mostra UV por patch, não uma malha globalmente soldada,
+          não um segundo nível LOD e não um limite de erro contínuo.</p>
+      </section>
+      <div className="native-identity-evidence">
+        <div><small>TRI NATIVAS ACEITAS</small>
+          <strong data-testid="r2720-tri-count">{scene.native_tri_faces}</strong></div>
+        <div><small>PATCHES DE ORIGEM</small><strong>{scene.native_source_patches}</strong></div>
+        <div><small>CURVA COMPARTILHADA</small><strong>Slot {curve.source_curve_slot}</strong></div>
+        <div><small>ÉPOCA ADAPTATIVA REAL</small>
+          <strong>{scene.accepted_native_step} · sem LOD</strong></div>
+      </div>
+      <div className="native-seam-proof" data-testid="r2721-seam-proof">
+        <strong>Curva compartilhada #{curve.source_curve_slot}</strong>
+        <span data-testid="r2721-segment-count">
+          {seamTrace?.verifiedOriginalNativeTriangleEdgeCount ?? 0}
+        </span> arestas locais TRI verificadas em
+        <span data-testid="r2721-patch-count">{curve.patch_slots.length}</span> patches.
+        <span className="native-seam-legend">Turquesa: interfaces dos demais patches.
+          Amarelo: patch selecionado. Vermelho: amostra selecionada.</span>
+        A coincidência de XYZ não implica um único objeto C++ ou soldagem.
+      </div>
+      <div className="view-grid native-accepted-view-grid">
+        <NativeAcceptedTriViewer scene={scene} space="xyz" patchSlot={patchSlot}
+          selectedFaceIndex={faceIndex} seamTrace={seamTrace}
+          selectedSampleOrdinal={sampleOrdinal}
+          onSelectFace={selectNativeFace}/>
+        <NativeAcceptedTriViewer scene={scene} space="uv" patchSlot={patchSlot}
+          selectedFaceIndex={faceIndex} seamTrace={seamTrace}
+          selectedSampleOrdinal={sampleOrdinal} onSelectFace={selectNativeFace}/>
+      </div>
+      <div className="native-accepted-inspectors">
+        <div className="native-identity-selection" data-testid="r2720-face-inspector">
+          <h3>Face TRI nativa selecionada</h3>
+          {selected ? <>
+            <dl>
+              <dt>Patch (slot)</dt><dd>{selected[0]}</dd>
+              <dt>Patch nativo (ID)</dt><dd>{selected[1]}</dd>
+              <dt>Elemento no patch (slot)</dt><dd>{selected[2]}</dd>
+              <dt>Elemento nativo (ID)</dt>
+              <dd data-testid="r2720-native-element-id">{selected[3]}</dd>
+            </dl>
+            <table className="native-accepted-corners" data-testid="r2720-corners">
+              <thead><tr><th>Canto</th><th>ID nativo do nó</th><th>XYZ</th><th>UV local</th></tr></thead>
+              <tbody>{selected[4].map((n,i)=><tr key={i}>
+                <td>{i+1}</td><td>{n[0]}</td>
+                <td>{n.slice(1,4).map(v => Number(v.toPrecision(7))).join(' / ')}</td>
+                <td>{n.slice(4).map(v => Number(v.toPrecision(7))).join(' / ')}</td>
+              </tr>)}</tbody>
+            </table>
+            <p className="small-note" data-testid="r2721-selection-scope">
+              {sourceSampleOrdinalsOnFace(selected,curve).length
+                ? 'Face incidente à curva nativa compartilhada do patch selecionado'
+                : 'Face sem incidência observada na curva compartilhada selecionada'}
+            </p>
+            <p className="small-note" data-testid="r2720-linked-samples">
+              Amostras desta face na curva de origem:
+              {' '}{linkedSourceSamples.length
+                ? linkedSourceSamples.map(x => 'curva '+x.curve_slot+
+                  ', amostra '+x.ordinal+', nó '+x.native_id).join('; ')
+                : 'nenhuma correspondência amostrada observada nesta face'}
+            </p>
+          </> : <p className="small-note">Clique em uma face nativa XYZ/UV
+            ou destaque uma amostra da curva. A identidade é o par
+            (patch, slot do elemento), acompanhado de seu ID nativo.</p>}
+        </div>
+        <div className="native-identity-selection" data-testid="r2720-source-identity">
+          <h3>Amostra original · patch {patchSlot}</h3>
+          <dl>
+            <dt>Curva nativa</dt><dd>slot {curve.source_curve_slot}</dd>
+            <dt>Amostra</dt><dd>{sampleOrdinal}</dd>
+            <dt>Parâmetro canônico t</dt>
+            <dd>{sample?.canonical_t.toFixed(6) ?? '—'}</dd>
+            <dt>ID do nó no patch</dt><dd data-testid="r2720-source-node-id">
+              {member?.native_node_id ?? '—'}</dd>
+            <dt>XYZ fonte original</dt>
+            <dd>{member?.original_xyz.join(' / ') ?? '—'}</dd>
+            <dt>Nó C++ pertencente à SubMesh</dt>
+            <dd>{member?.accepted_corner_cpp_owner_observed === null
+              ? 'Não observado nesta amostra'
+              : member?.accepted_corner_cpp_owner_observed
+                ? 'Sim, no canto aceito' : 'Não comprovado'}</dd>
+            <dt>Identidade C++ entre patches</dt>
+            <dd>{member?.accepted_corner_shared_cpp_pointer_with_earlier_patch === null
+              ? 'Não observada'
+              : member?.accepted_corner_shared_cpp_pointer_with_earlier_patch
+                ? 'Mesmo ponteiro em patch anterior'
+                : 'Ponteiro distinto dos patches anteriores'}</dd>
+          </dl>
+          <button type="button" className="clear-btn"
+            data-testid="r2720-highlight-source-sample" onClick={selectSourceSampleFace}
+            disabled={!member}>Destacar face incidente à amostra</button>
+          <p className="small-note">A face destacada é uma incidência observada
+            do nó na malha aceita, não uma nova face criada pela curva.</p>
+        </div>
+      </div>
+      <p className="native-identity-sha">SHA-256 original das faces aceitas:
+        <code data-testid="r2720-source-sha">{scene.source_ndjson_sha256}</code></p>
+      <p className="native-identity-caution">Cantos usados no VTK são
+        separados por face para visualização: isso não solda nem certifica
+        conectividade topológica. Não há ancestralidade entre épocas,
+        nem limite de erro contínuo ou LOD geométrico científico qualificado.</p>
+    </>}
+  </section>;
+}

@@ -43,6 +43,15 @@ target_compile_features(ap_mesh PRIVATE cxx_std_17)
 
 target_include_directories(ap_mesh PRIVATE "${INC_DIR}")
 
+option(AP_MESH_ENABLE_RESEARCH_LINEAGE "Opt in to bounded native TRI accepted-epoch research sidecar" OFF)
+if(AP_MESH_ENABLE_RESEARCH_LINEAGE)
+  if(AP_MESH_USE_MPI OR AP_MESH_USE_OPENMP)
+    message(FATAL_ERROR "Native source lineage research requires serial MPI/OMP-disabled execution")
+  endif()
+  target_sources(ap_mesh_engine PRIVATE research/mesh_studio/native_lineage_capture.cpp)
+  target_compile_definitions(ap_mesh_engine PRIVATE AP_MESH_RESEARCH_NATIVE_LINEAGE=1)
+endif()
+
 option(AP_MESH_ENABLE_EXPERIMENTAL_QUAD "Enable the controlled serial QUAD application case" OFF)
 if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD)
   if(AP_MESH_USE_MPI OR AP_MESH_USE_OPENMP)
@@ -340,6 +349,45 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
     "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
   target_link_libraries(quad_generator_outcome_probe PRIVATE ap_mesh_engine)
   target_compile_features(quad_generator_outcome_probe PRIVATE cxx_std_17)
+  # R2.7.30: separate research observer executable; the original outcome probe
+  # and native GeneratorAdaptive/Adapter/AFT numerical code stay untouched.
+  add_executable(quad_generator_local_selection_probe
+    tests/quad/generator_local_selection_probe.cpp)
+  target_include_directories(quad_generator_local_selection_probe PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_generator_local_selection_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_generator_local_selection_probe PRIVATE cxx_std_17)
+  # R2.7.32: distinct opt-in research executable reading original pre-AFT
+  # Quadtree cells by value, with the original generator source unchanged.
+  add_executable(quad_generator_selected_uv_probe
+    tests/quad/generator_selected_uv_probe.cpp
+    research/quad/quadtree_quad.cpp
+    research/quad/uv_mesh.cpp)
+  target_include_directories(quad_generator_selected_uv_probe PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_generator_selected_uv_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_generator_selected_uv_probe PRIVATE cxx_std_17)
+  # R2.7.33 is Linux ELF-only: wrap the undefined original Adapter symbol
+  # at the final research executable link. Never patch/recompile the engine.
+  if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    add_executable(quad_generator_selected_tri_return_probe
+      tests/quad/generator_selected_tri_return_probe.cpp)
+    target_include_directories(quad_generator_selected_tri_return_probe PRIVATE
+      "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+    target_link_libraries(quad_generator_selected_tri_return_probe PRIVATE ap_mesh_engine)
+    target_compile_features(quad_generator_selected_tri_return_probe PRIVATE cxx_std_17)
+    target_link_options(quad_generator_selected_tri_return_probe PRIVATE
+      "LINKER:--wrap=_ZN7Adapter11AdaptDomainEP10PatchCoonsPN9Performer9IdManagerEddiiii")
+    # R2.7.34: separate source-curve pointer-incidence observer, original engine unchanged.
+    add_executable(quad_generator_selected_curve_seam_probe
+      tests/quad/generator_selected_curve_seam_probe.cpp)
+    target_include_directories(quad_generator_selected_curve_seam_probe PRIVATE
+      "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+    target_link_libraries(quad_generator_selected_curve_seam_probe PRIVATE ap_mesh_engine)
+    target_compile_features(quad_generator_selected_curve_seam_probe PRIVATE cxx_std_17)
+    target_link_options(quad_generator_selected_curve_seam_probe PRIVATE
+      "LINKER:--wrap=_ZN7Adapter11AdaptDomainEP10PatchCoonsPN9Performer9IdManagerEddiiii")
+  endif()
   add_test(NAME quad.generator.real_global_outcomes
     COMMAND "${Python3_EXECUTABLE}"
       "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_generator_outcomes.py"

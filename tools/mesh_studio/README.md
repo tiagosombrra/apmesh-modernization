@@ -1,6 +1,8 @@
 # APMesh Mesh Studio — scientific inspection and publication modules S0–S5
 
-This project is isolated under `tools/mesh_studio/`, with no generator production changes.
+**Current project roadmap and 2026-11-20 wide audit:** [Mesh Studio Master Plan V5](../../docs/mesh-studio/MASTER_PLAN_V5_AUDIT_AND_RECOVERY_20261120.md), with the [current evidence/qualification index](../../docs/mesh-studio/README.md). Previous planning and research documents are retained as dated historical evidence.
+
+The Studio Python/Web modules live under `tools/mesh_studio/`. The isolated research PR #239 also includes **default-OFF, compile-time guarded observation changes in original C++ source files** and separate serial research executables; these do not authorize production numerical-policy changes, public releases or merges. Do not claim that the complete Studio PR has zero edits outside this Python directory.
 
 ## Initial research-safe deliverables
 

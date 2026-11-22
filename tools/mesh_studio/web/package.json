@@ -9,7 +9,9 @@
     "typecheck": "tsc --noEmit",
     "preview": "vite preview --host 127.0.0.1",
     "test:e2e": "playwright test",
-    "test:contracts": "node scripts/test-r26-unit.cjs"
+    "test:contracts": "node scripts/test-r26-unit.cjs && node scripts/test-r27-unit.cjs && node --test scripts/test-r278-report-audit.mjs",
+    "test:r277:desktop": "node scripts/run-r277-desktop.mjs",
+    "audit:r277:desktop": "node scripts/audit-r277-report.mjs"
   },
   "dependencies": {
     "@kitware/vtk.js": "38.0.9",

@@ -5,18 +5,24 @@ Scientific verification remains in the original Python engine, not the UI.
 """
 from __future__ import annotations
 
+from copy import deepcopy
+from functools import lru_cache
 from hashlib import sha256
+import json
 from pathlib import Path
+from tempfile import TemporaryDirectory
+import xml.etree.ElementTree as ET
 
 from fastapi import FastAPI, HTTPException, Query, Response
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 
-from .import_obj import import_obj
+from .import_obj import MAX_SOURCE_BYTES, import_obj
 from .quality_analysis import analyze_mesh
 from .scene_model import build_batch, face_detail, initial_scene
 from .scene_transport import pack_geometry, SceneTransportError
 from .scene_transport_v2 import prepare_geometry_v2, stream_geometry_v2, GeometryV2Error
+from .svg_figure import URI as SVG_URI, audit_svg, render_uv_svg
 
 SCHEMA = 'apmesh.meshstudio.web.v1'
 ROOT = Path(__file__).resolve().parent / 'fixtures'
@@ -41,15 +47,32 @@ app.add_middleware(CORSMiddleware,
                    allow_credentials=False, allow_methods=['GET'], allow_headers=['Accept'])
 
 
+@lru_cache(maxsize=8)
+def _verified_document(path: Path, expected_sha256: str):
+    """Parse only once per exact source path and source hash in each process."""
+    document = import_obj(path, auto_sidecar=False)
+    if document.source_sha256 != expected_sha256:
+        raise HTTPException(status_code=409, detail='source_sha_mismatch')
+    return document
+
+
+@lru_cache(maxsize=8)
+def _verified_quality(path: Path, expected_sha256: str):
+    """Reuse deterministic full-mesh metrics without changing the scientific oracle."""
+    return analyze_mesh(_verified_document(path, expected_sha256))
+
+
 def load_document(model_id: str):
-    """Check fixture identity on every request, even if a local file changed."""
+    """Rehash the current fixture on every request before using cached results."""
     if model_id not in CATALOG:
         raise HTTPException(status_code=404, detail='unknown_model')
     relative, _, expected = CATALOG[model_id]
     path = ROOT / relative
-    if not path.is_file() or sha256(path.read_bytes()).hexdigest() != expected:
+    if (not path.is_file() or
+            path.stat().st_size > MAX_SOURCE_BYTES or
+            sha256(path.read_bytes()).hexdigest() != expected):
         raise HTTPException(status_code=409, detail='source_sha_mismatch')
-    return import_obj(path, auto_sidecar=False)
+    return _verified_document(path, expected)
 
 
 @app.get('/api/v1/health')
@@ -134,16 +157,71 @@ def binary_geometry_v2(model_id: str, space: str = Query('xyz', pattern='^(xyz|u
                  'X-Visualization-Only': 'float32-not-scientific-source'})
 
 
+
+@app.get('/api/v1/models/{model_id}/publication.svg')
+def publication_svg(model_id: str):
+    """Serve the independently audited, pure-vector UV figure for a pinned source.
+
+    This is the original imported source mesh, never a manufactured adaptive
+    epoch or a shaded 3D raster export. No filesystem path is user-controlled.
+    """
+    document = load_document(model_id)
+    source_status = CATALOG[model_id][1]
+    with TemporaryDirectory(prefix='apmesh-v5-source-figure-') as temporary:
+        path = Path(temporary) / 'source_uv.svg'
+        receipt = render_uv_svg(document, path, width_mm=155, height_mm=120)
+        root = ET.parse(path).getroot()
+        for item in root.iter(f'{{{SVG_URI}}}text'):
+            if item.attrib.get('y') == '684':
+                item.text = ('STAGED CANDIDATE — NOT AN ACCEPTED ADAPTIVE EPOCH'
+                             if source_status == 'STAGED_UNACCEPTED'
+                             else 'CONTROLLED ORIGINAL — NO ADAPTIVE EPOCH')
+        ET.SubElement(root, f'{{{SVG_URI}}}metadata').text = json.dumps({
+            'schema': 'apmesh.meshstudio.v5.web_source_uv_publication.v1',
+            'source_sha256': document.source_sha256,
+            'source_status': source_status,
+            'source_kind': document.source_kind,
+            'accepted_adaptive_epochs': 0,
+            'source_patch_ownership': document.patch_ownership,
+            'render_class': receipt['render_class'],
+            'physical_size_mm': [155, 120],
+            'source_surface_continuously_certified': False,
+            'scientific_lod_qualified': False,
+        }, sort_keys=True, separators=(',', ':'))
+        ET.ElementTree(root).write(path, encoding='utf-8',
+                                   xml_declaration=True)
+        audit = audit_svg(path, expected_faces=len(document.faces))
+        if not audit['vector_only'] or audit['raster_image_count'] != 0:
+            raise HTTPException(status_code=409, detail='unqualified_svg')
+        output = path.read_bytes()
+    output_sha = sha256(output).hexdigest()
+    filename = f'apmesh_{model_id}_{document.source_sha256[:12]}_uv_source.svg'
+    return Response(
+        content=output, media_type='image/svg+xml',
+        headers={
+            'Cache-Control': 'no-store',
+            'Content-Disposition': f'attachment; filename="{filename}"',
+            'X-Source-SHA256': document.source_sha256,
+            'X-Source-Status': source_status,
+            'X-Vector-Figure-SHA256': output_sha,
+            'X-Visualization-Only': 'source-uv-not-continuous-surface-or-lod',
+        })
+
+
 @app.get('/api/v1/models/{model_id}/faces/{face_id}')
 def face(model_id: str, face_id: int):
     doc = load_document(model_id)
     if not 0 <= face_id < len(doc.faces):
         raise HTTPException(status_code=404, detail='unknown_face_id')
     result = face_detail(doc, face_id)
-    result['quality'] = analyze_mesh(doc)['cells'][face_id]
+    result['quality'] = dict(_verified_quality(ROOT / CATALOG[model_id][0],
+                                              doc.source_sha256)['cells'][face_id])
     return result
 
 
 @app.get('/api/v1/models/{model_id}/quality')
 def quality(model_id: str):
-    return analyze_mesh(load_document(model_id))
+    document = load_document(model_id)
+    # Return an isolated report, never the mutable canonical cached source.
+    return deepcopy(_verified_quality(ROOT / CATALOG[model_id][0],
+                                      document.source_sha256))

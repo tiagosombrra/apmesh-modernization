@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { studyApi } from './api';
 import { Viewer } from './Viewer';
+import { NativeIdentityInspector } from './NativeIdentityInspector';
+import { NativeAcceptedScenePanel } from './NativeAcceptedScenePanel';
 import type { ViewerHandle } from './Viewer';
 import { CAMERA_SCHEMA, parseCameraRecipe, storageKey } from './camera';
 import type { FaceDetail, MeshGeometry, ModelEntry } from './contracts';
@@ -25,39 +27,60 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [cameraStatus, setCameraStatus] = useState('');
+  const [showOriginalNativeTri, setShowOriginalNativeTri] = useState(
+    () => new URLSearchParams(window.location.search).get('nativeScene') === '1');
   const xyzRef = useRef<ViewerHandle>(null);
   const uvRef = useRef<ViewerHandle>(null);
   const model = useMemo(() => catalog.find((item) => item.id === modelId), [catalog, modelId]);
 
   useEffect(() => {
-    studyApi.catalog().then((data) => setCatalog(data.models))
-      .catch((e: Error) => setError(e.message));
+    const controller = new AbortController();
+    studyApi.catalog(controller.signal)
+      .then((data) => { if (!controller.signal.aborted) setCatalog(data.models); })
+      .catch((e: Error) => { if (!controller.signal.aborted) setError(e.message); });
+    return () => controller.abort();
   }, []);
   useEffect(() => {
-    let cancelled = false;
+    const controller = new AbortController();
     setLoading(true);
     setError(null);
     setXyz(null); setUv(null); setSelected(null); setDetail(null); setCameraStatus('');
-    Promise.all([studyApi.geometry(modelId, 'xyz'), studyApi.geometry(modelId, 'uv')])
+    Promise.all([
+      studyApi.geometry(modelId, 'xyz', controller.signal),
+      studyApi.geometry(modelId, 'uv', controller.signal),
+    ])
       .then(([a, b]) => {
-        if (cancelled) return;
+        if (controller.signal.aborted) return;
         if (a.source_sha256 !== b.source_sha256 || meshFaceCount(a) !== meshFaceCount(b)) {
           throw new Error('As vistas não possuem a mesma origem científica.');
         }
         setXyz(a); setUv(b);
       })
-      .catch((e: Error) => { if (!cancelled) setError(e.message); })
-      .finally(() => { if (!cancelled) setLoading(false); });
-    return () => { cancelled = true; };
+      .catch((e: Error) => {
+        if (!controller.signal.aborted) setError(e.message);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
+      });
+    return () => controller.abort();
   }, [modelId]);
   useEffect(() => {
-    let cancelled = false;
-    if (selected === null) { setDetail(null); return; }
-    studyApi.face(modelId, selected)
-      .then((value) => { if (!cancelled) setDetail(value); })
-      .catch((e: Error) => { if (!cancelled) setError(e.message); });
-    return () => { cancelled = true; };
-  }, [modelId, selected]);
+    const controller = new AbortController();
+    setDetail(null);
+    if (selected === null || !xyz) return () => controller.abort();
+    studyApi.face(modelId, selected, controller.signal)
+      .then((value) => {
+        if (controller.signal.aborted) return;
+        if (value.source_face_id !== selected || value.source_sha256 !== xyz.source_sha256) {
+          throw new Error('Identidade da face diferente da origem científica.');
+        }
+        setDetail(value);
+      })
+      .catch((e: Error) => {
+        if (!controller.signal.aborted) setError(e.message);
+      });
+    return () => controller.abort();
+  }, [modelId, selected, xyz]);
   const toggleLayer = (kind: 'triangle' | 'quad') => {
     const visible = kind === 'triangle' ? !showTri : !showQuad;
     if (kind === 'triangle') setShowTri(visible);
@@ -129,6 +152,11 @@ export default function App() {
             <button type="button" data-testid="save-cameras" disabled={!xyz || !uv} onClick={saveCameras}>Salvar vistas</button>
             <button type="button" data-testid="restore-cameras" disabled={!xyz || !uv} onClick={restoreCameras}>Restaurar vistas</button>
             <button type="button" data-testid="reset-cameras" disabled={!xyz || !uv} onClick={resetCameras}>Redefinir câmeras</button>
+            {model && <a className="source-publication-link" data-testid="v5-source-uv-export"
+              href={`/api/v1/models/${encodeURIComponent(modelId)}/publication.svg`}
+              download={`apmesh_${modelId}_${model.sha256.slice(0,12)}_uv_source.svg`}>
+              Exportar figura UV vetorial (SVG)
+            </a>}
             <span role="status" data-testid="camera-status">{cameraStatus}</span>
           </div>
           {error && <div role="alert" className="error">{error}</div>}
@@ -138,9 +166,26 @@ export default function App() {
             <Viewer ref={uvRef} key={`${modelId}-uv`} space="uv" modelId={modelId} geometry={uv} showTri={showTri} showQuad={showQuad} edges={edges} selectedId={selected} onSelect={setSelected}/>
           </div>}
           <div className="model-foot"><div><small>ORIGEM</small><strong>{model ? statuses[model.source_status] : '—'}</strong></div>
-          <div><small>ÉPOCAS ADAPTATIVAS ACEITAS</small><strong>0</strong></div>
+          <div><small>ÉPOCAS ADAPTATIVAS ACEITAS</small><strong>{model?.accepted_adaptive_epochs ?? '—'}</strong></div>
           <div><small>IDENTIDADE SHA-256</small><code title={model?.sha256}>{model?.sha256.slice(0, 24) ?? '...'}</code></div></div>
           <div className="caution">Os resultados são de uma superfície Bézier controlada. Candidatas em estágio não são épocas adaptativas aceitas. All-quad e anisotropia não estão disponíveis.</div>
+          {new URLSearchParams(window.location.search).get('nativeInspector') === '1' &&
+            <NativeIdentityInspector/>}
+          <section className="original-native-launch" aria-label="Experimentos TRI originais aceitos">
+            <h2>Malhas TRI originais — Eistute e Book</h2>
+            <p>Trilha científica separada do P1 e das candidatas QUAD acima. A etapa nativa
+              realmente aceita é a 1; não existe segundo LOD científico qualificado.</p>
+            <button type="button" data-testid="v5-toggle-native-tri"
+              aria-expanded={showOriginalNativeTri}
+              onClick={() => setShowOriginalNativeTri(value => !value)}>
+              {showOriginalNativeTri ? 'Ocultar estudo nativo'
+                : 'Abrir estudo TRI original aceito'}
+            </button>
+            <p className="small-note">Carregamento do JSON de evidências do CI é manual.
+              Os SHA declarados são verificados estruturalmente no navegador,
+              mas esta importação não autentica por si só os arquivos C++ brutos.</p>
+          </section>
+          {showOriginalNativeTri && <NativeAcceptedScenePanel/>}
         </main>
         <aside className="right-sidebar"><div className="sidebar-eyebrow">INSPECTOR / 02</div><h2>Face selecionada</h2>
           {selected === null ? <div className="inspector-empty"><span className="empty-icon">⌖</span><strong>Selecione uma face</strong><p>Clique em qualquer elemento no espaço físico ou UV para inspecionar os dados originais.</p></div>
