@@ -29,7 +29,7 @@ jobs:
           node --version
           npm --version
           npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-          node -e "const fs=require('fs'); const p=JSON.parse(fs.readFileSync('package.json')); const l=JSON.parse(fs.readFileSync('package-lock.json')); if(l.lockfileVersion!==3 || JSON.stringify(l.packages[''].dependencies)!==JSON.stringify(p.dependencies) || JSON.stringify(l.packages[''].devDependencies)!==JSON.stringify(p.devDependencies)) process.exit(1); const all=Object.entries(l.packages).filter(([k])=>k); if(all.length<50 || all.some(([k,v])=>v.resolved && !v.integrity))process.exit(2); console.log('V54_NPM_TRANSITIVE_INTEGRITY_PACKAGES='+all.length)"
+          node -e "const fs=require('fs'); const p=JSON.parse(fs.readFileSync('package.json')); const l=JSON.parse(fs.readFileSync('package-lock.json')); const same=(a,b)=>Object.keys(a).length===Object.keys(b).length && Object.entries(a).every(([k,v])=>b[k]===v); if(l.lockfileVersion!==3 || !same(l.packages[''].dependencies,p.dependencies) || !same(l.packages[''].devDependencies,p.devDependencies))process.exit(1); const all=Object.entries(l.packages).filter(([k])=>k); if(all.length<50 || all.some(([k,v])=>v.resolved && !v.integrity))process.exit(2); console.log('V54_NPM_TRANSITIVE_INTEGRITY_PACKAGES='+all.length)"
       - name: Install exact lock from clean node_modules and rebuild the source
         working-directory: tools/mesh_studio/web
         run: |
@@ -73,7 +73,7 @@ jobs:
         run: |
           python -m pip install pip==25.3 pip-tools==7.5.2
           python -m pip --version
-          python -m piptools --version
+          python -c "from importlib.metadata import version; assert version('pip-tools') == '7.5.2'; print('V54_PIP_TOOLS='+version('pip-tools'))"
       - name: Resolve and hash every transitive dependency under this platform
         shell: bash
         run: |
