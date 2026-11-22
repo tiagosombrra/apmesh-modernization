@@ -79,6 +79,21 @@ class TransitiveDependencyLockTests(unittest.TestCase):
                     "python_direct_versions_drift_from_hash_lock"):
                 audit_python_lock(altered, lock)
 
+    def test_npm_and_python_source_hash_files_have_cross_platform_lf(self):
+        # Windows CRLF checkout must not change the SHA256 file inventory.
+        files = [
+            BASE / "web/package.json",
+            BASE / "web/package-lock.json",
+            BASE / "requirements-web-ci.txt",
+            BASE / "requirements-native-pdf-ci.txt",
+        ] + [BASE / "locks" / name for _, name, _ in PROFILES]
+        for source in files:
+            with self.subTest(source=source.name):
+                raw = source.read_bytes()
+                self.assertGreater(len(raw), 100)
+                self.assertIn(b"\\n", raw)
+                self.assertNotIn(b"\\r\\n", raw)
+
     def test_each_lock_must_exist_and_be_bounded(self):
         with TemporaryDirectory(prefix="apmesh-v54-absence-") as temporary:
             missing = Path(temporary) / "missing.lock"
