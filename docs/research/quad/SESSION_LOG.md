@@ -4042,3 +4042,22 @@ on whole-pass geometric rejection. Await explicit alignment. The new
 with no native run. Resume the previous-mixed-state feedback contract
 after this bounded item. Current curve subdivision is inherited from
 TRI and does not satisfy the two accepted mixed epochs required by #221.
+
+## 2026-11-22 Fortaleza - measure curve-to-interior gradation on existing meshes
+
+The researcher requests that local interior size and neighboring curvature
+can influence straight as well as curved contour intervals. Preserve
+different target sizes with a gradual transition. The read-only
+[gradation audit](MIXED_BOUNDARY_GRADATION_20261122.md) checks exact source
+and incidence at 46 intervals in four retained mixed meshes. A physical
+curved-to-straight contour step grows to 3.66 in Step 3. The largest
+adjacent face-size ratio in the near curved-end straight-half profile
+falls from 5.40 to 4.86 in the already measured two-block control pair
+with byte-identical source vertices. Record sides, endpoint-only fans
+and analytic Gaussian samples separately.
+
+Retain local gradation and shape diagnostics in the existing smoothing
+comparison and in the adaptive feedback work. Existing TRI size
+gradation is a candidate prerequisite, while a mixed two-way size rule
+requires scientific alignment. No new C++ change or native run. No CI
+or CTest qualification.

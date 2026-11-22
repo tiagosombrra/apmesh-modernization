@@ -12,6 +12,30 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-22 - measure and require local curve/interior gradation
+
+The researcher asks to account for both directions of the size transition
+between curved and straight contour, transition fans and the interior.
+The [measurements](MIXED_BOUNDARY_GRADATION_20261122.md) bind 46 contour
+intervals on the fixed 1.5 archives (Steps 1-3 and the two-block Step 3)
+with an exact original-source and incidence audit.
+
+Curved-to-straight incident chord ratio grows 1.07, 1.84, 3.66. On the
+straight half near the curved end, the largest adjacent face-size ratio
+within three shared-edge steps is 5.40 versus 4.19 on the complementary
+half. The same contour on the two-block trial yields 4.86 in the near
+half with a better endpoint-only fan angle. Analytical Gaussian samples
+differ sharply between those local profiles. These are observed grade and
+shape differences and one controlled interior change.
+
+Retain these measurements in the proposed smoothing comparison. Require
+local curve-to-interior and interior-to-curve size accounting in the
+adaptive feedback work. Inspect whether the existing TRI size-field
+gradation can carry over to typed mixed data without uniform contour
+refinement. Align the actual sizing/sampling policy before implementation.
+The prior curve-split proposal remains unexecuted. No new native run,
+C++ change, CTest or CI qualification.
+
 ### 2026-11-22 - isolate the smoothing loss and specify a guarded comparison
 
 The [design](MIXED_SMOOTHING_SHAPE_DESIGN_20261122.md) and

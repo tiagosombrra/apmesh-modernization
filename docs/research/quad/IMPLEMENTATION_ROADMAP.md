@@ -103,6 +103,12 @@ measure the tradeoff in unilateral moves. Obtain scientific alignment on
 the proposed node acceptance and complete-pass geometric rollback. After
 this bounded comparison return to the adaptive feedback contract in issue
 #221 and verify provenance of at least two accepted mixed-driven epochs.
+The researcher requires both directions of local curve/interior size
+gradation. The [gradation audit](MIXED_BOUNDARY_GRADATION_20261122.md) fixes
+the measurement baseline across curved/straight junctions, transitions
+and interior adjacency. Include these size and per-kind shape measurements
+in smoothing and in eventual adaptive admission. Choose the two-way size
+rule before changing curve sampling or interior refinement.
 Keep PR243 draft. Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
