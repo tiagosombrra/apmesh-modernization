@@ -197,6 +197,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+          cache: pip
+          cache-dependency-path: tools/mesh_studio/requirements-native-pdf-ci.txt
+      - name: Install minimal pinned pure-vector PDF publication and independent audit dependencies
+        run: python -m pip install -r tools/mesh_studio/requirements-native-pdf-ci.txt
       - name: Configure isolated serial C++ original-generator research capture
         run: |
           cmake -S . -B build/r2712-native -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_RESEARCH_LINEAGE=ON
@@ -242,6 +246,19 @@ jobs:
           path: |
             build/v52-native-accepted-uv-publication/
             build/r2720-native-accepted-scene.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Generate two-page original Eistute/Book accepted source TRI PDF with embedded font and true vector paths
+        run: python -m tools.mesh_studio.native_accepted_vector_pdf --mode export --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --v52-dir build/v52-native-accepted-uv-publication --output-dir build/v53-original-native-vector-pdf
+      - name: Independently re-open original accepted C++ source NDJSON and audit every PDF TRI/curve vector path, embedded fonts and physical page sizes
+        run: python -m tools.mesh_studio.native_accepted_vector_pdf --mode audit --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --v52-dir build/v52-native-accepted-uv-publication --output-dir build/v53-original-native-vector-pdf
+      - name: Retain V5.3 original-source true-vector article PDF and replayable figure recipe
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-v53-original-native-accepted-article-pdf-${{ github.sha }}
+          path: |
+            build/v53-original-native-vector-pdf/
+            build/v52-native-accepted-uv-publication/manifest.json
           if-no-files-found: error
           retention-days: 14
       - name: Independently audit source-sha-pinned accepted TRI seam edges across every patch
