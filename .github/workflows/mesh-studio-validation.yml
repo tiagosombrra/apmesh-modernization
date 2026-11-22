@@ -10,6 +10,9 @@ on:
       - '!tools/mesh_studio/README.md'
       - '!tools/mesh_studio/web/README.md'
       - '!tools/mesh_studio/fixtures/README.md'
+      # Pure CSS changes are verified by the fast real P1 browser lane;
+      # original C++ acceptance and numerical source artifacts do not change.
+      - '!tools/mesh_studio/web/src/style.css'
       - 'research/mesh_studio/**'
       # Original geometry, native ABI, data and research hooks are exact-source
       # scientific dependencies; none may silently bypass the native gates.
