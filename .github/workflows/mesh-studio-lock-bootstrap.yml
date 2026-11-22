@@ -43,6 +43,19 @@ jobs:
           path: tools/mesh_studio/web/package-lock.json
           if-no-files-found: error
           retention-days: 14
+      - name: Emit public npm lock chunks for reviewed deterministic repository transfer
+        working-directory: tools/mesh_studio/web
+        run: |
+          node <<'JS'
+          const fs = require('fs');
+          const crypto = require('crypto');
+          const raw = fs.readFileSync('package-lock.json', 'utf8');
+          const payload = JSON.stringify(raw);
+          for (let i = 0, ordinal = 0; i < payload.length; i += 2400, ordinal++) {
+            console.log('V54DATA|' + ordinal + '|' + payload.slice(i, i+2400));
+          }
+          console.log('V54END|' + crypto.createHash('sha256').update(raw).digest('hex'));
+          JS
 
   python-313:
     strategy:
@@ -94,3 +107,17 @@ jobs:
           path: ${{ matrix.lock }}
           if-no-files-found: error
           retention-days: 14
+      - name: Emit public Python hash-lock chunks for reviewed source commit
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          source = Path("${{ matrix.lock }}")
+          raw = source.read_bytes()
+          payload = json.dumps(raw.decode("utf-8"), ensure_ascii=True)
+          for i in range(0, len(payload), 2400):
+              print("V54DATA|" + str(i // 2400) + "|" + payload[i:i+2400])
+          print("V54END|" + hashlib.sha256(raw).hexdigest())
+          PY
