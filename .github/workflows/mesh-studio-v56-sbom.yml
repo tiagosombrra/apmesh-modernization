@@ -1,0 +1,52 @@
+name: Mesh Studio V5.6 / immutable source-lock SBOM and license evidence
+on:
+  push:
+    branches:
+      - feature/mesh-studio-v56-sbom-license-ledger-20261122
+    paths:
+      - '.github/workflows/mesh-studio-v56-sbom.yml'
+      - 'tools/mesh_studio/source_sbom.py'
+      - 'tools/mesh_studio/test_v56_source_sbom.py'
+      - 'tools/mesh_studio/test_v55_action_pinning.py'
+      - 'tools/mesh_studio/dependency_lock_audit.py'
+      - 'tools/mesh_studio/web/package.json'
+      - 'tools/mesh_studio/web/package-lock.json'
+      - 'tools/mesh_studio/requirements-*.txt'
+      - 'tools/mesh_studio/locks/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mesh-studio-v56-sbom-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-lock-sbom:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.13'
+      - name: Audit pinned source manifests without registry or network resolution
+        run: python -m tools.mesh_studio.dependency_lock_audit
+      - name: Audit the inherited immutable actions and new source SBOM
+        run: python -m unittest tools.mesh_studio.test_v55_action_pinning tools.mesh_studio.test_v56_source_sbom -v
+      - name: Build reproducible CycloneDX and honest source-license ledger
+        run: python -m tools.mesh_studio.source_sbom --output-dir v56-sbom
+      - name: Separate supply chain inventory from original native qualification
+        run: |
+          echo 'V56_SOURCE_LOCK_SBOM_GENERATED=PASS'
+          echo 'V56_LICENSE_DECLARATIONS_ARE_NOT_VERIFIED=TRUE'
+          echo 'V56_ORIGINAL_CPP_ACCEPTANCE=NOT_EXECUTED'
+          echo 'V56_GPU_R28_SCIENTIFIC_LOD=NOT_QUALIFIED'
+      - name: Retain exact source-derived machine-readable evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: mesh-studio-v56-source-sbom-${{ github.sha }}
+          path: v56-sbom/
+          if-no-files-found: error
+          retention-days: 14
