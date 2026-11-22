@@ -19,6 +19,11 @@
 | R2.8 | [V5 admission gate](MASTER_PLAN_V5_AUDIT_AND_RECOVERY_20261120.md) | BLOCKED: no same-process two accepted original TRI epochs, no certified descendants and continuous geometric error |
 | Product and CI | [V5 register, IDs V5-01 to V5-22](MASTER_PLAN_V5_AUDIT_AND_RECOVERY_20261120.md) | Focus on usable Study Workspace, journal figure, stable locks, physical performance and reviewable PR slices |
 
+## Scientific figure editorial review
+
+- [V5.4 actual original Eistute/Book PDF figure readability and adviser review checklist](V5_4_ARTICLE_FIGURE_REVIEW_CHECKLIST_20261122.md). Actual physical-size audit found the Book 28-panel figure's smallest text at **4.90 pt** (Eistute **6.67 pt**). The figures remain technically source-audited vector outputs but **are not yet independently approved as publication-ready figures**. An unchanged original 28-patch overview and a separately source-certified larger-font split/representative format are recommended for adviser review; no professor sign-off is claimed.
+- [V5.4 hash-lock and source-safe CI result](V5_4_HASH_LOCKS_AND_FAST_WEB_RESULTS_20261122.md) is engineering evidence only; it does not change original acceptance.
+
 ## Reproducible research tools
 
 - The Web research prototype is in [web/](../../tools/mesh_studio/web/); its [README](../../tools/mesh_studio/web/README.md) explains the pinned local Python API and Vite developer launch. The default XYZ picker remains native VTK; experimental BVH variants require explicit opt-in.
