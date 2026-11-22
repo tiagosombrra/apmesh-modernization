@@ -197,6 +197,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+          cache: pip
+          cache-dependency-path: tools/mesh_studio/requirements-native-pdf-ci.txt
+      - name: Install minimal pinned pure-vector PDF publication and independent audit dependencies
+        run: python -m pip install -r tools/mesh_studio/requirements-native-pdf-ci.txt
       - name: Configure isolated serial C++ original-generator research capture
         run: |
           cmake -S . -B build/r2712-native -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_RESEARCH_LINEAGE=ON
