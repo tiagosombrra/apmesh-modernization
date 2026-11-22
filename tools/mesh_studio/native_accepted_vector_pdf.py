@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 from hashlib import sha256
+from importlib.metadata import version as package_version
 from io import BytesIO
 import json
 import math
@@ -245,7 +246,7 @@ def render_pdf_from_source_vectors(v52_dir: Path) -> tuple[bytes, dict]:
         "pdf_sha256": _digest(pdf), "pdf_size_bytes": len(pdf),
         "page_count": 2, "pages": page_receipts,
         "render_engine": {
-            "library": "reportlab", "version": __import__("importlib.metadata", fromlist=["version"]).version("reportlab"),
+            "library": "reportlab", "version": package_version("reportlab"),
             "invariant_document": True, "embedded_font": "DejaVuSans",
             "vector_transform": "xMidYMid meet",
         },
