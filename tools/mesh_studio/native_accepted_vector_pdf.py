@@ -244,6 +244,11 @@ def render_pdf_from_source_vectors(v52_dir: Path) -> tuple[bytes, dict]:
         "source_v52_manifest_sha256": _digest((v52_dir / "manifest.json").read_bytes()),
         "pdf_sha256": _digest(pdf), "pdf_size_bytes": len(pdf),
         "page_count": 2, "pages": page_receipts,
+        "render_engine": {
+            "library": "reportlab", "version": __import__("importlib.metadata", fromlist=["version"]).version("reportlab"),
+            "invariant_document": True, "embedded_font": "DejaVuSans",
+            "vector_transform": "xMidYMid meet",
+        },
         "vector_only_no_raster_images": True, "font_embedded_in_pdf": True,
         "source_cpp_ndjson_must_be_independently_reaudited": True,
         "physical_node_welding_certified": False,
@@ -262,6 +267,10 @@ def audit_vector_pdf_bytes(pdf: bytes, receipt: dict, v52_dir: Path) -> dict:
     _require(_digest(pdf) == receipt["pdf_sha256"] and
              len(pdf) == receipt["pdf_size_bytes"] and
              receipt["schema"] == SCHEMA and
+             receipt.get("render_engine", {}).get("library") == "reportlab" and
+             receipt["render_engine"]["embedded_font"] == "DejaVuSans" and
+             receipt["render_engine"]["vector_transform"] == "xMidYMid meet" and
+             receipt["render_engine"]["invariant_document"] is True and
              receipt["scientific_lod_qualified"] is False and
              receipt["physical_node_welding_certified"] is False,
              "v53_pdf_receipt_or_bytes_changed")
