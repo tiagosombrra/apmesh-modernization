@@ -212,3 +212,8 @@ if(AP_MESH_QUAD_WITH_TREE)
     TIMEOUT 120 LABELS "research-quad;analytic-xyz;not-physical-model")
 
 endif()
+
+# A policy-free graph over the previous accepted mixed mesh and source intervals.
+add_executable(quad_mixed_feedback_probe mixed_feedback_probe.cpp)
+target_include_directories(quad_mixed_feedback_probe PRIVATE ../../research/quad)
+target_compile_features(quad_mixed_feedback_probe PRIVATE cxx_std_17)
