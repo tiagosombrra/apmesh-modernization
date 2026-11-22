@@ -58,3 +58,10 @@ docs/mesh-studio/R2_7_34_PREREGISTERED_SOURCE_CURVE_IDENTITY_AND_SELECTED_TRI_SE
 tests/quad/generator_selected_curve_seam_probe.cpp text eol=lf
 tools/mesh_studio/native_selected_curve_seam.py text eol=lf
 tools/mesh_studio/test_native_selected_curve_seam.py text eol=lf
+
+# V5.4 cross-platform SHA256 hash locks must have identical source bytes.
+# Windows checkout must never rewrite package.json or pip wheel-hash receipts.
+tools/mesh_studio/web/package.json text eol=lf
+tools/mesh_studio/web/package-lock.json text eol=lf
+tools/mesh_studio/locks/*.lock text eol=lf
+tools/mesh_studio/requirements-*.txt text eol=lf

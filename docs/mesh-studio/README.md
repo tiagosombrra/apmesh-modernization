@@ -8,6 +8,7 @@
 
 | Evidence | Exact-source checkpoint | Meaning / limitation |
 | --- | --- | --- |
+| V5.4 reproducible dependency locks and source-scoped fast CI | [Linux/Windows Python SHA256 locks, npm integrity and safe fast-Web split](V5_4_HASH_LOCKS_AND_FAST_WEB_RESULTS_20261122.md) | npm 141 transitives, Python API 32 per OS, native PDF 15; all exact hash locks verified; 18 source-scoped Chromium tests passed in separate FAST job, **not** native scientific qualification. |
 | V5.3 original accepted TRI journal PDF | [Source-audited two-page vector PDF and reproducible recipe](V5_3_ORIGINAL_ACCEPTED_TRI_VECTOR_PDF_RESULTS_20261122.md) | Physical **178×140 mm** Eistute and **190×160 mm** Book pages; PDF-native audit matches **5,424 original accepted TRI** and **408 original sampled source-curve markers**, no raster/implicit welding or LOD. |
 | V5.2 original accepted C++ TRI vector publication | [Real Eistute/Book source-native UV SVG and provenance](V5_2_ORIGINAL_ACCEPTED_NATIVE_TRI_VECTOR_RESULTS_20261120.md) | **1,168** Eistute and **4,256** Book original globally accepted TRI faces, per-source-patch vector SVG, original face/curve/sample identities and exact source SHA; scientifically distinct from P1, not welded LOD. |
 | V5.1 measured Web cache and vector workflow | [Cache measurements, source SVG and bounded Web UI](V5_1_SOURCE_CACHE_AND_VECTOR_STUDY_WORKSPACE_20261120.md) | 16 paired real P1/Band cold/warm source-locked measurements; separate original TRI inspector, pure UV vector export and abortable fetches. This is **product engineering**, not source-native accepted LOD. |
@@ -17,6 +18,11 @@
 | R2.7.34 original shared curves and fan | [Real native curve-object and discrete seam diagnostics](R2_7_34_ORIGINAL_CURVE_IDENTITY_AND_PROVISIONAL_SEAM_RESULTS_20261120.md) | 13 actual original source curve groups; 48/48 matched discrete seam XYZ vertex sets across 2 Eistute process configurations, **not** physical welded ownership or LOD |
 | R2.8 | [V5 admission gate](MASTER_PLAN_V5_AUDIT_AND_RECOVERY_20261120.md) | BLOCKED: no same-process two accepted original TRI epochs, no certified descendants and continuous geometric error |
 | Product and CI | [V5 register, IDs V5-01 to V5-22](MASTER_PLAN_V5_AUDIT_AND_RECOVERY_20261120.md) | Focus on usable Study Workspace, journal figure, stable locks, physical performance and reviewable PR slices |
+
+## Scientific figure editorial review
+
+- [V5.4 actual original Eistute/Book PDF figure readability and adviser review checklist](V5_4_ARTICLE_FIGURE_REVIEW_CHECKLIST_20261122.md). Actual physical-size audit found the Book 28-panel figure's smallest text at **4.90 pt** (Eistute **6.67 pt**). The figures remain technically source-audited vector outputs but **are not yet independently approved as publication-ready figures**. An unchanged original 28-patch overview and a separately source-certified larger-font split/representative format are recommended for adviser review; no professor sign-off is claimed.
+- [V5.4 hash-lock and source-safe CI result](V5_4_HASH_LOCKS_AND_FAST_WEB_RESULTS_20261122.md) is engineering evidence only; it does not change original acceptance.
 
 ## Reproducible research tools
 

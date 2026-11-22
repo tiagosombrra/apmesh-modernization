@@ -37,6 +37,7 @@ class StudioCiScopePolicyTests(unittest.TestCase):
             "- '!tools/mesh_studio/README.md'",
             "- '!tools/mesh_studio/web/README.md'",
             "- '!tools/mesh_studio/fixtures/README.md'",
+            "- '!tools/mesh_studio/web/src/style.css'",
         ])
 
     def test_real_browser_scientific_provenance_depends_on_native_run(self):
@@ -44,6 +45,17 @@ class StudioCiScopePolicyTests(unittest.TestCase):
         self.assertIn("    needs: native-lineage-optin", self.source)
         self.assertIn("  native-lineage-optin:", self.source)
         self.assertIn("mesh-studio-r2720-native-accepted-scene-", self.source)
+
+    def test_new_push_drops_stale_automatic_run_but_preserves_manual_capture(self):
+        # Only superseded automatic pushes may be cancelled.
+        self.assertIn(
+            "group: ${{ github.event_name == 'workflow_dispatch' && format('mesh-studio-manual-{0}', github.ref) || format('mesh-studio-{0}', github.ref) }}",
+            self.source)
+        self.assertIn(
+            "cancel-in-progress: ${{ github.event_name == 'push' }}",
+            self.source)
+        self.assertIn("  workflow_dispatch:", self.source)
+        self.assertIn("  native-lineage-optin:", self.source)
 
     def test_original_native_audits_and_wrapper_are_not_casually_removed(self):
         for anchor in (
