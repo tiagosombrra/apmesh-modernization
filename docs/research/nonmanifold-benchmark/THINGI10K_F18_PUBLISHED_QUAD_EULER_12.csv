@@ -1,0 +1,13 @@
+thingi10k_file_id,original_catalog_name,original_source_triangles,original_source_vertices,source_euler_reference,source_euler_evidence,source_stl_sha256_actual,published_quad_vertices,published_quad_faces,published_quad_euler_if_closed_quad,published_quad_genus_if_closed_connected_orientable,published_output_euler_matches_source,actual_quad_mesh_bytes_checked,matched_pair_verified,apmesh_quad_mesh_generated
+44503,stilo2,21280,10447,,CATALOG_NOT_CLEAN,,18937,19130,-193,,false,false,false,false
+128001,rouleau make 2,66424,33308,,CATALOG_NOT_CLEAN,,56309,56162,147,,false,false,false,false
+58012,Canopy Test,18340,9090,-80,DIRECT_RAW_STL_TOPOLOGY_AUDITED,2c7c322af76b46a307e67af451ebba9e6609e6932a2829f4c596853dbf122d4b,113799,113879,-80,41,true,false,false,false
+61394,millennium falcon top,6747,3367,,DIRECT_RAW_STL_NONMANIFOLD_OR_DEGENERATE,,38038,37730,308,,false,false,false,false
+67792,dual dodec,34800,17280,-120,CONDITIONAL_PINNED_CATALOG_ONLY,,16615,16735,-120,61,true,false,false,false
+69975,Full Mech,104217,52151,,CATALOG_NOT_CLEAN,,22629,22563,66,,false,false,false,false
+81877,BOARD,246334,123047,-120,CONDITIONAL_PINNED_CATALOG_ONLY,,35185,35305,-120,61,true,false,false,false
+94884,container sphere two hundred,47148,23224,-350,CONDITIONAL_PINNED_CATALOG_ONLY,,47116,47466,-350,176,true,false,false,false
+230923,ZombieHunterHead v4 90k,90364,45172,,CATALOG_NOT_CLEAN,,45410,45398,12,,false,false,false,false
+364256,sky castle,36568,18245,,CATALOG_NOT_CLEAN,,70060,68905,1155,,false,false,false,false
+423069,beefyshark medium,40334,20041,,CATALOG_NOT_CLEAN,,60804,60624,180,,false,false,false,false
+498974,Tower of Pi fixed,499968,246079,,CATALOG_NOT_CLEAN,,376509,380068,-3559,,false,false,false,false
