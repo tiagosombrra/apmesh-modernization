@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - feature/mesh-studio-r27-bvh-20261116
+      - feature/mesh-studio-v55-pinned-actions-20261122
     paths:
       - '.github/workflows/mesh-studio-lock-bootstrap.yml'
   workflow_dispatch:
@@ -19,8 +20,8 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
       - name: Record exact runtime and generate complete npm integrity lock
@@ -37,7 +38,7 @@ jobs:
           npm run test:contracts
           npm run build
       - name: Archive generated npm dependency closure (for later review and commit)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-v54-npm-lock-${{ github.sha }}
           path: tools/mesh_studio/web/package-lock.json
@@ -78,8 +79,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.13'
       - name: Install pinned compatible lock resolver
@@ -101,7 +102,7 @@ jobs:
         run: |
           python -c "from pathlib import Path; import re; s=Path('${{ matrix.lock }}').read_text(); names=re.findall(r'(?m)^([a-zA-Z0-9_.-]+)==([a-zA-Z0-9_.!+]+)', s); hashes=re.findall(r'--hash=sha256:([0-9a-f]{64})',s); assert len(names)>=6 and len(hashes)>=len(names), (len(names),len(hashes)); assert '--hash=sha256:' in s; print('V54_PYTHON_HASH_LOCK_PINS='+str(len(names))+',SHA256='+str(len(hashes)))"
       - name: Retain version-complete hash lock for independent review
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-v54-python-lock-${{ matrix.label }}-${{ github.sha }}
           path: ${{ matrix.lock }}
