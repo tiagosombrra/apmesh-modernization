@@ -1,0 +1,779 @@
+{
+  "method": "Read-only measures of individual archived pass-one displacements from the same fixed pass-start geometry. No candidate smoothing pass is formed.",
+  "fractions": [
+    1.0,
+    0.5,
+    0.25,
+    0.125
+  ],
+  "evaluation": "Existing physical TRI q and signed QUAD corner Jacobian, plus worst QUAD edge ratio. Compare to an optional additional minimum angle constraint by kind.",
+  "comparison_noise_floor": "1e-12 x max(1, abs(before), abs(after)), observational only",
+  "observations": [
+    {
+      "case": "original article-front Step 2",
+      "stage": 2,
+      "source_node_count": 281,
+      "face_count": 301,
+      "fixed": 10,
+      "sha256": {
+        "front.json": "bc78b876c5ac8c72ff617cf88e61a9872a58f39f6462eaf27659e2424dc5e68b",
+        "commit_59.obj": "ff29f3674759a03a559d10e53ddf3ec050f4991dedd22596b64a83b40a10ab05",
+        "smoothing_1.obj": "e60510eb335d450f8a90e0f0038d341b096fd05ddf59e40975c4b7c84282391d",
+        "smoothing_2.obj": "5c9c517fc77258ba989ab43931b3e85376a84419127c39132c8fa40780240985",
+        "smoothing_3.obj": "e14c9a6daee8155d7ecb1418d1b2040dbfa6d50681ea854df3517de609cd407c",
+        "smoothing_4.obj": "af2d62533626dfb7522258412bffd2070cfd14221ba97e2a16cb61797871aab8",
+        "smoothing_5.obj": "db3f73f0fe0c227d20ecd1674ac3ff2ce80fe9845e2a7be75c8e63abaad0dd40"
+      },
+      "moved_nodes_in_recorded_pass_one": 179,
+      "unchanged_unfixed_nodes": 92,
+      "witness_nodes_zero_based": [
+        271,
+        272,
+        48,
+        73
+      ],
+      "witness_positions_uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.25457763671875,
+          0.0
+        ],
+        [
+          0.25,
+          0.0625
+        ],
+        [
+          0.125,
+          0.125
+        ]
+      ],
+      "witness_quality_frames": [
+        {
+          "kind": "QUAD",
+          "tri_q": null,
+          "quad_corner_jacobian": 0.42261012867189235,
+          "min_angle_xyz": 25.852902364912794,
+          "max_angle_xyz": 125.64636134660935,
+          "edge_ratio_xyz": 9.239147054237291,
+          "S_uv": 1.5,
+          "S_xyz": 1.7127455292787468
+        },
+        {
+          "kind": "QUAD",
+          "tri_q": null,
+          "quad_corner_jacobian": 0.15808867833029278,
+          "min_angle_xyz": 16.23726528690796,
+          "max_angle_xyz": 167.10920626628817,
+          "edge_ratio_xyz": 9.349353905436013,
+          "S_uv": 1.8422504183840847,
+          "S_xyz": 1.856768958514313
+        },
+        {
+          "kind": "QUAD",
+          "tri_q": null,
+          "quad_corner_jacobian": 0.2686070634729532,
+          "min_angle_xyz": 16.537071804791953,
+          "max_angle_xyz": 155.57759574967608,
+          "edge_ratio_xyz": 6.530427845124364,
+          "S_uv": 1.688839577108899,
+          "S_xyz": 1.816254757724534
+        },
+        {
+          "kind": "QUAD",
+          "tri_q": null,
+          "quad_corner_jacobian": 0.25620566311323756,
+          "min_angle_xyz": 15.803367363706974,
+          "max_angle_xyz": 157.83536443172991,
+          "edge_ratio_xyz": 8.08355989456894,
+          "S_uv": 1.710927274798568,
+          "S_xyz": 1.8244070292921448
+        },
+        {
+          "kind": "QUAD",
+          "tri_q": null,
+          "quad_corner_jacobian": 0.25526639772337584,
+          "min_angle_xyz": 15.746369547872535,
+          "max_angle_xyz": 156.58926089841262,
+          "edge_ratio_xyz": 8.09047761878158,
+          "S_uv": 1.693672460428851,
+          "S_xyz": 1.8250403383569718
+        },
+        {
+          "kind": "QUAD",
+          "tri_q": null,
+          "quad_corner_jacobian": 0.2533978224748581,
+          "min_angle_xyz": 15.63811439615133,
+          "max_angle_xyz": 156.54756481205865,
+          "edge_ratio_xyz": 8.484445553328602,
+          "S_uv": 1.6921537910716578,
+          "S_xyz": 1.8262431733760962
+        }
+      ],
+      "unilateral_trial_outcomes": {
+        "shape_only": {
+          "1.0": 70,
+          "0.5": 13,
+          "0.25": 4,
+          "0.125": 2,
+          "None": 90
+        },
+        "shape_and_angles": {
+          "1.0": 52,
+          "0.5": 21,
+          "0.25": 4,
+          "0.125": 2,
+          "None": 100
+        }
+      },
+      "witness_movable_node_trials": {
+        "48": {
+          "start_uv": [
+            0.25,
+            0.0625
+          ],
+          "target_uv": [
+            0.19708251953125,
+            0.07142857142857142
+          ],
+          "initial_incident_scores": {
+            "tri_q": 0.366563918730117,
+            "tri_min_angle": 15.150057601483107,
+            "quad_j": 0.42261012867189235,
+            "quad_neg_edge_ratio": -9.239147054237291,
+            "quad_min_angle": 25.852902364912794
+          },
+          "neighbor_faces": 5,
+          "trials": [
+            {
+              "fraction": 1.0,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "quad_j",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.6695218005209932,
+                "tri_min_angle": 27.19557922735241,
+                "quad_j": 0.14184782664207599,
+                "quad_neg_edge_ratio": -5.419719014890038,
+                "quad_min_angle": 15.106803192704662
+              },
+              "witness_score": {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.14184782664207599,
+                "min_angle_xyz": 25.852902364912794,
+                "max_angle_xyz": 165.42374537773458,
+                "edge_ratio_xyz": 4.409783164448766,
+                "S_uv": 1.8383474015730887,
+                "S_xyz": 1.838041615308162
+              }
+            },
+            {
+              "fraction": 0.5,
+              "local_shape_valid": true,
+              "shape_accept": true,
+              "shape_and_minimum_angles_accept": true,
+              "declines": [],
+              "incident_score": {
+                "tri_q": 0.511693453190567,
+                "tri_min_angle": 21.43639389694177,
+                "quad_j": 0.42261012867189235,
+                "quad_neg_edge_ratio": -6.78100282108981,
+                "quad_min_angle": 25.852902364912794
+              },
+              "witness_score": {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.42261012867189235,
+                "min_angle_xyz": 25.852902364912794,
+                "max_angle_xyz": 143.8047374468783,
+                "edge_ratio_xyz": 6.78100282108981,
+                "S_uv": 1.615138958328787,
+                "S_xyz": 1.7127455292787468
+              }
+            },
+            {
+              "fraction": 0.25,
+              "local_shape_valid": true,
+              "shape_accept": true,
+              "shape_and_minimum_angles_accept": true,
+              "declines": [],
+              "incident_score": {
+                "tri_q": 0.4312762111551806,
+                "tri_min_angle": 19.747881634154876,
+                "quad_j": 0.42261012867189235,
+                "quad_neg_edge_ratio": -8.388013850992722,
+                "quad_min_angle": 25.852902364912794
+              },
+              "witness_score": {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.42261012867189235,
+                "min_angle_xyz": 25.852902364912794,
+                "max_angle_xyz": 124.36192541533846,
+                "edge_ratio_xyz": 8.388013850992722,
+                "S_uv": 1.5,
+                "S_xyz": 1.7127455292787468
+              }
+            },
+            {
+              "fraction": 0.125,
+              "local_shape_valid": true,
+              "shape_accept": true,
+              "shape_and_minimum_angles_accept": true,
+              "declines": [],
+              "incident_score": {
+                "tri_q": 0.39705843582595324,
+                "tri_min_angle": 18.231278554307714,
+                "quad_j": 0.42261012867189235,
+                "quad_neg_edge_ratio": -9.006881545880734,
+                "quad_min_angle": 25.852902364912794
+              },
+              "witness_score": {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.42261012867189235,
+                "min_angle_xyz": 25.852902364912794,
+                "max_angle_xyz": 125.05221101673692,
+                "edge_ratio_xyz": 9.006881545880734,
+                "S_uv": 1.5,
+                "S_xyz": 1.7127455292787468
+              }
+            }
+          ]
+        },
+        "73": {
+          "start_uv": [
+            0.125,
+            0.125
+          ],
+          "target_uv": [
+            0.16742960611979166,
+            0.09375
+          ],
+          "initial_incident_scores": {
+            "tri_q": 0.18745643905813103,
+            "tri_min_angle": 6.501827768622803,
+            "quad_j": 0.42261012867189235,
+            "quad_neg_edge_ratio": -9.239147054237291,
+            "quad_min_angle": 25.852902364912794
+          },
+          "neighbor_faces": 4,
+          "trials": [
+            {
+              "fraction": 1.0,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "quad_j",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.4633464561079711,
+                "tri_min_angle": 16.310885114250304,
+                "quad_j": 0.26307061867441134,
+                "quad_neg_edge_ratio": -9.239147054237291,
+                "quad_min_angle": 16.23726528690796
+              },
+              "witness_score": {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.26307061867441134,
+                "min_angle_xyz": 16.23726528690796,
+                "max_angle_xyz": 140.21976503401186,
+                "edge_ratio_xyz": 9.239147054237291,
+                "S_uv": 1.6750436644694973,
+                "S_xyz": 1.8195859412565782
+              }
+            },
+            {
+              "fraction": 0.5,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "quad_j",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.33528156375054446,
+                "tri_min_angle": 11.660275171758492,
+                "quad_j": 0.33971929059102446,
+                "quad_neg_edge_ratio": -9.239147054237291,
+                "quad_min_angle": 20.803540623203094
+              },
+              "witness_score": {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.33971929059102446,
+                "min_angle_xyz": 20.803540623203094,
+                "max_angle_xyz": 132.88584034730263,
+                "edge_ratio_xyz": 9.239147054237291,
+                "S_uv": 1.5911324615419153,
+                "S_xyz": 1.768849548631077
+              }
+            },
+            {
+              "fraction": 0.25,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "quad_j",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.2634899798511638,
+                "tri_min_angle": 9.140530654568115,
+                "quad_j": 0.3805319580991321,
+                "quad_neg_edge_ratio": -9.239147054237291,
+                "quad_min_angle": 23.27119673864365
+              },
+              "witness_score": {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.3805319580991321,
+                "min_angle_xyz": 23.27119673864365,
+                "max_angle_xyz": 129.27314395697874,
+                "edge_ratio_xyz": 9.239147054237291,
+                "S_uv": 1.5463054680020254,
+                "S_xyz": 1.7414311473484039
+              }
+            },
+            {
+              "fraction": 0.125,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "quad_j",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.22594717038802842,
+                "tri_min_angle": 7.835236231145951,
+                "quad_j": 0.40143569558730013,
+                "quad_neg_edge_ratio": -9.239147054237291,
+                "quad_min_angle": 24.548402364059836
+              },
+              "witness_score": {
+                "kind": "QUAD",
+                "tri_q": null,
+                "quad_corner_jacobian": 0.40143569558730013,
+                "min_angle_xyz": 24.548402364059836,
+                "max_angle_xyz": 127.4628507898495,
+                "edge_ratio_xyz": 9.239147054237291,
+                "S_uv": 1.5233121528755893,
+                "S_xyz": 1.7272399737326685
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case": "two-block Step 3",
+      "stage": 3,
+      "source_node_count": 683,
+      "face_count": 725,
+      "fixed": 14,
+      "sha256": {
+        "front.json": "c1582b869ceeaae01d4aef267d37f1f66923b2c83ed0e8f673bf571ff4690c7b",
+        "commit_106.obj": "f26cbd3726f6f26435da8ce6d5d93252ae783437e602116cc1c0da43cf1055db",
+        "smoothing_1.obj": "b13fdd64bb9d63a1b6b0ad4621f41bcfac166fb81753ace1e85c0900fc90ecba",
+        "smoothing_2.obj": "d6103985b5e1f1b127f772aa6cfb2ebafb74422e9aee35cd5ae030b20f14a884",
+        "smoothing_3.obj": "5f635f0eec9dbd488182556b8f370c00cdc71717e4d1c639d433632679a1e2c4",
+        "smoothing_4.obj": "91136300d8414b4a0f21f6f35a2c465cd178921df5c2f3861c2f2a3b99559df1",
+        "smoothing_5.obj": "bc5416ca37067dcbc98196571d3218632239ec9a8e8c7ff7a596321e96925123"
+      },
+      "moved_nodes_in_recorded_pass_one": 112,
+      "unchanged_unfixed_nodes": 557,
+      "witness_nodes_zero_based": [
+        55,
+        286,
+        679
+      ],
+      "witness_positions_uv": [
+        [
+          0.875,
+          0.875
+        ],
+        [
+          0.875,
+          0.84375
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "witness_quality_frames": [
+        {
+          "kind": "TRI",
+          "tri_q": 0.20415266796803447,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 6.94702147787149,
+          "max_angle_xyz": 134.95595605599894,
+          "edge_ratio_xyz": 5.850691679610752,
+          "S_uv": null,
+          "S_xyz": null
+        },
+        {
+          "kind": "TRI",
+          "tri_q": 0.07664895887216976,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 2.5933551721029384,
+          "max_angle_xyz": 161.4775171972781,
+          "edge_ratio_xyz": 7.020925558934004,
+          "S_uv": null,
+          "S_xyz": null
+        },
+        {
+          "kind": "TRI",
+          "tri_q": 0.07485179127121176,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 2.536661248969075,
+          "max_angle_xyz": 162.46181301023546,
+          "edge_ratio_xyz": 6.808646851430209,
+          "S_uv": null,
+          "S_xyz": null
+        },
+        {
+          "kind": "TRI",
+          "tri_q": 0.054613779270344415,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 1.8557039971438891,
+          "max_angle_xyz": 167.77639349418476,
+          "edge_ratio_xyz": 6.538333953073528,
+          "S_uv": null,
+          "S_xyz": null
+        },
+        {
+          "kind": "TRI",
+          "tri_q": 0.05671218307105341,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 1.9298398075942857,
+          "max_angle_xyz": 167.59946514781763,
+          "edge_ratio_xyz": 6.3768386507840695,
+          "S_uv": null,
+          "S_xyz": null
+        },
+        {
+          "kind": "TRI",
+          "tri_q": 0.05483599181146062,
+          "quad_corner_jacobian": null,
+          "min_angle_xyz": 1.8698820585022242,
+          "max_angle_xyz": 168.37399456018758,
+          "edge_ratio_xyz": 6.176025475632036,
+          "S_uv": null,
+          "S_xyz": null
+        }
+      ],
+      "unilateral_trial_outcomes": {
+        "shape_only": {
+          "1.0": 4,
+          "0.5": 2,
+          "0.25": 1,
+          "0.125": 1,
+          "None": 104
+        },
+        "shape_and_angles": {
+          "1.0": 4,
+          "0.5": 2,
+          "0.25": 1,
+          "0.125": 1,
+          "None": 104
+        }
+      },
+      "witness_movable_node_trials": {
+        "55": {
+          "start_uv": [
+            0.875,
+            0.875
+          ],
+          "target_uv": [
+            0.890625,
+            0.890625
+          ],
+          "initial_incident_scores": {
+            "tri_q": 0.20415266796803447,
+            "tri_min_angle": 6.94702147787149,
+            "quad_j": 0.9999973671382334,
+            "quad_neg_edge_ratio": -1.006367575970507,
+            "quad_min_angle": 89.87813313195717
+          },
+          "neighbor_faces": 3,
+          "trials": [
+            {
+              "fraction": 1.0,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "tri_q",
+                "tri_min_angle",
+                "quad_j",
+                "quad_neg_edge_ratio",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.19227197682035727,
+                "tri_min_angle": 6.933926897767469,
+                "quad_j": 0.8070260208144324,
+                "quad_neg_edge_ratio": -1.5723687740248207,
+                "quad_min_angle": 53.806603607244604
+              },
+              "witness_score": {
+                "kind": "TRI",
+                "tri_q": 0.19227197682035727,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 6.933926897767469,
+                "max_angle_xyz": 153.16444727149914,
+                "edge_ratio_xyz": 3.739346169045427,
+                "S_uv": null,
+                "S_xyz": null
+              }
+            },
+            {
+              "fraction": 0.5,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "tri_q",
+                "tri_min_angle",
+                "quad_j",
+                "quad_neg_edge_ratio",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.19922532103645724,
+                "tri_min_angle": 6.94005842480014,
+                "quad_j": 0.9260969857771452,
+                "quad_neg_edge_ratio": -1.2755494905391436,
+                "quad_min_angle": 67.83455283377201
+              },
+              "witness_score": {
+                "kind": "TRI",
+                "tri_q": 0.19922532103645724,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 6.94005842480014,
+                "max_angle_xyz": 146.12383190642436,
+                "edge_ratio_xyz": 4.6130570444476895,
+                "S_uv": null,
+                "S_xyz": null
+              }
+            },
+            {
+              "fraction": 0.25,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "tri_q",
+                "tri_min_angle",
+                "quad_j",
+                "quad_neg_edge_ratio",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.20193703717047776,
+                "tri_min_angle": 6.943432707037566,
+                "quad_j": 0.9766922181479876,
+                "quad_neg_edge_ratio": -1.1360268715173973,
+                "quad_min_angle": 77.60551632758158
+              },
+              "witness_score": {
+                "kind": "TRI",
+                "tri_q": 0.20193703717047776,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 6.943432707037566,
+                "max_angle_xyz": 141.2157515118603,
+                "edge_ratio_xyz": 5.181510987810903,
+                "S_uv": null,
+                "S_xyz": null
+              }
+            },
+            {
+              "fraction": 0.125,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "tri_q",
+                "tri_min_angle",
+                "quad_j",
+                "quad_neg_edge_ratio",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.20310593102406507,
+                "tri_min_angle": 6.945199867063986,
+                "quad_j": 0.9934694923802099,
+                "quad_neg_edge_ratio": -1.0696960014786447,
+                "quad_min_angle": 83.44863017065819
+              },
+              "witness_score": {
+                "kind": "TRI",
+                "tri_q": 0.20310593102406507,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 6.945199867063986,
+                "max_angle_xyz": 138.27961766711022,
+                "edge_ratio_xyz": 5.503606206839236,
+                "S_uv": null,
+                "S_xyz": null
+              }
+            }
+          ]
+        },
+        "286": {
+          "start_uv": [
+            0.875,
+            0.84375
+          ],
+          "target_uv": [
+            0.8802083333333334,
+            0.8697916666666666
+          ],
+          "initial_incident_scores": {
+            "tri_q": 0.16114967693142532,
+            "tri_min_angle": 5.459896730324912,
+            "quad_j": 0.9999926160602896,
+            "quad_neg_edge_ratio": -1.0267499658864492,
+            "quad_min_angle": 89.78857459967945
+          },
+          "neighbor_faces": 4,
+          "trials": [
+            {
+              "fraction": 1.0,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "tri_q",
+                "tri_min_angle",
+                "quad_j",
+                "quad_neg_edge_ratio",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.07868710258617419,
+                "tri_min_angle": 2.6065434663859395,
+                "quad_j": 0.7075260940424274,
+                "quad_neg_edge_ratio": -6.182684413228383,
+                "quad_min_angle": 49.504380160018634
+              },
+              "witness_score": {
+                "kind": "TRI",
+                "tri_q": 0.07868710258617419,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 2.6065434663859395,
+                "max_angle_xyz": 90.05337680083422,
+                "edge_ratio_xyz": 21.989091415033165,
+                "S_uv": null,
+                "S_xyz": null
+              }
+            },
+            {
+              "fraction": 0.5,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "tri_q",
+                "tri_min_angle",
+                "quad_j",
+                "quad_neg_edge_ratio",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.1468558547023078,
+                "tri_min_angle": 4.9057312129862565,
+                "quad_j": 0.9115092120818408,
+                "quad_neg_edge_ratio": -1.9912631217881962,
+                "quad_min_angle": 65.71506491154611
+              },
+              "witness_score": {
+                "kind": "TRI",
+                "tri_q": 0.1468558547023078,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 4.9057312129862565,
+                "max_angle_xyz": 126.89040291269933,
+                "edge_ratio_xyz": 9.352398857314496,
+                "S_uv": null,
+                "S_xyz": null
+              }
+            },
+            {
+              "fraction": 0.25,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "quad_j",
+                "quad_neg_edge_ratio",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.17686398507210616,
+                "tri_min_angle": 5.956225692633901,
+                "quad_j": 0.9736464754186014,
+                "quad_neg_edge_ratio": -1.3506186334061638,
+                "quad_min_angle": 76.81725919979007
+              },
+              "witness_score": {
+                "kind": "TRI",
+                "tri_q": 0.17686398507210616,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 5.956225692633901,
+                "max_angle_xyz": 131.97523231757094,
+                "edge_ratio_xyz": 7.164343720098847,
+                "S_uv": null,
+                "S_xyz": null
+              }
+            },
+            {
+              "fraction": 0.125,
+              "local_shape_valid": true,
+              "shape_accept": false,
+              "shape_and_minimum_angles_accept": false,
+              "declines": [
+                "quad_j",
+                "quad_neg_edge_ratio",
+                "quad_min_angle"
+              ],
+              "incident_score": {
+                "tri_q": 0.1745590628336244,
+                "tri_min_angle": 5.948115320281258,
+                "quad_j": 0.9929666596004333,
+                "quad_neg_edge_ratio": -1.1526210154203052,
+                "quad_min_angle": 83.20090175217932
+              },
+              "witness_score": {
+                "kind": "TRI",
+                "tri_q": 0.1908457419239464,
+                "quad_corner_jacobian": null,
+                "min_angle_xyz": 6.458807976657046,
+                "max_angle_xyz": 133.63966482677532,
+                "edge_ratio_xyz": 6.433474526390468,
+                "S_uv": null,
+                "S_xyz": null
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "canonical_entry": "4f19115cc9399d1613a6e532b65cf3b3c2c3c90c",
+  "script_sha256": "3193c8f2a2483150b99ab27484cbdb484cebc9f0743157017232d6d5469dac48",
+  "native_execution": false,
+  "scientific_proposal_status": "Awaiting alignment"
+}

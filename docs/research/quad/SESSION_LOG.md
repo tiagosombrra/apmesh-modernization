@@ -4022,3 +4022,23 @@ Retain the case-specific experimental source locally and record the measured
 result in canonical documentation. No full CTest or new hosted qualification.
 The next work item is a scientifically aligned smoothing comparison for the
 limiting corner, retaining separate TRI and QUAD shape observations.
+
+## 2026-11-22 Fortaleza - diagnose smoothing losses and preserve adaptive goal
+
+The researcher requests mixed adaptation and good shapes wherever feasible.
+Bind the Step 2 boundary QUAD and two-block Step 3 corner TRI to their
+original first-pass displacements. On archived start frames, move one
+vertex at a time for geometry measurement only. One full corner move
+drops the TRI to 2.61 degrees. A half move for the Step 2 QUAD preserves
+its shape while improving adjacent elements. The strict scoring proposal
+has an admissible fraction for 79 of 179 and 8 of 112 nonzero moves,
+respectively, in these independent observations.
+
+Specify one scientific comparison using the same five UV passes, fixed
+contour, deterministic staged targets, up to four trial lengths per node,
+incident physical TRI/QUAD shape and minimum-angle checks, and restoration
+on whole-pass geometric rejection. Await explicit alignment. The new
+[design receipt](MIXED_SMOOTHING_SHAPE_DESIGN_20261122.md) is read-only
+with no native run. Resume the previous-mixed-state feedback contract
+after this bounded item. Current curve subdivision is inherited from
+TRI and does not satisfy the two accepted mixed epochs required by #221.

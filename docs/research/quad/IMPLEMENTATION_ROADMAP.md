@@ -97,8 +97,12 @@ and identifies a bounded two-block alternative respecting 2:1. The researcher
 approved and [measured that alternative](TWO_BLOCK_TEMPLATE_TRIAL_20261122.md).
 The real transition improves locally with seven fewer elements and an unchanged
 global post-smoothing minimum. Retain the local trial. The next work item is
-a scoped quality-constrained UV smoothing comparison for the limiting corner,
-subject to a scientific decision on the node-move acceptance rule.
+the [specified quality-constrained UV smoothing comparison](MIXED_SMOOTHING_SHAPE_DESIGN_20261122.md)
+for the limiting corner. The existing Step 2 and two-block Step 3 archives
+measure the tradeoff in unilateral moves. Obtain scientific alignment on
+the proposed node acceptance and complete-pass geometric rollback. After
+this bounded comparison return to the adaptive feedback contract in issue
+#221 and verify provenance of at least two accepted mixed-driven epochs.
 Keep PR243 draft. Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned

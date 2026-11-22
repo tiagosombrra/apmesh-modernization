@@ -3,7 +3,7 @@
 Updated 2026-11-22 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: two-block transition trial measured; limiting corner smoothing
+## Active: local shape-aware smoothing comparison proposed
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,29 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-22 - isolate the smoothing loss and specify a guarded comparison
+
+The [design](MIXED_SMOOTHING_SHAPE_DESIGN_20261122.md) and
+[receipt](evidence/MIXED_SMOOTHING_SHAPE_DESIGN_20261122.json) quantify
+individual recorded first-pass moves on unchanged Step 2 and two-block
+Step 3 starting frames. One interior move alone reduces the limiting
+Step 3 TRI angle from 6.95 to 2.61 degrees. Its one-eighth move still
+worsens neighboring shape statistics. In Step 2, halving one of the
+two moves preserves the observed boundary QUAD angle/Jacobian and
+improves neighboring TRI shape. On the same fixed start frame, 79 of
+179 and 8 of 112 moving vertices respectively have at least one
+valid fraction meeting the proposed shape and angle constraints.
+
+**Next:** obtain alignment for the defined one-comparison local smoothing
+rule over the two archived starts. Evaluate physical TRI/QUAD minima and
+tails and local size gradation and geometric deviation. Keep five passes
+and contour, compare the longest valid fractions to the prior smoothing,
+and record complete-pass validity and rollback. No C++ change or native
+run for this design. After this bounded item, prioritize the mixed
+adaptive feedback contract in issue #221: a qualified mixed estimator,
+owned previous accepted state driving the next reconstruction, and two
+distinct accepted mixed epochs. Current mixed-driven accepted epochs: 0.
 
 ### 2026-11-22 - one approved two-block native transition replay
 
