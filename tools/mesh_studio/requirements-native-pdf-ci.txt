@@ -1,0 +1,7 @@
+# Pinned direct dependencies for headless original C++ source PDF publication.
+# Keep VTK/OpenGL and browser stacks out of the isolated native source job.
+# Matplotlib supplies the deterministic, bundled DejaVuSans TrueType font.
+matplotlib==3.10.8
+reportlab==4.4.9
+pypdf==5.9.0
+PyMuPDF==1.26.7
