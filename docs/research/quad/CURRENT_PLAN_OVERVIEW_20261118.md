@@ -47,10 +47,13 @@ The [transition shape experiment](MIXED_TRANSITION_SHAPE_20261120.md)
 locates the forced three-TRI closure at front commit 73. Local base deferral
 changes its order and yields the same physical shape. Retain the original
 curve partition. The [template-size audit](TEMPLATE_INTERFACE_SIZE_AUDIT_20261122.md)
-identifies a local two-block layout that would enlarge the exposed template
-edges under the existing catalog and 2:1 rule. A native comparison awaits
-scientific alignment. Track final angles, edge ratio and separate TRI/QUAD
-shape metrics. Smoothing and curvature work wait for this transition step.
+identifies a local two-block layout that enlarges the exposed template
+edges under the existing catalog and 2:1 rule in the
+[approved native experiment](TWO_BLOCK_TEMPLATE_TRIAL_20261122.md). It improves
+local contact shape and reduces counts. The same fixed-corner TRI still limits
+the final mesh at 1.87 degrees. Prioritize that smoothing regression. Track
+final angles, edge ratios and separate TRI/QUAD metrics; global mixed curvature
+and adaptation remain open.
 
 ## What prevents calling the technique complete
 

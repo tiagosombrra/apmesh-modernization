@@ -93,9 +93,12 @@ Close this ordering trial without adoption. The researcher chooses to
 preserve the original curve partition. The [template interface audit](TEMPLATE_INTERFACE_SIZE_AUDIT_20261122.md)
 traces the pocket to T1 half-sides on native leaves. Its local geometry
 calculation shows why grouping only the seed block preserves the interface
-and identifies a bounded two-block alternative respecting 2:1. Obtain
-scientific alignment before one derived tree replay. The quality-constrained
-UV smoothing candidate is queued after transition work.
+and identifies a bounded two-block alternative respecting 2:1. The researcher
+approved and [measured that alternative](TWO_BLOCK_TEMPLATE_TRIAL_20261122.md).
+The real transition improves locally with seven fewer elements and an unchanged
+global post-smoothing minimum. Retain the local trial. The next work item is
+a scoped quality-constrained UV smoothing comparison for the limiting corner,
+subject to a scientific decision on the node-move acceptance rule.
 Keep PR243 draft. Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned

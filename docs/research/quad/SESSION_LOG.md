@@ -3998,3 +3998,27 @@ identity of all other exposed edges in the calculation. The
 limits, candidate scope and evidence. No C++ changes, new native runs,
 CTest or hosted qualification. The next scientific decision is one
 two-block opt-in replay with the original contour retained.
+
+## 2026-11-22 Fortaleza - execute and compare the approved two-block layout
+
+The researcher approves one native comparison of the two specified sibling
+blocks with the original curve fixed. Use an isolated C++17 MSVC build from
+c93a383. A derived value snapshot omits only the two subdivision events in
+the mixed Step 3, retry-0 replay. The real reference TRI history precedes
+that replay and is accepted with 430 TRI and curvature error 0.0303172.
+The curve trace, four TRI OBJ files and Step 0-2 mixed outputs agree byte for
+byte with the retained native control.
+
+The application exits zero in 16.48s. Verify 217 leaves, 619 seed QUADs,
+equal seed area, exactly four-to-two exposed edge replacement and original
+contour positions/identities. Independently replay 106 front commits, five
+smoothing passes and reject nine boundary forgeries. The three pocket TRI
+disappear. Final contact angle rises 3.10 to 5.45 degrees and the mesh loses
+seven elements. The same distant triangle still reaches 1.87 degrees in
+the final mesh. The [report](TWO_BLOCK_TEMPLATE_TRIAL_20261122.md) records all
+tradeoffs, including interior QUAD angles and sampled geometry.
+
+Retain the case-specific experimental source locally and record the measured
+result in canonical documentation. No full CTest or new hosted qualification.
+The next work item is a scientifically aligned smoothing comparison for the
+limiting corner, retaining separate TRI and QUAD shape observations.

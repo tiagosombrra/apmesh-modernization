@@ -3,7 +3,7 @@
 Updated 2026-11-22 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: retain the native contour; local template layout comparison proposed
+## Active: two-block transition trial measured; limiting corner smoothing
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,34 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-22 - one approved two-block native transition replay
+
+The [trial](TWO_BLOCK_TEMPLATE_TRIAL_20261122.md) and
+[receipt](evidence/TWO_BLOCK_TEMPLATE_TRIAL_20261122.json) record one MSVC
+Debug C++17 replay. Its derived Step 3 tree replaces only eight approved
+children by their two parents. Actual 223 to 217 leaves, 624 to 619 seed
+QUADs and four short to two double-length exposed edges match the prediction.
+All other exposed seed edges and seed area agree. The native app exits zero
+in 16.48s under 180s; 106 candidate front commits, five smoothing passes and
+nine boundary forgeries are checked independently. All four native TRI OBJ
+files, the curve trace and the Step 0-2 mixed OBJ files match bytes.
+
+The local contact angle minimum after smoothing improves 3.10 to 5.45
+degrees. The three original pocket TRI are absent. Mixed nodes decrease
+689 to 683 and elements 732 to 725. The global post-smoothing minimum is
+the same 1.87-degree TRI near the fixed corner, identical in all six frames.
+The contour-QUAD worst angle and Jacobian stay at 18.92 degrees and 0.32013.
+The sampled final area-weighted XYZ RMS is 0.009542 to 0.009486. Preserve the
+local improvement and the separate worst-corner limitation.
+
+**Next:** prepare a scoped scientific comparison protecting shape during
+the existing mixed UV smoothing, centered on the limiting fixed-corner
+TRI and the adjacent elements it shares. Specify the motion acceptance
+rule before seeking alignment. Check both transition TRI and contour QUAD
+shape in that comparison. Keep the exact two-block source local for now.
+No general coarsening rule, full CTest, hosted qualification or adaptive
+mixed admission follows from this bounded trial. PR243 remains draft.
 
 ### 2026-11-22 - preserve the curve and trace the template interface
 
@@ -30,13 +58,9 @@ two 0.0625-UV exposed edges in place of four 0.03125 edges. Total seed area and
 all other exposed seed edges agree in the reconstruction. Final front and
 smoothing shape for the new layout are unmeasured.
 
-**Next:** obtain scientific alignment for one opt-in Step 3 replay changing
-only the two recorded parent boxes on a separate reconstructed tree. Keep
-curve samples, native TRI state, selected clearance and template/front/smoothing
-rules. Compare full final physical shape, neighboring size ratios, error and
-counts while retaining both the control and any candidate failure. No C++ changes,
-native builds, baseline CTest or hosted checks for this audit. PR243 remains
-draft. Mixed global curvature error and adaptation remain open.
+**Disposition:** the researcher approved the two-block replay, measured
+and documented above. The original contour is retained. This archived
+layout audit remains evidence for the predicted and measured interface.
 
 ### 2026-11-20 - one native contour subdivision specified
 
