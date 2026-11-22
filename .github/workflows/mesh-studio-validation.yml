@@ -244,6 +244,19 @@ jobs:
             build/r2720-native-accepted-scene.json
           if-no-files-found: error
           retention-days: 14
+      - name: Generate two-page original Eistute/Book accepted source TRI PDF with embedded font and true vector paths
+        run: python -m tools.mesh_studio.native_accepted_vector_pdf --mode export --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --v52-dir build/v52-native-accepted-uv-publication --output-dir build/v53-original-native-vector-pdf
+      - name: Independently re-open original accepted C++ source NDJSON and audit every PDF TRI/curve vector path, embedded fonts and physical page sizes
+        run: python -m tools.mesh_studio.native_accepted_vector_pdf --mode audit --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --v52-dir build/v52-native-accepted-uv-publication --output-dir build/v53-original-native-vector-pdf
+      - name: Retain V5.3 original-source true-vector article PDF and replayable figure recipe
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-v53-original-native-accepted-article-pdf-${{ github.sha }}
+          path: |
+            build/v53-original-native-vector-pdf/
+            build/v52-native-accepted-uv-publication/manifest.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Independently audit source-sha-pinned accepted TRI seam edges across every patch
         run: python -m tools.mesh_studio.native_seam_edges --directory build/r2712-native-evidence --output build/r2721-original-native-seam-edges.json
       - name: Compute R2.7.22 real native scene CPU typed-buffer capacity from original source bytes
