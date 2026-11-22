@@ -1,0 +1,56 @@
+{
+  "schema": "apmesh-thingi10k-f19-selective-remote-output-acquisition-capability-v1",
+  "date": "2026-11-22",
+  "experimental_case": "Thingi10K-58012-Canopy-Test",
+  "reference_output_status": "NO_ACTUAL_OUTPUT_BYTES_OBTAINED",
+  "author_archive_url": "https://www.quadmesh.cloud/thingi10k-quad-dataset.zip",
+  "author_zip_remote_http_range_verified": false,
+  "author_zip_entry_index_checked": false,
+  "author_zip_58012_member_exists_verified": false,
+  "quad_reference_output_hash_verified": false,
+  "quad_reference_topology_audited": false,
+  "source_stl_sha256": "2c7c322af76b46a307e67af451ebba9e6609e6932a2829f4c596853dbf122d4b",
+  "source_topology_known": {
+    "vertices": 9090,
+    "edges": 27510,
+    "triangles": 18340,
+    "euler": -80,
+    "genus": 41
+  },
+  "author_published_output_counts": {
+    "vertices": 113799,
+    "quads": 113879,
+    "irregular_vertices_paper": 7977,
+    "AD_deg_paper": 15.49,
+    "ED_pct_paper": 12.28,
+    "SJ_avg_paper": 0.93
+  },
+  "synthetic_http_zip_tests_passed": 14,
+  "synthetic_http_zip_tests_failed": 0,
+  "local_python_unable_to_resolve_external_archive_host": true,
+  "remote_download_interface_failed": true,
+  "hf_alternative_large_archive": "https://huggingface.co/datasets/Thingi10K/Thingi10K/blob/aaae0bb650cf464eb6c7d86d5ce39597cb71e106/Thingi10K_quadwild_npz.tar.gz",
+  "hf_advertised_remote_archive_sha256": "79d213585fce31c61f661221266c967b26c5eb446e394d2022280f5a02399011",
+  "hf_archive_contents_verified": false,
+  "files": [
+    {
+      "relative_path": "thingi10k_f19_remote_zip_range.py",
+      "sha256": "1fcfc42dadf3b366a272c58e043be5f44c2ddf6112d23e7e1e39d7aabc9de4d5",
+      "bytes": 14346
+    },
+    {
+      "relative_path": "test_thingi10k_f19_remote_zip_range.py",
+      "sha256": "6e3143ca1c2ba742d177f5a44bb51efd37fbf232d45c22f5a40f945fbcbe2573",
+      "bytes": 9130
+    },
+    {
+      "relative_path": "THINGI10K_F19_QUADWILD_SELECTIVE_ACQUISITION.md",
+      "sha256": "612b3bbbfe99c0510610150bf7eff6b0e686bc6d4f8797678a8444f1a707b55b",
+      "bytes": 8494
+    }
+  ],
+  "research_scope": "ACQUISITION_CODE_TESTED_ONLY_NO_MESH_OR_OUTPUT_PAIR_APPROVAL",
+  "source_or_output_third_party_geometry_committed": false,
+  "apmesh_new_generation_executed": false,
+  "main_merged": false
+}
