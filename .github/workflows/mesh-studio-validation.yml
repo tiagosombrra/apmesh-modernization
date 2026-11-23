@@ -4,6 +4,7 @@ on:
     branches:
       - feature/mesh-studio-fixture-first-20261114
       - feature/mesh-studio-r27-bvh-20261116
+      - research/mesh-studio-v57-article-layout-preflight-20261123
     paths:
       - 'tools/mesh_studio/**'
       # Documentation-only edits do not change Python/TS/native behavior.
@@ -47,8 +48,8 @@ jobs:
       PYTHONHASHSEED: '0'
       APMESH_CI_HEADLESS_NO_OPENGL: ${{ matrix.os == 'windows-2022' && '1' || '0' }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.13'
           cache: pip
@@ -68,7 +69,7 @@ jobs:
         run: python -m tools.mesh_studio.benchmark_web_cache --pairs 16 --output build/mesh-studio/v5-source-web-cache-benchmark.json
       - name: Retain actual source SHA pinned V5 cold and warm API timings
         if: runner.os == 'Linux'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-v5-source-web-cache-${{ github.sha }}
           path: build/mesh-studio/v5-source-web-cache-benchmark.json
@@ -90,7 +91,7 @@ jobs:
         run: python -m tools.mesh_studio.source_epoch_inventory --output build/mesh-studio/r2710-source-epoch-inventory.json
       - name: Retain read-only source/epoch qualification ledger
         if: runner.os == 'Linux'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-source-epoch-inventory-${{ github.sha }}
           path: build/mesh-studio/r2710-source-epoch-inventory.json
@@ -101,7 +102,7 @@ jobs:
         run: python -m tools.mesh_studio.native_epoch_bridge --output build/mesh-studio/r2711-native-epoch-bridge.json
       - name: Retain original-native-epoch bridge without inventing a second accepted epoch
         if: runner.os == 'Linux'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-native-epoch-bridge-${{ github.sha }}
           path: build/mesh-studio/r2711-native-epoch-bridge.json
@@ -109,7 +110,7 @@ jobs:
           retention-days: 7
       - name: Retain transport-size preflight receipt
         if: runner.os == 'Linux'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-transfer-preflight-${{ github.sha }}
           path: build/mesh-studio/transfer-size.json
@@ -125,20 +126,20 @@ jobs:
       MPLBACKEND: Agg
       PYTHONHASHSEED: '0'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.13'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
       - name: Recover same-run original compiled accepted TRI for real Chromium performance
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: mesh-studio-r2720-native-accepted-scene-${{ github.sha }}
           path: build
       - name: Recover same-run original C++ source-attested Eistute/Book vector article figures
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: mesh-studio-v52-original-native-accepted-uv-vector-${{ github.sha }}
           path: build/v52-native-publication-artifact
@@ -146,7 +147,7 @@ jobs:
         run: |
           python -c "from pathlib import Path; root=Path('build/v52-native-publication-artifact'); assert list(root.rglob('manifest.json')) and list(root.rglob('eistute-accepted-step1-uv.svg')) and list(root.rglob('book-accepted-step1-uv.svg'))"
       - name: Recover same-run source-bound typed-buffer capacity receipt
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: mesh-studio-r2722-original-visual-transfer-budget-${{ github.sha }}
           path: build/mesh-studio
@@ -173,7 +174,7 @@ jobs:
       - name: Independently audit actual original Chromium performance receipt and source SHA
         run: python -m tools.mesh_studio.native_browser_perf_audit --report build/mesh-studio/r2722-original-chromium-performance.json --scene build/r2720-native-accepted-scene.json --budget build/mesh-studio/r2722-visual-transfer-budget.json --output build/mesh-studio/r2722-chromium-audit.json
       - name: Retain exact-source original Chromium import interaction and JS heap measurements
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2722-real-native-chromium-${{ github.sha }}
           path: |
@@ -183,7 +184,7 @@ jobs:
           retention-days: 14
       - name: Retain bounded browser screenshots and test logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-chromium-${{ github.sha }}
           path: tools/mesh_studio/web/test-results/
@@ -193,8 +194,8 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.13'
           cache: pip
@@ -215,7 +216,7 @@ jobs:
       - name: Audit genuine C++ original precommit acceptance gates against independently accepted native commits
         run: python -m tools.mesh_studio.native_acceptance_gate_forensics --directory build/r2712-native-evidence --output build/r2723-original-native-acceptance-gates.json
       - name: Retain R2.7.23 original C++ source-bound acceptance predicates without promoting rejected trials
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2723-original-acceptance-gate-forensics-${{ github.sha }}
           path: build/r2723-original-native-acceptance-gates.json
@@ -240,7 +241,7 @@ jobs:
       - name: Independently re-open original C++ NDJSON and exact SVG native face/curve/patch receipts
         run: python -m tools.mesh_studio.native_accepted_vector_publication --mode audit --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --output-dir build/v52-native-accepted-uv-publication
       - name: Archive original source-attested accepted Eistute/Book SVG figure and source manifest
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-v52-original-native-accepted-uv-vector-${{ github.sha }}
           path: |
@@ -253,11 +254,24 @@ jobs:
       - name: Independently re-open original accepted C++ source NDJSON and audit every PDF TRI/curve vector path, embedded fonts and physical page sizes
         run: python -m tools.mesh_studio.native_accepted_vector_pdf --mode audit --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --v52-dir build/v52-native-accepted-uv-publication --output-dir build/v53-original-native-vector-pdf
       - name: Retain V5.3 original-source true-vector article PDF and replayable figure recipe
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-v53-original-native-accepted-article-pdf-${{ github.sha }}
           path: |
             build/v53-original-native-vector-pdf/
+            build/v52-native-accepted-uv-publication/manifest.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: V5.7 export Book true-vector A4 seven-page appendix and predeclared four-slot paper example from same-run original accepted C++ source
+        run: python -m tools.mesh_studio.native_book_print_layout --mode export --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --v52-dir build/v52-native-accepted-uv-publication --output-dir build/v57-original-book-print-layout
+      - name: V5.7 independently re-open original C++ postcommit NDJSON and verify each printable PDF face UV, marker, page and actual embedded font
+        run: python -m tools.mesh_studio.native_book_print_layout --mode audit --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --v52-dir build/v52-native-accepted-uv-publication --output-dir build/v57-original-book-print-layout
+      - name: Retain same-run original accepted Book full and sample PDF with deterministic source-path audit receipts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: mesh-studio-v57-original-book-print-layout-${{ github.sha }}
+          path: |
+            build/v57-original-book-print-layout/
             build/v52-native-accepted-uv-publication/manifest.json
           if-no-files-found: error
           retention-days: 14
@@ -266,70 +280,70 @@ jobs:
       - name: Compute R2.7.22 real native scene CPU typed-buffer capacity from original source bytes
         run: python -m tools.mesh_studio.native_scene_perf_budget --original-directory build/r2712-native-evidence --scene build/r2720-native-accepted-scene.json --output build/mesh-studio/r2722-visual-transfer-budget.json
       - name: Retain original-source R2.7.22 deterministic CPU transfer budget
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2722-original-visual-transfer-budget-${{ github.sha }}
           path: build/mesh-studio/r2722-visual-transfer-budget.json
           if-no-files-found: error
           retention-days: 14
       - name: Retain native R2.7.21 read-only per-patch actual TRI edge qualification
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2721-original-native-seam-edges-${{ github.sha }}
           path: build/r2721-original-native-seam-edges.json
           if-no-files-found: error
           retention-days: 14
       - name: Retain R2.7.20 independent original Eistute Book accepted TRI scene bundle
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2720-native-accepted-scene-${{ github.sha }}
           path: build/r2720-native-accepted-scene.json
           if-no-files-found: error
           retention-days: 14
       - name: Retain original R2.7.19 Inspector import manifest for independent local viewer
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2719-native-inspector-${{ github.sha }}
           path: build/r2719-native-inspector.json
           if-no-files-found: error
           retention-days: 14
       - name: Retain original R2.7.18 C++ pointer-comparison receipt without raw addresses
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2718-native-boundary-ownership-${{ github.sha }}
           path: build/r2718-boundary-cpp-ownership.json
           if-no-files-found: error
           retention-days: 14
       - name: Retain native R2.7.17 original source-corner witness without numeric changes
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2717-original-corner-origin-${{ github.sha }}
           path: build/r2717-native-corner-origin.json
           if-no-files-found: error
           retention-days: 14
       - name: Retain R2.7.16 original native sample associations without overwriting any node IDs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2716-nonwelded-correspondence-${{ github.sha }}
           path: build/r2716-native-correspondence.json
           if-no-files-found: error
           retention-days: 14
       - name: Retain R2.7.15 original-source sampled interface report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2715-sampled-seams-${{ github.sha }}
           path: build/r2715-native-sampled-seams.json
           if-no-files-found: error
           retention-days: 14
       - name: Retain original-source adjacency evidence with explicit LOD exclusions
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2714-source-adjacency-${{ github.sha }}
           path: build/r2714-source-adjacency.json
           if-no-files-found: error
           retention-days: 14
       - name: Retain original NDJSON face records and source-bound summaries together
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2712-native-original-source-${{ github.sha }}
           path: build/r2712-native-evidence/*
@@ -345,7 +359,7 @@ jobs:
       - name: Prove Book real C++ original acceptance, OBJ and scientific CSV/JSON byte parity OFF vs ON
         run: python -m tools.mesh_studio.native_lineage_parity --exe-off build/r2713-default-off/bin/quad_generator_outcome_probe --exe-on build/r2712-native/bin/quad_generator_outcome_probe --root . --model book --out-dir build/r2713-parity-evidence
       - name: Retain native OFF/ON numerical parity receipts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2713-native-numerical-parity-${{ github.sha }}
           path: build/r2713-parity-evidence/*.json
@@ -358,7 +372,7 @@ jobs:
       - name: Audit R2.7.25 original effective C++ curve point floors and element targets for both real source/trial runs
         run: python -m tools.mesh_studio.native_effective_budget_audit --original-directory build/r2712-native-evidence --trials-directory build/r2724-controlled-native-treatment-evidence --output build/r2725-original-effective-budget-audit.json
       - name: Retain source-verified R2.7.25 effective native C++ budget and per-curve comparison
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2725-original-effective-budgets-${{ github.sha }}
           path: build/r2725-original-effective-budget-audit.json
@@ -378,7 +392,7 @@ jobs:
         run: python -m tools.mesh_studio.native_transition_classifier_semantics --root . --exe build/r2712-native/bin/quad_generator_outcome_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --r2728-report build/r2728-original-eistute-patch-audit.json --output build/r2729-original-aft-adapter-metric-semantics.json
       - name: Retain source-verified R2.7.29 independently recalculated AFT and regional original C++ transition metrics
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2729-original-aft-regional-semantics-${{ github.sha }}
           path: build/r2729-original-aft-adapter-metric-semantics.json
@@ -392,7 +406,7 @@ jobs:
         run: python -m tools.mesh_studio.native_local_selection_provenance --mode audit --root . --original-exe build/r2712-native/bin/quad_generator_outcome_probe --selection-exe build/r2712-native/bin/quad_generator_local_selection_probe --original-directory build/r2712-native-evidence --r2726-trials build/r2726-original-generation-treatments --r2728-directory build/r2728-original-eistute-patch-csv --r2728-report build/r2728-original-eistute-patch-audit.json --output-dir build/r2730-original-eistute-selected-local --report build/r2730-original-eistute-selected-local-audit.json
       - name: Archive raw original C++ R2.7.30 selected-local witness and fail-closed independent source audit
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2730-original-selected-adapter-local-${{ github.sha }}
           path: |
@@ -404,7 +418,7 @@ jobs:
         run: python -m tools.mesh_studio.native_selected_gate_decomposition --root . --selected-directory build/r2730-original-eistute-selected-local --prior-report build/r2730-original-eistute-selected-local-audit.json --output build/r2731-selected-original-aft-gate-decomposition.json
       - name: Retain source-hash-bound R2.7.31 selected original native AFT gate decomposition
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2731-selected-original-aft-gate-${{ github.sha }}
           path: build/r2731-selected-original-aft-gate-decomposition.json
@@ -420,7 +434,7 @@ jobs:
         run: python -m tools.mesh_studio.native_selected_uv_geometry --root . --capture-dir build/r2732-original-selected-preaft-uv --prior-report build/r2732-original-selected-preaft-uv-local-selection-audit.json --output build/r2732-original-selected-preaft-uv-geometry-audit.json
       - name: Archive raw original C++ R2.7.32 pre-AFT UV candidates, accepted original TRI and independent selected provenance
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2732-original-selected-preaft-uv-${{ github.sha }}
           path: |
@@ -437,7 +451,7 @@ jobs:
         run: python -m tools.mesh_studio.native_selected_tri_return --mode audit --root . --output-dir build/r2733-original-eistute-selected-post-aft-tri --audit-report build/r2733-original-selected-post-aft-tri-independent-audit.json
       - name: Archive raw original R2.7.33 provisional selected post-AFT TRI source faces, native stdout, control and audit
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2733-original-selected-post-aft-tri-${{ github.sha }}
           path: |
@@ -455,7 +469,7 @@ jobs:
         run: python -m tools.mesh_studio.native_selected_curve_seam --root . --selected-directory build/r2734-original-source-curves-selected-tri-seams --output build/r2734-source-curve-identity-and-provisional-seam-audit.json
       - name: Archive R2.7.34 complete source curve pointer-incidence/selected TRI raw files, numerical parity and source-attested audit
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2734-original-source-curves-selected-tri-seams-${{ github.sha }}
           path: |
@@ -466,7 +480,7 @@ jobs:
           retention-days: 14
       - name: Archive raw R2.7.28 original C++ Adapter per-patch CSV and independent source audit even on experimental failure
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2728-original-eistute-adapter-patch-csv-${{ github.sha }}
           path: |
@@ -475,7 +489,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
       - name: Retain exact-source R2.7.27 read-only original C++ coherence and readiness forensic receipt
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2727-original-transition-coherence-${{ github.sha }}
           path: build/r2727-original-transition-coherence-audit.json
@@ -483,7 +497,7 @@ jobs:
           retention-days: 14
       - name: Retain R2.7.26 raw native C++ separate-process treatment evidence even if experiment fails closed
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2726-source-native-trials-${{ github.sha }}
           path: |
@@ -493,7 +507,7 @@ jobs:
           retention-days: 14
       - name: Preserve exact R2.7.24 original C++ controlled-treatment attempts and independently verified native source outcomes
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mesh-studio-r2724-native-controlled-sensitivity-${{ github.sha }}
           path: |
