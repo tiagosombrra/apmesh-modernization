@@ -76,13 +76,13 @@ def verify_notices(root: Path, receipts: tuple[dict, dict]) -> dict:
                             "unexpected_embedded_license_source")
                     body = data.decode("utf-8")
                     heading = re.search(
-                        r"(?mi)^(?:#{1,3}[ \\t]+)?LICENSE[ \\t]*\\(MIT\\)[ \\t]*\\r?\\n",
+                        r"(?mi)^(?:#{1,3}[ \t]+)?LICENSE[ \t]*\(MIT\)[ \t]*\r?\n",
                         body,
                     )
                     require(heading is not None, "embedded_mit_notice_heading_missing")
                     section = body[heading.end():].lstrip()
                     if section.startswith("-------------"):
-                        section = section.partition("\\n")[2].lstrip()
+                        section = section.partition("\n")[2].lstrip()
                     encoded = section.encode("utf-8")
                     require(
                         len(encoded) == item["embedded_license_section_size"] and
