@@ -133,6 +133,37 @@ class InstalledLicenseEvidenceTests(TestCase):
                                             "installed_npm_name_or_version_drift"):
                     evidence.collect_installed_npm(root)
 
+    def test_lock_declared_npm_alias_is_version_checked_and_allowed(self):
+        with TemporaryDirectory(prefix="v561-npm-alias-") as tmp:
+            root = Path(tmp)
+            web = self._synthetic_tree(root)
+            alias = web / "node_modules/@typescript/old"
+            alias.mkdir(parents=True)
+            (alias / "package.json").write_text(
+                '{"name":"typescript","version":"6.0.3","license":"Apache-2.0"}',
+                encoding="utf-8")
+            lock_path = web / "package-lock.json"
+            inventory = json.loads(lock_path.read_text(encoding="utf-8"))
+            inventory["packages"]["node_modules/@typescript/old"] = {
+                "name": "typescript",
+                "version": "6.0.3",
+                "integrity": "sha512-synthetic",
+            }
+            lock_path.write_text(json.dumps(inventory), encoding="utf-8")
+            with mock.patch.object(evidence, "audit_all",
+                                   return_value={"npm": {"npm_lock_sha256": "fixture"}}):
+                report = evidence.collect_installed_npm(root)
+                alias_record = next(
+                    item for item in report["components"]
+                    if item["install_path"] == "node_modules/@typescript/old")
+                self.assertEqual(alias_record["resolved_package_name"], "typescript")
+                self.assertEqual(alias_record["lock_version"], "6.0.3")
+                del inventory["packages"]["node_modules/@typescript/old"]["name"]
+                lock_path.write_text(json.dumps(inventory), encoding="utf-8")
+                with self.assertRaisesRegex(
+                        DependencyLockError, "installed_npm_name_or_version_drift"):
+                    evidence.collect_installed_npm(root)
+
     def test_report_bytes_are_deterministic(self):
         report = {"profile": "api-linux", "components": [],
                   "classification": "synthetic-only"}
