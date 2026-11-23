@@ -1,0 +1,35 @@
+{
+  "absolute_area_difference_due_to_export_rounding_and_diagonal": 7.602833647979423e-06,
+  "absolute_volume_difference_due_to_export_rounding_and_diagonal": 0.008004347560927272,
+  "native_quad_generation": false,
+  "no_original_geometry_in_receipt": true,
+  "private_derived_quad_triangulated_for_crosscheck": {
+    "area_export_precision": 29490.72380234476,
+    "components": 1,
+    "euler_number": 2,
+    "is_volume": true,
+    "signed_volume_export_precision": 273280.05578466336,
+    "triangulated_faces_by_trimesh": 1752,
+    "vertices": 878,
+    "watertight": true,
+    "winding_consistent": true
+  },
+  "private_stitched_tri": {
+    "area_export_precision": 29490.723809947594,
+    "components": 1,
+    "euler_number": 2,
+    "is_volume": true,
+    "signed_volume_export_precision": 273280.0637890109,
+    "triangulated_faces_by_trimesh": 3504,
+    "vertices": 1754,
+    "watertight": true,
+    "winding_consistent": true
+  },
+  "quad_obj_sha256": "e2687802ec3314178a973282a33ffd86d71ee8aaa87eed3d4976b266000cf548",
+  "schema": "apmesh-s40-f29-optional-external-quad-topology-v1",
+  "scientific_benchmark_admitted": false,
+  "self_intersection_free_certified": false,
+  "status": "EXTERNAL_QUAD_TOPOLOGY_CROSSCHECK_PASS",
+  "tri_obj_sha256": "b93995d1319e702649574044b2167fa01fe90644b1e5e02a295f3b47cdfdc46b",
+  "trimesh_version": "4.11.1"
+}

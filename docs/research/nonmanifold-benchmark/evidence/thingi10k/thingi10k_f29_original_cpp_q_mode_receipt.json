@@ -1,0 +1,16 @@
+{
+  "metric_csv_count": 1,
+  "native_process_exit_code": 0,
+  "native_quad_generator_executed": false,
+  "native_stage0_accepted": true,
+  "obj_surface_face_file_count": 0,
+  "original_native_tri_cli_sha256": "9ee068d7c0809476d37b77fb8d8bef4cbede21db5efe68ed2a3b13343b5b401f",
+  "private_original_asset_published": false,
+  "quadrilateral_faces_exported": 0,
+  "quality_log_count": 1,
+  "schema": "apmesh-s40-f29-original-q-mode-negative-capability-v1",
+  "status": "ORIGINAL_CPP_WRITE_MODE_Q_IS_QUALITY_ONLY_NOT_QUAD_GENERATION",
+  "synthetic_bp_sha256": "558d5e1f55b7b08e9c2b2db25947df0e31ed219dc10635c8cfc9250e7c094e2f",
+  "synthetic_profile_write_mode": "q",
+  "third_party_model_used": false
+}
