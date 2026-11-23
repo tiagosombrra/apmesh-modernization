@@ -1,0 +1,54 @@
+{
+  "bp_control_records": 7886,
+  "bp_curve_side_uses": 3504,
+  "bp_patches": 876,
+  "bp_point_intern_epsilon_from_reader": 1e-07,
+  "curve_incidence_histogram": {
+    "2": 1752
+  },
+  "curves_assuming_no_false_epsilon_matches": 1752,
+  "default_epsylon_from_runtime_state": 1e-07,
+  "epsylon_collision_screen": {
+    "1e-01": {
+      "distinct_control_pairs_approximately_equal": 0,
+      "distinct_curve_pairs_approximately_equal": 0
+    },
+    "1e-02": {
+      "distinct_control_pairs_approximately_equal": 0,
+      "distinct_curve_pairs_approximately_equal": 0
+    },
+    "1e-03": {
+      "distinct_control_pairs_approximately_equal": 0,
+      "distinct_curve_pairs_approximately_equal": 0
+    },
+    "1e-05": {
+      "distinct_control_pairs_approximately_equal": 0,
+      "distinct_curve_pairs_approximately_equal": 0
+    },
+    "1e-07": {
+      "distinct_control_pairs_approximately_equal": 0,
+      "distinct_curve_pairs_approximately_equal": 0
+    }
+  },
+  "geometrically_distinct_exact_curves": 1752,
+  "indexed_bp_successful_id_comparisons_under_original_find_control": 51714078,
+  "linear_curve_candidates_visited": 3069504,
+  "lookup_calls": 3504,
+  "maximum_curve_candidates_visited_single_call": 1752,
+  "model_id": 293137,
+  "native_mesher_executed": false,
+  "original_cpp_reader_or_geometry_executed": false,
+  "private_bp_sha256": "6049d4e46cfd73e104c2b63ef34d3a8089c4f59d1f940bee8c1ec66a8f0bafb0",
+  "schema": "apmesh-f24-original-bp-curve-identity-source-preflight-v1",
+  "scientific_model_admitted": false,
+  "scope": "INDEPENDENT_PYTHON_ORIGINAL_BP_PREFLIGHT_NOT_ORIGINAL_CPP_GEOMETRY_EXECUTION",
+  "source_cpp_git_blob_sha1": {
+    "Geometry::VerifyCurveGeometry": "411cff31f274f260eabf1d4e43e09e46c3c5a6a9",
+    "PatchReader::ReaderFilePatches": "a00fa0c712ae31380e08e557be4d199abf5d40ea",
+    "PointAdaptive::operator==": "92c77580d6778ee793c154d1f4f3dbe7e58ee34f",
+    "runtime_config": "21438cd2f2921508832cdd833ed8eca067fb3bfd",
+    "runtime_state": "d21ceb3397c7825bb50534be072261908c9b0e49"
+  },
+  "source_or_derivative_rights_cleared": false,
+  "two_sided_groups_with_nonopposite_boundary_orientation": 0
+}
