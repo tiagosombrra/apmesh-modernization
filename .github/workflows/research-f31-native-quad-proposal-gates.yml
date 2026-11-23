@@ -1,0 +1,101 @@
+name: Research F31 source-independent QUAD proposal and readiness gates
+
+on:
+  push:
+    branches: [research/benchmark-corpus-reverse-patches]
+    paths:
+      - .github/workflows/research-f31-native-quad-proposal-gates.yml
+      - docs/research/nonmanifold-benchmark/probes/thingi10k_f31_synthetic_generalization.py
+      - docs/research/nonmanifold-benchmark/probes/test_thingi10k_f31_synthetic_generalization.py
+      - docs/research/nonmanifold-benchmark/probes/thingi10k_f31_real_model_readiness.py
+      - docs/research/nonmanifold-benchmark/probes/test_thingi10k_f31_real_model_readiness.py
+      - docs/research/nonmanifold-benchmark/evidence/thingi10k/thingi10k_f31_generated_synthetic_generalization_receipt.json
+      - docs/research/nonmanifold-benchmark/evidence/thingi10k/thingi10k_f31_real_model_readiness_delta_receipt.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  strict-original-source-independent-research-gates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Recheck unchanged F27 through F30 controls
+        run: |
+          for stage in f27_native_tri_evidence f28_topology_aware_stitch f29_quad_capability_and_recovery f30_feature_locked_quad_center_optimizer; do
+            python3 -m unittest discover -s docs/research/nonmanifold-benchmark/probes -p "test_thingi10k_${stage}.py" -q
+          done
+      - name: Prove F31 cross-topology synthetic geometry checks
+        run: |
+          python3 -m unittest discover -s docs/research/nonmanifold-benchmark/probes -p test_thingi10k_f31_synthetic_generalization.py -q
+      - name: Refuse false historical permissions and reference-pair promotions
+        run: |
+          python3 -m unittest discover -s docs/research/nonmanifold-benchmark/probes -p test_thingi10k_f31_real_model_readiness.py -q
+      - name: Reproduce F31 generated-surface receipt within numeric portability budgets
+        run: |
+          python3 - <<'PY'
+          import json,math,sys
+          from pathlib import Path
+          root=Path.cwd()
+          sys.path.insert(0,str(root/'docs/research/nonmanifold-benchmark/probes'))
+          import thingi10k_f31_synthetic_generalization as f31
+          evidence=root/'docs/research/nonmanifold-benchmark/evidence/thingi10k'
+          committed=json.loads((evidence/'thingi10k_f31_generated_synthetic_generalization_receipt.json').read_text())
+          actual=f31.produce_receipt(root)
+          def same(a,b,key=''):
+              assert type(a)==type(b),f'{key}: types differ'
+              if isinstance(a,dict):
+                  assert a.keys()==b.keys(),f'{key}: schema keys differ'
+                  for k in a:same(a[k],b[k],key+'.'+k)
+              elif isinstance(a,list):
+                  assert len(a)==len(b),f'{key}: list count differs'
+                  for i,(x,y) in enumerate(zip(a,b)):same(x,y,key+'.'+str(i))
+              elif isinstance(a,float):
+                  assert math.isclose(a,b,abs_tol=1e-8,rel_tol=1e-9),f'{key}: numeric drift {a} {b}'
+              else:
+                  assert a==b,f'{key}: exact value differs {a!r} {b!r}'
+          same(committed,actual)
+          assert actual['model_count']==9 and actual['synthetic_source_triangles']==472
+          assert actual['synthetic_derived_quads']==1416
+          assert actual['changed_source_centers']==420
+          assert actual['models_improving_mean_sj']==5
+          assert actual['native_apmesh_quad_executed'] is False
+          assert actual['not_scientific_benchmark_admitted'] is True
+          print('F31 9-model synthetic evidence reproduced; no native/comparative admission')
+          PY
+      - name: Reconcile frozen F17 corpus against actual F27 and F30 public receipts
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          from pathlib import Path
+          root=Path.cwd();sys.path.insert(0,str(root/'docs/research/nonmanifold-benchmark/probes'))
+          import thingi10k_f31_real_model_readiness as m
+          result=m.produce(root)
+          evidence=root/'docs/research/nonmanifold-benchmark/evidence/thingi10k/thingi10k_f31_real_model_readiness_delta_receipt.json'
+          expected=json.loads(evidence.read_text())
+          assert result==expected,'F31 published readiness does not match immutable REAL F17/F27/F30 source receipts'
+          assert result['case_count']==23 and result['raw_stls_audited_in_f17']==7
+          assert result['original_quad_reference_pairs_verified']==0
+          assert result['native_quad_runs']==0 and result['fair_literature_comparisons_admitted']==0
+          assert result['new_real_native_tri_model_count_since_f17']==1
+          print('F31 real 23-model frozen-source metadata delta verified without geometry')
+          PY
+      - name: Reject private original or derived mesh assets from the research checkout
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path.cwd()
+          prohibited=[p for p in root.rglob('*') if p.is_file() and
+                      p.suffix.lower() in {'.stl','.bp','.obj'} and
+                      ('293137' in p.name or 'thingi10k' in p.name.lower())]
+          assert not prohibited,f'Private source/derived geometric files published: {prohibited}'
+          public=root/'docs/research/nonmanifold-benchmark/evidence/thingi10k'
+          assert (public/'thingi10k_f31_generated_synthetic_generalization_receipt.json').is_file()
+          assert (public/'thingi10k_f31_real_model_readiness_delta_receipt.json').is_file()
+          print('F31 code-only privacy gate PASS: 289 hermetic tests, 0 unauthorized mesh artifacts')
+          PY
