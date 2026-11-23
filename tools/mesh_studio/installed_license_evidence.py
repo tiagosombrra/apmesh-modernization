@@ -119,6 +119,8 @@ def collect_installed_npm(root: Path = ROOT) -> dict:
         entry = {
             "install_path": rel,
             "name": rel.rsplit("node_modules/", 1)[-1],
+            "resolved_package_name": locked.get(
+                "name", rel.rsplit("node_modules/", 1)[-1]),
             "lock_version": locked["version"],
             "lock_integrity": locked["integrity"],
             "lock_license_declaration": locked.get("license"),
@@ -135,7 +137,7 @@ def collect_installed_npm(root: Path = ROOT) -> dict:
             raw = package_json.read_bytes()
             info = json.loads(raw)
             require(info.get("version") == locked["version"] and
-                    info.get("name") == entry["name"],
+                    info.get("name") == entry["resolved_package_name"],
                     "installed_npm_name_or_version_drift:" + rel)
             entry["installed_manifest_sha256"] = _sha(raw)
             declared = info.get("license")
