@@ -1,0 +1,48 @@
+name: Research F25 original native Geometry smoke
+
+on:
+  push:
+    branches:
+      - research/benchmark-corpus-reverse-patches
+    paths:
+      - .github/workflows/research-f25-native-geometry-smoke.yml
+      - docs/research/nonmanifold-benchmark/probes/thingi10k_f25_native_geometry_probe.cpp
+      - docs/research/nonmanifold-benchmark/probes/thingi10k_f25_native_geometry_runner.py
+      - docs/research/nonmanifold-benchmark/probes/test_thingi10k_f25_native_geometry_runner.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-native-synthetic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact research branch sources
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check F25 Python harness contract
+        run: |
+          python3 -m unittest -v docs/research/nonmanifold-benchmark/probes/test_thingi10k_f25_native_geometry_runner.py
+      - name: Compile and execute original native APMesh Geometry
+        run: |
+          python3 docs/research/nonmanifold-benchmark/probes/thingi10k_f25_native_geometry_runner.py \
+            --root . \
+            --receipt "$RUNNER_TEMP/f25_synthetic_native_receipt.json"
+      - name: Assert only synthetic source was run
+        run: |
+          python3 - "$RUNNER_TEMP/f25_synthetic_native_receipt.json" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+          p = Path(sys.argv[1])
+          report = json.loads(p.read_text())
+          assert report['status'] == 'ORIGINAL_APMESH_NATIVE_GEOMETRY_EXECUTED'
+          assert report['private_real_293137_executed'] is False
+          assert report['apmesh_tri_or_quad_mesher_executed'] is False
+          assert [case['case'] for case in report['cases']] == [
+              'synthetic-1', 'synthetic-2']
+          print('Original C++ synthetic Geometry gate PASS; real #293137 NOT RUN')
+          PY
