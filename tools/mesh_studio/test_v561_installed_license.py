@@ -69,7 +69,7 @@ class InstalledLicenseEvidenceTests(TestCase):
         (web / "node_modules/rechoir").mkdir(parents=True)
         (web / "node_modules/sample").mkdir(parents=True)
         (web / "node_modules/rechoir/package.json").write_text(
-            '{"name":"rechoir","version":"0.6.2","license":"MIT"}',
+            '{"name":"rechoir","version":"0.6.2","license":"MIT","licenses":[{"type":"MIT"}]}',
             encoding="utf-8")
         (web / "node_modules/rechoir/LICENSE").write_text(
             "Synthetic MIT notice", encoding="utf-8")
@@ -108,6 +108,9 @@ class InstalledLicenseEvidenceTests(TestCase):
             self.assertIsNone(
                 by_path["node_modules/rechoir"]["lock_license_declaration"])
             self.assertEqual(len(by_path["node_modules/rechoir"]["license_files"]), 1)
+            self.assertEqual(
+                by_path["node_modules/rechoir"]["installed_manifest_legacy_licenses"],
+                [{"type": "MIT", "url": None}])
 
     def test_missing_nonoptional_package_is_not_silently_ignored(self):
         with TemporaryDirectory(prefix="v561-npm-loss-") as tmp:
