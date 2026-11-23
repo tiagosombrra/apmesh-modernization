@@ -181,7 +181,7 @@ def prepare(inputs: Path, output: Path) -> dict:
                 notice_parts.append(
                     "(WTFPL OR MIT). No MIT branch selected or approved.\n")
             if name == "seedrandom" and ecosystem == "npm":
-                require(vite["text"] is None and declared == "MIT",
+                require(vite.get("text") is None and declared == "MIT",
                         "seedrandom_missing_vite_notice_evidence_changed")
                 notice_parts.append(
                     "Vite's license metadata omits this package's text. ",
