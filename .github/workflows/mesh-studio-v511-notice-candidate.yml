@@ -7,6 +7,7 @@ on:
     paths:
       - '.github/workflows/mesh-studio-v511-notice-candidate.yml'
       - 'tools/mesh_studio/v511_notice_candidate.py'
+      - 'tools/mesh_studio/license_sources/spark-md5-v3.0.2-LICENSE2-MIT.txt'
       - 'tools/mesh_studio/v511_bundle_license_reaudit.py'
       - 'tools/mesh_studio/v511_license_evidence_reaudit.py'
       - 'tools/mesh_studio/v511_runtime_license_evidence.py'
@@ -54,6 +55,9 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: tiagosombrra/apmesh-modernization
           run-id: ${{ env.PINNED_EVIDENCE_RUN }}
+      - name: Reject tampering of the upstream MIT alternative before any candidate packaging
+        run: |
+          python -c "import tempfile,pathlib; from tools.mesh_studio.v511_notice_candidate import authenticated_upstream_spark_mit,NoticeCandidateError; src=authenticated_upstream_spark_mit(); assert len(src)==1076; tmp=tempfile.TemporaryDirectory(); p=pathlib.Path(tmp.name)/'LICENSE2'; p.write_bytes(src+b'X'); caught=False; exec('try:\\n authenticated_upstream_spark_mit(p)\\nexcept NoticeCandidateError:\\n caught=True'); assert caught, 'mutated upstream LICENSE2 was accepted'; print('SPARK_MD5_UPSTREAM_LICENSE2_MUTATION_REJECTED=PASS')"
       - name: Verify exact 26 source packages for each OS, preserve authentic licence text, detect original OS differences, never choose spark-md5 branch
         run: |
           python -m tools.mesh_studio.v511_notice_candidate --mode prepare --input build/v511-notice-source --output build/v511-third-party-notices-candidate --receipt build/v511-notice-candidate-builder-receipt.json
