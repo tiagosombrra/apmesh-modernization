@@ -20,7 +20,7 @@ import subprocess
 import sys
 import time
 from urllib.error import HTTPError, URLError
-from urllib.request import urlopen
+from urllib.request import urlopen, Request
 from collections.abc import Callable
 
 from .dependency_lock_audit import (
@@ -314,7 +314,7 @@ def launch(mode: str, on_ready: Callable[[], None] | None = None) -> dict:
             "loopback_ports_already_in_use")
     processes: list[subprocess.Popen] = []
     try:
-        api = _spawn([str(python), "-m", "uvicorn", "tools.mesh_studio.web_api:app",
+        api = _spawn([str(python), "-m", "uvicorn", "tools.mesh_studio.web_api:local_app",
                       "--host", "127.0.0.1", "--port", "8765"], ROOT)
         processes.append(api)
         _await_http(API_ADDRESS + "/api/v1/health", api, 35)
@@ -354,6 +354,43 @@ def launch(mode: str, on_ready: Callable[[], None] | None = None) -> dict:
                 require(err.code == status, "invalid_request_not_rejected")
             else:
                 raise LocalStudioError("invalid_source_request_not_rejected")
+        # These are actual HTTP requests through both newly started servers.
+        # Binding to loopback or enabling CORS alone does not certify Host checks.
+        probes = (
+            (API_ADDRESS + "/api/v1/health",
+             {"Host": "attacker.invalid:8765"}, "GET", 400),
+            (API_ADDRESS + "/api/v1/health",
+             {"Origin": "https://attacker.invalid"}, "GET", 403),
+            (API_ADDRESS + "/api/v1/health",
+             {"Sec-Fetch-Site": "cross-site"}, "GET", 403),
+            (API_ADDRESS + "/api/v1/health", {}, "POST", 405),
+            (WEB_ADDRESS + "/",
+             {"Host": "attacker.invalid:5173"}, "GET", 403),
+            (WEB_ADDRESS + "/",
+             {"Origin": "https://attacker.invalid"}, "GET", 403),
+            (WEB_ADDRESS + "/",
+             {"Sec-Fetch-Site": "cross-site"}, "GET", 403),
+            (WEB_ADDRESS + "/", {}, "POST", 405),
+        )
+        for url, headers, method, expected in probes:
+            request = Request(url, headers=headers, method=method,
+                              data=b"" if method == "POST" else None)
+            try:
+                urlopen(request, timeout=6)
+            except HTTPError as err:
+                require(err.code == expected,
+                        "unexpected_local_security_rejection_status:" +
+                        url + ":" + str(err.code))
+            else:
+                raise LocalStudioError("local_security_probe_not_rejected:" + url)
+        approved_origin = Request(API_ADDRESS + "/api/v1/health",
+                                  headers={"Origin": WEB_ADDRESS})
+        with urlopen(approved_origin, timeout=6) as response:
+            require(response.status == 200 and
+                    response.headers.get("Access-Control-Allow-Origin") ==
+                    WEB_ADDRESS, "approved_local_browser_origin_not_supported")
+        receipt["loopback_guard_rejected_host_origin_fetchsite_unsafe_method"] = 8
+        receipt["approved_local_cors_origin"] = WEB_ADDRESS
         receipt["local_health"] = "PASS"
         receipt["source_catalog_count"] = len(entries)
         receipt["source_svg_sha256"] = _sha(svg)

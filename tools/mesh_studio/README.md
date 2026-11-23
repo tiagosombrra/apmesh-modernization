@@ -1,5 +1,11 @@
 # APMesh Mesh Studio — scientific inspection and publication modules S0–S5
 
+## V5.10 — inicialização local protegida e revisão independente
+
+O `local_launcher` agora oferece uma variante da API protegida por Host e Origin exatos (`127.0.0.1:8765`), com Vite restrito a `127.0.0.1:5173` e oito testes HTTP hostis contra ambos os serviços. A [V5.10 foi validada no Linux e no Windows](../../docs/mesh-studio/V5_10_LOCAL_SECURITY_AND_PHYSICAL_REVIEW_PROTOCOL_20261123.md): 24 testes Python + 2 testes de navegador por sistema e os oito bloqueios HTTP observados. **Execute pelo launcher**, não exponha `web_api:app` diretamente como serviço protegido e não use `localhost:5173` como endereço alternativo. O sistema continua em modo Vite de desenvolvimento, sem autenticação de produção.
+
+Para a **avaliação independente em equipamento físico**, siga o protocolo V5.10: extraia o corpus original C++ da pasta privada de experimentos do Doutorado, execute `python3.13 -m tools.mesh_studio.v59_reviewer preflight`, `local_launcher setup`, instale o Chromium do Playwright e execute `v59_reviewer smoke`. No Windows PowerShell use `py -3.13`. A revisão por pessoas em máquinas físicas permanece **não realizada**, mesmo após o CI 2/2 aprovado. R2.8 científica segue bloqueada.
+
 ## V5.9 — reproducible full original-native source reviewer on V5.8 launcher
 
 In addition to the lean research startup, V5.9 validates a finite **real original C++ accepted Eistute/Book step-1** browser task: original NDJSON/SVG/manifest source-SHA re-audit, original P1 linked XYZ/UV quality and source face, Book/Eistute source patch/triangle/native node and curve sampling, original vector SVG downloads, staged/nonaccepted guardrails and negative forged LOD/UV. **Both Ubuntu and Windows CI PASS**, including cross-platform canonical source SVG bytes and clean server shutdown. Use the pinned ten-file source corpus and the `python3.13 -m tools.mesh_studio.v59_reviewer preflight` / `smoke` commands described in [V5.9 research review protocol](../../docs/mesh-studio/V5_9_ORIGINAL_NATIVE_LOCAL_REVIEWER_RESULTS_20261123.md). This does not recompile native C++ or authorize physical machine GPU/LOD claims.
