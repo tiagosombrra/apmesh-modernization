@@ -45,8 +45,10 @@ def rejection(status: int, message: bytes):
 class LocalLoopbackGuard:
     """Permit only the launcher-owned host, origins and read-only HTTP verbs."""
 
-    def __init__(self, app: Callable[..., Awaitable[Any]]):
+    def __init__(self, app: Callable[..., Awaitable[Any]],
+                 *, allowed_origins: frozenset[bytes] = ALLOWED_ORIGINS):
         self.app = app
+        self.allowed_origins = allowed_origins
 
     async def __call__(self, scope, receive, send):
         if scope["type"] == "websocket":
@@ -60,7 +62,7 @@ class LocalLoopbackGuard:
             await rejection(400, b"invalid_local_host")(send)
             return
         origins = header_values(scope, b"origin")
-        if len(origins) > 1 or (origins and origins[0] not in ALLOWED_ORIGINS):
+        if len(origins) > 1 or (origins and origins[0] not in self.allowed_origins):
             await rejection(403, b"untrusted_local_origin")(send)
             return
         fetch_sites = header_values(scope, b"sec-fetch-site")
