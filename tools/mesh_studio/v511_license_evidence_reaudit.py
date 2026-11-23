@@ -93,7 +93,9 @@ def review(directory: Path, commit: str) -> dict:
     results = {}
     for host in HOSTS:
         folder = directory / (PACKAGE_PREFIX + host + "-" + commit)
-        root = folder / "build/v511-license-evidence"
+        # upload-artifact flattens the explicitly supplied directory root.
+        # The downloaded artifact folder contains reports and notices directly.
+        root = folder
         python = read_json(root / "python-installed-evidence.json")
         npm = read_json(root / "npm-installed-evidence.json")
         require(python["schema"] == npm["schema"] == SCHEMA and
