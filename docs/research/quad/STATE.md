@@ -3,7 +3,7 @@
 Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: requested versus realized sizing on the valid mixed pilot successor
+## Active: align a reusable physical sizing contract for mixed feedback
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,29 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-23 - audit size realization on the retained mixed successor
+
+The [size audit](MIXED_SIZE_REALIZATION_20261123.md) matches all ten original
+intervals, 17 native face requests and 39 propagation reductions to the
+retained Step 2 and capped successor archives. Five of eight split intervals
+remain larger than their physical target. Seven of 17 face sample locations
+also remain above their target. Both capped face requests realize a size
+within target. The three propagation passes contain zero recorded
+curve-to-face reductions and leave four of 50 active target pairs above
+1.35. A 5.09-degree transition TRI has an adjacent size ratio of 4.10 and
+contains no logged request site. Physical response, legal tree action,
+and local quality require separate evidence.
+
+**Next:** align one reusable conversion from physical size targets to
+native binary curve partitions and quadtree actions, with shared-boundary
+synchronization and a post-generation shape/gradation check. Use the
+current archive as control, add a second curved-to-flat configuration
+and a shared-curve case in a subsequent validation. Define how requests
+that cannot fit the limits are reported before implementation. Keep
+the existing TRI workflow and mixed reconstruction primitives. This
+session changes only documentation and evidence. Zero mixed epochs
+accepted. Mixed-global curvature remains open.
 
 ### 2026-11-23 - validate the capped mixed successor with guarded smoothing
 

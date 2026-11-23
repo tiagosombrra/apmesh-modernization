@@ -4144,3 +4144,20 @@ contour interval and face region. Examine the role of binary splits and
 leaf quantization before aligning a change to sizing. No mixed epoch
 accepted. No full delivery regression, sanitizer/CRT or remote CI was
 run on the isolated trial.
+
+## 2026-11-23 Fortaleza - trace realized spacing and set reuse requirements
+
+The researcher approves measuring the retained candidate and asks that the
+result support long-term use. Replay 39 typed graph updates and pair ten
+source intervals, eight binary divisions and all 17 face residual sites.
+The [audit](MIXED_SIZE_REALIZATION_20261123.md) records five unmet split
+intervals and seven face sites above the target despite a leaf edit.
+Both capped requests realize face sizes within target. After smoothing,
+face-to-face p95 improves, the median contour-to-face size ratio grows,
+and the limiting 5.09-degree TRI lies outside the recorded sample sites.
+
+Retain two corrected audit failures (initial quadrature resolution and
+receipt path shadowing). No native rerun, source change, scientific rule
+adoption or accepted mixed epoch. Next align a physical sizing contract
+using existing curve/tree operations, shared-curve synchronization and
+output quality, with additional geometry coverage before adoption.

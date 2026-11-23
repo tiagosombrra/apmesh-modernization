@@ -121,9 +121,13 @@ shape-aware motion guard. The [native comparison](MIXED_SMOOTHING_PILOT_COMPARIS
 completes that bounded test. Initial geometry passes; the first original
 Jacobi pass inverts a QUAD corner. All five guarded passes preserve
 geometric validity on the same topology. The valid experimental
-successor retains a 5.09-degree TRI in the transition. Compare requested
-and realized spacing on these retained archives next, then align a
-continuous-to-discrete size rule before new adaptive generation.
+successor retains a 5.09-degree TRI in the transition. The
+[size realization audit](MIXED_SIZE_REALIZATION_20261123.md) finds gaps in
+both curve partitions and emitted faces, with a separate contour-to-face
+gradation regression. Align a reusable physical-to-discrete sizing contract
+next, preserving the original curve and tree machinery, shared-boundary
+synchronization and local output shape. Require another curved-to-flat
+case and a shared-curve case before adoption.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
