@@ -99,5 +99,6 @@ jobs:
             build/v59-source-audit.json
             build/v59-reviewer-audit.json
             tools/mesh_studio/web/test-results/v59-original-reviewer.json
+            tools/mesh_studio/web/test-results/v59-p1-source-uv.svg
           if-no-files-found: warn
           retention-days: 14
