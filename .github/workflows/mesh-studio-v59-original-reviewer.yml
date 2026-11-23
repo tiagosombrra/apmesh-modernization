@@ -9,6 +9,8 @@ on:
       - 'tools/mesh_studio/v59_reviewer.py'
       - 'tools/mesh_studio/test_v59_reviewer.py'
       - 'tools/mesh_studio/local_launcher.py'
+      - 'tools/mesh_studio/web_api.py'
+      - 'tools/mesh_studio/svg_figure.py'
       - 'tools/mesh_studio/test_v58_local_launcher.py'
       - 'tools/mesh_studio/web/playwright.config.ts'
       - 'tools/mesh_studio/web/tests/viewport-v59-original-reviewer.spec.ts'
