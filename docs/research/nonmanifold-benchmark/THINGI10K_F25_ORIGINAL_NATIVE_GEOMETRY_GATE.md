@@ -50,3 +50,11 @@ The original Thingi10K #293137 STL asset's per-object redistribution/derivation 
 ## Next stage
 
 Run the native private BP gate in an authorized **full original checkout**, check actual curve identity and peak RSS, then attempt a separate accepted TRI run through the **actual** APMesh generator with independently captured mesh, quality and patch/curve incidence; only then investigate supported QUAD modes and fair-reference comparability.
+
+## Actual GitHub Actions evidence (successful, not merely configured)
+
+Workflow [run 45161316221](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45161316221) completed **successfully** on 2026-11-23 for research code commit `56755abf5fbc4b20c902006b27897ccdd179a048` (before appending this report/receipt). It compiled and linked the **original** `ap_mesh_engine` and executed `ReaderFilePatches`, `Geometry`, exact independent source-boundary controls, patch orientation, curve pointer identities and patch observers. The original native source files were pinned to their audited Git blobs.
+
+The original execution accepted both **synthetic** fixtures twice each, without reading or uploading original Thingi10K data. Python harness contract tests **32/32 PASS**. Observed engine static-library build elapsed approximately 59.483 seconds. Native measured load times were 0.070102 / 0.060764 ms for the one-patch case, and 0.099036 / 0.095429 ms for the two-patch case. Observed Linux process high-water RSS was 11,648 KiB for all four processes; those tiny-case times **must not be extrapolated to the original 876-patch candidate**. Complete machine-readable counts and measurements are in [F25 CI numeric receipt](evidence/thingi10k/thingi10k_f25_ci_native_geometry_synthetic_receipt.json).
+
+**Verified stage classification:** F25 native **synthetic** Geometry integration accepted. F25 native **real Thingi10K #293137** integration is **NOT RUN**; the private BP remains available in the isolated research workspace but not on the public GitHub Actions runner, and this environment still has no full C++ checkout. F25 does not qualify a TRI/QUAD mesh or complete the scientific benchmark.

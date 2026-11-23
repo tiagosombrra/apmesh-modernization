@@ -1,0 +1,54 @@
+{
+  "schema": "apmesh-s40-f25-native-geometry-ci-evidence-v1",
+  "record_date": "2026-11-23",
+  "status": "ORIGINAL_CPP_NATIVE_GEOMETRY_SYNTHETIC_EXECUTED",
+  "repo": "tiagosombrra/apmesh-modernization",
+  "branch": "research/benchmark-corpus-reverse-patches",
+  "code_commit_sha": "56755abf5fbc4b20c902006b27897ccdd179a048",
+  "github_workflow_run_id": 45161316221,
+  "github_workflow_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45161316221",
+  "github_workflow_job_id": 137647167549,
+  "github_run_status": "completed",
+  "github_run_conclusion": "success",
+  "linux_runner": "ubuntu-24.04",
+  "python_contract_tests_passed": 32,
+  "python_contract_tests_failed": 0,
+  "original_engine_built": true,
+  "original_native_reader_file_patches_executed": true,
+  "original_native_geometry_curve_observers_executed": true,
+  "exact_source_curve_controls_checked": true,
+  "patch_curve_orientation_flags_checked": true,
+  "independent_model_input_is_synthetic": true,
+  "native_model_293137_executed": false,
+  "apmesh_tri_generator_executed": false,
+  "apmesh_quad_generator_executed": false,
+  "any_scientific_comparison_admitted": false,
+  "cmake_engine_build_seconds_logged": 59.483,
+  "cases": [
+    {
+      "name": "synthetic-1",
+      "source_patch_count": 1,
+      "native_curve_count": 4,
+      "native_boundary_curve_count": 4,
+      "native_shared_curve_count": 0,
+      "native_control_sides_checked": 4,
+      "repetitions": [
+        {"native_load_ms": 0.070102, "native_verify_ms": 0.005821, "linux_peak_rss_kib": 11648},
+        {"native_load_ms": 0.060764, "native_verify_ms": 0.004729, "linux_peak_rss_kib": 11648}
+      ]
+    },
+    {
+      "name": "synthetic-2",
+      "source_patch_count": 2,
+      "native_curve_count": 7,
+      "native_boundary_curve_count": 6,
+      "native_shared_curve_count": 1,
+      "native_control_sides_checked": 8,
+      "repetitions": [
+        {"native_load_ms": 0.099036, "native_verify_ms": 0.007043, "linux_peak_rss_kib": 11648},
+        {"native_load_ms": 0.095429, "native_verify_ms": 0.006883, "linux_peak_rss_kib": 11648}
+      ]
+    }
+  ],
+  "scope_warning": "Only synthetic C++ Geometry cases executed. Real #293137 private BP, APMesh TRI/QUAD, and reference geometry rights remain unadmitted. No third-party geometry published."
+}
