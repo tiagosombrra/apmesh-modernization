@@ -4244,3 +4244,19 @@ estimates two 0.51 children at the existing native subdivision parameter.
 Propose one additional split on that edge of the degree-one curve. Hold
 the scope decision before native execution. No newly generated mesh or
 accepted mixed epoch.
+
+## 2026-11-23 Fortaleza - one additional native point at the worst Ribbed QUAD
+
+The researcher approves the exact one-child experiment. Reconstruct
+only that variant, compare to the archived residual-only arm, and
+keep the common Step 2, native size requests, cap and realized 133
+leaves exact. The two native children are within target. One point
+and one TRI are added. Both sets of five smoothing passes are valid;
+the previous unguarded control failed on its first pass. Global QUAD
+minimum angle improves, but a replacement TRI in the split region
+makes its local minimum slightly worse. The limiting TRI is unchanged.
+See the [result](RIBBED_SINGLE_QUAD_EDGE_SPLIT_20261123.md).
+
+Keep the variant as evidence. Next trace the unchanged TRI's short
+template edge and prospective front choices with the existing satisfied
+contour sizes. No general curve policy, full matrix or mixed acceptance.

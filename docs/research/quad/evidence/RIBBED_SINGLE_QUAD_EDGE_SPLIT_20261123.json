@@ -1,0 +1,633 @@
+{
+  "identity": {
+    "source_before_sha256": "56969f28c5a82a40bf521809c2be6c32a495c6c2f41a509f719dc420efdcd331",
+    "source_after_sha256": "be2e5bf694bdecb6d54819f7f95065d70a5f8fa614cf528396c3a1bc45bf5e8c",
+    "source_base": "94dc35a6c84899fb36eea86c1d352b0842ba3bcf",
+    "config_sha256": "c34a33471ce01f995157f5197bd21a5846929a2adb9f03d54ad0d0e8dc351d55",
+    "bp_sha256": "07cd08d6258f72a140198d4d9f72360888da9486954216a467c87e949c870e10"
+  },
+  "build": {
+    "exit": 0,
+    "seconds": 7.344458818435669,
+    "timeout": 180,
+    "command": [
+      "cmake",
+      "--build",
+      "build/quad-feedback-pilot-20261122/msvc",
+      "--target",
+      "ap_mesh",
+      "--config",
+      "Debug",
+      "--parallel",
+      "4"
+    ],
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "d1da943a7b2e484cfa83cdbcaa77b892f7935ba19b9ea631cd4a38203375dcc1"
+  },
+  "native": {
+    "exit": 0,
+    "seconds": 36.997212648391724,
+    "timeout": 180,
+    "command": [
+      "build/quad-child-arc-20261123/ap_mesh.exe",
+      "--config",
+      "build/quad-child-arc-20261123/ribbed.conf"
+    ],
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "eaf1c7b591c9e40a7eccf6a7345245e1e0395fd6f6cd66ea488f35cd5ae60c5b"
+  },
+  "parent_arc_audit_sha256": "4cd60c80bc6a8a5d58cd26bb89798b0c147765053509919ff8a17f319291e10e",
+  "previous_prefix": {
+    "step_0_retry_-1_accepted_quad_tri.obj": "e02b13c43401309b8245b75c3c82d659352f29c3a3b26c624fea6ee335f20642",
+    "step_0_retry_-1_accepted_tri.obj": "e02b13c43401309b8245b75c3c82d659352f29c3a3b26c624fea6ee335f20642",
+    "step_1_retry_0_accepted_quad_tri.obj": "14c62071c29e76190cbe0a04cc527dd7d4210d36af76c889fa276bf2896b7def",
+    "step_1_retry_0_accepted_tri.obj": "6ba391519cd5f7aa4ce5093c9f154bae994eb20d073976d6d4104d3a75136293",
+    "step_2_retry_0_accepted_tri.obj": "2c242c53882b7b97207cca6bf030ce839071cbdc14614e2482690bba1be4a851"
+  },
+  "common_predecessor_sha256": "8fe269d99999e6f9ee78fa97576cdb24cda2bc7fed217af6aea16a811108245e",
+  "accepted_mixed_epochs": 0,
+  "artifacts": {
+    "ap_mesh.exe": "99dbda6e58307d14225db9523439b2d2e88292e787a147b03a2363d3341ad0af",
+    "source.patch": "4214fa3576fbc516e27baf99f75b73f807538c198c3a735fbb8878d1d2e20fb7",
+    "native-setup.py": "cd46a152f376681ad6ddb52c28be43e17aed2a1c2427ade3078d749b032e66cc",
+    "native-audit.py": "50b50f44fb4945dfd9f2dec26bcf0603079e08afa58ce10e497cba213039dad3"
+  },
+  "native_files": {
+    "additional-child-split.csv": "aafc658390dc0859d67b4d2fb7316bafc541740eff2191135b506cc2419a475e",
+    "attempt.csv": "667eaaad3a5ba921fb0b424a173ccb2248ce1171587d94ee0ecfc2e5e42a11b0",
+    "before.obj": "91536ad83e2eb5d8b7111c9534862c17842e938c580df7119a8d2b2ff53e5a8a",
+    "capped-requests.csv": "f9753013ce75b9dd30d63d63af9313339c5d25a718363f2b5529c53fadaac82d",
+    "control_1.obj": "e7719e0e5fc2e3f3e370232a905213b54cea9c03d4a78368ba6c858cdbd6838d",
+    "control_2.obj": "b026d04b6d22e0423d0d72f207897c2ae320bd0202535c09e617d9c31327e347",
+    "control_3.obj": "0e5b728c314797da1ed9d753d997456ce3611dc42a0de332c3765dbc17d23f30",
+    "control_4.obj": "174450c6009f9ca1db69163cb0873a89e4bd9ee70b8130621ad22eee174d4df4",
+    "control_5.obj": "8c2afc4d2981dd58da121c437358eac525003a95487885b3c9b74471b70a9cb3",
+    "control_final.obj": "8c2afc4d2981dd58da121c437358eac525003a95487885b3c9b74471b70a9cb3",
+    "curve-requests.csv": "0ffaf933921d172c0f280936ddd174628e0f3edd3042c2626e409582a457e666",
+    "guarded_1.obj": "46ce5565827e695b69d1fa903bde800448f5b8dad08198f92b9d5be09f50a028",
+    "guarded_2.obj": "8762528924d9477cdc46babd0c50485a74c9054b10d4753805aebb142d422dd6",
+    "guarded_3.obj": "ca45a4a70c47cdd4ef74f7d77729a1c16ebe977963e73efe420af5ab1025696d",
+    "guarded_4.obj": "1d163be7b9e55cfce32febacb748c6e3dcc447759b81143c489ecd555ebc8384",
+    "guarded_5.obj": "e21ffd57369944cbc14aa03943048326c44fc1ba984b8651f8804fcbb14bc3ba",
+    "guarded_final.obj": "e21ffd57369944cbc14aa03943048326c44fc1ba984b8651f8804fcbb14bc3ba",
+    "guarded_typed.obj": "7c6630d4b960b9b944c518eb9c61edfacef18d185849d62b31a4b2f598eb95d3",
+    "passes.csv": "1851ef6ad3fee4bdb37cc4023d428646fc71337fc207dc0e69d83f613b3793f5",
+    "realized-leaves.csv": "19d6e60b446592e82593587c6acb56ca3d6e389e78e198e1c41ca5817cbeeffa",
+    "size-requests.csv": "f6004ae771cfb7697f658f1ca0792dccd1c27eb8a577a788146be4d7e0e74d67",
+    "tree-requests.csv": "0f8df4dafe5d244608fcf003cef905125eb41f76bb9f6cbd2e68f5e7b0e0c128"
+  },
+  "shared_traces": {
+    "size-requests.csv": "f6004ae771cfb7697f658f1ca0792dccd1c27eb8a577a788146be4d7e0e74d67",
+    "curve-requests.csv": "0ffaf933921d172c0f280936ddd174628e0f3edd3042c2626e409582a457e666",
+    "tree-requests.csv": "0f8df4dafe5d244608fcf003cef905125eb41f76bb9f6cbd2e68f5e7b0e0c128",
+    "capped-requests.csv": "f9753013ce75b9dd30d63d63af9313339c5d25a718363f2b5529c53fadaac82d",
+    "realized-leaves.csv": "19d6e60b446592e82593587c6acb56ca3d6e389e78e198e1c41ca5817cbeeffa"
+  },
+  "native_split": {
+    "parent": "7",
+    "child": "13",
+    "side": "1",
+    "mid_t": "0.94042301864940081",
+    "mid_id": "559",
+    "requested_h": "0.62666374011172654",
+    "old_child_arc": "1.0202140236282629",
+    "left_arc": "0.51013874251281099",
+    "right_arc": "0.51007528111546319"
+  },
+  "attempt": {
+    "previous_faces": 547,
+    "previous_intervals": 14,
+    "split_intervals": 9,
+    "previous_leaves": 112,
+    "direct_leaf_edits": 7,
+    "balanced_leaves": 133,
+    "seed_tri_face": 488,
+    "seed_quad_face": 480,
+    "capped_face_requests": 1
+  },
+  "passes": [
+    {
+      "arm": "both",
+      "pass": "0",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "control",
+      "pass": "1",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "control",
+      "pass": "2",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "control",
+      "pass": "3",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "control",
+      "pass": "4",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "control",
+      "pass": "5",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "guarded",
+      "pass": "1",
+      "status": "valid",
+      "full": "48",
+      "half": "26",
+      "quarter": "3",
+      "eighth": "2",
+      "skipped": "152",
+      "reason": ""
+    },
+    {
+      "arm": "guarded",
+      "pass": "2",
+      "status": "valid",
+      "full": "61",
+      "half": "24",
+      "quarter": "5",
+      "eighth": "5",
+      "skipped": "217",
+      "reason": ""
+    },
+    {
+      "arm": "guarded",
+      "pass": "3",
+      "status": "valid",
+      "full": "60",
+      "half": "11",
+      "quarter": "7",
+      "eighth": "4",
+      "skipped": "285",
+      "reason": ""
+    },
+    {
+      "arm": "guarded",
+      "pass": "4",
+      "status": "valid",
+      "full": "74",
+      "half": "8",
+      "quarter": "7",
+      "eighth": "6",
+      "skipped": "313",
+      "reason": ""
+    },
+    {
+      "arm": "guarded",
+      "pass": "5",
+      "status": "valid",
+      "full": "81",
+      "half": "11",
+      "quarter": "3",
+      "eighth": "4",
+      "skipped": "354",
+      "reason": ""
+    }
+  ],
+  "baseline": {
+    "initial": {
+      "sha256": "6db2b50bb26284939a6c49ccaca7bc9b8acfd9f4df58a5dcf84b05240034148b",
+      "nodes": 623,
+      "faces": 648,
+      "boundary_segments": 22,
+      "shape": {
+        "TRI": {
+          "count": 74,
+          "min_angle": 6.3281535843349985,
+          "max_edge_ratio": 8.821913553591653
+        },
+        "QUAD": {
+          "count": 574,
+          "min_angle": 25.335621873573015,
+          "max_edge_ratio": 9.195933119406272
+        }
+      },
+      "neighbor_ratio_median": 1.0016951777746415,
+      "neighbor_ratio_max": 5.666256068991779,
+      "rms_source_area": 0.01741383129101096,
+      "maximum_sampled_error": 0.10325406187844632,
+      "samples": 576,
+      "worst_by_type": {
+        "TRI": {
+          "angle": 6.3281535843349985,
+          "uv": [
+            [
+              0.4375,
+              0.125
+            ],
+            [
+              0.40625,
+              0.125
+            ],
+            [
+              0.500091552734375,
+              0.0
+            ]
+          ]
+        },
+        "QUAD": {
+          "angle": 25.335621873573015,
+          "uv": [
+            [
+              1.0,
+              0.8783512883289859
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.9375,
+              0.9375
+            ],
+            [
+              0.9375,
+              0.90625
+            ]
+          ]
+        }
+      },
+      "lowest_tri_q": 0.18954876728000306,
+      "lowest_quad_J": 0.32332895608451606,
+      "old_regions": {
+        "TRI": {
+          "TRI": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 6.3281535843349985
+          },
+          "QUAD": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          }
+        },
+        "QUAD": {
+          "TRI": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          },
+          "QUAD": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 25.335621873573015
+          }
+        }
+      }
+    },
+    "final": {
+      "sha256": "f758ed931cbfc440d4bc4825450bbe2c5373f3edafc939ba13e0268d8cec2c57",
+      "nodes": 623,
+      "faces": 648,
+      "boundary_segments": 22,
+      "shape": {
+        "TRI": {
+          "count": 74,
+          "min_angle": 6.3281535843349985,
+          "max_edge_ratio": 8.821913553591653
+        },
+        "QUAD": {
+          "count": 574,
+          "min_angle": 25.335621873573015,
+          "max_edge_ratio": 9.195933119406272
+        }
+      },
+      "neighbor_ratio_median": 1.0135536856968204,
+      "neighbor_ratio_max": 5.666256068991779,
+      "rms_source_area": 0.01730326997904862,
+      "maximum_sampled_error": 0.10280771781289115,
+      "samples": 576,
+      "worst_by_type": {
+        "TRI": {
+          "angle": 6.3281535843349985,
+          "uv": [
+            [
+              0.4375,
+              0.125
+            ],
+            [
+              0.40625,
+              0.125
+            ],
+            [
+              0.500091552734375,
+              0.0
+            ]
+          ]
+        },
+        "QUAD": {
+          "angle": 25.335621873573015,
+          "uv": [
+            [
+              1.0,
+              0.8783512883289859
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.9375,
+              0.9375
+            ],
+            [
+              0.9375,
+              0.90625
+            ]
+          ]
+        }
+      },
+      "lowest_tri_q": 0.18954876728000306,
+      "lowest_quad_J": 0.32332895608451606,
+      "old_regions": {
+        "TRI": {
+          "TRI": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 6.3281535843349985
+          },
+          "QUAD": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          }
+        },
+        "QUAD": {
+          "TRI": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          },
+          "QUAD": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 25.335621873573015
+          }
+        }
+      }
+    }
+  },
+  "variant": {
+    "initial": {
+      "sha256": "91536ad83e2eb5d8b7111c9534862c17842e938c580df7119a8d2b2ff53e5a8a",
+      "nodes": 624,
+      "faces": 649,
+      "boundary_segments": 23,
+      "shape": {
+        "TRI": {
+          "count": 75,
+          "min_angle": 6.3281535843349985,
+          "max_edge_ratio": 8.821913553591653
+        },
+        "QUAD": {
+          "count": 574,
+          "min_angle": 26.062329924849276,
+          "max_edge_ratio": 9.195933119406272
+        }
+      },
+      "neighbor_ratio_median": 1.0016959087896489,
+      "neighbor_ratio_max": 5.666256068991779,
+      "rms_source_area": 0.01737801018299061,
+      "maximum_sampled_error": 0.10325406187844632,
+      "samples": 576,
+      "worst_by_type": {
+        "TRI": {
+          "angle": 6.3281535843349985,
+          "uv": [
+            [
+              0.4375,
+              0.125
+            ],
+            [
+              0.40625,
+              0.125
+            ],
+            [
+              0.500091552734375,
+              0.0
+            ]
+          ]
+        },
+        "QUAD": {
+          "angle": 26.062329924849276,
+          "uv": [
+            [
+              0.875,
+              0.4375
+            ],
+            [
+              0.875,
+              0.40625
+            ],
+            [
+              0.90625,
+              0.375
+            ],
+            [
+              0.9375,
+              0.375
+            ]
+          ]
+        }
+      },
+      "lowest_tri_q": 0.18954876728000306,
+      "lowest_quad_J": 0.32332895608451606,
+      "old_regions": {
+        "TRI": {
+          "TRI": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 6.3281535843349985
+          },
+          "QUAD": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          }
+        },
+        "QUAD": {
+          "TRI": {
+            "count": 1,
+            "coverage": 0.3896499891953845,
+            "min_angle": 25.111191006740775
+          },
+          "QUAD": {
+            "count": 1,
+            "coverage": 0.6103500108046155,
+            "min_angle": 47.68423522397484
+          }
+        }
+      }
+    },
+    "final": {
+      "sha256": "7c6630d4b960b9b944c518eb9c61edfacef18d185849d62b31a4b2f598eb95d3",
+      "nodes": 624,
+      "faces": 649,
+      "boundary_segments": 23,
+      "shape": {
+        "TRI": {
+          "count": 75,
+          "min_angle": 6.3281535843349985,
+          "max_edge_ratio": 8.821913553591653
+        },
+        "QUAD": {
+          "count": 574,
+          "min_angle": 26.260140191628626,
+          "max_edge_ratio": 9.195933119406272
+        }
+      },
+      "neighbor_ratio_median": 1.0137886146763204,
+      "neighbor_ratio_max": 5.666256068991779,
+      "rms_source_area": 0.017267219511437795,
+      "maximum_sampled_error": 0.10280771781289115,
+      "samples": 576,
+      "worst_by_type": {
+        "TRI": {
+          "angle": 6.3281535843349985,
+          "uv": [
+            [
+              0.4375,
+              0.125
+            ],
+            [
+              0.40625,
+              0.125
+            ],
+            [
+              0.500091552734375,
+              0.0
+            ]
+          ]
+        },
+        "QUAD": {
+          "angle": 26.260140191628626,
+          "uv": [
+            [
+              0.0,
+              0.750885009765625
+            ],
+            [
+              0.0,
+              0.5
+            ],
+            [
+              0.125,
+              0.625
+            ],
+            [
+              0.125,
+              0.6875
+            ]
+          ]
+        }
+      },
+      "lowest_tri_q": 0.18954876728000306,
+      "lowest_quad_J": 0.32332895608451606,
+      "old_regions": {
+        "TRI": {
+          "TRI": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 6.3281535843349985
+          },
+          "QUAD": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          }
+        },
+        "QUAD": {
+          "TRI": {
+            "count": 1,
+            "coverage": 0.3896499891953845,
+            "min_angle": 25.111191006740775
+          },
+          "QUAD": {
+            "count": 1,
+            "coverage": 0.6103500108046155,
+            "min_angle": 47.68423522397484
+          }
+        }
+      }
+    }
+  },
+  "variant_source_sites": {
+    "unchanged": 22,
+    "midpoint": [
+      "#",
+      "source_site",
+      "1",
+      "0.94042301864940081",
+      "1",
+      "0.94042301864940081",
+      "559",
+      "7.5233840998435486",
+      "-0.18061649618652531",
+      "4",
+      "1",
+      "0.97058968352272668",
+      "0.062493162873124064",
+      "-1"
+    ]
+  },
+  "independent_checks": {
+    "valid_complete_passes_per_arm": 5,
+    "boundary_vertices_unchanged": 23
+  },
+  "canonical_parent": "b16a1f6c5c36d515760805ee44541098fa283212",
+  "local_diagnostics": [
+    "python build/quad-child-arc-20261123/native-audit.py",
+    "python build/quad-child-arc-20261123/frame-check.py"
+  ],
+  "frame_check_sha256": "ad8db8797cace2ebf8c920bb99ba5a69bff7d34f82a767e9ceaf59f5e366e588",
+  "not_run": [
+    "other native geometry or shared-curve adaptation",
+    "full CTest, CRT, sanitizer and hosted matrices",
+    "mixed global curvature and adaptive acceptance"
+  ]
+}

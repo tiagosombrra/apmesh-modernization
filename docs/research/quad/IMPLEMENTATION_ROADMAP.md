@@ -144,9 +144,12 @@ angles. Retain the residual-only comparator. The shared limiting
 faces already exhibit coarse contour-to-fine-template lengths before
 smoothing. The [child arc audit](RIBBED_LIMITING_CHILD_ARC_20261123.md)
 shows the TRI-adjacent targets already met and the worst QUAD edge
-still above target. Align one additional binary split on that child,
-with a one-point budget, before a native comparison. The live entry
-still accepts only one patch.
+still above target. The [approved one-point comparison](RIBBED_SINGLE_QUAD_EDGE_SPLIT_20261123.md)
+meets that arc request with 133 unchanged leaves and raises the global
+minimum QUAD angle. The old QUAD region gains a TRI and its mixed
+minimum angle drops slightly. The global limiting TRI remains fixed.
+Trace that TRI's native template edge and prospective choices before
+aligning the next local change. The live entry still accepts only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.

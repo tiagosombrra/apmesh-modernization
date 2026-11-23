@@ -3,7 +3,7 @@
 Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align a bounded physical-to-discrete curve sizing conversion
+## Active: trace the remaining limiting TRI at a satisfied contour
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,26 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-23 - execute the approved single child subdivision on Ribbed
+
+The [native test](RIBBED_SINGLE_QUAD_EDGE_SPLIT_20261123.md) keeps the
+same Step 2, physical requests and 133 leaf witnesses byte for byte.
+One additional native midpoint produces 23 instead of 22 contour
+segments and meets the old request of 0.62666 with two 0.5101 arcs.
+The final mesh adds one node and one TRI. Its global minimum QUAD
+angle improves from 25.34 to 26.06 degrees at birth and to 26.26
+after guarded smoothing. The old QUAD footprint includes a 25.11-degree
+TRI, so the local minimum over both types drops slightly. The original
+6.33-degree TRI stays fixed, and the max size jump and sampled error
+maximum are unchanged. No mixed epoch accepted.
+
+**Next:** trace the unchanged limiting TRI's native template edge
+and prospective front candidates at birth. Its contour requests
+already comply. Use the trace to align a local change before a new
+reconstruction, preserving the comparison with and without the
+single QUAD split. Global mixed curvature and general acceptance
+remain pending.
 
 ### 2026-11-23 - measure native child arcs at the limiting faces
 
