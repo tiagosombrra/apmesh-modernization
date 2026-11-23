@@ -25,7 +25,9 @@ class F25RunnerContractTests(unittest.TestCase):
         data = {'schema': 'apmesh-s40-f25-native-geometry-v1',
                 'result': 'PASS', 'patches': 2, 'curves': 7, 'boundary': 6,
                 'shared': 1, 'nonmanifold': 0, 'sides': 8,
-                'load_ms': 1.2, 'verify_ms': 0.2, 'peak_rss_kib': 7000}
+                'parse_ms': 0.3, 'load_ms': 1.2, 'verify_ms': 0.2,
+                'peak_rss_kib': 7000,
+                'matched_control_sides': 8, 'reversed_control_sides': 0}
         data.update(replace)
         return json.dumps(data)
 
@@ -166,7 +168,15 @@ class F25RunnerContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'RSS observation'):
             f25.parse_observation(self.sample(peak_rss_kib=0), (2, 7, 6, 1))
 
-    def test_30_source_hash_failure_before_build(self):
+    def test_30_unmatched_native_controls_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'counts do not match'):
+            f25.parse_observation(self.sample(matched_control_sides=7), (2, 7, 6, 1))
+
+    def test_31_negative_reversed_control_count_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'counts do not match'):
+            f25.parse_observation(self.sample(reversed_control_sides=-1), (2, 7, 6, 1))
+
+    def test_32_source_hash_failure_before_build(self):
         with self.assertRaisesRegex(ValueError, 'checkout is unavailable'):
             f25.measure(self.root, self.root / 'nonexistent.cpp', bp=None)
 

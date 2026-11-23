@@ -116,9 +116,12 @@ def parse_observation(raw: str, expected: tuple[int, int, int, int]) -> dict:
     actual = tuple(data.get(name) for name in fields)
     require(all(type(v) is int and v >= 0 for v in actual), 'Invalid native curve counts')
     require(actual == expected and data.get('nonmanifold') == 0
-            and data.get('sides') == 4 * expected[0],
+            and data.get('sides') == 4 * expected[0]
+            and data.get('matched_control_sides') == 4 * expected[0]
+            and type(data.get('reversed_control_sides')) is int
+            and 0 <= data['reversed_control_sides'] <= 4 * expected[0],
             'Native patch/curve/observer counts do not match input')
-    for field in ('load_ms', 'verify_ms'):
+    for field in ('parse_ms', 'load_ms', 'verify_ms'):
         value = data.get(field)
         require(type(value) in (int, float) and math.isfinite(value) and value >= 0,
                 'Missing/nonfinite native timing')
@@ -186,7 +189,8 @@ def measure(root: Path, probe: Path, *, bp: Path | None,
                 observed, wall = run([str(executable), str(path), *(str(x) for x in expected)],
                                       timeout=native_timeout, hide=True, native=True)
                 data = parse_observation(observed.stdout, expected)
-                checks.append({'load_ms': data['load_ms'],
+                checks.append({'parse_ms': data['parse_ms'],
+                               'load_ms': data['load_ms'],
                                'verify_ms': data['verify_ms'],
                                'peak_rss_kib': data['peak_rss_kib'],
                                'process_wall_ms': wall * 1000})

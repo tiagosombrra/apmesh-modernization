@@ -44,5 +44,11 @@ jobs:
           assert report['apmesh_tri_or_quad_mesher_executed'] is False
           assert [case['case'] for case in report['cases']] == [
               'synthetic-1', 'synthetic-2']
+          for case in report['cases']:
+              for i, observation in enumerate(case['repetitions'], 1):
+                  print(case['case'], 'run', i, 'native_load_ms=',
+                        observation['load_ms'], 'native_verify_ms=',
+                        observation['verify_ms'], 'peak_rss_kib=',
+                        observation['peak_rss_kib'])
           print('Original C++ synthetic Geometry gate PASS; real #293137 NOT RUN')
           PY
