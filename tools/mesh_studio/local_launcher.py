@@ -365,7 +365,7 @@ def launch(mode: str, on_ready: Callable[[], None] | None = None) -> dict:
              {"Sec-Fetch-Site": "cross-site"}, "GET", 403),
             (API_ADDRESS + "/api/v1/health", {}, "POST", 405),
             (WEB_ADDRESS + "/",
-             {"Host": "attacker.invalid:5173"}, "GET", 400),
+             {"Host": "attacker.invalid:5173"}, "GET", 403),
             (WEB_ADDRESS + "/",
              {"Origin": "https://attacker.invalid"}, "GET", 403),
             (WEB_ADDRESS + "/",
