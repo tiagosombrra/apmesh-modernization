@@ -1,0 +1,42 @@
+name: Research F27 native TRI evidence contracts (no model assets)
+
+on:
+  push:
+    branches:
+      - research/benchmark-corpus-reverse-patches
+    paths:
+      - .github/workflows/research-f27-evidence-contracts.yml
+      - docs/research/nonmanifold-benchmark/probes/thingi10k_f27_native_tri_evidence.py
+      - docs/research/nonmanifold-benchmark/probes/test_thingi10k_f27_native_tri_evidence.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hermetic-source-independent-gates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout research-only source and test scripts
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check original source/output scientific contract without geometries
+        run: |
+          python3 -m unittest discover \
+            -s docs/research/nonmanifold-benchmark/probes \
+            -p test_thingi10k_f27_native_tri_evidence.py -v
+      - name: Ensure checkout contains no private model-specific F27 files
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path.cwd()
+          forbidden = (
+              '293137.stl', '293137.stl.zip',
+              '293137_piecewise_linear_candidate.bp',
+              'bunny_passo_0_malha_0.obj', 'bunny_passo_0_incidences.json')
+          for name in forbidden:
+              assert not list(root.rglob(name)), f'Private F27 geometry was published: {name}'
+          print('F27 code-only checkout and data exclusion gate PASS')
+          PY

@@ -1,0 +1,118 @@
+{
+  "accepted_stages": [
+    0
+  ],
+  "artifact_sha256": {
+    "bunny_n.process__metrics_rank_-1.csv": "8d969920240b043a2fe5195b14c231e29dd76784e6f055b37d186bd4a90d6c14",
+    "bunny_passo_0_acceptance_accepted.log": "1f241c0b6d1b05adcb0607f705054ca588071242d24ac4b2e7482730c3a119e4",
+    "bunny_passo_0_incidences.json": "76c0c3eb7c0bd257b2d0ec97d151d0e6d99fa9fa88fe2bc06d17f8e1007e431a",
+    "bunny_passo_0_malha_0.obj": "145b40c2f542a9d1d18bcda6eccc01c8861be83d247418af96fa18b4c860c325"
+  },
+  "asset_license_independently_cleared": false,
+  "bounded_native_processes": [
+    {
+      "return_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "ba615278b62d089fc4a524baf293fa69d2561f8a05ea53074bb116612f0bcbd5",
+      "wall_seconds": 0.3738524970012804
+    },
+    {
+      "return_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7e111e8c87a415c8789aef91bd46a11e6d0b871a2752b4ff979f16ba12889f21",
+      "wall_seconds": 0.3724602610000147
+    }
+  ],
+  "duplicate_index_vertices_with_exact_same_exported_xyz": 2626,
+  "exact_xyz_welded_topology_diagnostic_not_native_output": {
+    "boundary_edges": 0,
+    "components": 1,
+    "edges": 5256,
+    "euler": 2,
+    "faces": 3504,
+    "high_incidence_edges": 0,
+    "manifold_edges": 5256,
+    "nonmanifold_vertex_links": 0,
+    "vertex_link_cycles": 1754,
+    "vertex_link_paths": 0,
+    "vertices": 1754,
+    "winding_conflicts": 0
+  },
+  "frozen_engine_settings": {
+    "ADAPTIVE_INTENSITY": "0.02",
+    "ADAPTIVE_MAX_STEPS": "2",
+    "ADAPTIVE_MODE": "research_debug",
+    "ADAPTIVE_QUALITY_PRIORITY": "0.95",
+    "ADAPTIVE_TARGET_GROWTH": "1.05",
+    "AFT_LOCAL_POSTPROCESS_PASSES": "0",
+    "BUILD_DIR": "build",
+    "CURVE_POINT_MAX": "16",
+    "CURVE_POINT_MIN": "3",
+    "ENABLE_HYBRID_RECONSTRUCTION": "0",
+    "EPSYLON": "0.0000001",
+    "NUM_PROCESSES": "1",
+    "NUM_THREADS": "1",
+    "PATCH_QUADTREE_DEPTH_STEP1": "2",
+    "PATCH_QUADTREE_DEPTH_STEPN": "2",
+    "TOL_LOCAL": "0.0000001",
+    "USE_TEMPLATE": "y",
+    "WRITE_MODE": "h"
+  },
+  "geometry": {
+    "absolute_area_difference": 3.637978807091713e-12,
+    "all_native_faces_and_nodes_reconciled_with_exported_obj": true,
+    "max_barycentric_outside_source_triangle": 6.128431095930864e-14,
+    "max_point_to_source_triangle_plane_distance": 1.8239326619451837e-14,
+    "max_relative_original_facet_area_error": 1.1286260919885815e-15,
+    "native_full_precision_surface_area": 29490.715496607325,
+    "opposite_source_facet_orientation_faces": 0,
+    "original_surface_area": 29490.71549660732
+  },
+  "native_global_stitching_verified": false,
+  "native_obj_indexed_topology": {
+    "boundary_edges": 3504,
+    "components": 876,
+    "edges": 7008,
+    "euler": 876,
+    "faces": 3504,
+    "high_incidence_edges": 0,
+    "manifold_edges": 3504,
+    "nonmanifold_vertex_links": 0,
+    "vertex_link_cycles": 876,
+    "vertex_link_paths": 3504,
+    "vertices": 4380,
+    "winding_conflicts": 0
+  },
+  "native_stage0_accepted_by_engine": true,
+  "native_triangles": 3504,
+  "original_bp_sha256": "6049d4e46cfd73e104c2b63ef34d3a8089c4f59d1f940bee8c1ec66a8f0bafb0",
+  "original_native_binary_build_workflow": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45164751761",
+  "original_native_cli_sha256": "9ee068d7c0809476d37b77fb8d8bef4cbede21db5efe68ed2a3b13343b5b401f",
+  "original_source_commit_native_cli": "56d793bfe611b7352d9cd4f8dc6f5e025f5b84b0",
+  "original_stl_sha256": "4a222346223cf2c207c34d7a3d4e8ea297b004ff862b06b6e4c7c2eeac9f761a",
+  "original_stl_tri_quality": {
+    "below_0_30_count": 22,
+    "below_0_30_percent": 7.534246575342466,
+    "mean": 0.7171425962435674,
+    "min": 0.002500923412607953
+  },
+  "quality": {
+    "2r_over_R_mean_obj": 0.5942111212551515,
+    "2r_over_R_min_obj": 0.0003074899137272615,
+    "below_0_30_count": 602,
+    "below_0_30_percent": 17.180365296803654
+  },
+  "rejected_stages": [],
+  "reproducibility": {
+    "admitted_as_fair_scientific_benchmark": false,
+    "admitted_as_original_native_execution": true,
+    "four_scientific_artifact_hashes_byte_identical": true,
+    "native_repetitions": 2,
+    "same_binary_and_input": true
+  },
+  "schema": "apmesh-s40-f27-original-tri-stage0-audit-v1",
+  "scientific_benchmark_admitted": false,
+  "source_facets": 292,
+  "source_model_id": 293137,
+  "status": "NATIVE_TRI_STAGE0_ACCEPTED_INDEXED_TOPOLOGY_NOT_GLOBALLY_STITCHED"
+}
