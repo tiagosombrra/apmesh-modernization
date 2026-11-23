@@ -134,9 +134,11 @@ a 5.84 size discontinuity across a conforming archived Ribbed seam.
 The [approved ordinary Step 2 comparison](RIBBED_MIXED_STEP2_SMOOTHING_20261123.md)
 now yields a valid guarded predecessor with identical contour and faces.
 It leaves a 3.79-degree transition TRI beside a much smaller QUAD.
-Check existing residual and typed grading coverage on both predecessors
-before aligning a local sizing conversion. The live entry still accepts
-only one patch.
+The [target coverage replay](MIXED_FRONT_CURVATURE_SIZING_20261123.md)
+measures no requested size change at either limiting TRI. Align a
+curvature- and gradation-driven pre-front sizing proposal before
+changing mixed selection. Evaluate shape before and after smoothing.
+The live entry still accepts only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.

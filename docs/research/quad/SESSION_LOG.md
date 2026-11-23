@@ -4200,3 +4200,17 @@ QUAD minimal angle, reduced geometric RMS and mixed gradation effects.
 Next audit existing residual and neighbor coverage on the two
 predecessors before aligning the size conversion. No new size law,
 feedback execution, full delivery matrix or accepted mixed epoch.
+
+## 2026-11-23 Fortaleza - clarify curvature-driven sizing before the mixed front
+
+The researcher asks whether curvature can improve element shape at
+generation. The [source audit and replay](MIXED_FRONT_CURVATURE_SIZING_20261123.md)
+distinguish native upstream curve/tree curvature adaptation from
+existing-vertex UV mixed contraction. Replay all 39 original
+propagation updates and inspect two guarded archives. The worst TRI
+receives no reduction in either archive. In Ribbed it is four edges
+from the nearest seed, with two smaller contour targets on an
+analytically straight side. In Bezier it is seven edges away.
+Use these observations to align a native pre-front size proposal
+before changing candidate selection. Only read-only evidence and
+documentation changed. No new native execution or mixed acceptance.

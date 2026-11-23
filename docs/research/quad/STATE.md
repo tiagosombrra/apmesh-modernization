@@ -12,6 +12,26 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-23 - locate curvature sizing and audit front-target coverage
+
+The [read-only audit](MIXED_FRONT_CURVATURE_SIZING_20261123.md) confirms the
+article mixed front contracts existing UV vertices and receives curvature
+only indirectly through its native contour and leaves. The replay
+verifies all 39 original pilot updates and repeats the existing
+residual and typed-neighbor logic on both guarded archives. The
+3.79-degree Ribbed and 5.09-degree Bezier TRI lie four and seven
+graph edges from the nearest residual seed and receive no new size.
+The Ribbed TRI touches a straight analytic side. Both adjacent
+source intervals nevertheless receive smaller requests in the replay.
+
+**Next:** align one pre-front local sizing proposal using curvature,
+the existing physical residual, and observed size/shape transitions.
+Feed the native binary contour and quadtree before running the
+existing mixed selection. Compare the resulting initial and final
+element shape, gradation, deviation and totals on the retained
+controls. No numerical rule chosen or new generation in this
+session. Mixed adaptive epochs accepted: 0.
+
 ### 2026-11-23 - obtain a valid guarded ordinary mixed Step 2 on Ribbed
 
 The [native comparison](RIBBED_MIXED_STEP2_SMOOTHING_20261123.md)
