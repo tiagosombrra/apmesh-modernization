@@ -1,0 +1,1828 @@
+{
+  "fixture": {
+    "source": "input_models\\ribbed_bracket_nm_decor.bp",
+    "source_sha256": "7b20e455dd5bde48d183006e1c0e67b454f033d1d8345f013a0acb7d72bade76",
+    "patch_zero_based": 12,
+    "derived_fixture_sha256": "07cd08d6258f72a140198d4d9f72360888da9486954216a467c87e949c870e10",
+    "config_sha256": "c382655b1e817fa3947a6d767df56f91e8c7da1d159638cf82023385b352f4af",
+    "binary_sha256": "ecde10ce9173c34130310b68e5df4f024da860770dbd74838f0b548d28e12424"
+  },
+  "native_ribbed": {
+    "exit": 4294967295,
+    "seconds": 1.9318654537200928,
+    "timeout": 180,
+    "command": [
+      "build/quad-feedback-smoothing-20261123/smoothing-ap_mesh.exe",
+      "--config",
+      "build/quad-sizing-contract-20261123/ribbed.conf"
+    ],
+    "stderr": "Error: input or configuration failure: Mixed smoothing inverted or collapsed a UV quad at face 483",
+    "completed_manifest_prefix": [
+      {
+        "step": "0",
+        "epoch": "0",
+        "retry": "-1",
+        "domain_generation": "0",
+        "reference_tri_accepted": "1",
+        "reason": "initial",
+        "tri_obj": "step_0_retry_-1_accepted_tri.obj",
+        "quad_tri_obj": "step_0_retry_-1_accepted_quad_tri.obj",
+        "nodes": "5",
+        "quads": "0",
+        "triangles": "4",
+        "boundary": "4"
+      },
+      {
+        "step": "1",
+        "epoch": "1",
+        "retry": "0",
+        "domain_generation": "1",
+        "reference_tri_accepted": "1",
+        "reason": "accepted",
+        "tri_obj": "step_1_retry_0_accepted_tri.obj",
+        "quad_tri_obj": "step_1_retry_0_accepted_quad_tri.obj",
+        "nodes": "33",
+        "quads": "24",
+        "triangles": "8",
+        "boundary": "8"
+      }
+    ],
+    "prefix_sha256": {
+      "step_0_retry_-1_accepted_quad_tri.obj": "e02b13c43401309b8245b75c3c82d659352f29c3a3b26c624fea6ee335f20642",
+      "step_0_retry_-1_accepted_tri.obj": "e02b13c43401309b8245b75c3c82d659352f29c3a3b26c624fea6ee335f20642",
+      "step_1_retry_0_accepted_quad_tri.obj": "14c62071c29e76190cbe0a04cc527dd7d4210d36af76c889fa276bf2896b7def",
+      "step_1_retry_0_accepted_tri.obj": "6ba391519cd5f7aa4ce5093c9f154bae994eb20d073976d6d4104d3a75136293",
+      "step_2_retry_0_accepted_tri.obj": "2c242c53882b7b97207cca6bf030ce839071cbdc14614e2482690bba1be4a851"
+    },
+    "manifest_sha256": "e6e4bc5779bdb31fe6a37a3dd6adda55b7cdbe7d8e8c2afe1e24804d5d7517bc",
+    "stderr_sha256": "311131fbe62cd2c3af46689c4578cdc229176921d0a7228ab27a4889b90fae4c"
+  },
+  "normal_spread": {
+    "minimum_deg": 2.1206031948583495,
+    "median_deg": 9.01446184146899,
+    "maximum_deg": 15.67366214026216,
+    "grid_cells": 64
+  },
+  "step_1": {
+    "builtin": {
+      "tri": {
+        "sha256": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+        "nodes": 17,
+        "faces": 24,
+        "boundary_segments": 8,
+        "shape": {
+          "TRI": {
+            "count": 24,
+            "min_angle": 29.75731204057063,
+            "max_edge_ratio": 1.9929878870571147
+          },
+          "QUAD": null
+        },
+        "neighbor_ratio_median": 1.1233448407486142,
+        "neighbor_ratio_max": 1.6494558386714127,
+        "rms_source_area": 0.026487358708233807,
+        "maximum_sampled_error": 0.08992172188197542,
+        "samples": 576
+      },
+      "quad_tri": {
+        "sha256": "a068710ded246cb32119930d14c84ddc67d9d1bd34011c24deb35653c49ef765",
+        "nodes": 33,
+        "faces": 32,
+        "boundary_segments": 8,
+        "shape": {
+          "TRI": {
+            "count": 8,
+            "min_angle": 37.623026562717,
+            "max_edge_ratio": 1.61581010622948
+          },
+          "QUAD": {
+            "count": 24,
+            "min_angle": 31.54933773014362,
+            "max_edge_ratio": 6.233035576427598
+          }
+        },
+        "neighbor_ratio_median": 1.2004233365745252,
+        "neighbor_ratio_max": 2.7035385282720656,
+        "rms_source_area": 0.02216856603163197,
+        "maximum_sampled_error": 0.08970625875320964,
+        "samples": 576
+      }
+    },
+    "ribbed": {
+      "tri": {
+        "sha256": "6ba391519cd5f7aa4ce5093c9f154bae994eb20d073976d6d4104d3a75136293",
+        "nodes": 17,
+        "faces": 24,
+        "boundary_segments": 8,
+        "shape": {
+          "TRI": {
+            "count": 24,
+            "min_angle": 21.606338490761143,
+            "max_edge_ratio": 2.696014496265226
+          },
+          "QUAD": null
+        },
+        "neighbor_ratio_median": 1.0667894250871,
+        "neighbor_ratio_max": 1.5744080293898446,
+        "rms_source_area": 0.11573021394889296,
+        "maximum_sampled_error": 0.32464480377519794,
+        "samples": 576
+      },
+      "quad_tri": {
+        "sha256": "14c62071c29e76190cbe0a04cc527dd7d4210d36af76c889fa276bf2896b7def",
+        "nodes": 33,
+        "faces": 32,
+        "boundary_segments": 8,
+        "shape": {
+          "TRI": {
+            "count": 8,
+            "min_angle": 20.220294200568116,
+            "max_edge_ratio": 2.891324704415036
+          },
+          "QUAD": {
+            "count": 24,
+            "min_angle": 27.747094570323164,
+            "max_edge_ratio": 5.425806954901194
+          }
+        },
+        "neighbor_ratio_median": 1.108734236368369,
+        "neighbor_ratio_max": 2.826006131381787,
+        "rms_source_area": 0.09940568292611575,
+        "maximum_sampled_error": 0.323739314318499,
+        "samples": 576
+      }
+    }
+  },
+  "paired_controls": [
+    {
+      "mode": "aligned",
+      "center": "vertex_mean",
+      "seam": {
+        "shared_curve_edges": 4,
+        "shared_seam_vertices": 5,
+        "per_patch_outer_edges": 16,
+        "virtual_combined_unique_vertices": 133,
+        "patches_have_distinct_node_ownership": true,
+        "shared_nodes_actually_welded": false
+      },
+      "one_sided_movement_rejected": true,
+      "intervals": [
+        {
+          "y": [
+            0.0,
+            0.25
+          ],
+          "left": {
+            "directed_y": [
+              0.0,
+              0.25000000000000006
+            ],
+            "face": 58,
+            "h": 0.25226783881422543,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.25226783881422543
+          },
+          "right": {
+            "directed_y": [
+              0.25,
+              0.0
+            ],
+            "face": 42,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.2522678388142254
+          },
+          "face_size_ratio": 1.0000000000000002
+        },
+        {
+          "y": [
+            0.25,
+            0.5
+          ],
+          "left": {
+            "directed_y": [
+              0.25000000000000006,
+              0.5000000000000001
+            ],
+            "face": 60,
+            "h": 0.27952264694698714,
+            "kind": "TRI",
+            "min_angle": 53.17357344022944,
+            "chord": 0.25025299698505116
+          },
+          "right": {
+            "directed_y": [
+              0.5,
+              0.25
+            ],
+            "face": 49,
+            "h": 0.2795226469469871,
+            "kind": "TRI",
+            "min_angle": 53.17357344022943,
+            "chord": 0.2502529969850511
+          },
+          "face_size_ratio": 1.0000000000000002
+        },
+        {
+          "y": [
+            0.5,
+            0.75
+          ],
+          "left": {
+            "directed_y": [
+              0.5000000000000001,
+              0.75
+            ],
+            "face": 63,
+            "h": 0.27952264694698703,
+            "kind": "TRI",
+            "min_angle": 53.17357344022941,
+            "chord": 0.250252996985051
+          },
+          "right": {
+            "directed_y": [
+              0.75,
+              0.5
+            ],
+            "face": 70,
+            "h": 0.2795226469469871,
+            "kind": "TRI",
+            "min_angle": 53.17357344022943,
+            "chord": 0.2502529969850511
+          },
+          "face_size_ratio": 1.0000000000000002
+        },
+        {
+          "y": [
+            0.75,
+            1.0
+          ],
+          "left": {
+            "directed_y": [
+              0.75,
+              1.0
+            ],
+            "face": 66,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.2522678388142254
+          },
+          "right": {
+            "directed_y": [
+              1.0,
+              0.75
+            ],
+            "face": 76,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.2522678388142254
+          },
+          "face_size_ratio": 1.0
+        }
+      ],
+      "max_across_seam_ratio": 1.0000000000000002,
+      "archive_sha256": {
+        "pairwise_aligned_vertex_mean.csv": "0c3939c61564605dad18fcb0df1c135ac7ad15d475312f16053994582636b92a",
+        "pairwise_aligned_vertex_mean_patch_0.obj": "4f4bd64b90d03851dd46518fde54adbd04d432933b7fac53d1d0dc25fd631939",
+        "pairwise_aligned_vertex_mean_patch_1.obj": "7afd3c024e8c72c872d60eb327b1c2350dfd9ea14d60943cd2cafb07a04df565"
+      }
+    },
+    {
+      "mode": "reparameterized",
+      "center": "vertex_mean",
+      "seam": {
+        "shared_curve_edges": 4,
+        "shared_seam_vertices": 5,
+        "per_patch_outer_edges": 16,
+        "virtual_combined_unique_vertices": 133,
+        "patches_have_distinct_node_ownership": true,
+        "shared_nodes_actually_welded": false
+      },
+      "one_sided_movement_rejected": true,
+      "intervals": [
+        {
+          "y": [
+            0.0,
+            0.25
+          ],
+          "left": {
+            "directed_y": [
+              0.0,
+              0.25000000000000006
+            ],
+            "face": 58,
+            "h": 0.25226783881422543,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.25226783881422543
+          },
+          "right": {
+            "directed_y": [
+              0.24999999999999997,
+              0.0
+            ],
+            "face": 66,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064363,
+            "chord": 0.2522678388142254
+          },
+          "face_size_ratio": 1.0000000000000002
+        },
+        {
+          "y": [
+            0.25,
+            0.5
+          ],
+          "left": {
+            "directed_y": [
+              0.25000000000000006,
+              0.5000000000000001
+            ],
+            "face": 60,
+            "h": 0.27952264694698714,
+            "kind": "TRI",
+            "min_angle": 53.17357344022944,
+            "chord": 0.25025299698505116
+          },
+          "right": {
+            "directed_y": [
+              0.49999999999999994,
+              0.24999999999999997
+            ],
+            "face": 63,
+            "h": 0.2795226469469871,
+            "kind": "TRI",
+            "min_angle": 53.173573440229426,
+            "chord": 0.2502529969850511
+          },
+          "face_size_ratio": 1.0000000000000002
+        },
+        {
+          "y": [
+            0.5,
+            0.75
+          ],
+          "left": {
+            "directed_y": [
+              0.5000000000000001,
+              0.75
+            ],
+            "face": 63,
+            "h": 0.27952264694698703,
+            "kind": "TRI",
+            "min_angle": 53.17357344022941,
+            "chord": 0.250252996985051
+          },
+          "right": {
+            "directed_y": [
+              0.75,
+              0.49999999999999994
+            ],
+            "face": 60,
+            "h": 0.27952264694698714,
+            "kind": "TRI",
+            "min_angle": 53.17357344022944,
+            "chord": 0.25025299698505116
+          },
+          "face_size_ratio": 1.0000000000000004
+        },
+        {
+          "y": [
+            0.75,
+            1.0
+          ],
+          "left": {
+            "directed_y": [
+              0.75,
+              1.0
+            ],
+            "face": 66,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.2522678388142254
+          },
+          "right": {
+            "directed_y": [
+              1.0,
+              0.75
+            ],
+            "face": 58,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.2522678388142254
+          },
+          "face_size_ratio": 1.0
+        }
+      ],
+      "max_across_seam_ratio": 1.0000000000000004,
+      "archive_sha256": {
+        "pairwise_reparameterized_vertex_mean.csv": "90eade0b34b7fab8c261f9bb65942718f48e92c6bbffa35de60dbf973e73565d",
+        "pairwise_reparameterized_vertex_mean_patch_0.obj": "4f4bd64b90d03851dd46518fde54adbd04d432933b7fac53d1d0dc25fd631939",
+        "pairwise_reparameterized_vertex_mean_patch_1.obj": "5c1201d42cece0f65b327d9603ecb6ec3d62dc460d874418093d7e0618467bb4"
+      }
+    },
+    {
+      "mode": "aligned",
+      "center": "area_centroid",
+      "seam": {
+        "shared_curve_edges": 4,
+        "shared_seam_vertices": 5,
+        "per_patch_outer_edges": 16,
+        "virtual_combined_unique_vertices": 133,
+        "patches_have_distinct_node_ownership": true,
+        "shared_nodes_actually_welded": false
+      },
+      "one_sided_movement_rejected": true,
+      "intervals": [
+        {
+          "y": [
+            0.0,
+            0.25
+          ],
+          "left": {
+            "directed_y": [
+              0.0,
+              0.25000000000000006
+            ],
+            "face": 58,
+            "h": 0.25226783881422543,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.25226783881422543
+          },
+          "right": {
+            "directed_y": [
+              0.25,
+              0.0
+            ],
+            "face": 42,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.2522678388142254
+          },
+          "face_size_ratio": 1.0000000000000002
+        },
+        {
+          "y": [
+            0.25,
+            0.5
+          ],
+          "left": {
+            "directed_y": [
+              0.25000000000000006,
+              0.5000000000000001
+            ],
+            "face": 60,
+            "h": 0.27952264694698714,
+            "kind": "TRI",
+            "min_angle": 53.17357344022944,
+            "chord": 0.25025299698505116
+          },
+          "right": {
+            "directed_y": [
+              0.5,
+              0.25
+            ],
+            "face": 49,
+            "h": 0.2795226469469871,
+            "kind": "TRI",
+            "min_angle": 53.17357344022943,
+            "chord": 0.2502529969850511
+          },
+          "face_size_ratio": 1.0000000000000002
+        },
+        {
+          "y": [
+            0.5,
+            0.75
+          ],
+          "left": {
+            "directed_y": [
+              0.5000000000000001,
+              0.75
+            ],
+            "face": 63,
+            "h": 0.27952264694698703,
+            "kind": "TRI",
+            "min_angle": 53.17357344022941,
+            "chord": 0.250252996985051
+          },
+          "right": {
+            "directed_y": [
+              0.75,
+              0.5
+            ],
+            "face": 70,
+            "h": 0.2795226469469871,
+            "kind": "TRI",
+            "min_angle": 53.17357344022943,
+            "chord": 0.2502529969850511
+          },
+          "face_size_ratio": 1.0000000000000002
+        },
+        {
+          "y": [
+            0.75,
+            1.0
+          ],
+          "left": {
+            "directed_y": [
+              0.75,
+              1.0
+            ],
+            "face": 66,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.2522678388142254
+          },
+          "right": {
+            "directed_y": [
+              1.0,
+              0.75
+            ],
+            "face": 76,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.2522678388142254
+          },
+          "face_size_ratio": 1.0
+        }
+      ],
+      "max_across_seam_ratio": 1.0000000000000002,
+      "archive_sha256": {
+        "pairwise_aligned_area_centroid.csv": "2368bafbbd1700519ff5ec05b0990111ed87bbac8f4c5caef605f6e0361a56ef",
+        "pairwise_aligned_area_centroid_patch_0.obj": "6018830aff3d16d3f30108791d0a1ecea14538a1c83448407b4fff33cdf5da96",
+        "pairwise_aligned_area_centroid_patch_1.obj": "9a27901b2aee277de5d875748cb6056cdbc0a8eafd7afe5732e25dac37656f05"
+      }
+    },
+    {
+      "mode": "reparameterized",
+      "center": "area_centroid",
+      "seam": {
+        "shared_curve_edges": 4,
+        "shared_seam_vertices": 5,
+        "per_patch_outer_edges": 16,
+        "virtual_combined_unique_vertices": 133,
+        "patches_have_distinct_node_ownership": true,
+        "shared_nodes_actually_welded": false
+      },
+      "one_sided_movement_rejected": true,
+      "intervals": [
+        {
+          "y": [
+            0.0,
+            0.25
+          ],
+          "left": {
+            "directed_y": [
+              0.0,
+              0.25000000000000006
+            ],
+            "face": 58,
+            "h": 0.25226783881422543,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.25226783881422543
+          },
+          "right": {
+            "directed_y": [
+              0.24999999999999997,
+              0.0
+            ],
+            "face": 66,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064363,
+            "chord": 0.2522678388142254
+          },
+          "face_size_ratio": 1.0000000000000002
+        },
+        {
+          "y": [
+            0.25,
+            0.5
+          ],
+          "left": {
+            "directed_y": [
+              0.25000000000000006,
+              0.5000000000000001
+            ],
+            "face": 60,
+            "h": 0.27952264694698714,
+            "kind": "TRI",
+            "min_angle": 53.17357344022944,
+            "chord": 0.25025299698505116
+          },
+          "right": {
+            "directed_y": [
+              0.49999999999999994,
+              0.24999999999999997
+            ],
+            "face": 63,
+            "h": 0.2795226469469871,
+            "kind": "TRI",
+            "min_angle": 53.173573440229426,
+            "chord": 0.2502529969850511
+          },
+          "face_size_ratio": 1.0000000000000002
+        },
+        {
+          "y": [
+            0.5,
+            0.75
+          ],
+          "left": {
+            "directed_y": [
+              0.5000000000000001,
+              0.75
+            ],
+            "face": 63,
+            "h": 0.27952264694698703,
+            "kind": "TRI",
+            "min_angle": 53.17357344022941,
+            "chord": 0.250252996985051
+          },
+          "right": {
+            "directed_y": [
+              0.75,
+              0.49999999999999994
+            ],
+            "face": 60,
+            "h": 0.27952264694698714,
+            "kind": "TRI",
+            "min_angle": 53.17357344022944,
+            "chord": 0.25025299698505116
+          },
+          "face_size_ratio": 1.0000000000000004
+        },
+        {
+          "y": [
+            0.75,
+            1.0
+          ],
+          "left": {
+            "directed_y": [
+              0.75,
+              1.0
+            ],
+            "face": 66,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.2522678388142254
+          },
+          "right": {
+            "directed_y": [
+              1.0,
+              0.75
+            ],
+            "face": 58,
+            "h": 0.2522678388142254,
+            "kind": "TRI",
+            "min_angle": 44.74129996064362,
+            "chord": 0.2522678388142254
+          },
+          "face_size_ratio": 1.0
+        }
+      ],
+      "max_across_seam_ratio": 1.0000000000000004,
+      "archive_sha256": {
+        "pairwise_reparameterized_area_centroid.csv": "b7d7fba4732dddd0380f0a9f7ce543d86c3e080e5f04210fa61dfe9d890093c6",
+        "pairwise_reparameterized_area_centroid_patch_0.obj": "6018830aff3d16d3f30108791d0a1ecea14538a1c83448407b4fff33cdf5da96",
+        "pairwise_reparameterized_area_centroid_patch_1.obj": "336a6152a909b5ef4b591e972f3f6995bf1a142ac021ae8ae6044d5f4ed08ee1"
+      }
+    }
+  ],
+  "ideal_binary_subdivision": [
+    {
+      "interval": 0,
+      "ideal_depth": 2,
+      "ideal_subintervals": 4,
+      "existing_subintervals": 2
+    },
+    {
+      "interval": 1,
+      "ideal_depth": 2,
+      "ideal_subintervals": 4,
+      "existing_subintervals": 2
+    },
+    {
+      "interval": 2,
+      "ideal_depth": 1,
+      "ideal_subintervals": 2,
+      "existing_subintervals": 2
+    },
+    {
+      "interval": 3,
+      "ideal_depth": 0,
+      "ideal_subintervals": 1,
+      "existing_subintervals": 1
+    },
+    {
+      "interval": 4,
+      "ideal_depth": 0,
+      "ideal_subintervals": 1,
+      "existing_subintervals": 1
+    },
+    {
+      "interval": 5,
+      "ideal_depth": 1,
+      "ideal_subintervals": 2,
+      "existing_subintervals": 2
+    },
+    {
+      "interval": 6,
+      "ideal_depth": 1,
+      "ideal_subintervals": 2,
+      "existing_subintervals": 2
+    },
+    {
+      "interval": 7,
+      "ideal_depth": 2,
+      "ideal_subintervals": 4,
+      "existing_subintervals": 2
+    },
+    {
+      "interval": 8,
+      "ideal_depth": 2,
+      "ideal_subintervals": 4,
+      "existing_subintervals": 2
+    },
+    {
+      "interval": 9,
+      "ideal_depth": 3,
+      "ideal_subintervals": 8,
+      "existing_subintervals": 2
+    }
+  ],
+  "accepted_mixed_epochs": 0,
+  "ribbed_actual_shared_archives": {
+    "curves_sha256": "5ac15c1ae12b5b3dbd49c46b22fa8f6fcd445b386934f8a7fe7cc31b879660be",
+    "samples_sha256": "35089cf7e0aa6ab80774bfeb162db72452552a0a668f9d3dc788d60698584027",
+    "patch_12_incident_shared_groups": [
+      [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          3
+        ]
+      ],
+      [
+        [
+          10,
+          2
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ]
+    ],
+    "curves": [
+      {
+        "owners": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "obj_sha256": [
+          "172efb3c609704f88ea26b207871fb0e87f809f19ca9f4a8e3b668dce07ab080",
+          "1780ff447e949f01328a63d493d4e7d40e8be143f215a5dafc0aff66d4aef97f"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 2.00000009375,
+            "across_curve_ratio": 1.0000000000000002,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 1.1807785642611894,
+            "owner_B_h": 1.0111873860405407,
+            "across_curve_ratio": 1.1677148870346465,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 1.177721631400286,
+            "owner_B_h": 1.011187386040543,
+            "across_curve_ratio": 1.1646917748962764,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 2.0000000937499998,
+            "across_curve_ratio": 1.0,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 1.1677148870346465
+      },
+      {
+        "owners": [
+          [
+            0,
+            1
+          ],
+          [
+            8,
+            2
+          ]
+        ],
+        "obj_sha256": [
+          "172efb3c609704f88ea26b207871fb0e87f809f19ca9f4a8e3b668dce07ab080",
+          "570a7b3aff303e2f1d3e9ae405c36439f81da6e4ec945938d5fa8f29b22152f2"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.000005416586457,
+            "owner_B_h": 0.6249999062500002,
+            "across_curve_ratio": 3.2000091465397023,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 2.021921355511787,
+            "owner_B_h": 0.346635668420169,
+            "across_curve_ratio": 5.832987022734621,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 2.0143965923721865,
+            "owner_B_h": 0.34663566842016824,
+            "across_curve_ratio": 5.811279034131224,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0216849031578232,
+            "owner_B_h": 0.6249999062499998,
+            "across_curve_ratio": 3.2346963302569676,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 5.832987022734621
+      },
+      {
+        "owners": [
+          [
+            1,
+            1
+          ],
+          [
+            9,
+            2
+          ]
+        ],
+        "obj_sha256": [
+          "d629d27c1e3365b7c51f75017e3de5ebc33e00627d30ec3cdd7e58d1d5c9af6f",
+          "1cfabea39fb65564b3f265805725e82bb9c0fd8559710bedd44caace0805cd4f"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.003876689692209,
+            "owner_B_h": 0.6249999062499999,
+            "across_curve_ratio": 3.2062031844380128,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 2.0143965895751066,
+            "owner_B_h": 0.34663566842016885,
+            "across_curve_ratio": 5.811279026061992,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 2.021921358953674,
+            "owner_B_h": 0.34663566842016863,
+            "across_curve_ratio": 5.832987032664036,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.62499990625,
+            "across_curve_ratio": 3.200000630000094,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 5.832987032664036
+      },
+      {
+        "owners": [
+          [
+            1,
+            2
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "obj_sha256": [
+          "d629d27c1e3365b7c51f75017e3de5ebc33e00627d30ec3cdd7e58d1d5c9af6f",
+          "070c5716f104c3d230bbf236326f9e645df638144439c27a71e2d4a1e180b8bf"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.00000009375,
+            "owner_B_h": 2.0000000937499998,
+            "across_curve_ratio": 1.0000000000000002,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 1.1777216314002852,
+            "owner_B_h": 1.0111873860405407,
+            "across_curve_ratio": 1.164691774896278,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 1.1807785642611905,
+            "owner_B_h": 1.0111873860405411,
+            "across_curve_ratio": 1.167714887034647,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 2.0000000937499998,
+            "across_curve_ratio": 1.0,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 1.167714887034647
+      },
+      {
+        "owners": [
+          [
+            2,
+            0
+          ],
+          [
+            6,
+            3
+          ]
+        ],
+        "obj_sha256": [
+          "c3e1b33422cf0a558e1c01500f1040c9fe364dd339e0b6f692f6096c907ef5e7",
+          "ba1f88e317c9d219491a7b2852071b0ac797885edf21dba7e05631cc4f543175"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.6249999062500002,
+            "across_curve_ratio": 3.2000006300000927,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 2.024266940641146,
+            "owner_B_h": 0.3466356684201686,
+            "across_curve_ratio": 5.8397537387510425,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 2.024266940641146,
+            "owner_B_h": 0.3466356684201688,
+            "across_curve_ratio": 5.839753738751039,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.62499990625,
+            "across_curve_ratio": 3.200000630000094,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 5.8397537387510425
+      },
+      {
+        "owners": [
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "obj_sha256": [
+          "c3e1b33422cf0a558e1c01500f1040c9fe364dd339e0b6f692f6096c907ef5e7",
+          "0a6b9eb7021fdc22dfdc01d267d4a76802253f56dc03436c3cff2d20afc43f03"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 2.0000000937499998,
+            "across_curve_ratio": 1.0,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 1.179247562007236,
+            "owner_B_h": 1.179247562007236,
+            "across_curve_ratio": 1.0,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 1.1792475620072365,
+            "owner_B_h": 1.1792475620072365,
+            "across_curve_ratio": 1.0,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 2.0000000937499998,
+            "across_curve_ratio": 1.0,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 1.0
+      },
+      {
+        "owners": [
+          [
+            2,
+            2
+          ],
+          [
+            8,
+            0
+          ]
+        ],
+        "obj_sha256": [
+          "c3e1b33422cf0a558e1c01500f1040c9fe364dd339e0b6f692f6096c907ef5e7",
+          "570a7b3aff303e2f1d3e9ae405c36439f81da6e4ec945938d5fa8f29b22152f2"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.6249999062500002,
+            "across_curve_ratio": 3.2000006300000927,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 2.024266940641146,
+            "owner_B_h": 0.34663566842016896,
+            "across_curve_ratio": 5.839753738751036,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 2.024266940641146,
+            "owner_B_h": 0.3466356684201682,
+            "across_curve_ratio": 5.83975373875105,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.6249999062499998,
+            "across_curve_ratio": 3.2000006300000954,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 5.83975373875105
+      },
+      {
+        "owners": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "obj_sha256": [
+          "c3e1b33422cf0a558e1c01500f1040c9fe364dd339e0b6f692f6096c907ef5e7",
+          "1780ff447e949f01328a63d493d4e7d40e8be143f215a5dafc0aff66d4aef97f"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 2.0000000937499998,
+            "across_curve_ratio": 1.0,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 1.1792475620072362,
+            "owner_B_h": 1.0111873860405411,
+            "across_curve_ratio": 1.1662008231973309,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 1.1792475620072367,
+            "owner_B_h": 1.0111873860405411,
+            "across_curve_ratio": 1.1662008231973313,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 2.0000000937499998,
+            "across_curve_ratio": 1.0,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 1.1662008231973313
+      },
+      {
+        "owners": [
+          [
+            3,
+            0
+          ],
+          [
+            7,
+            3
+          ]
+        ],
+        "obj_sha256": [
+          "0a6b9eb7021fdc22dfdc01d267d4a76802253f56dc03436c3cff2d20afc43f03",
+          "81964083c5406f0ee504bdd4d1e92340c12bafc515e84f078b44050f88167022"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.6249999062499999,
+            "across_curve_ratio": 3.2000006300000945,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 2.024266940641146,
+            "owner_B_h": 0.3466356684201688,
+            "across_curve_ratio": 5.839753738751039,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 2.024266940641146,
+            "owner_B_h": 0.3466356684201686,
+            "across_curve_ratio": 5.8397537387510425,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.62499990625,
+            "across_curve_ratio": 3.200000630000094,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 5.8397537387510425
+      },
+      {
+        "owners": [
+          [
+            3,
+            1
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "obj_sha256": [
+          "0a6b9eb7021fdc22dfdc01d267d4a76802253f56dc03436c3cff2d20afc43f03",
+          "070c5716f104c3d230bbf236326f9e645df638144439c27a71e2d4a1e180b8bf"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 2.0000000937499998,
+            "across_curve_ratio": 1.0,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 1.1792475620072362,
+            "owner_B_h": 1.0111873860405407,
+            "across_curve_ratio": 1.1662008231973313,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 1.1792475620072365,
+            "owner_B_h": 1.0111873860405411,
+            "across_curve_ratio": 1.166200823197331,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 2.0000000937499998,
+            "across_curve_ratio": 1.0,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 1.1662008231973313
+      },
+      {
+        "owners": [
+          [
+            3,
+            2
+          ],
+          [
+            9,
+            0
+          ]
+        ],
+        "obj_sha256": [
+          "0a6b9eb7021fdc22dfdc01d267d4a76802253f56dc03436c3cff2d20afc43f03",
+          "1cfabea39fb65564b3f265805725e82bb9c0fd8559710bedd44caace0805cd4f"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.6249999062499999,
+            "across_curve_ratio": 3.2000006300000945,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 2.024266940641146,
+            "owner_B_h": 0.3466356684201688,
+            "across_curve_ratio": 5.839753738751039,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 2.024266940641146,
+            "owner_B_h": 0.3466356684201686,
+            "across_curve_ratio": 5.8397537387510425,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.62499990625,
+            "across_curve_ratio": 3.200000630000094,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 5.8397537387510425
+      },
+      {
+        "owners": [
+          [
+            4,
+            1
+          ],
+          [
+            8,
+            3
+          ]
+        ],
+        "obj_sha256": [
+          "1780ff447e949f01328a63d493d4e7d40e8be143f215a5dafc0aff66d4aef97f",
+          "570a7b3aff303e2f1d3e9ae405c36439f81da6e4ec945938d5fa8f29b22152f2"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.6249999062500002,
+            "across_curve_ratio": 3.2000006300000927,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 2.001405849646695,
+            "owner_B_h": 0.6294838225185053,
+            "across_curve_ratio": 3.1794396901881594,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 2.001405849646695,
+            "owner_B_h": 0.6294838225185053,
+            "across_curve_ratio": 3.1794396901881594,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.6249999062500002,
+            "across_curve_ratio": 3.2000006300000927,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 3.2000006300000927
+      },
+      {
+        "owners": [
+          [
+            4,
+            3
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "obj_sha256": [
+          "1780ff447e949f01328a63d493d4e7d40e8be143f215a5dafc0aff66d4aef97f",
+          "ba1f88e317c9d219491a7b2852071b0ac797885edf21dba7e05631cc4f543175"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.6249999062500002,
+            "across_curve_ratio": 3.2000006300000927,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 2.001405849646695,
+            "owner_B_h": 0.6294838225185053,
+            "across_curve_ratio": 3.1794396901881594,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 2.001405849646695,
+            "owner_B_h": 0.6294838225185053,
+            "across_curve_ratio": 3.1794396901881594,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.6249999062500002,
+            "across_curve_ratio": 3.2000006300000927,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 3.2000006300000927
+      },
+      {
+        "owners": [
+          [
+            5,
+            0
+          ],
+          [
+            7,
+            2
+          ]
+        ],
+        "obj_sha256": [
+          "070c5716f104c3d230bbf236326f9e645df638144439c27a71e2d4a1e180b8bf",
+          "81964083c5406f0ee504bdd4d1e92340c12bafc515e84f078b44050f88167022"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.62499990625,
+            "across_curve_ratio": 3.200000630000094,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 2.001405849646695,
+            "owner_B_h": 0.6294838225185051,
+            "across_curve_ratio": 3.1794396901881607,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 2.001405849646695,
+            "owner_B_h": 0.6294838225185051,
+            "across_curve_ratio": 3.1794396901881607,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.62499990625,
+            "across_curve_ratio": 3.200000630000094,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 3.200000630000094
+      },
+      {
+        "owners": [
+          [
+            5,
+            2
+          ],
+          [
+            9,
+            1
+          ]
+        ],
+        "obj_sha256": [
+          "070c5716f104c3d230bbf236326f9e645df638144439c27a71e2d4a1e180b8bf",
+          "1cfabea39fb65564b3f265805725e82bb9c0fd8559710bedd44caace0805cd4f"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.62499990625,
+            "across_curve_ratio": 3.200000630000094,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 2.001405849646695,
+            "owner_B_h": 0.6294838225185051,
+            "across_curve_ratio": 3.1794396901881607,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 2.001405849646695,
+            "owner_B_h": 0.6294838225185051,
+            "across_curve_ratio": 3.1794396901881607,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 2.0000000937499998,
+            "owner_B_h": 0.62499990625,
+            "across_curve_ratio": 3.200000630000094,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 3.200000630000094
+      },
+      {
+        "owners": [
+          [
+            6,
+            2
+          ],
+          [
+            7,
+            0
+          ]
+        ],
+        "obj_sha256": [
+          "ba1f88e317c9d219491a7b2852071b0ac797885edf21dba7e05631cc4f543175",
+          "81964083c5406f0ee504bdd4d1e92340c12bafc515e84f078b44050f88167022"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 0.62499990625,
+            "owner_B_h": 0.6249999062499999,
+            "across_curve_ratio": 1.0000000000000002,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 0.6294838225185051,
+            "owner_B_h": 0.629483822518505,
+            "across_curve_ratio": 1.0000000000000002,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 0.6294838225185051,
+            "owner_B_h": 0.629483822518505,
+            "across_curve_ratio": 1.0000000000000002,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 0.62499990625,
+            "owner_B_h": 0.6249999062499999,
+            "across_curve_ratio": 1.0000000000000002,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 1.0000000000000002
+      },
+      {
+        "owners": [
+          [
+            8,
+            1
+          ],
+          [
+            9,
+            3
+          ]
+        ],
+        "obj_sha256": [
+          "570a7b3aff303e2f1d3e9ae405c36439f81da6e4ec945938d5fa8f29b22152f2",
+          "1cfabea39fb65564b3f265805725e82bb9c0fd8559710bedd44caace0805cd4f"
+        ],
+        "intervals": [
+          {
+            "shared_parameter": [
+              0.0,
+              0.25
+            ],
+            "owner_A_h": 0.6249999062499998,
+            "owner_B_h": 0.6249999062499999,
+            "across_curve_ratio": 1.0000000000000002,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.25,
+              0.5
+            ],
+            "owner_A_h": 0.6294838225185049,
+            "owner_B_h": 0.629483822518505,
+            "across_curve_ratio": 1.0000000000000002,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.5,
+              0.75
+            ],
+            "owner_A_h": 0.6294838225185049,
+            "owner_B_h": 0.629483822518505,
+            "across_curve_ratio": 1.0000000000000002,
+            "opposite_winding": true
+          },
+          {
+            "shared_parameter": [
+              0.75,
+              1.0
+            ],
+            "owner_A_h": 0.6249999062499998,
+            "owner_B_h": 0.6249999062499999,
+            "across_curve_ratio": 1.0000000000000002,
+            "opposite_winding": true
+          }
+        ],
+        "max_ratio": 1.0000000000000002
+      }
+    ]
+  },
+  "canonical_parent": "447eeac87e609b74390d163f643ea575d360142b",
+  "command_diagnostics": [
+    "python build/quad-sizing-contract-20261123/compare.py",
+    "python build/quad-sizing-contract-20261123/real-seam.py"
+  ],
+  "diagnostic_sha256": {
+    "screen.py": "f063b2e99ef7556c494fc5da20708dda3bc54987d4bbef5a149ccd936d92f1c7",
+    "prepare.py": "757e140546fc34fe56807eb8873ac143012b207b8aafb9a4e247d486dbc9ea58",
+    "stage.py": "73c1d1cc1c24a6a0756114580fb97c537b203713509206ecc4d69d8029a30406",
+    "compare.py": "50773c2ab97ec313eef5654b61c86318cf317a8ee965cf6dd79e6855ff6287fd",
+    "real-seam.py": "bcdba11d6fb75a778c53ce0ca9e7cb2e8b2d493a1e18d8b1ad8c6cc3738bd83d",
+    "real-seam-patch12-first.py": "107f63f1e1305d19f221fae2b00a61ac452cd84aa7f92ef3b5043efef84679ef"
+  },
+  "retained_failed_diagnostic_prefix": "The first paired real-seam query found no degree-two seams for patch 12. Incidence confirms two degree-three curves. Scan only actual degree-two curves throughout the source model for the separate pairwise control.",
+  "not_run": [
+    "Ribbed mixed feedback (ordinary Step 2 aborts first)",
+    "native adaptive shared-curve generation (entry accepts one patch)",
+    "full native and sanitizer/CRT matrices",
+    "mixed-global curvature"
+  ]
+}

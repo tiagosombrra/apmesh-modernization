@@ -127,7 +127,13 @@ both curve partitions and emitted faces, with a separate contour-to-face
 gradation regression. Align a reusable physical-to-discrete sizing contract
 next, preserving the original curve and tree machinery, shared-boundary
 synchronization and local output shape. Require another curved-to-flat
-case and a shared-curve case before adoption.
+case and a shared-curve case before adoption. The
+[cross-case comparison](MIXED_SIZING_CROSS_CASE_20261123.md) observes a
+Ribbed Bracket Step 2 smoothing failure upstream of mixed feedback and
+a 5.84 size discontinuity across a conforming archived Ribbed seam.
+Align the ordinary Step 2 protected comparison on the second geometry
+before attempting to qualify its size realization. The live entry
+still accepts only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.

@@ -3,7 +3,7 @@
 Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align a reusable physical sizing contract for mixed feedback
+## Active: qualify an ordinary mixed Step 2 source on the second geometry
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,33 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-23 - compare a second native surface and shared-curve archives
+
+The [cross-case comparison](MIXED_SIZING_CROSS_CASE_20261123.md) runs the
+retained pilot binary once on the actual Ribbed Bracket control net for
+patch 12. The ordinary mixed Step 1 is valid. At Step 2, regular smoothing
+inverts or collapses UV QUAD 483. The process stops before calling mixed
+feedback. Preserve the failure and completed prefix. Step 1 sampled
+geometry improves relative to TRI while the worst TRI angle and face-size
+gradation regress. No second-case mixed successor is measured.
+
+The four M4 paired controls keep four seam edges each, including reversed
+charts. All 68 archived Ribbed Bracket degree-two seam intervals have
+matching endpoint positions and opposite winding, but adjacent face
+sizes differ by up to 5.84. That evidence separates physical gradation
+from boundary conformity. Patch 12 has two degree-three curves outside
+the paired check. The current live path has one patch only.
+
+**Next:** align one comparison extending the previously tested protection
+to the ordinary opt-in mixed Step 2 on Ribbed patch 12. Use the same
+validated initial mesh for baseline and guarded comparison. Treat any
+resulting new mixed source as experimental. Use it to inform the later
+physical-to-discrete sizing choice and measure curve and face quality.
+The idealized size-fulfillment estimate of 32 contour segments versus
+18 in the known case illustrates why growth must be evaluated. No new
+sizing rule or adaptive acceptance. Current accepted mixed epochs: 0.
+Mixed-global curvature remains open.
 
 ### 2026-11-23 - audit size realization on the retained mixed successor
 

@@ -4161,3 +4161,24 @@ receipt path shadowing). No native rerun, source change, scientific rule
 adoption or accepted mixed epoch. Next align a physical sizing contract
 using existing curve/tree operations, shared-curve synchronization and
 output quality, with additional geometry coverage before adoption.
+
+## 2026-11-23 Fortaleza - cross-check mixed sizing on a second model and seams
+
+The researcher authorizes additional comparisons to improve long-term
+adaptation and bad elements. Select Ribbed Bracket patch 12 by the
+analytic normal screen and run the prior isolated binary once. Ordinary
+mixed Step 1 has lower sampled area-weighted RMS and poorer worst TRI
+angle and gradation than TRI. Ordinary mixed Step 2 exits at UV QUAD 483
+before mixed feedback. Preserve all prefix evidence and no native retry.
+
+The [report](MIXED_SIZING_CROSS_CASE_20261123.md) verifies four symmetric
+aligned/reversed M4 seam controls and 68 archived Ribbed pairwise intervals.
+Shared curve geometry can match while face sizes differ by 5.84. The first
+query on patch 12 found no degree-two seam; the real incidence instead has
+two degree-three curves. Record a clean distinction between the paired
+controls and the experimental live path.
+
+Seek alignment for one guarded ordinary Step 2 run from a valid starting
+mesh, ahead of a new sizing rule. No implementation change, matrix
+qualification, GPU/Blender work, native shared-curve run or mixed epoch
+acceptance in this comparison.
