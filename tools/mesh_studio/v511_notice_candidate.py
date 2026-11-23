@@ -9,7 +9,7 @@ No license grant, attribution requirement or dual-license choice is inferred.
 from __future__ import annotations
 
 import argparse
-from hashlib import sha256
+from hashlib import sha1, sha256
 import json
 from pathlib import Path, PurePosixPath
 import re
@@ -37,6 +37,18 @@ SEEDRANDOM_SECTION = re.compile(
     r"(?mi)^(?:#{1,3}[ \t]+)?LICENSE[ \t]*\(MIT\)[ \t]*\r?\n"
 )
 DRAFT_PREFIX = "THIRD_PARTY_NOTICES_CANDIDATE_"
+SPARK_MIT_UPSTREAM_FILE = (
+    Path(__file__).resolve().parent / "license_sources" /
+    "spark-md5-v3.0.2-LICENSE2-MIT.txt"
+)
+SPARK_MIT_REVIEW_PATH = "upstream-alternatives/spark-md5-v3.0.2-LICENSE2-MIT.txt"
+SPARK_MIT_SOURCE_REPO = "satazor/js-spark-md5"
+SPARK_MIT_SOURCE_TAG = "v3.0.2"
+SPARK_MIT_TAGGED_COMMIT = "9315385868fe11076674d4ddd763005319a462a7"
+SPARK_MIT_GIT_BLOB_SHA1 = "1341e60ef5142c659c30eb0bb2c88f159607becb"
+SPARK_MIT_SHA256 = "6e7abbd885f650c938cf377a6edcad56c7dcb61de092853af6141d806f8c9f04"
+SPARK_MIT_SIZE = 1076
+SPARK_MIT_UPSTREAM_README_BLOB = "dcf837db55bc6e56a548977998da98f8086fa51f"
 
 
 class NoticeCandidateError(ValueError):
@@ -50,6 +62,28 @@ def require(ok: bool, code: str) -> None:
 
 def sha(raw: bytes) -> str:
     return sha256(raw).hexdigest()
+
+
+def authenticated_upstream_spark_mit(path: Path = SPARK_MIT_UPSTREAM_FILE) -> bytes:
+    """Verify upstream v3.0.2 MIT alternative without electing it.
+
+    Both SHA-256 and Git's content-addressed blob SHA-1 must match the
+    original tagged LICENSE2. It was NOT found in installed npm LICENSE.
+    """
+    require(path.is_file() and not path.is_symlink(),
+            "upstream_spark_mit_source_missing_or_symlinked")
+    raw = path.read_bytes()
+    git_object = b"blob " + str(len(raw)).encode("ascii") + b"\x00" + raw
+    require(
+        len(raw) == SPARK_MIT_SIZE and
+        sha(raw) == SPARK_MIT_SHA256 and
+        sha1(git_object).hexdigest() == SPARK_MIT_GIT_BLOB_SHA1 and
+        b"Copyright (c) 2015 Andr" in raw and
+        b"Permission is hereby granted" in raw and
+        b"THE SOFTWARE IS PROVIDED" in raw,
+        "upstream_spark_mit_exact_tagged_bytes_drift",
+    )
+    return raw
 
 
 def read_manifest(path: Path) -> dict:
@@ -105,6 +139,7 @@ def prepare(inputs: Path, output: Path) -> dict:
     installed = inputs / "installed"
     source_to_bundle_review(bundles, installed, SOURCE_CI_COMMIT)
     installed_source_review(installed, SOURCE_CI_COMMIT)
+    upstream_mit_raw = authenticated_upstream_spark_mit()
 
     output.mkdir(parents=True, exist_ok=True)
     source_names = {}
@@ -180,6 +215,11 @@ def prepare(inputs: Path, output: Path) -> dict:
                 )
                 notice_parts.append(
                     "(WTFPL OR MIT). No MIT branch selected or approved.\n")
+                notice_parts.append(
+                    "AUTHENTICATED UPSTREAM MIT ALTERNATIVE: v3.0.2 LICENSE2 "
+                    "exists at Git blob 1341e60ef5142c659c30eb0bb2c88f159607becb. "
+                    "Original bytes available separately in " + SPARK_MIT_REVIEW_PATH +
+                    ". No MIT license path elected and no release approved.\n")
             if name == "seedrandom" and ecosystem == "npm":
                 require(vite.get("text") is None and declared == "MIT",
                         "seedrandom_missing_vite_notice_evidence_changed")
@@ -257,6 +297,9 @@ def prepare(inputs: Path, output: Path) -> dict:
             differences.append(name)
     require("python:pydantic-core" in differences,
             "original_platform_specific_pydantic_core_notice_not_retained")
+    upstream_dest = output.joinpath(*SPARK_MIT_REVIEW_PATH.split("/"))
+    upstream_dest.parent.mkdir(parents=True, exist_ok=True)
+    upstream_dest.write_bytes(upstream_mit_raw)
     ledger = {
         "schema": SCHEMA,
         "classification": "DRAFT_RESEARCH_EVIDENCE_NOT_DISTRIBUTION_APPROVAL",
@@ -273,6 +316,22 @@ def prepare(inputs: Path, output: Path) -> dict:
         "source_notice_sha_differences_between_hosts": differences,
         "seedrandom_notice_source": "exact installed README.md MIT section",
         "spark_md5_dual_licence_choice": "UNRESOLVED",
+        "spark_md5_upstream_mit_alternative": {
+            "official_repo": SPARK_MIT_SOURCE_REPO,
+            "tag": SPARK_MIT_SOURCE_TAG,
+            "annotated_tag_target_commit": SPARK_MIT_TAGGED_COMMIT,
+            "tagged_readme_git_blob_sha1": SPARK_MIT_UPSTREAM_README_BLOB,
+            "tagged_LICENSE2_git_blob_sha1": SPARK_MIT_GIT_BLOB_SHA1,
+            "original_source_file": "LICENSE2",
+            "source_file_sha256": sha(upstream_mit_raw),
+            "source_file_size": len(upstream_mit_raw),
+            "review_candidate_source_path": SPARK_MIT_REVIEW_PATH,
+            "license_type": "MIT",
+            "same_tag_readme_explicit_alternative": True,
+            "source_in_installed_npm_license_files": False,
+            "license_path_chosen_for_distribution": False,
+            "human_legal_approval": False,
+        },
         "full_scientific_python_environment_reviewed": False,
         "pymupdf_agpl_commercial_obligations_reviewed": False,
         "other_software_sources_not_reviewed": True,
@@ -324,6 +383,7 @@ def audit(inputs: Path, output: Path) -> dict:
         "all_candidate_notice_bytes_reproduced_from_original_source": True,
         "all_original_host_specific_notice_bytes_preserved": True,
         "spark_md5_choice_still_unresolved": True,
+        "spark_md5_upstream_mit_alternative_git_blob_verified": True,
         "notices_shipped_with_an_installer": False,
         "license_compatibility_or_distribution_approved": False,
     }
