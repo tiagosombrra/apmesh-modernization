@@ -3,7 +3,7 @@
 Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align a local sizing conversion using valid mixed sources on two geometries
+## Active: align a bounded physical-to-discrete curve sizing conversion
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,37 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-23 - compare an explicit bad-shape target before the Ribbed front
+
+The [approved comparison](RIBBED_PREFRONT_SHAPE_TARGET_20261123.md) retains
+the same guarded Step 2 predecessor and tests residual-only against the two
+residual seeds plus the limiting transition TRI. Read-only replay verifies the
+split masks and face request sizes. Both generate with 22 identical contour
+segments and valid initial/final geometry. The augmented arm asks for four
+additional face sizes and produces one extra eligible leaf, eight extra
+nodes and ten extra faces. Both guarded arms pass five times after first-pass
+inversions in their unguarded controls.
+
+The old 3.79-degree TRI footprint is entirely QUAD under residual-only.
+The augmented arm contains one TRI over about a quarter of that footprint,
+8.03 degrees at birth and 11.38 degrees after smoothing. The global worst
+TRI and QUAD settle at identical geometry in both results (6.33 and 25.34
+degrees). The QUAD minimum is worse than the predecessor. The augmented
+arm has a slightly lower sampled geometric RMS and the same sampled
+maximum. Keep residual-only as the next baseline and retain the augmented
+trial without scheme adoption. Mixed adaptive epochs accepted: 0.
+
+The birth geometry localizes the 6.33-degree TRI with a 0.12500
+template edge and adjacent contour chords 1.00032 and 0.50010.
+The 25.34-degree QUAD has a 1.01716 contour edge opposite 0.25817.
+Both patches of front meet depth-4 leaves.
+
+**Next:** align a bounded pre-front conversion that checks actual
+child arc lengths against existing physical targets and measures their
+effect on those two regions. Keep the native cap and mixed selection.
+Mixed-global curvature error, additional native models,
+shared-curve adaptation and full delivery qualification remain open.
 
 ### 2026-11-23 - locate curvature sizing and audit front-target coverage
 

@@ -137,8 +137,13 @@ It leaves a 3.79-degree transition TRI beside a much smaller QUAD.
 The [target coverage replay](MIXED_FRONT_CURVATURE_SIZING_20261123.md)
 measures no requested size change at either limiting TRI. Align a
 curvature- and gradation-driven pre-front sizing proposal before
-changing mixed selection. Evaluate shape before and after smoothing.
-The live entry still accepts only one patch.
+changing mixed selection. The [first paired test](RIBBED_PREFRONT_SHAPE_TARGET_20261123.md)
+compares the existing two residual seeds with an extra transition
+TRI seed. Extra growth is observed with no gain in global minimum
+angles. Retain the residual-only comparator. The shared limiting
+faces already exhibit coarse contour-to-fine-template lengths before
+smoothing. Align a bounded physical-to-discrete comparison using actual
+child arc lengths. The live entry still accepts only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.

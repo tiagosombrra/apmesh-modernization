@@ -4214,3 +4214,22 @@ analytically straight side. In Bezier it is seven edges away.
 Use these observations to align a native pre-front size proposal
 before changing candidate selection. Only read-only evidence and
 documentation changed. No new native execution or mixed acceptance.
+
+## 2026-11-23 Fortaleza - compare one explicit transition TRI size request
+
+The researcher approves the paired Ribbed test after the read-only
+comparison predicts identical eight-interval split masks and 17 versus
+21 face requests. Execute one isolated MSVC application from the same
+guarded Step 2. Verify those requests, the 22 identical curve segments,
+common predecessor, negative unguarded passes and two sets of five
+valid protected passes. One extra leaf and ten extra faces follow the
+new seed; the old TRI footprint is entirely QUAD in the control. The
+augmented result retains some TRI coverage there. Both global worst
+faces agree in UV and XYZ, and the QUAD minimum worsens relative to
+the previous mesh. Record a small RMS advantage with no advantage at
+the sampled maximum for the larger mesh. No mixed acceptance.
+
+Keep the residual-only case as the simpler comparison baseline. Align
+a bounded next sizing rule from the measured source chords and template
+edges of both limiting faces before smoothing. See the
+[paired trial](RIBBED_PREFRONT_SHAPE_TARGET_20261123.md).
