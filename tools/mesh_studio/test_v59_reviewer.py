@@ -12,6 +12,20 @@ from . import v59_reviewer as reviewer
 
 
 class OriginalSourceReviewerTests(unittest.TestCase):
+    def test_xml_declaration_has_canonical_lf_on_every_host(self):
+        from .svg_figure import URI, write_canonical_svg
+        import xml.etree.ElementTree as ET
+        root = ET.Element("{" + URI + "}svg")
+        ET.SubElement(root, "{" + URI + "}polygon", points="0,0 1,0 0,1")
+        with TemporaryDirectory(prefix="v59-canonical-svg-") as folder:
+            path = Path(folder) / "source.svg"
+            write_canonical_svg(root, path)
+            raw = path.read_bytes()
+            self.assertTrue(raw.startswith(
+                b"<?xml version='1.0' encoding='utf-8'?>\\n<svg"))
+            self.assertNotIn(b"\\r\\n", raw)
+            self.assertEqual(raw.count(b"\\n"), 1)
+
     def test_original_source_digest_inventory_has_no_duplicate_paths(self):
         self.assertEqual(len(reviewer.SOURCE_FILES), 10)
         self.assertEqual(len(set(reviewer.SOURCE_FILES)), 10)
