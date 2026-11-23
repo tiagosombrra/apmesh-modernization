@@ -1,5 +1,9 @@
 # Execution plan: external benchmark corpus and reverse-patch feasibility
 
+> **PLANO VIGENTE (23/11/2026): [NON-MANIFOLD FIRST v3](PLAN_NONMANIFOLD_FIRST_V3.md).** A partir desta revisão, modelos com curva original/autoral/derivada de incidência ≥3 são o objetivo primário; S40/M5/S27/M3 permanecem **controles manifold**, e #293137 é **controle STL manifold**. As etapas S3/F17–F31 abaixo documentam resultados históricos e **não** definem a sequência científica atual. [Matriz de modelos](MODEL_ROSTER_NONMANIFOLD_V3.csv) · [Pauta Creto/Bento](ROTEIRO_DECISAO_CRETO_BENTO_NONMANIFOLD_V3.md).
+
+---
+
 ## 2026-11-17 S3.Y — Original S40 source-indexed planar closure: #3044 admitted, #1827/#1907 blocked
 
 [Original S40 S3.Y source-native admission and rejection report](S3Y_S40_SOURCE_CURVED_PLANAR_PARTITION.md) advances the separate research child by **eight bicubic patches on original STEP face #3044**: **156 indexed patches, 1,665 declared global controls, 264 exact two-sided indexed seams and 96 open sides, representing 22/43 original faces**. It preserves the previous 148-patch S3.W atlas and its controls unchanged, including the original inner hole on #218. The new original face has 18 source-indexed boundary pieces on six original STEP edges, seven internal diagonals, 2,312/2,312 native interior samples IN, 992/992 boundary samples IN/ON and 0 OUT; sampled original native edge distance max **0.0005559482 mm**, with fixed experimental 0.001-mm budget. The positive oriented Jacobian and disjoint sampled patch domains pass. Numerical area difference from native original planar face is approximately **−0.0167362 mm²** (≈0.002893%), so exact physical equivalence is **not** claimed.

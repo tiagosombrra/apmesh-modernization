@@ -1,5 +1,9 @@
 # Scientific model strategy v2 — complex source geometry first
 
+> **SUBSTITUÍDO PARA PRIORIZAÇÃO CIENTÍFICA EM 23/11/2026:** consultar [NON-MANIFOLD FIRST v3](PLAN_NONMANIFOLD_FIRST_V3.md) e [matriz por origem](MODEL_ROSTER_NONMANIFOLD_V3.csv). Este documento v2 permanece **intacto como evidência histórica de decisões anteriores**; a priorização inicial de CAD industrial manifold está revogada como caminho principal de demonstração da hipótese não manifold. Não reinterpretar conclusões anteriores como modelos 3+ originais.
+
+---
+
 **Decision date:** 2026-11-15. **Classification:** scientific selection/protocol revision, not a modernization refactor, meshing algorithm change or approved paper dataset.
 
 ## Why the plan changed

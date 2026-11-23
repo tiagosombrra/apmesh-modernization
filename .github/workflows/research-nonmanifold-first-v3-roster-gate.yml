@@ -1,0 +1,52 @@
+name: Research non-manifold-first model admission contract (code only)
+
+on:
+  push:
+    branches:
+      - research/benchmark-corpus-reverse-patches
+    paths:
+      - docs/research/nonmanifold-benchmark/PLAN_NONMANIFOLD_FIRST_V3.md
+      - docs/research/nonmanifold-benchmark/MODEL_ROSTER_NONMANIFOLD_V3.csv
+      - docs/research/nonmanifold-benchmark/probes/nonmanifold_v3_roster_gate.py
+      - docs/research/nonmanifold-benchmark/probes/test_nonmanifold_v3_roster_gate.py
+      - .github/workflows/research-nonmanifold-first-v3-roster-gate.yml
+  pull_request:
+    paths:
+      - docs/research/nonmanifold-benchmark/PLAN_NONMANIFOLD_FIRST_V3.md
+      - docs/research/nonmanifold-benchmark/MODEL_ROSTER_NONMANIFOLD_V3.csv
+      - docs/research/nonmanifold-benchmark/probes/nonmanifold_v3_roster_gate.py
+      - docs/research/nonmanifold-benchmark/probes/test_nonmanifold_v3_roster_gate.py
+      - .github/workflows/research-nonmanifold-first-v3-roster-gate.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  v3-model-admission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout without saved credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Run fail-closed source model classification tests
+        run: |
+          python3 -m unittest discover -s docs/research/nonmanifold-benchmark/probes -p test_nonmanifold_v3_roster_gate.py -v
+          python3 docs/research/nonmanifold-benchmark/probes/nonmanifold_v3_roster_gate.py --roster docs/research/nonmanifold-benchmark/MODEL_ROSTER_NONMANIFOLD_V3.csv
+      - name: Reject private CAD/BP/OBJ in the documentation change
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from subprocess import check_output
+          import re
+
+          # Restrict the check to newly introduced private model geometry.
+          patterns = re.compile(r'(^|/)(i25o_s40\.step|Tsh249\.stp|293137\.stl|293137_piecewise_linear_candidate\.bp|bunny_passo_\d+_malha_\d+\.obj)$')
+          entries = check_output(['git', 'ls-files'], text=True).splitlines()
+          offenders = [name for name in entries if patterns.search(name)]
+          if offenders:
+              raise SystemExit('Private model geometry leaked: ' + ', '.join(offenders))
+          print('Non-manifold-first code-only source and private model exclusion PASS')
+          PY

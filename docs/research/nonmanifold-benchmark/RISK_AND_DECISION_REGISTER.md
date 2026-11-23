@@ -1,5 +1,7 @@
 # Scientific decisions, risk ledger and adversarial review
 
+> **REPRIORIZAÇÃO E PROTEÇÃO CONTRA DESVIO (23/11/2026):** o requisito científico primário é CAD/patches com curva compartilhada por **3+ folhas**. [Plano NON-MANIFOLD FIRST v3](PLAN_NONMANIFOLD_FIRST_V3.md) e [registros por modelo](MODEL_ROSTER_NONMANIFOLD_V3.csv) substituem a antiga prioridade de fechamento S40. S40 continua controle manifold; QUAD derivado/STL não é caso positivo; ausência de CAD originalmente N3 impede alegações de generalização industrial original.
+
 Status: research proposal; no advisor approval and no executed technical verification inferred.
 
 ## Open decisions
@@ -17,7 +19,7 @@ Status: research proposal; no advisor approval and no executed technical verific
 | D9 | Which **complex source-real CAD** models test geometry generalization, and which independently intended 3+-sheet models test **non-manifold** generalization? | two disjoint labeled external strata; M5/S40/S27/M3 first complex-source cohort, zero external non-manifold positives admitted | advisors + topology/CAD + research methods | prohibit conflating complex manifold CAD with evidence for non-manifold generalization |
 | D10 | What constitutes a scientifically traceable original model image? | a figure rendered from source CAD with exact checksum, importer/kernel, camera/transform and labeled state; upstream figure separately credited | research methods + licensing reviewer | prevent synthetic fixtures or public sample thumbnails from being presented as the tested source mesh |
 
-These decisions can remain OPEN while documentation, discovery and synthetic-negative controls are created. They must be resolved before the gate they govern.
+| **D11 (2026-11-23)** | How to ensure the first *new* research-model evidence actually tests >=3 incident sheets? | M1 real native TRI on Four-Sheet Curved before more manifold-CAD closure; then N2 Tsh249 and a required N3 original external source | Researcher + Creto/Bento | Block any claim that S40 43/43, original STL TRI or F29/F30 QUAD completes non-manifold model validation |\n| **D12 (2026-11-23)** | Is a source-original 3+-sheet CAD model mandatory for external generalization claims? | YES as a fail-closed scientific default, pending advisors' explicit confirmation | Creto/Bento + independent CAD reviewer | Block external/industrial non-manifold generalization until true N3 origin/provenance proof |\n\nThese decisions can remain OPEN while documentation, discovery and synthetic-negative controls are created. They must be resolved before the gate they govern.
 
 ## Risk register
 

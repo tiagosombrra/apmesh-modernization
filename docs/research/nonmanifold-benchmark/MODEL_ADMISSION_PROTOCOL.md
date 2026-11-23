@@ -1,5 +1,9 @@
 # Model admission and independent audit protocol
 
+> **ADENDO OPERACIONAL v3 — G0 NÃO MANIFOLD:** para ingresso no **corpus positivo principal**, exigir prova independente de uma curva/aresta incidente a >=3 folhas topológicas distintas, rotulada como (N1) autoral, (N2) derivada por sewing/split de fonte externa ou (N3) presente **no CAD externo original**. Um modelo manifold com G1–G7 geométricos aprovados **permanece somente controle**. Para N2, a operação criadora da junção deve ser documentada; nunca promover seu STEP original a N3. Em complexos abertos, não exigir watertight/Euler=2 global; avaliar ligações por folha e incidências. Nenhum N3 externo está homologado. [Plano vigente](PLAN_NONMANIFOLD_FIRST_V3.md).
+
+---
+
 Status: PROPOSED / NOT YET EXECUTED. Do not label any external model APPROVED until all required evidence exists.
 
 ## Topology taxonomy
