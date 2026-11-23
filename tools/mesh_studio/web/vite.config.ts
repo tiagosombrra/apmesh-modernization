@@ -7,15 +7,21 @@ const localResearchGuard = (): Plugin => ({
   apply: 'serve',
   configureServer(server) {
     server.middlewares.use((request, response, next) => {
-      const host = request.headers.host;
-      const origin = request.headers.origin;
-      const site = request.headers['sec-fetch-site'];
+      // The pinned Vite type surface omits Node IncomingMessage members.
+      // Narrow only the actual HTTP properties used by this local guard.
+      const httpRequest = request as unknown as {
+        headers: Record<string, string | undefined>;
+        method?: string;
+      };
+      const host = httpRequest.headers.host;
+      const origin = httpRequest.headers.origin;
+      const site = httpRequest.headers['sec-fetch-site'];
       const isOriginAllowed = origin === undefined ||
         origin === 'http://127.0.0.1:5173';
       const isFetchSiteAllowed = site === undefined ||
         site === 'same-origin' || site === 'same-site' || site === 'none';
-      const isReadOnly = request.method === 'GET' ||
-        request.method === 'HEAD' || request.method === 'OPTIONS';
+      const isReadOnly = httpRequest.method === 'GET' ||
+        httpRequest.method === 'HEAD' || httpRequest.method === 'OPTIONS';
       if (host !== '127.0.0.1:5173' || !isOriginAllowed ||
           !isFetchSiteAllowed || !isReadOnly) {
         response.statusCode = host !== '127.0.0.1:5173' ? 400 :
