@@ -367,6 +367,11 @@ def launch(mode: str) -> dict:
             raise LocalStudioError("one_local_server_exited_unexpectedly")
         receipt["mode"] = "SMOKE_COMPLETE_PROCESSES_TERMINATED"
         return receipt
+    except KeyboardInterrupt:
+        if mode != "serve":
+            raise
+        receipt["mode"] = "USER_STOPPED_PROCESSES_TERMINATED"
+        return receipt
     finally:
         for proc in reversed(processes):
             _terminate(proc)
