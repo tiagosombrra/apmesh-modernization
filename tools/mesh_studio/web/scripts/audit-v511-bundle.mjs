@@ -50,6 +50,11 @@ function lockPackageId(moduleId, entries) {
 
 function moduleSource(id, entries) {
   const normalized = normalizeId(id);
+  // Vite's built-in browser-external shim is compiler-emitted, not npm.
+  if (id === '__vite-browser-external' || id.startsWith('__vite-browser-external:')) {
+    return { kind: 'vite_builtin_browser_external_shim',
+      module: normalized, source_package: null };
+  }
   const owner = lockPackageId(id, entries);
   if (id.includes('\0')) {
     return { kind: 'virtual_or_generated', module: normalized,
@@ -177,6 +182,9 @@ async function main() {
   const unresolvedModules = chunks.flatMap((c) => c.modules.filter((m) =>
     m.kind === 'unclassified_module' || m.kind === 'unmatched_npm_source')
     .map((m) => ({ chunk: c.file, ...m })));
+  const viteBrowserExternalShims = chunks.flatMap((c) => c.modules.filter((m) =>
+    m.kind === 'vite_builtin_browser_external_shim')
+    .map((m) => ({ chunk: c.file, module: m.module })));
   const originalGraph = {
     schema: GRAPH_SCHEMA,
     classification: 'BUNDLER_OBSERVED_MODULE_GRAPH_NOT_BINARY_LICENSE_APPROVAL',
@@ -189,6 +197,7 @@ async function main() {
     excluded_development_dependencies_not_assumed_shipped: true,
     detected_npm_source_paths: sourcePackages,
     unresolved_module_ids: unresolvedModules,
+    vite_generated_browser_external_shims: viteBrowserExternalShims,
     chunks,
   };
   const buildParity = {
@@ -217,6 +226,7 @@ async function main() {
     rendered_chunks: chunks.length,
     source_package_paths: sourcePackages.length,
     unresolved_modules: unresolvedModules.length,
+    vite_builtin_browser_external_shims: viteBrowserExternalShims.length,
     vite_bundled_license_rows: licenseRows.length,
     exact_original_static_assets: originals.length,
     legal_distribution_approved: false,
