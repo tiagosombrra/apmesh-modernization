@@ -21,6 +21,7 @@ import sys
 import time
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
+from collections.abc import Callable
 
 from .dependency_lock_audit import (
     ROOT, HASH, PIN, DependencyLockError, audit_all, require,
@@ -303,7 +304,7 @@ def _terminate(proc: subprocess.Popen) -> None:
         proc.wait(timeout=6)
 
 
-def launch(mode: str) -> dict:
+def launch(mode: str, on_ready: Callable[[], None] | None = None) -> dict:
     require(mode in ("smoke", "serve"), "invalid_launcher_mode")
     _, receipt = source_preflight()
     binaries = _check_node()
@@ -365,6 +366,9 @@ def launch(mode: str) -> dict:
             while all(p.poll() is None for p in processes):
                 time.sleep(.35)
             raise LocalStudioError("one_local_server_exited_unexpectedly")
+        if on_ready is not None:
+            on_ready()
+            receipt["external_reviewer_gate"] = "PASS"
         receipt["mode"] = "SMOKE_COMPLETE_PROCESSES_TERMINATED"
         return receipt
     except KeyboardInterrupt:
