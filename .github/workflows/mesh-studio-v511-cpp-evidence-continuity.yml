@@ -1,0 +1,130 @@
+name: Mesh Studio V5.11 original CPP source evidence continuity (not recompile)
+
+on:
+  push:
+    branches:
+      - maintenance/mesh-studio-v511-original-cpp-artifact-continuity-20261123
+    paths:
+      - '.github/workflows/mesh-studio-v511-cpp-evidence-continuity.yml'
+      - 'tools/mesh_studio/v511_native_evidence_mirror.py'
+      - 'tools/mesh_studio/v59_reviewer.py'
+      - 'tools/mesh_studio/native_accepted_vector_publication.py'
+      - 'tools/mesh_studio/native_accepted_scene.py'
+  workflow_dispatch:
+    inputs:
+      upstream_kind:
+        description: 'historic original compiled C++ run, or independently pinned prior identical copy'
+        required: true
+        type: choice
+        options: [historic, mirror]
+        default: historic
+      upstream_run_id:
+        description: 'Historic: exact 45147268663; mirror: previously verified copy run'
+        required: true
+        type: string
+        default: '45147268663'
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: mesh-studio-v511-source-continuity-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  original-cpp-evidence-mirror:
+    name: byte-exact-original-cpp-retention
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.13'
+      - name: Recover original same-compiled-run accepted C++ scene/true-vector UV publication
+        if: github.event_name == 'push' || inputs.upstream_kind == 'historic'
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: mesh-studio-v52-original-native-accepted-uv-vector-7d41ab8ec55b34bf879f9efc2a547168e50143de
+          path: build/v59-native-reviewer
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: tiagosombrra/apmesh-modernization
+          run-id: ${{ inputs.upstream_run_id || '45147268663' }}
+      - name: Recover historic C++ postcommit source NDJSON, audits and original generator stderr
+        if: github.event_name == 'push' || inputs.upstream_kind == 'historic'
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: mesh-studio-r2712-native-original-source-7d41ab8ec55b34bf879f9efc2a547168e50143de
+          path: build/v59-native-reviewer
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: tiagosombrra/apmesh-modernization
+          run-id: ${{ inputs.upstream_run_id || '45147268663' }}
+      - name: Renew previously verified exact old-source mirror after historic artifacts expire
+        if: github.event_name == 'workflow_dispatch' && inputs.upstream_kind == 'mirror'
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: mesh-studio-v511-original-cpp-source-10files-7d41ab8ec55b34bf879f9efc2a547168e50143de
+          path: build/v59-native-reviewer
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: tiagosombrra/apmesh-modernization
+          run-id: ${{ inputs.upstream_run_id }}
+      - name: Fail closed if original 10 file size/hash/source face/UV provenance diverges
+        shell: bash
+        env:
+          UPSTREAM_RUN_ID: ${{ inputs.upstream_run_id || '45147268663' }}
+          UPSTREAM_KIND: ${{ inputs.upstream_kind || 'historic' }}
+        run: |
+          python -m tools.mesh_studio.v511_native_evidence_mirror \
+            --source-dir build/v59-native-reviewer \
+            --upstream-run-id "$UPSTREAM_RUN_ID" \
+            --upstream-kind "$UPSTREAM_KIND" \
+            --mirror-commit "${{ github.sha }}" \
+            --receipt build/v511-evidence-continuity-receipt.json
+      - name: Preserve the original ten SHA-pinned C++ files, not a new accepted native run
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: mesh-studio-v511-original-cpp-source-10files-7d41ab8ec55b34bf879f9efc2a547168e50143de
+          path: build/v59-native-reviewer/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Preserve separate archival-chain receipt, never pollute the exact ten-file corpus
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: mesh-studio-v511-original-cpp-evidence-receipt-${{ github.sha }}
+          path: build/v511-evidence-continuity-receipt.json
+          if-no-files-found: error
+          retention-days: 90
+
+  independent-reopen-archived-source:
+    name: download-and-reopen-original-accepted-cpp
+    needs: original-cpp-evidence-mirror
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.13'
+      - name: Independently retrieve newly mirrored original C++ source from this exact run
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: mesh-studio-v511-original-cpp-source-10files-7d41ab8ec55b34bf879f9efc2a547168e50143de
+          path: build/v59-native-reviewer
+      - name: Independently retrieve source-chain receipt from this same run
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: mesh-studio-v511-original-cpp-evidence-receipt-${{ github.sha }}
+          path: build/
+      - name: Reopen all ten original raw C++ files and independently re-audit SVG/face source identities
+        shell: bash
+        run: |
+          python -m tools.mesh_studio.v59_reviewer preflight --receipt build/v511-mirror-independent-cpp-reopen.json
+          python -c "import json,pathlib; p=json.loads(pathlib.Path('build/v511-evidence-continuity-receipt.json').read_text()); q=json.loads(pathlib.Path('build/v511-mirror-independent-cpp-reopen.json').read_text()); assert p['original_compiled_source_run_id']==45147268663 and p['original_compiled_source_commit']=='7d41ab8ec55b34bf879f9efc2a547168e50143de' and p['source_file_count']==10 and p['source_file_digests']==q['source_exact_files_rehashed'] and p['scientific_lod_qualified'] is False and p['native_cpp_recompiled_by_mirror'] is False and q['source_cpp_raw_postcommit_reopened'] is True; print('ORIGINAL_CPP_MIRROR_SAME_BYTES_AND_PROVENANCE=PASS')"
+      - name: Preserve independent verification receipt
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: mesh-studio-v511-source-independent-reopen-${{ github.sha }}
+          path: build/v511-mirror-independent-cpp-reopen.json
+          if-no-files-found: error
+          retention-days: 90
