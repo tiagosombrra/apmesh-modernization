@@ -22,7 +22,7 @@ from .quality_analysis import analyze_mesh
 from .scene_model import build_batch, face_detail, initial_scene
 from .scene_transport import pack_geometry, SceneTransportError
 from .scene_transport_v2 import prepare_geometry_v2, stream_geometry_v2, GeometryV2Error
-from .svg_figure import URI as SVG_URI, audit_svg, render_uv_svg
+from .svg_figure import URI as SVG_URI, audit_svg, render_uv_svg, write_canonical_svg
 
 SCHEMA = 'apmesh.meshstudio.web.v1'
 ROOT = Path(__file__).resolve().parent / 'fixtures'
@@ -188,8 +188,7 @@ def publication_svg(model_id: str):
             'source_surface_continuously_certified': False,
             'scientific_lod_qualified': False,
         }, sort_keys=True, separators=(',', ':'))
-        ET.ElementTree(root).write(path, encoding='utf-8',
-                                   xml_declaration=True)
+        write_canonical_svg(root, path)
         audit = audit_svg(path, expected_faces=len(document.faces))
         if not audit['vector_only'] or audit['raster_image_count'] != 0:
             raise HTTPException(status_code=409, detail='unqualified_svg')
