@@ -1,0 +1,105 @@
+name: Mesh Studio V5.6.1 / installed package license-file evidence
+on:
+  push:
+    branches:
+      - feature/mesh-studio-v561-installed-license-evidence-20261123
+    paths:
+      - 'tools/mesh_studio/installed_license_evidence.py'
+      - 'tools/mesh_studio/test_v561_installed_license.py'
+      - 'tools/mesh_studio/source_sbom.py'
+      - 'tools/mesh_studio/dependency_lock_audit.py'
+      - 'tools/mesh_studio/locks/**'
+      - 'tools/mesh_studio/requirements-*.txt'
+      - 'tools/mesh_studio/web/package*.json'
+      - '.github/workflows/mesh-studio-v561-installed-license.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mesh-studio-v561-installed-licenses-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  npm-linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: tools/mesh_studio/web/package-lock.json
+      - name: Audit source lock and adversarial file controls before installation
+        run: |
+          python -m tools.mesh_studio.dependency_lock_audit
+          python -m unittest tools.mesh_studio.test_v561_installed_license -v
+      - name: Install exact npm registry hashes without untrusted lifecycle execution
+        working-directory: tools/mesh_studio/web
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm --version
+      - name: Hash actual installed npm package license bytes and compare pinned versions
+        run: python -m tools.mesh_studio.installed_license_evidence --mode npm --output-dir v561-evidence
+      - name: Identify provenance scope without production or license approval
+        run: |
+          echo 'V561_NPM_LICENSE_FILE_BYTES_RECORDED=PASS'
+          echo 'V561_ORIGINAL_CPP_SOURCE_QUALIFICATION=NOT_EXECUTED'
+          echo 'V561_LEGAL_LICENSE_COMPATIBILITY=NOT_VERIFIED'
+      - name: Preserve source-bound npm installed license evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: mesh-studio-v561-installed-npm-${{ github.sha }}
+          path: v561-evidence/
+          if-no-files-found: error
+          retention-days: 14
+
+  python-313:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: api-linux
+            os: ubuntu-24.04
+            lock: requirements-web-ci-linux-py313.lock
+          - label: api-windows
+            os: windows-2022
+            lock: requirements-web-ci-windows-py313.lock
+          - label: native-pdf-linux
+            os: ubuntu-24.04
+            lock: requirements-native-pdf-ci-linux-py313.lock
+    name: python-313-${{ matrix.label }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: tools/mesh_studio/locks/${{ matrix.lock }}
+      - name: Audit complete source locks before separate host resolution
+        run: python -m tools.mesh_studio.dependency_lock_audit
+      - name: Install exactly hashed Python distribution closure for matching OS
+        run: |
+          python -m pip install --require-hashes -r tools/mesh_studio/locks/${{ matrix.lock }}
+          python -m pip check
+      - name: Hash installed license texts and wheel metadata from this OS
+        run: python -m tools.mesh_studio.installed_license_evidence --mode python --profile ${{ matrix.label }} --output-dir v561-evidence
+      - name: State installed metadata cannot verify complete archive or legal approval
+        run: |
+          echo 'V561_PYTHON_INSTALLED_METADATA_CAPTURED=PASS'
+          echo 'V561_WHEEL_ARCHIVE_SHA_NOT_DERIVED_FROM_INSTALLED_BYTES=TRUE'
+          echo 'V561_LICENSE_COMPATIBILITY_SIGNOFF=OPEN'
+      - name: Preserve matching-platform installed license metadata
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: mesh-studio-v561-installed-${{ matrix.label }}-${{ github.sha }}
+          path: v561-evidence/
+          if-no-files-found: error
+          retention-days: 14
