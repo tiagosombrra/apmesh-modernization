@@ -119,8 +119,9 @@ jobs:
             build/v59-source-audit.json
             build/v511-static-build.json
             build/v511-original-reviewer.json
-            tools/mesh_studio/web/dist/.apmesh-local-review-inventory.json
+            tools/mesh_studio/web/dist/**
             tools/mesh_studio/web/test-results/v59-original-reviewer.json
             tools/mesh_studio/web/test-results/v59-p1-source-uv.svg
           if-no-files-found: warn
+          include-hidden-files: true
           retention-days: 14
