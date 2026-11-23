@@ -126,7 +126,8 @@ async ({page})=>{
     await page.getByTestId('r2720-patch').selectOption(String(patch));
     await expect(page.getByTestId('r2720-viewport-uv'))
       .toHaveAttribute('data-native-displayed-patch-slot',String(patch));
-    await page.getByTestId('r2720-sample').selectOption('0');
+    await page.getByTestId('r2720-sample').focus();
+    await page.keyboard.press('Home');
     const owner=scene.identity.documents[index].qualified_shared_source_curves[0]
       .sample_groups[0].members.find(m=>m.patch_slot===patch);
     expect(owner).toBeDefined();
