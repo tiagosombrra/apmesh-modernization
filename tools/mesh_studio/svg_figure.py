@@ -17,6 +17,13 @@ def _tag(name):
     return f"{{{URI}}}{name}"
 
 
+def write_canonical_svg(root: ET.Element, output: Path | str) -> None:
+    """Emit identical XML declaration and vector bytes on Linux and Windows."""
+    payload = (b"<?xml version='1.0' encoding='utf-8'?>\\n"
+               + ET.tostring(root, encoding="utf-8", xml_declaration=False))
+    Path(output).write_bytes(payload)
+
+
 def render_uv_svg(document: MeshDocument, output: Path | str,
                   *, width_mm: float = 155.0, height_mm: float = 120.0) -> dict:
     """Draw source UV, never silently substitute XY-projected XYZ coordinates."""
@@ -78,7 +85,7 @@ def render_uv_svg(document: MeshDocument, output: Path | str,
                                                "font-size": "15", "font-family": "sans-serif"}).text = "Imported source mesh; not a quality certificate"
     output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
-    ET.ElementTree(root).write(output, encoding="utf-8", xml_declaration=True)
+    write_canonical_svg(root, output)
     return {
         "schema": "apmesh.meshstudio.vector_figure.v1",
         "format": "svg", "render_class": "source_uv_vector_2d",
