@@ -1,5 +1,10 @@
 # APMesh Mesh Studio — scientific inspection and publication modules S0–S5
 
+## V5.9 — reproducible full original-native source reviewer on V5.8 launcher
+
+In addition to the lean research startup, V5.9 validates a finite **real original C++ accepted Eistute/Book step-1** browser task: original NDJSON/SVG/manifest source-SHA re-audit, original P1 linked XYZ/UV quality and source face, Book/Eistute source patch/triangle/native node and curve sampling, original vector SVG downloads, staged/nonaccepted guardrails and negative forged LOD/UV. **Both Ubuntu and Windows CI PASS**, including cross-platform canonical source SVG bytes and clean server shutdown. Use the pinned ten-file source corpus and the `python3.13 -m tools.mesh_studio.v59_reviewer preflight` / `smoke` commands described in [V5.9 research review protocol](../../docs/mesh-studio/V5_9_ORIGINAL_NATIVE_LOCAL_REVIEWER_RESULTS_20261123.md). This does not recompile native C++ or authorize physical machine GPU/LOD claims.
+
+
 ## V5.8 — inicialização segura do STUDIO de pesquisa
 
 O novo launcher local, auditado em Linux/Windows, executa a interface React/vtk.js e a API FastAPI com um ambiente Python **mínimo de 13 pacotes**, derivado dos locks com hashes; **PyMuPDF e VTK não são instalados no ambiente local da API**. A aplicação permanece em desenvolvimento, com portas estritamente `127.0.0.1`, e o gerador científico C++ não é executado pelo launcher.

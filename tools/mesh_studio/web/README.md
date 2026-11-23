@@ -1,5 +1,25 @@
 # Mesh Studio Web R1 (research vertical slice)
 
+## V5.9 — reproducible original C++ Book/Eistute reviewer journey
+
+The [V5.9 result and exact original-source identities](../../../docs/mesh-studio/V5_9_ORIGINAL_NATIVE_LOCAL_REVIEWER_RESULTS_20261123.md) verify an end-to-end **original-native C++ step-1** source task with the **V5.8 minimal local FastAPI/Vite launcher**, not a new accepted scientific epoch.
+
+Extract the pinned ten-file reviewer corpus archive under the repository root, resulting in `build/v59-native-reviewer/` (including `r2720-native-accepted-scene.json`, two original C++ postcommit NDJSONs, original identity reports/logs, V5.2 manifest and SVGs). Run Python 3.13, Node 22 and npm 10:
+
+```bash
+python3.13 -m tools.mesh_studio.v59_reviewer preflight
+python3.13 -m tools.mesh_studio.local_launcher setup
+cd tools/mesh_studio/web && npm exec playwright install chromium && cd ../../..
+python3.13 -m tools.mesh_studio.v59_reviewer smoke
+```
+
+On Windows, replace `python3.13` by `py -3.13` and use `Push-Location / Pop-Location` instead of `cd ... && cd ../../..` in PowerShell. This script independently reopens **original raw accepted C++ NDJSON and SVG per-face identities**, opens the actual two local servers and runs browser reviews of P1 linked XYZ/UV source IDs, staged candidate labels, Eistute/Book real original triangles/patches/nodes and authentic vector downloads; then shuts both services down.
+
+**[GitHub Actions V5.9](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45158811660): Linux + Windows 2/2 PASS**, 16 Python unit/adversarial checks plus 2 hosted Chromium tests on each platform. Original P1 source SVG bytes now have canonical Linux/Windows LF and equal SHA256 `c4b759169bc68d147c70f8ae5a2127783e33299fe7ed3d35dca51610709d6bfe`. Original native C++ Eistute/Book source SVGs remain unchanged. The historical original GitHub Actions artifact auto-expires after 14 days; retain the independently SHA-pinned reviewer source bundle locally or rerun the original native workflow and update its source receipt without silently reusing a different native epoch.
+
+The source certificates **do not** mean any random uploaded JSON is trusted by the browser, physical seams are welded, original C++ generated step 2, or real GPU/physical Windows performance is qualified. This is not a signed/offline installer or a production release.
+
+
 ## V5.8 — caminho recomendado para execução local em Linux/Windows
 
 O caminho recomendado agora é **um único launcher de pesquisa com API mínima**, em vez de instalar todo o ambiente científico com `pip install -r requirements-web-ci.txt`. A versão V5.8 usa Python 3.13, Node 22, npm 10 e os locks imutáveis com hashes já auditados. O ambiente local **não instala PyMuPDF nem VTK**, que continuam em fluxos científicos separados.
