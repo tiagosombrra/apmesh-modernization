@@ -1,5 +1,20 @@
 # APMesh Mesh Studio — scientific inspection and publication modules S0–S5
 
+## V5.8 — inicialização segura do STUDIO de pesquisa
+
+O novo launcher local, auditado em Linux/Windows, executa a interface React/vtk.js e a API FastAPI com um ambiente Python **mínimo de 13 pacotes**, derivado dos locks com hashes; **PyMuPDF e VTK não são instalados no ambiente local da API**. A aplicação permanece em desenvolvimento, com portas estritamente `127.0.0.1`, e o gerador científico C++ não é executado pelo launcher.
+
+A partir da raiz do repositório, com Python 3.13, Node 22 e npm 10:
+
+```bash
+python3.13 -m tools.mesh_studio.local_launcher preflight
+python3.13 -m tools.mesh_studio.local_launcher setup
+python3.13 -m tools.mesh_studio.local_launcher serve
+```
+
+No Windows PowerShell, troque `python3.13` por `py -3.13`. Para verificar e encerrar ambos os serviços automaticamente, use `smoke` no lugar de `serve`. Abra `http://127.0.0.1:5173`. [Evidências, escopo e riscos da V5.8](../../docs/mesh-studio/V5_8_MINIMAL_LOCAL_LAUNCH_AND_SOURCE_LOCK_RESULTS_20261123.md). **Não é distribuição de produção, lançamento oficial nem evidência de LOD.**
+
+
 **Current project roadmap and 2026-11-20 wide audit:** [Mesh Studio Master Plan V5](../../docs/mesh-studio/MASTER_PLAN_V5_AUDIT_AND_RECOVERY_20261120.md), with the [current evidence/qualification index](../../docs/mesh-studio/README.md). Previous planning and research documents are retained as dated historical evidence.
 
 The Studio Python/Web modules live under `tools/mesh_studio/`. The isolated research PR #239 also includes **default-OFF, compile-time guarded observation changes in original C++ source files** and separate serial research executables; these do not authorize production numerical-policy changes, public releases or merges. Do not claim that the complete Studio PR has zero edits outside this Python directory.
