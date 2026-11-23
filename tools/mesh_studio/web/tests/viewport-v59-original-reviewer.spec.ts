@@ -97,6 +97,8 @@ async ({page})=>{
   mkdirSync('test-results',{recursive:true});
   writeFileSync('test-results/v59-p1-source-uv.svg',figure);
   expect(originalFigure.headers()['x-vector-figure-sha256']).toBe(digest(figure));
+  // Canonical source figure bytes must be identical across Linux and Windows.
+  expect(digest(figure)).toBe('c4b759169bc68d147c70f8ae5a2127783e33299fe7ed3d35dca51610709d6bfe');
   expect(figure.toString('utf8')).not.toContain('<image');
   await page.getByTestId('model-select').selectOption('band');
   await expect(page.locator('.main-status')).toHaveText('Dados verificados');
