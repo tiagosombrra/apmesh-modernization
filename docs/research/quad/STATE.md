@@ -3,7 +3,7 @@
 Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align a reusable way to select eligible template groups
+## Active: qualify a reusable transition grouping with bounded rollback
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,26 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-23 - execute two successive automatic Ribbed selections
+
+The [native comparisons](RIBBED_AUTOMATIC_TEMPLATE_GROUP_TRIALS_20261123.md)
+use the archived selector and native copied-tree replay. Parent 62
+removes the 6.86298-degree TRI footprint; an already present 6.86759-degree
+TRI at the same contour vertex remains, associated with the adjacent
+template. Reapply the same one-parent rule to that candidate. Parent
+71 removes the second footprint too. Control to final: 612 to 584
+nodes, 636 to 608 faces, 6.86 to 7.04 degrees final worst TRI. Worst
+QUAD remains 26.26 degrees. The sampled geometric maximum is equal,
+and RMS falls slightly. All 23 source intervals, physical requests
+and original reference meshes match. Zero accepted mixed epochs.
+
+**Next:** package a reusable opt-in selector with a local transition
+evaluation and bounded rollback instead of successively inspecting
+individual elements. Validate another positive native geometry and
+a fine-resolution negative before adopting a rule. The tested
+selector/replay flow is still isolated. Global mixed curvature and
+mixed acceptance remain unestablished.
 
 ### 2026-11-23 - evaluate an automatic template parent selector on archives
 

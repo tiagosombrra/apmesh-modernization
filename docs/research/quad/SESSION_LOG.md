@@ -4299,3 +4299,19 @@ protects eight Bezier face observations; an injected control protects
 the Ribbed positive group. Record the first console summary failure
 and corrected deterministic audit. Await alignment for one native
 case with the exact numerical scope. No mixed epoch accepted.
+
+## 2026-11-23 Fortaleza - execute automatic grouping on both sides of the Ribbed transition
+
+The researcher authorizes continuing the experiments. The unchanged
+selector chooses one new parent per native reconstruction. Group 62
+removes the first thin TRI. Vertex and connectivity comparison finds
+the next limiting TRI already present at the same contour point.
+Repeat the selected grouping on parent 71 using the first result.
+The two native images preserve curve, cap and original requests.
+Both target TRI footprints become QUAD and the final mesh is 28
+faces smaller. The global limiting TRI moves elsewhere, at 7.04
+degrees. See the [native comparisons](RIBBED_AUTOMATIC_TEMPLATE_GROUP_TRIALS_20261123.md).
+
+Next package regional quality and bounded rollback as a reusable
+opt-in trial and validate a broader control set. No automatic
+mixed acceptance, estimator adoption or full validation matrix.

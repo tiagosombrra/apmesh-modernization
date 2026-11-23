@@ -157,8 +157,12 @@ copied tree, preserving the curve and reducing mesh counts. The worst
 TRI moves to another section at 6.86 degrees. The
 [read-only selector audit](MIXED_TEMPLATE_GROUP_SELECTOR_20261123.md)
 recovers the previously tested Ribbed parent, protects finer residual
-requests and rejects an unchanged Bezier interface. Align one native
-trial at the new limiting Ribbed face, at most one parent. The live
+requests and rejects an unchanged Bezier interface. The
+[native Ribbed comparisons](RIBBED_AUTOMATIC_TEMPLATE_GROUP_TRIALS_20261123.md)
+apply one new automatically chosen parent in each reconstruction.
+They repair both thin TRI at one contour vertex and reduce mesh
+size. Qualify a reusable opt-in regional selector with bounded
+rollback and broader geometry coverage before adoption. The live
 entry still accepts only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
