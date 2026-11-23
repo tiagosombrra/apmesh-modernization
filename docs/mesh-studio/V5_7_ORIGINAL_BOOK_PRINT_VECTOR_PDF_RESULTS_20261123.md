@@ -2,6 +2,20 @@
 
 **Date:** 2026-11-23. **Scientific scope:** original native C++ accepted TRI step **[1]**, original Book patch-local UV, source identity retained. **No scientific LOD, no physically welded seams, no new accepted epoch.** The code tested is SHA `7d41ab8ec55b34bf879f9efc2a547168e50143de` on [GitHub Actions #45147268663](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45147268663).
 
+## Final complete scientific/source CI qualification
+
+**[GitHub Actions #45147268663](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45147268663) is COMPLETE 4/4 SUCCESS on the actual tested code SHA `7d41ab8ec55b34bf879f9efc2a547168e50143de`:** original compiled/native C++ source parity and acceptance/replay PASS, Linux Python **556 tests / 4 expected skips**, Windows Python **556 / 10 environment skips**, actual same-run Chromium **63 passed / 5 intentional skips**. All eight new V5.7 adversarial test methods passed on both Python platforms. Source C++ and accepted TRI scientific policy remained unchanged. The later `docs/mesh-studio/V5_7_ORIGINAL_BOOK_PRINT_VECTOR_PDF_RESULTS_20261123.md` report updates are **documentation-only**, not new untested implementation commits.
+
+The Chromium renderer explicitly advertises ANGLE SwiftShader software emulation. **Physical GPU/VRAM/Windows desktop performance remains UNQUALIFIED**, and the original research R2.8 geometric LOD remains BLOCKED. This 4/4 certification covers bounded original source-vetted printable figures, not publication typesetting or licensing.
+
+### Editorial caption candidates (pending adviser and venue review)
+
+**Main-paper source-order example:** *"Original C++ accepted Book triangular mesh at step 1, shown in patch-local UV coordinates for four evenly spaced source patch slots (0, 9, 18, 27) out of 28. Each displayed chart contains 152 original accepted native triangles; red symbols indicate 13 observed source-curve sample points per chart. The selection illustrates source-slot coverage rather than geometric representativeness. It does not imply physically welded patch boundaries, continuous source curves or multiple accepted LOD epochs. The complete 28-patch inventory is given in the supplementary appendix."*
+
+**Supplemental seven-page appendix:** *"All 28 patch-local UV charts from the original C++ accepted Book triangular source at step 1, ordered by original source patch slot. Exactly 4,256 accepted native triangles and 364 original observed source-curve sample markers are shown once across seven A4 pages. Each triangle retains the source face identity and all original local UV vertices through the audited vector export. Distinct patch slots are not inferred to share physical welded vertices."*
+
+The sample needs a new approved layout at the actual publication's final reproduction scale; do not shrink the full A4 page into a narrow single-column figure with sub-legible labels.
+
 ## 1. Source provenance and source-preserving figure method
 
 The original native `quad_generator_outcome_probe` is built in the source-native job, runs real original Eistute and Book input models, and retains postcommit C++ step-1 accepted NDJSON. The existing V5.2 SVG exporter independently reopens those exact C++ bytes and certifies every `(accepted_step,patch_slot,element_slot,native_element_id)` native triangle key, node identities, local UV and observed source-marker identity. The existing original V5.3 vector PDF export and audit **still run unchanged**.
@@ -39,4 +53,4 @@ Eight purely **synthetic protocol test cases**, never original scientific source
 
 **Scientific R2.8 remains BLOCKED.** Neither these vector figures nor repeated native source reruns create two globally accepted TRI epochs *in the same source process*, face descent, continuous CAD geometric error certificates, physical patch-vertex welding, a production GPU/RSS/VRAM measurement, or an all-QUAD adaptive methodology comparison.
 
-**Disposition:** original source-attested Book printable figures and independent per-PDF UV/vector audits completed; the full 4-job scientific/browser CI and journal/adviser publication signoff are independently recorded gates, not implied by artifact generation. No merge into `main`, tag or public software release; preserve this PR in Draft.
+**Disposition:** original source-attested Book printable figures and independent per-PDF UV/vector audits **PASS**, full original scientific/browser CI **4/4 PASS** at the exact code SHA above; journal/adviser publication signoff, production licensing and hardware performance are **OPEN**. No merge into `main`, tag or public software release; preserve this PR in Draft.
