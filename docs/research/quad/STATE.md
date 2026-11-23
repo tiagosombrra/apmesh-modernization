@@ -12,6 +12,23 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-23 - measure native child arcs at the limiting faces
+
+The [arc audit](RIBBED_LIMITING_CHILD_ARC_20261123.md) verifies all child
+lengths against the analytic source. Ten children of five parents exceed
+their physical targets. The two spans at the 6.33-degree TRI comply
+(1.00033/1.00033 and 0.50010/0.60888). The worst QUAD uses an arc of
+1.02021 against 0.62666. Splitting at its native midpoint is estimated
+to give 0.51014 and 0.51008. That curve side is degree one in the actual
+source. No native output has been generated for this proposal.
+
+**Next:** obtain alignment for one additional binary split at that
+single QUAD edge on the residual-only Ribbed control. Allow one new
+boundary point, preserve all existing physical requests and depth 4,
+and evaluate both limiting regions and whole-mesh shape before/after
+smoothing, common-site deviation and counts. TRI default and mixed
+selection remain preserved. Zero accepted mixed epochs.
+
 ### 2026-11-23 - compare an explicit bad-shape target before the Ribbed front
 
 The [approved comparison](RIBBED_PREFRONT_SHAPE_TARGET_20261123.md) retains

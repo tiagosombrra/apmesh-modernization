@@ -4233,3 +4233,14 @@ Keep the residual-only case as the simpler comparison baseline. Align
 a bounded next sizing rule from the measured source chords and template
 edges of both limiting faces before smoothing. See the
 [paired trial](RIBBED_PREFRONT_SHAPE_TARGET_20261123.md).
+
+## 2026-11-23 Fortaleza - measure the limiting child arcs for the next comparison
+
+The researcher requests the next test. Bind the native arc audit to the
+retained original residual-only candidate and verify analytic arc lengths.
+Both TRI-adjacent targets are already met; the worst QUAD uses a 1.02021
+arc against a 0.62666 target. The [audit](RIBBED_LIMITING_CHILD_ARC_20261123.md)
+estimates two 0.51 children at the existing native subdivision parameter.
+Propose one additional split on that edge of the degree-one curve. Hold
+the scope decision before native execution. No newly generated mesh or
+accepted mixed epoch.

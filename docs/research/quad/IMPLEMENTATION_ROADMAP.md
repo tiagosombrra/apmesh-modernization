@@ -142,8 +142,11 @@ compares the existing two residual seeds with an extra transition
 TRI seed. Extra growth is observed with no gain in global minimum
 angles. Retain the residual-only comparator. The shared limiting
 faces already exhibit coarse contour-to-fine-template lengths before
-smoothing. Align a bounded physical-to-discrete comparison using actual
-child arc lengths. The live entry still accepts only one patch.
+smoothing. The [child arc audit](RIBBED_LIMITING_CHILD_ARC_20261123.md)
+shows the TRI-adjacent targets already met and the worst QUAD edge
+still above target. Align one additional binary split on that child,
+with a one-point budget, before a native comparison. The live entry
+still accepts only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
