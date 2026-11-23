@@ -1,6 +1,6 @@
 # Mesh Studio V5.10 — local-only security and independent physical reviewer protocol
 
-**Date:** 2026-11-23. **Status:** security implementation under source-code review; the physical reviewer approvals in this document **are blank by design** until real humans on independent physical machines perform them. This is a **research-mode** acceptance protocol, not a penetration test, a signed installer, legal distribution approval or an original C++ R2.8 multi-epoch LOD qualification.
+**Date:** 2026-11-23. **Status:** source-code and hosted Windows/Linux automated security reviewer 2/2 PASS; the physical reviewer approvals in this document **are blank by design** until real humans on independent physical machines perform them. This is a **research-mode** acceptance protocol, not a penetration test, a signed installer, legal distribution approval or an original C++ R2.8 multi-epoch LOD qualification.
 
 ## 1. Exact scope and demonstrated threat boundary
 
@@ -82,7 +82,21 @@ curl.exe -i -H "Host: attacker.invalid:5173" http://127.0.0.1:5173/
 
 Expected: the API rejects incorrect Host with **400** and foreign Origin with **403**; Vite rejects an untrusted Host (normally **403** from its own allowed-host gate). None may return HTTP 200 or source data. Do not run these commands against a publicly reachable service.
 
-## 4. Reviewer report template — explicitly unsigned
+## 4. Original C++ / security integration results (source-code CI)
+
+**[GitHub Actions #45161558058](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45161558058) — COMPLETE 2/2 SUCCESS**, actual tested V5.10 implementation SHA **`8813d7e08d05b71745b8b3c54e3de06c38a315e7`**, on **Ubuntu 24.04** and **Windows Server 2022**. Both hosted jobs separately reported:
+
+- **24 Python unit/adversarial tests PASS** (prior V5.8 and V5.9 source protocol regressions plus 8 V5.10 negative ASGI Host, Origin, fetch-site, method, websocket and duplicate-header unit tests).
+- **8 actual local HTTP negative requests rejected** against freshly started API + Vite on each OS (four on each): wrong Host, foreign Origin, cross-site fetch metadata and HTTP POST. Legitimate local CORS origin still approved.
+- **2 mandatory hosted Chromium browser tests PASS** on each OS. Actual original C++ accepted source remained Eistute **1,168 TRI** with source patch 3 / element 5350 / native node 200, and Book **4,256 TRI** with patch 27 / element 4250 / node 909. Both native downloaded UV SVG files matched their original pinned SHA256 exactly; no foreign external HTTP requests.
+- On-demand local P1 source UV SVG still has byte-identical cross-platform SHA256 `c4b759169bc68d147c70f8ae5a2127783e33299fe7ed3d35dca51610709d6bfe`. No original C++ source was recompiled by this lean reviewer workflow; all original C++ postcommit raw bytes were **independently reaudited** against the previously certified native run.
+- Neither process remained listening on localhost port 8765 or 5173 after shutdown. Original accepted C++ epoch inventory remained **`[1]`** for each source model.
+
+The first CI attempt expected HTTP 400 for an invalid **Vite** Host header, while Vite itself already blocked it with **403** (a secure fail-closed rejection). The expected Vite result was corrected to **403**, leaving the API Host's explicit **400** unchanged. This was a **test-expectation correction**, not permission to accept an untrusted Host.
+
+**Precise distinction:** This proves *the hosted Windows/Linux code-path and bounded local security negative controls*, not a penetration test or validation on an independently owned physical workstation. The subsequent changes to this report and project README must remain **documentation-only** to retain the exact code SHA linkage.
+
+## 5. Reviewer report template — explicitly unsigned
 
 ```text
 Mesh Studio V5.10 — INDEPENDENT PHYSICAL SOFTWARE REVIEW (NOT YET SIGNED)
