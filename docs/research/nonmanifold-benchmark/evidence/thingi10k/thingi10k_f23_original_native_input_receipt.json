@@ -1,0 +1,55 @@
+{
+  "accepted_tri_quad_mesh_count": 0,
+  "asan_ubsan_native_header_real_bp_passed": true,
+  "bp_bytes": 538482,
+  "bp_controls": 7886,
+  "bp_patches": 876,
+  "bp_sha256": "6049d4e46cfd73e104c2b63ef34d3a8089c4f59d1f940bee8c1ec66a8f0bafb0",
+  "compile_flags": [
+    "-std=c++17",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-pedantic"
+  ],
+  "compile_seconds": 0.857249,
+  "compiler": "c++",
+  "compiler_version": "c++ (Debian 14.2.0-19) 14.2.0",
+  "complete_apmesh_checkout_present_locally": false,
+  "header_git_blob_sha1": "bc7988e862383f2f264f9d3a2a7691fe5c028592",
+  "hermetic_native_header_tests_passed": 32,
+  "hermetic_native_header_tests_total": 32,
+  "max_address_space_mib": 256,
+  "model_id": 293137,
+  "original_cpp_geometry_loader_executed": false,
+  "original_cpp_input_validator_executed": true,
+  "original_cpp_quad_mesh_generated": false,
+  "original_cpp_reader_executed": false,
+  "original_cpp_shared_curves_observed": false,
+  "original_cpp_tri_mesh_generated": false,
+  "per_run_timeout_seconds": 6.0,
+  "redistribution_permission_verified": false,
+  "research_partial_checkout_only": true,
+  "runs": [
+    {
+      "exit_code": 0,
+      "stdout": "apmesh-original-bp-header-validation-pass",
+      "wall_seconds": 0.016085
+    },
+    {
+      "exit_code": 0,
+      "stdout": "apmesh-original-bp-header-validation-pass",
+      "wall_seconds": 0.014777
+    },
+    {
+      "exit_code": 0,
+      "stdout": "apmesh-original-bp-header-validation-pass",
+      "wall_seconds": 0.014101
+    }
+  ],
+  "schema": "apmesh-f23-original-native-header-only-v1",
+  "scientific_reference_pair_admitted": false,
+  "scientifically_admitted_model_count": 0,
+  "wall_clock_only": true,
+  "wrapper_git_blob_sha1": "b8bb3be6d1d28a3500a05c620c0be4bfef6b0989"
+}
