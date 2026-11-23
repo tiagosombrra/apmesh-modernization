@@ -25,7 +25,7 @@ jobs:
           persist-credentials: false
       - name: Check F25 Python harness contract
         run: |
-          python3 -m unittest -v docs/research/nonmanifold-benchmark/probes/test_thingi10k_f25_native_geometry_runner.py
+          python3 -m unittest discover -s docs/research/nonmanifold-benchmark/probes -p test_thingi10k_f25_native_geometry_runner.py -v
       - name: Compile and execute original native APMesh Geometry
         run: |
           python3 docs/research/nonmanifold-benchmark/probes/thingi10k_f25_native_geometry_runner.py \
