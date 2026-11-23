@@ -314,7 +314,7 @@ def launch(mode: str, on_ready: Callable[[], None] | None = None) -> dict:
             "loopback_ports_already_in_use")
     processes: list[subprocess.Popen] = []
     try:
-        api = _spawn([str(python), "-m", "uvicorn", "tools.mesh_studio.web_api:app",
+        api = _spawn([str(python), "-m", "uvicorn", "tools.mesh_studio.web_api:local_app",
                       "--host", "127.0.0.1", "--port", "8765"], ROOT)
         processes.append(api)
         _await_http(API_ADDRESS + "/api/v1/health", api, 35)
