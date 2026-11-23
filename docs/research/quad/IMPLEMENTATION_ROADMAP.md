@@ -117,8 +117,15 @@ An inverted or collapsed UV QUAD prevents a valid successor. Preserve both
 failures. The [literature review](MIXED_ADAPTATION_LITERATURE_20261123.md)
 specifies the next aligned comparison: validate the initial cap-preserved
 mesh, use the last fully valid pass as control and evaluate a bounded
-shape-aware motion guard. Then evaluate the continuous-to-discrete size
-conversion. Mixed error and accepted epochs remain separate. Keep PR243 draft. Further jet variants, initialization changes and mixed-global
+shape-aware motion guard. The [native comparison](MIXED_SMOOTHING_PILOT_COMPARISON_20261123.md)
+completes that bounded test. Initial geometry passes; the first original
+Jacobi pass inverts a QUAD corner. All five guarded passes preserve
+geometric validity on the same topology. The valid experimental
+successor retains a 5.09-degree TRI in the transition. Compare requested
+and realized spacing on these retained archives next, then align a
+continuous-to-discrete size rule before new adaptive generation.
+Mixed error and accepted epochs remain separate. Keep PR243 draft.
+Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
 package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope

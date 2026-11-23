@@ -4118,3 +4118,29 @@ before running this treatment. Follow with requested-versus-realized
 gradation measurements and mixed acceptance qualification. No new
 native generation or accepted mixed epochs. PR247 d206862 now has
 four verified hosted checks, for its adjacency scope.
+
+## 2026-11-23 Fortaleza - one capped mixed replay with guarded smoothing
+
+The researcher approves the proposed paired test. MSVC Debug C++17 builds
+the isolated target and runs the built-in Bezier case once. It reproduces
+seven tree edits, 88 balanced leaves and eight original curve midpoint
+insertions at cap 4. All four sizing traces, the eight ordinary OBJs and
+the curve history preserve their respective references byte for byte.
+
+Both arms start with a valid 375-node, 397-face geometry. Independent
+replay confirms the first unguarded Jacobi pass inverts a corner of
+QUAD 315 in UV. The last valid control is the original frame. Five
+guarded passes complete and produce a typed experimental successor
+with unchanged 18-segment contour and face connectivity. Independently
+replay the 473 accepted moves and verify physical and parametric geometry.
+Worst TRI transition angle 4.10 to 5.09 degrees, unchanged worst contour
+QUAD 22.33 degrees, area-weighted XYZ RMS 0.00665882 to 0.00627204 and
+unchanged sampled maximum. Neighbor-size median rises while p95 falls.
+The [comparison](MIXED_SMOOTHING_PILOT_COMPARISON_20261123.md) retains
+the rejected pass and the remaining quality limits.
+
+Next match requested to realized spacing on the retained candidate by
+contour interval and face region. Examine the role of binary splits and
+leaf quantization before aligning a change to sizing. No mixed epoch
+accepted. No full delivery regression, sanitizer/CRT or remote CI was
+run on the isolated trial.

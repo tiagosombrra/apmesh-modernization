@@ -3,7 +3,7 @@
 Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: literature-backed smoothing comparison for the blocked mixed successor
+## Active: requested versus realized sizing on the valid mixed pilot successor
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,35 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-23 - validate the capped mixed successor with guarded smoothing
+
+The approved [native comparison](MIXED_SMOOTHING_PILOT_COMPARISON_20261123.md)
+reconstructs the capped pilot once. All four request traces match the previous
+attempt and all eight reference OBJs plus the curve trace match the original
+archive. The two arms share one validated pre-smoothing mesh with 375 nodes,
+64 TRI, 333 QUAD and 18 fixed contour segments. The first original Jacobi
+pass fails at UV QUAD 315, independently reproduced. The last valid control
+is pass zero. Shape-aware smoothing passes five full geometry checks and
+the independent audit replays 473 accepted moves. The resulting typed
+candidate is valid and explicitly unaccepted as an adaptive epoch.
+
+The worst TRI angle improves from 4.10 to 5.09 degrees and remains a
+transition limitation. The worst contour QUAD angle stays 22.33 degrees.
+Area-weighted XYZ RMS falls from 0.00665882 to 0.00627204 on 576 common
+sites. Maximum deviation stays 0.03768417. Median adjacent face-size ratio
+rises from 1.06 to 1.10 while p95 falls from 2.13 to 1.90. This separates
+the smoothing result from remaining sizes and transition shape.
+
+**Next:** use the existing archives to match each requested physical size
+to its realized contour intervals or affected face region. Identify
+underfilled and overshot requests and relate them to the native binary
+splits, balanced leaves and depth 4. Report shape and size ratios near the
+contour and through the transition. Align any new sizing or acceptance
+rule using this evidence. Mixed-global curvature error and two distinct
+accepted mixed adaptive epochs are pending. Current accepted mixed epochs:
+0. PR247's four hosted checks cover its graph scope. The guarded source
+is isolated and has no full delivery matrix or integration.
 
 ### 2026-11-23 - review literature and define the bounded next comparison
 
