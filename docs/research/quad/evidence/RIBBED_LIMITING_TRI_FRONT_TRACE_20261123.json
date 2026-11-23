@@ -1,0 +1,2028 @@
+{
+  "identity": {
+    "source_before_sha256": "be2e5bf694bdecb6d54819f7f95065d70a5f8fa614cf528396c3a1bc45bf5e8c",
+    "source_after_sha256": "9156d3fd1d6aef72bd287c922b2808f470fd478700ea7246b524e16367d45e7a",
+    "source_base": "94dc35a6c84899fb36eea86c1d352b0842ba3bcf",
+    "config_sha256": "74293c1dca5167d015ef3cfe6f5ac51104aaa5bf2867096325b8075a7e705a3c",
+    "bp_sha256": "07cd08d6258f72a140198d4d9f72360888da9486954216a467c87e949c870e10"
+  },
+  "native": {
+    "exit": 0,
+    "seconds": 42.69757652282715,
+    "timeout": 180
+  },
+  "build": {
+    "exit": 0,
+    "seconds": 10.550367593765259,
+    "timeout": 180
+  },
+  "application_command": [
+    "build/quad-ribbed-front-trace-20261123/ap_mesh.exe",
+    "--config",
+    "build/quad-ribbed-front-trace-20261123/ribbed.conf"
+  ],
+  "build_command": [
+    "cmake",
+    "--build",
+    "build/quad-feedback-pilot-20261122/msvc",
+    "--target",
+    "ap_mesh",
+    "--config",
+    "Debug",
+    "--parallel",
+    "4"
+  ],
+  "front_sha256": "0ba3bf2870096cd73187b5836ae76ad6653d869e8ae09eebc00c8fadbc3c5765",
+  "file_sha256": {
+    "additional-child-split.csv": "aafc658390dc0859d67b4d2fb7316bafc541740eff2191135b506cc2419a475e",
+    "attempt.csv": "667eaaad3a5ba921fb0b424a173ccb2248ce1171587d94ee0ecfc2e5e42a11b0",
+    "before.obj": "91536ad83e2eb5d8b7111c9534862c17842e938c580df7119a8d2b2ff53e5a8a",
+    "capped-requests.csv": "f9753013ce75b9dd30d63d63af9313339c5d25a718363f2b5529c53fadaac82d",
+    "control_1.obj": "e7719e0e5fc2e3f3e370232a905213b54cea9c03d4a78368ba6c858cdbd6838d",
+    "control_2.obj": "b026d04b6d22e0423d0d72f207897c2ae320bd0202535c09e617d9c31327e347",
+    "control_3.obj": "0e5b728c314797da1ed9d753d997456ce3611dc42a0de332c3765dbc17d23f30",
+    "control_4.obj": "174450c6009f9ca1db69163cb0873a89e4bd9ee70b8130621ad22eee174d4df4",
+    "control_5.obj": "8c2afc4d2981dd58da121c437358eac525003a95487885b3c9b74471b70a9cb3",
+    "control_final.obj": "8c2afc4d2981dd58da121c437358eac525003a95487885b3c9b74471b70a9cb3",
+    "curve-requests.csv": "0ffaf933921d172c0f280936ddd174628e0f3edd3042c2626e409582a457e666",
+    "guarded_1.obj": "46ce5565827e695b69d1fa903bde800448f5b8dad08198f92b9d5be09f50a028",
+    "guarded_2.obj": "8762528924d9477cdc46babd0c50485a74c9054b10d4753805aebb142d422dd6",
+    "guarded_3.obj": "ca45a4a70c47cdd4ef74f7d77729a1c16ebe977963e73efe420af5ab1025696d",
+    "guarded_4.obj": "1d163be7b9e55cfce32febacb748c6e3dcc447759b81143c489ecd555ebc8384",
+    "guarded_5.obj": "e21ffd57369944cbc14aa03943048326c44fc1ba984b8651f8804fcbb14bc3ba",
+    "guarded_final.obj": "e21ffd57369944cbc14aa03943048326c44fc1ba984b8651f8804fcbb14bc3ba",
+    "guarded_typed.obj": "7c6630d4b960b9b944c518eb9c61edfacef18d185849d62b31a4b2f598eb95d3",
+    "passes.csv": "1851ef6ad3fee4bdb37cc4023d428646fc71337fc207dc0e69d83f613b3793f5",
+    "realized-leaves.csv": "19d6e60b446592e82593587c6acb56ca3d6e389e78e198e1c41ca5817cbeeffa",
+    "size-requests.csv": "f6004ae771cfb7697f658f1ca0792dccd1c27eb8a577a788146be4d7e0e74d67",
+    "tree-requests.csv": "0f8df4dafe5d244608fcf003cef905125eb41f76bb9f6cbd2e68f5e7b0e0c128"
+  },
+  "archived_prefix": {
+    "step_0_retry_-1_accepted_quad_tri.obj": "e02b13c43401309b8245b75c3c82d659352f29c3a3b26c624fea6ee335f20642",
+    "step_0_retry_-1_accepted_tri.obj": "e02b13c43401309b8245b75c3c82d659352f29c3a3b26c624fea6ee335f20642",
+    "step_1_retry_0_accepted_quad_tri.obj": "14c62071c29e76190cbe0a04cc527dd7d4210d36af76c889fa276bf2896b7def",
+    "step_1_retry_0_accepted_tri.obj": "6ba391519cd5f7aa4ce5093c9f154bae994eb20d073976d6d4104d3a75136293",
+    "step_2_retry_0_accepted_tri.obj": "2c242c53882b7b97207cca6bf030ce839071cbdc14614e2482690bba1be4a851"
+  },
+  "replay": {
+    "clearance_excluded_cells": 0,
+    "commits": 99,
+    "selected_quads": 24,
+    "retained_triangles": 75,
+    "rejected_unions": 71,
+    "competing_alternatives": 1
+  },
+  "same_guarded_predecessor": "8fe269d99999e6f9ee78fa97576cdb24cda2bc7fed217af6aea16a811108245e",
+  "template": {
+    "seed_face_index": 13,
+    "face": [
+      7,
+      175,
+      177,
+      174
+    ],
+    "leaf_index": 4,
+    "uv_box": [
+      0.375,
+      0.125,
+      0.4375,
+      0.1875
+    ],
+    "short_edge": [
+      7,
+      174
+    ],
+    "short_edge_uv": [
+      [
+        0.4375,
+        0.125
+      ],
+      [
+        0.40625,
+        0.125
+      ]
+    ],
+    "length": 0.12500148825753496
+  },
+  "measured_tri": {
+    "face": [
+      7,
+      174,
+      603
+    ],
+    "commit": 27,
+    "angle_xyz": 6.3281535843349985,
+    "candidates": {
+      "base": [
+        7,
+        174
+      ],
+      "active_count": 112,
+      "global_valid": [
+        149,
+        565,
+        603
+      ],
+      "native_candidates": [
+        {
+          "vertex": 149,
+          "uv": [
+            0.625,
+            0.0625
+          ],
+          "opposite_angle_uv_deg": 2.489552921999156,
+          "minimum_angle_xyz_deg": 3.9856044445684797
+        },
+        {
+          "vertex": 565,
+          "uv": [
+            0.625,
+            0.09375
+          ],
+          "opposite_angle_uv_deg": 1.3322198538696388,
+          "minimum_angle_xyz_deg": 2.5209478363374824
+        },
+        {
+          "vertex": 603,
+          "uv": [
+            0.500091552734375,
+            0.0
+          ],
+          "opposite_angle_uv_deg": 10.298132515334487,
+          "minimum_angle_xyz_deg": 6.3281535843349985
+        }
+      ]
+    },
+    "alternatives": [
+      {
+        "recorded": {
+          "side": 0,
+          "triangle": [
+            0,
+            0,
+            0
+          ],
+          "quad": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "eligible": false,
+          "score": 0
+        },
+        "globally_valid": [],
+        "native_options": []
+      },
+      {
+        "recorded": {
+          "side": 1,
+          "triangle": [
+            7,
+            603,
+            178
+          ],
+          "quad": [
+            7,
+            174,
+            603,
+            178
+          ],
+          "eligible": false,
+          "score": null
+        },
+        "globally_valid": [
+          {
+            "other": 149,
+            "score": 1.7951672353008654,
+            "within_limit": false
+          },
+          {
+            "other": 178,
+            "score": null,
+            "within_limit": false
+          },
+          {
+            "other": 565,
+            "score": 1.8948630865774978,
+            "within_limit": false
+          }
+        ],
+        "native_options": [
+          565,
+          149,
+          178
+        ]
+      }
+    ],
+    "component": [
+      7,
+      9,
+      30,
+      32,
+      147,
+      149,
+      174,
+      178,
+      226,
+      230,
+      564,
+      565,
+      603,
+      604
+    ]
+  },
+  "before_isolation": null,
+  "first_same_front_component": null,
+  "front_history": [
+    {
+      "commit": 1,
+      "component_size": 100,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        601,
+        602,
+        1
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 123,
+        "global_valid": [
+          149,
+          565,
+          601,
+          602,
+          603,
+          604,
+          605
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 602,
+            "uv": [
+              0.25001525320112705,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 4.970317933162195,
+            "minimum_angle_xyz_deg": 4.797929024058371
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 2,
+      "component_size": 123,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        602,
+        603,
+        174,
+        6
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 123,
+        "global_valid": [
+          149,
+          565,
+          602,
+          603,
+          604,
+          605
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 602,
+            "uv": [
+              0.25001525320112705,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 4.970317933162195,
+            "minimum_angle_xyz_deg": 4.797929024058371
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 3,
+      "component_size": 123,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        603,
+        604,
+        149
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 123,
+        "global_valid": [
+          149,
+          565,
+          603,
+          604,
+          605
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 4,
+      "component_size": 123,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        604,
+        605,
+        560,
+        147
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 123,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 5,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        605,
+        606,
+        554,
+        148
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 123,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 6,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        606,
+        607,
+        608,
+        145
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 123,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 7,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        608,
+        609,
+        152,
+        557
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 122,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 8,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        609,
+        610,
+        153
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 122,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 9,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        610,
+        611,
+        40,
+        154
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 122,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 10,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        611,
+        612,
+        155,
+        53
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 122,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 11,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        612,
+        613,
+        156
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 122,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 12,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        613,
+        614,
+        594,
+        158
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 122,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 13,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        614,
+        615,
+        160,
+        597
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 122,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 14,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        615,
+        616,
+        160
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 122,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 15,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        616,
+        617,
+        161
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 121,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 16,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        617,
+        618,
+        85
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 121,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 17,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        618,
+        619,
+        89
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 121,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 18,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        619,
+        620,
+        142,
+        88
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 121,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 19,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        620,
+        621,
+        548,
+        142
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 121,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 20,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        621,
+        622,
+        80,
+        336
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 120,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 21,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        622,
+        623,
+        188,
+        13
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 120,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 22,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        623,
+        601,
+        1,
+        14
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 120,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 23,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        162,
+        0,
+        197
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 119,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 24,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        1,
+        162,
+        197,
+        14
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 118,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 25,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        171,
+        1,
+        602
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 116,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 26,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        6,
+        171,
+        602
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 115,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    },
+    {
+      "commit": 27,
+      "component_size": 14,
+      "component": null,
+      "target_points_active": true,
+      "current_polygon": [
+        7,
+        174,
+        603
+      ],
+      "short_edge_candidates": {
+        "base": [
+          7,
+          174
+        ],
+        "active_count": 112,
+        "global_valid": [
+          149,
+          565,
+          603
+        ],
+        "native_candidates": [
+          {
+            "vertex": 149,
+            "uv": [
+              0.625,
+              0.0625
+            ],
+            "opposite_angle_uv_deg": 2.489552921999156,
+            "minimum_angle_xyz_deg": 3.9856044445684797
+          },
+          {
+            "vertex": 565,
+            "uv": [
+              0.625,
+              0.09375
+            ],
+            "opposite_angle_uv_deg": 1.3322198538696388,
+            "minimum_angle_xyz_deg": 2.5209478363374824
+          },
+          {
+            "vertex": 603,
+            "uv": [
+              0.500091552734375,
+              0.0
+            ],
+            "opposite_angle_uv_deg": 10.298132515334487,
+            "minimum_angle_xyz_deg": 6.3281535843349985
+          }
+        ]
+      }
+    }
+  ],
+  "artifacts": {
+    "source.patch": "f0db72f4b9fe94d11ca6195e62d4f435fdd3dd7246dcf4255754a735f96ccbbe",
+    "ap_mesh.exe": "f3669dbe12d08a6fa10086b50c6ef6f341fbcc6e3097f4b876df05884524eb8a",
+    "setup.py": "3b762945b9ff008556326df95dd42fef9da1aee1c55d420b2b8c564c3d5f5f37",
+    "audit.py": "65ca94dbd49ee4e9561726cab3fa787ee908a30536b3d4a48b51f527832630f9"
+  },
+  "accepted_mixed_epochs": 0,
+  "template_shape": "one unsplit four-sided polygon, emitted as four quarter QUAD (T1)",
+  "template_leaf_face_neighbors": [
+    [
+      2
+    ],
+    [
+      5
+    ],
+    [
+      7
+    ],
+    [
+      3
+    ]
+  ],
+  "quad_opportunities": [],
+  "global_valid_best_angle_through_history": [
+    {
+      "commit": 1,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 2,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 3,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 4,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 5,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 6,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 7,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 8,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 9,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 10,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 11,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 12,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 13,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 14,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 15,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 16,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 17,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 18,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 19,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 20,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 21,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 22,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 23,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 24,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 25,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 26,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    },
+    {
+      "commit": 27,
+      "max_min_angle_and_site": [
+        6.3281535843349985,
+        603
+      ]
+    }
+  ],
+  "extension_sha256": "280fa1c543e0cf508c6f5477ab3fd0045325b83ff23c929d854bd01b85fbfb89",
+  "owned_leaf_layout_prediction": {
+    "parent": [
+      0.375,
+      0.125,
+      0.5,
+      0.25
+    ],
+    "child_ids": [
+      26,
+      27,
+      28,
+      29
+    ],
+    "before_leaf_count": 133,
+    "predicted_leaf_count": 130,
+    "all_face_neighbors_two_to_one": true,
+    "expected_pattern": "T2",
+    "split_sides": [
+      "E"
+    ],
+    "quarter_quad_count_before": 16,
+    "local_quad_count_predicted": 11,
+    "contour_facing_edges_before": [
+      {
+        "edge": [
+          [
+            0.375,
+            0.125
+          ],
+          [
+            0.40625,
+            0.125
+          ]
+        ],
+        "uv": 0.03125,
+        "xyz": 0.12500168407350237
+      },
+      {
+        "edge": [
+          [
+            0.40625,
+            0.125
+          ],
+          [
+            0.4375,
+            0.125
+          ]
+        ],
+        "uv": 0.03125,
+        "xyz": 0.12500148825753496
+      },
+      {
+        "edge": [
+          [
+            0.4375,
+            0.125
+          ],
+          [
+            0.46875,
+            0.125
+          ]
+        ],
+        "uv": 0.03125,
+        "xyz": 0.1250014889024237
+      },
+      {
+        "edge": [
+          [
+            0.46875,
+            0.125
+          ],
+          [
+            0.5,
+            0.125
+          ]
+        ],
+        "uv": 0.03125,
+        "xyz": 0.12500168599118128
+      }
+    ],
+    "contour_facing_edges_predicted": [
+      {
+        "edge": [
+          [
+            0.375,
+            0.125
+          ],
+          [
+            0.4375,
+            0.125
+          ]
+        ],
+        "uv": 0.0625,
+        "xyz": 0.2500031692452737
+      },
+      {
+        "edge": [
+          [
+            0.4375,
+            0.125
+          ],
+          [
+            0.5,
+            0.125
+          ]
+        ],
+        "uv": 0.0625,
+        "xyz": 0.25000317181350373
+      }
+    ],
+    "no_native_reconstruction": true
+  },
+  "layout_audit_sha256": "280d228740ec87649e825e404c7a7e6261df204846818de2bd56dced6df62889",
+  "canonical_parent": "cd38dbf51209ea3f41ca2f106e3f674837389b21",
+  "diagnostic_commands": [
+    "python build/quad-ribbed-front-trace-20261123/audit.py",
+    "python build/quad-ribbed-front-trace-20261123/exhaustive.py",
+    "python build/quad-ribbed-front-trace-20261123/layout.py"
+  ],
+  "initial_audit_failure": {
+    "sha256": "783483c2597fbc36b436a7950d3ff01d08b6cf1abf86f34eface351b5528679a",
+    "correction": "Retain the failed audit prefix. Extract the unique integer commit index instead of the whole index/record tuple."
+  },
+  "not_run": [
+    "native reconstruction with coarser tree",
+    "full delivery matrix",
+    "mixed global curvature and adaptive acceptance"
+  ]
+}

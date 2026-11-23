@@ -148,8 +148,11 @@ still above target. The [approved one-point comparison](RIBBED_SINGLE_QUAD_EDGE_
 meets that arc request with 133 unchanged leaves and raises the global
 minimum QUAD angle. The old QUAD region gains a TRI and its mixed
 minimum angle drops slightly. The global limiting TRI remains fixed.
-Trace that TRI's native template edge and prospective choices before
-aligning the next local change. The live entry still accepts only one patch.
+The [front trace](RIBBED_LIMITING_TRI_FRONT_TRACE_20261123.md) observes
+no alternative improving that fixed short T1 base in the recorded
+states. A geometric calculation identifies a balanced single-parent
+T2 alternative. Align one native comparison on that copied tree,
+preserving the 23-segment contour. The live entry still accepts only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.

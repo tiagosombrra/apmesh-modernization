@@ -4260,3 +4260,15 @@ See the [result](RIBBED_SINGLE_QUAD_EDGE_SPLIT_20261123.md).
 Keep the variant as evidence. Next trace the unchanged TRI's short
 template edge and prospective front choices with the existing satisfied
 contour sizes. No general curve policy, full matrix or mixed acceptance.
+
+## 2026-11-23 Fortaleza - trace the limiting Ribbed TRI to an exposed T1 edge
+
+Record the 99 front commits on one diagnostic native replay of the
+23-segment variant. Independent replay confirms unchanged original
+outputs and operation 27. Among three active valid points, the native
+selection gives the best 6.33-degree physical TRI for the short base.
+All preceding states of that base offer no better TRI or eligible
+QUAD. The [trace](RIBBED_LIMITING_TRI_FRONT_TRACE_20261123.md) also
+predicts a balanced sibling grouping with the existing T2 pattern
+and twice-longer contour-facing template edges. It remains an
+unexecuted scientific proposal, with no mixed epoch accepted.

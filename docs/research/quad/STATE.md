@@ -3,7 +3,7 @@
 Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: trace the remaining limiting TRI at a satisfied contour
+## Active: align a local tree layout comparison for the limiting TRI
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,24 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-23 - trace the 6.33-degree TRI and its native template edge
+
+The [trace](RIBBED_LIMITING_TRI_FRONT_TRACE_20261123.md) verifies all 99
+front commits and repeats the prior 23-segment geometry byte for byte.
+At operation 27 there are three valid third vertices for the fixed
+short template base. The selected one gives the best physical minimum
+angle, 6.33 degrees, and no prospective union passes the UV quality
+criterion. Checking every active vertex in all 27 observed states of
+that base gives no better TRI or eligible QUAD. This scope preserves
+other possible front sequences as unmeasured.
+
+The exposed T1 half-side belongs to a depth-4 leaf. Grouping its four
+siblings into one native parent predicts T2 with two 0.25000 edges in
+place of four 0.12500 edges. The read-only proposed layout preserves
+2:1 balance. **Next:** align one native comparison on that copied tree
+with the same 23-segment contour and current mixed front. Compare
+shape, error and counts. Current accepted mixed epochs: zero.
 
 ### 2026-11-23 - execute the approved single child subdivision on Ribbed
 
