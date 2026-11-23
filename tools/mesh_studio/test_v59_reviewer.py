@@ -22,9 +22,9 @@ class OriginalSourceReviewerTests(unittest.TestCase):
             write_canonical_svg(root, path)
             raw = path.read_bytes()
             self.assertTrue(raw.startswith(
-                b"<?xml version='1.0' encoding='utf-8'?>\\n<svg"))
-            self.assertNotIn(b"\\r\\n", raw)
-            self.assertEqual(raw.count(b"\\n"), 1)
+                b"<?xml version='1.0' encoding='utf-8'?>\n<svg"))
+            self.assertNotIn(b"\r\n", raw)
+            self.assertEqual(raw.count(b"\n"), 1)
 
     def test_original_source_digest_inventory_has_no_duplicate_paths(self):
         self.assertEqual(len(reviewer.SOURCE_FILES), 10)
