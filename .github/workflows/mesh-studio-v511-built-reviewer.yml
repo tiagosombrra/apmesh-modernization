@@ -66,22 +66,25 @@ jobs:
           node-version: '22'
           cache: npm
           cache-dependency-path: tools/mesh_studio/web/package-lock.json
-      - name: Retrieve exact historical same-run C++-attested visual archive, never a local synthetic fixture
+      - name: Recover renewed exact original C++ ten-file corpus from independently audited archival mirror
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
-          name: mesh-studio-v52-original-native-accepted-uv-vector-7d41ab8ec55b34bf879f9efc2a547168e50143de
+          name: mesh-studio-v511-original-cpp-source-10files-7d41ab8ec55b34bf879f9efc2a547168e50143de
           path: build/v59-native-reviewer
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: tiagosombrra/apmesh-modernization
-          run-id: 45147268663
-      - name: Retrieve same-original-run independently retained genuine accepted C++ NDJSON, audits and stderr
+          run-id: 45189301366
+      - name: Independently recover original C++ archival chain-of-custody receipt from same certified mirror
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
-          name: mesh-studio-r2712-native-original-source-7d41ab8ec55b34bf879f9efc2a547168e50143de
-          path: build/v59-native-reviewer
+          name: mesh-studio-v511-original-cpp-evidence-receipt-6765536f05dbf83453aa7f2c65b79b696b9447c5
+          path: build
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: tiagosombrra/apmesh-modernization
-          run-id: 45147268663
+          run-id: 45189301366
+      - name: Refuse forged source chain, wrong original-run or modified original C++ source before browser
+        run: |
+          python -c "import json,pathlib; from tools.mesh_studio.v59_reviewer import SOURCE_FILES,ORIGINAL_CI_RUN,ORIGINAL_CI_HEAD_SHA; p=json.loads(pathlib.Path('build/v511-evidence-continuity-receipt.json').read_text()); assert p['schema']=='apmesh.meshstudio.v511.original_cpp_evidence_mirror.v1' and p['classification']=='EXACT_ORIGINAL_CPP_SOURCE_RETAINED_NOT_RECOMPILED' and p['original_compiled_source_run_id']==ORIGINAL_CI_RUN and p['original_compiled_source_commit']==ORIGINAL_CI_HEAD_SHA and p['source_file_count']==10 and p['source_file_digests']=={name:{'size':size,'sha256':digest} for name,(size,digest) in SOURCE_FILES.items()} and p['mirror_workflow_commit']=='6765536f05dbf83453aa7f2c65b79b696b9447c5' and p['upstream_evidence_kind']=='historic' and p['upstream_evidence_run_id']==ORIGINAL_CI_RUN and p['native_cpp_recompiled_by_mirror'] is False and p['scientific_lod_qualified'] is False and p['new_original_native_accepted_epoch'] is False; print('ORIGINAL_CPP_SOURCE_MIRROR_CHAIN=PASS')"
       - name: Audit original source hashes and rerun original postcommit native C++ independent per-face vectors
         run: python -m tools.mesh_studio.v59_reviewer preflight --receipt build/v59-source-audit.json
       - name: Run exact source lock and adversarial reviewer tests
@@ -117,6 +120,7 @@ jobs:
         with:
           name: mesh-studio-v511-built-original-cpp-reviewer-${{ matrix.os }}-${{ github.sha }}
           path: |
+            build/v511-evidence-continuity-receipt.json
             build/v59-source-audit.json
             build/v511-static-build.json
             build/v511-original-reviewer.json
