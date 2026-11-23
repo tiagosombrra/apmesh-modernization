@@ -93,6 +93,9 @@ async ({page})=>{
   const originalFigure=await page.request.get('/api/v1/models/p1/publication.svg');
   expect(originalFigure.status()).toBe(200);
   const figure=await originalFigure.body();
+  // Retain actual P1 vector bytes for independent cross-platform diff evidence.
+  mkdirSync('test-results',{recursive:true});
+  writeFileSync('test-results/v59-p1-source-uv.svg',figure);
   expect(originalFigure.headers()['x-vector-figure-sha256']).toBe(digest(figure));
   expect(figure.toString('utf8')).not.toContain('<image');
   await page.getByTestId('model-select').selectOption('band');
