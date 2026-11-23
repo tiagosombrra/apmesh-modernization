@@ -26,6 +26,12 @@ The other four files (native-lineage reports, original stderr logs) have separat
 
 **Retention limitation:** the GitHub Actions source artifacts have 14-day retention, expected through **2026-12-07**. The CI uses `actions/download-artifact` pinned by full SHA, with a fixed run ID, artifact names, `actions: read` and exact expected file bytes; after expiration it **fails closed** rather than substituting unverified data. For longer-term reproduction, save the ten-file original reviewer corpus ZIP separately (already prepared for the user, byte-identical original files, with manifest); extract under the project root to `build/v59-native-reviewer/`. No changes to source C++ or original published V5.3/V5.7 PDFs are necessary.
 
+### Durable private doctoral archive — independently verified byte-for-byte
+
+A **separate unchanged original-source reviewer ZIP** was created from the two real historic original native GitHub artifacts, preserving exactly the ten source files under `build/v59-native-reviewer/` and adding a top-level `V59_REVIEWER_BUNDLE_MANIFEST.json` and `V59_README.txt`. It is **784,614 bytes**, SHA256 **`a8564310bf28cb8ec26aaa5f71b67399a374433f06181d7f598f7070fd9d8523`**. It was uploaded to the existing **personal Google Drive** `Doutorado/DOUTORADO_APMESH_ACOMPANHAMENTO/05_Experimentos_e_Resultados` as `apmesh-studio-v59-original-native-reviewer-corpus-7d41ab8.zip`, then **downloaded again and compared byte-for-byte** with the local original: exact sizes, SHA256 and complete ZIP bytes **MATCH**. The private Drive URL is intentionally not published in a public GitHub PR or source file; the user has direct access through their own account.
+
+This archive supports **manual reviewer reproducibility after GitHub's 14-day source CI artifact expires**, but is not a signed independent C++ build. The V5.9 source auditor still requires all pinned file digests and independently reopens original C++ postcommit bytes; it does not trust the ZIP name alone. The automatic GitHub Actions lane is still pinned to the original expiring GitHub artifacts and will fail closed if they disappear; do not substitute a public Google Drive URL, silently repin a different original run or claim a newly accepted scientific epoch.
+
 ## 2. Reproduce local source reviewer workflow
 
 Prerequisites: official CPython **3.13**, Node **22**, npm **10**, Chromium Playwright browser installed by npm (initial installation requires network); standard browser graphics are not physical GPU performance evidence.
