@@ -23,6 +23,7 @@ from .scene_model import build_batch, face_detail, initial_scene
 from .scene_transport import pack_geometry, SceneTransportError
 from .scene_transport_v2 import prepare_geometry_v2, stream_geometry_v2, GeometryV2Error
 from .svg_figure import URI as SVG_URI, audit_svg, render_uv_svg, write_canonical_svg
+from .local_loopback_guard import LocalLoopbackGuard
 
 SCHEMA = 'apmesh.meshstudio.web.v1'
 ROOT = Path(__file__).resolve().parent / 'fixtures'
@@ -224,3 +225,8 @@ def quality(model_id: str):
     # Return an isolated report, never the mutable canonical cached source.
     return deepcopy(_verified_quality(ROOT / CATALOG[model_id][0],
                                       document.source_sha256))
+
+
+# Only the local launcher exposes the guarded ASGI instance.
+# Legacy research TestClient contracts continue using the bare FastAPI app.
+local_app = LocalLoopbackGuard(app)
