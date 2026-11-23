@@ -131,7 +131,8 @@ def preflight(directory: Path = CORPUS, *, audit_cpp_raw: bool = True) -> dict:
     }
 
 
-def _browser_review(directory: Path) -> None:
+def _browser_review(directory: Path, *, base_url: str | None = None,
+                    include_static: bool = False) -> None:
     """Run one real Playwright journey against the V5.8 *already live* servers."""
     node = local_launcher._check_node()
     script = local_launcher.WEB / "node_modules/@playwright/test/cli.js"
@@ -140,10 +141,17 @@ def _browser_review(directory: Path) -> None:
     env["APMESH_V59_EXTERNAL_SERVERS"] = "1"
     env["APMESH_V59_REQUIRED"] = "1"
     env["APMESH_V59_CORPUS_DIR"] = str(directory)
-    # Avoid running unrelated original-science browser tests on historical inputs.
+    if base_url is not None:
+        require(base_url == "http://127.0.0.1:8765",
+                "static_reviewer_unexpected_origin")
+        env["APMESH_V511_STATIC_BASE_URL"] = base_url
+    tests = ["tests/viewport-v59-original-reviewer.spec.ts"]
+    if include_static:
+        require(base_url is not None, "built_reviewer_base_url_required")
+        tests.append("tests/viewport-v511-static-reviewer.spec.ts")
+    # Reuse exactly the original source tests, never a new synthetic C++ fixture.
     subprocess.run([node["node_executable"], str(script), "test",
-                    "tests/viewport-v59-original-reviewer.spec.ts",
-                    "--workers=1", "--reporter=line"],
+                    *tests, "--workers=1", "--reporter=line"],
                    check=True, cwd=local_launcher.WEB, env=env, timeout=360)
 
 

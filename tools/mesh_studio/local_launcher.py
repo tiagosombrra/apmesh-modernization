@@ -68,9 +68,10 @@ def _platform_profile() -> str:
     raise LocalStudioError("unsupported_platform_without_python_hash_lock")
 
 
-def _source_imports(root: Path = SOURCE_PYTHON) -> dict:
-    """Fail if the local web API reaches an unreviewed third-party import."""
-    stack = ["web_api"]
+def _source_imports(root: Path = SOURCE_PYTHON,
+                    *, entrypoint: str = "web_api") -> dict:
+    """Fail if a local ASGI entrypoint reaches an unreviewed import."""
+    stack = [entrypoint]
     seen = set()
     vendors = set()
     while stack:

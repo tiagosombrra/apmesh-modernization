@@ -44,7 +44,8 @@ app = FastAPI(title='APMesh Mesh Studio read-only research service', version='0.
               docs_url='/api/docs', openapi_url='/api/openapi.json')
 # The browser development server uses Vite proxy; no permissive public CORS.
 app.add_middleware(CORSMiddleware,
-                   allow_origins=['http://127.0.0.1:5173', 'http://localhost:5173'],
+                   allow_origins=['http://127.0.0.1:5173', 'http://localhost:5173',
+                                  'http://127.0.0.1:8765'],
                    allow_credentials=False, allow_methods=['GET'], allow_headers=['Accept'])
 
 

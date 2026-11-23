@@ -1,5 +1,20 @@
 # Mesh Studio Web R1 (research vertical slice)
 
+## V5.11 — modo recomendado para a revisão local: frontend compilado em uma só porta
+
+Para inspecionar o STUDIO sem executar o **servidor de desenvolvimento Vite/HMR**, utilize a V5.11 na raiz do repositório (Python 3.13, Node 22 e npm 10 no build inicial). Após compilar, toda a interface e a API compartilham somente `http://127.0.0.1:8765/`. O launcher é **local e voltado à pesquisa**, não um instalador assinado nem um serviço seguro para a internet.
+
+```bash
+python3.13 -m tools.mesh_studio.local_reviewer_launcher build
+python3.13 -m tools.mesh_studio.local_reviewer_launcher preflight
+python3.13 -m tools.mesh_studio.local_reviewer_launcher serve
+```
+
+No Windows PowerShell, use `py -3.13` no lugar de `python3.13`. Para uma revisão **automatizada com fontes C++ originais**, extraia primeiro os dez arquivos de `build/v59-native-reviewer/` do pacote preservado no Drive pessoal e execute `python3.13 -m tools.mesh_studio.local_reviewer_launcher original-smoke` (Chromium Playwright instalado). O comando não gera novos epochs nativos, mas reaudita o C++ original e faz a jornada Eistute/Book no navegador.
+
+[**Protocolo V5.11 e recibos Linux/Windows**](../../../docs/mesh-studio/V5_11_STATIC_SINGLE_PORT_REVIEW_PROTOCOL_20261123.md): **[CI 3/3 aprovado](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45165895108)**, 36 controles Python + 4 testes de navegador em **cada OS**, e **terceira auditoria independente com sete arquivos compilados absolutamente idênticos entre plataformas**, SHA256 do inventário `ad6c4627090a335c0ed7e3bf1bae0c0d062ed1e48249f120b10f3ba8ff8a85f5`. O Vite `5173` continua reservado para os scripts **legados de desenvolvimento** e **não deve estar ativo** ao executar este modo compilado. A validação humana em máquinas físicas e a revisão de licenças continuam pendentes; R2.8 científica continua bloqueada.
+
+
 ## V5.10 — inicialização local protegida e revisão independente
 
 O `local_launcher` agora oferece uma variante da API protegida por Host e Origin exatos (`127.0.0.1:8765`), com Vite restrito a `127.0.0.1:5173` e oito testes HTTP hostis contra ambos os serviços. A [V5.10 foi validada no Linux e no Windows](../../../docs/mesh-studio/V5_10_LOCAL_SECURITY_AND_PHYSICAL_REVIEW_PROTOCOL_20261123.md): 24 testes Python + 2 testes de navegador por sistema e os oito bloqueios HTTP observados. **Execute pelo launcher**, não exponha `web_api:app` diretamente como serviço protegido e não use `localhost:5173` como endereço alternativo. O sistema continua em modo Vite de desenvolvimento, sem autenticação de produção.
