@@ -184,8 +184,11 @@ def npm_receipt(out: Path) -> dict:
             require(manifest.is_file() and not manifest.is_symlink(),
                     "installed_npm_metadata_missing:" + path)
             metadata_json = json.loads(manifest.read_text(encoding="utf-8"))
+            # npm aliases use their installed path as an alias, but the
+            # exact lock item 'name' identifies the real source tarball.
+            actual_name = item.get("name", name)
             require(metadata_json.get("version") == item["version"] and
-                    metadata_json.get("name") == name,
+                    metadata_json.get("name") == actual_name,
                     "installed_npm_package_identity_drift:" + path)
             installed_declared = metadata_json.get("license")
             license_files = []
@@ -196,6 +199,9 @@ def npm_receipt(out: Path) -> dict:
                 license_files.append({"source": source, **output})
         records[path] = {
             "package": name,
+            "real_tarball_package_name": item.get("name", name),
+            "npm_alias_from_source_lock": bool(item.get("name") and
+                                                item["name"] != name),
             "version": item["version"],
             "installed": installed,
             "lock_development_only": item.get("dev") is True,
