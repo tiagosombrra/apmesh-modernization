@@ -19,7 +19,7 @@ def _tag(name):
 
 def write_canonical_svg(root: ET.Element, output: Path | str) -> None:
     """Emit identical XML declaration and vector bytes on Linux and Windows."""
-    payload = (b"<?xml version='1.0' encoding='utf-8'?>\\n"
+    payload = (b"<?xml version='1.0' encoding='utf-8'?>\n"
                + ET.tostring(root, encoding="utf-8", xml_declaration=False))
     Path(output).write_bytes(payload)
 
