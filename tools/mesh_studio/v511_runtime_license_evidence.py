@@ -24,6 +24,13 @@ MAX_NOTICE = 700_000
 MAX_PACKAGE_NOTICES = 32
 MAX_ITEMS = 256
 BROWSER_DIRECT = frozenset({"@kitware/vtk.js", "react", "react-dom"})
+SEEDRANDOM_LOCK_PATH = "node_modules/seedrandom"
+SEEDRANDOM_VERSION = "3.0.5"
+SEEDRANDOM_README_NAME = "README.md"
+SEEDRANDOM_SECTION = re.compile(
+    r"(?mi)^(?:#{1,3}[ \t]+)?LICENSE[ \t]*\(MIT\)[ \t]*\r?\n"
+)
+
 
 
 class EvidenceError(RuntimeError):
@@ -159,6 +166,34 @@ def _npm_license_files(directory: Path) -> list[tuple[str, bytes]]:
     return found
 
 
+def _seedrandom_installed_readme_license(directory: Path) -> tuple[bytes, bytes]:
+    """Capture exact README from the source-SRI-pinned seedrandom tarball.
+
+    The published 3.0.5 release embeds its MIT license under a README
+    heading rather than shipping a standalone root LICENSE file.
+    """
+    readme = directory / SEEDRANDOM_README_NAME
+    require(readme.is_file() and not readme.is_symlink(),
+            "source_matched_seedrandom_readme_missing")
+    raw = readme.read_bytes()
+    require(0 < len(raw) < MAX_NOTICE,
+            "unsafe_seedrandom_readme_size")
+    body = raw.decode("utf-8")
+    heading = SEEDRANDOM_SECTION.search(body)
+    require(heading is not None, "seedrandom_mit_heading_missing")
+    section = body[heading.end():].lstrip()
+    # Upstream README 3.0.5 uses a Setext Markdown underline.
+    if section.startswith("-------------"):
+        section = section.partition("\n")[2].lstrip()
+    require(len(section) >= 400 and
+            "Copyright 2019 David Bau." in section and
+            "Permission is hereby granted" in section and
+            "THE SOFTWARE IS PROVIDED" in section and
+            "THE USE OR OTHER DEALINGS" in section,
+            "seedrandom_original_mit_grant_incomplete")
+    return raw, section.encode("utf-8")
+
+
 def npm_receipt(out: Path) -> dict:
     web = local_launcher.WEB
     runtime = local_static_site.verify_inventory()
@@ -196,7 +231,28 @@ def npm_receipt(out: Path) -> dict:
                 output = _write_notice(
                     out, out / "notices" / "npm" / sha(path.encode())[:16] /
                     f"{index:02d}-{source}", data)
-                license_files.append({"source": source, **output})
+                license_files.append({"source": source,
+                                      "source_kind": "standalone_installed_notice",
+                                      **output})
+            if path == SEEDRANDOM_LOCK_PATH:
+                require(item["version"] == SEEDRANDOM_VERSION and
+                        item.get("license") == "MIT" and
+                        item["resolved"] ==
+                        "https://registry.npmjs.org/seedrandom/-/seedrandom-3.0.5.tgz",
+                        "seedrandom_exact_tarball_or_declared_license_changed")
+                readme_bytes, section_bytes = (
+                    _seedrandom_installed_readme_license(package_root)
+                )
+                output = _write_notice(
+                    out, out / "notices" / "npm" / sha(path.encode())[:16] /
+                    "source-readme-with-mit-grant.md", readme_bytes)
+                license_files.append({
+                    "source": SEEDRANDOM_README_NAME,
+                    "source_kind": "verbatim_readme_with_embedded_mit_license",
+                    "embedded_license_section_sha256": sha(section_bytes),
+                    "embedded_license_section_size": len(section_bytes),
+                    **output,
+                })
         records[path] = {
             "package": name,
             "real_tarball_package_name": item.get("name", name),
