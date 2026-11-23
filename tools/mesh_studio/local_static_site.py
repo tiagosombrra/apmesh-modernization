@@ -94,8 +94,28 @@ def _scan_assets(root: Path) -> dict:
     return result
 
 
+def canonicalize_built_html(root: Path) -> None:
+    """Normalize only Vite-emitted HTML newlines; leave JS/CSS/source untouched."""
+    for name in ("index.html", "bench.html"):
+        path = root / name
+        require(path.is_file() and not path.is_symlink(),
+                "canonical_html_missing:" + name)
+        require(path.stat().st_size <= MAX_FILE_BYTES,
+                "canonical_html_oversized:" + name)
+        data = path.read_bytes()
+        # Windows Vite may produce CRCRLF when HTML input is checked out CRLF.
+        # Standardize the emitted text, without touching scientific source data.
+        canonical = data.replace(b"\\r\\r\\n", b"\\n").replace(
+            b"\\r\\n", b"\\n")
+        require(b"\\r" not in canonical,
+                "unexpected_html_carriage_return:" + name)
+        if canonical != data:
+            path.write_bytes(canonical)
+
+
 def create_inventory(root: Path = DIST) -> dict:
     """Pin built artifacts only after the hash-locked npm production build."""
+    canonicalize_built_html(root)
     assets = _scan_assets(root)
     lock = WEB / "package-lock.json"
     require(lock.is_file(), "npm_source_lock_missing")
