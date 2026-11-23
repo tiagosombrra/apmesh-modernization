@@ -4288,3 +4288,14 @@ Retain the measured gains and unchanged global QUAD minimum. The
 next item is a reusable local selection rule with fine-resolution
 counterexamples and a second geometry, pending scientific alignment.
 No rule adoption, mixed acceptance or full delivery qualification.
+
+## 2026-11-23 Fortaleza - replay a reusable template grouping selector
+
+The researcher requests the next step. The [read-only selector](MIXED_TEMPLATE_GROUP_SELECTOR_20261123.md)
+reproduces the prior Ribbed experimental parent and identifies a
+different parent for the 6.86-degree TRI. A T6 reconstruction leaves
+the limiting Bezier edge unchanged. Existing residual-demand replay
+protects eight Bezier face observations; an injected control protects
+the Ribbed positive group. Record the first console summary failure
+and corrected deterministic audit. Await alignment for one native
+case with the exact numerical scope. No mixed epoch accepted.

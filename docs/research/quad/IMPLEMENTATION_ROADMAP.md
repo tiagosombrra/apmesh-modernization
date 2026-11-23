@@ -154,9 +154,12 @@ states. A geometric calculation identifies a balanced single-parent
 T2 alternative. The [approved comparison](RIBBED_SINGLE_PARENT_TEMPLATE_TRIAL_20261123.md)
 replaces the 6.33-degree TRI footprint with a 64.31-degree QUAD on that
 copied tree, preserving the curve and reducing mesh counts. The worst
-TRI moves to another section at 6.86 degrees. Align a reusable selection
-rule with a fine-resolution negative and second geometry before
-adoption. The live entry still accepts only one patch.
+TRI moves to another section at 6.86 degrees. The
+[read-only selector audit](MIXED_TEMPLATE_GROUP_SELECTOR_20261123.md)
+recovers the previously tested Ribbed parent, protects finer residual
+requests and rejects an unchanged Bezier interface. Align one native
+trial at the new limiting Ribbed face, at most one parent. The live
+entry still accepts only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.

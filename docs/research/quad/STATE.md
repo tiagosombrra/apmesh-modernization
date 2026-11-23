@@ -12,6 +12,23 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-23 - evaluate an automatic template parent selector on archives
+
+The [selector audit](MIXED_TEMPLATE_GROUP_SELECTOR_20261123.md) finds the
+already qualified Ribbed experimental parent from the limiting TRI alone.
+It points to a second parent at the 6.86-degree TRI of the already
+grouped case. In the Bezier control the worst 1.42-degree TRI has a
+short edge unchanged by T6, so no action is selected. Replaying fine
+size requests vetoes eight otherwise geometrically eligible Bezier face
+observations. An injected fine-request control similarly protects the
+positive Ribbed group. No new native mesh or general rule adopted.
+
+**Next:** obtain alignment for one native run of the selector at the
+current limiting Ribbed TRI, with at most one parent, 23 unchanged
+contour segments, fixed depth cap and no fallback to less limiting
+faces. Measure before/after shape, sampled error and growth. Zero
+accepted mixed epochs.
+
 ### 2026-11-23 - test the approved single-parent template grouping
 
 The [native comparison](RIBBED_SINGLE_PARENT_TEMPLATE_TRIAL_20261123.md)
