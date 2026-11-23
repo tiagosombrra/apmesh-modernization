@@ -79,6 +79,21 @@ class StaticResearchPreviewTests(unittest.TestCase):
         self.assertFalse(self.receipt["native_cpp_recompiled"])
         self.assertFalse(self.receipt["scientific_lod_qualified"])
 
+    def test_windows_vite_crcrlf_and_crlf_html_normalize_to_exact_lf(self):
+        original_script_sha = self.receipt["static_assets"]["assets/app.js"]["sha256"]
+        index = self.root / "index.html"
+        bench = self.root / "bench.html"
+        first, second = index.read_bytes(), bench.read_bytes()
+        index.write_bytes(first + b"\\r\\r\\n")
+        bench.write_bytes(second + b"\\r\\n")
+        canonical = create_inventory(self.root)
+        self.assertEqual(index.read_bytes(), first + b"\\n")
+        self.assertEqual(bench.read_bytes(), second + b"\\n")
+        self.assertEqual(canonical["static_assets"]["assets/app.js"]["sha256"],
+                         original_script_sha)
+        self.assertEqual(verify_inventory(self.root), canonical)
+        self.assertEqual(create_inventory(self.root), canonical)
+
     def test_malicious_path_names_fail_before_asset_read(self):
         for name in (".env", "../secret", "assets/../secret.js",
                      "assets//evil.js", "/root.js", "assets/evil.exe",
