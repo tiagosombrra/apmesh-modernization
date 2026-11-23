@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feature/mesh-studio-v511-static-research-review-20261123
+      - maintenance/mesh-studio-v511-original-cpp-artifact-continuity-20261123
     paths:
       - '.github/workflows/mesh-studio-v511-built-reviewer.yml'
       - 'tools/mesh_studio/v59_reviewer.py'
