@@ -43,13 +43,13 @@ def canonical(name: str) -> str:
     return re.sub(r"[-_.]+", "-", name.lower())
 
 
-def _write_notice(dest: Path, data: bytes) -> dict:
+def _write_notice(root: Path, dest: Path, data: bytes) -> dict:
     require(0 < len(data) < MAX_NOTICE, "unsafe_license_size")
     dest.parent.mkdir(parents=True, exist_ok=True)
     require(not dest.is_symlink(), "refusing_notice_symlink")
     dest.write_bytes(data)
     return {
-        "path": dest.as_posix(),
+        "path": dest.relative_to(root).as_posix(),
         "size": len(data),
         "sha256": sha(data),
     }
@@ -93,7 +93,7 @@ def python_receipt(out: Path) -> dict:
         files = []
         for index, (source, data) in enumerate(_python_package_license_files(dist)):
             output = _write_notice(
-                out / "notices" / "python" / name /
+                out, out / "notices" / "python" / name /
                 (f"{index:02d}-{sha(source.encode())[:8]}-{Path(source).name}"),
                 data,
             )
@@ -191,7 +191,7 @@ def npm_receipt(out: Path) -> dict:
             license_files = []
             for index, (source, data) in enumerate(_npm_license_files(package_root)):
                 output = _write_notice(
-                    out / "notices" / "npm" / sha(path.encode())[:16] /
+                    out, out / "notices" / "npm" / sha(path.encode())[:16] /
                     f"{index:02d}-{source}", data)
                 license_files.append({"source": source, **output})
         records[path] = {
