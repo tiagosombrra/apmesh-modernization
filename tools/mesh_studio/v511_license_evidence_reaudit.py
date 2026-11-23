@@ -11,6 +11,7 @@ import argparse
 from hashlib import sha256
 import json
 from pathlib import Path, PurePosixPath
+import re
 
 from . import local_launcher
 from .dependency_lock_audit import audit_all
@@ -68,6 +69,28 @@ def verify_notices(root: Path, receipts: tuple[dict, dict]) -> dict:
                 require(len(data) == item["size"] and
                         sha256(data).hexdigest() == item["sha256"],
                         "installed_license_text_changed")
+                if item.get("source_kind") == "verbatim_readme_with_embedded_mit_license":
+                    require(package["package"] == "seedrandom" and
+                            package["version"] == "3.0.5" and
+                            item["source"] == "README.md",
+                            "unexpected_embedded_license_source")
+                    body = data.decode("utf-8")
+                    heading = re.search(
+                        r"(?mi)^(?:#{1,3}[ \\t]+)?LICENSE[ \\t]*\\(MIT\\)[ \\t]*\\r?\\n",
+                        body,
+                    )
+                    require(heading is not None, "embedded_mit_notice_heading_missing")
+                    section = body[heading.end():].lstrip()
+                    if section.startswith("-------------"):
+                        section = section.partition("\\n")[2].lstrip()
+                    encoded = section.encode("utf-8")
+                    require(
+                        len(encoded) == item["embedded_license_section_size"] and
+                        sha256(encoded).hexdigest() ==
+                        item["embedded_license_section_sha256"] and
+                        b"Copyright 2019 David Bau." in encoded,
+                        "embedded_mit_original_source_grant_changed",
+                    )
                 verified += 1
     actual = {p.relative_to(root).as_posix() for p in root.rglob("*") if p.is_file()}
     require(not any(x.is_symlink() for x in root.rglob("*")),
