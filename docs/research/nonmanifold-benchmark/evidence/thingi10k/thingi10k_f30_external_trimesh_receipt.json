@@ -1,0 +1,36 @@
+{
+  "after": {
+    "area_export_precision": 29490.72380332285,
+    "body_count": 1,
+    "euler": 2,
+    "triangulated_faces": 1752,
+    "vertices": 878,
+    "volume_export_precision": 273280.05189283617,
+    "watertight": true,
+    "winding_consistent": true
+  },
+  "before": {
+    "area_export_precision": 29490.72380234476,
+    "body_count": 1,
+    "euler": 2,
+    "triangulated_faces": 1752,
+    "vertices": 878,
+    "volume_export_precision": 273280.05578466336,
+    "watertight": true,
+    "winding_consistent": true
+  },
+  "changed_exported_vertex_rows": 189,
+  "exact_face_connectivity_and_order_retained": true,
+  "export_rounding_relative_area_difference": 3.316598123315224e-11,
+  "export_rounding_relative_volume_difference": 1.4241168014215367e-08,
+  "f29_quad_sha256": "e2687802ec3314178a973282a33ffd86d71ee8aaa87eed3d4976b266000cf548",
+  "f30_derived_quad_sha256": "7714c25de7774521d59157ba49e0733d315d462ab05117e2b578dcc57f596be4",
+  "global_self_intersections_certified_absent": false,
+  "independent_matched_literature_benchmark_admitted": false,
+  "native_apmesh_quad_generator_executed": false,
+  "original_geometry_or_derived_OBJ_published": false,
+  "per_face_original_four_vertex_obj": true,
+  "schema": "apmesh-s40-f30-independent-trimesh-v1",
+  "status": "EXTERNAL_F30_DERIVED_QUAD_TOPOLOGY_CROSSCHECK_PASS",
+  "trimesh_version": "4.11.1"
+}

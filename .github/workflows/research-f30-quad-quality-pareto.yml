@@ -1,0 +1,66 @@
+name: Research F30 original feature-locked QUAD quality Pareto contracts
+
+on:
+  push:
+    branches: [research/benchmark-corpus-reverse-patches]
+    paths:
+      - .github/workflows/research-f30-quad-quality-pareto.yml
+      - docs/research/nonmanifold-benchmark/probes/thingi10k_f30_feature_locked_quad_center_optimizer.py
+      - docs/research/nonmanifold-benchmark/probes/test_thingi10k_f30_feature_locked_quad_center_optimizer.py
+      - docs/research/nonmanifold-benchmark/probes/thingi10k_f30_optional_trimesh_crosscheck.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-quad-quality-proof-without-private-assets:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout code-only research branch without credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Recheck original native QUAD capability denial on source identities
+        run: |
+          python3 docs/research/nonmanifold-benchmark/probes/thingi10k_f29_quad_capability_and_recovery.py --source-root .
+      - name: Recheck original F27 native TRI evidence contract
+        run: |
+          python3 -m unittest discover -s docs/research/nonmanifold-benchmark/probes -p 'test_thingi10k_f27_native_tri_evidence.py' -v
+      - name: Recheck original F28 source-aware stitching contract
+        run: |
+          python3 -m unittest discover -s docs/research/nonmanifold-benchmark/probes -p 'test_thingi10k_f28_topology_aware_stitch.py' -v
+      - name: Recheck F29 derived QUAD quality, topology and privacy contract
+        run: |
+          python3 -m unittest discover -s docs/research/nonmanifold-benchmark/probes -p 'test_thingi10k_f29_quad_capability_and_recovery.py' -v
+      - name: Prove F30 conservative monotonicity and private output guards
+        run: |
+          python3 -m unittest discover -s docs/research/nonmanifold-benchmark/probes -p 'test_thingi10k_f30_feature_locked_quad_center_optimizer.py' -v
+      - name: Block all original and derived model files and false native QUAD admission
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          root = Path.cwd()
+          prohibited = [p for p in root.rglob('*') if p.is_file()
+                        and p.suffix.lower() in {'.stl','.bp','.obj'}
+                        and ('293137' in p.name or 'thingi10k' in p.name.lower())]
+          assert not prohibited, f'Original-derived model-specific geometry committed: {prohibited}'
+          evidence_dir = root/'docs/research/nonmanifold-benchmark/evidence/thingi10k'
+          a=json.loads((evidence_dir/'thingi10k_f30_final_real_pareto_receipt.json').read_text())
+          b=json.loads((evidence_dir/'thingi10k_f30_external_trimesh_receipt.json').read_text())
+          assert a['schema']=='apmesh-s40-f30-feature-locked-pareto-center-v1'
+          assert a['native_quad_generator_executed'] is False
+          assert a['native_apmesh_engine_or_exporter_changed'] is False
+          assert a['scientific_benchmark_admitted'] is False
+          assert a['published_original_or_private_derived_geometry'] is False
+          assert a['quad_topology']['faces']==876
+          assert a['optimized_quality']['count_min_angle_below_30_deg']<=a['baseline_quality']['count_min_angle_below_30_deg']
+          assert a['optimized_quality']['count_max_angle_above_150_deg']<=a['baseline_quality']['count_max_angle_above_150_deg']
+          assert a['optimized_quality']['mean_min_scaled_jacobian']>a['baseline_quality']['mean_min_scaled_jacobian']
+          assert b['native_apmesh_quad_generator_executed'] is False
+          assert b['original_geometry_or_derived_OBJ_published'] is False
+          assert b['exact_face_connectivity_and_order_retained'] is True
+          print('F30 203-test code-only evidence and private-model-exclusion gate PASS')
+          PY
