@@ -111,6 +111,7 @@ def validate_host(host: str, commit: str, bundles: Path, installed: Path,
     names = []
     graph_packages = set()
     unknown_modules = set()
+    browser_external_shims = set()
     total_modules = 0
     positive_length = 0
     per_package = {}
@@ -128,7 +129,8 @@ def validate_host(host: str, commit: str, bundles: Path, installed: Path,
             source_package = row["source_package"]
             require(kind in ("npm_source", "virtual_or_generated",
                              "application_source", "unmatched_npm_source",
-                             "unclassified_module") and
+                             "unclassified_module",
+                             "vite_builtin_browser_external_shim") and
                     isinstance(row["module"], str), "invalid_module_class")
             length = row["rendered_length"]
             require(length is None or
@@ -144,6 +146,10 @@ def validate_host(host: str, commit: str, bundles: Path, installed: Path,
                 per_package.setdefault(source_package, set()).add(file)
             elif kind in ("unmatched_npm_source", "unclassified_module"):
                 unknown_modules.add(row["module"])
+            elif kind == "vite_builtin_browser_external_shim":
+                require(row["module"].startswith("__vite-browser-external") and
+                        source_package is None, "invalid_vite_external_shim")
+                browser_external_shims.add(row["module"])
             elif source_package is not None:
                 require(source_package in packages, "virtual_module_wrong_package")
         require(len(chunk["css_assets"]) <= 16 and all(
@@ -152,6 +158,11 @@ def validate_host(host: str, commit: str, bundles: Path, installed: Path,
     require(total_modules <= MAX_MODULES and positive_length > 0 and
             set(names) == set(parity["chunk_js_files"]),
             "missing_rendered_module_or_js_chunk")
+    require(
+        {row["module"] for chunk in chunks for row in chunk["modules"]
+         if row["kind"] == "vite_builtin_browser_external_shim"} ==
+        {x["module"] for x in graph["vite_generated_browser_external_shims"]},
+        "vite_compiler_shim_source_mismatch")
     require(set(graph["detected_npm_source_paths"]) ==
             {row["source_package"] for chunk in chunks
              for row in chunk["modules"] if row["source_package"] is not None},
@@ -174,7 +185,12 @@ def validate_host(host: str, commit: str, bundles: Path, installed: Path,
                 isinstance(row.get("name"), str) and
                 isinstance(row.get("version"), str) and
                 isinstance(row.get("identifier"), str) and
-                isinstance(row.get("text"), str), "vite_license_row_invalid")
+                (row.get("text") is None or isinstance(row["text"], str)),
+                "vite_license_row_invalid")
+        # Vite can emit only a declared SPDX identifier without the actual
+        # LICENSE text. Keep it explicitly unresolved, never invent text.
+        actual_text = row.get("text")
+        actual_text_bytes = actual_text.encode("utf-8") if actual_text is not None else None
         identity = (row["name"], row["version"])
         require(identity not in observed_licenses,
                 "duplicate_vite_bundled_license_identity")
@@ -196,14 +212,17 @@ def validate_host(host: str, commit: str, bundles: Path, installed: Path,
                 require(len(original) == file["size"] and
                         sha(original) == file["sha256"],
                         "installed_source_license_bytes_changed")
-                if original == row["text"].encode("utf-8"):
+                if actual_text_bytes is not None and original == actual_text_bytes:
                     exact_installed_source_text = True
         statements.append({
             "name": row["name"],
             "version": row["version"],
             "declared_identifier_by_vite": row["identifier"],
-            "license_text_sha256": sha(row["text"].encode("utf-8")),
-            "license_text_size_bytes": len(row["text"].encode("utf-8")),
+            "vite_license_text_present": actual_text_bytes is not None,
+            "license_text_sha256": sha(actual_text_bytes)
+            if actual_text_bytes is not None else None,
+            "license_text_size_bytes": len(actual_text_bytes)
+            if actual_text_bytes is not None else 0,
             "locked_package_paths": source_paths,
             "module_graph_package_paths": actual_source_paths,
             "exact_installed_license_text_byte_match": exact_installed_source_text,
@@ -224,8 +243,12 @@ def validate_host(host: str, commit: str, bundles: Path, installed: Path,
         "rendered_source_module_count": total_modules,
         "positive_rendered_length_modules": positive_length,
         "unclassified_module_ids": sorted(unknown_modules),
+        "vite_generated_browser_external_shims": sorted(browser_external_shims),
         "bundle_source_packages_missing_vite_license_entry": unlisted,
         "vite_license_entries_missing_lock_identity": sorted(unmatched_licenses),
+        "vite_license_identifiers_without_text": sorted(
+            row["name"] + "@" + row["version"]
+            for row in statements if not row["vite_license_text_present"]),
         "vite_license_text_not_exact_installed_file": sorted(
             row["name"] + "@" + row["version"]
             for row in statements if not row["exact_installed_license_text_byte_match"]),
