@@ -128,6 +128,7 @@ def collect_installed_npm(root: Path = ROOT) -> dict:
             "optional_dependency": bool(locked.get("optional")),
             "status": "not_installed_optional" if absent else "installed",
             "installed_manifest_license": {"status": "not_installed"},
+            "installed_manifest_legacy_licenses": [],
             "license_files": [],
         }
         if not absent:
@@ -143,6 +144,16 @@ def collect_installed_npm(root: Path = ROOT) -> dict:
             declared = info.get("license")
             entry["installed_manifest_license"] = _metadata_field(
                 declared if isinstance(declared, str) else None)
+            legacy = info.get("licenses")
+            if isinstance(legacy, list) and len(legacy) <= 10:
+                entry["installed_manifest_legacy_licenses"] = [
+                    {"type": x["type"], "url": x.get("url")}
+                    for x in legacy
+                    if isinstance(x, dict) and
+                    isinstance(x.get("type"), str) and len(x["type"]) <= 120 and
+                    (x.get("url") is None or (
+                        isinstance(x.get("url"), str) and len(x["url"]) <= 500))
+                ]
             entry["license_files"] = license_file_receipts(folder, web, depth=3)
         statuses[entry["status"]] += 1
         items.append(entry)
