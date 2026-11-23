@@ -324,6 +324,8 @@ def audit_pdf_bytes(pdf: bytes, recipe: dict, directory: Path):
                     all(f"Patch slot {slot:02d}" in text for slot in slots),
                     "original_patch_title_or_scientific_disclaimer_missing")
             drawings = layout_page.get_drawings()
+            require(len(drawings) == 1 + 2 * len(slots) + 165 * len(slots),
+                    "pdf_unexpected_or_missing_vector_drawable")
             def color_match(fill, rgb):
                 return fill is not None and len(fill) == 3 and all(
                     abs(value - component / 255) < .002 for value, component in zip(fill, rgb))
