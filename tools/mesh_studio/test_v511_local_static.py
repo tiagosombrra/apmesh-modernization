@@ -84,11 +84,11 @@ class StaticResearchPreviewTests(unittest.TestCase):
         index = self.root / "index.html"
         bench = self.root / "bench.html"
         first, second = index.read_bytes(), bench.read_bytes()
-        index.write_bytes(first + b"\\r\\r\\n")
-        bench.write_bytes(second + b"\\r\\n")
+        index.write_bytes(first + b"\r\r\n")
+        bench.write_bytes(second + b"\r\n")
         canonical = create_inventory(self.root)
-        self.assertEqual(index.read_bytes(), first + b"\\n")
-        self.assertEqual(bench.read_bytes(), second + b"\\n")
+        self.assertEqual(index.read_bytes(), first + b"\n")
+        self.assertEqual(bench.read_bytes(), second + b"\n")
         self.assertEqual(canonical["static_assets"]["assets/app.js"]["sha256"],
                          original_script_sha)
         self.assertEqual(verify_inventory(self.root), canonical)
