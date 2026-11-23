@@ -1,0 +1,46 @@
+name: Research F28 source-topology seam evidence contracts (no model assets)
+
+on:
+  push:
+    branches:
+      - research/benchmark-corpus-reverse-patches
+    paths:
+      - .github/workflows/research-f28-source-topology-evidence.yml
+      - docs/research/nonmanifold-benchmark/probes/thingi10k_f28_topology_aware_stitch.py
+      - docs/research/nonmanifold-benchmark/probes/test_thingi10k_f28_topology_aware_stitch.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  code-only-f28-contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - name: Checkout code only without credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify unchanged F27 scientific dependency and F28 synthetic hermetic gates
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          source=Path('docs/research/nonmanifold-benchmark/probes/thingi10k_f27_native_tri_evidence.py')
+          blob=source.read_bytes()
+          git_sha=hashlib.sha1(f'blob {len(blob)}\0'.encode()+blob).hexdigest()
+          assert git_sha == '12f4d3d0f90fa0fb99893fe823f8b9e216d3e3a8', 'Changed original F27 scientific auditor'
+          print('Pinned F27 native scientific dependency SHA PASS')
+          PY
+          python3 -m unittest discover -s docs/research/nonmanifold-benchmark/probes \
+            -p test_thingi10k_f28_topology_aware_stitch.py -v
+      - name: Reject accidental third-party model and derived assets in the research PR
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          lines=subprocess.check_output(['git','ls-files','docs/research/nonmanifold-benchmark'],text=True).splitlines()
+          forbidden=[p for p in lines if p.lower().endswith(('.stl','.stl.zip','.bp','.obj')) and 'thingi10k' in p.lower()]
+          assert not forbidden, f'Original or derived model data must remain private: {forbidden}'
+          print('F28 research checkout contains no model-specific geometry assets')
+          PY
