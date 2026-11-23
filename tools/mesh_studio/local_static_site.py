@@ -72,7 +72,10 @@ def _file_bytes(root: Path, name: str) -> bytes:
 
 def _scan_assets(root: Path) -> dict:
     require(root.is_dir() and not root.is_symlink(), "static_dist_missing")
-    paths = [p for p in root.rglob("*") if p.is_file()]
+    entries = list(root.rglob("*"))
+    require(not any(p.is_symlink() for p in entries),
+            "symlink_in_static_build")
+    paths = [p for p in entries if p.is_file()]
     require(len(paths) <= MAX_FILES + 1, "too_many_static_assets")
     result = {}
     count = 0
