@@ -151,8 +151,12 @@ minimum angle drops slightly. The global limiting TRI remains fixed.
 The [front trace](RIBBED_LIMITING_TRI_FRONT_TRACE_20261123.md) observes
 no alternative improving that fixed short T1 base in the recorded
 states. A geometric calculation identifies a balanced single-parent
-T2 alternative. Align one native comparison on that copied tree,
-preserving the 23-segment contour. The live entry still accepts only one patch.
+T2 alternative. The [approved comparison](RIBBED_SINGLE_PARENT_TEMPLATE_TRIAL_20261123.md)
+replaces the 6.33-degree TRI footprint with a 64.31-degree QUAD on that
+copied tree, preserving the curve and reducing mesh counts. The worst
+TRI moves to another section at 6.86 degrees. Align a reusable selection
+rule with a fine-resolution negative and second geometry before
+adoption. The live entry still accepts only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.

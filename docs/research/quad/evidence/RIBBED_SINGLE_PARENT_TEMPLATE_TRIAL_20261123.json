@@ -1,0 +1,791 @@
+{
+  "native": {
+    "exit": 0,
+    "seconds": 39.454203367233276,
+    "timeout": 180,
+    "command": [
+      "build/quad-ribbed-one-parent-20261123/ap_mesh.exe",
+      "--config",
+      "build/quad-ribbed-one-parent-20261123/ribbed.conf"
+    ],
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "a6a2044adf69ea759c54545746c5f407d375181ec1664338eb1825e1055ff5bb"
+  },
+  "build": {
+    "exit": 0,
+    "seconds": 7.014724016189575,
+    "timeout": 180,
+    "command": [
+      "cmake",
+      "--build",
+      "build/quad-feedback-pilot-20261122/msvc",
+      "--target",
+      "ap_mesh",
+      "--config",
+      "Debug",
+      "--parallel",
+      "4"
+    ],
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "d1da943a7b2e484cfa83cdbcaa77b892f7935ba19b9ea631cd4a38203375dcc1"
+  },
+  "identity": {
+    "source_before_sha256": "9156d3fd1d6aef72bd287c922b2808f470fd478700ea7246b524e16367d45e7a",
+    "source_after_sha256": "c0b685a2d068bd7fa19078d321c6fa9aef5ea0822a8ce20ebdcee48a19a41461",
+    "source_base": "94dc35a6c84899fb36eea86c1d352b0842ba3bcf",
+    "config_sha256": "d9d3c856e46866d333289b99f0f8222055490e6ce168cf4fe8254d0b14ca363f",
+    "bp_sha256": "07cd08d6258f72a140198d4d9f72360888da9486954216a467c87e949c870e10"
+  },
+  "artifacts": {
+    "ap_mesh.exe": "71e08f40849bb4b828bf88e7334daa4c4a7c176ccc11e781a351a8d58080e0a2",
+    "source.patch": "41a3b7bc71b1f12af8426a87280e09054f978e6c66f3589d329ec5d995928c30",
+    "setup.py": "94bb1fa4de1c515fcd5555ecdb5cca9444f4ed91bab7408f5a56b0f1fde0a001",
+    "audit.py": "767b32d37866f125a2ad84de4d3adffd6c23c3646fdd798f8e5e586b9742a359"
+  },
+  "common_predecessor_sha256": "8fe269d99999e6f9ee78fa97576cdb24cda2bc7fed217af6aea16a811108245e",
+  "original_prefix": {
+    "step_0_retry_-1_accepted_quad_tri.obj": "e02b13c43401309b8245b75c3c82d659352f29c3a3b26c624fea6ee335f20642",
+    "step_0_retry_-1_accepted_tri.obj": "e02b13c43401309b8245b75c3c82d659352f29c3a3b26c624fea6ee335f20642",
+    "step_1_retry_0_accepted_quad_tri.obj": "14c62071c29e76190cbe0a04cc527dd7d4210d36af76c889fa276bf2896b7def",
+    "step_1_retry_0_accepted_tri.obj": "6ba391519cd5f7aa4ce5093c9f154bae994eb20d073976d6d4104d3a75136293",
+    "step_2_retry_0_accepted_tri.obj": "2c242c53882b7b97207cca6bf030ce839071cbdc14614e2482690bba1be4a851"
+  },
+  "common_traces": {
+    "size-requests.csv": "f6004ae771cfb7697f658f1ca0792dccd1c27eb8a577a788146be4d7e0e74d67",
+    "curve-requests.csv": "0ffaf933921d172c0f280936ddd174628e0f3edd3042c2626e409582a457e666",
+    "additional-child-split.csv": "aafc658390dc0859d67b4d2fb7316bafc541740eff2191135b506cc2419a475e",
+    "tree-requests.csv": "0f8df4dafe5d244608fcf003cef905125eb41f76bb9f6cbd2e68f5e7b0e0c128",
+    "capped-requests.csv": "f9753013ce75b9dd30d63d63af9313339c5d25a718363f2b5529c53fadaac82d"
+  },
+  "accepted_mixed_epochs": 0,
+  "passes": [
+    {
+      "arm": "both",
+      "pass": "0",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "control",
+      "pass": "1",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "control",
+      "pass": "2",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "control",
+      "pass": "3",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "control",
+      "pass": "4",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "control",
+      "pass": "5",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+    },
+    {
+      "arm": "guarded",
+      "pass": "1",
+      "status": "valid",
+      "full": "61",
+      "half": "28",
+      "quarter": "6",
+      "eighth": "3",
+      "skipped": "157",
+      "reason": ""
+    },
+    {
+      "arm": "guarded",
+      "pass": "2",
+      "status": "valid",
+      "full": "74",
+      "half": "29",
+      "quarter": "6",
+      "eighth": "5",
+      "skipped": "237",
+      "reason": ""
+    },
+    {
+      "arm": "guarded",
+      "pass": "3",
+      "status": "valid",
+      "full": "76",
+      "half": "14",
+      "quarter": "9",
+      "eighth": "3",
+      "skipped": "313",
+      "reason": ""
+    },
+    {
+      "arm": "guarded",
+      "pass": "4",
+      "status": "valid",
+      "full": "94",
+      "half": "13",
+      "quarter": "9",
+      "eighth": "11",
+      "skipped": "320",
+      "reason": ""
+    },
+    {
+      "arm": "guarded",
+      "pass": "5",
+      "status": "valid",
+      "full": "97",
+      "half": "14",
+      "quarter": "5",
+      "eighth": "6",
+      "skipped": "362",
+      "reason": ""
+    }
+  ],
+  "tree": {
+    "original_leaves": 133,
+    "grouped_leaves": 130,
+    "parent": 24,
+    "removed": [
+      26,
+      27,
+      28,
+      29
+    ],
+    "depth_cap": 4,
+    "attempt": {
+      "previous_faces": "547",
+      "previous_intervals": "14",
+      "split_intervals": "9",
+      "previous_leaves": "109",
+      "direct_leaf_edits": "7",
+      "balanced_leaves": "130",
+      "seed_tri_face": "488",
+      "seed_quad_face": "480",
+      "capped_face_requests": "1"
+    },
+    "grouped_leaf_sha256": "fba84a56ec5022e4804a2ee2181df413048732464a6a12ae770723f07e82f81c"
+  },
+  "baseline": {
+    "initial": {
+      "sha256": "91536ad83e2eb5d8b7111c9534862c17842e938c580df7119a8d2b2ff53e5a8a",
+      "nodes": 624,
+      "faces": 649,
+      "boundary_segments": 23,
+      "shape": {
+        "TRI": {
+          "count": 75,
+          "min_angle": 6.3281535843349985,
+          "max_edge_ratio": 8.821913553591653
+        },
+        "QUAD": {
+          "count": 574,
+          "min_angle": 26.062329924849276,
+          "max_edge_ratio": 9.195933119406272
+        }
+      },
+      "neighbor_ratio_median": 1.0016959087896489,
+      "neighbor_ratio_max": 5.666256068991779,
+      "rms_source_area": 0.01737801018299061,
+      "maximum_sampled_error": 0.10325406187844632,
+      "samples": 576,
+      "worst_by_type": {
+        "TRI": {
+          "angle": 6.3281535843349985,
+          "uv": [
+            [
+              0.4375,
+              0.125
+            ],
+            [
+              0.40625,
+              0.125
+            ],
+            [
+              0.500091552734375,
+              0.0
+            ]
+          ]
+        },
+        "QUAD": {
+          "angle": 26.062329924849276,
+          "uv": [
+            [
+              0.875,
+              0.4375
+            ],
+            [
+              0.875,
+              0.40625
+            ],
+            [
+              0.90625,
+              0.375
+            ],
+            [
+              0.9375,
+              0.375
+            ]
+          ]
+        }
+      },
+      "lowest_tri_q": 0.18954876728000306,
+      "lowest_quad_J": 0.32332895608451606,
+      "old_regions": {
+        "TRI": {
+          "TRI": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 6.3281535843349985
+          },
+          "QUAD": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          }
+        },
+        "QUAD": {
+          "TRI": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          },
+          "QUAD": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 26.062329924849276
+          }
+        }
+      }
+    },
+    "final": {
+      "sha256": "7c6630d4b960b9b944c518eb9c61edfacef18d185849d62b31a4b2f598eb95d3",
+      "nodes": 624,
+      "faces": 649,
+      "boundary_segments": 23,
+      "shape": {
+        "TRI": {
+          "count": 75,
+          "min_angle": 6.3281535843349985,
+          "max_edge_ratio": 8.821913553591653
+        },
+        "QUAD": {
+          "count": 574,
+          "min_angle": 26.260140191628626,
+          "max_edge_ratio": 9.195933119406272
+        }
+      },
+      "neighbor_ratio_median": 1.0137886146763204,
+      "neighbor_ratio_max": 5.666256068991779,
+      "rms_source_area": 0.017267219511437795,
+      "maximum_sampled_error": 0.10280771781289115,
+      "samples": 576,
+      "worst_by_type": {
+        "TRI": {
+          "angle": 6.3281535843349985,
+          "uv": [
+            [
+              0.4375,
+              0.125
+            ],
+            [
+              0.40625,
+              0.125
+            ],
+            [
+              0.500091552734375,
+              0.0
+            ]
+          ]
+        },
+        "QUAD": {
+          "angle": 26.260140191628626,
+          "uv": [
+            [
+              0.0,
+              0.750885009765625
+            ],
+            [
+              0.0,
+              0.5
+            ],
+            [
+              0.125,
+              0.625
+            ],
+            [
+              0.125,
+              0.6875
+            ]
+          ]
+        }
+      },
+      "lowest_tri_q": 0.18954876728000306,
+      "lowest_quad_J": 0.32332895608451606,
+      "old_regions": {
+        "TRI": {
+          "TRI": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 6.3281535843349985
+          },
+          "QUAD": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          }
+        },
+        "QUAD": {
+          "TRI": {
+            "count": 1,
+            "coverage": 0.0041143709074731305,
+            "min_angle": 46.982973595593755
+          },
+          "QUAD": {
+            "count": 4,
+            "coverage": 0.9958856290925459,
+            "min_angle": 49.21149383886469
+          }
+        }
+      }
+    }
+  },
+  "variant": {
+    "initial": {
+      "sha256": "eb4eaeb46a6a8d71a6cb42b786789edf468981564eb3ce5e4c41d8fb073b18eb",
+      "nodes": 612,
+      "faces": 636,
+      "boundary_segments": 23,
+      "shape": {
+        "TRI": {
+          "count": 73,
+          "min_angle": 6.862980471153714,
+          "max_edge_ratio": 8.368491138890947
+        },
+        "QUAD": {
+          "count": 563,
+          "min_angle": 26.062329924849276,
+          "max_edge_ratio": 8.368491397671745
+        }
+      },
+      "neighbor_ratio_median": 1.0019383300715954,
+      "neighbor_ratio_max": 5.512432431473118,
+      "rms_source_area": 0.017373075146189,
+      "maximum_sampled_error": 0.10325406187844632,
+      "samples": 576,
+      "worst_by_type": {
+        "TRI": {
+          "angle": 6.862980471153714,
+          "uv": [
+            [
+              0.5,
+              0.875
+            ],
+            [
+              0.53125,
+              0.875
+            ],
+            [
+              0.5,
+              1.0
+            ]
+          ]
+        },
+        "QUAD": {
+          "angle": 26.062329924849276,
+          "uv": [
+            [
+              0.875,
+              0.4375
+            ],
+            [
+              0.875,
+              0.40625
+            ],
+            [
+              0.90625,
+              0.375
+            ],
+            [
+              0.9375,
+              0.375
+            ]
+          ]
+        }
+      },
+      "lowest_tri_q": 0.20122270070439505,
+      "lowest_quad_J": 0.32332895608451606,
+      "old_regions": {
+        "TRI": {
+          "TRI": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          },
+          "QUAD": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 64.31302689892443
+          }
+        },
+        "QUAD": {
+          "TRI": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          },
+          "QUAD": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 26.062329924849276
+          }
+        }
+      }
+    },
+    "final": {
+      "sha256": "33b10c4a46ca90ed7134f8be09d961e98cdf8711bd344379afa94f636f4bbd3b",
+      "nodes": 612,
+      "faces": 636,
+      "boundary_segments": 23,
+      "shape": {
+        "TRI": {
+          "count": 73,
+          "min_angle": 6.862980471153714,
+          "max_edge_ratio": 8.368491138890947
+        },
+        "QUAD": {
+          "count": 563,
+          "min_angle": 26.260140191628626,
+          "max_edge_ratio": 5.941402759452993
+        }
+      },
+      "neighbor_ratio_median": 1.0265456038119878,
+      "neighbor_ratio_max": 5.512432431473118,
+      "rms_source_area": 0.01722015550202955,
+      "maximum_sampled_error": 0.10278111763359259,
+      "samples": 576,
+      "worst_by_type": {
+        "TRI": {
+          "angle": 6.862980471153714,
+          "uv": [
+            [
+              0.5,
+              0.875
+            ],
+            [
+              0.53125,
+              0.875
+            ],
+            [
+              0.5,
+              1.0
+            ]
+          ]
+        },
+        "QUAD": {
+          "angle": 26.260140191628626,
+          "uv": [
+            [
+              0.0,
+              0.750885009765625
+            ],
+            [
+              0.0,
+              0.5
+            ],
+            [
+              0.125,
+              0.625
+            ],
+            [
+              0.125,
+              0.6875
+            ]
+          ]
+        }
+      },
+      "lowest_tri_q": 0.20122270070439505,
+      "lowest_quad_J": 0.32332895608451606,
+      "old_regions": {
+        "TRI": {
+          "TRI": {
+            "count": 0,
+            "coverage": 0.0,
+            "min_angle": null
+          },
+          "QUAD": {
+            "count": 1,
+            "coverage": 1.0,
+            "min_angle": 64.31302689892443
+          }
+        },
+        "QUAD": {
+          "TRI": {
+            "count": 1,
+            "coverage": 0.0041143709074731305,
+            "min_angle": 46.982973595593755
+          },
+          "QUAD": {
+            "count": 4,
+            "coverage": 0.9958856290925459,
+            "min_angle": 49.21149383886469
+          }
+        }
+      }
+    }
+  },
+  "typed_sha256": "33b10c4a46ca90ed7134f8be09d961e98cdf8711bd344379afa94f636f4bbd3b",
+  "source_boundary_sha256": "09c36df9bbca812072d78859fb6a1975bc143619199b141e6aa105a9f451720c",
+  "front_replay": {
+    "clearance_excluded_cells": 0,
+    "commits": 97,
+    "selected_quads": 24,
+    "retained_triangles": 73,
+    "rejected_unions": 69,
+    "competing_alternatives": 1
+  },
+  "template_centers": {
+    "source_polygons": 137,
+    "centers_different_from_vertex_mean": 22
+  },
+  "front_sha256": "ae577c557c30106b1f4a1ee81ddaf17973278f3d819d0b90fa1f689495a80932",
+  "observed_templates": {
+    "baseline": {
+      "total_seeds": 550,
+      "local_quads": 16,
+      "boundary_edges": [
+        {
+          "uv": [
+            [
+              0.375,
+              0.125
+            ],
+            [
+              0.40625,
+              0.125
+            ]
+          ],
+          "length_xyz": 0.12500168407350237
+        },
+        {
+          "uv": [
+            [
+              0.40625,
+              0.125
+            ],
+            [
+              0.4375,
+              0.125
+            ]
+          ],
+          "length_xyz": 0.12500148825753496
+        },
+        {
+          "uv": [
+            [
+              0.4375,
+              0.125
+            ],
+            [
+              0.46875,
+              0.125
+            ]
+          ],
+          "length_xyz": 0.1250014889024237
+        },
+        {
+          "uv": [
+            [
+              0.46875,
+              0.125
+            ],
+            [
+              0.5,
+              0.125
+            ]
+          ],
+          "length_xyz": 0.12500168599118128
+        }
+      ]
+    },
+    "grouped": {
+      "total_seeds": 539,
+      "local_quads": 11,
+      "boundary_edges": [
+        {
+          "uv": [
+            [
+              0.375,
+              0.125
+            ],
+            [
+              0.4375,
+              0.125
+            ]
+          ],
+          "length_xyz": 0.2500031692452737
+        },
+        {
+          "uv": [
+            [
+              0.4375,
+              0.125
+            ],
+            [
+              0.5,
+              0.125
+            ]
+          ],
+          "length_xyz": 0.25000317181350373
+        }
+      ]
+    }
+  },
+  "geometry_sha256": {
+    "additional-child-split.csv": "aafc658390dc0859d67b4d2fb7316bafc541740eff2191135b506cc2419a475e",
+    "attempt.csv": "a677a196dbb47ba31ed64ff1bea58409a4fa5ca84ad1f6da6e5c005fe171efab",
+    "before.obj": "eb4eaeb46a6a8d71a6cb42b786789edf468981564eb3ce5e4c41d8fb073b18eb",
+    "capped-requests.csv": "f9753013ce75b9dd30d63d63af9313339c5d25a718363f2b5529c53fadaac82d",
+    "control_1.obj": "96f8a091bea9d88c56a11351a78d3737b61bbf12779fbd90bf5145fbf614bdff",
+    "control_2.obj": "13a89181129a656ba675e715778615075da1f2cf4752f2aaa819de0822dc5161",
+    "control_3.obj": "43ef20df99acb0cb19bb0f5580123de1acaa287f1ff8e7eeae67c81dc382bd67",
+    "control_4.obj": "98538615279672f684605ef9d92ef239481e73f583c69ebccba160afaa3c79d2",
+    "control_5.obj": "a023f7f233d075b075946ace976ae147980a751dd604628c2d07b3a8070bf100",
+    "control_final.obj": "a023f7f233d075b075946ace976ae147980a751dd604628c2d07b3a8070bf100",
+    "curve-requests.csv": "0ffaf933921d172c0f280936ddd174628e0f3edd3042c2626e409582a457e666",
+    "guarded_1.obj": "077b6b3324eb86480aa40f6945905477825efb3c226795a40e567f55a85e85c3",
+    "guarded_2.obj": "340c6bc9261a477ff697971ea50dd1c14bd4acb83f626c4fc5f84f23604ce3fc",
+    "guarded_3.obj": "218e2dd468bcb2864f6a6ece114a0147f3d1fbab49b08ee222cec19db8acc8f6",
+    "guarded_4.obj": "ae456850b7dc777b5f08cf918c9622ae6639f24c88334ee2fc21497465ff7e8c",
+    "guarded_5.obj": "2e22676f3ba6e8406368e0c0c6f6d9b29e5aaaf9bee9231e47cdc3f0680a6d83",
+    "guarded_final.obj": "2e22676f3ba6e8406368e0c0c6f6d9b29e5aaaf9bee9231e47cdc3f0680a6d83",
+    "guarded_typed.obj": "33b10c4a46ca90ed7134f8be09d961e98cdf8711bd344379afa94f636f4bbd3b",
+    "passes.csv": "c8817338e094e0e0b2bd2349ad66acc8db80162381f56f030cde2283b1ef95b8",
+    "realized-leaves.csv": "fba84a56ec5022e4804a2ee2181df413048732464a6a12ae770723f07e82f81c",
+    "size-requests.csv": "f6004ae771cfb7697f658f1ca0792dccd1c27eb8a577a788146be4d7e0e74d67",
+    "tree-requests.csv": "0f8df4dafe5d244608fcf003cef905125eb41f76bb9f6cbd2e68f5e7b0e0c128"
+  },
+  "seed_count_changes_by_cell": [
+    {
+      "box": [
+        0.25,
+        0.125,
+        0.375,
+        0.25
+      ],
+      "baseline": 12,
+      "grouped": 11
+    },
+    {
+      "box": [
+        0.375,
+        0.125,
+        0.4375,
+        0.1875
+      ],
+      "baseline": 4,
+      "grouped": 0
+    },
+    {
+      "box": [
+        0.375,
+        0.125,
+        0.5,
+        0.25
+      ],
+      "baseline": 0,
+      "grouped": 11
+    },
+    {
+      "box": [
+        0.375,
+        0.1875,
+        0.4375,
+        0.25
+      ],
+      "baseline": 4,
+      "grouped": 0
+    },
+    {
+      "box": [
+        0.375,
+        0.25,
+        0.5,
+        0.375
+      ],
+      "baseline": 16,
+      "grouped": 11
+    },
+    {
+      "box": [
+        0.4375,
+        0.125,
+        0.5,
+        0.1875
+      ],
+      "baseline": 4,
+      "grouped": 0
+    },
+    {
+      "box": [
+        0.4375,
+        0.1875,
+        0.5,
+        0.25
+      ],
+      "baseline": 4,
+      "grouped": 0
+    }
+  ],
+  "independently_valid_frames": 10,
+  "frame_audit_sha256": "a59958a5c8b95910124461f9a76449aad7620d5bb4f353a02896e4d2484bace5",
+  "canonical_parent": "6bd4d25703e81788fc810f6ea2b3843ccdb3b38d",
+  "local_diagnostics": [
+    "python build/quad-ribbed-one-parent-20261123/audit.py",
+    "python build/quad-ribbed-one-parent-20261123/frame-audit.py"
+  ],
+  "not_run": [
+    "other native geometries or shared-curve adaptation",
+    "full native, CRT, sanitizer and hosted delivery matrices",
+    "mixed-global curvature and adaptive acceptance"
+  ]
+}

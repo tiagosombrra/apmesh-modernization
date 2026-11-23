@@ -4272,3 +4272,19 @@ QUAD. The [trace](RIBBED_LIMITING_TRI_FRONT_TRACE_20261123.md) also
 predicts a balanced sibling grouping with the existing T2 pattern
 and twice-longer contour-facing template edges. It remains an
 unexecuted scientific proposal, with no mixed epoch accepted.
+
+## 2026-11-23 Fortaleza - group one approved Ribbed parent on the copied tree
+
+The researcher approves one comparison using the unchanged 23-segment
+curve. MSVC completes one isolated run. Preserve all physical requests
+and cap, verify the four changed leaf IDs and the 2:1 condition, validate
+all 97 commits and the complete guarded/unguarded pass frames. The
+target block emits four to two contour-facing edges, twice as long.
+The old limiting TRI footprint is now one 64.31-degree QUAD while
+the global TRI minimum moves to another section at 6.86 degrees.
+See the [comparison](RIBBED_SINGLE_PARENT_TEMPLATE_TRIAL_20261123.md).
+
+Retain the measured gains and unchanged global QUAD minimum. The
+next item is a reusable local selection rule with fine-resolution
+counterexamples and a second geometry, pending scientific alignment.
+No rule adoption, mixed acceptance or full delivery qualification.

@@ -3,7 +3,7 @@
 Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align a local tree layout comparison for the limiting TRI
+## Active: align a reusable way to select eligible template groups
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,29 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-23 - test the approved single-parent template grouping
+
+The [native comparison](RIBBED_SINGLE_PARENT_TEMPLATE_TRIAL_20261123.md)
+keeps the 23-site contour, accepted TRI predecessor and all size
+requests byte for byte. Only leaf IDs 26 through 29 give way to
+their level-3 parent 24. The final tree has 130 instead of 133
+leaves and preserves 2:1. The target block halves its contour-facing
+edge count from four to two with each edge twice as long. Neighbor
+template changes contribute to 11 fewer seed QUADs. Final mesh
+counts are 612 nodes and 636 faces versus 624 and 649.
+
+The old 6.33-degree TRI footprint becomes a 64.31-degree QUAD at
+generation and stays so after smoothing. The global worst TRI
+moves to the opposite side, 6.86 degrees. Worst QUAD angle stays
+26.26 degrees after smoothing. Both sampled error measures decline
+slightly. No mixed epoch accepted or general rule adopted.
+
+**Next:** align a reusable selector using local residual need,
+curve-to-template size contrast and native split/neighbor rules.
+Test a second geometry and a case that must preserve fine
+resolution. Keep the native curve, acceptance and old TRI path
+preserved. Global mixed curvature remains open.
 
 ### 2026-11-23 - trace the 6.33-degree TRI and its native template edge
 
