@@ -105,9 +105,9 @@ def canonicalize_built_html(root: Path) -> None:
         data = path.read_bytes()
         # Windows Vite may produce CRCRLF when HTML input is checked out CRLF.
         # Standardize the emitted text, without touching scientific source data.
-        canonical = data.replace(b"\\r\\r\\n", b"\\n").replace(
-            b"\\r\\n", b"\\n")
-        require(b"\\r" not in canonical,
+        canonical = data.replace(b"\r\r\n", b"\n").replace(
+            b"\r\n", b"\n")
+        require(b"\r" not in canonical,
                 "unexpected_html_carriage_return:" + name)
         if canonical != data:
             path.write_bytes(canonical)
