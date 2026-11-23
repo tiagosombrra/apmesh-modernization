@@ -1,5 +1,23 @@
 # Mesh Studio Web R1 (research vertical slice)
 
+## V5.8 — caminho recomendado para execução local em Linux/Windows
+
+O caminho recomendado agora é **um único launcher de pesquisa com API mínima**, em vez de instalar todo o ambiente científico com `pip install -r requirements-web-ci.txt`. A versão V5.8 usa Python 3.13, Node 22, npm 10 e os locks imutáveis com hashes já auditados. O ambiente local **não instala PyMuPDF nem VTK**, que continuam em fluxos científicos separados.
+
+Execute na raiz do repositório:
+
+```bash
+# Linux: substitute python3.13 for py -3.13 on Windows PowerShell.
+python3.13 -m tools.mesh_studio.local_launcher preflight
+python3.13 -m tools.mesh_studio.local_launcher setup
+python3.13 -m tools.mesh_studio.local_launcher serve
+```
+
+Abra `http://127.0.0.1:5173`; pressione Ctrl+C para encerrar os dois serviços. Para um teste automático que inicia, verifica e encerra ambos: `python3.13 -m tools.mesh_studio.local_launcher smoke`. Os serviços usam **somente loopback**, e o frontend permanece em **Vite dev**, não em modo de distribuição. [Protocolo, limites, logs Linux/Windows e revisão de licenças](../../../docs/mesh-studio/V5_8_MINIMAL_LOCAL_LAUNCH_AND_SOURCE_LOCK_RESULTS_20261123.md).
+
+**Atenção:** as instruções antigas logo abaixo e o script histórico `start-windows.ps1` permanecem disponíveis para cenários de CI/diagnóstico, mas instalam todo o ambiente científico, incluindo bibliotecas com licenciamento adicional. Não são o caminho recomendado para executar apenas a interface local. A V5.8 não certifica GPU física, instalador, segurança de rede para terceiros ou dois epochs TRI aceitos no gerador original.
+
+
 This code is an **unqualified browser frontend candidate**, not a released application.
 It preserves Python as the source of mesh topology/metric computations and never
 converts accepted/rejected source candidates into accepted adaptive epochs.
