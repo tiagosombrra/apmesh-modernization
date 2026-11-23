@@ -114,8 +114,11 @@ The first native attempt measures face-to-curve propagation and stops at the
 existing Step 2 depth cap. The approved capped replay applies seven native
 edits and eight transient curve divisions and reaches mixed smoothing.
 An inverted or collapsed UV QUAD prevents a valid successor. Preserve both
-failures. Next align one smoothing validation/rollback comparison. Mixed
-error and accepted epochs remain separate. Keep PR243 draft. Further jet variants, initialization changes and mixed-global
+failures. The [literature review](MIXED_ADAPTATION_LITERATURE_20261123.md)
+specifies the next aligned comparison: validate the initial cap-preserved
+mesh, use the last fully valid pass as control and evaluate a bounded
+shape-aware motion guard. Then evaluate the continuous-to-discrete size
+conversion. Mixed error and accepted epochs remain separate. Keep PR243 draft. Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.
 Actual mixed global curvature error/accepted adaptation remain a later aligned
 package (accepted mixed epochs0). Full M1/M5/R3/M7, native/CRT/curved-metric scope

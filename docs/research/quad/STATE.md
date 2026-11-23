@@ -1,9 +1,9 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-22 Fortaleza. Canonical branch: `quad-templates`.
+Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: mixed feedback reaches the front; smoothing validity blocks successor
+## Active: literature-backed smoothing comparison for the blocked mixed successor
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,27 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-23 - review literature and define the bounded next comparison
+
+The [review](MIXED_ADAPTATION_LITERATURE_20261123.md) connects constrained
+Laplacian smoothing, physical surface quality measures and field gradation
+to the cap-preserved feedback trial. The [receipt](evidence/MIXED_ADAPTATION_LITERATURE_20261123.json)
+observes eight contour targets between 0.195 and 0.724 of old arc
+length, all dispatched as one binary split. On the existing Step 2 and
+two-block Step 3 archives, damping the first pass to one eighth still
+degrades the recorded critical angles. A lower sampled RMS coexists
+with a smaller TRI angle in Step 3.
+
+**Next:** align one capped pilot reconstruction with two smoothing arms
+on the same validated pre-smoothing mesh: last fully valid pass as
+control, then bounded per-node shape checking with the existing UV
+mean and fixed contour. Keep sizes and connectivity fixed during this
+comparison. Test physical shape and same-site error separately. Once the
+validity block is isolated, compare requested and realized sizes before
+choosing a new discrete sizing policy. No native replay or accepted mixed
+epoch here. Draft PR247 head d206862 has all four hosted checks green.
+Its topology scope stays independent of adaptive admission.
 
 ### 2026-11-22 - implement typed feedback and run the first native pilot
 

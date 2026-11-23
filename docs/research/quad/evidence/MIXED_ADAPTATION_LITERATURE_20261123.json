@@ -1,0 +1,516 @@
+{
+  "scope": "Read-only observations of recorded pilot requests and hypothetical scaling of archived first-pass displacements. No live failed predecessor or change to generator.",
+  "pilot_archive_files": {
+    "step_2_retry_0_accepted_quad_tri.obj": "1a3c36b41d0feff948d2c2935d8b14a5ec74aff2f5f3e652d2a2a8d0edc37a5f",
+    "attempt.csv": "913a55075a9713a303d63c56ddc87c5d2b83de636f0bc011527ad51871d6e682",
+    "size-requests.csv": "54ca5a5db3ff4d02396585027e6b04dc1fb9a95627c9452dddafb80028c31c36",
+    "tree-requests.csv": "99948abc2424ba6014addb0418d61e6acc646572177b837a08c9a0b6c03168a9",
+    "capped-requests.csv": "1cc8bcc15a51b587524161e22c02433d5345a3328b3b70bef98ecb5fa1add38b"
+  },
+  "contour": [
+    {
+      "interval": 0,
+      "side": 0,
+      "outgoing_parameter": 0.0,
+      "original_h": 0.5476196884049103,
+      "final_requested_h": 0.14436540110963744,
+      "requested_fraction": 0.2636234674654239,
+      "idealized_binary_half_over_request": 1.8966445013685231
+    },
+    {
+      "interval": 1,
+      "side": 0,
+      "outgoing_parameter": 0.25457763671875,
+      "original_h": 0.5475953690951856,
+      "final_requested_h": 0.19489329149801057,
+      "requested_fraction": 0.3559074866174285,
+      "idealized_binary_half_over_request": 1.404859461519165
+    },
+    {
+      "interval": 2,
+      "side": 0,
+      "outgoing_parameter": 0.5,
+      "original_h": 0.5475953690951856,
+      "final_requested_h": 0.33149150483630696,
+      "requested_fraction": 0.6053584883013968,
+      "idealized_binary_half_over_request": 0.8259568663239083
+    },
+    {
+      "interval": 5,
+      "side": 1,
+      "outgoing_parameter": 0.5,
+      "original_h": 1.0000000000001183,
+      "final_requested_h": 0.7244822766566882,
+      "requested_fraction": 0.7244822766566025,
+      "idealized_binary_half_over_request": 0.690148007909095
+    },
+    {
+      "interval": 6,
+      "side": 2,
+      "outgoing_parameter": 1.0,
+      "original_h": 1.0000000000001183,
+      "final_requested_h": 0.5366535382642135,
+      "requested_fraction": 0.53665353826415,
+      "idealized_binary_half_over_request": 0.9316998106772783
+    },
+    {
+      "interval": 7,
+      "side": 2,
+      "outgoing_parameter": 0.5,
+      "original_h": 1.0000000000001181,
+      "final_requested_h": 0.32153975983319594,
+      "requested_fraction": 0.32153975983315797,
+      "idealized_binary_half_over_request": 1.5550176446590689
+    },
+    {
+      "interval": 8,
+      "side": 3,
+      "outgoing_parameter": 1.0,
+      "original_h": 1.0000000000001183,
+      "final_requested_h": 0.31954435674065024,
+      "requested_fraction": 0.31954435674061243,
+      "idealized_binary_half_over_request": 1.5647279930087172
+    },
+    {
+      "interval": 9,
+      "side": 3,
+      "outgoing_parameter": 0.5,
+      "original_h": 1.0000000000001181,
+      "final_requested_h": 0.19489329149801057,
+      "requested_fraction": 0.19489329149798756,
+      "idealized_binary_half_over_request": 2.5655064684725843
+    }
+  ],
+  "face_requests": [
+    {
+      "face": 102,
+      "kind": "QUAD",
+      "depth_capped": false,
+      "leaf_id": 87,
+      "requested_fraction": 0.8049919589760802
+    },
+    {
+      "face": 241,
+      "kind": "QUAD",
+      "depth_capped": false,
+      "leaf_id": 88,
+      "requested_fraction": 0.98977239757038
+    },
+    {
+      "face": 242,
+      "kind": "QUAD",
+      "depth_capped": false,
+      "leaf_id": 86,
+      "requested_fraction": 0.39685171366946187
+    },
+    {
+      "face": 254,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 49,
+      "requested_fraction": 0.4044310200383905
+    },
+    {
+      "face": 255,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 49,
+      "requested_fraction": 0.3991775792367409
+    },
+    {
+      "face": 256,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 22,
+      "requested_fraction": 0.4179877329157216
+    },
+    {
+      "face": 281,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 52,
+      "requested_fraction": 0.49961646940226834
+    },
+    {
+      "face": 282,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 52,
+      "requested_fraction": 0.4317174867091845
+    },
+    {
+      "face": 284,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 52,
+      "requested_fraction": 0.8095866343190913
+    },
+    {
+      "face": 288,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 54,
+      "requested_fraction": 0.4192482234310354
+    },
+    {
+      "face": 291,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 87,
+      "requested_fraction": 0.7497121505192832
+    },
+    {
+      "face": 294,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 87,
+      "requested_fraction": 0.878261943145538
+    },
+    {
+      "face": 296,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 86,
+      "requested_fraction": 0.30826125362440404
+    },
+    {
+      "face": 297,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 86,
+      "requested_fraction": 0.3877435059668331
+    },
+    {
+      "face": 300,
+      "kind": "TRI",
+      "depth_capped": false,
+      "leaf_id": 49,
+      "requested_fraction": 0.33883538885594927
+    },
+    {
+      "face": 289,
+      "kind": "TRI",
+      "depth_capped": true,
+      "leaf_id": 58,
+      "requested_fraction": 0.7918527528273056
+    },
+    {
+      "face": 293,
+      "kind": "TRI",
+      "depth_capped": true,
+      "leaf_id": 58,
+      "requested_fraction": 0.890111359731146
+    }
+  ],
+  "archived_smoothing": [
+    {
+      "case": "step2",
+      "files": {
+        "front.json": "bc78b876c5ac8c72ff617cf88e61a9872a58f39f6462eaf27659e2424dc5e68b",
+        "commit_59.obj": "ff29f3674759a03a559d10e53ddf3ec050f4991dedd22596b64a83b40a10ab05",
+        "smoothing_1.obj": "e60510eb335d450f8a90e0f0038d341b096fd05ddf59e40975c4b7c84282391d"
+      },
+      "scaled_displacements": [
+        {
+          "scale": 0,
+          "witness": {
+            "kind": "QUAD",
+            "tri_q": null,
+            "quad_corner_jacobian": 0.42261012867189235,
+            "min_angle_xyz": 25.852902364912794,
+            "max_angle_xyz": 125.64636134660935,
+            "edge_ratio_xyz": 9.239147054237291,
+            "S_uv": 1.5,
+            "S_xyz": 1.7127455292787468
+          },
+          "geometry": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.040148706524736344,
+            "rms_uv": 0.012538479967981004,
+            "rms_source_area": 0.011703552032842197,
+            "tri_sites": 229,
+            "quad_sites": 347
+          },
+          "min_triangle_angle_xyz": 4.824378954243407,
+          "min_quad_jacobian": 0.39446628989456517
+        },
+        {
+          "scale": 0.125,
+          "witness": {
+            "kind": "QUAD",
+            "tri_q": null,
+            "quad_corner_jacobian": 0.40143569558730013,
+            "min_angle_xyz": 24.548402364059836,
+            "max_angle_xyz": 126.87345674447467,
+            "edge_ratio_xyz": 9.006881545880734,
+            "S_uv": 1.5233121528755893,
+            "S_xyz": 1.7272399737326685
+          },
+          "geometry": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.04027864413489705,
+            "rms_uv": 0.012571815307430864,
+            "rms_source_area": 0.011751506138528238,
+            "tri_sites": 242,
+            "quad_sites": 334
+          },
+          "min_triangle_angle_xyz": 5.256846098749948,
+          "min_quad_jacobian": 0.39161324194416863
+        },
+        {
+          "scale": 0.25,
+          "witness": {
+            "kind": "QUAD",
+            "tri_q": null,
+            "quad_corner_jacobian": 0.3805319580991321,
+            "min_angle_xyz": 23.27119673864365,
+            "max_angle_xyz": 128.002589974036,
+            "edge_ratio_xyz": 8.388013850992722,
+            "S_uv": 1.5463054680020254,
+            "S_xyz": 1.7414311473484039
+          },
+          "geometry": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.040404592254557746,
+            "rms_uv": 0.01261170067189347,
+            "rms_source_area": 0.011804065262711994,
+            "tri_sites": 242,
+            "quad_sites": 334
+          },
+          "min_triangle_angle_xyz": 5.709513261477543,
+          "min_quad_jacobian": 0.3805319580991321
+        },
+        {
+          "scale": 0.5,
+          "witness": {
+            "kind": "QUAD",
+            "tri_q": null,
+            "quad_corner_jacobian": 0.33971929059102446,
+            "min_angle_xyz": 20.803540623203094,
+            "max_angle_xyz": 142.63117707465904,
+            "edge_ratio_xyz": 6.78100282108981,
+            "S_uv": 1.5956640443790246,
+            "S_xyz": 1.768849548631077
+          },
+          "geometry": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.04064532774760515,
+            "rms_uv": 0.01270002743148865,
+            "rms_source_area": 0.011915867753680467,
+            "tri_sites": 244,
+            "quad_sites": 332
+          },
+          "min_triangle_angle_xyz": 6.677518794296065,
+          "min_quad_jacobian": 0.33971929059102446
+        },
+        {
+          "scale": 1,
+          "witness": {
+            "kind": "QUAD",
+            "tri_q": null,
+            "quad_corner_jacobian": 0.15808867833029278,
+            "min_angle_xyz": 16.23726528690796,
+            "max_angle_xyz": 167.10920626628817,
+            "edge_ratio_xyz": 9.349353905436013,
+            "S_uv": 1.8422504183840847,
+            "S_xyz": 1.856768958514313
+          },
+          "geometry": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.04108709962974235,
+            "rms_uv": 0.012917812996114029,
+            "rms_source_area": 0.01217315940916347,
+            "tri_sites": 248,
+            "quad_sites": 328
+          },
+          "min_triangle_angle_xyz": 8.882249642300959,
+          "min_quad_jacobian": 0.15808867833029278
+        }
+      ]
+    },
+    {
+      "case": "two_block_step3",
+      "files": {
+        "front.json": "c1582b869ceeaae01d4aef267d37f1f66923b2c83ed0e8f673bf571ff4690c7b",
+        "commit_106.obj": "f26cbd3726f6f26435da8ce6d5d93252ae783437e602116cc1c0da43cf1055db",
+        "smoothing_1.obj": "b13fdd64bb9d63a1b6b0ad4621f41bcfac166fb81753ace1e85c0900fc90ecba"
+      },
+      "scaled_displacements": [
+        {
+          "scale": 0,
+          "witness": {
+            "kind": "TRI",
+            "tri_q": 0.20415266796803447,
+            "quad_corner_jacobian": null,
+            "min_angle_xyz": 6.94702147787149,
+            "max_angle_xyz": 134.95595605599894,
+            "edge_ratio_xyz": 5.850691679610752,
+            "S_uv": null,
+            "S_xyz": null
+          },
+          "geometry": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.049100482457393006,
+            "rms_uv": 0.012363205037962455,
+            "rms_source_area": 0.011827045336032798,
+            "tri_sites": 204,
+            "quad_sites": 372
+          },
+          "min_triangle_angle_xyz": 2.272288298004088,
+          "min_quad_jacobian": 0.32843100153567506
+        },
+        {
+          "scale": 0.125,
+          "witness": {
+            "kind": "TRI",
+            "tri_q": 0.18996441593694433,
+            "quad_corner_jacobian": null,
+            "min_angle_xyz": 6.456983378271824,
+            "max_angle_xyz": 137.41755705650732,
+            "edge_ratio_xyz": 6.0169577232226015,
+            "S_uv": null,
+            "S_xyz": null
+          },
+          "geometry": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.04652063197223715,
+            "rms_uv": 0.012130493255907716,
+            "rms_source_area": 0.011601971365828962,
+            "tri_sites": 208,
+            "quad_sites": 368
+          },
+          "min_triangle_angle_xyz": 2.6214200656241213,
+          "min_quad_jacobian": 0.3256170598553459
+        },
+        {
+          "scale": 0.25,
+          "witness": {
+            "kind": "TRI",
+            "tri_q": 0.1753063483186229,
+            "quad_corner_jacobian": null,
+            "min_angle_xyz": 5.952625500336449,
+            "max_angle_xyz": 140.09867831083935,
+            "edge_ratio_xyz": 6.185433916916408,
+            "S_uv": null,
+            "S_xyz": null
+          },
+          "geometry": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.04445443568893321,
+            "rms_uv": 0.011903066848040796,
+            "rms_source_area": 0.011381486157081079,
+            "tri_sites": 210,
+            "quad_sites": 366
+          },
+          "min_triangle_angle_xyz": 2.6136188995195275,
+          "min_quad_jacobian": 0.3228015212877686
+        },
+        {
+          "scale": 0.5,
+          "witness": {
+            "kind": "TRI",
+            "tri_q": 0.14451984758311823,
+            "quad_corner_jacobian": null,
+            "min_angle_xyz": 4.898727366964534,
+            "max_angle_xyz": 146.18386508515943,
+            "edge_ratio_xyz": 6.517137491550643,
+            "S_uv": null,
+            "S_xyz": null
+          },
+          "geometry": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.043189465863838525,
+            "rms_uv": 0.011462730932726133,
+            "rms_source_area": 0.010953333833025849,
+            "tri_sites": 210,
+            "quad_sites": 366
+          },
+          "min_triangle_angle_xyz": 2.595663644534539,
+          "min_quad_jacobian": 0.3171661411953599
+        },
+        {
+          "scale": 1,
+          "witness": {
+            "kind": "TRI",
+            "tri_q": 0.07664895887216976,
+            "quad_corner_jacobian": null,
+            "min_angle_xyz": 2.5933551721029384,
+            "max_angle_xyz": 161.4775171972781,
+            "edge_ratio_xyz": 7.020925558934004,
+            "S_uv": null,
+            "S_xyz": null
+          },
+          "geometry": {
+            "grid": 24,
+            "sample_count": 576,
+            "max_xyz": 0.040651370759991895,
+            "rms_uv": 0.010636619408638836,
+            "rms_source_area": 0.010146965543277944,
+            "tri_sites": 212,
+            "quad_sites": 364
+          },
+          "min_triangle_angle_xyz": 2.549093935416651,
+          "min_quad_jacobian": 0.3058815733484003
+        }
+      ]
+    }
+  ],
+  "canonical_entry": "1b678019c797d06cb52bfb4a43623b59fb8d8377",
+  "verified_graph_pr": {
+    "headRefOid": "d2068628218b51b0bfe485df9b1ca5cb30588676",
+    "isDraft": true,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-22T23:04:40Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45080831115/job/137388404166",
+        "name": "QUAD native (ubuntu-24.04)",
+        "startedAt": "2026-11-22T23:00:33Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-22T23:05:40Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45080831115/job/137388404184",
+        "name": "QUAD native (windows-2022)",
+        "startedAt": "2026-11-22T23:00:33Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-22T23:09:05Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45080831115/job/137388404443",
+        "name": "TRI baseline and tooling controls (Linux)",
+        "startedAt": "2026-11-22T23:00:33Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-22T23:03:07Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45080831115/job/137388403948",
+        "name": "TRI scientific equivalence against frozen baseline",
+        "startedAt": "2026-11-22T23:00:33Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      }
+    ]
+  },
+  "diagnostic_sha256": "544c436d7a9b1ed92b0ae1dbbb9294c64145c8ee19bff00022d67abef8df5d46",
+  "native_executed": false
+}

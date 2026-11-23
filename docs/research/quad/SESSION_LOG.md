@@ -4098,3 +4098,23 @@ Native front reaches smoothing. Its current geometry check rejects an
 inverted or collapsed UV QUAD. No published pilot mesh, comparable final
 error, or accepted mixed epoch. The next decision is a one-comparison
 last-valid-position safeguard for the existing geometric validator.
+
+## 2026-11-23 Fortaleza - connect published mesh improvements to the mixed pilot
+
+Review primary work on constrained Laplacian motion, local surface
+parametrization, Jacobian distortion, mesh gradation and interpolation
+error. Keep the current curve, quadtree/templates and 1993 mixed front.
+On the archived data, record the eight requested contour fractions
+and compare idealized half-arc division. Re-evaluate scaled first-pass
+displacements on two retained mixed meshes. Local minimum shape
+and common-site XYZ RMS can move in opposite directions. Preserve the
+initial diagnostic ordering mismatch and its corrected oriented
+connectivity test; no scientific generator change follows.
+
+The [report](MIXED_ADAPTATION_LITERATURE_20261123.md) recommends one
+cap-preserved reconstruction with a last-valid-position control and
+local shape-checked moves from the same starting mesh. Obtain alignment
+before running this treatment. Follow with requested-versus-realized
+gradation measurements and mixed acceptance qualification. No new
+native generation or accepted mixed epochs. PR247 d206862 now has
+four verified hosted checks, for its adjacency scope.
