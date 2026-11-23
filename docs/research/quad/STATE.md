@@ -3,7 +3,7 @@
 Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: qualify an ordinary mixed Step 2 source on the second geometry
+## Active: align a local sizing conversion using valid mixed sources on two geometries
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,33 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-23 - obtain a valid guarded ordinary mixed Step 2 on Ribbed
+
+The [native comparison](RIBBED_MIXED_STEP2_SMOOTHING_20261123.md)
+uses one common valid initial mesh with 525 nodes, 60 TRI, 487
+QUAD and 14 fixed original contour segments. The first unguarded
+pass reproduces inverted UV QUAD 483. The guarded arm passes all
+five native checks and independently replays 303 committed moves.
+The five retained ordinary prefix OBJs and manifest match byte for
+byte. Export the isolated guarded Step 2 observation before any
+feedback or ordinary publication. Zero accepted mixed epochs.
+
+The minimum TRI angle stays 3.79 degrees and minimum QUAD angle
+stays 26.18 degrees. XYZ RMS decreases 0.02761938 to 0.02738423.
+Maximum adjacent size ratio decreases and p95 increases. The
+limiting TRI touches one boundary vertex and spans a short
+template edge, remains unchanged in UV/XYZ, and meets a QUAD
+whose median size is smaller by 4.18. This isolates the remaining
+shape issue from the smoothing validity failure.
+
+**Next:** use the existing mixed residual and typed neighbors on
+both valid predecessors to check whether the recorded sizing
+logic can reach the two poor transition pockets. Then align a
+local physical-to-discrete conversion and perform one new
+comparison with final shape/gradation, error and mesh growth.
+No downstream feedback, native shared-curve case, delivery matrix
+or global mixed curvature error measured in this trial.
 
 ### 2026-11-23 - compare a second native surface and shared-curve archives
 

@@ -131,9 +131,12 @@ case and a shared-curve case before adoption. The
 [cross-case comparison](MIXED_SIZING_CROSS_CASE_20261123.md) observes a
 Ribbed Bracket Step 2 smoothing failure upstream of mixed feedback and
 a 5.84 size discontinuity across a conforming archived Ribbed seam.
-Align the ordinary Step 2 protected comparison on the second geometry
-before attempting to qualify its size realization. The live entry
-still accepts only one patch.
+The [approved ordinary Step 2 comparison](RIBBED_MIXED_STEP2_SMOOTHING_20261123.md)
+now yields a valid guarded predecessor with identical contour and faces.
+It leaves a 3.79-degree transition TRI beside a much smaller QUAD.
+Check existing residual and typed grading coverage on both predecessors
+before aligning a local sizing conversion. The live entry still accepts
+only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.

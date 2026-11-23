@@ -4182,3 +4182,21 @@ Seek alignment for one guarded ordinary Step 2 run from a valid starting
 mesh, ahead of a new sizing rule. No implementation change, matrix
 qualification, GPU/Blender work, native shared-curve run or mixed epoch
 acceptance in this comparison.
+
+## 2026-11-23 Fortaleza - guard ordinary mixed Step 2 in the second geometry
+
+The researcher approves the bounded second geometry comparison. Patch
+12 uses the same input and controls as the failed run. A copied isolated
+MSVC Debug executable compares both smoothing arms from the validated
+ordinary Step 2 initial mesh. Control pass one reproduces UV QUAD 483.
+Guarded passes one to five are valid; the independent audit replays 303
+moves and verifies typed topology, native contour and unchanged reference
+prefix. Preserve the application evidence and separate the early
+diagnostic exit from adaptive acceptance.
+
+The [comparison](RIBBED_MIXED_STEP2_SMOOTHING_20261123.md) retains the
+unchanged 3.79-degree TRI next to a QUAD 4.18 times smaller, unchanged
+QUAD minimal angle, reduced geometric RMS and mixed gradation effects.
+Next audit existing residual and neighbor coverage on the two
+predecessors before aligning the size conversion. No new size law,
+feedback execution, full delivery matrix or accepted mixed epoch.
