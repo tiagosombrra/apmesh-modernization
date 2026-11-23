@@ -73,6 +73,7 @@ def build() -> dict:
     return {
         "schema": "apmesh.meshstudio.v511.static_research_build.v1",
         "built_asset_count": result["static_asset_count"],
+        "built_asset_sha256": result["static_assets"],
         "source_npm_lock_sha256": result["npm_source_lock_sha256"],
         "sha256": sha256(
             (local_static_site.DIST / local_static_site.MANIFEST_NAME).read_bytes()
@@ -209,7 +210,8 @@ def smoke(mode: str, *, original_directory: Path | None = None,
         if on_ready is not None:
             on_ready()
             receipt["reviewer_callback"] = "PASS"
-        receipt["both_local_ports_in_use"] = False
+        receipt["static_listener_cleanup_requested"] = True
+        receipt["vite_port_5173_absent_during_review"] = True
         receipt["mode"] = "STATIC_SMOKE_COMPLETE_AND_CLEANUP_REQUESTED"
         return receipt
     except KeyboardInterrupt:
