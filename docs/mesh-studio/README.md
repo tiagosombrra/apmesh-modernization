@@ -83,6 +83,44 @@ In web: `npm ci --no-audit --no-fund`, `npm run test:contracts`,
 artifacts; static reviewer tests use the independent historical corpus.
 Never weaken negatives, invent fixtures or silently drop required coverage.
 
+## P0 regression checkpoint — 2026-11-24
+
+The audited implementation revision is `9977f2a88b199bbed39fd9583cbb58737a4db638`. The evidence registry's
+initial stabilization status is the pre-run snapshot; this section records
+the live work checkpoint and links the authoritative CI results.
+
+- [Full scientific regression #45363214163](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214163):
+  Python discovery PASS in both OSs: Linux 609 passed / 5 skipped and Windows
+  603 passed / 11 skipped (614 enumerated each, no failures). At checkpoint,
+  fresh native C++ regression was still running; the dependent broad browser
+  suite was not yet confirmed.
+- [Fast web #45363214119](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214119):
+  1/1 SUCCESS, 18 Chromium tests passed.
+- [Static reviewer #45363214240](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214240):
+  3/3 SUCCESS; 36 Python controls and 4 Chromium tests per OS, original native
+  corpus reopened, no orphan ports, seven identical compiled assets with
+  unchanged certified inventory SHA.
+- [Installed/bundle licensing #45363214125](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214125):
+  4/4 SUCCESS. The source-exact notice generator and its pinned input evidence
+  are unchanged from the previous certified notice run; it was not re-run by
+  this documentation/CI-only push.
+
+Inventory verification: 12 remaining workflows with 120 approved SHA-pinned
+action references, no write permissions; 97 local Markdown links in the
+history index resolve. All 54 Python test files and 29 browser spec files,
+native code, models, frontend code and original scientific historical files
+remain present. Three superseded reviewer workflows were retired, with exact
+historical definitions linked from HISTORY.md. Four environment-specific
+optional JSON Schema/LaTeX skips and one absent-corpus skip occur in each
+ordinary Python checkout; Windows adds six unqualified GPU/VTK controls.
+The dedicated static reviewer exercises the retained original corpus.
+
+**P0 remains OPEN.** Next: read the final native and broad browser results
+of #45363214163; investigate any failure without weakening acceptance,
+record actual test/skip counts and decide whether further repair is needed.
+No new feature or scientific proposal is admitted before that checkpoint.
+No claim of physical GPU acceptance, new native epoch or legal clearance.
+
 ## Priorities and handoff
 
 1. **P0 ACTIVE:** consolidate docs, audit legacy workflow retirement and
