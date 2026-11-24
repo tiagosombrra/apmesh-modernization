@@ -4359,3 +4359,15 @@ and its receipt for exact hashes, commands, the missing-config invocation
 and configured contract coverage. The trial code and meshes remain local.
 Checkpoint next alignment on scientific admission, then external transfer.
 No accepted mixed epochs or full validation matrix.
+
+## 2026-11-24 Fortaleza - freeze the grouping rule and reproduce the second-model veto
+
+Record the researcher-approved conservative decision before running the second
+model. The Ribbed positive cases pass and reversed and arc-split cases fail.
+Synthetic grid disagreement returns inconclusive. Fresh CurvaBezier reproduces
+eight exact meshes and the Step 3 trace. The limiting TRI's T6 edge is unchanged
+under single grouping, so the selector returns no action. The archived manual
+two-group variant passes the frozen comparator; it motivates one scoped neighbor
+selection experiment. Draft PR 264 at e1775f38 has five passing tests with hosted
+checks in progress. [Scope and receipt](GROUPING_ADMISSION_AND_TRANSFER_20261124.md).
+No adaptive epoch or new native candidate acceptance.

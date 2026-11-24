@@ -3,7 +3,7 @@
 Updated 2026-11-24 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align the mixed transition trial decision before transfer
+## Active: resolve the single-group transfer limitation
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,24 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-24 - measure the conservative rule and the native transfer veto
+
+The [decision and transfer report](GROUPING_ADMISSION_AND_TRANSFER_20261124.md)
+records the approved experimental admission and its archived controls. Both
+Ribbed grouping comparisons and the archived manual CurvaBezier two-block
+layout are eligible. The reversed and arc-split controls are rejected and a
+synthetic grid disagreement is inconclusive. Fresh native CurvaBezier Step 3
+matches all eight earlier meshes. The selector vetoes its limiting TRI because
+T6 retains the 0.047312-unit edge. No automatic successor is produced.
+[Draft PR 264](https://github.com/tiagosombrra/apmesh-modernization/pull/264)
+at e1775f38 passes five local tests. Its hosted checks were in progress.
+
+**Next:** align one bounded transfer experiment for the adjacent block whose
+fine leaves force T6 to retain the short edge. Apply the already frozen decision
+to the full native reconstruction with the fine-size veto and 2:1 constraints.
+This requires a scoped selector decision. Mixed global curvature and accepted
+mixed epochs remain open.
 
 ### 2026-11-24 - stage and reject a native Ribbed transition candidate
 
