@@ -1,6 +1,6 @@
 # Mesh Studio — canonical state, runbook and plan
 
-**2026-11-24 | Research-only V5.11 draft | P0 bounded CI regression closed; P1 review active.**
+**2026-11-24 | Research-only V5.11 draft | P0 bounded CI regression closed; P1 review proposal complete; P2 physical acceptance pending.**
 This is the sole current operational plan. [History](HISTORY.md) indexes dated
 science and earlier plans; [evidence registry](EVIDENCE_REGISTRY.json) records
 immutable evidence references. Do not resume old plans as live instructions.
@@ -131,15 +131,69 @@ The registry remains the immutable initial pre-run snapshot; this section is
 the authoritative live status. No source or workflow change is required.
 P1 review may proceed; no physical GPU acceptance, new native epoch or legal clearance.
 
+## P1 review and integration proposal — 2026-11-24
+
+Audited remote snapshot `3ecb9ab5fd20c55070851b60c5570e50bea4de57` (documentation-only
+descendant of the P0 tested implementation). All PRs remain Draft/open;
+no branch retarget, merge, closure or cherry-pick was performed.
+
+- The review chain #246 → #248 → #249 → #252 → #254 → #256 → #257 →
+  #258 → #259 → #261 → #262 has ten exact base/head SHA matches.
+  Keep #262 as the sole operational review target; earlier PRs provide
+  review slices, not independent deliveries.
+- #244 is ancestral to the certified V5.3 base `38e03cd1de260a1791a9cb6e176181067d4c94bb`
+  (12 ahead, 0 behind). #245 diverges by history, not by its six-file
+  change content: all six final Git blobs are exactly equal between #245
+  HEAD `23a1255b91cc63f7e2dd2d57b98ec8973a71c7b7` and that certified base.
+  Four remain byte-identical in #262 (PDF implementation, test,
+  direct requirements, preregistration); the workflow now uses hash-locked
+  dependencies and retains both identical native PDF export/audit commands
+  and archive, and the result report has subsequent certificate evidence.
+  Do not cherry-pick or independently merge #245.
+- #239 HEAD equals #246 HEAD `740a357f73d055d7e3f2f345810b8e0d885233ac`.
+  #262 contains it (121 ahead, 0 behind at audited snapshot). Review
+  #239 as history, not a second delivery.
+- #253 is a separate editorial delivery, **not merely documentation**:
+  two unique Book print-layout reports, one Python exporter, one test file
+  and a divergent workflow. The four files do not exist in #262. Its
+  certified original-source run #45147268663 remains valid for its own
+  revision. Do not merge the older workflow or silently lose the unique
+  print-layout work; editorial issue #251 controls future admission.
+- Integration scope caution: compared with the original #239 base
+  `9227ec41a21b65c19a96cf9611be24e117507877`, the audited #262 snapshot
+  is 588 commits ahead, 0 behind, with 244 changed paths including 12
+  outside Studio docs/tools/CI (native observers, adapter/generator,
+  probes and root files). Compared with main `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`,
+  it is 1150 ahead and 2 behind; the comparison returned 300 files
+  (API limit; not a complete inventory), including unrelated QUAD history.
+  **Do not retarget #262 to main or squash this entire research ancestry.**
+
+**P1 review/proposal complete; integration remains NOT AUTHORIZED.**
+Retain the current branch stack and immutable references; no new PR is
+needed for physical research review. If integration is later authorized,
+first freeze the target base and agree on the exact allowed source paths
+and native observer dependencies, construct an isolated integration
+candidate, compare complete trees (not a capped API list), review its
+actual delta and rerun all relevant source/CI gates on that exact SHA.
+No automatic closure of historical drafts. The independent editorial
+branch is not in that proposed scope.
+
+**P2 next:** issue #255 requires real independent physical Windows/Linux
+review on the pinned reviewer kit. Automated local-loopback and browser
+checks have evidence; human sign-off and physical GPU checks do not.
+Use the existing static V5.11 launcher protocol above, not the superseded
+V5.8 dev-server path in the original issue. Do not create another
+instrumentation or version milestone while waiting for external evidence.
+
 ## Priorities and handoff
 
 1. **P0 CLOSED (bounded automated scope):** documentation consolidation,
    workflow audit and exact-candidate broad regression completed. Explicit
    environment/physical and editorial gates remain open.
-2. **P1 ACTIVE:** review accumulated Draft PR chain with one active target [#262](https://github.com/tiagosombrra/apmesh-modernization/pull/262).
-   Verify ancestry and review order; separate #253 editorial branch.
-   No automatic merges or closures of predecessor PRs.
-3. P2: independent physical reviewers, #255.
+2. **P1 REVIEW COMPLETE:** bounded consolidation proposal; keep #262 as
+   active Draft review target, with no integration, retarget or closures.
+3. **P2 ACTIVE / HUMAN EVIDENCE REQUIRED:** independent physical reviewers,
+   #255. No hosted-CI substitution.
 4. P3: specific distribution decision and legal review, #250. No release.
 5. P4: return to scientific priorities: genuine non-manifold models, complete
    patches, original native accepted/rejected results, separate QUAD/TRI
