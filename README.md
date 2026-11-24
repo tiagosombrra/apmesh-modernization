@@ -7,6 +7,7 @@ Scientific extensions require separate proposals aligned with the advisors.
 
 ## Start here
 
+- [Non-manifold research hub](docs/research/nonmanifold-benchmark/README.md): current scientific plan, model roster, acceptance gates and local regression. This separate research track does not modify the production modernization plan.
 - [Project state](docs/PROJECT_STATE.md): completed, active and next work.
 - [Full modernization plan](docs/MODERNIZATION_PLAN.md): stages 0–11 and gates.
 - [Source provenance](docs/PROVENANCE.md): exact published baseline and import.

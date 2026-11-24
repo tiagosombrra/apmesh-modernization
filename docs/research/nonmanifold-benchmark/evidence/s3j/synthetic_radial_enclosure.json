@@ -1,0 +1,182 @@
+{
+  "apmesh_mesh_generation": "NOT_RUN",
+  "continuous_support_scope": "NUMERICAL_BERNSTEIN_ENCLOSURE_NOT_FORMAL_INTERVAL_PROOF",
+  "cylinder_original_face_ids": [
+    17
+  ],
+  "cylinder_patch_count": 6,
+  "joint_bp_sha256": "630ede42a6556c1c4bad1f4e553eed4a835d6430bc2d26def60cd4c321259db1",
+  "maximum_guarded_radial_support_error_upper_mm": 0.0005845207949647663,
+  "original_external_nonmanifold": "NOT_ESTABLISHED",
+  "original_m5_native_brep_import": "NOT_ESTABLISHED_BY_THIS_GATE",
+  "original_native_face_trim": "NOT_CERTIFIED",
+  "patches": [
+    {
+      "apmesh_generation": "NOT_RUN",
+      "axially_separable_bicubic_verified": true,
+      "bernstein_squared_radius_residual_max_mm2": 1.1032841307212493e-15,
+      "bernstein_squared_radius_residual_min_mm2": -0.003506777105557503,
+      "bernstein_subdivision_depth": 8,
+      "continuous_source_support_scope": "NUMERICAL_BERNSTEIN_CONVEX_HULL_WITH_FLOAT_GUARD",
+      "degree_of_squared_radial_polynomial": 6,
+      "formal_directed_rounding_interval_proof": false,
+      "max_nonseparable_control_residual_mm": 0.0,
+      "native_trimmed_face_distance": "NOT_CERTIFIED",
+      "numerical_guard_mm": 1e-09,
+      "patch_segment": 0,
+      "radial_controls_inside_source_angular_wedge": true,
+      "radial_support_error_upper_mm": 0.0005845207948248782,
+      "schema": "apmesh-s3j-bernstein-support-enclosure-v1",
+      "source_angle_rad": [
+        -3.14159265359,
+        -2.617993877991697
+      ],
+      "source_axial_extent_mm": [
+        -4.0,
+        0.0
+      ],
+      "source_face_id": 17,
+      "source_radius_mm": 3.0
+    },
+    {
+      "apmesh_generation": "NOT_RUN",
+      "axially_separable_bicubic_verified": true,
+      "bernstein_squared_radius_residual_max_mm2": 0.0,
+      "bernstein_squared_radius_residual_min_mm2": -0.0035067771059770292,
+      "bernstein_subdivision_depth": 8,
+      "continuous_source_support_scope": "NUMERICAL_BERNSTEIN_CONVEX_HULL_WITH_FLOAT_GUARD",
+      "degree_of_squared_radial_polynomial": 6,
+      "formal_directed_rounding_interval_proof": false,
+      "max_nonseparable_control_residual_mm": 0.0,
+      "native_trimmed_face_distance": "NOT_CERTIFIED",
+      "numerical_guard_mm": 1e-09,
+      "patch_segment": 1,
+      "radial_controls_inside_source_angular_wedge": true,
+      "radial_support_error_upper_mm": 0.0005845207948946002,
+      "schema": "apmesh-s3j-bernstein-support-enclosure-v1",
+      "source_angle_rad": [
+        -2.617993877991697,
+        -2.0943951023933938
+      ],
+      "source_axial_extent_mm": [
+        -4.0,
+        0.0
+      ],
+      "source_face_id": 17,
+      "source_radius_mm": 3.0
+    },
+    {
+      "apmesh_generation": "NOT_RUN",
+      "axially_separable_bicubic_verified": true,
+      "bernstein_squared_radius_residual_max_mm2": 0.0,
+      "bernstein_squared_radius_residual_min_mm2": -0.0035067771059788264,
+      "bernstein_subdivision_depth": 8,
+      "continuous_source_support_scope": "NUMERICAL_BERNSTEIN_CONVEX_HULL_WITH_FLOAT_GUARD",
+      "degree_of_squared_radial_polynomial": 6,
+      "formal_directed_rounding_interval_proof": false,
+      "max_nonseparable_control_residual_mm": 0.0,
+      "native_trimmed_face_distance": "NOT_CERTIFIED",
+      "numerical_guard_mm": 1e-09,
+      "patch_segment": 2,
+      "radial_controls_inside_source_angular_wedge": true,
+      "radial_support_error_upper_mm": 0.0005845207948950443,
+      "schema": "apmesh-s3j-bernstein-support-enclosure-v1",
+      "source_angle_rad": [
+        -2.0943951023933938,
+        -1.5707963267950906
+      ],
+      "source_axial_extent_mm": [
+        -4.0,
+        0.0
+      ],
+      "source_face_id": 17,
+      "source_radius_mm": 3.0
+    },
+    {
+      "apmesh_generation": "NOT_RUN",
+      "axially_separable_bicubic_verified": true,
+      "bernstein_squared_radius_residual_max_mm2": 0.0,
+      "bernstein_squared_radius_residual_min_mm2": -0.0035067771059776875,
+      "bernstein_subdivision_depth": 8,
+      "continuous_source_support_scope": "NUMERICAL_BERNSTEIN_CONVEX_HULL_WITH_FLOAT_GUARD",
+      "degree_of_squared_radial_polynomial": 6,
+      "formal_directed_rounding_interval_proof": false,
+      "max_nonseparable_control_residual_mm": 0.0,
+      "native_trimmed_face_distance": "NOT_CERTIFIED",
+      "numerical_guard_mm": 1e-09,
+      "patch_segment": 3,
+      "radial_controls_inside_source_angular_wedge": true,
+      "radial_support_error_upper_mm": 0.0005845207948946002,
+      "schema": "apmesh-s3j-bernstein-support-enclosure-v1",
+      "source_angle_rad": [
+        -1.5707963267950902,
+        -1.047197551196787
+      ],
+      "source_axial_extent_mm": [
+        -4.0,
+        0.0
+      ],
+      "source_face_id": 17,
+      "source_radius_mm": 3.0
+    },
+    {
+      "apmesh_generation": "NOT_RUN",
+      "axially_separable_bicubic_verified": true,
+      "bernstein_squared_radius_residual_max_mm2": 0.0,
+      "bernstein_squared_radius_residual_min_mm2": -0.003506777105976057,
+      "bernstein_subdivision_depth": 8,
+      "continuous_source_support_scope": "NUMERICAL_BERNSTEIN_CONVEX_HULL_WITH_FLOAT_GUARD",
+      "degree_of_squared_radial_polynomial": 6,
+      "formal_directed_rounding_interval_proof": false,
+      "max_nonseparable_control_residual_mm": 0.0,
+      "native_trimmed_face_distance": "NOT_CERTIFIED",
+      "numerical_guard_mm": 1e-09,
+      "patch_segment": 4,
+      "radial_controls_inside_source_angular_wedge": true,
+      "radial_support_error_upper_mm": 0.0005845207948946002,
+      "schema": "apmesh-s3j-bernstein-support-enclosure-v1",
+      "source_angle_rad": [
+        -1.047197551196787,
+        -0.5235987755984838
+      ],
+      "source_axial_extent_mm": [
+        -4.0,
+        0.0
+      ],
+      "source_face_id": 17,
+      "source_radius_mm": 3.0
+    },
+    {
+      "apmesh_generation": "NOT_RUN",
+      "axially_separable_bicubic_verified": true,
+      "bernstein_squared_radius_residual_max_mm2": 0.0,
+      "bernstein_squared_radius_residual_min_mm2": -0.0035067771063976034,
+      "bernstein_subdivision_depth": 8,
+      "continuous_source_support_scope": "NUMERICAL_BERNSTEIN_CONVEX_HULL_WITH_FLOAT_GUARD",
+      "degree_of_squared_radial_polynomial": 6,
+      "formal_directed_rounding_interval_proof": false,
+      "max_nonseparable_control_residual_mm": 0.0,
+      "native_trimmed_face_distance": "NOT_CERTIFIED",
+      "numerical_guard_mm": 1e-09,
+      "patch_segment": 5,
+      "radial_controls_inside_source_angular_wedge": true,
+      "radial_support_error_upper_mm": 0.0005845207949647663,
+      "schema": "apmesh-s3j-bernstein-support-enclosure-v1",
+      "source_angle_rad": [
+        -0.5235987755984834,
+        -1.801891968966629e-13
+      ],
+      "source_axial_extent_mm": [
+        -4.0,
+        0.0
+      ],
+      "source_face_id": 17,
+      "source_radius_mm": 3.0
+    }
+  ],
+  "predeclared_sampled_budget_mm": 0.001,
+  "same_numeric_budget_guarded_radial_support_pass": true,
+  "schema": "apmesh-s3j-joint-analytic-support-gate-v1",
+  "source_model": "SYNTHETIC",
+  "source_sha256": "bba9a7b0ff363a541aa4d5e696ad8bb368d40904d3445f0d25afc98ae9b170db"
+}

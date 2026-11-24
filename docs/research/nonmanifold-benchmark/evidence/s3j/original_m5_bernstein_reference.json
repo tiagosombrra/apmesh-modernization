@@ -1,0 +1,159 @@
+{
+  "schema": "apmesh-s3j-original-m5-source-bernstein-radial-interval-v1",
+  "source_repository": "cgg-bern/hex-me-if-you-can",
+  "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "source_git_blob_sha1": "d72e5e3cb3de9ebdec80253cfa9b57fa1b7132f7",
+  "source_original_file": "original/i05o_m5.step",
+  "model": "M5",
+  "method": "Independent JS STEP circle/edge orientation analysis and Bernstein degree-six convex-hull enclosure on source-derived idealized Hermite cubic arc controls",
+  "source_step_raw_sha256_not_recomputed": true,
+  "model_original_brep_import": "NOT_RUN",
+  "actual_original_apmesh_bp_generation": "NOT_RUN",
+  "source_native_trimmed_face_oracle": "NOT_RUN",
+  "arithmetic_note": "Floating-point coefficients and de Casteljau subdivision with 1e-9 mm heuristic guard, NOT formally directed-rounding certified",
+  "records": [
+    {
+      "faceid": 3493,
+      "radius_mm": 2,
+      "support_id": 423,
+      "arc_edge_curve_ids": [
+        406,
+        3522
+      ],
+      "absolute_sweep_rad": 2.102093169774461,
+      "arcs": [
+        {
+          "edge_curve_id": 406,
+          "oriented_edge_id": 3519,
+          "original_directed_sweep_rad": -2.102093169774461,
+          "absolute_sweep_rad": 2.102093169774461
+        },
+        {
+          "edge_curve_id": 3522,
+          "oriented_edge_id": 3521,
+          "original_directed_sweep_rad": 2.102093169774461,
+          "absolute_sweep_rad": 2.102093169774461
+        }
+      ],
+      "configs": [
+        {
+          "sectors": 2,
+          "source_patches": 2,
+          "angular_piece_rad": 1.0510465848872306,
+          "bernstein_depth": 8,
+          "squared_radius_residual_interval_mm2": [
+            -0.024920572542149813,
+            0
+          ],
+          "unmargined_continuum_bound_for_float_polynomial_mm": 0.006239877152256268,
+          "float_margin_mm": 1e-9,
+          "guarded_numerical_radial_support_upper_mm": 0.006239878152256268,
+          "pilot_budget_mm": 0.001,
+          "pass": false
+        },
+        {
+          "sectors": 4,
+          "source_patches": 4,
+          "angular_piece_rad": 0.5255232924436153,
+          "bernstein_depth": 8,
+          "squared_radius_residual_interval_mm2": [
+            -0.0015815531176444496,
+            0
+          ],
+          "unmargined_continuum_bound_for_float_polynomial_mm": 0.0003954273701123334,
+          "float_margin_mm": 1e-9,
+          "guarded_numerical_radial_support_upper_mm": 0.00039542837011233344,
+          "pilot_budget_mm": 0.001,
+          "pass": true
+        },
+        {
+          "sectors": 6,
+          "source_patches": 6,
+          "angular_piece_rad": 0.35034886162907686,
+          "bernstein_depth": 8,
+          "squared_radius_residual_interval_mm2": [
+            -0.0003132308084438651,
+            0
+          ],
+          "unmargined_continuum_bound_for_float_polynomial_mm": 0.00007830923519502875,
+          "float_margin_mm": 1e-9,
+          "guarded_numerical_radial_support_upper_mm": 0.00007831023519502875,
+          "pilot_budget_mm": 0.001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "faceid": 3976,
+      "radius_mm": 2,
+      "support_id": 282,
+      "arc_edge_curve_ids": [
+        261,
+        4005
+      ],
+      "absolute_sweep_rad": 2.102093169774461,
+      "arcs": [
+        {
+          "edge_curve_id": 261,
+          "oriented_edge_id": 3980,
+          "original_directed_sweep_rad": 2.102093169774461,
+          "absolute_sweep_rad": 2.102093169774461
+        },
+        {
+          "edge_curve_id": 4005,
+          "oriented_edge_id": 4004,
+          "original_directed_sweep_rad": -2.102093169774461,
+          "absolute_sweep_rad": 2.102093169774461
+        }
+      ],
+      "configs": [
+        {
+          "sectors": 2,
+          "source_patches": 2,
+          "angular_piece_rad": 1.0510465848872306,
+          "bernstein_depth": 8,
+          "squared_radius_residual_interval_mm2": [
+            -0.024920572542149813,
+            0
+          ],
+          "unmargined_continuum_bound_for_float_polynomial_mm": 0.006239877152256268,
+          "float_margin_mm": 1e-9,
+          "guarded_numerical_radial_support_upper_mm": 0.006239878152256268,
+          "pilot_budget_mm": 0.001,
+          "pass": false
+        },
+        {
+          "sectors": 4,
+          "source_patches": 4,
+          "angular_piece_rad": 0.5255232924436153,
+          "bernstein_depth": 8,
+          "squared_radius_residual_interval_mm2": [
+            -0.0015815531176444496,
+            0
+          ],
+          "unmargined_continuum_bound_for_float_polynomial_mm": 0.0003954273701123334,
+          "float_margin_mm": 1e-9,
+          "guarded_numerical_radial_support_upper_mm": 0.00039542837011233344,
+          "pilot_budget_mm": 0.001,
+          "pass": true
+        },
+        {
+          "sectors": 6,
+          "source_patches": 6,
+          "angular_piece_rad": 0.35034886162907686,
+          "bernstein_depth": 8,
+          "squared_radius_residual_interval_mm2": [
+            -0.0003132308084438651,
+            0
+          ],
+          "unmargined_continuum_bound_for_float_polynomial_mm": 0.00007830923519502875,
+          "float_margin_mm": 1e-9,
+          "guarded_numerical_radial_support_upper_mm": 0.00007831023519502875,
+          "pilot_budget_mm": 0.001,
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "redistributed_original_step_body": false
+}

@@ -1,0 +1,916 @@
+{
+  "apmesh_tri_quad_generation": "NOT_RUN",
+  "bicubic_fit": "NOT_RUN",
+  "bounding_box_native_units": {
+    "diagonal": 112.4177921861126,
+    "xmax": 45.0,
+    "xmin": -5.0,
+    "ymax": 132.4,
+    "ymin": 40.0,
+    "zmax": 40.0,
+    "zmin": -2.220446049250313e-14
+  },
+  "edge_types": {
+    "CIRCLE": 40,
+    "LINE": 104
+  },
+  "edges": 144,
+  "explicit_native_edge_three_plus_distinct_faces": 0,
+  "face_to_exact_topods_edge_incidence_histogram": {
+    "2": 144
+  },
+  "faces": 52,
+  "importer": "CadQuery 2.8.0 / OCP 7.9.3.1 / OCCT STEPControl",
+  "independent_multisheet_admission": "NOT_GRANTED",
+  "model_id": "S27",
+  "native_degenerate_edges": 0,
+  "nondegenerate_edges": 144,
+  "outer_and_hole_trim_wire_counts": {
+    "1": 42,
+    "2": 10
+  },
+  "planar_four_straight_edge_candidate_face_count": 20,
+  "raw_bytes": 177702,
+  "raw_sha256": "b4a60c43cabd3c72bf61d54a23f36e6e539ad985015d2a7c377885b5d170f8c5",
+  "rendered_from_actual_source_sha256": "b4a60c43cabd3c72bf61d54a23f36e6e539ad985015d2a7c377885b5d170f8c5",
+  "rendering": {
+    "face_geometry": {
+      "camera_azimuth_deg": 40,
+      "camera_elevation_deg": 28,
+      "linear_tessellation_deflection": 0.46606496258801344,
+      "renderer": "VTK 9.6.2 offscreen using CadQuery/Open CASCADE STEP importer",
+      "source_face_mesh_cells": 1492,
+      "wireframe_source_edge_count": 144
+    },
+    "shaded": {
+      "camera_azimuth_deg": 40,
+      "camera_elevation_deg": 28,
+      "linear_tessellation_deflection": 0.44967116874445046,
+      "renderer": "VTK 9.6.2 offscreen using CadQuery/Open CASCADE STEP importer",
+      "source_face_mesh_cells": 898,
+      "wireframe_source_edge_count": 144
+    }
+  },
+  "repeated_native_oriented_edge_uses_within_face": 0,
+  "shape_type": "Solid",
+  "shells": 1,
+  "solids": 1,
+  "source_blob_sha1": "48ada34a4d2fb038ff91131300c6262a9faec217",
+  "source_face_records": [
+    {
+      "area_native_units_squared": 263.89378290156003,
+      "center_xyz": [
+        37.5,
+        60.00000000000111,
+        16.43492927474178
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 0,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 263.89378290156,
+      "center_xyz": [
+        37.5,
+        59.99999999999963,
+        23.56507072525822
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 1,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 392.35350650682926,
+      "center_xyz": [
+        45.0,
+        60.0,
+        20.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 2,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 2,
+      "wire_edge_counts": [
+        2,
+        2
+      ]
+    },
+    {
+      "area_native_units_squared": 196.34954084937505,
+      "center_xyz": [
+        42.49999999999999,
+        59.999999999999176,
+        27.95774715459424
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 3,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 196.349540849375,
+      "center_xyz": [
+        42.5,
+        60.000000000002466,
+        12.042252845405757
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 4,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 1537.4446785945545,
+      "center_xyz": [
+        40.0,
+        74.74307790208573,
+        19.999999999999986
+      ],
+      "geometry_type": "PLANE",
+      "index": 5,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 16,
+      "wire_count": 2,
+      "wire_edge_counts": [
+        14,
+        2
+      ]
+    },
+    {
+      "area_native_units_squared": 199.99999999999997,
+      "center_xyz": [
+        35.0,
+        100.0,
+        20.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 6,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 254.2125095239101,
+      "center_xyz": [
+        35.86229389772494,
+        112.01829389752581,
+        35.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 7,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 1185.0035839995758,
+      "center_xyz": [
+        19.999999999997208,
+        106.65925339601091,
+        40.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 8,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 8,
+      "wire_count": 2,
+      "wire_edge_counts": [
+        6,
+        2
+      ]
+    },
+    {
+      "area_native_units_squared": 299.99999999999994,
+      "center_xyz": [
+        20.0,
+        90.0,
+        35.833333333333336
+      ],
+      "geometry_type": "PLANE",
+      "index": 9,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 8,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        8
+      ]
+    },
+    {
+      "area_native_units_squared": 199.99999999999997,
+      "center_xyz": [
+        35.0,
+        80.0,
+        35.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 10,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 49.99999999999999,
+      "center_xyz": [
+        35.0,
+        70.0,
+        37.5
+      ],
+      "geometry_type": "PLANE",
+      "index": 11,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 99.99999999999999,
+      "center_xyz": [
+        35.0,
+        65.0,
+        40.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 12,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 628.318530718,
+      "center_xyz": [
+        35.0,
+        47.26760455264921,
+        19.999999999998685
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 13,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 99.99999999999999,
+      "center_xyz": [
+        35.0,
+        65.0,
+        -3.681838226530004e-15
+      ],
+      "geometry_type": "PLANE",
+      "index": 14,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 50.00000000000007,
+      "center_xyz": [
+        35.0,
+        70.0,
+        2.5000000000000004
+      ],
+      "geometry_type": "PLANE",
+      "index": 15,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 199.99999999999997,
+      "center_xyz": [
+        35.0,
+        80.0,
+        5.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 16,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 1185.0035839983748,
+      "center_xyz": [
+        20.000000000005148,
+        106.6592533960063,
+        -3.68183822653e-15
+      ],
+      "geometry_type": "PLANE",
+      "index": 17,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 10,
+      "wire_count": 2,
+      "wire_edge_counts": [
+        8,
+        2
+      ]
+    },
+    {
+      "area_native_units_squared": 254.2125095239102,
+      "center_xyz": [
+        35.86229389772494,
+        112.01829389752581,
+        4.999999999999998
+      ],
+      "geometry_type": "PLANE",
+      "index": 18,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 622.7151191921507,
+      "center_xyz": [
+        20.000000000016424,
+        102.64241190580863,
+        10.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 19,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 10,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        10
+      ]
+    },
+    {
+      "area_native_units_squared": 1537.4446785945536,
+      "center_xyz": [
+        -7.888609052210118e-31,
+        74.74307790208573,
+        20.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 20,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 16,
+      "wire_count": 2,
+      "wire_edge_counts": [
+        14,
+        2
+      ]
+    },
+    {
+      "area_native_units_squared": 254.21250952377994,
+      "center_xyz": [
+        4.137706102387056,
+        112.01829389748035,
+        35.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 21,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 1729.7981851013828,
+      "center_xyz": [
+        10.0,
+        69.05693323163503,
+        20.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 22,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 14,
+      "wire_count": 2,
+      "wire_edge_counts": [
+        12,
+        2
+      ]
+    },
+    {
+      "area_native_units_squared": 199.99999999999997,
+      "center_xyz": [
+        5.0,
+        80.0,
+        35.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 23,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 200.00000000000014,
+      "center_xyz": [
+        20.0,
+        90.00000000000001,
+        5.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 24,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 6,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        6
+      ]
+    },
+    {
+      "area_native_units_squared": 50.00000000000007,
+      "center_xyz": [
+        5.0,
+        90.0,
+        2.5
+      ],
+      "geometry_type": "PLANE",
+      "index": 25,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 254.21250952378006,
+      "center_xyz": [
+        4.137706102387056,
+        112.01829389748035,
+        4.999999999999998
+      ],
+      "geometry_type": "PLANE",
+      "index": 26,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 502.1059925753921,
+      "center_xyz": [
+        19.999999999996188,
+        128.853305555004,
+        7.909426705756756
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 27,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 8,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        8
+      ]
+    },
+    {
+      "area_native_units_squared": 199.99999999999997,
+      "center_xyz": [
+        5.0,
+        100.0,
+        20.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 28,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 362.2884648119749,
+      "center_xyz": [
+        20.0,
+        119.99999999999999,
+        14.999999999999998
+      ],
+      "geometry_type": "PLANE",
+      "index": 29,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 2,
+      "wire_edge_counts": [
+        2,
+        2
+      ]
+    },
+    {
+      "area_native_units_squared": 263.89378290156,
+      "center_xyz": [
+        2.5000000000000004,
+        60.00000000000111,
+        16.43492927474178
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 30,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 392.35350650682926,
+      "center_xyz": [
+        -5.0,
+        60.0,
+        20.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 31,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 2,
+      "wire_edge_counts": [
+        2,
+        2
+      ]
+    },
+    {
+      "area_native_units_squared": 263.89378290156,
+      "center_xyz": [
+        2.5,
+        59.99999999999963,
+        23.56507072525822
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 32,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 196.349540849375,
+      "center_xyz": [
+        -2.5,
+        59.99999999999753,
+        12.042252845405757
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 33,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 196.349540849375,
+      "center_xyz": [
+        -2.5,
+        60.000000000000824,
+        27.957747154594237
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 34,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 199.99999999999997,
+      "center_xyz": [
+        5.0,
+        80.0,
+        5.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 35,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 50.00000000000007,
+      "center_xyz": [
+        5.0,
+        70.0,
+        2.5000000000000004
+      ],
+      "geometry_type": "PLANE",
+      "index": 36,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 99.99999999999999,
+      "center_xyz": [
+        5.0,
+        65.0,
+        -3.681838226530004e-15
+      ],
+      "geometry_type": "PLANE",
+      "index": 37,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 628.318530718,
+      "center_xyz": [
+        5.0,
+        47.26760455264921,
+        19.999999999998685
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 38,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 99.99999999999999,
+      "center_xyz": [
+        5.0,
+        65.0,
+        40.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 39,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 49.99999999999999,
+      "center_xyz": [
+        5.0,
+        70.0,
+        37.5
+      ],
+      "geometry_type": "PLANE",
+      "index": 40,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 194.77874452258,
+      "center_xyz": [
+        20.000000000002448,
+        112.10591482264252,
+        12.5
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 41,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 292.16811678387006,
+      "center_xyz": [
+        20.000000000001226,
+        116.05295741132126,
+        7.499999999999997
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 42,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 292.16811678387006,
+      "center_xyz": [
+        19.99999999999959,
+        123.94704258867874,
+        7.499999999999997
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 43,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 292.16811678387,
+      "center_xyz": [
+        20.000000000001226,
+        116.05295741132124,
+        32.5
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 44,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 362.28846481197496,
+      "center_xyz": [
+        20.0,
+        120.0,
+        25.000000000000004
+      ],
+      "geometry_type": "PLANE",
+      "index": 45,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 2,
+      "wire_edge_counts": [
+        2,
+        2
+      ]
+    },
+    {
+      "area_native_units_squared": 194.77874452258004,
+      "center_xyz": [
+        19.999999999999183,
+        112.10591482264252,
+        27.5
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 46,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 292.16811678387,
+      "center_xyz": [
+        19.99999999999959,
+        123.94704258867874,
+        32.5
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 47,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 502.105992575392,
+      "center_xyz": [
+        19.99999999999985,
+        128.853305555004,
+        32.09057329424324
+      ],
+      "geometry_type": "CYLINDER",
+      "index": 48,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 8,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        8
+      ]
+    },
+    {
+      "area_native_units_squared": 622.7151191921511,
+      "center_xyz": [
+        20.000000000016424,
+        102.64241190580863,
+        30.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 49,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 10,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        10
+      ]
+    },
+    {
+      "area_native_units_squared": 50.00000000000007,
+      "center_xyz": [
+        35.0,
+        90.0,
+        2.5
+      ],
+      "geometry_type": "PLANE",
+      "index": 50,
+      "planar_four_straight_sides_candidate": true,
+      "unique_face_vertices": 4,
+      "wire_count": 1,
+      "wire_edge_counts": [
+        4
+      ]
+    },
+    {
+      "area_native_units_squared": 1729.7981851013828,
+      "center_xyz": [
+        30.0,
+        69.05693323163503,
+        20.0
+      ],
+      "geometry_type": "PLANE",
+      "index": 51,
+      "planar_four_straight_sides_candidate": false,
+      "unique_face_vertices": 14,
+      "wire_count": 2,
+      "wire_edge_counts": [
+        12,
+        2
+      ]
+    }
+  ],
+  "source_file": "i22o_s27.step",
+  "source_length_unit": "millimetre (STEP LENGTH_UNIT SI_UNIT .MILLI. .METRE.)",
+  "source_repo": "cgg-bern/hex-me-if-you-can",
+  "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "surface_area_native_units_squared": 20736.109412278274,
+  "surface_geom_types": {
+    "CYLINDER": 18,
+    "PLANE": 34
+  },
+  "topology_status": "NATIVE_SOURCE_BREP_INSPECTED_NO_3PLUS_TOPODS_EDGE",
+  "valid_native_cad": true,
+  "vertices": 94,
+  "volume_native_units_cubed": 65842.45509513222
+}

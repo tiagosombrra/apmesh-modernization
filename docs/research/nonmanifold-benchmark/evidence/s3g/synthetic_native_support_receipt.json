@@ -1,0 +1,116 @@
+{
+  "native_support_crosscheck": {
+    "apmesh_generation": "NOT_RUN",
+    "continuous_surface_approximation_bound": "NOT_CERTIFIED",
+    "curved_boundary_fit": "NOT_RUN",
+    "native_cylindrical_source_face_ids_checked": 1,
+    "original_cylindrical_faces": [
+      {
+        "absolute_axis_direction_sine": 0.0,
+        "axis_line_separation_mm": 0.0,
+        "native_face_index": 0,
+        "native_radius_mm": 3.0,
+        "native_trim_parameter_interval_certified": false,
+        "original_edge_anchor_count": 2,
+        "original_native_face_id_verified": true,
+        "original_radius_mm": 3.0,
+        "radius_residual_mm": 0.0,
+        "step_advanced_face_id": 17
+      }
+    ],
+    "s3f_first_ring_audit_pass": true,
+    "schema": "apmesh-s3g-native-original-cylinder-support-oracle-v1",
+    "source_model": "SYNTHETIC",
+    "source_sha256": "bba9a7b0ff363a541aa4d5e696ad8bb368d40904d3445f0d25afc98ae9b170db"
+  },
+  "source": {
+    "apmesh_tri_quad": "NOT_RUN",
+    "candidate_histogram": {
+      "SOURCE_TWO_GENERATOR_RECTANGLE_CANDIDATE": 1
+    },
+    "model": "SYNTHETIC",
+    "native_original_cad_import": "NOT_RUN",
+    "original_cylinder_bp_conversion": "NOT_RUN",
+    "original_cylindrical_face_screens": [
+      {
+        "actual_trimmed_u_interval": "NOT_DETERMINED_FROM_SOURCE_GRAPH",
+        "anchored_axis_extent_difference_mm": 0.0,
+        "anchored_original_edge_curve_ids": [
+          57,
+          114
+        ],
+        "classification": "SOURCE_TWO_GENERATOR_RECTANGLE_CANDIDATE",
+        "curved_patch_fit": "NOT_RUN",
+        "exact_original_native_brep_mapping": "NOT_RUN",
+        "exclusion_reasons": [],
+        "generator_checks": [
+          {
+            "axial_extent_mm": [
+              -4.0,
+              0.0
+            ],
+            "axis_parallel_lateral_displacement_mm": 0.0,
+            "axis_parallel_sine": 0.0,
+            "maximum_endpoint_radial_residual_mm": 0.0,
+            "source_edge_curve_id": 57,
+            "source_length_mm": 4.0,
+            "unit_radial_at_start": [
+              1.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "axial_extent_mm": [
+              -4.0,
+              0.0
+            ],
+            "axis_parallel_lateral_displacement_mm": 0.0,
+            "axis_parallel_sine": 0.0,
+            "maximum_endpoint_radial_residual_mm": 0.0,
+            "source_edge_curve_id": 114,
+            "source_length_mm": 4.0,
+            "unit_radial_at_start": [
+              -1.0,
+              -2.6806164855969998e-14,
+              0.0
+            ]
+          }
+        ],
+        "minimum_angular_separation_rad": 3.141592653589793,
+        "minor_arc_lower_bound_on_quarter_turn_segments": 2,
+        "original_anchor_count": 2,
+        "radius_mm": 3.0,
+        "source_advanced_face_id": 17,
+        "source_consistency_tolerance_mm": 1e-08,
+        "source_cylindrical_support_entity_id": 33,
+        "source_master_curve_histogram": {
+          "CIRCLE": 2,
+          "LINE": 2
+        },
+        "source_wire_count": 1,
+        "source_wire_edge_counts": [
+          4
+        ]
+      }
+    ],
+    "original_native_face_id_mapping": "NOT_RUN",
+    "original_nonmanifold_positive": "NOT_GRANTED",
+    "original_step_advanced_faces": 4,
+    "raw_step_source_distributed": false,
+    "report_sha256": "3e2b4fe8413dac04cf55a7e765fc5524aa02761d5017e4300d1b98cfd5e52d04",
+    "schema": "apmesh-s3g-original-cylindrical-generator-source-gate-v1",
+    "source_adjacent_cylinder_faces": 1,
+    "source_candidate_to_excluded_original_edges": 4,
+    "source_planar_candidate_faces": 1,
+    "source_planar_to_cylinder_generator_edges": 2,
+    "source_raw_sha256": "bba9a7b0ff363a541aa4d5e696ad8bb368d40904d3445f0d25afc98ae9b170db"
+  },
+  "source_recomputed_audit": {
+    "audit_pass": true,
+    "native_source_brep_fit": "NOT_RUN",
+    "schema": "apmesh-s3g-source-recomputed-audit-v1",
+    "source_generator_edges_verified": 2,
+    "source_rectangle_candidates": 1
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "audited_original_stl_files": 7,
+  "manifest_entries": 23,
+  "quadwild_source_genus_proved_for": [
+    58012
+  ],
+  "status": "SOURCE_ARCHIVE_PINNED_AND_SEVEN_STL_CHECKED_NO_REFERENCE_QUAD_OR_APMESH",
+  "topology_invariants": {
+    "293137": {
+      "applicable_genus": 0,
+      "closed_connected_orientable_surface_screen": "COMBINATORIAL_PASS",
+      "failed_conditions": [],
+      "interpretation": "Genus of exact-coordinate reconstructed source triangle complex, not an independent continuous geometric or CAD-topology proof",
+      "source_mesh_euler_characteristic_raw": 2
+    },
+    "37881": {
+      "applicable_genus": 1,
+      "closed_connected_orientable_surface_screen": "COMBINATORIAL_PASS",
+      "failed_conditions": [],
+      "interpretation": "Genus of exact-coordinate reconstructed source triangle complex, not an independent continuous geometric or CAD-topology proof",
+      "source_mesh_euler_characteristic_raw": 0
+    },
+    "47076": {
+      "applicable_genus": 0,
+      "closed_connected_orientable_surface_screen": "COMBINATORIAL_PASS",
+      "failed_conditions": [],
+      "interpretation": "Genus of exact-coordinate reconstructed source triangle complex, not an independent continuous geometric or CAD-topology proof",
+      "source_mesh_euler_characteristic_raw": 2
+    },
+    "550964": {
+      "applicable_genus": 4,
+      "closed_connected_orientable_surface_screen": "COMBINATORIAL_PASS",
+      "failed_conditions": [],
+      "interpretation": "Genus of exact-coordinate reconstructed source triangle complex, not an independent continuous geometric or CAD-topology proof",
+      "source_mesh_euler_characteristic_raw": -6
+    },
+    "58012": {
+      "applicable_genus": 41,
+      "closed_connected_orientable_surface_screen": "COMBINATORIAL_PASS",
+      "failed_conditions": [],
+      "interpretation": "Genus of exact-coordinate reconstructed source triangle complex, not an independent continuous geometric or CAD-topology proof",
+      "source_mesh_euler_characteristic_raw": -80
+    },
+    "61394": {
+      "applicable_genus": null,
+      "closed_connected_orientable_surface_screen": "NOT_PROVED",
+      "failed_conditions": [
+        "closed",
+        "edge_manifold",
+        "one_component",
+        "vertex_manifold",
+        "nondegenerate",
+        "nonduplicated",
+        "all_vertex_links_closed_cycles"
+      ],
+      "interpretation": "Raw Euler number is not a surface genus certificate",
+      "source_mesh_euler_characteristic_raw": -13
+    },
+    "96457": {
+      "applicable_genus": 3,
+      "closed_connected_orientable_surface_screen": "COMBINATORIAL_PASS",
+      "failed_conditions": [],
+      "interpretation": "Genus of exact-coordinate reconstructed source triangle complex, not an independent continuous geometric or CAD-topology proof",
+      "source_mesh_euler_characteristic_raw": -4
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "audit": {
+    "accepted_apmesh_mesh": "NOT_RUN",
+    "audit_pass": true,
+    "excluded_source_face_id_bindings_checked": 3,
+    "original_first_ring_edges_checked": 4,
+    "schema": "apmesh-s3f-first-ring-recomputed-audit-v1",
+    "source_to_native_full_face_geometry": "NOT_ESTABLISHED",
+    "unmapped_original_source_faces": 0
+  },
+  "candidate_faces_verified": 1,
+  "excluded_source_faces_mapped_by_edge_identity": 3,
+  "meshing": "NOT_RUN",
+  "neighbor_support_histogram": {
+    "CYLINDER": 1,
+    "PLANE": 2
+  },
+  "original_edge_anchors_verified": 4,
+  "original_m5_s40_runs": "NOT_RUN",
+  "remaining_unmapped_source_faces": 0,
+  "schema": "apmesh-s3f-local-synthetic-execution-v1",
+  "source": "AUTHOR_CONSTRUCTED_HALF_CYLINDER",
+  "source_faces": 4,
+  "source_sha256": "bba9a7b0ff363a541aa4d5e696ad8bb368d40904d3445f0d25afc98ae9b170db",
+  "test_suite": {
+    "discovered": 80,
+    "failed": 0,
+    "passed": 76,
+    "skipped_original_absent": 4
+  }
+}

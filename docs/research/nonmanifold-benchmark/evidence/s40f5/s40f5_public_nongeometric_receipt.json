@@ -1,0 +1,131 @@
+{
+  "apmesh_TRI_QUAD_executed": false,
+  "checkpoint": "2026-11-18",
+  "classification": "analytic STEP-entity-derived surrogate, not imported original STEP or admitted S3.Y atlas",
+  "continuous_original_STEP_Hausdorff_proof": false,
+  "cpp_regression_executed": false,
+  "new_source_faces_admitted_to_S3Y": 0,
+  "original_native_STEP_imported_this_checkpoint": false,
+  "originally_admitted_S3Y": {
+    "patches": 156,
+    "source_faces": 22,
+    "total_source_faces": 43
+  },
+  "private_isolated_bp_sha256": "2fd7d00234aea44aefdca4fce12f8dd8b2e9397122c366ed025c77bff714810d",
+  "private_spec_sha256": "81c50cee156de79a10883643fa75da52b1c07a528ad0f06ad256156cf1fd9e7a",
+  "production_main_changed": false,
+  "schema": "apmesh-s40f5-analytic-source-derived-bounded-nongeometric-public-receipt-v1",
+  "source_edge_curve_ids": [
+    1002,
+    1080,
+    1139,
+    1259,
+    1284,
+    1307,
+    1336,
+    1365,
+    1392,
+    1415,
+    1444,
+    1473
+  ],
+  "source_face_ids": [
+    1279,
+    1386
+  ],
+  "source_original_sha256_reference": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "standalone_indexed_bp": {
+    "global_controls": 56,
+    "internally_joined_integer_seams": 2,
+    "joined_to_parent_S3Y": false,
+    "open_original_source_edges": 12,
+    "patches": 4
+  },
+  "surrogate_measurement": [
+    {
+      "bezier_patch_count": 2,
+      "native_surrogate_area_mm2": 836.5134606232842,
+      "native_surrogate_boundary_IN_ON_samples": 408,
+      "native_surrogate_boundary_OUT_samples": 0,
+      "native_surrogate_interior_IN_samples": 450,
+      "relative_area_difference": 1.0522649000543977e-06,
+      "sampled_arc_errors": [
+        {
+          "edge": 1307,
+          "exact_radial_float_input_certificate": {
+            "continuous_float_defined_radial_support_only": true,
+            "lower_radial_bound_mm": 5.999397503552158,
+            "original_step_face_coverage_certified": false,
+            "status": "RATIONAL_FLOAT_INPUT_SUPPORT_PASS",
+            "upper_radial_bound_mm": 6.0,
+            "visited_subintervals": 1
+          },
+          "max_sampled_bp_to_curve_mm": 0.00020090881459174648,
+          "max_sampled_curve_to_bp_mm": 0.00020090881458496122
+        },
+        {
+          "edge": 1336,
+          "exact_radial_float_input_certificate": {
+            "continuous_float_defined_radial_support_only": true,
+            "lower_radial_bound_mm": 5.999397503552159,
+            "original_step_face_coverage_certified": false,
+            "status": "RATIONAL_FLOAT_INPUT_SUPPORT_PASS",
+            "upper_radial_bound_mm": 6.0,
+            "visited_subintervals": 1
+          },
+          "max_sampled_bp_to_curve_mm": 0.00020090881459096263,
+          "max_sampled_curve_to_bp_mm": 0.00020090881459118335
+        }
+      ],
+      "sampled_gauss_bp_area_mm2": 836.5125803895312,
+      "source_face_id": 1279
+    },
+    {
+      "bezier_patch_count": 2,
+      "native_surrogate_area_mm2": 836.5134606239776,
+      "native_surrogate_boundary_IN_ON_samples": 408,
+      "native_surrogate_boundary_OUT_samples": 0,
+      "native_surrogate_interior_IN_samples": 450,
+      "relative_area_difference": 1.0522649003253367e-06,
+      "sampled_arc_errors": [
+        {
+          "edge": 1415,
+          "exact_radial_float_input_certificate": {
+            "continuous_float_defined_radial_support_only": true,
+            "lower_radial_bound_mm": 5.999397503552159,
+            "original_step_face_coverage_certified": false,
+            "status": "RATIONAL_FLOAT_INPUT_SUPPORT_PASS",
+            "upper_radial_bound_mm": 6.0,
+            "visited_subintervals": 1
+          },
+          "max_sampled_bp_to_curve_mm": 0.0002009088145942449,
+          "max_sampled_curve_to_bp_mm": 0.0002009088145944656
+        },
+        {
+          "edge": 1444,
+          "exact_radial_float_input_certificate": {
+            "continuous_float_defined_radial_support_only": true,
+            "lower_radial_bound_mm": 5.999397503552158,
+            "original_step_face_coverage_certified": false,
+            "status": "RATIONAL_FLOAT_INPUT_SUPPORT_PASS",
+            "upper_radial_bound_mm": 6.0,
+            "visited_subintervals": 1
+          },
+          "max_sampled_bp_to_curve_mm": 0.00020090881459174648,
+          "max_sampled_curve_to_bp_mm": 0.00020090881458632078
+        }
+      ],
+      "sampled_gauss_bp_area_mm2": 836.5125803902243,
+      "source_face_id": 1386
+    }
+  ],
+  "tests": {
+    "hermetic_public_pass": 13,
+    "private_spec_local_pass": 20,
+    "public_package_without_private_spec": {
+      "pass": 13,
+      "skipped_classes": 1
+    },
+    "total_pass_local": 33
+  }
+}

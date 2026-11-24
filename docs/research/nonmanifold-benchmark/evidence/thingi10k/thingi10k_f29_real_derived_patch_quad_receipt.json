@@ -1,0 +1,52 @@
+{
+  "copyright_license_cleared": false,
+  "discarded_original_patch_center_nodes": 876,
+  "f28_private_stitched_tri_obj_sha256": "b93995d1319e702649574044b2167fa01fe90644b1e5e02a295f3b47cdfdc46b",
+  "input_bp_sha256": "6049d4e46cfd73e104c2b63ef34d3a8089c4f59d1f940bee8c1ec66a8f0bafb0",
+  "native_original_quad_generator_executed": false,
+  "native_tri_mesher_original_output_untouched": true,
+  "new_vertex_coordinates_added": 0,
+  "original_native_tri_obj_sha256": "145b40c2f542a9d1d18bcda6eccc01c8861be83d247418af96fa18b4c860c325",
+  "original_native_tri_run_count": 2,
+  "original_stl_sha256": "4a222346223cf2c207c34d7a3d4e8ea297b004ff862b06b6e4c7c2eeac9f761a",
+  "original_thursday_model_id": 293137,
+  "private_derived_quad_obj_sha256": "e2687802ec3314178a973282a33ffd86d71ee8aaa87eed3d4976b266000cf548",
+  "private_derived_quad_obj_size_bytes": 38834,
+  "published_source_or_derived_geometry": false,
+  "quad_quality_nontriangular_metrics": {
+    "count_max_angle_above_150_deg": 160,
+    "count_min_angle_below_10_deg": 11,
+    "count_min_angle_below_30_deg": 159,
+    "max_angle_deg": 178.82520193688052,
+    "max_quad_plane_residual": 5.88418203051333e-15,
+    "max_relative_quad_to_native_tri_patch_area_error": 1.5518608764842978e-15,
+    "mean_min_angle_deg": 45.24813505549242,
+    "mean_min_scaled_jacobian": 0.5980608228549605,
+    "min_angle_deg": 1.1052825555157129,
+    "min_scaled_jacobian": 0.019289623313662664
+  },
+  "quad_topology": {
+    "boundary_edges": 0,
+    "components": 1,
+    "edges": 1752,
+    "euler": 2,
+    "faces": 876,
+    "nonmanifold_edges": 0,
+    "singular_vertex_links": 0,
+    "vertices": 878,
+    "winding_conflicts": 0
+  },
+  "quad_total_area_full_precision": 29490.715496607303,
+  "schema": "apmesh-s40-f29-external-quad-patch-recovery-v1",
+  "scientific_reference_comparison_admitted": false,
+  "source_feature_retention": {
+    "facet_crossing_pairs": 0,
+    "original_sharp30_edges": 205,
+    "original_stl_edges": 438,
+    "sharp30_segments_retained": 410,
+    "source_edge_segments_retained": 876
+  },
+  "source_stl_cad_freeform_restored": false,
+  "source_stl_total_area_full_precision": 29490.715496607303,
+  "status": "PRIVATE_DERIVED_QUAD_PATCH_RECOVERY_VALIDATED_NOT_NATIVE_APMESH_QUAD"
+}

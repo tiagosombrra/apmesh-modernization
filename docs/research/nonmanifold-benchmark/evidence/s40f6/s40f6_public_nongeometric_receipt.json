@@ -1,0 +1,109 @@
+{
+  "acceptance_limits": {
+    "actual_S3Y_admitted_patches": 156,
+    "actual_S3Y_admitted_source_faces": 22,
+    "actual_new_original_faces_admitted": 0,
+    "continuous_trim_geometry_certificate": false,
+    "original_full_native_step_import_this_checkpoint": false,
+    "original_s3y_research_parent_joined": false,
+    "production_cpp_tri_quad_executed": false,
+    "protected_main_changed": false,
+    "source_analytic_surrogate": true
+  },
+  "checkpoint": "2026-11-18",
+  "isolated_atlas": {
+    "global_controls": 104,
+    "patches": 8,
+    "previous_f5_4_patch_index_nets_preserved": true,
+    "previous_f5_56_controls_preserved_as_values": true,
+    "source_oriented_internal_seams_opposite": true,
+    "source_registered_open_sides": 20,
+    "two_sided_indexed_seams": 6
+  },
+  "local_regression": {
+    "run_as_independent_processes": true,
+    "s40f5": {
+      "fails": 0,
+      "pass": 33,
+      "skips": 0
+    },
+    "s40f6": {
+      "fails": 0,
+      "pass": 37,
+      "skips": 0
+    }
+  },
+  "new_faces": {
+    "3269": {
+      "joined_old_F5_edge_id": 1392,
+      "native_surrogate": {
+        "absolute_area_difference": 0.0,
+        "boundary_IN_ON": 408,
+        "boundary_OUT": 0,
+        "integrated_bp_area": 1535.6917416866218,
+        "interior_IN": 450,
+        "maximum_oriented_jacobian": 1682.1048854201515,
+        "minimum_oriented_jacobian": 134.0106234354424,
+        "original_full_STEP_imported": false,
+        "sampled_only": true,
+        "surrogate_face_area": 1535.6917416866218
+      },
+      "original_source_edge_count": 5,
+      "source_edges": [
+        3273,
+        1392,
+        1057,
+        813,
+        3299
+      ],
+      "source_support": "PLANE",
+      "split_new_pending_edge": 3299
+    },
+    "3485": {
+      "joined_old_F5_edge_id": 1365,
+      "native_surrogate": {
+        "absolute_area_difference": 2.2737367544323206e-13,
+        "boundary_IN_ON": 408,
+        "boundary_OUT": 0,
+        "integrated_bp_area": 1535.691741683782,
+        "interior_IN": 450,
+        "maximum_oriented_jacobian": 1682.1048854171422,
+        "minimum_oriented_jacobian": 134.01062343527857,
+        "original_full_STEP_imported": false,
+        "sampled_only": true,
+        "surrogate_face_area": 1535.6917416837823
+      },
+      "original_source_edge_count": 5,
+      "source_edges": [
+        3489,
+        1497,
+        1030,
+        1365,
+        3515
+      ],
+      "source_support": "PLANE",
+      "split_new_pending_edge": 3489
+    }
+  },
+  "original_face_identifiers": [
+    1279,
+    1386,
+    3269,
+    3485
+  ],
+  "original_source": {
+    "original_graph_edges": 117,
+    "original_graph_faces": 43,
+    "original_three_plus_face_incidence_edge_count": 0,
+    "path": "original/i25o_s40.step",
+    "repository": "cgg-bern/hex-me-if-you-can",
+    "revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+    "sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b"
+  },
+  "private_input_hashes": {
+    "f5_bp_sha256": "2fd7d00234aea44aefdca4fce12f8dd8b2e9397122c366ed025c77bff714810d",
+    "f6_spec_sha256": "356d508c4b14f02bbc63f391e40128c41cdf0e170bfb219282594feaa792e671",
+    "four_face_isolated_bp_sha256": "72b8756c948a7a7da19c9f2a9a7099673e81a30573f19e4820abf27ba720f0a7"
+  },
+  "schema": "apmesh-s40f6-original-source-derived-four-face-island-nongeometric-v1"
+}

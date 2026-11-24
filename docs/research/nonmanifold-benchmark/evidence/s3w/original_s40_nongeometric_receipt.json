@@ -1,0 +1,122 @@
+{
+  "baseline_s3t_sha256": "988d8ed29867927f736838dde20db9efb358c0ee04a202a4f4810ae0e23aa40d",
+  "date": "2026-11-17",
+  "full_CAD_exact_reconstruction": false,
+  "one_shot_all_groups_completed": false,
+  "original_nonmanifold_positive_verified": false,
+  "original_s3v_rejected_sha256": "ba18b866fd70d25b8b9b116354c2673c0294efc6dba8e1e7dca48e8d6536070d",
+  "planar_and_native_geometry_audit": {
+    "admitted_research_patch_count": 148,
+    "apmesh_cpp_tri_quad": "NOT_RUN",
+    "changed_budget": false,
+    "classification": "PASS_BOUNDED_NATIVE_GEOMETRY_AND_INDEXED_SEAMS",
+    "continuous_trimmed_hausdorff_certified": false,
+    "dense_cylinder_spline_boundary_IN_or_ON": 1515,
+    "dense_cylinder_spline_boundary_OUT": 0,
+    "dense_planar_spline_boundary_IN_or_ON": 1515,
+    "dense_planar_spline_boundary_OUT": 0,
+    "formal_directed_rounding_interval_proof": false,
+    "full_original_s40_shell_reconstructed": false,
+    "indexed_two_sided_seams": 239,
+    "maximum_guarded_bivariate_bernstein_radial_mm": 0.0009805239541051118,
+    "maximum_native_cylinder_sampled_radial_mm": 0.000682896791547094,
+    "maximum_original_curve_distance_mm": 0.0008926686164463639,
+    "maximum_original_spline_dense_curve_distance_mm": 0.0006586476302075519,
+    "maximum_planar_support_mm": 1.035616037370346e-12,
+    "modified_cylinder_native_IN_or_ON_samples": 1815,
+    "modified_cylinder_native_OUT_samples": 0,
+    "modified_old_patch_count": 15,
+    "modified_source_control_count": 30,
+    "open_indexed_sides": 114,
+    "original_native_edge_count": 117,
+    "original_native_face_count": 43,
+    "original_native_vertex_count": 77,
+    "original_other_old_patch_nets_unchanged": 117,
+    "original_source_hole_OUT_samples": 49,
+    "original_three_plus_incidence_positive": false,
+    "pilot_budget_mm": 0.001,
+    "planar_area_results_mm2": {
+      "17": {
+        "minimum_sampled_positive_jacobian_mm2": 2.1882793260871045,
+        "original_native_face_area_mm2": 488.6571452780651,
+        "sampled_absolute_area_difference_mm2": 0.02802015995655438,
+        "sampled_integrated_bp_area_mm2": 488.62912511810856
+      },
+      "2092": {
+        "minimum_sampled_positive_jacobian_mm2": 36.26567566504726,
+        "original_native_face_area_mm2": 488.6570888556548,
+        "sampled_absolute_area_difference_mm2": 0.04520143828722212,
+        "sampled_integrated_bp_area_mm2": 488.6118874173676
+      }
+    },
+    "planar_original_boundary_IN_or_ON": 704,
+    "planar_original_boundary_OUT": 0,
+    "planar_original_interior_IN": 1296,
+    "repaired_bp_sha256": "c826487d8cee76f6649100c59e5ce84fa6cb43c9004f53c68e3e565e86cdb174",
+    "represented_original_source_faces": 21,
+    "schema": "apmesh-s3w-original-s40-native-shared-seam-audit-v1",
+    "source_derived_coordinates_publicly_committed": false,
+    "source_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+    "spline_original_edge_results": {
+      "2096": {
+        "dense_max_sampled_original_curve_distance_mm": 0.0006586476302075519,
+        "dense_original_native_curve_samples": 808,
+        "source_cubic_segments": 8,
+        "source_cylinder_face": 2457,
+        "source_planar_face": 2092
+      },
+      "85": {
+        "dense_max_sampled_original_curve_distance_mm": 0.00025678287053961023,
+        "dense_original_native_curve_samples": 707,
+        "source_cubic_segments": 7,
+        "source_cylinder_face": 1519,
+        "source_planar_face": 17
+      }
+    },
+    "unrepresented_original_source_faces": 22
+  },
+  "previously_admitted_patches_modified": [
+    64,
+    66,
+    68,
+    70,
+    72,
+    74,
+    76,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95
+  ],
+  "private_s3w_accepted_sha256": "c826487d8cee76f6649100c59e5ce84fa6cb43c9004f53c68e3e565e86cdb174",
+  "production_cpp_executed": false,
+  "schema": "apmesh-s3w-original-s40-nongeometric-public-receipt-v1",
+  "shared_control_movement_mm": 0.0011,
+  "source_derived_coordinates_in_public_repo": false,
+  "source_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "test_groups": [
+    {
+      "fail": 0,
+      "pass": 70,
+      "scope": "S3.S-S3.U",
+      "skip": 0
+    },
+    {
+      "fail": 0,
+      "pass": 30,
+      "scope": "S3.V",
+      "skip": 0
+    },
+    {
+      "fail": 0,
+      "pass": 36,
+      "scope": "S3.W",
+      "skip": 0
+    }
+  ],
+  "tri_quad_meshing_by_apmesh_executed": false
+}

@@ -1,0 +1,117 @@
+{
+  "apmesh_generated_mesh": "NOT_RUN",
+  "external_original_multisheet_admission": "NOT_GRANTED",
+  "models": {
+    "M3": {
+      "candidate_candidate": 0,
+      "candidate_distinct_edges": 40,
+      "candidate_edge_uses": 40,
+      "candidate_excluded": 40,
+      "eligible": 10,
+      "face_ids": [
+        1104,
+        3489,
+        3538,
+        3890,
+        4161,
+        4215,
+        4365,
+        4372,
+        4489,
+        4730
+      ],
+      "file": "original/i03o_m3.step",
+      "git_blob_sha1": "e472dd5b717b2fdbc7d2bd3e030a856a257d0cb3",
+      "original_faces": 60,
+      "source_open": 0
+    },
+    "M5": {
+      "candidate_candidate": 2,
+      "candidate_distinct_edges": 22,
+      "candidate_edge_uses": 24,
+      "candidate_excluded": 20,
+      "eligible": 6,
+      "face_ids": [
+        3395,
+        3444,
+        3547,
+        3878,
+        3927,
+        4026
+      ],
+      "file": "original/i05o_m5.step",
+      "git_blob_sha1": "d72e5e3cb3de9ebdec80253cfa9b57fa1b7132f7",
+      "original_faces": 41,
+      "source_open": 0
+    },
+    "S27": {
+      "candidate_candidate": 10,
+      "candidate_distinct_edges": 70,
+      "candidate_edge_uses": 80,
+      "candidate_excluded": 60,
+      "eligible": 20,
+      "face_ids": [
+        753,
+        834,
+        1227,
+        1276,
+        1325,
+        1424,
+        1473,
+        1522,
+        1815,
+        2408,
+        2749,
+        2845,
+        2872,
+        2980,
+        3297,
+        3324,
+        3351,
+        3405,
+        3432,
+        3835
+      ],
+      "file": "original/i22o_s27.step",
+      "git_blob_sha1": "48ada34a4d2fb038ff91131300c6262a9faec217",
+      "original_faces": 52,
+      "source_open": 0
+    },
+    "S40": {
+      "candidate_candidate": 2,
+      "candidate_distinct_edges": 34,
+      "candidate_edge_uses": 36,
+      "candidate_excluded": 32,
+      "eligible": 9,
+      "face_ids": [
+        1105,
+        1181,
+        1230,
+        1773,
+        1800,
+        2403,
+        2430,
+        2806,
+        3100
+      ],
+      "file": "original/i25o_s40.step",
+      "git_blob_sha1": "917ef72a0a91b8b3e7d16e8009a1b1655154174a",
+      "original_faces": 43,
+      "source_open": 0
+    }
+  },
+  "original_native_conversion_this_turn": "NOT_RUN",
+  "original_step_bytes_committed": false,
+  "rights_review": "OPEN",
+  "schema": "apmesh-s3c-original-step-graph-evidence-v1",
+  "scope": "ORIGINAL_STEP_ENTITY_INSPECTION_NO_NATIVE_CONVERSION",
+  "source_repo": "cgg-bern/hex-me-if-you-can",
+  "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "total": {
+    "candidate_candidate_shared_edges": 14,
+    "candidate_distinct_source_edges": 166,
+    "candidate_faces": 45,
+    "candidate_to_excluded_edges": 152,
+    "original_faces": 196
+  }
+}

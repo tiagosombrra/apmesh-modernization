@@ -1,0 +1,512 @@
+{
+  "apmesh_tri_quad_executed": false,
+  "classification": "PASS_BOUNDED_SAMPLED_AUDIT_NO_NEW_BP_ADMISSION",
+  "declared_global_control_count": 1619,
+  "gap": {
+    "corresponded_original_edges": 117,
+    "corresponded_original_faces": 43,
+    "corresponded_original_vertices": 77,
+    "pending_original_support_histogram": {
+      "B_SPLINE_SURFACE_WITH_KNOTS": 2,
+      "COMPLEX_RATIONAL_B_SPLINE_SURFACE": 1,
+      "CYLINDRICAL_SURFACE": 6,
+      "PLANE": 13
+    },
+    "remaining_direct_adjacency_count": 16,
+    "remaining_edge_hop_histogram": {
+      "1": 16,
+      "2": 6
+    },
+    "remaining_original_faces": 22,
+    "represented_original_face_ids": [
+      17,
+      218,
+      912,
+      1105,
+      1181,
+      1230,
+      1519,
+      1773,
+      1800,
+      1986,
+      2092,
+      2403,
+      2430,
+      2457,
+      2806,
+      2882,
+      2936,
+      2990,
+      3100,
+      3127,
+      3737
+    ],
+    "represented_original_faces": 21,
+    "source_original_three_plus_incidence_edges": 0,
+    "topology_front_candidates": [
+      1827,
+      1907,
+      3044
+    ]
+  },
+  "indexed_open_sides": 114,
+  "indexed_two_sided_seams": 239,
+  "pending_face_summary": [
+    {
+      "already_indexed_incident_original_edges": 6,
+      "inner_wire_count": 0,
+      "native_face_index": 15,
+      "original_boundary_edge_count": 6,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "CIRCLE": 4,
+        "LINE": 2
+      },
+      "partition_preflight": "CIRCULAR_BOUNDARY_APPROXIMATION_AND_QUAD_PARTITION_REQUIRED",
+      "source_advanced_face_id": 1827,
+      "source_wire_edge_counts": [
+        6
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 6,
+      "inner_wire_count": 0,
+      "native_face_index": 16,
+      "original_boundary_edge_count": 6,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "CIRCLE": 4,
+        "LINE": 2
+      },
+      "partition_preflight": "CIRCULAR_BOUNDARY_APPROXIMATION_AND_QUAD_PARTITION_REQUIRED",
+      "source_advanced_face_id": 1907,
+      "source_wire_edge_counts": [
+        6
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 6,
+      "inner_wire_count": 0,
+      "native_face_index": 29,
+      "original_boundary_edge_count": 6,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "CIRCLE": 4,
+        "LINE": 2
+      },
+      "partition_preflight": "CIRCULAR_BOUNDARY_APPROXIMATION_AND_QUAD_PARTITION_REQUIRED",
+      "source_advanced_face_id": 3044,
+      "source_wire_edge_counts": [
+        6
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 3,
+      "inner_wire_count": 0,
+      "native_face_index": 9,
+      "original_boundary_edge_count": 6,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "CIRCLE": 2,
+        "LINE": 4
+      },
+      "partition_preflight": "CIRCULAR_BOUNDARY_APPROXIMATION_AND_QUAD_PARTITION_REQUIRED",
+      "source_advanced_face_id": 1279,
+      "source_wire_edge_counts": [
+        6
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 3,
+      "inner_wire_count": 0,
+      "native_face_index": 10,
+      "original_boundary_edge_count": 6,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "CIRCLE": 2,
+        "LINE": 4
+      },
+      "partition_preflight": "CIRCULAR_BOUNDARY_APPROXIMATION_AND_QUAD_PARTITION_REQUIRED",
+      "source_advanced_face_id": 1386,
+      "source_wire_edge_counts": [
+        6
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 2,
+      "inner_wire_count": 0,
+      "native_face_index": 4,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 2,
+        "CIRCLE": 1,
+        "LINE": 1
+      },
+      "partition_preflight": "FOUR_SIDE_CURVED_BOUNDARY_APPROXIMATION_AND_SEAM_AUDIT_REQUIRED",
+      "source_advanced_face_id": 859,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 1,
+      "inner_wire_count": 0,
+      "native_face_index": 35,
+      "original_boundary_edge_count": 5,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "LINE": 5
+      },
+      "partition_preflight": "ODD_BOUNDARY_REQUIRES_SPLIT_OR_STEINER_VERTEX",
+      "source_advanced_face_id": 3269,
+      "source_wire_edge_counts": [
+        5
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 1,
+      "inner_wire_count": 0,
+      "native_face_index": 38,
+      "original_boundary_edge_count": 5,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "LINE": 5
+      },
+      "partition_preflight": "ODD_BOUNDARY_REQUIRES_SPLIT_OR_STEINER_VERTEX",
+      "source_advanced_face_id": 3485,
+      "source_wire_edge_counts": [
+        5
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 1,
+      "inner_wire_count": 0,
+      "native_face_index": 39,
+      "original_boundary_edge_count": 13,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 4,
+        "CIRCLE": 2,
+        "LINE": 7
+      },
+      "partition_preflight": "SPLINE_BOUNDARY_PARTITION_REQUIRED",
+      "source_advanced_face_id": 3535,
+      "source_wire_edge_counts": [
+        13
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 0,
+      "inner_wire_count": 0,
+      "native_face_index": 23,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 2,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "LINE": 3
+      },
+      "partition_preflight": "FOUR_SIDE_CURVED_BOUNDARY_APPROXIMATION_AND_SEAM_AUDIT_REQUIRED",
+      "source_advanced_face_id": 2469,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 0,
+      "inner_wire_count": 0,
+      "native_face_index": 32,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 2,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "LINE": 3
+      },
+      "partition_preflight": "FOUR_SIDE_CURVED_BOUNDARY_APPROXIMATION_AND_SEAM_AUDIT_REQUIRED",
+      "source_advanced_face_id": 3134,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 6,
+      "inner_wire_count": 1,
+      "native_face_index": 24,
+      "original_boundary_edge_count": 11,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "CIRCLE": 6,
+        "LINE": 4
+      },
+      "partition_preflight": "INNER_WIRE_HOLE_PRESERVING_PARTITION_REQUIRED",
+      "source_advanced_face_id": 2545,
+      "source_wire_edge_counts": [
+        5,
+        6
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 5,
+      "inner_wire_count": 1,
+      "native_face_index": 19,
+      "original_boundary_edge_count": 5,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 3,
+        "CIRCLE": 2
+      },
+      "partition_preflight": "INNER_WIRE_HOLE_PRESERVING_PARTITION_REQUIRED",
+      "source_advanced_face_id": 2243,
+      "source_wire_edge_counts": [
+        2,
+        3
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "PLANE"
+    },
+    {
+      "already_indexed_incident_original_edges": 1,
+      "inner_wire_count": 0,
+      "native_face_index": 3,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 3,
+        "LINE": 1
+      },
+      "partition_preflight": "NONPLANAR_SURFACE_RECONSTRUCTION_REQUIRED",
+      "source_advanced_face_id": 807,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "B_SPLINE_SURFACE_WITH_KNOTS"
+    },
+    {
+      "already_indexed_incident_original_edges": 1,
+      "inner_wire_count": 0,
+      "native_face_index": 11,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "LINE": 3
+      },
+      "partition_preflight": "NONPLANAR_SURFACE_RECONSTRUCTION_REQUIRED",
+      "source_advanced_face_id": 1493,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "B_SPLINE_SURFACE_WITH_KNOTS"
+    },
+    {
+      "already_indexed_incident_original_edges": 1,
+      "inner_wire_count": 0,
+      "native_face_index": 37,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "CIRCLE": 1,
+        "LINE": 2
+      },
+      "partition_preflight": "NONPLANAR_SURFACE_RECONSTRUCTION_REQUIRED",
+      "source_advanced_face_id": 3402,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "CYLINDRICAL_SURFACE"
+    },
+    {
+      "already_indexed_incident_original_edges": 1,
+      "inner_wire_count": 0,
+      "native_face_index": 41,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "CIRCLE": 1,
+        "LINE": 2
+      },
+      "partition_preflight": "NONPLANAR_SURFACE_RECONSTRUCTION_REQUIRED",
+      "source_advanced_face_id": 3710,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "CYLINDRICAL_SURFACE"
+    },
+    {
+      "already_indexed_incident_original_edges": 1,
+      "inner_wire_count": 0,
+      "native_face_index": 2,
+      "original_boundary_edge_count": 8,
+      "original_edge_hops_to_repaired_atlas": 1,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 5,
+        "LINE": 3
+      },
+      "partition_preflight": "NONPLANAR_SURFACE_RECONSTRUCTION_REQUIRED",
+      "source_advanced_face_id": 556,
+      "source_wire_edge_counts": [
+        8
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "COMPLEX_RATIONAL_B_SPLINE_SURFACE"
+    },
+    {
+      "already_indexed_incident_original_edges": 0,
+      "inner_wire_count": 0,
+      "native_face_index": 33,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 2,
+      "original_master_curve_histogram": {
+        "CIRCLE": 2,
+        "LINE": 2
+      },
+      "partition_preflight": "NONPLANAR_SURFACE_RECONSTRUCTION_REQUIRED",
+      "source_advanced_face_id": 3183,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "CYLINDRICAL_SURFACE"
+    },
+    {
+      "already_indexed_incident_original_edges": 0,
+      "inner_wire_count": 0,
+      "native_face_index": 34,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 2,
+      "original_master_curve_histogram": {
+        "CIRCLE": 2,
+        "LINE": 2
+      },
+      "partition_preflight": "NONPLANAR_SURFACE_RECONSTRUCTION_REQUIRED",
+      "source_advanced_face_id": 3237,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "CYLINDRICAL_SURFACE"
+    },
+    {
+      "already_indexed_incident_original_edges": 0,
+      "inner_wire_count": 0,
+      "native_face_index": 36,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 2,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "CIRCLE": 1,
+        "LINE": 2
+      },
+      "partition_preflight": "NONPLANAR_SURFACE_RECONSTRUCTION_REQUIRED",
+      "source_advanced_face_id": 3319,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "CYLINDRICAL_SURFACE"
+    },
+    {
+      "already_indexed_incident_original_edges": 0,
+      "inner_wire_count": 0,
+      "native_face_index": 40,
+      "original_boundary_edge_count": 4,
+      "original_edge_hops_to_repaired_atlas": 2,
+      "original_master_curve_histogram": {
+        "B_SPLINE_CURVE_WITH_KNOTS": 1,
+        "CIRCLE": 1,
+        "LINE": 2
+      },
+      "partition_preflight": "NONPLANAR_SURFACE_RECONSTRUCTION_REQUIRED",
+      "source_advanced_face_id": 3683,
+      "source_wire_edge_counts": [
+        4
+      ],
+      "status": "NOT_GENERATED_OR_ADMITTED",
+      "support_type": "CYLINDRICAL_SURFACE"
+    }
+  ],
+  "production_cpp_regression_executed": false,
+  "repaired_atlas_sha256": "c826487d8cee76f6649100c59e5ce84fa6cb43c9004f53c68e3e565e86cdb174",
+  "research_patch_count": 148,
+  "schema": "apmesh-s3x-original-s40-source-native-audit-v1",
+  "source_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "stress": {
+    "continuous_trimmed_surface_equivalence": false,
+    "corrected_spline_cylinder_trim_in_or_on": 1935,
+    "corrected_spline_out_samples": 0,
+    "corrected_spline_planar_trim_in_or_on": 1935,
+    "fixed_budget_mm": 0.001,
+    "float_guarded_remaining_margin_mm": 1.9476045894888192e-05,
+    "formal_interval_bound": false,
+    "max_float_guarded_bernstein_radial_mm": 0.0009805239541051118,
+    "max_sampled_radial_mm": 0.0006828662898534787,
+    "modified_prior_cylinder_interior_samples": 3375,
+    "modified_prior_cylinder_out_samples": 0,
+    "modified_prior_cylinder_patch_count": 15,
+    "radial_bounds_per_patch_mm": {
+      "64": 0.0009805239496624434,
+      "66": 0.0009805239541033355,
+      "68": 0.0009805239541051118,
+      "70": 0.0009805239541033355,
+      "72": 0.0009805239541033355,
+      "74": 0.0009805239541033355,
+      "76": 0.0009805239494883604,
+      "88": 0.0007174035877780821,
+      "89": 0.0007174035834402187,
+      "90": 0.0008303344179107225,
+      "91": 0.0008303344179089461,
+      "92": 0.0008303344179124988,
+      "93": 0.0008303344179089461,
+      "94": 0.0008303344179089461,
+      "95": 0.0008303344147257147
+    },
+    "sample_grid_samples_per_original_cubic_segment": 129,
+    "source_spline_seams": {
+      "2096": {
+        "original_source_cylindrical_face": 2457,
+        "original_source_planar_face": 2092,
+        "outside_trim_samples": 0,
+        "sampled_both_native_sides": 1032,
+        "source_indexed_cubic_segments": 8
+      },
+      "85": {
+        "original_source_cylindrical_face": 1519,
+        "original_source_planar_face": 17,
+        "outside_trim_samples": 0,
+        "sampled_both_native_sides": 903,
+        "source_indexed_cubic_segments": 7
+      }
+    }
+  }
+}

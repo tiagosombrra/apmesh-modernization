@@ -1,0 +1,20 @@
+{
+  "schema": "apmesh-s3z1-original-s40-hermetic-audit-v1",
+  "date": "2026-11-17",
+  "source_step_sha256_required": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "parent_s3w_bp_sha256_required": "c826487d8cee76f6649100c59e5ce84fa6cb43c9004f53c68e3e565e86cdb174",
+  "selected_s3y_bp_sha256": "af50597db4b8d7b3bcb2fc381596fefc95ba6b6e00ed169576bec7a6b7873177",
+  "admitted_patch_count_unchanged": 156,
+  "admitted_original_face_count_unchanged": 22,
+  "blocked_original_face_ids": [
+    1827,
+    1907
+  ],
+  "synthetic_unit_tests_passed": 28,
+  "synthetic_unit_tests_failed": 0,
+  "native_original_trial_executed": false,
+  "production_cpp_regression_executed": false,
+  "apmesh_tri_quad_executed": false,
+  "formal_geometric_certificate": false,
+  "local_artifact_sha256": "9e34dcb5a79ddc0f39f47a27115b5d88706ce1c07e6c9bb55d88bc69f7612df0"
+}

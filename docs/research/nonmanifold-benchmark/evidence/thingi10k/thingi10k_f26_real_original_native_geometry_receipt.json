@@ -1,0 +1,50 @@
+{
+  "artifact_contains_model_geometry": false,
+  "boundary_curves": 0,
+  "curves": 1752,
+  "date": "2026-11-23",
+  "github_actions_artifact_id": 14812772005,
+  "github_actions_artifact_retention_days": 1,
+  "github_actions_original_engine_build_run_id": 45163373559,
+  "github_actions_original_engine_build_run_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45163373559",
+  "matched_control_sides": 3504,
+  "mesher_executed": false,
+  "native_binary_sha256": "6a83395ab509e698a28f7822441b265ee9640a7258096c0b1717aa05b02e6a63",
+  "native_compiler": "GitHub ubuntu-24.04 C++17 Release, static x86_64 Linux",
+  "origin_model": "Thingi10K #293137 (author asset, original bytes private)",
+  "original_private_bp_bytes": 538482,
+  "original_private_bp_sha256": "6049d4e46cfd73e104c2b63ef34d3a8089c4f59d1f940bee8c1ec66a8f0bafb0",
+  "patch_side_incidence": 3504,
+  "patches": 876,
+  "quad_mesher_executed": false,
+  "real_native_geometry_observer_identity_verified": true,
+  "real_native_reader_file_patches_executed": true,
+  "runs": [
+    {
+      "load_ms": 286.062,
+      "parse_ms": 7.6845,
+      "peak_rss_kib": 80780,
+      "process_wall_ms": 299.667,
+      "reversed_control_sides": 0,
+      "run": 1,
+      "verify_ms": 1.23476
+    },
+    {
+      "load_ms": 288.406,
+      "parse_ms": 7.66392,
+      "peak_rss_kib": 80780,
+      "process_wall_ms": 302.671,
+      "reversed_control_sides": 0,
+      "run": 2,
+      "verify_ms": 1.2931
+    }
+  ],
+  "schema": "apmesh-s40-f26-public-numerical-native-evidence-v1",
+  "scientific_apmesh_reference_pair_admitted": false,
+  "shared_curves": 1752,
+  "source_commit_with_binary_workflow": "73e46748c294af0f390a907a11445645e279fc12",
+  "source_repo": "tiagosombrra/apmesh-modernization",
+  "status": "ORIGINAL_APMESH_NATIVE_GEOMETRY_REAL_293137_EXECUTED",
+  "tests_f26_hermetic_passed": 20,
+  "tri_mesher_executed": false
+}

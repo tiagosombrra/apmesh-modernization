@@ -1,0 +1,48 @@
+{
+  "external_library": "trimesh",
+  "external_library_version": "4.11.1",
+  "native_original_obj_sha256": "145b40c2f542a9d1d18bcda6eccc01c8861be83d247418af96fa18b4c860c325",
+  "original_native_obj": {
+    "connected_component_count": 876,
+    "euler_number": 876,
+    "faces": 3504,
+    "is_volume": false,
+    "is_watertight": false,
+    "is_winding_consistent": true,
+    "signed_volume_export_precision": 273280.0637890109,
+    "triangle_surface_area_export_precision": 29490.723809947594,
+    "vertices": 4380
+  },
+  "private_derived_obj": {
+    "connected_component_count": 1,
+    "euler_number": 2,
+    "faces": 3504,
+    "is_volume": true,
+    "is_watertight": true,
+    "is_winding_consistent": true,
+    "signed_volume_export_precision": 273280.0637890109,
+    "triangle_surface_area_export_precision": 29490.723809947594,
+    "vertices": 1754
+  },
+  "private_derived_obj_sha256": "b93995d1319e702649574044b2167fa01fe90644b1e5e02a295f3b47cdfdc46b",
+  "published_geometry": false,
+  "relative_obj_area_error_vs_original_stl": 2.8189686656833297e-07,
+  "relative_obj_volume_error_vs_original_stl": 1.0994965162950229e-07,
+  "schema": "apmesh-s40-f28-optional-trimesh-crosscheck-v1",
+  "scientific_benchmark_admitted": false,
+  "self_intersections_certified_absent": false,
+  "six_significant_digit_export_rounding_is_nonnegligible": true,
+  "source_binary_stl_sha256": "4a222346223cf2c207c34d7a3d4e8ea297b004ff862b06b6e4c7c2eeac9f761a",
+  "source_original_stl": {
+    "connected_component_count": 1,
+    "euler_number": 2,
+    "faces": 292,
+    "is_volume": true,
+    "is_watertight": true,
+    "is_winding_consistent": true,
+    "signed_volume_export_precision": 273280.0337419664,
+    "triangle_surface_area_export_precision": 29490.715496607303,
+    "vertices": 148
+  },
+  "status": "INDEPENDENT_EXTERNAL_TOPOLOGY_AND_QUANTIZATION_CHECK_PASS"
+}

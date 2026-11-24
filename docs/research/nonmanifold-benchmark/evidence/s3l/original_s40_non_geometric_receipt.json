@@ -1,0 +1,54 @@
+{
+  "admitted_planar_faces": 9,
+  "admitted_source_cylinders": [
+    2882,
+    2936,
+    2990,
+    3127
+  ],
+  "apmesh_TRI_QUAD_generation": "NOT_RUN",
+  "audit_pass": true,
+  "complex_four_S40_first_ring_cylinders": "NOT_ADMITTED",
+  "cylinder_face_count": 4,
+  "excluded_source_faces": 30,
+  "full_production_regression": "NOT_RUN",
+  "global_controls_count": 320,
+  "guarded_float_bernstein_support_bound_mm": 0.0005559491871095784,
+  "original_3d_2d_angular_closure_max_rad": 6.565903376554161e-10,
+  "original_native_UV_boundary_samples": 704,
+  "original_native_UV_interior_samples": 1296,
+  "original_source_faces": 43,
+  "original_source_native_edge_identities_verified": 8,
+  "patch_count": 25,
+  "pinned_source_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "predeclared_3d_2d_angle_closure_tolerance_rad": 1e-08,
+  "predeclared_sampled_budget_mm": 0.001,
+  "sampled_native_cylinder_projection_max_mm": 0.0005559481871054107,
+  "sampled_native_planar_distance_max_mm": 5.028317966014237e-10,
+  "schema": "apmesh-s3l-original-s40-nongeometric-experiment-summary-v1",
+  "sectors_per_cylinder": 4,
+  "shared_source_cylinder_pairs": [
+    [
+      2882,
+      3127
+    ],
+    [
+      2936,
+      2990
+    ]
+  ],
+  "shared_source_edge_ids": [
+    1161,
+    1210,
+    2810,
+    2861,
+    2916,
+    2970,
+    3022,
+    3104
+  ],
+  "source_derived_bp_and_geometry_redistributed": false,
+  "source_model": "S40",
+  "three_plus_incident_external_nonmanifold_positive": "NOT_ESTABLISHED",
+  "whole_original_model_admitted": false
+}

@@ -1,0 +1,31 @@
+{
+  "apmesh_tri_quad_generation": "NOT_RUN",
+  "classification": "AUTHOR_CONSTRUCTED_HALF_CYLINDER_NOT_EXTERNAL_CAD",
+  "curved_neighbor_patch_fit": "NOT_RUN",
+  "full_production_regression": "NOT_RUN",
+  "linear_candidate_to_excluded_interfaces": 4,
+  "local_unittest": {
+    "discovered": 67,
+    "fail": 0,
+    "pass": 64,
+    "skip_original_inputs_unavailable": 3
+  },
+  "native_faces": 4,
+  "original_mambo_native_brep": "NOT_RUN",
+  "original_neighbor_full_step_face_bijection": "NOT_ESTABLISHED",
+  "original_source_curve_audit_count": 4,
+  "original_source_curve_samples": 28,
+  "partial_bp_audited_patches": 1,
+  "partial_bp_excluded_source_faces": 3,
+  "partial_bp_max_sampled_native_distance_mm": 8.041849456791e-14,
+  "partial_bp_native_distance_budget_mm": 1e-08,
+  "planar_to_cylinder_interfaces": 2,
+  "planar_to_excluded_plane_interfaces": 2,
+  "schema": "apmesh-s3e-synthetic-native-correspondence-evidence-v1",
+  "source_faces": 4,
+  "source_feature_curve_max_sample_error_mm": 5.551115123125783e-17,
+  "source_kind": "SYNTHETIC_OCCT_STEP_EXPORT_IMPORT",
+  "source_raw_sha256": "bba9a7b0ff363a541aa4d5e696ad8bb368d40904d3445f0d25afc98ae9b170db",
+  "source_to_native_certificate_recomputed": true,
+  "unique_planar_candidate_bindings": 1
+}

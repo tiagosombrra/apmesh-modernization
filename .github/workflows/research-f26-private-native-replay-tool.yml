@@ -1,0 +1,92 @@
+name: Research F26 original native Geometry offline replay tool
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile-original-static-offline-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact original C++ sources
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify pinned production source contracts
+        run: |
+          python3 - <<'PY'
+          import sys
+          from pathlib import Path
+          root = Path.cwd()
+          sys.path.insert(0, str(root / 'docs/research/nonmanifold-benchmark/probes'))
+          import thingi10k_f25_native_geometry_runner as f25
+          f25.verify_checkout(root)
+          print('Original native source hash/checkout gate PASS')
+          PY
+      - name: Compile original static C++ engine and independent probe
+        run: |
+          cmake -S . -B "$RUNNER_TEMP/f26-static-build" \
+            -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF \
+            -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF
+          cmake --build "$RUNNER_TEMP/f26-static-build" --target ap_mesh_engine -j 2
+          mkdir -p "$RUNNER_TEMP/f26-output"
+          c++ -std=c++17 -O2 -static -static-libgcc -static-libstdc++ \
+            -I include \
+            docs/research/nonmanifold-benchmark/probes/thingi10k_f25_native_geometry_probe.cpp \
+            "$RUNNER_TEMP/f26-static-build/libap_mesh_engine.a" \
+            -pthread -o "$RUNNER_TEMP/f26-output/apmesh_f26_original_native_geometry_probe"
+          file "$RUNNER_TEMP/f26-output/apmesh_f26_original_native_geometry_probe"
+          python3 - "$RUNNER_TEMP/f26-output/apmesh_f26_original_native_geometry_probe" <<'PY'
+          from pathlib import Path
+          import subprocess
+          import sys
+          binary = Path(sys.argv[1])
+          result = subprocess.run(['ldd', str(binary)], text=True,
+                                  capture_output=True, check=False)
+          assert 'not a dynamic executable' in result.stdout + result.stderr or (
+              'statically linked' in result.stdout + result.stderr), (
+                  'Offline probe must not require host dynamic libraries')
+          print('Static-linkage gate PASS')
+          PY
+      - name: Verify original native C++ against two synthetic fixtures
+        run: |
+          python3 - "$RUNNER_TEMP/f26-output/apmesh_f26_original_native_geometry_probe" <<'PY'
+          import json
+          from pathlib import Path
+          import subprocess
+          import sys
+          import tempfile
+          root = Path.cwd()
+          sys.path.insert(0, str(root / 'docs/research/nonmanifold-benchmark/probes'))
+          import thingi10k_f25_native_geometry_runner as f25
+          binary = Path(sys.argv[1])
+          with tempfile.TemporaryDirectory() as temp:
+              for count in (1, 2):
+                  bp = Path(temp) / f'synthetic-{count}.bp'
+                  expected = f25.synthetic(bp, count)
+                  output = subprocess.run(
+                      [str(binary), str(bp), *map(str, expected)],
+                      capture_output=True, text=True, check=True, timeout=100)
+                  row = f25.parse_observation(output.stdout, expected)
+                  print(f'original C++ static native synthetic-{count}: PASS; '
+                        f'patches={row["patches"]}, curves={row["curves"]}')
+          print('Original native static offline replay synthetic gate PASS')
+          PY
+      - name: Write binary identity and provenance receipt
+        run: |
+          cd "$RUNNER_TEMP/f26-output"
+          sha256sum apmesh_f26_original_native_geometry_probe > SHA256SUMS
+          printf '%s\n' "Source branch: $GITHUB_REF_NAME" \
+            "Source commit: $GITHUB_SHA" \
+            'Input: none (public synthetic tests only)' \
+            'Binary: original APMesh ap_mesh_engine + research-only F25 observer probe' > PROVENANCE.txt
+      - name: Upload executable only, never any third-party geometry
+        uses: actions/upload-artifact@v4
+        with:
+          name: apmesh-f26-static-native-geometry-offline-replay
+          path: ${{ runner.temp }}/f26-output/
+          retention-days: 1
+          if-no-files-found: error

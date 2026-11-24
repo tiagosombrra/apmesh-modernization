@@ -1,0 +1,211 @@
+{
+  "expected_research_modules_at_least": 80,
+  "frozen_inventory_reference": "92b8af3b9e73072d1122d82ed956f75b608ea5c1",
+  "frozen_source_head": "92b8af3b9e73072d1122d82ed956f75b608ea5c1",
+  "head": null,
+  "historical_research_modules_available": 14,
+  "new_regression_test_modules": 1,
+  "private_original_model_replay_certified": false,
+  "python": "3.13.5",
+  "recovered_original_files_verified_against_frozen_git_blobs": 36,
+  "research_modules": 15,
+  "research_python_skips": 0,
+  "research_python_tests": 510,
+  "schema": "apmesh-research-regression-v1",
+  "scientific_model_admitted": false,
+  "scientific_scope": "recovered-source regression only; no new model admission",
+  "scope": "recovered",
+  "status": "BLOCKED",
+  "steps": [
+    {
+      "name": "checkout_identity_and_native_scope",
+      "reason": "Recovered subset is not a complete Git checkout",
+      "status": "BLOCKED"
+    },
+    {
+      "family": "research_python",
+      "log": "test_nonmanifold_v3_roster_gate.log",
+      "log_sha256": "a264e3777555d22de919389503af8c323c334466f61352a3e1087d900f4b9ce6",
+      "name": "test_nonmanifold_v3_roster_gate",
+      "returncode": 0,
+      "seconds": 0.966,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 32
+    },
+    {
+      "family": "research_python",
+      "log": "test_run_research_regression.log",
+      "log_sha256": "717a140801694ea0d5c0ee10c2dbc30a824c07143e3f7c96e7ec63661103ed48",
+      "name": "test_run_research_regression",
+      "returncode": 0,
+      "seconds": 0.768,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 25
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f19b_reference_handoff.log",
+      "log_sha256": "d2aa7b5d295d02174c3ddfa794fcc784b667fcd28091d4b99bf18c345f5986d6",
+      "name": "test_thingi10k_f19b_reference_handoff",
+      "returncode": 0,
+      "seconds": 0.69,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 18
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f20_model_admission.log",
+      "log_sha256": "80f11d0d2cd41f3e1df04a6ea46e81c19d39f6f3971346e4f1e99ae8737f22a9",
+      "name": "test_thingi10k_f20_model_admission",
+      "returncode": 0,
+      "seconds": 0.848,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 22
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f21_piecewise_linear_bezier.log",
+      "log_sha256": "32a9b65dc5ff0719baf4bd14bcfacbbc790b307e2ff5aa0fe285ec235bdc22af",
+      "name": "test_thingi10k_f21_piecewise_linear_bezier",
+      "returncode": 0,
+      "seconds": 0.849,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 30
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f22_original_bp_audit.log",
+      "log_sha256": "d1f2c220e04e215019e6aebb75f59c1e035956db6dbd76bdfd2e44270dd225ef",
+      "name": "test_thingi10k_f22_original_bp_audit",
+      "returncode": 0,
+      "seconds": 1.635,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 18
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f24_curve_identity_preflight.log",
+      "log_sha256": "7efdb747d4f35127264a9f7195388878b261ec576667c49e702bbc22c6deadc6",
+      "name": "test_thingi10k_f24_curve_identity_preflight",
+      "returncode": 0,
+      "seconds": 0.657,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 24
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f25_native_geometry_runner.log",
+      "log_sha256": "a75214d37f8a5812710e966fc0da1000ba19947bc296d356fb3ecd4931a6ded6",
+      "name": "test_thingi10k_f25_native_geometry_runner",
+      "returncode": 0,
+      "seconds": 2.05,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 32
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f26_private_original_geometry.log",
+      "log_sha256": "1fdf863dd195983410bd775e69083f1ebaa7f90c5c17d1b1fd53376797a523df",
+      "name": "test_thingi10k_f26_private_original_geometry",
+      "returncode": 0,
+      "seconds": 0.652,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 20
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f27_native_tri_evidence.log",
+      "log_sha256": "52c04bfcb67dcf3740c4c7df2585b7abe12cf424a5d2bc3a8693c47ac75b0971",
+      "name": "test_thingi10k_f27_native_tri_evidence",
+      "returncode": 0,
+      "seconds": 0.709,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 47
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f28_topology_aware_stitch.log",
+      "log_sha256": "b2da2b8c588c73d03f08a9a44a305a5e91a05caf13f171b3085470bee77c108a",
+      "name": "test_thingi10k_f28_topology_aware_stitch",
+      "returncode": 0,
+      "seconds": 0.838,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 47
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f29_quad_capability_and_recovery.log",
+      "log_sha256": "4fc93cefbd8985c4880bba38eca1f54e2de55318b3d308160048dc46e8a30eda",
+      "name": "test_thingi10k_f29_quad_capability_and_recovery",
+      "returncode": 0,
+      "seconds": 0.75,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 49
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f30_feature_locked_quad_center_optimizer.log",
+      "log_sha256": "09b1845c0b986c16fb291835a52cbcdd31ae64f1ecb6c09365d4ea0cda426b3b",
+      "name": "test_thingi10k_f30_feature_locked_quad_center_optimizer",
+      "returncode": 0,
+      "seconds": 0.794,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 60
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f31_real_model_readiness.log",
+      "log_sha256": "2d1a608b17869e05bae03d6e909c78e9b9e4d68f5f6d921d1206f040f527332b",
+      "name": "test_thingi10k_f31_real_model_readiness",
+      "returncode": 0,
+      "seconds": 0.701,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 31
+    },
+    {
+      "family": "research_python",
+      "log": "test_thingi10k_f31_synthetic_generalization.log",
+      "log_sha256": "49a68a5ac2b87861d2c54f451b94510a4cf127599009de57520fe2fd0b9f0f7d",
+      "name": "test_thingi10k_f31_synthetic_generalization",
+      "returncode": 0,
+      "seconds": 1.237,
+      "skips": 0,
+      "status": "PASS",
+      "tests": 55
+    },
+    {
+      "name": "native_quad_capability",
+      "reason": "Complete checkout unavailable",
+      "status": "BLOCKED"
+    },
+    {
+      "name": "historical_receipts",
+      "reason": "Complete checkout unavailable",
+      "status": "BLOCKED"
+    },
+    {
+      "name": "research_node",
+      "reason": "Complete checkout unavailable",
+      "status": "BLOCKED"
+    },
+    {
+      "name": "ctest",
+      "reason": "Complete checkout unavailable",
+      "status": "BLOCKED"
+    }
+  ]
+}

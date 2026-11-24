@@ -1,0 +1,80 @@
+{
+  "authorized_native_vertex_id_merges": 2626,
+  "derived_triangle_quality": {
+    "2r_over_R_mean_obj": 0.5942111212551515,
+    "2r_over_R_min_obj": 0.0003074899137272615,
+    "below_0_30_count": 602,
+    "below_0_30_percent": 17.180365296803654
+  },
+  "every_exported_face_and_vertex_position_preserved": true,
+  "false_alias_groups_at_exported_obj_precision": 0,
+  "full_precision_source_control_numerical_bounds": {
+    "max_corner_source_deviation": 8.881784197001252e-16,
+    "max_opposite_shared_bezier_control_disagreement": 0.0,
+    "max_shared_native_endpoint_disagreement": 1.5543122344752192e-15,
+    "validation_componentwise_tolerance": 1e-11
+  },
+  "license_cleared": false,
+  "native_accepted_tri_execution_reproducible": true,
+  "native_cli_source_modified": false,
+  "native_triangle_quality": {
+    "2r_over_R_mean_obj": 0.5942111212551515,
+    "2r_over_R_min_obj": 0.0003074899137272615,
+    "below_0_30_count": 602,
+    "below_0_30_percent": 17.180365296803654
+  },
+  "no_automatic_coordinate_welding": true,
+  "no_smoothing_or_new_vertex_positions": true,
+  "original_native_cli_sha256": "9ee068d7c0809476d37b77fb8d8bef4cbede21db5efe68ed2a3b13343b5b401f",
+  "original_native_obj_indexed": {
+    "boundary_edges": 3504,
+    "components": 876,
+    "edges": 7008,
+    "euler": 876,
+    "faces": 3504,
+    "high_incidence_edges": 0,
+    "manifold_edges": 3504,
+    "nonmanifold_vertex_links": 0,
+    "vertex_link_cycles": 876,
+    "vertex_link_paths": 3504,
+    "vertices": 4380,
+    "winding_conflicts": 0
+  },
+  "original_native_obj_sha256": "145b40c2f542a9d1d18bcda6eccc01c8861be83d247418af96fa18b4c860c325",
+  "private_derived_obj_bytes": 98801,
+  "private_derived_obj_reproducible": true,
+  "private_derived_obj_sha256": "b93995d1319e702649574044b2167fa01fe90644b1e5e02a295f3b47cdfdc46b",
+  "private_input_bp_sha256": "6049d4e46cfd73e104c2b63ef34d3a8089c4f59d1f940bee8c1ec66a8f0bafb0",
+  "published_third_party_geometry": false,
+  "quad_mesh_generated": false,
+  "schema": "apmesh-s40-f28-source-topology-stitch-v1",
+  "scientific_benchmark_admitted": false,
+  "source_curve_incidence_count": 1752,
+  "source_feature_preservation": {
+    "derived_crease_segments_at_least_30_deg": 410,
+    "max_normal_direction_residual_deg": 1.4787793334710982e-06,
+    "max_source_to_derived_dihedral_residual_deg": 2.191182651989365e-11,
+    "original_crease_edge_segments_confirmed": 876,
+    "original_stl_edges": 438,
+    "smoothing_applied": false,
+    "source_crease_endpoints_changed": 0,
+    "source_dihedral_at_least_30_deg": 205
+  },
+  "source_incidence_derived_obj_indexed": {
+    "boundary_edges": 0,
+    "components": 1,
+    "edges": 5256,
+    "euler": 2,
+    "faces": 3504,
+    "high_incidence_edges": 0,
+    "manifold_edges": 5256,
+    "nonmanifold_vertex_links": 0,
+    "vertex_link_cycles": 1754,
+    "vertex_link_paths": 0,
+    "vertices": 1754,
+    "winding_conflicts": 0
+  },
+  "source_original_stl_sha256": "4a222346223cf2c207c34d7a3d4e8ea297b004ff862b06b6e4c7c2eeac9f761a",
+  "source_topology_entity_count": 1754,
+  "status": "DERIVED_TOPOLOGY_STITCH_VALIDATED_NOT_ORIGINAL_NATIVE_EXPORT"
+}

@@ -1,0 +1,72 @@
+name: Research F27 code-only offline original TRI executable
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile-original-native-tri:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout original source revision without credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify immutable original engine source contracts
+        run: |
+          python3 - <<'PY'
+          import sys
+          from pathlib import Path
+          root = Path.cwd()
+          sys.path.insert(0, str(root / 'docs/research/nonmanifold-benchmark/probes'))
+          import thingi10k_f25_native_geometry_runner as f25
+          f25.verify_checkout(root)
+          assert (root/'src/main.cpp').is_file()
+          assert (root/'src/application/run_application.cpp').is_file()
+          print('F27 original source identity gate PASS')
+          PY
+      - name: Compile unchanged native original ap_mesh executable
+        run: |
+          cmake -S . -B "$RUNNER_TEMP/f27-compile" \
+            -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF \
+            -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF \
+            -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_STATIC_MINGW_RUNTIME=OFF
+          cmake --build "$RUNNER_TEMP/f27-compile" --target ap_mesh_engine -j 2
+          mkdir -p "$RUNNER_TEMP/f27-artifact"
+          c++ -std=c++17 -O2 -static -static-libgcc -static-libstdc++ \
+            -I include src/main.cpp \
+            "$RUNNER_TEMP/f27-compile/libap_mesh_engine.a" \
+            -pthread -o "$RUNNER_TEMP/f27-artifact/apmesh_f27_original_static_cli"
+          file "$RUNNER_TEMP/f27-artifact/apmesh_f27_original_static_cli"
+          python3 - "$RUNNER_TEMP/f27-artifact/apmesh_f27_original_static_cli" <<'PY'
+          from pathlib import Path
+          import subprocess
+          import sys
+          binary = Path(sys.argv[1])
+          assert binary.is_file() and binary.stat().st_size > 10000
+          result = subprocess.run(['ldd', str(binary)], capture_output=True, text=True)
+          assert ('not a dynamic executable' in result.stdout+result.stderr
+                  or 'statically linked' in result.stdout+result.stderr)
+          bad = subprocess.run([str(binary), '--unsupported'], capture_output=True,
+                               text=True, timeout=10)
+          assert bad.returncode != 0 and 'expected ap_mesh --config' in bad.stderr
+          print('F27 static executable and original CLI argument contract PASS')
+          PY
+      - name: Record original binary identity without third-party geometry
+        if: success()
+        run: |
+          cd "$RUNNER_TEMP/f27-artifact"
+          sha256sum apmesh_f27_original_static_cli > SHA256SUMS
+          printf 'Source repository: %s\nSource commit: %s\nBuild: original ap_mesh_engine + unchanged src/main.cpp\nNo model or configuration was provided to this CI build\n' \
+            "$GITHUB_REPOSITORY" "$GITHUB_SHA" > PROVENANCE.txt
+      - name: Export executable without model input or output
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apmesh-f27-original-tri-cli-private-offline
+          path: ${{ runner.temp }}/f27-artifact/
+          retention-days: 1
+          if-no-files-found: error

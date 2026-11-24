@@ -1,0 +1,67 @@
+{
+  "M3": {
+    "edges": 169,
+    "face_to_exact_topods_edge_incidence_histogram": {
+      "1": 10,
+      "2": 159
+    },
+    "faces": 60,
+    "planar_four_straight_edge_candidate_face_count": 10,
+    "raw_sha256": "c42862fa6bc1e94a9bb70e43a7dc9901aa5281d7b58de6ee4699494088286008",
+    "solids": 1,
+    "surface_geom_types": {
+      "CYLINDER": 26,
+      "PLANE": 34
+    },
+    "valid_native_cad": true
+  },
+  "M5": {
+    "edges": 108,
+    "face_to_exact_topods_edge_incidence_histogram": {
+      "1": 29,
+      "2": 79
+    },
+    "faces": 41,
+    "planar_four_straight_edge_candidate_face_count": 6,
+    "raw_sha256": "895f67c0669096b287077ac1bb56dad0e117cd96f78334d3129d783fd78b96cb",
+    "solids": 1,
+    "surface_geom_types": {
+      "CONE": 10,
+      "CYLINDER": 17,
+      "PLANE": 13,
+      "TORUS": 1
+    },
+    "valid_native_cad": true
+  },
+  "S27": {
+    "edges": 144,
+    "face_to_exact_topods_edge_incidence_histogram": {
+      "2": 144
+    },
+    "faces": 52,
+    "planar_four_straight_edge_candidate_face_count": 20,
+    "raw_sha256": "b4a60c43cabd3c72bf61d54a23f36e6e539ad985015d2a7c377885b5d170f8c5",
+    "solids": 1,
+    "surface_geom_types": {
+      "CYLINDER": 18,
+      "PLANE": 34
+    },
+    "valid_native_cad": true
+  },
+  "S40": {
+    "edges": 117,
+    "face_to_exact_topods_edge_incidence_histogram": {
+      "2": 117
+    },
+    "faces": 43,
+    "planar_four_straight_edge_candidate_face_count": 9,
+    "raw_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+    "solids": 1,
+    "surface_geom_types": {
+      "BSPLINE": 3,
+      "CYLINDER": 14,
+      "PLANE": 26
+    },
+    "valid_native_cad": true
+  }
+}

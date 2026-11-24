@@ -1,0 +1,549 @@
+{
+  "schema": "apmesh-s3g-independent-original-source-axis-oracle-v1",
+  "origin_repository": "cgg-bern/hex-me-if-you-can",
+  "revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "method": "Source-entity-only radial and axial residuals from pinned CYLINDRICAL_SURFACE and VERTEX_POINT records. No imported BRep.",
+  "predeclared_tolerance": "max(1e-8, 1e-9*max(1,radius_mm,edge_length_mm))",
+  "models": [
+    {
+      "model": "M5",
+      "source_file": "i05o_m5.step",
+      "source_blob_sha1": "d72e5e3cb3de9ebdec80253cfa9b57fa1b7132f7",
+      "source_cylinder_faces": 2,
+      "source_original_generator_edges": 4,
+      "source_inconsistent_original_generator_edges": 0,
+      "max_radial_endpoint_residual_mm": 1.2878587085651816e-13,
+      "max_axis_transverse_displacement_mm": 0,
+      "source_edge_records": [
+        {
+          "original_edge_curve_id": 3473,
+          "source_face_id": 3493,
+          "source_cylinder_support_id": 423,
+          "source_radius_mm": 2,
+          "edge_length_mm": 15,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 3497,
+          "source_face_id": 3493,
+          "source_cylinder_support_id": 423,
+          "source_radius_mm": 2,
+          "edge_length_mm": 15,
+          "max_radial_endpoint_residual_mm": 1.2878587085651816e-13,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 3954,
+          "source_face_id": 3976,
+          "source_cylinder_support_id": 282,
+          "source_radius_mm": 2,
+          "edge_length_mm": 15,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 3982,
+          "source_face_id": 3976,
+          "source_cylinder_support_id": 282,
+          "source_radius_mm": 2,
+          "edge_length_mm": 15,
+          "max_radial_endpoint_residual_mm": 1.2878587085651816e-13,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.5000000000000002e-8
+        }
+      ],
+      "source_invalid_records": []
+    },
+    {
+      "model": "S40",
+      "source_file": "i25o_s40.step",
+      "source_blob_sha1": "917ef72a0a91b8b3e7d16e8009a1b1655154174a",
+      "source_cylinder_faces": 8,
+      "source_original_generator_edges": 12,
+      "source_inconsistent_original_generator_edges": 0,
+      "max_radial_endpoint_residual_mm": 4.079936388734495e-11,
+      "max_axis_transverse_displacement_mm": 6.937783680882603e-11,
+      "source_edge_records": [
+        {
+          "original_edge_curve_id": 281,
+          "source_face_id": 218,
+          "source_cylinder_support_id": 45,
+          "source_radius_mm": 25,
+          "edge_length_mm": 5.999999999973397,
+          "max_radial_endpoint_residual_mm": 2.589217729109805e-11,
+          "axis_parallel_sine": 3.547532638034646e-13,
+          "axis_transverse_displacement_mm": 2.12851958281135e-12,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 303,
+          "source_face_id": 218,
+          "source_cylinder_support_id": 45,
+          "source_radius_mm": 25,
+          "edge_length_mm": 5.999999999973397,
+          "max_radial_endpoint_residual_mm": 2.589217729109805e-11,
+          "axis_parallel_sine": 3.547532638034646e-13,
+          "axis_transverse_displacement_mm": 2.12851958281135e-12,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 1548,
+          "source_face_id": 1519,
+          "source_cylinder_support_id": 137,
+          "source_radius_mm": 16,
+          "edge_length_mm": 5.999999999973397,
+          "max_radial_endpoint_residual_mm": 3.672440129776078e-11,
+          "axis_parallel_sine": 3.547532638034646e-13,
+          "axis_transverse_displacement_mm": 2.12851958281135e-12,
+          "source_consistency_tolerance_mm": 1.6e-8
+        },
+        {
+          "original_edge_curve_id": 1570,
+          "source_face_id": 1519,
+          "source_cylinder_support_id": 137,
+          "source_radius_mm": 16,
+          "edge_length_mm": 5.999999999973397,
+          "max_radial_endpoint_residual_mm": 3.672440129776078e-11,
+          "axis_parallel_sine": 3.547532638034646e-13,
+          "axis_transverse_displacement_mm": 2.12851958281135e-12,
+          "source_consistency_tolerance_mm": 1.6e-8
+        },
+        {
+          "original_edge_curve_id": 2019,
+          "source_face_id": 1986,
+          "source_cylinder_support_id": 240,
+          "source_radius_mm": 25,
+          "edge_length_mm": 6.000000000043552,
+          "max_radial_endpoint_residual_mm": 4.079936388734495e-11,
+          "axis_parallel_sine": 1.1562972801387074e-11,
+          "axis_transverse_displacement_mm": 6.937783680882603e-11,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 2071,
+          "source_face_id": 1986,
+          "source_cylinder_support_id": 240,
+          "source_radius_mm": 25,
+          "edge_length_mm": 6.000000000043552,
+          "max_radial_endpoint_residual_mm": 4.079936388734495e-11,
+          "axis_parallel_sine": 1.1562972801387074e-11,
+          "axis_transverse_displacement_mm": 6.937783680882603e-11,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 2407,
+          "source_face_id": 2457,
+          "source_cylinder_support_id": 1632,
+          "source_radius_mm": 16,
+          "edge_length_mm": 6.000000000043552,
+          "max_radial_endpoint_residual_mm": 3.444711182964966e-11,
+          "axis_parallel_sine": 1.1562972801387074e-11,
+          "axis_transverse_displacement_mm": 6.937783680882603e-11,
+          "source_consistency_tolerance_mm": 1.6e-8
+        },
+        {
+          "original_edge_curve_id": 2434,
+          "source_face_id": 2457,
+          "source_cylinder_support_id": 1632,
+          "source_radius_mm": 16,
+          "edge_length_mm": 6.000000000043552,
+          "max_radial_endpoint_residual_mm": 3.444711182964966e-11,
+          "axis_parallel_sine": 1.1562972801387074e-11,
+          "axis_transverse_displacement_mm": 6.937783680882603e-11,
+          "source_consistency_tolerance_mm": 1.6e-8
+        },
+        {
+          "original_edge_curve_id": 2861,
+          "source_face_id": 2882,
+          "source_cylinder_support_id": 2740,
+          "source_radius_mm": 9,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1e-8
+        },
+        {
+          "original_edge_curve_id": 2810,
+          "source_face_id": 2936,
+          "source_cylinder_support_id": 2683,
+          "source_radius_mm": 9,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1e-8
+        },
+        {
+          "original_edge_curve_id": 3022,
+          "source_face_id": 2990,
+          "source_cylinder_support_id": 2654,
+          "source_radius_mm": 9,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1e-8
+        },
+        {
+          "original_edge_curve_id": 3104,
+          "source_face_id": 3127,
+          "source_cylinder_support_id": 2769,
+          "source_radius_mm": 9,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1e-8
+        }
+      ],
+      "source_invalid_records": []
+    },
+    {
+      "model": "S27",
+      "source_file": "i22o_s27.step",
+      "source_blob_sha1": "48ada34a4d2fb038ff91131300c6262a9faec217",
+      "source_cylinder_faces": 4,
+      "source_original_generator_edges": 8,
+      "source_inconsistent_original_generator_edges": 0,
+      "max_radial_endpoint_residual_mm": 1.4352075083934324e-10,
+      "max_axis_transverse_displacement_mm": 0,
+      "source_edge_records": [
+        {
+          "original_edge_curve_id": 1353,
+          "source_face_id": 1374,
+          "source_cylinder_support_id": 572,
+          "source_radius_mm": 20,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2e-8
+        },
+        {
+          "original_edge_curve_id": 1403,
+          "source_face_id": 1374,
+          "source_cylinder_support_id": 572,
+          "source_radius_mm": 20,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 1.7763568394002505e-14,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2e-8
+        },
+        {
+          "original_edge_curve_id": 1844,
+          "source_face_id": 2899,
+          "source_cylinder_support_id": 1723,
+          "source_radius_mm": 12.4,
+          "edge_length_mm": 10.000000000000004,
+          "max_radial_endpoint_residual_mm": 1.4352075083934324e-10,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.2400000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 2877,
+          "source_face_id": 2899,
+          "source_cylinder_support_id": 1723,
+          "source_radius_mm": 12.4,
+          "edge_length_mm": 10.000000000000004,
+          "max_radial_endpoint_residual_mm": 1.057003373716725e-10,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.2400000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 3355,
+          "source_face_id": 3378,
+          "source_cylinder_support_id": 2171,
+          "source_radius_mm": 20,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 1.7763568394002505e-14,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2e-8
+        },
+        {
+          "original_edge_curve_id": 3382,
+          "source_face_id": 3378,
+          "source_cylinder_support_id": 2171,
+          "source_radius_mm": 20,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2e-8
+        },
+        {
+          "original_edge_curve_id": 861,
+          "source_face_id": 3741,
+          "source_cylinder_support_id": 877,
+          "source_radius_mm": 12.4,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 1.4352075083934324e-10,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.2400000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 2437,
+          "source_face_id": 3741,
+          "source_cylinder_support_id": 877,
+          "source_radius_mm": 12.4,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 1.057003373716725e-10,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.2400000000000002e-8
+        }
+      ],
+      "source_invalid_records": []
+    },
+    {
+      "model": "M3",
+      "source_file": "i03o_m3.step",
+      "source_blob_sha1": "e472dd5b717b2fdbc7d2bd3e030a856a257d0cb3",
+      "source_cylinder_faces": 15,
+      "source_original_generator_edges": 20,
+      "source_inconsistent_original_generator_edges": 0,
+      "max_radial_endpoint_residual_mm": 2.383870878475136e-12,
+      "max_axis_transverse_displacement_mm": 0,
+      "source_edge_records": [
+        {
+          "original_edge_curve_id": 236,
+          "source_face_id": 232,
+          "source_cylinder_support_id": 167,
+          "source_radius_mm": 6,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1e-8
+        },
+        {
+          "original_edge_curve_id": 1062,
+          "source_face_id": 1023,
+          "source_cylinder_support_id": 454,
+          "source_radius_mm": 12,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 1084,
+          "source_face_id": 1023,
+          "source_cylinder_support_id": 454,
+          "source_radius_mm": 12,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 2018,
+          "source_face_id": 1931,
+          "source_cylinder_support_id": 1736,
+          "source_radius_mm": 19,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 1.0054179711005418e-12,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.9e-8
+        },
+        {
+          "original_edge_curve_id": 2561,
+          "source_face_id": 2401,
+          "source_cylinder_support_id": 2206,
+          "source_radius_mm": 19,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 1.0054179711005418e-12,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.9e-8
+        },
+        {
+          "original_edge_curve_id": 2653,
+          "source_face_id": 2649,
+          "source_cylinder_support_id": 336,
+          "source_radius_mm": 25,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 2675,
+          "source_face_id": 2649,
+          "source_cylinder_support_id": 336,
+          "source_radius_mm": 25,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 3518,
+          "source_face_id": 3565,
+          "source_cylinder_support_id": 1821,
+          "source_radius_mm": 25,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 2.383870878475136e-12,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 3543,
+          "source_face_id": 3613,
+          "source_cylinder_support_id": 2364,
+          "source_radius_mm": 25,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 2.383870878475136e-12,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 3848,
+          "source_face_id": 3843,
+          "source_cylinder_support_id": 929,
+          "source_radius_mm": 12,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 3870,
+          "source_face_id": 3843,
+          "source_cylinder_support_id": 929,
+          "source_radius_mm": 12,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 1132,
+          "source_face_id": 3917,
+          "source_cylinder_support_id": 511,
+          "source_radius_mm": 6,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 3896,
+          "source_face_id": 4087,
+          "source_cylinder_support_id": 868,
+          "source_radius_mm": 6,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 4118,
+          "source_face_id": 4114,
+          "source_cylinder_support_id": 393,
+          "source_radius_mm": 3,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 4140,
+          "source_face_id": 4114,
+          "source_cylinder_support_id": 393,
+          "source_radius_mm": 3,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 4172,
+          "source_face_id": 4168,
+          "source_cylinder_support_id": 986,
+          "source_radius_mm": 3,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 4194,
+          "source_face_id": 4168,
+          "source_cylinder_support_id": 986,
+          "source_radius_mm": 3,
+          "edge_length_mm": 25,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 2.5000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 4468,
+          "source_face_id": 4442,
+          "source_cylinder_support_id": 811,
+          "source_radius_mm": 6,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1e-8
+        },
+        {
+          "original_edge_curve_id": 4543,
+          "source_face_id": 4516,
+          "source_cylinder_support_id": 106,
+          "source_radius_mm": 12,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.2000000000000002e-8
+        },
+        {
+          "original_edge_curve_id": 4495,
+          "source_face_id": 4590,
+          "source_cylinder_support_id": 754,
+          "source_radius_mm": 12,
+          "edge_length_mm": 10,
+          "max_radial_endpoint_residual_mm": 0,
+          "axis_parallel_sine": 0,
+          "axis_transverse_displacement_mm": 0,
+          "source_consistency_tolerance_mm": 1.2000000000000002e-8
+        }
+      ],
+      "source_invalid_records": []
+    }
+  ],
+  "original_step_bodies_redistributed": false,
+  "original_cad_brep_import": "NOT_RUN",
+  "original_cylinder_bp": "NOT_RUN",
+  "apmesh_generation": "NOT_RUN"
+}
