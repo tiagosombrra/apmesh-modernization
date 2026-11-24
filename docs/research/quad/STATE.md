@@ -3,7 +3,7 @@
 Updated 2026-11-24 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: qualify a reusable transition grouping with bounded rollback
+## Active: align the mixed transition trial decision before transfer
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,25 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-24 - stage and reject a native Ribbed transition candidate
+
+The [reversible trial](REVERSIBLE_TRANSITION_TRIAL_20261124.md) runs in a
+single experimental MSVC application invocation. It reproduces the 23-interval
+predecessor, selects the parent from its native front, detects a finer-size veto,
+stages a second typed mesh and proves preservation of the previous owner,
+ordered observers and OBJ bytes under forced rejection. Regional minimum angle
+goes from 6.86 to 43.44 degrees and the final regional geometric RMS decreases
+at both sampling densities. Global TRI minimum moves to 6.87 degrees. The
+configured source contracts report 54 negative controls and the reporter passes
+four focused tests. The unconfigured contract invocation exits 1. Trial code,
+native meshes and logs are local. No scientific acceptance, owner-swap fault
+test or portable generator entry is qualified.
+
+**Next:** align the experimental grouping admission rule using the archived
+positive, reversed and shape/error conflict runs. Freeze the rule before the
+second native geometry. Keep the source-compatible global curvature and
+two accepted mixed-driven epochs gates open.
 
 ### 2026-11-24 - research plan and next executable result
 

@@ -1,0 +1,663 @@
+{
+  "source_base": "94dc35a6c84899fb36eea86c1d352b0842ba3bcf",
+  "reference_reporter": "00cac0433ccc49a6a67e1bbf33755b1c9844f1b9",
+  "hashes": {
+    "ribbed.conf": "8fe1b1417a810a20ef199691e8798f988056e3f2130a2a69be9e48a2f9ae9ac1",
+    "ap_mesh.exe": "d3247fa218610bc45f8c39f8586521c4eaeaaf18f7e345b41e9f5b89e0aa87d2",
+    "source.patch": "b08c7b97fc784c27db9a7037f66c06dc5136be8fdf5be9af9abc9700f3234903",
+    "selector.py": "5ce81e5bf7f4b47fb191da138e8db07ec0a30d1e6dea1af0ea7d4f0d98f0b281",
+    "stage.py": "73c1d1cc1c24a6a0756114580fb97c537b203713509206ecc4d69d8029a30406",
+    "audit.py": "ec08b67f7724b7161b7c8808029d08c795210414c644eb11401d0263048afbca",
+    "build.stdout": "0e8a900028a17bd5e508d3bc9694fae64b7847b588bc191efad4c5f27298a120",
+    "build.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "application.stdout": "c495b680cec28805fdbc05ea165d6704255acf0c1fe011029377bf8a09a787dc",
+    "application.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-contracts.stdout": "dbd5423a710e8555fe49843d24478ba4eeaad93c77c01784683a40ecb5650281",
+    "build-contracts.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "contracts.stdout": "37a4d07e173ceedfb84901d07c2aa5ef8f42a224c91edd52620aec3d0a2d08af",
+    "contracts.stderr": "0e7ae8cdad92e49c04455c5f70200d8d596a80243a9c07b0b45a9a0655590390",
+    "configured-contracts.stdout": "71f040f4f678046e885675114279e430a74035a096e0b525d65cf56b4d1cf04d",
+    "configured-contracts.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "model_sha256": "07cd08d6258f72a140198d4d9f72360888da9486954216a467c87e949c870e10",
+  "selection": {
+    "predecessor": "eb4eaeb46a6a8d71a6cb42b786789edf468981564eb3ce5e4c41d8fb073b18eb",
+    "predecessor_front": "ae577c557c30106b1f4a1ee81ddaf17973278f3d819d0b90fa1f689495a80932",
+    "choice": {
+      "face": 586,
+      "angle": 6.862980471153714,
+      "seed_edge": [
+        [
+          0.5,
+          0.875
+        ],
+        [
+          0.53125,
+          0.875
+        ]
+      ],
+      "target_parent": [
+        0.5,
+        0.75,
+        0.625,
+        0.875
+      ],
+      "old_edge": 0.1250068660279959,
+      "desired_size_reference": 1.0382711150982065,
+      "old_ratio": 8.305712702738107,
+      "projected_pattern": "T2",
+      "projected_length": 0.2500137281901523,
+      "new_ratio": 4.152856415582633,
+      "projected_local_quad_count": 11,
+      "unchanged_short_edge": false,
+      "affected_neighbor_boxes": [
+        [
+          0.5,
+          0.625,
+          0.625,
+          0.75
+        ],
+        [
+          0.5,
+          0.875,
+          0.625,
+          1
+        ],
+        [
+          0.625,
+          0.75,
+          0.75,
+          0.875
+        ]
+      ],
+      "replaced_seed_count": 16,
+      "projected_replacement_edge": [
+        [
+          0.5,
+          0.875
+        ],
+        [
+          0.5625,
+          0.875
+        ]
+      ],
+      "protected_requests": [],
+      "disposition": "eligible"
+    },
+    "children": [
+      66,
+      67,
+      68,
+      69
+    ],
+    "region": [
+      [
+        0.5,
+        0.875
+      ],
+      [
+        0.53125,
+        0.875
+      ],
+      [
+        0.5,
+        1.0
+      ]
+    ],
+    "protection": {
+      "face": null,
+      "site": [
+        0.5625,
+        0.8125
+      ],
+      "h": 0.24346132681921745
+    },
+    "control": {
+      "face": 586,
+      "angle": 6.862980471153714,
+      "seed_edge": [
+        [
+          0.5,
+          0.875
+        ],
+        [
+          0.53125,
+          0.875
+        ]
+      ],
+      "target_parent": [
+        0.5,
+        0.75,
+        0.625,
+        0.875
+      ],
+      "old_edge": 0.1250068660279959,
+      "desired_size_reference": 1.0382711150982065,
+      "old_ratio": 8.305712702738107,
+      "projected_pattern": "T2",
+      "projected_length": 0.2500137281901523,
+      "new_ratio": 4.152856415582633,
+      "projected_local_quad_count": 11,
+      "unchanged_short_edge": false,
+      "affected_neighbor_boxes": [
+        [
+          0.5,
+          0.625,
+          0.625,
+          0.75
+        ],
+        [
+          0.5,
+          0.875,
+          0.625,
+          1
+        ],
+        [
+          0.625,
+          0.75,
+          0.75,
+          0.875
+        ]
+      ],
+      "replaced_seed_count": 16,
+      "projected_replacement_edge": [
+        [
+          0.5,
+          0.875
+        ],
+        [
+          0.5625,
+          0.875
+        ]
+      ],
+      "protected_requests": [
+        {
+          "face": null,
+          "site": [
+            0.5625,
+            0.8125
+          ],
+          "h": 0.24346132681921745
+        }
+      ],
+      "disposition": "active_smaller_size_request"
+    }
+  },
+  "commands": {
+    "build": [
+      "cmake",
+      "--build",
+      "build/quad-feedback-pilot-20261122/msvc",
+      "--target",
+      "ap_mesh",
+      "--config",
+      "Debug",
+      "--parallel",
+      "4"
+    ],
+    "application": [
+      "build/quad-reversible-trial-20261124/ap_mesh.exe",
+      "--config",
+      "build/quad-reversible-trial-20261124/ribbed.conf"
+    ],
+    "build-contracts": [
+      "cmake",
+      "--build",
+      "build/quad-feedback-pilot-20261122/msvc",
+      "--target",
+      "quad_real_boundary_source_contracts",
+      "--config",
+      "Debug",
+      "--parallel",
+      "4"
+    ],
+    "contracts": [
+      "build/quad-feedback-pilot-20261122/msvc/bin/Debug/quad_real_boundary_source_contracts.exe"
+    ],
+    "configured-contracts": [
+      "build/quad-feedback-pilot-20261122/msvc/bin/Debug/quad_real_boundary_source_contracts.exe",
+      "configs/quad/curved_patch_original_curves.conf"
+    ]
+  },
+  "results": {
+    "build": {
+      "exit": 0,
+      "seconds": 9.34203553199768,
+      "timeout": 180
+    },
+    "application": {
+      "exit": 0,
+      "seconds": 56.868974447250366,
+      "timeout": 180
+    },
+    "build-contracts": {
+      "exit": 0,
+      "seconds": 3.391268730163574,
+      "timeout": 180
+    },
+    "contracts": {
+      "exit": 1,
+      "seconds": 0.06852984428405762,
+      "timeout": 60
+    },
+    "configured-contracts": {
+      "exit": 0,
+      "seconds": 2.9916603565216064,
+      "timeout": 60
+    }
+  },
+  "contour_segments": 23,
+  "source_partition_equal": true,
+  "original_mixed_owner_preserved": true,
+  "trial_disposition": "forced_rejection_after_staging",
+  "protected_disposition": "no_action",
+  "mixed_adaptive_epochs": 0,
+  "before_smoothing": {
+    "grid": 24,
+    "region": [
+      [
+        0.5,
+        0.875
+      ],
+      [
+        0.53125,
+        0.875
+      ],
+      [
+        0.5,
+        1.0
+      ]
+    ],
+    "same_ordered_contour_edges": true,
+    "baseline": {
+      "sha256": "eb4eaeb46a6a8d71a6cb42b786789edf468981564eb3ce5e4c41d8fb073b18eb",
+      "nodes": 612,
+      "faces": 636,
+      "boundary_segments": 23,
+      "shape": {
+        "minimum_angle": 6.862980471153714,
+        "by_kind": {
+          "TRI": {
+            "count": 73,
+            "minimum_angle": 6.862980471153714,
+            "minimum_shape": 0.20122270070439505
+          },
+          "QUAD": {
+            "count": 563,
+            "minimum_angle": 26.062329924849276,
+            "minimum_shape": 0.32332895608451606
+          }
+        }
+      },
+      "regional_shape": {
+        "minimum_angle": 6.862980471153714,
+        "by_kind": {
+          "TRI": {
+            "count": 1,
+            "minimum_angle": 6.862980471153714,
+            "minimum_shape": 0.20548804724926303,
+            "uv_area_fraction": 1.0
+          },
+          "QUAD": {
+            "count": 0,
+            "minimum_angle": null,
+            "minimum_shape": null,
+            "uv_area_fraction": 0.0
+          }
+        }
+      },
+      "global_error": {
+        "sample_count": 576,
+        "max_xyz": 0.10325406187844632,
+        "rms_uv": 0.017366787679937188,
+        "rms_source_area": 0.017373075146189,
+        "tri_sites": 73,
+        "quad_sites": 503
+      },
+      "regional_error": {
+        "sample_count": 292,
+        "max_xyz": 0.03491949133942674,
+        "rms_uv": 0.02524854955048547,
+        "rms_source_area": 0.02531299621421744,
+        "tri_sites": 276,
+        "quad_sites": 16
+      },
+      "max_adjacent_size_ratio": 5.512432431473118,
+      "max_regional_adjacent_size_ratio": 5.512196503087768
+    },
+    "candidate": {
+      "sha256": "e5f2cdb91758a72791566a198357c699a88cfe048b485dff412a99af68d85edf",
+      "nodes": 598,
+      "faces": 622,
+      "boundary_segments": 23,
+      "shape": {
+        "minimum_angle": 6.867592093024094,
+        "by_kind": {
+          "TRI": {
+            "count": 73,
+            "minimum_angle": 6.867592093024094,
+            "minimum_shape": 0.20122270070439505
+          },
+          "QUAD": {
+            "count": 549,
+            "minimum_angle": 26.062329924849276,
+            "minimum_shape": 0.32332895608451606
+          }
+        }
+      },
+      "regional_shape": {
+        "minimum_angle": 43.44077822153558,
+        "by_kind": {
+          "TRI": {
+            "count": 0,
+            "minimum_angle": null,
+            "minimum_shape": null,
+            "uv_area_fraction": 0.0
+          },
+          "QUAD": {
+            "count": 1,
+            "minimum_angle": 43.44077822153558,
+            "minimum_shape": 0.6799611085434666,
+            "uv_area_fraction": 1.0
+          }
+        }
+      },
+      "global_error": {
+        "sample_count": 576,
+        "max_xyz": 0.10325406187844632,
+        "rms_uv": 0.017351224889616084,
+        "rms_source_area": 0.017357226366587514,
+        "tri_sites": 73,
+        "quad_sites": 503
+      },
+      "regional_error": {
+        "sample_count": 292,
+        "max_xyz": 0.03480166466434684,
+        "rms_uv": 0.024114354055944403,
+        "rms_source_area": 0.024177986173302524,
+        "tri_sites": 0,
+        "quad_sites": 292
+      },
+      "max_adjacent_size_ratio": 5.512432431473118,
+      "max_regional_adjacent_size_ratio": 2.7003525574407594
+    }
+  },
+  "after_smoothing": {
+    "grid": 24,
+    "region": [
+      [
+        0.5,
+        0.875
+      ],
+      [
+        0.53125,
+        0.875
+      ],
+      [
+        0.5,
+        1.0
+      ]
+    ],
+    "same_ordered_contour_edges": true,
+    "baseline": {
+      "sha256": "33b10c4a46ca90ed7134f8be09d961e98cdf8711bd344379afa94f636f4bbd3b",
+      "nodes": 612,
+      "faces": 636,
+      "boundary_segments": 23,
+      "shape": {
+        "minimum_angle": 6.862980471153714,
+        "by_kind": {
+          "TRI": {
+            "count": 73,
+            "minimum_angle": 6.862980471153714,
+            "minimum_shape": 0.20122270070439505
+          },
+          "QUAD": {
+            "count": 563,
+            "minimum_angle": 26.260140191628626,
+            "minimum_shape": 0.32332895608451606
+          }
+        }
+      },
+      "regional_shape": {
+        "minimum_angle": 6.862980471153714,
+        "by_kind": {
+          "TRI": {
+            "count": 1,
+            "minimum_angle": 6.862980471153714,
+            "minimum_shape": 0.20548804724926303,
+            "uv_area_fraction": 1.0
+          },
+          "QUAD": {
+            "count": 0,
+            "minimum_angle": null,
+            "minimum_shape": null,
+            "uv_area_fraction": 0.0
+          }
+        }
+      },
+      "global_error": {
+        "sample_count": 576,
+        "max_xyz": 0.10278111763359259,
+        "rms_uv": 0.017211208112747737,
+        "rms_source_area": 0.01722015550202955,
+        "tri_sites": 88,
+        "quad_sites": 488
+      },
+      "regional_error": {
+        "sample_count": 292,
+        "max_xyz": 0.03491949133942674,
+        "rms_uv": 0.02524854955048547,
+        "rms_source_area": 0.025312996214217443,
+        "tri_sites": 276,
+        "quad_sites": 16
+      },
+      "max_adjacent_size_ratio": 5.512432431473118,
+      "max_regional_adjacent_size_ratio": 5.512196503087768
+    },
+    "candidate": {
+      "sha256": "b5c9c84fc8ec6444793b4a8e6fbe06818d27706850dead40dd730658bfefc1fa",
+      "nodes": 598,
+      "faces": 622,
+      "boundary_segments": 23,
+      "shape": {
+        "minimum_angle": 6.867592093024094,
+        "by_kind": {
+          "TRI": {
+            "count": 73,
+            "minimum_angle": 6.867592093024094,
+            "minimum_shape": 0.20122270070439505
+          },
+          "QUAD": {
+            "count": 549,
+            "minimum_angle": 26.260140191628626,
+            "minimum_shape": 0.32332895608451606
+          }
+        }
+      },
+      "regional_shape": {
+        "minimum_angle": 43.44077822153558,
+        "by_kind": {
+          "TRI": {
+            "count": 0,
+            "minimum_angle": null,
+            "minimum_shape": null,
+            "uv_area_fraction": 0.0
+          },
+          "QUAD": {
+            "count": 2,
+            "minimum_angle": 43.44077822153558,
+            "minimum_shape": 0.6799611085434666,
+            "uv_area_fraction": 0.9999999999999982
+          }
+        }
+      },
+      "global_error": {
+        "sample_count": 576,
+        "max_xyz": 0.10278111763359259,
+        "rms_uv": 0.017192692139431486,
+        "rms_source_area": 0.017201312393314006,
+        "tri_sites": 88,
+        "quad_sites": 488
+      },
+      "regional_error": {
+        "sample_count": 292,
+        "max_xyz": 0.03477109459003122,
+        "rms_uv": 0.023536704383437863,
+        "rms_source_area": 0.02360460799247074,
+        "tri_sites": 0,
+        "quad_sites": 292
+      },
+      "max_adjacent_size_ratio": 5.512432431473118,
+      "max_regional_adjacent_size_ratio": 2.3578144926263476
+    }
+  },
+  "after_smoothing_grid48": {
+    "grid": 48,
+    "region": [
+      [
+        0.5,
+        0.875
+      ],
+      [
+        0.53125,
+        0.875
+      ],
+      [
+        0.5,
+        1.0
+      ]
+    ],
+    "same_ordered_contour_edges": true,
+    "baseline": {
+      "sha256": "33b10c4a46ca90ed7134f8be09d961e98cdf8711bd344379afa94f636f4bbd3b",
+      "nodes": 612,
+      "faces": 636,
+      "boundary_segments": 23,
+      "shape": {
+        "minimum_angle": 6.862980471153714,
+        "by_kind": {
+          "TRI": {
+            "count": 73,
+            "minimum_angle": 6.862980471153714,
+            "minimum_shape": 0.20122270070439505
+          },
+          "QUAD": {
+            "count": 563,
+            "minimum_angle": 26.260140191628626,
+            "minimum_shape": 0.32332895608451606
+          }
+        }
+      },
+      "regional_shape": {
+        "minimum_angle": 6.862980471153714,
+        "by_kind": {
+          "TRI": {
+            "count": 1,
+            "minimum_angle": 6.862980471153714,
+            "minimum_shape": 0.20548804724926303,
+            "uv_area_fraction": 1.0
+          },
+          "QUAD": {
+            "count": 0,
+            "minimum_angle": null,
+            "minimum_shape": null,
+            "uv_area_fraction": 0.0
+          }
+        }
+      },
+      "global_error": {
+        "sample_count": 2304,
+        "max_xyz": 0.10748410563240578,
+        "rms_uv": 0.017271875873508608,
+        "rms_source_area": 0.017278183608515348,
+        "tri_sites": 379,
+        "quad_sites": 1925
+      },
+      "regional_error": {
+        "sample_count": 1160,
+        "max_xyz": 0.034936027759319845,
+        "rms_uv": 0.025248164796493975,
+        "rms_source_area": 0.02531470597907865,
+        "tri_sites": 1128,
+        "quad_sites": 32
+      },
+      "max_adjacent_size_ratio": 5.512432431473118,
+      "max_regional_adjacent_size_ratio": 5.512196503087768
+    },
+    "candidate": {
+      "sha256": "b5c9c84fc8ec6444793b4a8e6fbe06818d27706850dead40dd730658bfefc1fa",
+      "nodes": 598,
+      "faces": 622,
+      "boundary_segments": 23,
+      "shape": {
+        "minimum_angle": 6.867592093024094,
+        "by_kind": {
+          "TRI": {
+            "count": 73,
+            "minimum_angle": 6.867592093024094,
+            "minimum_shape": 0.20122270070439505
+          },
+          "QUAD": {
+            "count": 549,
+            "minimum_angle": 26.260140191628626,
+            "minimum_shape": 0.32332895608451606
+          }
+        }
+      },
+      "regional_shape": {
+        "minimum_angle": 43.44077822153558,
+        "by_kind": {
+          "TRI": {
+            "count": 0,
+            "minimum_angle": null,
+            "minimum_shape": null,
+            "uv_area_fraction": 0.0
+          },
+          "QUAD": {
+            "count": 2,
+            "minimum_angle": 43.44077822153558,
+            "minimum_shape": 0.6799611085434666,
+            "uv_area_fraction": 0.9999999999999982
+          }
+        }
+      },
+      "global_error": {
+        "sample_count": 2304,
+        "max_xyz": 0.10748410563240578,
+        "rms_uv": 0.017258192481677825,
+        "rms_source_area": 0.017264173991104588,
+        "tri_sites": 380,
+        "quad_sites": 1924
+      },
+      "regional_error": {
+        "sample_count": 1160,
+        "max_xyz": 0.03486218733746125,
+        "rms_uv": 0.02354762129440549,
+        "rms_source_area": 0.023617502609395977,
+        "tri_sites": 0,
+        "quad_sites": 1160
+      },
+      "max_adjacent_size_ratio": 5.512432431473118,
+      "max_regional_adjacent_size_ratio": 2.3578144926263476
+    }
+  },
+  "identical_stage_meshes": [
+    "step_0_retry_-1_accepted_quad_tri.obj",
+    "step_0_retry_-1_accepted_tri.obj",
+    "step_1_retry_0_accepted_quad_tri.obj",
+    "step_1_retry_0_accepted_tri.obj",
+    "step_2_retry_0_accepted_tri.obj"
+  ],
+  "compiler": "MSVC 19.44.35229.0, x64 Debug, C++17",
+  "configured_contract_cases": {
+    "captures": 6,
+    "reversed_captures": 3,
+    "negative_controls": 54
+  },
+  "reporter_unit_tests": 4,
+  "validation_adapter": {
+    "environment": "required tools unavailable in default profile",
+    "iteration_plan": "baseline receipt missing in checkpoint worktree"
+  }
+}

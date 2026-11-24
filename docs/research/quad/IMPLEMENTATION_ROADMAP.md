@@ -13,9 +13,10 @@ entries below retain their original scope; no whole-stage closure follows.
 ## Current execution order - 2026-11-24
 
 Follow the [four research deliverables and their exit evidence](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions).
-Begin with a reproducible reversible native candidate, then freeze scientific
-admission, test transfer and demonstrate two distinct accepted epochs under issue
-221. Keep the TRI-only control and report both local and patch-wide effects.
+The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
+is measured locally. Freeze scientific admission next, then test transfer and
+demonstrate two distinct accepted epochs under issue 221. Keep the TRI-only
+control and report both local and patch-wide effects.
 The dated entries below document earlier decisions and measured scope.
 
 ## Execution history beginning 2026-11-19

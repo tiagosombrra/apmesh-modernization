@@ -4345,3 +4345,17 @@ now records the single active experiment, negative controls, predeclared transfe
 comparison, TRI baseline and the scientific exit. Historical evidence and unmet
 qualification gates remain available. Documentation-only audit; no native build,
 new geometry, admission formula or accepted adaptive epoch.
+
+## 2026-11-24 Fortaleza - stage and reject a native mixed transition trial
+
+Reproduce the retained Ribbed patch 12 predecessor in one MSVC application
+invocation, select grouping from its emitted front, record a finer-size veto
+and stage the physical successor. Inject rejection after staging and verify
+previous owner, ordered observers and OBJ preservation. Regional minimum
+angle 6.86 to 43.44 degrees, global TRI minimum 6.86 to 6.87, both
+sampling grids show a regional geometric RMS reduction, and the ordered
+23-interval curve agrees exactly. See the [report](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
+and its receipt for exact hashes, commands, the missing-config invocation
+and configured contract coverage. The trial code and meshes remain local.
+Checkpoint next alignment on scientific admission, then external transfer.
+No accepted mixed epochs or full validation matrix.
