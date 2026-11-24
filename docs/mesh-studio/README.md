@@ -341,6 +341,44 @@ claim a universal causal incidence effect. No new native execution,
 OCCT subset audit, runtime code, CI, main merge or scientific admission.
 Stop at preparation until prerequisite evidence is available.
 
+## Independent OCCT subset topology audit — 2026-11-24
+
+Local OCP 7.9.3.1 audit of the exact 15 prepared BP subsets, without
+executing APMesh. The original preparation ZIP SHA256 was verified
+against the preceding entry. All 15 input hashes, ordered source poles
+and all nonempty subset identities checked. Reconstructed actual
+Geom_BezierSurface faces, native BRepCheck validity, sewing tolerance
+1e-8, and TopoDS IsSame edge identity on distinct owning faces.
+For k=1 use the face directly; for k=2,3,4 nonmanifold sewing.
+Every case has k faces and 3k+1 distinct edges; incidence histogram
+{1:4} for k=1, {1:3k,k:1} otherwise. The exact central edge was
+identified by 17 samples against the analytic spine in both
+orientations. All 15 B-Reps were serialized and reopened independently,
+with the same incidence and validity results.
+
+2592 analytic surface evaluations, maximum sampled error
+9.155396550919762e-16 (screen 2e-12), maximum sampled central curve
+error before/after serialization 4.654751537338637e-17.
+These are sampled observations, not continuous error bounds.
+Two negative kernel controls passed: ordinary manifold sewing E4
+produced two distinct central edges each with incidence 2; displacement
+of P3 by 2e-5 yielded maximum incidence 3. Tampered E2_P01 BP rejected
+by SHA256. Two independent executions produced identical JSON bytes.
+
+Delivered locally: `STUDIO_Auditoria_OCCT_Incidencia_Bezier.zip`
+(20723 bytes, SHA256
+`011f4597f06395df4d2ea5fff868c11a7ff98af8e9b25409a592d5096a37cb97`),
+original preparation package, standalone Python audit, JSON receipt,
+CSV and README. JSON SHA256
+`0ad3ed1d131fb743fff7e635cbdf26559b15abf64bfbd8a81cf61906c6a29b21`.
+No archived Drive upload asserted. This closes only the prior
+OCCT-subset preparation gap; M0 remains BLOCKED and M1 NOT RUN at
+MODEL #225 revision `07ca312d01f960669b1dc09a2cb30b1aa9d03165`.
+No TRI result, new scientific admission, physical approval, CI change,
+production source modification or main merge. Next substantive native
+experiment requires M0/M1 and protocol freeze; do not create more
+Studio-only milestones while blocked.
+
 ## Priorities and handoff
 
 1. **P0 CLOSED (bounded automated scope):** documentation consolidation,
