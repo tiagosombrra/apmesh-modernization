@@ -1,6 +1,6 @@
 # Mesh Studio — canonical state, runbook and plan
 
-**2026-11-24 | Research-only V5.11 draft | P0 stabilization active.**
+**2026-11-24 | Research-only V5.11 draft | P0 bounded CI regression closed; P1 review active.**
 This is the sole current operational plan. [History](HISTORY.md) indexes dated
 science and earlier plans; [evidence registry](EVIDENCE_REGISTRY.json) records
 immutable evidence references. Do not resume old plans as live instructions.
@@ -91,9 +91,12 @@ the live work checkpoint and links the authoritative CI results.
 
 - [Full scientific regression #45363214163](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214163):
   Python discovery PASS in both OSs: Linux 609 passed / 5 skipped and Windows
-  603 passed / 11 skipped (614 enumerated each, no failures). At checkpoint,
-  fresh native C++ regression was still running; the dependent broad browser
-  suite was not yet confirmed.
+  603 passed / 11 skipped (614 enumerated each, no failures). Final result:
+  **4/4 jobs SUCCESS**. Fresh Linux serial native C++ capture, source-bound
+  Eistute/Book accepted TRI, OFF/ON numerical parity, SVG/PDF independent
+  re-audit and R2.7.24–R2.7.34 research observer controls all passed. Dependent
+  broad Chromium suite: **63 passed** (2.8 min), including actual source
+  import/performance and production build; same-run source evidence recovered.
 - [Fast web #45363214119](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214119):
   1/1 SUCCESS, 18 Chromium tests passed.
 - [Static reviewer #45363214240](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214240):
@@ -115,18 +118,25 @@ optional JSON Schema/LaTeX skips and one absent-corpus skip occur in each
 ordinary Python checkout; Windows adds six unqualified GPU/VTK controls.
 The dedicated static reviewer exercises the retained original corpus.
 
-**P0 remains OPEN.** Next: read the final native and broad browser results
-of #45363214163; investigate any failure without weakening acceptance,
-record actual test/skip counts and decide whether further repair is needed.
-No new feature or scientific proposal is admitted before that checkpoint.
-No claim of physical GPU acceptance, new native epoch or legal clearance.
+**P0 bounded automated regression CLOSED.** Final native and broad browser
+jobs were independently checked via Actions job/step results and the Python
+and Chromium logs. No failure to repair in this run. Exact skip reasons:
+two optional JSON Schema tests, two unavailable LaTeX toolchain tests and
+one original-corpus test in ordinary checkout on each OS; Windows additionally
+skips six hosted WGL/OSMesa/VTK controls. The dedicated static reviewer covers
+the original corpus; JSON Schema/LaTeX and physical GPU coverage are not
+claimed. The remote pre-update HEAD `c87f80b7290fd424ffe028cf5f95ddbd17670f98`
+is one commit ahead of the tested revision, with only this README changed.
+The registry remains the immutable initial pre-run snapshot; this section is
+the authoritative live status. No source or workflow change is required.
+P1 review may proceed; no physical GPU acceptance, new native epoch or legal clearance.
 
 ## Priorities and handoff
 
-1. **P0 ACTIVE:** consolidate docs, audit legacy workflow retirement and
-   trigger coverage, immutable action pins, run broad regression on the
-   exact candidate and investigate failures. No feature work until closure.
-2. P1: review accumulated Draft PR chain with one active target [#262](https://github.com/tiagosombrra/apmesh-modernization/pull/262).
+1. **P0 CLOSED (bounded automated scope):** documentation consolidation,
+   workflow audit and exact-candidate broad regression completed. Explicit
+   environment/physical and editorial gates remain open.
+2. **P1 ACTIVE:** review accumulated Draft PR chain with one active target [#262](https://github.com/tiagosombrra/apmesh-modernization/pull/262).
    Verify ancestry and review order; separate #253 editorial branch.
    No automatic merges or closures of predecessor PRs.
 3. P2: independent physical reviewers, #255.
