@@ -111,3 +111,11 @@
 
 - [tools/mesh_studio/README.md](https://github.com/tiagosombrra/apmesh-modernization/blob/74f80e8136c2d836acbb6e307f8c2f552ea6c3c5/tools/mesh_studio/README.md)
 - [tools/mesh_studio/web/README.md](https://github.com/tiagosombrra/apmesh-modernization/blob/74f80e8136c2d836acbb6e307f8c2f552ea6c3c5/tools/mesh_studio/web/README.md)
+
+## Retired user-facing launch workflows
+
+The dedicated V5.8–V5.10 launch lanes are superseded by the static V5.11 lane. Their exact Git definitions remain available; their Python and browser tests remain in the tree. The broad developer browser suite and the current static browser lane exercise different environments.
+
+- [mesh-studio-v58-local-smoke.yml](https://github.com/tiagosombrra/apmesh-modernization/blob/74f80e8136c2d836acbb6e307f8c2f552ea6c3c5/.github/workflows/mesh-studio-v58-local-smoke.yml)
+- [mesh-studio-v59-original-reviewer.yml](https://github.com/tiagosombrra/apmesh-modernization/blob/74f80e8136c2d836acbb6e307f8c2f552ea6c3c5/.github/workflows/mesh-studio-v59-original-reviewer.yml)
+- [mesh-studio-v510-local-security.yml](https://github.com/tiagosombrra/apmesh-modernization/blob/74f80e8136c2d836acbb6e307f8c2f552ea6c3c5/.github/workflows/mesh-studio-v510-local-security.yml)

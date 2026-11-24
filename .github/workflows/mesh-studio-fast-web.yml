@@ -2,6 +2,7 @@ name: Mesh Studio V5.4 / fast frontend and source-contract smoke
 on:
   push:
     branches:
+      - audit/mesh-studio-v511-third-party-notices-candidate-20261123
       - feature/mesh-studio-fixture-first-20261114
       - feature/mesh-studio-r27-bvh-20261116
       - feature/mesh-studio-v55-pinned-actions-20261122

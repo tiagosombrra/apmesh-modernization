@@ -2,11 +2,13 @@ name: Mesh Studio / independent contracts and browser spike
 on:
   push:
     branches:
+      - audit/mesh-studio-v511-third-party-notices-candidate-20261123
       - feature/mesh-studio-fixture-first-20261114
       - feature/mesh-studio-r27-bvh-20261116
       - feature/mesh-studio-v55-pinned-actions-20261122
     paths:
       - 'tools/mesh_studio/**'
+      - 'docs/mesh-studio/EVIDENCE_REGISTRY.json'
       # Documentation-only edits do not change Python/TS/native behavior.
       - '!tools/mesh_studio/README.md'
       - '!tools/mesh_studio/web/README.md'
@@ -183,7 +185,7 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Execute real Chromium dual-view smoke and authentic original TRI performance
         working-directory: tools/mesh_studio/web
-        run: npm run test:e2e
+        run: npm run test:e2e -- --grep-invert 'V5\.11|V5\.9'
       - name: Independently audit actual original Chromium performance receipt and source SHA
         run: python -m tools.mesh_studio.native_browser_perf_audit --report build/mesh-studio/r2722-original-chromium-performance.json --scene build/r2720-native-accepted-scene.json --budget build/mesh-studio/r2722-visual-transfer-budget.json --output build/mesh-studio/r2722-chromium-audit.json
       - name: Retain exact-source original Chromium import interaction and JS heap measurements
