@@ -1,14 +1,6 @@
 name: Research F25 original native Geometry smoke
 
 on:
-  push:
-    branches:
-      - research/benchmark-corpus-reverse-patches
-    paths:
-      - .github/workflows/research-f25-native-geometry-smoke.yml
-      - docs/research/nonmanifold-benchmark/probes/thingi10k_f25_native_geometry_probe.cpp
-      - docs/research/nonmanifold-benchmark/probes/thingi10k_f25_native_geometry_runner.py
-      - docs/research/nonmanifold-benchmark/probes/test_thingi10k_f25_native_geometry_runner.py
   workflow_dispatch:
 
 permissions:

@@ -1,11 +1,6 @@
 name: Research F27 code-only offline original TRI executable
 
 on:
-  push:
-    branches:
-      - research/benchmark-corpus-reverse-patches
-    paths:
-      - .github/workflows/research-f27-private-original-tri-cli.yml
   workflow_dispatch:
 
 permissions:

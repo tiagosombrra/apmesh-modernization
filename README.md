@@ -7,7 +7,7 @@ Scientific extensions require separate proposals aligned with the advisors.
 
 ## Start here
 
-- [Plano científico vigente — Non-manifold first v3](docs/research/nonmanifold-benchmark/PLAN_NONMANIFOLD_FIRST_V3.md): prioriza modelos 3+ folhas, registra bloqueios, separa controle manifold de caso positivo.
+- [Non-manifold research hub](docs/research/nonmanifold-benchmark/README.md): current scientific plan, model roster, acceptance gates and local regression. This separate research track does not modify the production modernization plan.
 - [Project state](docs/PROJECT_STATE.md): completed, active and next work.
 - [Full modernization plan](docs/MODERNIZATION_PLAN.md): stages 0–11 and gates.
 - [Source provenance](docs/PROVENANCE.md): exact published baseline and import.

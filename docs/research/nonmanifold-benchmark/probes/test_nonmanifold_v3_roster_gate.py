@@ -4,7 +4,6 @@ import csv
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 
 from nonmanifold_v3_roster_gate import COLUMNS, validate_roster
 
@@ -95,6 +94,61 @@ class ModelRoleGateTests(unittest.TestCase):
         self.assertIn("`NATIVE_TRI_ACCEPTED`", plan)
         self.assertIn("**Ainda nenhum caso N3 qualificado.**", plan)
 
+
+    def test_19_s40_coordinated_reclassification_is_rejected(self):
+        self.assert_rejected("S40", origin_class="N1_AUTHORED", priority="P0-1",
+                             role="PRIMARY_NONMANIFOLD_CONTROL", original_source_edge_incidence_ge3="authored",
+                             verified_multisheet_incidence="4")
+
+    def test_20_unknown_origin_rejected(self):
+        self.assert_rejected("M5", origin_class="UNREVIEWED")
+
+    def test_21_secondary_native_acceptance_needs_evidence(self):
+        self.assert_rejected("FOUR_SHEET_PLANAR", native_apmesh_tri_state="ACCEPTED")
+
+    def test_22_tsh249_native_acceptance_needs_evidence(self):
+        self.assert_rejected("TSH249_POST_SEWING", native_apmesh_tri_state="ACCEPTED")
+
+    def test_23_tsh249_cannot_promote_source_state(self):
+        self.assert_rejected("TSH249_POST_SEWING", source_geometry_state="ORIGINAL_MULTISHEET_VERIFIED")
+
+    def test_24_secondary_atlas_claim_requires_evidence(self):
+        self.assert_rejected("CROSS_JUNCTION", bezier_atlas_state="COMPLETE")
+
+    def test_25_unknown_model_rejected(self):
+        self.assert_rejected("CROSS_JUNCTION", model_id="NEW_UNVERIFIED")
+
+    def test_26_historical_role_cannot_be_promoted(self):
+        self.assert_rejected("BOOK", role="PRIMARY_NONMANIFOLD_CONTROL")
+
+    def test_27_m5_atlas_status_is_frozen(self):
+        self.assert_rejected("M5", bezier_atlas_state="COMPLETE")
+
+    def test_28_curved_source_status_is_frozen(self):
+        self.assert_rejected("FOUR_SHEET_CURVED", source_geometry_state="SOURCE_EXTERNAL")
+
+    def test_29_n3_cannot_claim_discovered_source(self):
+        self.assert_rejected("ORIGINAL_EXTERNAL_MULTISHEET", source_geometry_state="SOURCE_AUTHENTICATED")
+
+    def test_30_duplicate_primary_priority_rejected(self):
+        self.assert_rejected("FOUR_SHEET_PLANAR", priority="P0-1")
+
+    def test_31_overlong_csv_record_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "roster.csv"
+            lines = ROSTER.read_text(encoding="utf-8").splitlines()
+            lines[1] += ",unexpected"
+            path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                validate_roster(path)
+
+    def test_32_missing_secondary_model_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "roster.csv"
+            lines = ROSTER.read_text(encoding="utf-8").splitlines()
+            path.write_text("\n".join(line for line in lines if not line.startswith("T_JUNCTION,")) + "\n", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                validate_roster(path)
 
 if __name__ == "__main__":
     unittest.main()

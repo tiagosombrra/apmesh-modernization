@@ -1,12 +1,6 @@
 name: Research F26 original native Geometry offline replay tool
 
 on:
-  push:
-    branches:
-      - research/benchmark-corpus-reverse-patches
-    paths:
-      - .github/workflows/research-f26-private-native-replay-tool.yml
-      - docs/research/nonmanifold-benchmark/probes/thingi10k_f25_native_geometry_probe.cpp
   workflow_dispatch:
 
 permissions:
