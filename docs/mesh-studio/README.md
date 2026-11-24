@@ -1,34 +1,111 @@
-# Mesh Studio — current documentation and qualification index
+# Mesh Studio — canonical state, runbook and plan
 
-**Current execution plan:** [Master Plan V5 — independent audit and recovery (2026-11-20)](MASTER_PLAN_V5_AUDIT_AND_RECOVERY_20261120.md).
+**2026-11-24 | Research-only V5.11 draft | P0 stabilization active.**
+This is the sole current operational plan. [History](HISTORY.md) indexes dated
+science and earlier plans; [evidence registry](EVIDENCE_REGISTRY.json) records
+immutable evidence references. Do not resume old plans as live instructions.
 
-**Status:** research-only Studio, source-verified P1/staged Web prototype, standalone original native accepted Eistute/Book TRI viewer and source-curve audits. Not released; R2.8 scientific geometric LOD is BLOCKED. PR [#239](https://github.com/tiagosombrra/apmesh-modernization/pull/239) remains DRAFT and UNMERGED.
+## Admission status
 
-## What is certified and what remains open
+| Scope | Historical certificate | Limit |
+|---|---|---|
+| Native TRI | [45147268663](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45147268663) | Eistute 1168 faces / 4 patches, Book 4256 / 28; only global accepted step [1] each |
+| Original ten-file mirror | [45189301366](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45189301366), 2/2 | Reopens exact original bytes, not recompiled |
+| Static V5.11 | [45189641930](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45189641930), 3/3 | 36 Python + 4 Chromium per OS; seven static assets identical |
+| Actual npm/Python attribution | [45209742219](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45209742219), 4/4 | 13 browser graph packages and 13 minimal API distributions per OS |
+| Notice candidate | [45255136596](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45255136596), 2/2 | 58 files; original spark-md5 MIT alternative proven, not elected |
+| Physical acceptance | [#255](https://github.com/tiagosombrra/apmesh-modernization/issues/255) | Independent physical Windows/Linux NOT RUN |
+| Distribution | [#250](https://github.com/tiagosombrra/apmesh-modernization/issues/250) | OPEN: actual artifact and human legal approval absent; full scientific PyMuPDF profile not cleared |
+| Editorial | [#251](https://github.com/tiagosombrra/apmesh-modernization/issues/251), separate PR #253 | Adviser/venue decision pending |
+| Scientific R2.8 | Historical R2.7 reports | BLOCKED: no distinct second globally accepted original epoch, certified descendants or continuous CAD error bound; no physical welding |
 
-| Evidence | Exact-source checkpoint | Meaning / limitation |
-| --- | --- | --- |
-| V5.4 reproducible dependency locks and source-scoped fast CI | [Linux/Windows Python SHA256 locks, npm integrity and safe fast-Web split](V5_4_HASH_LOCKS_AND_FAST_WEB_RESULTS_20261122.md) | npm 141 transitives, Python API 32 per OS, native PDF 15; all exact hash locks verified; 18 source-scoped Chromium tests passed in separate FAST job, **not** native scientific qualification. |
-| V5.3 original accepted TRI journal PDF | [Source-audited two-page vector PDF and reproducible recipe](V5_3_ORIGINAL_ACCEPTED_TRI_VECTOR_PDF_RESULTS_20261122.md) | Physical **178×140 mm** Eistute and **190×160 mm** Book pages; PDF-native audit matches **5,424 original accepted TRI** and **408 original sampled source-curve markers**, no raster/implicit welding or LOD. |
-| V5.2 original accepted C++ TRI vector publication | [Real Eistute/Book source-native UV SVG and provenance](V5_2_ORIGINAL_ACCEPTED_NATIVE_TRI_VECTOR_RESULTS_20261120.md) | **1,168** Eistute and **4,256** Book original globally accepted TRI faces, per-source-patch vector SVG, original face/curve/sample identities and exact source SHA; scientifically distinct from P1, not welded LOD. |
-| V5.1 measured Web cache and vector workflow | [Cache measurements, source SVG and bounded Web UI](V5_1_SOURCE_CACHE_AND_VECTOR_STUDY_WORKSPACE_20261120.md) | 16 paired real P1/Band cold/warm source-locked measurements; separate original TRI inspector, pure UV vector export and abortable fetches. This is **product engineering**, not source-native accepted LOD. |
-| R2.7.31 original accepted gate | [Original native AFT transition study](R2_7_31_SELECTED_ORIGINAL_AFT_GATE_RESULTS_20261119.md) | 16 actually selected step-4 local returns per original and min13 process remain underresolved; they are not committed epochs |
-| R2.7.32 original pre-AFT UV | [Actual Quadtree UV source observations](R2_7_32_ORIGINAL_SELECTED_PREAFT_UV_RESULTS_20261119.md) | Selected local Quadtree UV input, not post-AFT selected TRI |
-| R2.7.33 actual post-AFT selected TRI | [Native selected TRI result](R2_7_33_ORIGINAL_SELECTED_POST_AFT_TRI_RESULTS_20261119.md) | 16 selected local native Adapter-return TRI meshes per role, exact unwrapped scientific parity, not globally accepted |
-| R2.7.34 original shared curves and fan | [Real native curve-object and discrete seam diagnostics](R2_7_34_ORIGINAL_CURVE_IDENTITY_AND_PROVISIONAL_SEAM_RESULTS_20261120.md) | 13 actual original source curve groups; 48/48 matched discrete seam XYZ vertex sets across 2 Eistute process configurations, **not** physical welded ownership or LOD |
-| R2.8 | [V5 admission gate](MASTER_PLAN_V5_AUDIT_AND_RECOVERY_20261120.md) | BLOCKED: no same-process two accepted original TRI epochs, no certified descendants and continuous geometric error |
-| Product and CI | [V5 register, IDs V5-01 to V5-22](MASTER_PLAN_V5_AUDIT_AND_RECOVERY_20261120.md) | Focus on usable Study Workspace, journal figure, stable locks, physical performance and reviewable PR slices |
+These certificates concern their own revisions, not today's revision. Read
+current CI separately; pending or skipped required checks never mean PASS.
+Certified static inventory SHA256:
+`ad6c4627090a335c0ed7e3bf1bae0c0d062ed1e48249f120b10f3ba8ff8a85f5`.
 
-## Scientific figure editorial review
+## Supported local review
 
-- [V5.4 actual original Eistute/Book PDF figure readability and adviser review checklist](V5_4_ARTICLE_FIGURE_REVIEW_CHECKLIST_20261122.md). Actual physical-size audit found the Book 28-panel figure's smallest text at **4.90 pt** (Eistute **6.67 pt**). The figures remain technically source-audited vector outputs but **are not yet independently approved as publication-ready figures**. An unchanged original 28-patch overview and a separately source-certified larger-font split/representative format are recommended for adviser review; no professor sign-off is claimed.
-- [V5.4 hash-lock and source-safe CI result](V5_4_HASH_LOCKS_AND_FAST_WEB_RESULTS_20261122.md) is engineering evidence only; it does not change original acceptance.
+Python 3.13, Node 22, npm 10. From repository root (Windows: substitute
+`py -3.13` for `python3.13`):
 
-## Reproducible research tools
+```sh
+python3.13 -m tools.mesh_studio.local_reviewer_launcher build
+python3.13 -m tools.mesh_studio.local_reviewer_launcher preflight
+python3.13 -m tools.mesh_studio.local_reviewer_launcher serve
+```
 
-- The Web research prototype is in [web/](../../tools/mesh_studio/web/); its [README](../../tools/mesh_studio/web/README.md) explains the pinned local Python API and Vite developer launch. The default XYZ picker remains native VTK; experimental BVH variants require explicit opt-in.
-- The headless Python analysis, importer, metrics, comparison, experimental publication and synthetic fixtures are described in [Studio tools README](../../tools/mesh_studio/README.md).
-- The source-native R2.7.34 original scientific raw ZIP is [GitHub Actions artifact #14617478144](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44712215877/artifacts/14617478144), with independently checked ZIP SHA-256 `3fc7ddad5476dccb8bbe1e59bbdf0dbf4f8c5fbb649a99e61d7f0142128205ae`. The full raw file also has byte-identical retention in the personal doctoral Drive; private Drive URLs and secrets are not published here.
-- Older [Master Plan V4](MASTER_PLAN_V4_20261114.md) and [architecture audit 2026-11-15](AUDIT_PRODUCT_ARCHITECTURE_20261115.md) are **historical date-scoped evidence** and should not supersede V5 as the current project plan.
+Open http://127.0.0.1:8765/. Stop Vite on 5173 first. Loopback only; do not
+expose raw ASGI or development Vite to the network. Minimal server uses
+hash-locked dependencies, separate from scientific/PDF/VTK tooling.
 
-**Review gate:** no new original scientific acceptance changes, default-on experimental picker, main merge, public release or LOD promotion without independent original-source, product and reviewer authorization.
+For original-source review extract the verified ten-file corpus into
+`build/v59-native-reviewer/`, install Chromium with
+`npm exec playwright install chromium` in the web directory (Linux may
+need --with-deps), then from root:
+
+```sh
+python3.13 -m tools.mesh_studio.v59_reviewer preflight
+python3.13 -m tools.mesh_studio.local_reviewer_launcher original-smoke
+```
+
+For physical acceptance use the privately archived R2 reviewer kit, its
+pinned checkout and exact source corpus; retain reviewer attestation,
+13 controls, screenshots, OS/GPU evidence. Hosted CI is not human approval.
+See [original protocol](V5_11_STATIC_SINGLE_PORT_REVIEW_PROTOCOL_20261123.md).
+
+## Architecture and regression
+
+Python inspection, topology, metrics and publication: tools/mesh_studio.
+React/TypeScript/vtk.js UI: tools/mesh_studio/web. VTK is the default picker;
+experimental BVH and synthetic stress remain opt-in. Keep source UV and XYZ
+identity distinct. Native observers and discrete seam evidence are not
+welding, scientific LOD or new accepted meshes. C++ scientific changes are
+separate; read [QUAD state](../research/quad/STATE.md) for that research line.
+
+| Workflow | Scope |
+|---|---|
+| mesh-studio-validation.yml | Complete Python research suite on both OSs, fresh native serial capture and broad browser suite |
+| mesh-studio-fast-web.yml | Developer frontend smoke and contracts |
+| mesh-studio-v511-built-reviewer.yml | Static original-source Windows/Linux review, security negatives, cross-OS bytes |
+| mesh-studio-v511-installed-license-audit.yml | Installed sources and actual bundle attribution |
+| mesh-studio-v511-notice-candidate.yml | Regenerate/reopen proposed notices from certified source |
+| mesh-studio-v511-cpp-evidence-continuity.yml | Explicit original-corpus renewal |
+| mesh-studio-v56-sbom.yml / v561-installed-license.yml | Wider scientific dependency inventory |
+| mesh-studio-lock-bootstrap.yml | Intentional lock regeneration |
+| R2.4/R2.5/R2.6 500k diagnostics | Optional synthetic stress, not native science |
+
+Local baseline: `python -m tools.mesh_studio.dependency_lock_audit`;
+`python -m unittest discover -s tools/mesh_studio -p 'test_*.py' -t . -v`
+with platform-specific full research hash lock (Linux VTK may need Xvfb).
+In web: `npm ci --no-audit --no-fund`, `npm run test:contracts`,
+`npm run build`. Broad developer browser tests require same-run native
+artifacts; static reviewer tests use the independent historical corpus.
+Never weaken negatives, invent fixtures or silently drop required coverage.
+
+## Priorities and handoff
+
+1. **P0 ACTIVE:** consolidate docs, audit legacy workflow retirement and
+   trigger coverage, immutable action pins, run broad regression on the
+   exact candidate and investigate failures. No feature work until closure.
+2. P1: review accumulated Draft PR chain with one active target [#262](https://github.com/tiagosombrra/apmesh-modernization/pull/262).
+   Verify ancestry and review order; separate #253 editorial branch.
+   No automatic merges or closures of predecessor PRs.
+3. P2: independent physical reviewers, #255.
+4. P3: specific distribution decision and legal review, #250. No release.
+5. P4: return to scientific priorities: genuine non-manifold models, complete
+   patches, original native accepted/rejected results, separate QUAD/TRI
+   experiments and adviser-aligned metrics. Studio is supporting tooling,
+   not a substitute for this research. R2.8 remains blocked.
+6. Parallel external gates: editorial #251; renew ten-file mirror and
+   license evidence before expiry, #260 (target 2027-02-10).
+
+Maintain only this operational plan. At each meaningful session verify
+remote SHA and concurrent changes; update current status and the owning
+issue with exact tested revision, runs, failures, skips and next action.
+Historical preregistrations, results (including rejected trials), figures,
+schemas, tests and original provenance remain preserved. Archive obsolete
+instructions by immutable Git link; do not create another version or
+instrumentation-only milestone. No private Drive URLs in public records.
+No main merge, release, tag, installer, legal clearance or scientific
+acceptance without the required authorization and evidence.

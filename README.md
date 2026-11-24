@@ -16,6 +16,10 @@ separately from the modernization plan. They record what is **implemented**,
 **actually tested**, **pending** and **blocked**. A connected agent must
 update and commit the checkpoint at the end of each meaningful research session.
 
+## Mesh Studio
+
+[Canonical research reviewer runbook and current plan](docs/mesh-studio/README.md). Candidate only; no release or new scientific admission.
+
 ## Start here
 
 - [Project state](docs/PROJECT_STATE.md): completed, active and next work.

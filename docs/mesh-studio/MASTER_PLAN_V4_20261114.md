@@ -1,5 +1,7 @@
 # APMesh Mesh Studio — Master Plan V4: scientific viewer, metrics, method stories and publications
 
+> **ARCHIVED PLAN — superseded operationally 2026-11-24.** Follow the [canonical current runbook](README.md). This dated plan is preserved as historical evidence.
+
 **Date:** 2026-11-14. **Research repository:** tiagosombrra/apmesh-modernization. **Isolated Studio branch source head:** 1a3345fbb28244a677751f5e6531407ca0524568. **Source QUAD head at audit:** 3beec583fd4b95717d62716d819dd4cd81b02239. **Frozen production main:** f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94.
 
 **Status:** architecturally audited implementation plan, not a working Studio application or certified viewer regression. New application code, GUI, vector publication and real imported P1 outputs remain OPEN. The existing synthetic archive was independently rerun twice outside this Git branch and has NOT been installed or committed to Studio.
