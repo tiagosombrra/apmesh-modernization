@@ -9,10 +9,20 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
 WORKFLOWS = {
-    ".github/workflows/mesh-studio-validation.yml": 41,
     ".github/workflows/mesh-studio-fast-web.yml": 4,
     ".github/workflows/mesh-studio-lock-bootstrap.yml": 6,
+    ".github/workflows/mesh-studio-r24-500k-stress.yml": 4,
+    ".github/workflows/mesh-studio-r25-500k-interaction.yml": 4,
+    ".github/workflows/mesh-studio-r26-500k.yml": 4,
+    ".github/workflows/mesh-studio-v511-built-reviewer.yml": 10,
+    ".github/workflows/mesh-studio-v511-cpp-evidence-continuity.yml": 12,
+    ".github/workflows/mesh-studio-v511-installed-license-audit.yml": 14,
+    ".github/workflows/mesh-studio-v511-notice-candidate.yml": 11,
+    ".github/workflows/mesh-studio-v56-sbom.yml": 3,
+    ".github/workflows/mesh-studio-v561-installed-license.yml": 7,
+    ".github/workflows/mesh-studio-validation.yml": 41,
 }
+
 APPROVED_ACTIONS = {
     "actions/checkout": "11d5960a326750d5838078e36cf38b85af677262",
     "actions/setup-python": "a26af69be951a213d495a4c3e4e4022e16d87065",
@@ -47,11 +57,13 @@ def inspect_action_pins(source: str) -> Counter[str]:
 
 class StudioV55ActionPinTests(unittest.TestCase):
     def test_actual_workflows_pin_every_action_to_verified_commit(self):
+        actual_paths = {p.relative_to(ROOT).as_posix() for p in
+                        (ROOT / ".github/workflows").glob("mesh-studio-*.yml")}
+        self.assertEqual(actual_paths, set(WORKFLOWS))
         for relative_path, expected_uses in WORKFLOWS.items():
             with self.subTest(workflow=relative_path):
                 actual = (ROOT / relative_path).read_text(encoding="utf-8")
                 self.assertEqual(sum(inspect_action_pins(actual).values()), expected_uses)
-                self.assertIn("feature/mesh-studio-v55-pinned-actions-20261122", actual)
 
     def test_mutable_action_tags_and_branches_are_rejected(self):
         for ref in ("actions/checkout@v4", "actions/checkout@main",

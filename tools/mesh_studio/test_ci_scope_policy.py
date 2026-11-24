@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import unittest
 
@@ -56,6 +57,30 @@ class StudioCiScopePolicyTests(unittest.TestCase):
             self.source)
         self.assertIn("  workflow_dispatch:", self.source)
         self.assertIn("  native-lineage-optin:", self.source)
+
+    def test_active_review_branch_and_evidence_sources_are_covered(self):
+        registry = json.loads((ROOT / "docs/mesh-studio/EVIDENCE_REGISTRY.json")
+                              .read_text(encoding="utf-8"))
+        branch = registry["current_review_branch"]
+        for name in ("mesh-studio-validation.yml", "mesh-studio-fast-web.yml",
+                     "mesh-studio-v511-built-reviewer.yml",
+                     "mesh-studio-v511-installed-license-audit.yml",
+                     "mesh-studio-v511-notice-candidate.yml"):
+            with self.subTest(workflow=name):
+                source = (ROOT / ".github/workflows" / name).read_text(
+                    encoding="utf-8")
+                self.assertIn(f"      - {branch}", source)
+        reviewer = (ROOT / ".github/workflows/mesh-studio-v511-built-reviewer.yml"
+                    ).read_text(encoding="utf-8")
+        notice = (ROOT / ".github/workflows/mesh-studio-v511-notice-candidate.yml"
+                  ).read_text(encoding="utf-8")
+        mirror = registry["original_native"]["mirror"]
+        self.assertIn(str(mirror["run"]), reviewer)
+        self.assertIn(mirror["commit"], reviewer)
+        self.assertIn(str(registry["license_sources"]["run"]), notice)
+        self.assertIn(registry["license_sources"]["commit"], notice)
+        self.assertFalse(registry["open_gates"]["r28_qualified"])
+        self.assertFalse(registry["notice_candidate"]["spark_md5_license_elected"])
 
     def test_original_native_audits_and_wrapper_are_not_casually_removed(self):
         for anchor in (
