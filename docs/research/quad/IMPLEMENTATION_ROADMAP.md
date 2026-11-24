@@ -161,9 +161,12 @@ requests and rejects an unchanged Bezier interface. The
 [native Ribbed comparisons](RIBBED_AUTOMATIC_TEMPLATE_GROUP_TRIALS_20261123.md)
 apply one new automatically chosen parent in each reconstruction.
 They repair both thin TRI at one contour vertex and reduce mesh
-size. Qualify a reusable opt-in regional selector with bounded
-rollback and broader geometry coverage before adoption. The live
-entry still accepts only one patch.
+size. The [regional plan audit](TRANSITION_REGIONAL_COMPARISON_AUDIT_20261124.md)
+adds a fixed-region reporting draft and verifies the need for
+separate shape/error decisions. Next exercise a native reversible
+candidate with these measurements, align the trial decision rule
+and broaden native coverage before adoption. The live entry still
+accepts only one patch.
 Mixed error and accepted epochs remain separate. Keep PR243 draft.
 Further jet variants, initialization changes and mixed-global
 aggregation remain separate scientific decisions.

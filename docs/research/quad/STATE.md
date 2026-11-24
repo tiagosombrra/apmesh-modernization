@@ -1,6 +1,6 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-23 Fortaleza. Canonical branch: `quad-templates`.
+Updated 2026-11-24 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 ## Active: qualify a reusable transition grouping with bounded rollback
@@ -11,6 +11,28 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-24 - audit the plan and add fixed-region comparison
+
+The [audit](TRANSITION_REGIONAL_COMPARISON_AUDIT_20261124.md) identifies
+regional quality/error as a missing input for trial rollback. Draft
+[PR 263](https://github.com/tiagosombrra/apmesh-modernization/pull/263)
+at 00cac043 adds read-only TRI/QUAD shape, physical error, gradation
+and contour comparison on a fixed UV region and whole patch. Four
+focused tests, 17 reporting regressions and eight exact old-grid
+comparisons pass. Six archived comparisons reproduce. Ribbed's
+two-group regional angle rises from 6.86 to 43.44 degrees, and RMS
+falls 0.025402 to 0.023821. A single arc split decreases regional
+RMS but lowers its minimum angle. The archived Bezier two-block
+case improves the region while retaining the same worst global angle.
+
+**Next:** exercise a reversible native experimental candidate with
+these regional and global measurements and explicit alignment on
+the rule for resolving shape/error trade-offs before publication.
+Then run a fresh second geometry and protected fine-size control.
+No new native reconstruction or rollback exercised. No mixed
+epochs accepted or mixed-global curvature established. PR247's
+four checks concern its adjacency scope.
 
 ### 2026-11-23 - execute two successive automatic Ribbed selections
 

@@ -4315,3 +4315,20 @@ degrees. See the [native comparisons](RIBBED_AUTOMATIC_TEMPLATE_GROUP_TRIALS_202
 Next package regional quality and bounded rollback as a reusable
 opt-in trial and validate a broader control set. No automatic
 mixed acceptance, estimator adoption or full validation matrix.
+
+## 2026-11-24 Fortaleza - audit the transition plan and implement a regional comparator
+
+The researcher requests a plan audit and continuation. Verify remote main,
+quad-templates, open PRs and the two independent mixed research branches.
+Find a common-region validation gap before rollback. Draft PR 263 adds
+read-only regional/global comparison at fixed analytic UV sites. Run four
+focused and 17 existing Python tests on exact head 00cac043, the eight
+reports with identical old global grid values, and six retained mesh
+comparisons. The [audit](TRANSITION_REGIONAL_COMPARISON_AUDIT_20261124.md)
+records a Ribbed shape/error trade-off and a positive Bezier regional
+reference with an unchanged global minimum. Preserve the original
+wrong test diagnostic and whitespace check, both corrected.
+
+Proceed to a reversible native candidate using these measurements.
+Align the experimental decision for a regional shape/error trade-off.
+Fresh native cross-model qualification and mixed acceptance remain pending.
