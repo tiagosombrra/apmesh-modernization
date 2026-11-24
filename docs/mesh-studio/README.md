@@ -185,6 +185,36 @@ Use the existing static V5.11 launcher protocol above, not the superseded
 V5.8 dev-server path in the original issue. Do not create another
 instrumentation or version milestone while waiting for external evidence.
 
+## P2 handoff verification — 2026-11-24
+
+**Physical acceptance still NOT RUN.** The original R2 kit is specified in
+[issue #255](https://github.com/tiagosombrra/apmesh-modernization/issues/255#issuecomment-7102250713):
+it requires the clean exact historical checkout
+`4f361d9b1e754c1e128ae74a42eb4173822bcaf6`, not today's #262 HEAD.
+Its documented ZIP SHA256 is
+`1ae3490d11a89ac09a50a40236954cb61a7e5b9bf9c3df6ebecda658cd82ede6`
+(806931 bytes). Do not bypass the kit revision guard. The current search
+could not re-locate the kit in the accessible archive; prior reported
+archive verification is historical, not a new byte verification.
+No missing-file deletion is inferred.
+
+For an independently reproducible manual review fallback, the GitHub
+[ten-file source mirror](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45189301366/artifacts/14825221229)
+and [chain-of-custody receipt](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45189301366/artifacts/14823419997)
+were confirmed unexpired by artifact metadata (expire 2027-02-21
+13:58:48 UTC). The mirror ZIP is a distinct packaging of the ten source
+files, not the private kit or its nested ZIP; authenticate the extracted
+files with the pinned `v59_reviewer preflight` and the receipt, never
+substitute a ZIP SHA. Extract only the ten expected files into
+`build/v59-native-reviewer/`, follow the supported build/preflight/
+original-smoke/serve sequence and V5.11 protocol, check the certified
+seven-asset inventory SHA above. Record actual checkout SHA and
+independent per-OS reviewer evidence; manual fallback is not a new kit
+certificate. The current #262 snapshot is 40 commits ahead of the R2
+checkout with no commits behind; this is not permission to mix their
+attestation records. No physical approval, release or new scientific
+result was inferred.
+
 ## Priorities and handoff
 
 1. **P0 CLOSED (bounded automated scope):** documentation consolidation,
