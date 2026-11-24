@@ -256,6 +256,56 @@ substitute analytic samples for native observations or infer welding
 from coincident positions. No new instrumentation-only version,
 scientific LOD, distribution or main merge.
 
+## Historical native curve-count audit — 2026-11-24
+
+Read-only analysis addressing the isolated versus shared curve question.
+MODEL #225 remains at `07ca312d01f960669b1dc09a2cb30b1aa9d03165`,
+M0 full regression blocked and M1 NOT RUN. Reopened actual original
+accepted Eistute/Book step-1 NDJSON from
+[run #45363214163 / artifact #14906480102](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214163/artifacts/14906480102),
+implementation `9977f2a88b199bbed39fd9583cbb58737a4db638`.
+ZIP SHA256 `21742b5c40cd3116335f0431250e44b7340488a59d761608b2e5eb1955469774`;
+expires 2026-12-01. NDJSON SHA256 verified against CI logs and audit
+receipts; stderr hashes also checked. Independent Python standard-library
+analysis recovers original TRI edges by UV side, canonical reversal,
+native patch/node IDs and complete ordered chains. Count from the
+recorded last source endpoint index + 1 is independently cross-checked
+against actual boundary nodes. Isolated means incidence one, not a
+separate generation of the same curve.
+
+| Model | Isolated curves / points each | Shared curves / points each | Shared patch-local nodes / segments |
+| --- | --- | --- | --- |
+| Eistute | 12 / 11 | 1 / 11 (4 patches) | 44 / 40 |
+| Book | 84 / 9 | 1 / 13 (28 patches) | 364 / 336 |
+
+98 distinct curves, 128 complete patch-side chains with source counts
+matching, 384 pair comparisons. For the shared source curve slot 3 in
+both models, maximum paired canonical t and XYZ differences are exactly
+zero in the serialized observations, yet 0/6 Eistute and 0/378 Book
+pairs match every logical node ID: the canonical t=0 endpoint has
+4 and 28 different IDs respectively, all other samples share one
+logical ID within each fan. This agrees with R2.7.15/16/21 logs and does
+not prove physical welding. Book's shared curve has 4 additional
+points (44.44% relative to 9), Eistute has none. One shared curve per
+model, different geometry/configuration; no causal incidence effect
+established. The future controlled comparison must keep the same
+curve geometry, discretization configuration and tolerance while
+varying incidence, with explicit accepted/rejected evidence.
+
+Reproduction package delivered in conversation:
+`STUDIO_Auditoria_Curvas_Nativas_Eistute_Book.zip`, SHA256
+`30727364b6a66c30c15727fad5d59dc4e0f740457dfd22926960c4521e913b6e`.
+Includes original source ZIP, four CSV tables, JSON receipt, Python
+script and README. Repeated computation produced byte-identical 5/5
+CSV/JSON outputs; tampered NDJSON rejected; synthetic side reversal
+and duplicated-edge rejection checked. No new native compile,
+full-regression replay, physical acceptance, new version or source
+change. Package is delivered locally, not asserted to be on Drive or
+in Git. Stop independent Studio scientific implementation until
+actual M1 native evidence or a separately approved controlled
+experiment exists; use the existing native seam audit rather than
+duplicating the certified runtime.
+
 ## Priorities and handoff
 
 1. **P0 CLOSED (bounded automated scope):** documentation consolidation,
