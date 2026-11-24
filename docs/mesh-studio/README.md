@@ -215,6 +215,47 @@ checkout with no commits behind; this is not permission to mix their
 attestation records. No physical approval, release or new scientific
 result was inferred.
 
+## Parallel scientific support — Four-Sheet Curved inspection
+
+2026-11-24. Bounded, offline research companion only, not a change to the
+certified Studio runtime. Align with [MODEL PR #225](https://github.com/tiagosombrra/apmesh-modernization/pull/225)
+and its canonical M0–M5 plan. M0 full-checkout regression remains blocked
+and M1 native TRI NOT RUN; this work cannot change the model roster.
+
+Read the exact [authored BP fixture](https://github.com/tiagosombrra/apmesh-modernization/blob/07ca312d01f960669b1dc09a2cb30b1aa9d03165/docs/research/nonmanifold-benchmark/fixtures/four_sheet_curved.bp)
+at MODEL SHA `07ca312d01f960669b1dc09a2cb30b1aa9d03165`, Git blob
+`398bef93f78368c3b41a90e4e8ca433e00ba5aa0`, SHA256
+`b1b6610b63f10dfe91e84fc8de85d8cbb8b9bdb50a7b0ecdbc95efd89b64fdd4`.
+Independent indexed boundary grouping yields 52 controls, 4 patches,
+13 distinct curves, histogram {1:12,4:1}. C0 indices are [0,1,2,3],
+with P1 reversed [3,2,1,0]. Independent Bernstein evaluation at 101
+canonical parameters against the four local incidences found maximum
+same-local-parameter separation 5.0 model units, corrected residual
+4.44390651272216e-16. A negative control duplicating P1's four common
+indices while keeping XYZ unchanged yields 56 controls, 14 curves and
+histogram {1:13,3:1}; the four-way incidence is lost.
+
+An offline HTML research companion was delivered in the conversation:
+`STUDIO_Four_Sheet_Curved_Inspecao.html`, SHA256
+`2b9d57939eb5376ccf83709e4c6479fd1b5d60b71e3708326c1b1759739c9306`.
+Embedded coordinates and patch IDs were extracted from a byte-identical
+BP copy. It displays projected isoparametric curves (not generated
+TRI/QUAD), patch visibility, canonical/local parameter correspondence,
+and the two negative controls. Node VM tests with a stub DOM passed
+topology, orientation, duplicate-index control, reset and SVG markup.
+Actual Chromium launch was blocked by missing browser binaries; real
+browser rendering and physical user approval NOT RUN. The HTML is not
+claimed to be committed or archived in Drive. No production source,
+fixture, tests, CI or admitted scientific result changed.
+
+Next scientific admission: await actual M1 accepted native TRI and
+source-bound patch/curve sample IDs; only then compare per-leaf native
+sampling, order/orientation, missing/excess samples, and accepted versus
+rejected steps using a read-only Studio evidence adapter. Do not
+substitute analytic samples for native observations or infer welding
+from coincident positions. No new instrumentation-only version,
+scientific LOD, distribution or main merge.
+
 ## Priorities and handoff
 
 1. **P0 CLOSED (bounded automated scope):** documentation consolidation,
