@@ -306,6 +306,41 @@ actual M1 native evidence or a separately approved controlled
 experiment exists; use the existing native seam audit rather than
 duplicating the certified runtime.
 
+## Controlled curve-incidence experiment preparation — 2026-11-24
+
+MODEL #225 remains at `07ca312d01f960669b1dc09a2cb30b1aa9d03165`:
+M0 full regression BLOCKED, M1 NOT RUN. This is a proposed N1 controlled
+experiment, not new native results or admission. Use the byte-verified
+Four-Sheet Curved BP pinned above. All 15 nonempty subsets of P0–P3
+were generated (4/6/4/1 for incidence 1/2/3/4); exact coordinate tokens,
+per-patch control ordering and C0 identity/orientation preserved, with
+explicit local-to-original index maps. E4 is byte-identical to source.
+Eight local standard-library unit tests PASS, including all subsets,
+reverse P1, tampered source rejection, duplicated-index negative,
+byte-identical regeneration and 30 blank NOT_RUN replay rows.
+
+Conversation package `STUDIO_Experimento_Incidencia_Bezier.zip`
+(22 files, 16321 bytes, SHA256
+`c7e3e532fc1be3ce804faebf510458fb4547809f51927affb903b1e934f141ea`)
+includes the original BP, 15 input cases, manifest, execution ledger,
+generator of BP subsets, tests and proposed protocol. Not claimed
+archived in Drive or committed as runtime code.
+
+Main comparison: eight subsets containing P0 against its own isolated
+case (1/3/3/1); all 15 reported, secondary same-patch comparisons for
+P1–P3. Two fresh serial process repetitions per case assess repeatability,
+not independent statistical samples. Freeze binary/config/tolerances/
+resource bounds before execution; no numerical configuration selected
+yet. M0 then M1 actual E4 admission and scientific protocol agreement
+are prerequisites. Report canonical unique sample counts including
+endpoints, parameter spacing, discrete XYZ, real TRI edge-chain
+coverage, logical IDs and separate per-leaf references, failures and
+accepted/rejected steps. Control curve geometry and selected patch
+geometry; composition/orientation/global domain still vary, so do not
+claim a universal causal incidence effect. No new native execution,
+OCCT subset audit, runtime code, CI, main merge or scientific admission.
+Stop at preparation until prerequisite evidence is available.
+
 ## Priorities and handoff
 
 1. **P0 CLOSED (bounded automated scope):** documentation consolidation,
