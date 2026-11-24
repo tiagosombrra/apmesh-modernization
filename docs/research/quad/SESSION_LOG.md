@@ -4332,3 +4332,16 @@ wrong test diagnostic and whitespace check, both corrected.
 Proceed to a reversible native candidate using these measurements.
 Align the experimental decision for a regional shape/error trade-off.
 Fresh native cross-model qualification and mixed acceptance remain pending.
+
+## 2026-11-24 Fortaleza - audit the research path to an accepted mixed history
+
+Reviewed remote main ef40c0fc, quad-templates ce33b5e7, open PRs and their checks,
+issue 221, native real-boundary rollback code, the curve/front experiments, shared
+seam measurements and fixed-region comparisons. Three relevant draft heads each
+showed four successful hosted checks. Found conflicting active priorities in the
+short guide and roadmap, and a fixed historical PR in the handoff instruction.
+Updated those entry points and STATE. The [short plan](CURRENT_PLAN_OVERVIEW_20261118.md)
+now records the single active experiment, negative controls, predeclared transfer
+comparison, TRI baseline and the scientific exit. Historical evidence and unmet
+qualification gates remain available. Documentation-only audit; no native build,
+new geometry, admission formula or accepted adaptive epoch.

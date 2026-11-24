@@ -12,6 +12,22 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-24 - research plan and next executable result
+
+The [current sequence](CURRENT_PLAN_OVERVIEW_20261118.md) replaces the stale
+summary and orders the reversible trial, prior scientific decision, transfer test
+and two accepted mixed-driven epochs. Next implement the **single opt-in native
+trial** on the retained Ribbed predecessor. Require a valid staged result, an
+injected rejection preserving owner/observers/OBJ and a no-action record.
+Bind the region to the predecessor. Reuse the real-boundary rollback branch in
+`research/quad/controlled_patch_application.cpp`. Report zero accepted mixed
+epochs until the estimator, decision and source-linked histories meet issue 221.
+
+Audit at canonical ce33b5e7, main ef40c0fc. Draft PRs 243, 247 and 263 each
+show four successful checks on c93a383e, d2068628 and 00cac043 respectively.
+No native run, new meshes or numerical rule in this planning checkpoint.
+Earlier dated priorities below are retained as history.
+
 ### 2026-11-24 - audit the plan and add fixed-region comparison
 
 The [audit](TRANSITION_REGIONAL_COMPARISON_AUDIT_20261124.md) identifies

@@ -10,7 +10,15 @@ is implemented/compared in reviewed15e2915 and integrated as51d51f6/PR240. Exact
 native20/20, three-profile application histories and hosted44496523827 all4 succeed. Historical dated missing-stage
 entries below retain their original scope; no whole-stage closure follows.
 
-## Current finite execution queue - 2026-11-19
+## Current execution order - 2026-11-24
+
+Follow the [four research deliverables and their exit evidence](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions).
+Begin with a reproducible reversible native candidate, then freeze scientific
+admission, test transfer and demonstrate two distinct accepted epochs under issue
+221. Keep the TRI-only control and report both local and patch-wide effects.
+The dated entries below document earlier decisions and measured scope.
+
+## Execution history beginning 2026-11-19
 
 Original curves/native templates/prospective TRI-QUAD selection, confirmed
 clearance0.2, five simultaneous UV smoothing passes and the now adopted polygon

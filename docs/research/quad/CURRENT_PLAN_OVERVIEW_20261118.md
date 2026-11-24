@@ -1,113 +1,50 @@
-# Current QUAD plan at a glance
+# QUAD research plan at a glance
 
-Updated2026-11-19 against the verified canonical plan and exact research merge
-7ccd8d7/PR242 diagonal experiment,5fe2e6f/PR241 reporting and51d51f6/PR240
-generator. This reading guide summarizes the existing approved sequence;
-it does not introduce a new scientific rule, milestone or authorization.
+Updated 2026-11-24. The immediate research question is whether a mixed mesh
+can identify a poor curve-to-template transition, change the local native
+mesh size, and generate a better successor while preserving fine geometric
+detail elsewhere. The deliverable is an opt-in application run with inspectable
+meshes and a decision for each attempt. The default adaptive TRI run supplies
+the reference. The planar mixed method of 1993 supplies the template and front
+construction. Feedback from the physical mixed mesh on a curved surface is the
+research extension. See the [article audit](ARTICLE_CONFORMANCE_REVALIDATION_20261118.md).
 
-## Objective
+## What the evidence supports
 
-Extend the original mesher with the1993 mixed TRI/QUAD procedure, using real
-original curve discretization and native quadtree/templates/front machinery.
-Preserve default TRI, original policies, reproducible error/quality observations
-and explicit separation between a static mixed output and mixed adaptive closure.
+| Finding | Consequence for the plan |
+| --- | --- |
+| The [integrated generator](PR240_RESEARCH_INTEGRATION_20261119.md) discretizes original curves and emits physical TRI and QUAD using native templates and a mixed advancing front. The [histories](MIXED_HISTORY_OBSERVATIONS_20261119.md) bind each mesh to a TRI-driven source attempt. | Reuse this entry, the existing acceptance traces, and the original TRI control. A mixed file at Step 2 does not establish mixed feedback. |
+| [Changing global limits](LEGACY_BOUNDS_COMPARISON_20261120.md) reached 112 boundary segments and rejected attempts. [Passing measured curvature to the curve](ACCEPTED_TRI_CURVE_HANDOFF_TRIAL_20261120.md) changed size requests without repairing the accepted history. [Deferring an edge](MIXED_TRANSITION_SHAPE_20261120.md) retained the critical faces. | Stop rerunning these variants unless a new observation distinguishes a specific cause. Record requested size, realized arc and incident face sizes so saturation and poor shape remain distinguishable. |
+| The [two automatic Ribbed selections](RIBBED_AUTOMATIC_TEMPLATE_GROUP_TRIALS_20261123.md) ran through separate native executions after an earlier manual grouping. With 23 fixed segments, the [paired comparison](TRANSITION_REGIONAL_COMPARISON_AUDIT_20261124.md) found the regional minimum angle rose from 6.86 to 43.44 degrees and the patch-wide TRI minimum from 6.86 to 7.04. Faces fell from 636 to 608. The single arc split improved regional RMS but worsened regional minimum angle. | Treat Ribbed as development data. Freeze the comparison region from the predecessor before looking at the successor. Report whole-patch damage as well as regional benefit. A single good angle or a lower sampled error cannot decide the trade-off. |
+| The [Bezier selector replay](MIXED_TEMPLATE_GROUP_SELECTOR_20261123.md) preserved the same T6 edge and returned no action. The archived positive Bezier comparison used a manually chosen layout. [Shared-curve measurements](MIXED_SIZING_CROSS_CASE_20261123.md) found a physical neighbor ratio as high as 5.84 on matched seams. | A second independent native case and a protected fine-size control are still needed. Treat two-patch synchronization and grading as a subsequent scope with its own evidence. |
+| The [curvature candidate](MIXED_QUADRATIC_JET_CANDIDATE_20261119.md) has sparse and one-sided boundary limitations. PR 243 covers its diagnostic, PR 247 the feedback adjacency and PR 263 the paired reporter. | None of these three draft branches implements an accepted adaptive history. Report original TRI global curvature error when available, mixed geometric RMS/max in model units, and mixed global curvature as unavailable until qualified. |
 
-## What is already delivered
+## Execution order and decisions
 
-| Capability | Current status | Important boundary |
+| Order | Work product | Evidence that permits moving on |
 | --- | --- | --- |
-| Original analytical curves feeding actual application output | Implemented; earlier bounded integration completed through PR238 | The adaptation still uses the original TRI state |
-| Native interior templates and source polygons | Implemented; six-family catalog and actual mixed usage available | Area-centroid UV policy adopted/tested; historical numeric identity remains unproven |
-| Prospective mixed advancing front | Integrated in PR240; chooses TRI/QUAD before one contour update | Static output exists; complete paper conformance is not claimed |
-| Real curved-model output at steps0-3 | Regenerated and archived; current final output689 nodes,630 QUAD,102 TRI | These are outputs driven by TRI source histories, not accepted mixed adaptive epochs |
-| Contour-clearance classification | Implemented in11dcaa7; exactly25 former violations removed | Boundary angle improves, but geometry error and worst edge ratio worsen |
-| Per-step geometry errors and element quality | Exported to Markdown/CSV/JSON and displayed in Blender | Original global curvature error is TRI-only; mixed RMS is a different diagnostic |
-| Source-history error/quality binding | Integrated PR241: full stage identity, accepted/rejected source lineage, hashes and changes versus previous accepted source | Original TRI errors on rejected attempts are reported; no mixed estimator or adaptive acceptance |
-| Both-diagonal Gaussian sensitivity | Adopted and measured in PR242;22 real observations/three native profiles | Sign flips and differing distribution results; no diagonal/global estimator/adaptive policy selected |
-| Nodal mixed Gaussian/mean diagnostic | Adopted candidate implemented in draft PR243; actual22-history/three-profile checks | Initial five-node coverage absent; large boundary errors; no qualified global error/adaptation |
-| Complete second-ring curvature comparison | Explicitly adopted/measured in PR243,22 paired histories on three profiles | Uniform enlargement worsens most final mixed nodes; selected gains do not establish a general improvement |
-| Mixed smoothing | Implemented: UV, distinct incident other vertices, five simultaneous passes, fixed contour | Angle gains coexist with worse QUAD J/stage2 RMS/stage3 boundary angle |
-| Current Blender presentation | New four-scene file: eight outputs,18 pass states, mean/area comparison and previous template reference | New four-scene area-centroid file adds six actual mean/area comparison meshes; retained catalog is labeled previous mean reference |
+| **1. Active. Reversible native trial** | From one nonempty Ribbed predecessor, invoke the existing selection and native reconstruction in the experimental application. Derive requests and the region from that mesh, retain source hash, patch, curve intervals, affected leaves, tree limits and candidate hash. Reuse the existing real-boundary owner and OBJ rollback rehearsal. | One valid staged mesh, a forced rejection or publication fault that preserves the previous owner, ordered observers, epoch and OBJ bytes, and a recorded no-action case. The operator can reproduce the comparison without supplying a parent ID or choosing a region after the result. Engineering trials increment no scientific epoch. |
+| **2. Freeze the scientific decision before testing transfer** | With the advisers, specify how TRI shape, QUAD corner Jacobian, gradation, geometric deviation and growth enter admission, including units, tolerance, grid sensitivity, ties, and a case where shape and error disagree. Bind the rule and the covered region to the run configuration. Specify what curvature evidence is required for the claim. | The rule can decide the archived positive, reversed and trade-off examples, or explicitly abstain. Preserve source-curve identity when testing grouping; a change to the partition is a separate treatment. No thresholds are adopted by this plan. |
+| **3. Test transfer once with a frozen rule** | Register a second native curved-to-flat patch and control, refinement limits, predecessor-derived region and sampling sites before inspecting output. Include a fine-resolution veto and an unchanged-edge/no-action case. Use the original TRI run, static mixed mesh and feedback-enabled mixed candidate for distinct comparisons. | Record valid, rejected, saturated and no-action outcomes. A no-op supports a veto; a positive transfer claim requires an actual native improvement on the second geometry. If transfer fails, report the limiting mechanism and revise the hypothesis before another run. |
+| **4. Demonstrate an adaptive history** | Apply the aligned policy to the previous accepted mixed mesh twice, through the same entry. Archive each attempted mesh, original curve parameters, typed topology, parent/child identity, metrics, reason and rollback. | [Issue 221](https://github.com/tiagosombrra/apmesh-modernization/issues/221) requires two distinct accepted mixed-driven epochs with prior-state influence, a source-compatible estimator, native validity and ownership checks, frozen TRI parity, exact-revision regression and independent verification. Report any shorter history at its measured length. |
 
-[PR240 is integrated and qualified](PR240_RESEARCH_INTEGRATION_20261119.md) at
-51d51f6: independent ownership/scientific reviews, exact post-merge85/85 baseline,
-native20/20, actual three-profile histories and four successful hosted checks
-(including527 Python/frozen TRI). Source/config/image identities are preserved.
-The modernization main branch stays separate. No full-stage closure follows.
+Compare geometry on identical analytic UV sites with area weighting. Report physical
+TRI and QUAD shape by contour-edge, contour-vertex-only and interior faces, before
+and after smoothing. Record node and face counts by type. For the TRI/mixed research
+comparison use the same model, analytical reference and comparable element budget,
+or report the error versus size for each run and identify unmatched budgets. An
+accepted TRI step supplies a baseline only. Timing or budget differences must be
+visible before drawing an efficiency conclusion.
 
-The [20 November generation audit](BOUNDARY_GENERATION_AUDIT_20261120.md)
-prioritizes the contour/interior transition. The current profile preserves the
-original two straight segments per side as the mixed interior refines. The [single legacy bound comparison](LEGACY_BOUNDS_COMPARISON_20261120.md)
-reproduces Step2/3 source rejections at112 contour segments despite measurable
-transition gains. Keep fixed1.5 as the retained reference. The [native trace](SURFACE_CURVE_SPACING_QUALITY_TRACE_20261120.md)
-locates growth before curve neighbor restriction and matches20 curve inputs
-with zero values to accepted TRI nodes with measured curvature. The approved [handoff experiment](ACCEPTED_TRI_CURVE_HANDOFF_TRIAL_20261120.md)
-changes spacing requests but does not improve the accepted mixed history.
-The [transition shape experiment](MIXED_TRANSITION_SHAPE_20261120.md)
-locates the forced three-TRI closure at front commit 73. Local base deferral
-changes its order and yields the same physical shape. Retain the original
-curve partition. The [template-size audit](TEMPLATE_INTERFACE_SIZE_AUDIT_20261122.md)
-identifies a local two-block layout that enlarges the exposed template
-edges under the existing catalog and 2:1 rule in the
-[approved native experiment](TWO_BLOCK_TEMPLATE_TRIAL_20261122.md). It improves
-local contact shape and reduces counts. The same fixed-corner TRI still limits
-the final mesh at 1.87 degrees. Prioritize that smoothing regression. Track
-final angles, edge ratios and separate TRI/QUAD metrics; global mixed curvature
-and adaptation remain open.
+One active implementation item is sufficient. Reopen smoothing or sizing only when
+a reproducible failure identifies that operation. The global curvature estimator is
+a prerequisite for claiming the corresponding global error and the full scientific
+milestone; the reversible trial can proceed now. Shared two-patch grading follows
+the single-patch demonstration. High-valence welding, all-QUAD and anisotropy
+retain their separate scope. Use Blender for the accepted/rejected mesh sequence
+and analytic reference once that sequence exists.
 
-## What prevents calling the technique complete
-
-1. **Historical smoothing identity:** adopted UV/distinct/five-pass smoothing is implemented and tested; numeric identity with the historical planar method is not proven.
-2. **Historical center identity:** area centroid in UV is now explicitly adopted and tested for the experiment; the original software equation remains unproven.
-3. **Mixed global curvature error and adaptation:** the equivalent error on the
-   actual mixed graph is unavailable; accepted mixed adaptive epochs remain0.
-   Lower sampled RMS does not establish mixed adaptive convergence.
-4. **Coverage limits:** static review/integration is complete. The raw additional enum-analysis exit1, old DrvFS route, full CRT/allocation/atomic-publication coverage and independent exact front-tie coverage remain explicitly limited.
-
-## The single execution sequence
-
-1. **Implemented:** documented contour-clearance classification in the opt-in
-   candidate, with retained witness/default TRI and exact checks. Review its
-   tradeoffs and additional adversarial-fixture analysis finding.
-2. **Smoothing and center disposition implemented/tested:** the user adopts area centroid in UV. Actual histories and negative controls pass; small Step2 benefits and a small QUAD-J loss remain. No repeated selection question for the settled experiment.
-3. **Executed for clearance/smoothing:** real histories regenerated, before/after quality/error exported, all15 passes/negative controls retained, new Blender opened and change-relevant tests passed. Current area-centroid comparison is delivered in its own exact-source evidence.
-4. **Complete:** bounded static review, retained-finding disposition, research integration and exact post-merge verification at51d51f6. Main remains separate.
-5. **Complete:** source-history reporting prerequisite in PR241/5fe2e6f; actual accepted/rejected/retry observations remain associated with the correct previous accepted source.
-6. **Complete:** approved both-diagonal Gaussian comparison in PR242/7ccd8d7; same-node sign flips and nonuniform stage results are retained.
-7. **Adopted and implemented as a draft diagnostic:** [quadratic-jet candidate](MIXED_QUADRATIC_JET_CANDIDATE_20261119.md), PR243/source f2dbd47, measures real nodal K/H on22 retained observations with independent checks. Sparse/one-sided accuracy remains unqualified, despite full rank and numerical agreement. The complete two-ring comparison is now adopted/measured: selected gains coexist with widespread deterioration. The generation audit now takes priority; boundary curvature locality and initial coverage remain open; no uniform replacement, adaptation/global aggregate or legacy mean repair. Full M1/M5/R3/M7 and broader gates remain open.
-
-The previously proposed new balancing controller and broad global-factor sweeps
-are not the current next action. Preserve measured size mismatch as evidence.
-Artifact polish and repeated audits are not default successors to this summary.
-
-## Where to read
-
-- [STATE](STATE.md): current active item, evidence and exact next action.
-- [Implementation roadmap](IMPLEMENTATION_ROADMAP.md): full milestones and
-  acceptance gates; dated historical queues do not override its current queue.
-- [Article conformance findings](ARTICLE_CONFORMANCE_REVALIDATION_20261118.md).
-- [Error/quality reporting](GENERATION_RESULT_METRICS_20261118.md).
-- [Current source-history bindings](MIXED_HISTORY_OBSERVATIONS_20261119.md).
-- [Measured both-diagonal comparison](DIAGONAL_CURVATURE_COMPARISON_20261119.md).
-- [Pending mixed K/H scientific contract](MIXED_CURVATURE_OPERATOR_CONTRACT_20261119.md).
-- [Explained presentation](EXPLAINED_BLENDER_PRESENTATION_20261118.md).
-
-Repository roles: canonical current code and decisions/checkpoints are on
-`quad-templates`. PR240/51d51f6 integrates the static generator package;
-PR241/5fe2e6f integrates reporting bindings; PR242/7ccd8d7 integrates the
-read-only diagonal experiment. Their source branches preserve the qualified
-candidates. A later documentation checkpoint does not establish another
-exact-revision native/scientific execution.
-
-Current [mixed smoothing delivery](MIXED_UV_SMOOTHING_20261118.md) preserves all tradeoffs and exact validation identities.
-
-The [area-centroid implementation and comparison](AREA_CENTROID_DELIVERY_20261118.md)
-settles the experimental center choice. Static review and finding disposition
-are complete in the [PR240 integration record](PR240_RESEARCH_INTEGRATION_20261119.md).
-
-The earlier [review-readiness checkpoint](PR240_REVIEW_READINESS_20261118.md)
-retains its pre-review status and Linux-filesystem qualification evidence.
-Old DrvFS failures and raw enum analysis remain visible; their scoped disposition
-is recorded by the later integration. The adopted curvature comparison is
-complete. The mixed Gaussian/mean contract is now prepared; explicit scientific adoption
-or revision is pending, as described in STATE.
+The [current state](STATE.md) names the active item and the
+[roadmap](IMPLEMENTATION_ROADMAP.md) retains historical obligations. The
+[previous reading guide](https://github.com/tiagosombrra/apmesh-modernization/blob/ce33b5e7b2743ff5e32495e4271dbd885d9da30f/docs/research/quad/CURRENT_PLAN_OVERVIEW_20261118.md)
+preserves the earlier package inventory and visual artifacts.
