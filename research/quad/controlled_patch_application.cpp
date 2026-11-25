@@ -36,6 +36,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cstdlib>
 #include <cmath>
 #include <iostream>
 #include <iterator>
@@ -221,6 +222,49 @@ struct Candidate {
 struct PublicationFailure : std::runtime_error {
   using std::runtime_error::runtime_error;
 };
+
+RealBoundarySource GroupTwoTemplateBlocks(const RealBoundarySource& source,
+                                          const std::array<std::array<double, 4>, 2>& boxes) {
+  Require(source.source_step == 3 && source.reference_tri_accepted && source.source_leaves >= 8 &&
+              std::is_sorted(source.leaf_order.begin(), source.leaf_order.end()),
+          "Two-block trial requires its retained Step 3 native tree");
+  auto result = source;
+  result.cells.clear();
+  result.leaf_order.clear();
+  std::size_t grouped = 0;
+  const auto copy = [&](auto&& recurse, std::size_t original) -> std::size_t {
+    const auto& cell = source.cells.at(original);
+    const auto index = result.cells.size();
+    result.cells.push_back(cell);
+    if (std::find(boxes.begin(), boxes.end(), cell.box) != boxes.end()) {
+      Require(cell.subdivided && std::all_of(cell.children.begin(), cell.children.end(),
+                                             [&](std::size_t child) {
+                                               return !source.cells.at(child).subdivided;
+                                             }),
+              "Two-block trial requires four leaf children in each approved block");
+      result.cells[index].children = {};
+      result.cells[index].subdivided = false;
+      ++grouped;
+    }
+    if (result.cells[index].subdivided) {
+      for (std::size_t i = 0; i < cell.children.size(); ++i) {
+        const auto child = recurse(recurse, cell.children[i]);
+        result.cells[index].children[i] = child;
+      }
+    } else {
+      result.leaf_order.push_back(cell.source_id);
+    }
+    return index;
+  };
+  copy(copy, 0);
+  // Subdivision appends children in increasing captured cell ID order.
+  std::sort(result.leaf_order.begin(), result.leaf_order.end());
+  result.source_leaves = result.leaf_order.size();
+  Require(grouped == boxes.size() && result.source_leaves + 6 == source.source_leaves &&
+              source.cells.size() - result.cells.size() == 8,
+          "Two-block trial changed more than the approved children");
+  return result;
+}
 
 using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
 
@@ -1889,9 +1933,284 @@ Candidate SnapshotTriStage(const SubMesh& mesh, PatchBezier& patch) {
   return result;
 }
 
+using GroupingBoxes = std::array<std::array<double, 4>, 2>;
+
+struct GeometricRequest {
+  std::size_t face;
+  UvVertex site;
+  double size;
+};
+
+struct FeedbackPlan {
+  std::vector<GeometricRequest> predecessor, recovered;
+};
+
+FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
+  std::ifstream input(path);
+  input.imbue(std::locale::classic());
+  std::string schema;
+  input >> schema;
+  Require(bool(input) && schema == "apmesh_curvabezier_feedback_v1",
+          "Invalid geometric feedback plan");
+  FeedbackPlan plan;
+  std::string arm;
+  while (input >> arm) {
+    GeometricRequest request{};
+    input >> request.face >> request.site.u >> request.site.v >> request.size;
+    Require(bool(input) && request.site.u >= 0 && request.site.u <= 1 && request.site.v >= 0 &&
+                request.site.v <= 1 && std::isfinite(request.size) && request.size > 0,
+            "Invalid geometric feedback request");
+    Require(arm == "predecessor" || arm == "recovered", "Unknown geometric feedback arm");
+    auto& requests = arm == "predecessor" ? plan.predecessor : plan.recovered;
+    requests.push_back(request);
+  }
+  Require(input.eof() && !plan.predecessor.empty() && !plan.recovered.empty(),
+          "Geometric feedback needs both measured request lists");
+  return plan;
+}
+
+struct GroupingPlan {
+  GroupingBoxes boxes{};
+  bool verify_rejection = false;
+};
+
+GroupingPlan ReadGroupingPlan(const std::filesystem::path& path) {
+  std::ifstream input(path);
+  input.imbue(std::locale::classic());
+  std::string schema;
+  input >> schema;
+  Require(bool(input) && schema == "apmesh_adjacent_group_v1", "Invalid grouping plan schema");
+  GroupingPlan plan;
+  auto& boxes = plan.boxes;
+  for (auto& box : boxes) {
+    for (auto& coordinate : box)
+      input >> coordinate;
+    Require(bool(input) &&
+                std::all_of(box.begin(), box.end(),
+                            [](double value) { return value >= 0 && value <= 1; }) &&
+                box[0] < box[2] && box[1] < box[3],
+            "Invalid grouping plan box");
+  }
+  const auto& [ax, ay, a_right, a_top] = boxes[0];
+  const auto& [bx, by, b_right, b_top] = boxes[1];
+  const bool horizontal = (ax == b_right || bx == a_right) && ay == by && a_top == b_top;
+  const bool vertical = (ay == b_top || by == a_top) && ax == bx && a_right == b_right;
+  Require(horizontal || vertical, "Grouping boxes must share a complete side");
+  Require(boxes[0][2] - boxes[0][0] == boxes[1][2] - boxes[1][0] &&
+              boxes[0][3] - boxes[0][1] == boxes[1][3] - boxes[1][1],
+          "Grouping boxes must have the same size");
+  std::string extra;
+  if (input >> extra) {
+    Require(extra == "verify_native_rejection", "Unknown grouping control");
+    plan.verify_rejection = true;
+  }
+  Require(!(input >> extra) && input.eof(), "Unexpected trailing grouping plan data");
+  return plan;
+}
+
+void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
+                            const RealBoundarySource& source,
+                            const std::vector<GeometricRequest>& requests,
+                            const std::filesystem::path& directory,
+                            const std::filesystem::path& previous_path) {
+  struct RestorePatchLink {
+    PatchBezier& patch;
+    SubMesh* original;
+    ~RestorePatchLink() { patch.SetSubMesh(original); }
+  } restore{patch, patch.GetSubMesh()};
+  previous.mesh->SetPatch(&patch);
+  patch.SetSubMesh(previous.mesh.get());
+  CheckTypedIncidence(*previous.mesh, previous);
+  const auto witness = SnapshotOwnerRehearsal(*previous.mesh);
+  const auto bytes = ReadRehearsalOutput(previous_path);
+  auto tree = ReplayRealSourceTree(patch, source);
+  const auto leaves = tree->getLeaves();
+  const auto cap = tree->getMaxLevelCap();
+  std::set<long> requested;
+  Require(std::filesystem::create_directory(directory),
+          "Cannot reserve geometric feedback evidence");
+  std::ofstream trace(directory / "requests.csv", std::ios::binary);
+  trace.imbue(std::locale::classic());
+  trace << "face,u,v,requested_size,leaf_id,leaf_level,cap,disposition\n" << std::setprecision(17);
+  for (const auto& request : requests) {
+    Require(request.face < previous.faces.size(),
+            "Geometric feedback face is outside the predecessor");
+    QuadtreeCell* chosen = nullptr;
+    for (auto* leaf : leaves) {
+      if (request.site.u >= leaf->getMin()->getX() && request.site.u <= leaf->getMax()->getX() &&
+          request.site.v >= leaf->getMin()->getY() && request.site.v <= leaf->getMax()->getY() &&
+          (!chosen || leaf->getLevel() > chosen->getLevel()))
+        chosen = leaf;
+    }
+    Require(chosen != nullptr, "Geometric feedback site is outside the native tree");
+    const auto level = chosen->getLevel();
+    const bool capped = cap >= 0 && level >= cap;
+    if (!capped)
+      requested.insert(chosen->getId());
+    trace << request.face << ',' << request.site.u << ',' << request.site.v << ',' << request.size
+          << ',' << chosen->getId() << ',' << level << ',' << cap << ','
+          << (capped ? "capped" : "actionable") << '\n';
+  }
+  trace.close();
+  Require(bool(trace), "Cannot retain geometric request evidence");
+
+  const auto before = tree->GetLeafCount();
+  for (auto* leaf : leaves)
+    if (requested.count(leaf->getId()))
+      leaf->subdivideToLevel(leaf->getLevel() + 1);
+  Require(tree->GetLeafCount() == before + 3 * requested.size(),
+          "Native tree did not apply every distinct actionable request");
+  if (!requested.empty())
+    Require(tree->refineAccordingToNeighbors() ==
+                Par2DJMesh::AFT::QUAD_REFINE_ACCORDING_TO_NEIGHBORS_DONE,
+            "Geometric feedback could not balance the native tree");
+  const auto after = tree->GetLeafCount();
+  std::ofstream realized(directory / "leaves.csv", std::ios::binary);
+  realized.imbue(std::locale::classic());
+  realized << "id,level,u0,v0,u1,v1\n" << std::setprecision(17);
+  for (auto* leaf : tree->getLeaves()) {
+    Require(cap < 0 || leaf->getLevel() <= cap, "Geometric feedback exceeded the original cap");
+    realized << leaf->getId() << ',' << leaf->getLevel() << ',' << leaf->getMin()->getX() << ','
+             << leaf->getMin()->getY() << ',' << leaf->getMax()->getX() << ','
+             << leaf->getMax()->getY() << '\n';
+  }
+  realized.close();
+  Require(bool(realized), "Cannot retain realized feedback leaves");
+
+  std::optional<Candidate> staged;
+  std::string outcome = "no_action";
+  std::string rejection;
+  if (after > before) {
+    try {
+      staged =
+          Generate(patch, false, [&]() { return std::move(tree); }, &source, false, true, true);
+    } catch (const std::runtime_error& error) {
+      rejection = error.what();
+    } catch (const std::invalid_argument& error) {
+      rejection = error.what();
+    }
+    outcome = staged ? "staged" : "rejected";
+  }
+  if (staged) {
+    CheckTypedIncidence(*staged->mesh, *staged);
+    staged->source_witness = &source;
+    staged->generation_step = source.source_step;
+    staged->reference_accepted = source.reference_tri_accepted;
+    staged->stage_reason = "geometric_feedback_staged";
+    Export(*staged, directory / "candidate.obj");
+    ExportArticleSteps(*staged, directory / "candidate_front");
+    staged.reset();
+  }
+  RequireOwnerRehearsalUnchanged(patch, witness);
+  Require(ReadRehearsalOutput(previous_path) == bytes,
+          "Geometric feedback changed its predecessor OBJ");
+
+  std::ofstream result(directory / "result.txt", std::ios::binary);
+  result.imbue(std::locale::classic());
+  result << outcome << '\n'
+         << cap << ' ' << before << ' ' << after << ' ' << requested.size() << '\n'
+         << rejection << '\n';
+  result.close();
+  Require(bool(result), "Cannot retain geometric feedback outcome");
+}
+
+Candidate StageGroupingCandidate(PatchBezier& patch, Candidate previous,
+                                 const RealBoundarySource source, const GroupingPlan& plan,
+                                 const std::filesystem::path& directory,
+                                 const std::filesystem::path& previous_path,
+                                 const FeedbackPlan* feedback) {
+  struct RestorePatchLink {
+    PatchBezier& patch;
+    SubMesh* original;
+    ~RestorePatchLink() { patch.SetSubMesh(original); }
+  } restore{patch, patch.GetSubMesh()};
+  previous.mesh->SetPatch(&patch);
+  patch.SetSubMesh(previous.mesh.get());
+  CheckTypedIncidence(*previous.mesh, previous);
+  const auto witness = SnapshotOwnerRehearsal(*previous.mesh);
+  const auto bytes = ReadRehearsalOutput(previous_path);
+  const auto grouped = GroupTwoTemplateBlocks(source, plan.boxes);
+  for (const auto& cell : grouped.cells) {
+    if (cell.subdivided)
+      continue;
+    for (const auto& other : grouped.cells) {
+      if (other.subdivided || cell.level <= other.level + 1)
+        continue;
+      const auto& [ax, ay, a_right, a_top] = cell.box;
+      const auto& [bx, by, b_right, b_top] = other.box;
+      const bool horizontal =
+          (ax == b_right || bx == a_right) && std::max(ay, by) < std::min(a_top, b_top);
+      const bool vertical =
+          (ay == b_top || by == a_top) && std::max(ax, bx) < std::min(a_right, b_right);
+      Require(!horizontal && !vertical, "Grouping would violate native 2:1 balance");
+    }
+  }
+  const auto verify_previous = [&]() {
+    RequireOwnerRehearsalUnchanged(patch, witness);
+    Require(ReadRehearsalOutput(previous_path) == bytes, "Grouping changed the previous OBJ");
+  };
+  const auto attempt = [&](bool reject) {
+    auto candidate = Generate(
+        patch, false, [&]() { return ReplayRealSourceTree(patch, grouped); }, &source, false, true,
+        true);
+    CheckTypedIncidence(*candidate.mesh, candidate);
+    if (reject) {
+      candidate.mesh->SetPatch(&patch);
+      RestorePatchLink undo{patch, patch.GetSubMesh()};
+      patch.SetSubMesh(candidate.mesh.get());
+      Require(patch.GetSubMesh() == candidate.mesh.get(),
+              "Grouping rejection did not exercise the temporary candidate link");
+      throw PublicationFailure("Injected grouping rejection after temporary candidate link");
+    }
+    candidate.source_witness = &source;
+    candidate.generation_step = source.source_step;
+    candidate.reference_accepted = source.reference_tri_accepted;
+    candidate.stage_reason = "staged_adjacent_group";
+    Require(std::filesystem::create_directory(directory), "Cannot reserve staged grouping output");
+    Export(candidate, directory / "candidate.obj");
+    ExportArticleSteps(candidate, directory / "candidate_front");
+    if (feedback)
+      StageGeometricFeedback(patch, candidate, grouped, feedback->recovered,
+                             directory.parent_path() / "feedback_recovered",
+                             directory / "candidate.obj");
+  };
+  if (plan.verify_rejection) {
+    bool rejected = false;
+    try {
+      attempt(true);
+    } catch (const PublicationFailure&) {
+      rejected = true;
+    }
+    Require(rejected && !std::filesystem::exists(directory),
+            "Grouping rejection did not leave the candidate unpublished");
+    verify_previous();
+    std::cout << "QUAD_GROUPING_REJECTION previous_owner_preserved=1 previous_obj_preserved=1 "
+                 "candidate_unpublished=1\n";
+  }
+  attempt(false);
+  verify_previous();
+  std::cout << "QUAD_ADJACENT_GROUP staged=1 previous_owner_preserved=1 mixed_adaptive_epochs=0\n";
+  return previous;
+}
+
 } // namespace
 
 int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
+  std::optional<GroupingPlan> grouping_plan;
+  if (const char* plan_path = std::getenv("APMESH_QUAD_GROUPING_PLAN")) {
+    Require(*plan_path != '\0' &&
+                config.quad_experimental_case == "curved_bezier_article_front_area_centroid_v1" &&
+                config.input_model == "builtin:curva_bezier" && !config.quad_verify_rollback,
+            "A grouping plan requires the CurvaBezier area-centroid trial");
+    grouping_plan = ReadGroupingPlan(plan_path);
+  }
+  std::optional<FeedbackPlan> feedback;
+  if (const char* plan_path = std::getenv("APMESH_QUAD_FEEDBACK_PLAN")) {
+    Require(*plan_path != '\0' && grouping_plan && !grouping_plan->verify_rejection,
+            "Geometric feedback requires the recovered grouping comparison");
+    feedback = ReadFeedbackPlan(plan_path);
+  }
+  bool grouped_candidate_staged = false;
   const auto output = std::filesystem::path(config.output_prefix + ".obj");
   const auto steps = std::filesystem::path(config.output_prefix + ".steps");
   const auto staging = std::filesystem::path(config.output_prefix + ".steps.pending");
@@ -2097,6 +2416,17 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     Export(layout, staging / (stem + "_quad_tri.obj"));
     if (article_front && !layout.article_commits.empty())
       ExportArticleSteps(layout, staging / (stem + "_article_front"));
+    if (grouping_plan && source && stage.step == 3 && stage.accepted &&
+        stage.outer.global_retry == 0) {
+      const auto previous_obj = staging / (stem + "_quad_tri.obj");
+      if (feedback)
+        StageGeometricFeedback(*patch, layout, *source, feedback->predecessor,
+                               staging / "feedback_predecessor", previous_obj);
+      layout = StageGroupingCandidate(*patch, std::move(layout), *source, *grouping_plan,
+                                      staging / "adjacent_trial", previous_obj,
+                                      feedback ? &*feedback : nullptr);
+      grouped_candidate_staged = true;
+    }
     if (live_pairs)
       Export(layout, staging / (stem + "_aft_source.obj"), true);
     // Completed-output diagnostics only. No candidate replaces any mesh element.
@@ -2184,6 +2514,8 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   trace << curve_trace.str();
   trace.close();
   Require(bool(trace), "Cannot complete curve-stage trace");
+  Require(!grouping_plan || grouped_candidate_staged,
+          "Grouping trial could not reproduce the admitted Step 3 source");
   std::filesystem::rename(staging, steps);
   RequireOwnerRehearsalUnchanged(*patch, previous);
   CheckTypedIncidence(*candidate.mesh, candidate);
