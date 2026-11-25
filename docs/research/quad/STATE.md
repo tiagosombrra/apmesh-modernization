@@ -1,9 +1,9 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-24 Fortaleza. Canonical branch: `quad-templates`.
+Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: review native predecessor retention before accepted history
+## Active: qualify the transition from recovered selection to mixed-state feedback
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,20 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - recover the recorded mixed selection after interruption
+
+[Draft PR 267](https://github.com/tiagosombrra/apmesh-modernization/pull/267)
+at 0fd8ae1e records the native OBJ/front choice before replacing the selected
+copy. The MSVC runner recovers the candidate, the rejected predecessor and
+the protected predecessor with their original SHA-256 values. Four recovery
+controls and 26 reporting tests pass. PR 265 and 266 are green and await
+independent review. PR 267 had 0 successful, 4 pending and 0 failed hosted jobs at checkpoint.
+See the [recovery checkpoint](CURVABEZIER_SELECTION_RECOVERY_20261125.md).
+
+**Next:** review the chained drafts and qualify the source-compatible mixed
+estimator/feedback handoff against the retained typed data before admitting
+the next generation under issue 221. Zero accepted mixed epochs.
 
 ### 2026-11-24 - keep one native mixed predecessor through rejection and retry
 

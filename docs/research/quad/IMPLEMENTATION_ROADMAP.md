@@ -21,8 +21,10 @@ eligible candidate on that geometry. The [portable research runner](CURVABEZIER_
 passes the native and frozen TRI gates on PR 265 and awaits independent
 review. The [owned predecessor rehearsal](CURVABEZIER_OWNED_PREDECESSOR_20261124.md)
 retains the real mixed state across an injected native rejection and retry.
-Complete accepted-state and estimator qualification before two distinct
-accepted epochs under issue 221. Keep the TRI-only
+The [selection recovery trial](CURVABEZIER_SELECTION_RECOVERY_20261125.md)
+adds durable file provenance for one experimental decision. Complete accepted
+state and estimator qualification before two distinct accepted epochs under
+issue 221. Keep the TRI-only
 control and report both local and patch-wide effects.
 The dated entries below document earlier decisions and measured scope.
 

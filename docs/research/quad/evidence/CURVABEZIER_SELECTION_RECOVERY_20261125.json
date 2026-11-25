@@ -1,0 +1,192 @@
+{
+  "head": "0fd8ae1ecc68f8f7a887943ce9fad0e5e418a355",
+  "tree": "f8caa38aae58f29ebbae8a690e55026dc42e1758",
+  "canonical_base": "c0263beb5827c5040038a64ddedfe9a7b0be97b6",
+  "parent": "d7ab532797501fa106e737c97bb8d18d1b0fa36a",
+  "merge_preview": "7dba5c4e365bc093e7e5436f236a830cff5c638a",
+  "exact_native_reuse": true,
+  "executable_sha256": "2abf0d45c3b3e0633ec14738ce3f2e49e562922440fd8e42abf338a893f5ec64",
+  "compiler": "MSVC 19.44.35229.0, Debug x64 C++17",
+  "native": {
+    "result": {
+      "exit": 0,
+      "seconds": 132.56154322624207,
+      "timeout": 365
+    },
+    "command": [
+      "python",
+      "build/quad-grouping-runner-source/tests/quad/test_grouping_trial_application.py",
+      "--exe",
+      "build/quad-grouping-runner-results/msvc/bin/Debug/ap_mesh.exe",
+      "--directory",
+      "build/quad-grouping-runner-results/durable-predecessor-suite"
+    ],
+    "stdout_sha256": "4b916a205a9c21970a2b766c507888138731881c8ea566181587be8a5ba37bcc",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "recovery_unit_tests": 4,
+  "comparison_tests": 26,
+  "source_negative_controls": "not rerun",
+  "explicit_native_recoveries": 3,
+  "outcomes": [
+    {
+      "schema": "apmesh.curvabezier_grouping_selection.v1",
+      "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "baseline_front_sha256": "41c4a429088fc166f21ec9668dae2beb02bc2d3c5a6eaf53f36d8408da85e73f",
+      "image_sha256": "2abf0d45c3b3e0633ec14738ce3f2e49e562922440fd8e42abf338a893f5ec64",
+      "control": null,
+      "mixed_adaptive_epochs": 0,
+      "status": "eligible_candidate_selected",
+      "selected_source": "staging.steps/adjacent_trial/candidate.obj",
+      "selected_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+      "selected_front": "staging.steps/adjacent_trial/candidate_front/front.json",
+      "selected_front_sha256": "c1582b869ceeaae01d4aef267d37f1f66923b2c83ed0e8f673bf571ff4690c7b",
+      "projection": "eligible",
+      "decision": {
+        "verdict": "eligible",
+        "vetoes": [],
+        "sampling_disagreements": [],
+        "geometric_directions": {
+          "regional_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "regional_error_max_xyz": [
+            -1,
+            -1
+          ],
+          "global_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "global_error_max_xyz": [
+            -1,
+            -1
+          ]
+        }
+      },
+      "candidate_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+      "reference_history_files": [
+        "step_0_retry_-1_accepted_quad_tri.obj",
+        "step_0_retry_-1_accepted_tri.obj",
+        "step_1_retry_0_accepted_quad_tri.obj",
+        "step_1_retry_0_accepted_tri.obj",
+        "step_2_retry_0_accepted_quad_tri.obj",
+        "step_2_retry_0_accepted_tri.obj",
+        "step_3_retry_0_accepted_quad_tri.obj",
+        "step_3_retry_0_accepted_tri.obj"
+      ]
+    },
+    {
+      "schema": "apmesh.curvabezier_grouping_selection.v1",
+      "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "baseline_front_sha256": "41c4a429088fc166f21ec9668dae2beb02bc2d3c5a6eaf53f36d8408da85e73f",
+      "image_sha256": "2abf0d45c3b3e0633ec14738ce3f2e49e562922440fd8e42abf338a893f5ec64",
+      "control": "force-reject",
+      "mixed_adaptive_epochs": 0,
+      "status": "rejected_control",
+      "selected_source": "baseline.steps/step_3_retry_0_accepted_quad_tri.obj",
+      "selected_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "selected_front": "baseline.steps/step_3_retry_0_accepted_article_front/front.json",
+      "selected_front_sha256": "41c4a429088fc166f21ec9668dae2beb02bc2d3c5a6eaf53f36d8408da85e73f",
+      "projection": "eligible",
+      "native_rejection_verified": true,
+      "decision": {
+        "verdict": "eligible",
+        "vetoes": [],
+        "sampling_disagreements": [],
+        "geometric_directions": {
+          "regional_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "regional_error_max_xyz": [
+            -1,
+            -1
+          ],
+          "global_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "global_error_max_xyz": [
+            -1,
+            -1
+          ]
+        }
+      },
+      "candidate_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+      "reference_history_files": [
+        "step_0_retry_-1_accepted_quad_tri.obj",
+        "step_0_retry_-1_accepted_tri.obj",
+        "step_1_retry_0_accepted_quad_tri.obj",
+        "step_1_retry_0_accepted_tri.obj",
+        "step_2_retry_0_accepted_quad_tri.obj",
+        "step_2_retry_0_accepted_tri.obj",
+        "step_3_retry_0_accepted_quad_tri.obj",
+        "step_3_retry_0_accepted_tri.obj"
+      ]
+    },
+    {
+      "schema": "apmesh.curvabezier_grouping_selection.v1",
+      "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "baseline_front_sha256": "41c4a429088fc166f21ec9668dae2beb02bc2d3c5a6eaf53f36d8408da85e73f",
+      "image_sha256": "2abf0d45c3b3e0633ec14738ce3f2e49e562922440fd8e42abf338a893f5ec64",
+      "control": "protect-neighbor",
+      "mixed_adaptive_epochs": 0,
+      "status": "no_action",
+      "selected_source": "baseline.steps/step_3_retry_0_accepted_quad_tri.obj",
+      "selected_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "selected_front": "baseline.steps/step_3_retry_0_accepted_article_front/front.json",
+      "selected_front_sha256": "41c4a429088fc166f21ec9668dae2beb02bc2d3c5a6eaf53f36d8408da85e73f",
+      "projection": "active_smaller_size_request"
+    }
+  ],
+  "hosted_snapshot": {
+    "headRefOid": "0fd8ae1ecc68f8f7a887943ce9fad0e5e418a355",
+    "isDraft": true,
+    "reviews": [],
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45536847968/job/138945451520",
+        "name": "QUAD native (ubuntu-24.04)",
+        "startedAt": "2026-11-25T03:00:02Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45536847968/job/138945451541",
+        "name": "QUAD native (windows-2022)",
+        "startedAt": "2026-11-25T03:00:01Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45536847968/job/138945451267",
+        "name": "TRI baseline and tooling controls (Linux)",
+        "startedAt": "2026-11-25T03:00:01Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45536847968/job/138945451579",
+        "name": "TRI scientific equivalence against frozen baseline",
+        "startedAt": "2026-11-25T03:00:02Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      }
+    ]
+  },
+  "mixed_adaptive_epochs": 0
+}

@@ -4415,3 +4415,13 @@ the previous owner and OBJ before retry. The MSVC runner suite and 54 source
 negatives pass; selected output hashes and the candidate reproduce the
 preceding run. [Evidence](CURVABEZIER_OWNED_PREDECESSOR_20261124.md).
 No independent approval, durable adaptive commit or accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - persist and recover the CurvaBezier selection
+
+Verify PRs 265 and 266 remain green. Draft PR 267 at 0fd8ae1e stages the
+selection record before the materialized OBJ, verifies native mesh/front
+identities and provides a recovery command. Test interruption on both sides
+of the record commit, corrupt artifacts and legacy records. The exact
+MSVC executable from PR 266 reproduces and recovers each native outcome.
+[Evidence](CURVABEZIER_SELECTION_RECOVERY_20261125.md).
+No integration, accepted mixed epochs or full adaptive owner transaction.
