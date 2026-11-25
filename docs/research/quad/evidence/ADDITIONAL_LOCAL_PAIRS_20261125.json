@@ -1,0 +1,1100 @@
+{
+  "schema": "apmesh.quad.additional_local_pairs_experiment.v1",
+  "scope": "Paired selective CurvaBezier Step 3 native generation and read-only Ribbed Bracket screen",
+  "classification": "approved scoped opt-in scientific experiment",
+  "native_profile": "Windows MSVC x64 Debug C++17",
+  "engine_sha256": "a148ac7ab53abe95fe82ecea07e57ab2d6f96f90083722cc740ce4d6cb648829",
+  "quality_profile_adopted": false,
+  "native_ribbed_alternative_executed": false,
+  "paired_curva_bezier": {
+    "same_legacy_trace_sha256": "2b15d8e01882181f217c214e4844c50a880532e091a09adf3b708720dceec829",
+    "experimental_run": {
+      "model": "builtin:curva_bezier",
+      "model_fingerprint": "builtin:curva_bezier",
+      "engine_sha256": "a148ac7ab53abe95fe82ecea07e57ab2d6f96f90083722cc740ce4d6cb648829",
+      "step": 3,
+      "source_sha256": {
+        "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+        "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+        "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+      },
+      "relative_residual_tolerance": 0.034341894205194436,
+      "face_requests": [
+        {
+          "face": 637,
+          "site": [
+            0.041666666666666664,
+            0.20833333333333331
+          ],
+          "h": 0.09778718291661573
+        },
+        {
+          "face": 646,
+          "site": [
+            0.05,
+            0.03125
+          ],
+          "h": 0.07103903607281982
+        },
+        {
+          "face": 648,
+          "site": [
+            0.05,
+            0.043750000000000004
+          ],
+          "h": 0.07243495030860424
+        },
+        {
+          "face": 696,
+          "site": [
+            0.08333333333333333,
+            0.32291666666666663
+          ],
+          "h": 0.10345663744811938
+        },
+        {
+          "face": 729,
+          "site": [
+            0.08333333333333333,
+            0.26041666666666663
+          ],
+          "h": 0.07385580935338733
+        },
+        {
+          "face": 730,
+          "site": [
+            0.08333333333333333,
+            0.3020833333333333
+          ],
+          "h": 0.0766345462578662
+        },
+        {
+          "face": 731,
+          "site": [
+            0.08333333333333333,
+            0.28125
+          ],
+          "h": 0.07526530880906478
+        }
+      ],
+      "curve_requests": [
+        {
+          "interval": 12,
+          "previous_size": 0.9999999999996452,
+          "h": 0.499023661742867
+        },
+        {
+          "interval": 13,
+          "previous_size": 0.999999999999645,
+          "h": 0.13201269693743123
+        }
+      ],
+      "mixed_adaptive_epochs": 0,
+      "additional_pair_search": true,
+      "successor": {
+        "status": "staged",
+        "depth_cap": 4,
+        "leaves_before": 223,
+        "leaves_after": 226,
+        "direct_leaf_edits": 1,
+        "requests": 7,
+        "capped_requests": 3,
+        "segments_before": 14,
+        "segments_after": 16,
+        "candidate_sha256": "66127ed67bed8f32eb3f6709dae0cc5ee88f475ae98aa0bbd9bfb32f422e96e5"
+      }
+    },
+    "mixed_adaptive_epochs": 0,
+    "experimental_trace_sha256": "63d21a1bf5707124bf0c1a924d8bec49b38ee11dc88e364634e01443fd857b71",
+    "first_changed_operation": 13,
+    "replacement_quads": [
+      {
+        "operation": 13,
+        "quad": [
+          733,
+          734,
+          389,
+          96
+        ],
+        "score": 1.5,
+        "distinct_eligible_polygons": 1
+      }
+    ],
+    "prior_limiting_triangle_still_present": false,
+    "experimental_commits": 111,
+    "comparison": {
+      "24": {
+        "grid": 24,
+        "region": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "same_ordered_contour_edges": true,
+        "baseline": {
+          "sha256": "7199325b81903c31e112f224513a8d95129fef071c5d27592eb0f57bc9e32ab0",
+          "nodes": 737,
+          "faces": 780,
+          "boundary_segments": 16,
+          "shape": {
+            "minimum_angle": 2.272288298004088,
+            "by_kind": {
+              "TRI": {
+                "count": 104,
+                "minimum_angle": 2.272288298004088,
+                "minimum_shape": 0.06802131608967615
+              },
+              "QUAD": {
+                "count": 676,
+                "minimum_angle": 19.438606955832434,
+                "minimum_shape": 0.32843100153567506
+              }
+            }
+          },
+          "regional_shape": {
+            "minimum_angle": 2.272288298004088,
+            "by_kind": {
+              "TRI": {
+                "count": 104,
+                "minimum_angle": 2.272288298004088,
+                "minimum_shape": 0.06802131608967615,
+                "uv_area_fraction": 0.31194069370249383
+              },
+              "QUAD": {
+                "count": 676,
+                "minimum_angle": 19.438606955832434,
+                "minimum_shape": 0.32843100153567506,
+                "uv_area_fraction": 0.6880593062975061
+              }
+            }
+          },
+          "global_error": {
+            "sample_count": 576,
+            "max_xyz": 0.040148706524736344,
+            "rms_uv": 0.009418791445300004,
+            "rms_source_area": 0.008937693278841221,
+            "tri_sites": 167,
+            "quad_sites": 409
+          },
+          "regional_error": {
+            "sample_count": 576,
+            "max_xyz": 0.040148706524736344,
+            "rms_uv": 0.009418791445300004,
+            "rms_source_area": 0.008937693278841221,
+            "tri_sites": 167,
+            "quad_sites": 409
+          },
+          "max_adjacent_size_ratio": 8.929596877999252,
+          "max_regional_adjacent_size_ratio": 8.929596877999252
+        },
+        "candidate": {
+          "sha256": "66127ed67bed8f32eb3f6709dae0cc5ee88f475ae98aa0bbd9bfb32f422e96e5",
+          "nodes": 737,
+          "faces": 779,
+          "boundary_segments": 16,
+          "shape": {
+            "minimum_angle": 2.272288298004088,
+            "by_kind": {
+              "TRI": {
+                "count": 102,
+                "minimum_angle": 2.272288298004088,
+                "minimum_shape": 0.06802131608967615
+              },
+              "QUAD": {
+                "count": 677,
+                "minimum_angle": 19.438606955832434,
+                "minimum_shape": 0.32843100153567506
+              }
+            }
+          },
+          "regional_shape": {
+            "minimum_angle": 2.272288298004088,
+            "by_kind": {
+              "TRI": {
+                "count": 102,
+                "minimum_angle": 2.272288298004088,
+                "minimum_shape": 0.06802131608967615,
+                "uv_area_fraction": 0.2933089390862733
+              },
+              "QUAD": {
+                "count": 677,
+                "minimum_angle": 19.438606955832434,
+                "minimum_shape": 0.32843100153567506,
+                "uv_area_fraction": 0.7066910609137267
+              }
+            }
+          },
+          "global_error": {
+            "sample_count": 576,
+            "max_xyz": 0.040148706524736344,
+            "rms_uv": 0.009423715079638415,
+            "rms_source_area": 0.008942766269276288,
+            "tri_sites": 154,
+            "quad_sites": 422
+          },
+          "regional_error": {
+            "sample_count": 576,
+            "max_xyz": 0.040148706524736344,
+            "rms_uv": 0.009423715079638415,
+            "rms_source_area": 0.008942766269276288,
+            "tri_sites": 154,
+            "quad_sites": 422
+          },
+          "max_adjacent_size_ratio": 8.929596877999252,
+          "max_regional_adjacent_size_ratio": 8.929596877999252
+        }
+      },
+      "48": {
+        "grid": 48,
+        "region": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "same_ordered_contour_edges": true,
+        "baseline": {
+          "sha256": "7199325b81903c31e112f224513a8d95129fef071c5d27592eb0f57bc9e32ab0",
+          "nodes": 737,
+          "faces": 780,
+          "boundary_segments": 16,
+          "shape": {
+            "minimum_angle": 2.272288298004088,
+            "by_kind": {
+              "TRI": {
+                "count": 104,
+                "minimum_angle": 2.272288298004088,
+                "minimum_shape": 0.06802131608967615
+              },
+              "QUAD": {
+                "count": 676,
+                "minimum_angle": 19.438606955832434,
+                "minimum_shape": 0.32843100153567506
+              }
+            }
+          },
+          "regional_shape": {
+            "minimum_angle": 2.272288298004088,
+            "by_kind": {
+              "TRI": {
+                "count": 104,
+                "minimum_angle": 2.272288298004088,
+                "minimum_shape": 0.06802131608967615,
+                "uv_area_fraction": 0.31194069370249383
+              },
+              "QUAD": {
+                "count": 676,
+                "minimum_angle": 19.438606955832434,
+                "minimum_shape": 0.32843100153567506,
+                "uv_area_fraction": 0.6880593062975061
+              }
+            }
+          },
+          "global_error": {
+            "sample_count": 2304,
+            "max_xyz": 0.04419218491628824,
+            "rms_uv": 0.009583677246619291,
+            "rms_source_area": 0.009073249417399393,
+            "tri_sites": 724,
+            "quad_sites": 1580
+          },
+          "regional_error": {
+            "sample_count": 2304,
+            "max_xyz": 0.04419218491628824,
+            "rms_uv": 0.009583677246619291,
+            "rms_source_area": 0.009073249417399393,
+            "tri_sites": 724,
+            "quad_sites": 1580
+          },
+          "max_adjacent_size_ratio": 8.929596877999252,
+          "max_regional_adjacent_size_ratio": 8.929596877999252
+        },
+        "candidate": {
+          "sha256": "66127ed67bed8f32eb3f6709dae0cc5ee88f475ae98aa0bbd9bfb32f422e96e5",
+          "nodes": 737,
+          "faces": 779,
+          "boundary_segments": 16,
+          "shape": {
+            "minimum_angle": 2.272288298004088,
+            "by_kind": {
+              "TRI": {
+                "count": 102,
+                "minimum_angle": 2.272288298004088,
+                "minimum_shape": 0.06802131608967615
+              },
+              "QUAD": {
+                "count": 677,
+                "minimum_angle": 19.438606955832434,
+                "minimum_shape": 0.32843100153567506
+              }
+            }
+          },
+          "regional_shape": {
+            "minimum_angle": 2.272288298004088,
+            "by_kind": {
+              "TRI": {
+                "count": 102,
+                "minimum_angle": 2.272288298004088,
+                "minimum_shape": 0.06802131608967615,
+                "uv_area_fraction": 0.2933089390862733
+              },
+              "QUAD": {
+                "count": 677,
+                "minimum_angle": 19.438606955832434,
+                "minimum_shape": 0.32843100153567506,
+                "uv_area_fraction": 0.7066910609137267
+              }
+            }
+          },
+          "global_error": {
+            "sample_count": 2304,
+            "max_xyz": 0.04419218491628824,
+            "rms_uv": 0.009589351028676791,
+            "rms_source_area": 0.009079034654457278,
+            "tri_sites": 678,
+            "quad_sites": 1626
+          },
+          "regional_error": {
+            "sample_count": 2304,
+            "max_xyz": 0.04419218491628824,
+            "rms_uv": 0.009589351028676791,
+            "rms_source_area": 0.009079034654457278,
+            "tri_sites": 678,
+            "quad_sites": 1626
+          },
+          "max_adjacent_size_ratio": 8.929596877999252,
+          "max_regional_adjacent_size_ratio": 8.929596877999252
+        }
+      }
+    },
+    "regional_metrics": {
+      "control": {
+        "interior_QUAD": {
+          "count": 669,
+          "min_angle_deg": 50.861832780446775,
+          "min_shape": 0.7180649371046371
+        },
+        "contour_edge_QUAD": {
+          "count": 7,
+          "min_angle_deg": 19.438606955832434,
+          "min_shape": 0.32843100153567506
+        },
+        "contour_edge_TRI": {
+          "count": 9,
+          "min_angle_deg": 10.367272360473434,
+          "min_shape": 0.30088697922437296
+        },
+        "contour_vertex_TRI": {
+          "count": 92,
+          "min_angle_deg": 2.272288298004088,
+          "min_shape": 0.06802131608967615
+        },
+        "interior_TRI": {
+          "count": 3,
+          "min_angle_deg": 8.040471829840511,
+          "min_shape": 0.22574951811126628
+        }
+      },
+      "additional": {
+        "interior_QUAD": {
+          "count": 669,
+          "min_angle_deg": 44.56605203816204,
+          "min_shape": 0.6913273288174268
+        },
+        "contour_edge_QUAD": {
+          "count": 8,
+          "min_angle_deg": 19.438606955832434,
+          "min_shape": 0.32843100153567506
+        },
+        "contour_edge_TRI": {
+          "count": 8,
+          "min_angle_deg": 10.367272360473434,
+          "min_shape": 0.30088697922437296
+        },
+        "contour_vertex_TRI": {
+          "count": 92,
+          "min_angle_deg": 2.272288298004088,
+          "min_shape": 0.06802131608967615
+        },
+        "interior_TRI": {
+          "count": 2,
+          "min_angle_deg": 14.360406798940785,
+          "min_shape": 0.377193811758363
+        }
+      }
+    },
+    "unadopted_predecessor_floor_control": {
+      "status": "blocked",
+      "blocking_guards": [
+        "interior_TRI.min_angle_deg",
+        "interior_TRI.min_shape"
+      ],
+      "growth": {
+        "predecessor_faces": 732,
+        "candidate_faces": 779,
+        "fraction": 0.06420765027322405,
+        "limit": 0.10420475319926874
+      },
+      "regions": {
+        "contour_edge_TRI": {
+          "predecessor_count": 8,
+          "candidate_count": 8,
+          "min_angle_deg": {
+            "floor": 10.367272360473434,
+            "predecessor_min": 10.367272360473434,
+            "candidate_min": 10.367272360473434,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 0,
+            "status": "meets_floor"
+          },
+          "min_shape": {
+            "floor": 0.30088697922437296,
+            "predecessor_min": 0.30088697922437296,
+            "candidate_min": 0.30088697922437296,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 0,
+            "status": "meets_floor"
+          }
+        },
+        "contour_edge_QUAD": {
+          "predecessor_count": 6,
+          "candidate_count": 8,
+          "min_angle_deg": {
+            "floor": 19.438606955832434,
+            "predecessor_min": 19.438606955832434,
+            "candidate_min": 19.438606955832434,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 0,
+            "status": "meets_floor"
+          },
+          "min_shape": {
+            "floor": 0.32843100153567506,
+            "predecessor_min": 0.32843100153567506,
+            "candidate_min": 0.32843100153567506,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 0,
+            "status": "meets_floor"
+          }
+        },
+        "contour_vertex_TRI": {
+          "predecessor_count": 94,
+          "candidate_count": 92,
+          "min_angle_deg": {
+            "floor": 1.4181974567977775,
+            "predecessor_min": 1.4181974567977775,
+            "candidate_min": 2.272288298004088,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 0,
+            "status": "meets_floor"
+          },
+          "min_shape": {
+            "floor": 0.04268083753878802,
+            "predecessor_min": 0.04268083753878802,
+            "candidate_min": 0.06802131608967615,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 0,
+            "status": "meets_floor"
+          }
+        },
+        "contour_vertex_QUAD": {
+          "predecessor_count": 0,
+          "candidate_count": 0,
+          "min_angle_deg": {
+            "floor": 0,
+            "predecessor_min": null,
+            "candidate_min": null,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 0,
+            "status": "absent"
+          },
+          "min_shape": {
+            "floor": 0,
+            "predecessor_min": null,
+            "candidate_min": null,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 0,
+            "status": "absent"
+          }
+        },
+        "interior_TRI": {
+          "predecessor_count": 0,
+          "candidate_count": 2,
+          "min_angle_deg": {
+            "floor": 26.57091996655889,
+            "predecessor_min": null,
+            "candidate_min": 14.360406798940785,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 1,
+            "status": "blocked"
+          },
+          "min_shape": {
+            "floor": 0.6929450141702036,
+            "predecessor_min": null,
+            "candidate_min": 0.377193811758363,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 1,
+            "status": "blocked"
+          }
+        },
+        "interior_QUAD": {
+          "predecessor_count": 624,
+          "candidate_count": 669,
+          "min_angle_deg": {
+            "floor": 26.450085727709634,
+            "predecessor_min": 64.40510702872767,
+            "candidate_min": 44.56605203816204,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 0,
+            "status": "meets_floor"
+          },
+          "min_shape": {
+            "floor": 0.3248423057881177,
+            "predecessor_min": 0.9014446997284595,
+            "candidate_min": 0.6913273288174268,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 0,
+            "status": "meets_floor"
+          }
+        }
+      }
+    },
+    "forged_score_rejected": true
+  },
+  "regional_displacement": {
+    "interior_QUAD": {
+      "ids_zero_based": [
+        87,
+        367,
+        381,
+        94
+      ],
+      "frames": {
+        "control": {
+          "birth": {
+            "angle_min": 41.297837013816206,
+            "uv": [
+              [
+                0.0625,
+                0.75
+              ],
+              [
+                0.09375,
+                0.75
+              ],
+              [
+                0.125,
+                0.78125
+              ],
+              [
+                0.125,
+                0.8125
+              ]
+            ]
+          },
+          "final": {
+            "angle_min": 50.861832780446775,
+            "uv": [
+              [
+                0.06966145833333333,
+                0.7681118344503736
+              ],
+              [
+                0.09375,
+                0.75
+              ],
+              [
+                0.125,
+                0.7767857142857143
+              ],
+              [
+                0.125,
+                0.8080357142857143
+              ]
+            ]
+          }
+        },
+        "additional": {
+          "birth": {
+            "angle_min": 41.297837013816206,
+            "uv": [
+              [
+                0.0625,
+                0.75
+              ],
+              [
+                0.09375,
+                0.75
+              ],
+              [
+                0.125,
+                0.78125
+              ],
+              [
+                0.125,
+                0.8125
+              ]
+            ]
+          },
+          "final": {
+            "angle_min": 44.56605203816204,
+            "uv": [
+              [
+                0.0625,
+                0.75
+              ],
+              [
+                0.09375,
+                0.75
+              ],
+              [
+                0.125,
+                0.7767857142857143
+              ],
+              [
+                0.125,
+                0.8045280612244898
+              ]
+            ]
+          }
+        }
+      },
+      "native_seed": false
+    },
+    "interior_TRI": {
+      "ids_zero_based": [
+        94,
+        389,
+        87
+      ],
+      "frames": {
+        "control": {
+          "birth": {
+            "angle_min": 10.571950098942574,
+            "uv": [
+              [
+                0.125,
+                0.8125
+              ],
+              [
+                0.125,
+                0.84375
+              ],
+              [
+                0.0625,
+                0.75
+              ]
+            ]
+          },
+          "final": {
+            "angle_min": 17.426291517709206,
+            "uv": [
+              [
+                0.125,
+                0.8080357142857143
+              ],
+              [
+                0.125,
+                0.84375
+              ],
+              [
+                0.06966145833333333,
+                0.7681118344503736
+              ]
+            ]
+          }
+        },
+        "additional": {
+          "birth": {
+            "angle_min": 10.571950098942574,
+            "uv": [
+              [
+                0.125,
+                0.8125
+              ],
+              [
+                0.125,
+                0.84375
+              ],
+              [
+                0.0625,
+                0.75
+              ]
+            ]
+          },
+          "final": {
+            "angle_min": 14.360406798940785,
+            "uv": [
+              [
+                0.125,
+                0.8045280612244898
+              ],
+              [
+                0.125,
+                0.84375
+              ],
+              [
+                0.0625,
+                0.75
+              ]
+            ]
+          }
+        }
+      },
+      "native_seed": false
+    }
+  },
+  "ribbed_bracket_read_only": {
+    "trace_sha256": "e6d7a0445a2562e9ba7ff600547dd2d4aeaaaacabeed95608db11276fafa4959",
+    "operations_scanned": 74,
+    "opportunities": [
+      {
+        "operation": 1,
+        "polygons": [
+          {
+            "quad": [
+              601,
+              602,
+              1,
+              622
+            ],
+            "score": 1.2934394403736744
+          },
+          {
+            "quad": [
+              601,
+              602,
+              14,
+              622
+            ],
+            "score": 1.2951983081086802
+          },
+          {
+            "quad": [
+              601,
+              602,
+              197,
+              14
+            ],
+            "score": 1.2951672353008665
+          },
+          {
+            "quad": [
+              601,
+              602,
+              197,
+              622
+            ],
+            "score": 1.1559948173665686
+          }
+        ]
+      },
+      {
+        "operation": 3,
+        "polygons": [
+          {
+            "quad": [
+              603,
+              604,
+              32,
+              226
+            ],
+            "score": 1.295633304646772
+          },
+          {
+            "quad": [
+              603,
+              604,
+              149,
+              9
+            ],
+            "score": 1.2963328342393845
+          },
+          {
+            "quad": [
+              603,
+              604,
+              149,
+              178
+            ],
+            "score": 1.3986349146020263
+          },
+          {
+            "quad": [
+              603,
+              604,
+              149,
+              226
+            ],
+            "score": 1.3754996825605155
+          },
+          {
+            "quad": [
+              603,
+              604,
+              226,
+              9
+            ],
+            "score": 1.41003835760422
+          },
+          {
+            "quad": [
+              603,
+              604,
+              230,
+              32
+            ],
+            "score": 1.2947941066306687
+          }
+        ]
+      },
+      {
+        "operation": 61,
+        "polygons": [
+          {
+            "quad": [
+              355,
+              59,
+              599,
+              161
+            ],
+            "score": 1.1559582607547387
+          }
+        ]
+      }
+    ]
+  },
+  "local_runs": {
+    "build": {
+      "command": [
+        "cmake",
+        "--build",
+        "build/quad-grouping-runner-results/msvc",
+        "--target",
+        "ap_mesh",
+        "quad_real_boundary_source_contracts",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "exit": 0,
+      "seconds": 7.68830132484436,
+      "timeout": 180
+    },
+    "control": {
+      "command": [
+        "python",
+        "build/quad-local-pairs-20261125/control.py"
+      ],
+      "exit": 1,
+      "seconds": 0.47296619415283203,
+      "timeout": 240,
+      "diagnostic": "Wrapper and subprocess requested the same stdout filename; native run did not start."
+    },
+    "control-native": {
+      "command": [
+        "python",
+        "build/quad-local-pairs-20261125/control-native.py"
+      ],
+      "exit": 1,
+      "seconds": 71.4617612361908,
+      "timeout": 240,
+      "diagnostic": "Native generation completed; wrapper used a stale artifact path in its final check."
+    },
+    "control-readback": {
+      "command": [
+        "python",
+        "build/quad-local-pairs-20261125/control-readback.py"
+      ],
+      "exit": 0,
+      "seconds": 0.06315279006958008,
+      "timeout": 60
+    },
+    "additional": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/quad_portable_feedback_trial.py",
+        "--exe",
+        "build/quad-local-pairs-20261125/ap_mesh.exe",
+        "--model",
+        "builtin:curva_bezier",
+        "--step",
+        "3",
+        "--relative-tolerance",
+        "0.034341894205194436",
+        "--out",
+        "build/quad-local-pairs-20261125/additional",
+        "--additional-pairs"
+      ],
+      "exit": 0,
+      "seconds": 118.62830591201782,
+      "timeout": 360
+    },
+    "paired-audit": {
+      "command": [
+        "python",
+        "build/quad-local-pairs-20261125/audit-pairs.py"
+      ],
+      "exit": 0,
+      "seconds": 3.8272976875305176,
+      "timeout": 120
+    },
+    "locate-residual": {
+      "command": [
+        "python",
+        "build/quad-local-pairs-20261125/locate-residual.py"
+      ],
+      "exit": 0,
+      "seconds": 0.2504003047943115,
+      "timeout": 60
+    },
+    "screen-ribbed": {
+      "command": [
+        "python",
+        "build/quad-local-pairs-20261125/screen-ribbed.py"
+      ],
+      "exit": 0,
+      "seconds": 1.4949476718902588,
+      "timeout": 90
+    },
+    "ordinary-front": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tests/quad/test_article_front_application.py",
+        "--exe",
+        "build/quad-local-pairs-20261125/ap_mesh.exe",
+        "--directory",
+        "build/quad-local-pairs-20261125/ordinary-suite"
+      ],
+      "exit": 0,
+      "seconds": 86.01661133766174,
+      "timeout": 240
+    },
+    "source-contracts": {
+      "command": [
+        "build/quad-local-pairs-20261125/quad_real_boundary_source_contracts.exe",
+        "configs/quad/curved_patch_original_curves.conf"
+      ],
+      "exit": 0,
+      "seconds": 3.251938819885254,
+      "timeout": 120
+    },
+    "reporting": {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "build/quad-grouping-runner-source/tests/quad/test_generation_metrics.py",
+        "build/quad-grouping-runner-source/tests/quad/test_grouping_admission.py",
+        "build/quad-grouping-runner-source/tests/quad/test_grouping_recovery.py",
+        "build/quad-grouping-runner-source/tests/quad/test_transition_comparison.py",
+        "build/quad-grouping-runner-source/tests/quad/test_relative_feedback_requests.py",
+        "build/quad-grouping-runner-source/tests/quad/test_regional_quality_guards.py"
+      ],
+      "exit": 0,
+      "seconds": 1.5108065605163574,
+      "timeout": 120
+    },
+    "directed-portable": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tests/quad/test_portable_feedback_application.py",
+        "--exe",
+        "build/quad-local-pairs-20261125/ap_mesh.exe",
+        "--directory",
+        "build/quad-local-pairs-20261125/portable-suite"
+      ],
+      "exit": 0,
+      "seconds": 254.82008385658264,
+      "timeout": 600
+    }
+  },
+  "remote_check_snapshot_utc": "2026-11-25T12:28:48+00:00",
+  "remote_feature": {
+    "number": 275,
+    "head": "779ac3437a7ab7099dda3d26c8deb478892dc922",
+    "draft": true,
+    "jobs": [
+      {
+        "name": "QUAD native (ubuntu-24.04)",
+        "status": "IN_PROGRESS",
+        "conclusion": null,
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45613458333/job/139202681583"
+      },
+      {
+        "name": "QUAD native (windows-2022)",
+        "status": "IN_PROGRESS",
+        "conclusion": null,
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45613458333/job/139202682157"
+      },
+      {
+        "name": "TRI baseline and tooling controls (Linux)",
+        "status": "IN_PROGRESS",
+        "conclusion": null,
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45613458333/job/139202681931"
+      },
+      {
+        "name": "TRI scientific equivalence against frozen baseline",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45613458333/job/139202682217"
+      }
+    ]
+  },
+  "remote_trace_pr": {
+    "number": 274,
+    "head": "84113d9c375a1bdd89fbe4f653d4787dab86241d",
+    "draft": true,
+    "jobs": [
+      {
+        "name": "QUAD native (ubuntu-24.04)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45611953490/job/139197481564"
+      },
+      {
+        "name": "QUAD native (windows-2022)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45611953490/job/139197481814"
+      },
+      {
+        "name": "TRI baseline and tooling controls (Linux)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45611953490/job/139197481613"
+      },
+      {
+        "name": "TRI scientific equivalence against frozen baseline",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45611953490/job/139197481359"
+      }
+    ]
+  }
+}

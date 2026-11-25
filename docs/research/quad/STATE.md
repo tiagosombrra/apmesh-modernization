@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: test additional local pairs before retaining a TRI
+## Active: test transfer of additional local pairs
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,27 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - measure additional local pairs on CurvaBezier
+
+[Draft PR 275](https://github.com/tiagosombrra/apmesh-modernization/pull/275)
+at 779ac343 adds the approved opt-in selection. Operation 13 creates the
+predicted QUAD with S = 1.50 and the limiting interior TRI disappears.
+With 737 nodes and 16 contour segments in both arms, the final interior TRI
+minimum rises from 8.04 to 14.36 degrees and the interior QUAD minimum falls
+from 50.86 to 44.57. The QUAD is born with identical geometry. Its smoothing
+outcome varies with the new adjacency. Same-site geometric RMS increases
+about 0.064 percent and the predecessor-derived interior TRI floors still
+block the candidate. The ordinary and directed native suites, boundary
+source controls and 39 Python checks pass locally.
+[Paired result and receipts](ADDITIONAL_LOCAL_PAIRS_20261125.md).
+
+**Next:** align a matched native Ribbed Bracket comparison with the same
+flag and no recalibration. The read-only Ribbed front scan located three
+opportunities across 74 TRI fallbacks. Compare regional quality at birth and
+after smoothing, deviation and cost before deciding whether to retain the
+selection for reserved models. Shared curves, admitted mixed successor
+reentry and global curvature remain open. Zero accepted mixed epochs.
 
 ### 2026-11-25 - locate the missed QUAD before the limiting TRI
 
@@ -25,10 +46,8 @@ one eligible QUAD at S = 1.50 and 41.86 degrees. The native TRI at that
 operation removes the opportunity. [Trace and receipt](GUARDED_INTERIOR_FRONT_TRACE_20261125.md).
 Native standard/portable tests, source contracts and 39 Python controls pass.
 
-**Next:** execute the approved same-window alternate-pair experiment
-only where the existing selection would retain a TRI, with the original
-S limit and edge order. Compare the first changed operation and the
-whole candidate. No policy adopted and zero accepted mixed epochs.
+The aligned same-window experiment is measured above. No policy adopted and
+zero accepted mixed epochs.
 
 ### 2026-11-25 - measure explicit regional floors and the common limiting TRI
 

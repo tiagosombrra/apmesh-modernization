@@ -4603,3 +4603,18 @@ Local native regressions and 39 Python controls pass.
 The researcher approves testing remaining local pairs only on a TRI
 fallback. Candidate selection and scientific acceptance are unchanged
 in this checkpoint.
+
+## 2026-11-25 Fortaleza - compare additional local pairs on the same native input
+
+Draft PR 275 at 779ac343 implements the approved opt-in experiment. Compare
+the same executable and input on both arms. Operation 13 creates the single
+replacement QUAD. The limiting interior TRI disappears. Final interior TRI
+minimum angle rises from 8.04 to 14.36 degrees, while interior QUAD minimum
+angle falls from 50.86 to 44.57 after smoothing the same birth face. Both
+arms have 737 nodes and 16 contour segments. Sampled geometric RMS increases
+about 0.064 percent. The predecessor-derived profile still blocks the
+candidate. The native and portable regressions pass and the two control
+wrapper failures are retained with a successful independent artifact readback.
+[Report and receipt](ADDITIONAL_LOCAL_PAIRS_20261125.md).
+Next align one native transfer comparison on Ribbed Bracket. No profile
+adopted and zero mixed adaptive epochs accepted.

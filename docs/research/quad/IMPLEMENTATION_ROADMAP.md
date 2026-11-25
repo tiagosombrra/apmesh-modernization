@@ -22,10 +22,14 @@ now covers both development surfaces, including native selective Ribbed.
 The [regional quality controls](REGIONAL_QUALITY_GUARDS_20261125.md) identify
 a limiting interior TRI shared by both CurvaBezier seed regimes. The
 [guarded front trace](GUARDED_INTERIOR_FRONT_TRACE_20261125.md) identifies
-a missed eligible local pair on the earlier chosen base. Test the aligned
-same-window expansion before freezing a transferable tolerance, quality and
-growth profile for reserved geometries. Measure regional shape and error versus face cost, and keep
-the shared-curve and two-epoch gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
+a missed eligible local pair on the earlier chosen base. The
+[additional local pairs experiment](ADDITIONAL_LOCAL_PAIRS_20261125.md)
+removes that limiting interior TRI on CurvaBezier and records an interior
+QUAD smoothing tradeoff. Compare the same option on the independent Ribbed
+case before freezing a transferable tolerance, quality and growth profile
+for reserved geometries. Measure regional quality at birth and after
+smoothing, error and face cost, and keep the shared-curve and two-epoch
+gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
 is measured locally. The [frozen admission and transfer control](GROUPING_ADMISSION_AND_TRANSFER_20261124.md)
