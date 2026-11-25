@@ -4467,3 +4467,19 @@ Exact PR 269 hosted run 45543991736 completes four successful checks.
 Next align admission, extend comparative coverage, and qualify the
 staged source for a subsequent native generation. Zero accepted mixed
 adaptive epochs and no global mixed curvature qualification.
+
+## 2026-11-25 Fortaleza - compare mixed admission evidence and exercise shared sources
+
+Recompute both residual-only native archives and their original TRI
+controls on common UV grids. Geometric RMS improves with growth on both
+models and local minimum contour-edge QUAD declines. Draft PR 270 at
+dc6025e8 adds a read-only shared source witness. The Ribbed two-patch
+excerpt stops at original zero error. The curved pair reaches native
+capture and is refused for original corner ID discrepancies at
+identical XYZ. Default TRI reaches step 3 on that same input. Verify
+1, 4, 16 and 64 real seam edges with opposite directions and track the
+accepted corner ID differences at every step. Exact MSVC default source
+regression passes with 54 negative controls. [Report and receipts](MIXED_FEEDBACK_ADMISSION_SHARED_SOURCE_20261125.md).
+Next qualify native curve and patch-corner provenance before shared
+binary subdivision. Admission criteria and global curvature are still
+open, and zero mixed adaptive epochs are accepted.

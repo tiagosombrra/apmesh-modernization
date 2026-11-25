@@ -30,11 +30,14 @@ stages two successors and locates their regression in the advancing-front
 search neighborhood. The [coupled native successor](FEEDBACK_SEARCH_AND_CURVES_20261125.md)
 isolates the lookup regression and applies the original requested curve splits.
 The guarded arm stages a valid successor with smaller sampled geometric
-deviation and changed next sizing requests. Remaining gate for issue 221:
-align admission for changed contour, growth and local shape, exercise the
-same coupled step on another real transition and a shared patch edge, then
-drive a subsequent native generation from the staged source. Keep the TRI-only
-control and report both local and patch-wide effects. Zero accepted epochs.
+deviation and changed next sizing requests. The [comparative admission and
+shared source audit](MIXED_FEEDBACK_ADMISSION_SHARED_SOURCE_20261125.md) confirms
+the geometric gains and regional shape tradeoffs against paired TRI controls
+on both cases. A two-patch native source capture rejects real equal-position
+corners because their curve IDs differ. Qualify separate curve and accepted
+patch-corner provenance, verify a shared binary subdivision, align growth
+and regional shape admission, then drive a subsequent native generation
+from the staged source. Keep the TRI-only control. Zero accepted epochs.
 The dated entries below document earlier decisions and measured scope.
 
 ## Execution history beginning 2026-11-19

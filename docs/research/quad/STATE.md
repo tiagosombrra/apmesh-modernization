@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: qualify experimental admission for native TRI/QUAD feedback
+## Active: qualify original shared curve capture for native TRI/QUAD feedback
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,37 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - compare two residual successors and locate the shared source blocker
+
+Common-site reevaluation of the archived native CurvaBezier and Ribbed
+residual-only successors also retains the original TRI controls. Relative
+to the mixed inputs, geometric RMS drops 69.4 and 36.8 percent, face counts
+grow 17.5 and 18.5 percent, and the lowest contour-edge QUAD angles
+decrease by 0.35 and 0.85 degrees. Each decrease is localized to one
+new QUAD at a chart corner. The regional TRI minima along the contour improve. No admission rule or growth limit is adopted.
+
+[Draft PR 270](https://github.com/tiagosombrra/apmesh-modernization/pull/270)
+at dc6025e8 tests the existing native source capture on real Ribbed
+patches 2 and 8 and the retained two-patch curved fixture. The Ribbed
+excerpt stops at initial zero estimated error. For the curved pair,
+ordinary TRI accepts steps 0 through 3 and physically matches all
+85 directed seam intervals across those stages. At least one endpoint
+ID differs in every stage. The mixed source observer rejects at the
+second patch on two equal-XYZ corner pairs with different original sample IDs.
+MSVC default/source controls pass six captures and 54 negatives. Exact
+PR 270 hosted snapshot: 1 successful, 3 pending, 0 other jobs.
+The [report and receipts](MIXED_FEEDBACK_ADMISSION_SHARED_SOURCE_20261125.md)
+retain both expected opt-in stops. No shared mixed predecessor exists.
+
+**Next:** qualify a research source record that stores the native curve
+samples separately from each patch's actual accepted TRI corner IDs.
+Use the curved pair to verify true shared curve identity, physical
+geometry, direction and owner provenance, and reject incorrect bindings.
+Then execute the original binary subdivision on both sides of the same
+curve. Regional shape and growth still need scientific admission
+alignment. Zero accepted mixed epochs and no mixed global curvature
+qualification.
 
 ### 2026-11-25 - produce a valid successor with coupled curve and tree feedback
 
