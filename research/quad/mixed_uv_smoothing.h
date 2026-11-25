@@ -18,6 +18,8 @@ struct MixedUvSmoothingTrace {
   std::vector<std::vector<UvVertex>> passes;
 };
 using MixedUvPassValidator = std::function<void(std::size_t, const std::vector<UvVertex>&)>;
+using MixedUvPassFilter =
+    std::function<void(std::size_t, const std::vector<UvVertex>&, std::vector<UvVertex>&)>;
 
 // Confirmed research interpretation: distinct other vertices of incident faces,
 // including opposite QUAD corners, ascending retained ID order, five Jacobi
@@ -25,7 +27,8 @@ using MixedUvPassValidator = std::function<void(std::size_t, const std::vector<U
 // All values remain local until success; input and physical owners are untouched.
 inline MixedUvSmoothingTrace SmoothMixedUv(const std::vector<UvVertex>& input,
                                            const std::vector<std::vector<VertexId>>& faces,
-                                           const MixedUvPassValidator& validate) {
+                                           const MixedUvPassValidator& validate,
+                                           const MixedUvPassFilter& filter = {}) {
   const auto require = [](bool condition, const char* reason) {
     if (!condition)
       throw std::invalid_argument(reason);
@@ -87,6 +90,8 @@ inline MixedUvSmoothingTrace SmoothMixedUv(const std::vector<UvVertex>& input,
       require(std::isfinite(mean.u) && std::isfinite(mean.v), "Nonfinite mixed smoothing mean");
       next[i] = mean;
     }
+    if (filter)
+      filter(pass, current, next);
     validate(pass, next);
     trace.passes.push_back(next);
     current = std::move(next);
