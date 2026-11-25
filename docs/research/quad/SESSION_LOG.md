@@ -4740,3 +4740,17 @@ below a regional target. Record the proposed safety, growth, stop and
 rollback rules for alignment. [Admission draft](MIXED_ADMISSION_CONTRACT_20261125.md).
 No new native generation, adopted thresholds, reserved geometries or
 accepted mixed epochs in this replay.
+
+## 2026-11-25 Fortaleza - implement opt-in progressive eligibility
+
+The researcher selected progression by stages. Implement the explicit
+single-patch assessment above the existing native staging path in draft
+PR 279 at f6ae3471. The fresh CurvaBezier candidate, certificate and
+original source match the retained run. Ribbed exercises the archived
+indexed input. Run 36 local Python checks, two diagnostic blockers, six
+archive refusals and an archived no-request control. The first archive
+parser treated cached contour metadata as XYZ. Correct the field ranges
+and retain that failed invocation in the evidence. Exact-head hosted
+checks are running. [Implementation evidence](PROGRESSIVE_ADMISSION_GATE_20261125.md).
+Align a numerical profile before moving eligible candidates into native
+accepted-owner state. Zero accepted mixed epochs.

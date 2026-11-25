@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align one mixed-cycle admission profile before native implementation
+## Active: specify one numerical profile for accepted mixed-owner reentry
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,23 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - implement the selected progressive admission assessment
+
+[Draft PR 279](https://github.com/tiagosombrra/apmesh-modernization/pull/279)
+at f6ae3471 adds an opt-in gate to the portable single-patch runner.
+It checks predecessor and mesh identity, ordered native curve subdivision,
+physical safety floors, changes below regional targets, two common geometry
+grids and growth budgets. A fresh MSVC CurvaBezier run reproduces the
+779-face candidate and certificate. The Ribbed archive and six binding
+refusals exercise the same gate. All 36 local Python checks pass. Four
+hosted jobs are in progress. [Result](PROGRESSIVE_ADMISSION_GATE_20261125.md).
+
+**Next:** propose and align one numerical profile grounded in element
+quality and cost requirements, then evaluate both development cases
+before native accepted-owner reentry. The gate reports eligibility and
+does not publish native ownership. Zero accepted mixed epochs. Global
+mixed-curvature error and shared-curve qualification remain open.
 
 ### 2026-11-25 - replay the prospective admission contract on both development models
 
@@ -24,13 +41,8 @@ Ribbed successors remove the original five affected transition TRI while
 introducing additional interior TRI below the diagnostic angle and shape
 targets. [Admission draft and replay](MIXED_ADMISSION_CONTRACT_20261125.md).
 
-**Next:** align one geometry-independent profile with explicit safety
-floors, regional targets, minimum geometric gain and growth budgets.
-Implement the aligned decision as an opt-in gate on candidate and accepted
-owner state, with rollback and exact predecessor binding. Review the
-design before using reserved geometry. The archive replay ran no native
-generation and admitted zero epochs. Global mixed-curvature error and
-shared-curve qualification are open.
+The researcher chose progression by stages. The assessment and its
+remaining numerical and ownership gates appear above.
 
 ### 2026-11-25 - refine the coarse side of the transition in the native run
 
