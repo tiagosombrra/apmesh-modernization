@@ -8,6 +8,7 @@
 #include <vector>
 
 using apmesh::quad::research::MeasureMixedSurfaceResidual;
+using apmesh::quad::research::MeasureQuadSurfaceMaximum;
 using apmesh::quad::research::ResidualFace;
 using apmesh::quad::research::ResidualPoint3;
 using apmesh::quad::research::ResidualUv;
@@ -18,41 +19,43 @@ void Require(bool ok, const char* message) {
     throw std::runtime_error(message);
 }
 ResidualPoint3 Curved(const ResidualUv& uv) {
-  return {uv[0], uv[1], uv[0]*uv[0] + uv[1]*uv[1]};
+  return {uv[0], uv[1], uv[0] * uv[0] + uv[1] * uv[1]};
 }
-ResidualPoint3 Planar(const ResidualUv& uv) {
-  return {uv[0], uv[1], 0.0};
-}
-}  // namespace
+ResidualPoint3 Planar(const ResidualUv& uv) { return {uv[0], uv[1], 0.0}; }
+} // namespace
 
 int main() {
-  const std::vector<ResidualUv> uv{{0,0}, {0.5,0}, {0.5,1},
-                                   {0,1}, {1,0}, {1,1}};
+  const std::vector<ResidualUv> uv{{0, 0}, {0.5, 0}, {0.5, 1}, {0, 1}, {1, 0}, {1, 1}};
   std::vector<ResidualPoint3> physical;
   for (const auto& point : uv)
     physical.push_back(Curved(point));
-  const std::vector<ResidualFace> faces{{0,1,2,3}, {1,4,2}};
+  const std::vector<ResidualFace> faces{{0, 1, 2, 3}, {1, 4, 2}};
   const auto observed = MeasureMixedSurfaceResidual(uv, physical, faces, Curved);
-  Require(observed.quadrilaterals == 1 && observed.triangles == 1 &&
-              observed.samples == 9 && observed.face_maximum.size() == 2 &&
-              observed.maximum > 0.0 && observed.rms > 0.0 &&
+  Require(observed.quadrilaterals == 1 && observed.triangles == 1 && observed.samples == 9 &&
+              observed.face_maximum.size() == 2 && observed.maximum > 0.0 && observed.rms > 0.0 &&
               observed.quad_maximum > 0.0 && observed.triangle_maximum > 0.0 &&
               observed.worst_quad_face == 0 && observed.worst_triangle_face == 1 &&
               observed.worst_triangle_sample_uv[0] > 0.0 &&
               observed.worst_triangle_sample_uv[1] > 0.0 &&
-              observed.worst_quad_sample_uv[0] > 0.0 &&
-              observed.worst_quad_sample_uv[1] > 0.0,
+              observed.worst_quad_sample_uv[0] > 0.0 && observed.worst_quad_sample_uv[1] > 0.0,
           "Curved QUAD/TRI physical source oracle was not measured");
+  const std::array<ResidualUv, 4> quad_uv{{uv[0], uv[1], uv[2], uv[3]}};
+  const std::array<ResidualPoint3, 4> quad_xyz{
+      {physical[0], physical[1], physical[2], physical[3]}};
+  Require(MeasureQuadSurfaceMaximum(quad_uv, quad_xyz, Curved) == observed.quad_maximum,
+          "Prospective QUAD maximum differs from mixed measurement");
 
   // A planar source must not invent curvature or an arbitrary zero-score UV.
   auto flat = physical;
   for (auto& p : flat)
     p[2] = 0.0;
   const auto zero = MeasureMixedSurfaceResidual(uv, flat, faces, Planar);
-  Require(zero.maximum == 0.0 && zero.rms == 0.0 &&
-              zero.quad_maximum == 0.0 && zero.triangle_maximum == 0.0 &&
-              zero.worst_quad_face == 0 && zero.worst_triangle_face == 1 &&
-              zero.worst_quad_sample_uv[0] == 0.25 &&
+  const std::array<ResidualPoint3, 4> flat_quad{{flat[0], flat[1], flat[2], flat[3]}};
+  Require(MeasureQuadSurfaceMaximum(quad_uv, flat_quad, Planar) == 0.0,
+          "Planar prospective QUAD has positive geometric deviation");
+  Require(zero.maximum == 0.0 && zero.rms == 0.0 && zero.quad_maximum == 0.0 &&
+              zero.triangle_maximum == 0.0 && zero.worst_quad_face == 0 &&
+              zero.worst_triangle_face == 1 && zero.worst_quad_sample_uv[0] == 0.25 &&
               zero.worst_quad_sample_uv[1] == 0.5,
           "Deterministic planar QUAD residual tie handling is broken");
 
@@ -70,11 +73,11 @@ int main() {
   reject({}, physical, faces, Curved);
   reject(uv, {}, faces, Curved);
   reject(uv, physical, {}, Curved);
-  reject(uv, physical, {{0,1,2,3}, {1,4,4}}, Curved);
-  reject(uv, physical, {{0,1,2,99}, {1,4,2}}, Curved);
-  reject(uv, physical, {{0,1,2,3}, {1,4,2,5,0}}, Curved);
-  reject(uv, physical, {{1,4,2}}, Curved);
-  reject(uv, physical, {{0,1,2,3}}, Curved);
+  reject(uv, physical, {{0, 1, 2, 3}, {1, 4, 4}}, Curved);
+  reject(uv, physical, {{0, 1, 2, 99}, {1, 4, 2}}, Curved);
+  reject(uv, physical, {{0, 1, 2, 3}, {1, 4, 2, 5, 0}}, Curved);
+  reject(uv, physical, {{1, 4, 2}}, Curved);
+  reject(uv, physical, {{0, 1, 2, 3}}, Curved);
   reject(uv, physical, faces, {});
   auto bad_uv = uv;
   bad_uv[0][0] = -0.1;
@@ -88,9 +91,8 @@ int main() {
   reject(uv, physical, faces, [](const ResidualUv&) -> ResidualPoint3 {
     return {0.0, 0.0, std::numeric_limits<double>::quiet_NaN()};
   });
-  reject(uv, physical, faces, [](const ResidualUv&) -> ResidualPoint3 {
-    return {1.0e308, -1.0e308, 0.0};
-  });
+  reject(uv, physical, faces,
+         [](const ResidualUv&) -> ResidualPoint3 { return {1.0e308, -1.0e308, 0.0}; });
   Require(negative == 14, "Malformed mixed residual source accepted unexpectedly");
   const auto again = MeasureMixedSurfaceResidual(uv, physical, faces, Curved);
   Require(again.maximum == observed.maximum && again.rms == observed.rms &&
