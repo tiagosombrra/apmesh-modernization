@@ -1,10 +1,12 @@
 """Run the portable native feedback trial on the two development geometries."""
 
 import argparse
+import json
 from pathlib import Path
 import sys
 
 from audit_model_catalog import parse_bp
+from independent_common_grid import load_physical_obj
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
@@ -43,6 +45,15 @@ def main():
                 or result["mixed_adaptive_epochs"] != 0
                 or (negative and result.get("foreign_tree_control") != "rejected_before_feedback")):
             raise ValueError(f"Missing portable native feedback evidence for {name}: {successor}")
+        feedback = directory / name / "successor.steps/feedback"
+        trace = json.loads((feedback / "candidate_front/front.json").read_text(encoding="utf-8"))
+        _, uv, faces = load_physical_obj(feedback / "smoothing_comparison/before.obj")
+        if (trace["schema"] != "apmesh.quad.article_front_guarded.v1"
+                or trace["smoothing"] is not None or not trace["commits"]
+                or [tuple(site) for site in trace["vertices"]] != uv
+                or [tuple(face) for face in trace["seed_faces"]]
+                + [tuple(step["polygon"]) for step in trace["commits"]] != faces):
+            raise ValueError(f"Guarded birth history differs from its native frame: {name}")
         print(name, result["source_sha256"], successor, flush=True)
 
     quiet = run(exe, directory / "relative-no-action", cases[1][1], cases[1][2],

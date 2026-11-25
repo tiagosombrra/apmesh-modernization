@@ -888,9 +888,12 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
 // These are actual polygon commits, not successive snapshots of a TRI matcher.
 void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path& directory) {
   Require(!candidate.article_commits.empty(), "Missing article contraction history");
+  const bool guarded = candidate.guarded_smoothing_comparison;
   Require(candidate.article_uv_before_smoothing.size() == candidate.uv.size() &&
-              candidate.article_smoothing.passes.size() == 5 &&
-              candidate.article_smoothing_xyz.size() == 5,
+              candidate.article_xyz_before_smoothing.size() == candidate.uv.size(),
+          "Missing article birth geometry");
+  Require(guarded || (candidate.article_smoothing.passes.size() == 5 &&
+                      candidate.article_smoothing_xyz.size() == 5),
           "Missing complete mixed smoothing history");
   Require(std::filesystem::create_directory(directory), "Article history already exists");
   std::ofstream trace(directory / "front.json", std::ios::binary);
@@ -907,7 +910,9 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     }
     trace << ']';
   };
-  trace << "{\"schema\":\"apmesh.quad.article_front.v1\",\"point_rule\":\""
+  trace << "{\"schema\":\""
+        << (guarded ? "apmesh.quad.article_front_guarded.v1" : "apmesh.quad.article_front.v1")
+        << "\",\"point_rule\":\""
         << (candidate.article_area_centroid ? "polygon_area_centroid_uv_v1" : "vertex_mean_uv_v1")
         << "\",\"clearance\":{"
         << "\"policy\":\"minimum_cell_segment_uv_v1\",\"factor\":0.2,\"excluded_cells\":"
@@ -958,7 +963,8 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
              "actual prospective mixed-front commit " + std::to_string(step),
              candidate.article_uv_before_smoothing, candidate.article_xyz_before_smoothing, faces);
   };
-  frame(0);
+  if (!guarded)
+    frame(0);
   for (std::size_t i = 0; i < candidate.article_commits.size(); ++i) {
     const auto& step = candidate.article_commits[i];
     if (i)
@@ -990,11 +996,19 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
       trace << '}';
     }
     trace << "]}";
-    faces.push_back(step.polygon);
-    frame(i + 1);
+    if (!guarded) {
+      faces.push_back(step.polygon);
+      frame(i + 1);
+    }
   }
-  trace
-      << "],\"smoothing\":{\"policy\":\"uv_distinct_incident_vertices_jacobi_5_v1\",\"boundary\":";
+  trace << "],\"smoothing\":";
+  if (guarded) {
+    trace << "null}\n";
+    trace.close();
+    Require(bool(trace), "Cannot complete guarded article front trace");
+    return;
+  }
+  trace << "{\"policy\":\"uv_distinct_incident_vertices_jacobi_5_v1\",\"boundary\":";
   ids(candidate.article_smoothing.boundary);
   trace << ",\"passes\":[";
   for (std::size_t pass = 0; pass < 5; ++pass) {
@@ -2483,8 +2497,7 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
     staged->reference_accepted = source.reference_tri_accepted;
     staged->stage_reason = "geometric_feedback_staged";
     Export(*staged, directory / "candidate.obj");
-    if (!guarded)
-      ExportArticleSteps(*staged, directory / "candidate_front");
+    ExportArticleSteps(*staged, directory / "candidate_front");
     staged.reset();
   }
   RequireOwnerRehearsalUnchanged(patch, witness);

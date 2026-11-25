@@ -141,3 +141,19 @@ The builtin CurvaBezier remains the default analytical source.
 python tools/quad_regional_quality_guards.py <predecessor.obj> <candidate.obj> \
   --profile <profile.json> --source-bp <model.bp> --patch <index>
 ```
+
+
+## Guarded advancing-front trace
+
+A staged successor with guarded smoothing retains
+`feedback/candidate_front/front.json` with the
+`apmesh.quad.article_front_guarded.v1` schema. It contains the native
+leaf boxes, initial QUAD cycles, UV vertices before smoothing,
+ordered active edges and actual polygon transactions. The separate
+`smoothing_comparison` directory keeps the birth geometry and native
+guarded/unguarded observations. The guarded trace has a null smoothing
+field. Unprotected article histories still retain their original frame
+and smoothing format.
+
+The portable application test verifies the guarded trace vertices and
+ordered face cycles against the actual pre-smoothing OBJ.
