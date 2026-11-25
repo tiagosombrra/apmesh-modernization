@@ -29,9 +29,10 @@ QUAD smoothing tradeoff. The [Ribbed Bracket transfer](ADDITIONAL_LOCAL_PAIRS_RI
 records worse interior TRI quality and geometric error with the same option.
 The [prospective geometry screen](PROSPECTIVE_PAIR_GEOMETRY_SCREEN_20261125.md)
 identifies one common development interval using the active physical edge
-as the normalizer. Align and run a paired native comparison before fixing
-any tolerance, quality or growth profile for reserved geometries. Keep the
-unfiltered option experimental. Retain the shared-curve and two-epoch
+as the normalizer. The [native comparison](NATIVE_PAIR_GEOMETRY_SCREEN_20261125.md)
+implements 0.045 and recovers Ribbed quality while preserving the measured
+CurvaBezier benefit and tradeoff. Review the code and align mixed admission
+before freezing a profile for reserved geometries. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)

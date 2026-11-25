@@ -4645,3 +4645,17 @@ stopped on a nonconvex union without a shape score. The corrected replay
 and 24 scale controls pass. [Report and receipt](PROSPECTIVE_PAIR_GEOMETRY_SCREEN_20261125.md).
 PR 275 hosted matrix is 4/4 on its exact head. Await alignment on the
 new native criterion. No new native run, policy or accepted mixed epoch.
+
+## 2026-11-25 Fortaleza - implement and run the prospective geometry screen
+
+Implement the opt-in 0.045 active-edge criterion in draft PR 276 and keep
+the original shape and tie rules. Both focused native inputs stage. CurvaBezier
+reproduces its prior additional-pair output. Ribbed blocks the two harmful
+early operations and keeps one eligible replacement at operation 61. Its
+final interior TRI angle and count reproduce control, with slightly lower
+sampled RMS. Retain the initial native population-contract rejections and
+the initial Python tuple/list check failure. The pure-face contract,
+boundary controls, ordinary native application and independent archived
+decision replays pass. [Report and receipts](NATIVE_PAIR_GEOMETRY_SCREEN_20261125.md).
+Next review the scoped changes and align mixed admission. No reserved
+geometry or accepted mixed epoch in this experiment.

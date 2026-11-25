@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align the native prospective geometry comparison
+## Active: review the native geometry screen and align mixed admission
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,28 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - run the opt-in native geometry screen on both development meshes
+
+[Draft PR 276](https://github.com/tiagosombrra/apmesh-modernization/pull/276)
+at 6b4d5b6d implements the aligned 0.045 active-edge screen and exposes
+each native decision. CurvaBezier preserves the alternate mesh byte for
+byte. Ribbed keeps the original TRI at the two harmful early operations,
+accepts one additional QUAD at operation 61 and restores the reference
+interior TRI minimum of 18.37 degrees. Its original and screened candidates
+both have 648 faces and RMS about 0.01737. The same source binding, curve
+and leaf records are reproduced. Independent physical and ordered-front
+readbacks pass. The mixed population requirement is retained after adding
+a single-QUAD measurement. The initial native rejection and the portable
+verifier's tuple/list failure remain in the receipt.
+[Native comparison and receipt](NATIVE_PAIR_GEOMETRY_SCREEN_20261125.md).
+
+**Next:** review the scoped code and measurements, then align the candidate
+admission rule needed for the first genuine accepted mixed successor.
+The unadopted regional control still blocks both candidates and CurvaBezier
+has a remaining 2.27-degree transition TRI. Keep 0.045 as development
+scope. Held-out geometry, shared curves, accepted reentry and global
+mixed curvature remain open. Zero accepted mixed epochs.
 
 ### 2026-11-25 - screen prospective additional pairs on archived fronts
 
@@ -22,13 +44,8 @@ active physical edge is 3.946 percent. The smallest detrimental value is
 4.887 percent. The candidate-size denominator overlaps across labels.
 Unit-scale checks pass. [Prospective screen and receipt](PROSPECTIVE_PAIR_GEOMETRY_SCREEN_20261125.md).
 
-**Next:** pending scientific alignment, trial a single ceiling of 0.045 on
-the five-site maximum deviation normalized by the active edge, only when
-the optional additional-pair search runs. Keep the existing S rule among
-passing pairs. Measure matched native CurvaBezier and Ribbed outcomes,
-including raw front and final quality, before qualification on reserved
-geometries. PR 275 exact-head hosted checks are 4/4 successful. No new
-code, native reconstruction, scientific admission rule or mixed epoch.
+The prospective mask is followed by the native trial above. The earlier
+PR 275 exact-head hosted checks are 4/4 successful.
 
 ### 2026-11-25 - complete the additional-pair transfer to Ribbed Bracket
 
