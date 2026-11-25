@@ -4843,3 +4843,19 @@ All four PR 281 hosted checks passed. PR 282 hosted checks were running.
 [Native results](LEGACY_IDEAL_FRONT_POINT_20261125.md).
 Next compare the whole affected closure with and without the point under
 one shared rule, pending alignment. Zero accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - guard the whole closure before inserting a shorter ideal point
+
+Draft PR 283 at 45718e0b previews both remaining fronts with no further
+insertions and checks the changed face regions. Three points enter in
+each model. The control minima are 3.15° and 8.06°. The guarded minima
+are 3.15° and 8.76°, with 710 and 544 faces. Each candidate retains the
+certified contour and frozen tree and fits growth, but shape still blocks
+admission. Eighty proposals are refused after meeting the birth floor.
+Both native compatibility comparisons, source contracts, ten progressive
+controls and the direct three-stage article audit passed. The adapter
+environment/baseline and exact-head hosted work remain pending in their
+respective scopes. The two immediate three-TRI patches have one valid
+triangulation each. Next align and compare a wider mixed closure before
+moving to reserved cases. Zero accepted mixed epochs.
+[Native evidence](GUARDED_IDEAL_FRONT_CLOSURE_20261125.md).

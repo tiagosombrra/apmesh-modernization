@@ -12,6 +12,25 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - protect the full front closure when placing shorter ideal points
+
+[Draft PR 283](https://github.com/tiagosombrra/apmesh-modernization/pull/283)
+at `45718e0b3c3e231754e7a250332cac568ab7dc2e` checks the physical shape
+of both possible remaining closures before adding a point. It refuses 80
+proposals after a valid birth and inserts three points per model. CurvaBezier
+keeps the 3.15° transition minimum and avoids the unit-width regression.
+Ribbed rises from 8.06° to 8.76° and reduces below-floor transition TRI from
+14 to 12. Both preserve their certified curves, fit the face budget and
+remain blocked on shape. The two native controls reproduce their prior
+bytes. The [paired result](GUARDED_IDEAL_FRONT_CLOSURE_20261125.md) includes
+a fixed-vertex cavity check around both remaining limiting faces.
+
+**Next:** compare the closure of a wider mixed region, with the certified
+contour and seed-QUAD edges fixed. Align the limited change to front order.
+The immediate three-TRI polygon in each model has only its present
+triangulation. No mixed epoch is accepted. Shared-curve validation,
+ownership reentry, reserved models and global mixed curvature remain open.
+
 ### 2026-11-25 - test the original TRI ideal point in the mixed front
 
 [Draft PR 282](https://github.com/tiagosombrra/apmesh-modernization/pull/282)

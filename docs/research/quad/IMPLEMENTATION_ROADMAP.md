@@ -62,8 +62,11 @@ handoff](CONTOUR_TEMPLATE_HANDOFF_20261125.md) improves parts of the
 transition and retains the full shape veto. The [legacy ideal-point
 trial](LEGACY_IDEAL_FRONT_POINT_20261125.md) improves two local births
 but introduces worse downstream TRI on CurvaBezier and leaves Ribbed
-unchanged. Compare the whole local closure under a common placement
-rule before owner reentry and reserved validation.
+unchanged. The [guarded closure trial](GUARDED_IDEAL_FRONT_CLOSURE_20261125.md)
+avoids the regression and modestly improves Ribbed, with insufficient
+quality for either model. Both immediate fixed-vertex TRI cavities have
+no alternative closure. Compare a wider mixed region before owner
+reentry and reserved validation.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
