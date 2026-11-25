@@ -207,6 +207,13 @@ RealBoundarySource CaptureRealBoundary(PatchBezier& patch, Quadtree& tree) {
             "Original parametric midpoint changed before tree replay");
     site.normalized_length = edge->getLen();
   }
+  CaptureRealSourceTree(tree, result);
+  ValidateRealBoundary(patch, result);
+  return result;
+}
+
+void CaptureRealSourceTree(Quadtree& tree, RealBoundarySource& result) {
+  Require(tree.getRoot() != nullptr, "Missing native source tree root");
   result.tree_factor = tree.getFactor();
   result.tree_cap = tree.getMaxLevelCap();
   result.face_quality = tree.FaceQualityThreshold();
@@ -214,11 +221,11 @@ RealBoundarySource CaptureRealBoundary(PatchBezier& patch, Quadtree& tree) {
   result.template_quality = tree.TemplatePoorScoreThreshold();
   result.source_leaves = tree.GetLeafCount();
   result.tree_counter = tree.getId();
+  result.leaf_order.clear();
+  result.cells.clear();
   for (auto* leaf : tree.getLeaves())
     result.leaf_order.push_back(leaf->getId());
   CaptureCell(*tree.getRoot(), result.cells);
-  ValidateRealBoundary(patch, result);
-  return result;
 }
 
 void ValidateRealBoundary(PatchBezier& patch, const RealBoundarySource& source) {

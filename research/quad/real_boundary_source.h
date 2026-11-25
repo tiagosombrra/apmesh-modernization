@@ -66,6 +66,7 @@ struct CertifiedBoundarySplit {
 };
 
 RealBoundarySource CaptureRealBoundary(PatchBezier& patch, Par2DJMesh::AFT::Quadtree& tree);
+void CaptureRealSourceTree(Par2DJMesh::AFT::Quadtree& tree, RealBoundarySource& source);
 std::unique_ptr<Par2DJMesh::AFT::Quadtree> ReplayRealSourceTree(PatchBezier& patch,
                                                                 const RealBoundarySource& source);
 RealBoundarySource SplitFeedbackIntervals(PatchBezier& patch, const RealBoundarySource& source,

@@ -197,3 +197,12 @@ endpoints, with an ID beyond the previous mesh's IDs. The input owner and
 attempt are bound by the existing source replay. The resulting
 `boundary_refinement.json` records the parent endpoint IDs and inserted
 site of each split. It is evidence of refinement, with no epoch admission.
+
+For a directed comparison, an experimental native successor plan may add
+`group_feedback_parent u0 v0 u1 v1` when the boundary certificate is enabled.
+The requested parent must contain four immediate native leaf children. The
+application groups them after all native refinement requests and before
+template dispatch. It refuses affected refinement requests and verifies
+2:1 edge balance. The optional `grouped_parent.json` records the selected
+parent and leaf counts before and after grouping. The directive does not
+select a parent automatically or decide mixed admission.
