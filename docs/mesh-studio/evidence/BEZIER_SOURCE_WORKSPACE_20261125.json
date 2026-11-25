@@ -3,7 +3,7 @@
   "classification": "ENGINEERING_SOURCE_INSPECTION_AND_VIEWER_REPAIR_REVIEW_CANDIDATE",
   "audited_base": "9bc721ab1fb212c9449702a2279268c636d7976b",
   "recorded_utc": "2026-11-25T09:31:46.103656+00:00",
-  "delivery_revision": "See owning PR 262; source hashes below identify tested implementation bytes.",
+  "delivery_revision": "354660105dcecf98a1f0b404a317611d8297712c",
   "local_environment": {
     "python": "3.12.14",
     "node": "24.22.3",
@@ -209,7 +209,7 @@
   },
   "limits": {
     "full_local_python_regression_passed": false,
-    "hosted_ci_status": "Check exact delivery SHA in PR 262; not inferred from historical CI.",
+    "hosted_ci_status": "Three workflows succeeded; installed-license workflow failed before current-bundle attribution. See hosted_checks for exact implementation revision and job evidence.",
     "native_cpp_changed": false,
     "new_native_generation": false,
     "new_accepted_epochs": false,
@@ -217,5 +217,178 @@
     "physical_gpu_qualified": false,
     "release_or_main_merge": false,
     "legal_approval": false
+  },
+  "hosted_checks": {
+    "implementation_revision": "354660105dcecf98a1f0b404a317611d8297712c",
+    "runtime_profile": "Python 3.13 / Node 22 / npm 10 on standard hosted runners",
+    "fast_source_browser": {
+      "run_id": 45586472383,
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45586472383",
+      "conclusion": "success",
+      "browser_passed": 30,
+      "jobs": [
+        {
+          "id": 139109242990,
+          "name": "fast-source-web",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "compiled_static_reviewer": {
+      "run_id": 45586472260,
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45586472260",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 139109242165,
+          "name": "built-original-reviewer-windows-2022",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 139109242522,
+          "name": "built-original-reviewer-ubuntu-24.04",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 139110042620,
+          "name": "v511-exact-byte-compare-Linux-Windows",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "unit_tests_per_host": 36,
+      "browser_tests_per_host": 4,
+      "http_negative_controls_per_host": 11,
+      "static_assets_independently_reopened": 7,
+      "all_compiled_bytes_identical_across_hosts": true,
+      "inventory_sha256": "d28cb620fd418f877ca28879c90a9b1ca6ca0999e84c05363b2c126472f63dea",
+      "cross_host_proof_artifact_id": 15008373990,
+      "source_corpus_reauthenticated": true,
+      "native_generator_reexecuted_in_this_workflow": false,
+      "physical_review": false
+    },
+    "full_python_native_browser": {
+      "run_id": 45586473076,
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45586473076",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 139109247307,
+          "name": "scientific-regression (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 139109247570,
+          "name": "native-lineage-optin",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 139109248043,
+          "name": "scientific-regression (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 139112010821,
+          "name": "browser-spike",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "python": {
+        "linux": {
+          "enumerated": 614,
+          "passed": 609,
+          "failed": 0,
+          "skipped": 5
+        },
+        "windows": {
+          "enumerated": 614,
+          "passed": 603,
+          "failed": 0,
+          "skipped": 11
+        },
+        "skip_scope": [
+          "2 optional JSON Schema tests per host",
+          "2 LaTeX tests per host because TeX is absent",
+          "1 ordinary-checkout native corpus test per host; dedicated static reviewer covers the retained corpus",
+          "6 Windows native VTK render tests because hosted WGL/OSMesa is not qualified"
+        ]
+      },
+      "native_regression": {
+        "status": "success",
+        "original_cpp_recompiled_and_executed": true,
+        "instrumented_default_off_on_scientific_file_parity": {
+          "eistute": 21,
+          "book": 17
+        },
+        "accepted_global_steps_per_model": [
+          1
+        ],
+        "four_sheet_native_generation": false,
+        "new_distinct_accepted_epoch": false,
+        "scientific_lod_qualified": false
+      },
+      "browser_passed": 76,
+      "browser_skipped": 5,
+      "browser_source_sha256": "4e080b8bf02d6dcffcf4181cb1e39d069ae022c5207a2b44448ebe2245fb2874",
+      "browser_performance_source_audit": "success",
+      "browser_skip_scope": [
+        "3 opt-in 500k synthetic stress cases",
+        "2 operator-attested physical desktop cases"
+      ]
+    },
+    "installed_license_bundle": {
+      "run_id": 45586472298,
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45586472298",
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "id": 139109244217,
+          "name": "installed-licenses-windows-2022",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 139109244673,
+          "name": "installed-licenses-ubuntu-24.04",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 139109762651,
+          "name": "independent-win-linux-licenses",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 139109763323,
+          "name": "independent-rendered-bundle-to-notice-review",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ],
+      "failed_step": "Check immutable independently certified static bundle digest before license scope analysis",
+      "failure_code": "not_the_certified_research_browser_bundle",
+      "historical_required_inventory_sha256": "ad6c4627090a335c0ed7e3bf1bae0c0d062ed1e48249f120b10f3ba8ff8a85f5",
+      "actual_inventory_sha256": "d28cb620fd418f877ca28879c90a9b1ca6ca0999e84c05363b2c126472f63dea",
+      "current_installed_license_extraction_executed": false,
+      "current_bundle_module_attribution_executed": false,
+      "independent_notice_reopening_executed": false,
+      "current_bundle_attribution_qualified": false,
+      "historical_certificate_or_guard_changed": false,
+      "meaning": "The old artifact certificate cannot cover changed compiled bytes; this is not a license incompatibility finding.",
+      "bounded_followup_issue": "https://github.com/tiagosombrra/apmesh-modernization/issues/250"
+    },
+    "all_workflows_green": false,
+    "full_stage_closure": false,
+    "main_merge": false,
+    "release": false,
+    "recorded_utc": "2026-11-25 09:43:01 UTC"
   }
 }

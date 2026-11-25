@@ -14,10 +14,11 @@ the active Draft review target. P0's bounded automated stabilization and P1's
 integration proposal are historical completed scopes. The source workspace is
 **IMPLEMENTED, REVIEW CANDIDATE**. Local feature and browser checks pass; the
 full local Python run still has two LaTeX environment failures. Exact delivery
-SHA and hosted results are recorded in the owning PR before qualification.
+SHA and hosted results are recorded below and in the owning PR. Full stage
+closure and integration remain open while required gates are failed or unmeasured.
 No previous static certificate covers a changed build.
 
-| Available at the audit base | Scope |
+| Available in this review candidate | Scope |
 | --- | --- |
 | Paired XYZ / UV views, face selection and camera recipes | Controlled P1 and staged research candidates; source identity is preserved |
 | Original native TRI scene and identity inspection | Retained accepted Eistute / Book evidence, with manual report import |
@@ -122,6 +123,37 @@ changes visibility and parameter, imports a file, handles a rejected import,
 and exports incidence data. Confirm the existing candidate/native entry points
 remain usable. Type checking, production build and the affected contracts and
 browser tests are required. Physical acceptance is reported separately.
+
+### Hosted validation of the implementation revision
+
+Tested implementation: `354660105dcecf98a1f0b404a317611d8297712c`.
+The [validation receipt](evidence/BEZIER_SOURCE_WORKSPACE_20261125.json)
+records hosted jobs separately from its retained local validation results.
+A later documentation checkpoint does not imply tests ran again on that commit.
+
+| Hosted check on the implementation revision | Observed result |
+| --- | --- |
+| [Fast source/browser regression](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45586472383) | SUCCESS, 30 Chromium tests and source contracts |
+| [Compiled single-port reviewer](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45586472260) | SUCCESS, 3/3 jobs; Windows/Linux original-source review and independent comparison of all seven actual compiled assets |
+| [Full Python/native/browser regression](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45586473076) | SUCCESS, 4/4 jobs; Linux 609 Python pass / 5 skip, Windows 603 pass / 11 skip, original native capture/parity and Chromium 76 pass / 5 skip |
+| [Installed-license / bundle evidence](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45586472298) | FAILURE, both hosts stopped at the historical static-inventory guard; current-bundle attribution and independent notice reopening were not run |
+
+The independently compared new static inventory is
+`d28cb620fd418f877ca28879c90a9b1ca6ca0999e84c05363b2c126472f63dea`.
+The license workflow still requires historical `ad6c4627...8a85f5`, so rejecting
+the changed frontend is correct. This is an uncovered evidence scope, not a
+finding of incompatible licenses. Unchanged dependency locks do not establish
+which source modules the changed JavaScript bundle contains. Neither historical
+certificate nor its guards have been rewritten to make the workflow pass.
+
+Before complete package qualification, [#250](https://github.com/tiagosombrra/apmesh-modernization/issues/250)
+must renew the actual module-to-notice
+attribution for these new bytes and independently reopen the source versions,
+integrity values and original notice text from both systems. Retain the previous
+certificate for its historical build. This is one bounded technical follow-up;
+it does not elect a legal option or authorize distribution. The local LaTeX
+failures remain open; hosted skips do not resolve them. The five browser skips
+are three opt-in 500k synthetic stress cases and two physical desktop cases.
 
 ## Delivery sequence
 
