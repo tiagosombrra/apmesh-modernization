@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: obtain quality-compliant front candidates before narrow closure
+## Active: realize graded transition sizes within the mixed face budget
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,25 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - grade one physical transition size seed before template dispatch
+
+[Draft PR 285](https://github.com/tiagosombrra/apmesh-modernization/pull/285)
+at `d0c9bd10c52b7cd67c53c94783c04e33781d274f` adds one graded size seed
+from the physical contour-arc to adjacent QUAD-edge ratio. Against the
+matched ungrouped controls, CurvaBezier improves its worst transition
+TRI from 2.47° to 4.24° and reduces below-floor TRI from 47 to 35.
+Ribbed retains the 6.69° limit and below-floor TRI grow from 22 to 26.
+RMS improves in both. Faces rise to 865 and 706, or 18.17% and 29.07%
+above the bound predecessors. Several new physical requests remain
+unmet after one native split. Both candidates stay blocked.
+[Paired execution and request realization](TRANSITION_SIZE_FIELD_TRIAL_20261125.md).
+
+**Next:** align selection of requests in the region limiting quality
+under the existing face budget, starting from the retained controls
+that fit it. Check what each native action can realize before applying
+a new plan. Zero accepted mixed epochs. Shared curves, native rollback
+qualification, reserved models and global mixed curvature remain open.
 
 ### 2026-11-25 - test the adjacent advancing-front order with fixed vertices
 

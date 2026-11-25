@@ -67,8 +67,11 @@ avoids the regression and modestly improves Ribbed, with insufficient
 quality for either model. Both immediate fixed-vertex TRI cavities have
 no alternative closure. The [adjacent base-order trial](MIXED_FRONT_ORDER_TRIAL_20261125.md)
 has no choice meeting its complete closure quality comparison in the two
-development cases. Move upstream to the measured physical sizing gap,
-with alignment on the trigger before changing the size field.
+development cases. The [physical transition size-field trial](TRANSITION_SIZE_FIELD_TRIAL_20261125.md)
+realizes more native requests and improves geometric error in both
+models. Shape improvement does not transfer and both exceed the face
+budget. Prioritize the limiting region and budgeted native actions
+before proceeding to reserved validation.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

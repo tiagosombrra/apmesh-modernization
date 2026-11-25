@@ -4873,3 +4873,17 @@ pending-directory rename refusal. Hosted qualification is in progress.
 Next align whether to report transition size mismatch to the existing
 size field before template dispatch. Zero accepted mixed epochs.
 [Order trial evidence](MIXED_FRONT_ORDER_TRIAL_20261125.md).
+
+## 2026-11-25 Fortaleza - grade the physical transition size gap before native reconstruction
+
+Draft PR 285 at d0c9bd10 adds one supplemental size seed during active
+geometric feedback. Four matched native runs show lower area-weighted
+RMS in both trial arms. CurvaBezier improves its worst transition angle,
+Ribbed keeps its 6.69° limiting TRI farther from the added requests, and
+both exceed the 10 percent growth limit. Measured child arcs and face
+sizes still exceed some targets despite the native actions. Six sizing
+and ten admission controls pass, along with both compatibility replays
+and the normal portable entry. Prior rollback qualification remains open.
+[Measured outcomes](TRANSITION_SIZE_FIELD_TRIAL_20261125.md).
+Next align size request priority and budgeted realizability in the
+limiting regions. Zero accepted mixed epochs.
