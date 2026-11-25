@@ -52,6 +52,14 @@ def pattern_on(box,mask):
     return name,[tuple(tuple(box[k]+span(box)*p[k] for k in (0,1)) for p in f) for f in faces]
 def cross2(a,b,p):
     return (b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0])
+
+def box_segment_distance(box, a, b):
+    # Chart contour segments are axis-aligned.
+    x, y, X, Y = box
+    lo0, hi0 = sorted((a[0], b[0]))
+    lo1, hi1 = sorted((a[1], b[1]))
+    return dist((0, 0), (max(x - hi0, lo0 - X, 0), max(y - hi1, lo1 - Y, 0)))
+
 def owning_box(face,grid):
     center=tuple(sum(p[k] for p in face)/len(face) for k in (0,1))
     box,=[box for box in grid if all(box[k]<center[k]<box[k+2] for k in (0,1))]
@@ -119,12 +127,8 @@ def qualify_geometry(front,path,surface):
         if x==0 or y==0 or X==1 or Y==1:
             entry["disposition"]="parent_touches_domain_boundary"
             continue
-        def gap(edge):
-            c,d=[uv[i] for i in edge]
-            lo0,hi0=sorted((c[0],d[0]))
-            lo1,hi1=sorted((c[1],d[1]))
-            return dist((0,0),(max(x-hi0,lo0-X,0),max(y-hi1,lo1-Y,0)))
-        if any(gap(e)<.2*dist(*(uv[v] for v in e)) for e in boundary(triangles)):
+        if any(box_segment_distance(parent, *(uv[v] for v in e)) < .2*dist(*(uv[v] for v in e))
+               for e in boundary(triangles)):
             entry["disposition"]="parent_outside_template_clearance"
             continue
         name,faces=pattern_on(parent,mask)
