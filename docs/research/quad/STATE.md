@@ -12,6 +12,27 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - independently verify the portable feedback checkpoint
+
+An [independent review and fresh Linux replay](INDEPENDENT_FEEDBACK_AUDIT_20261125.md)
+incorporated concurrent PR 271 at e470cbe2 after first reviewing PRs 263--270.
+Exact-source GNU C++17 Release passes 30 reporting/recovery controls, six
+native source captures including three reversed captures, 54 negatives,
+the existing grouping/rollback suite and the new two-model portable suite.
+The source hashes, both successor OBJ hashes and complete grid-48 paired
+reports exactly match the local MSVC receipt. The forged Ribbed tree is
+rejected before feedback. Hosted PR 271 Linux portable ASan/UBSan with leak
+detection and frozen TRI parity pass. The final read confirms all four hosted jobs
+successful, including Windows. The receipt retains their exact identities.
+A separate local PR 270 sanitizer attempt was blocked by LeakSanitizer's
+ptrace diagnostic and is not counted as a passing memory check.
+
+**Next:** preserve the active relative geometric trigger qualification below.
+The common entry is delivered for the two development cases. The zero-signal
+trigger, regional losses, unmet physical sizes, grouped-rejection sanitizer
+coverage, shared source and two accepted epochs remain explicit limits.
+No generator source or scientific acceptance policy changed in this audit.
+
 ### 2026-11-25 - run native mixed feedback through one model-independent entry
 
 [Draft PR 271](https://github.com/tiagosombrra/apmesh-modernization/pull/271)

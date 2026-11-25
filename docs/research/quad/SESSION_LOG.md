@@ -4525,3 +4525,28 @@ to study, with shape assessed after generation. Qualify the parameterized
 trigger while threshold and growth remain open. Do not count a staged
 successor as an accepted epoch. The shared-curve gate,
 owned native successor reentry and global curvature remain open.
+
+## 2026-11-25 Fortaleza - independently replay recent Codex feedback progress
+
+The researcher requests a verification of recent local progress. Review PRs
+263--270 and build exact dc6025e8 in Linux GNU C++17 Release. Reporting,
+native source, grouping/rejection/recovery and all four feedback-mode
+observations reproduce. A local sanitizer build succeeds but LeakSanitizer
+aborts the initial reference due to its ptrace runtime limitation; retain
+that failure without qualifying memory or relaxing detection.
+
+Before checkpoint publication, detect canonical e04db5dc and new PR 271
+e470cbe2. Incorporate the concurrent work, rebuild its exact source and
+rerun 30 Python controls, six source captures/three reversals/54 negatives,
+the full grouping application suite and the new portable suite. CurvaBezier
+and Ribbed source hashes, successor hashes and paired grid-48 reports
+exactly match the prior MSVC receipt. The altered tree is refused before
+feedback. Inspect successful hosted portable Clang ASan/UBSan/LSan and
+frozen TRI logs. The final hosted read confirms all four jobs successful,
+including Windows; the earlier pending observation is retained as history.
+
+[Audit and evidence](INDEPENDENT_FEEDBACK_AUDIT_20261125.md).
+The active next item remains relative geometric trigger qualification,
+not reimplementation of the common entry. Preserve no-action, regional
+shape/growth, realized-size, shared-source and two-epoch limits. No source
+merge, threshold adoption, main update or PR-state change was made.
