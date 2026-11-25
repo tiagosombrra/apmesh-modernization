@@ -8,6 +8,7 @@
 #include <cmath>
 #include <cstddef>
 #include <limits>
+#include <optional>
 #include <set>
 #include <stdexcept>
 #include <utility>
@@ -22,12 +23,17 @@ struct ArticleFrontChoice {
   double score = 0.0;
   bool eligible = false;
 };
+struct ArticleFrontAdditionalPair {
+  std::array<VertexId, 3> first_triangle{};
+  ArticleFrontChoice choice;
+};
 struct ArticleFrontCommit {
   std::vector<std::pair<VertexId, VertexId>> before;
   std::vector<VertexId> polygon;
   std::array<ArticleFrontChoice, 2> alternatives{};
   std::array<VertexId, 3> best{};
   int selected_side = -1;
+  std::optional<ArticleFrontAdditionalPair> additional_pair;
 };
 struct ArticleFrontResult {
   std::vector<UvVertex> vertices;
@@ -45,8 +51,8 @@ public:
   using Box = std::array<double, 4>;
 
   ArticleMixedFront(const UvMesh& seed, const std::vector<UvVertex>& boundary,
-                    std::vector<Box> leaves)
-      : leaves_(std::move(leaves)) {
+                    std::vector<Box> leaves, bool additional_pairs = false)
+      : leaves_(std::move(leaves)), additional_pairs_(additional_pairs) {
     Require(boundary.size() >= 3 && !leaves_.empty(), "Article front needs boundary and leaves");
     result_.vertices = seed.vertices;
     result_.leaves = leaves_;
@@ -125,6 +131,13 @@ public:
           step.polygon.assign(choice.quad.begin(), choice.quad.end());
         }
       }
+      if (additional_pairs_ && step.selected_side < 0) {
+        step.additional_pair = AdditionalPair(base);
+        if (step.additional_pair) {
+          const auto& quad = step.additional_pair->choice.quad;
+          step.polygon.assign(quad.begin(), quad.end());
+        }
+      }
       Require(result_.commits.size() != abort_before_commit, "Injected article precommit failure");
       // Prepare every allocating operation before the contour is committed.
       auto next = front_;
@@ -147,6 +160,7 @@ private:
   std::vector<Box> leaves_;
   std::vector<Edge> front_;
   bool attempted_ = false;
+  bool additional_pairs_ = false;
 
   static void Require(bool ok, const char* message) {
     if (!ok)
@@ -246,7 +260,9 @@ private:
     const auto& p = result_.vertices[v];
     return p.u >= b[0] && p.u <= b[2] && p.v >= b[1] && p.v <= b[3];
   }
-  VertexId Best(Edge edge, const std::array<VertexId, 3>* excluded) const {
+  // Optional collection shares the original first nonempty neighborhood.
+  VertexId Best(Edge edge, const std::array<VertexId, 3>* excluded,
+                std::vector<VertexId>* candidates = nullptr) const {
     std::vector<bool> cells(leaves_.size(), false);
     for (std::size_t i = 0; i < leaves_.size(); ++i)
       cells[i] = InBox(edge.first, leaves_[i]) || InBox(edge.second, leaves_[i]);
@@ -276,6 +292,8 @@ private:
           }
         if (!in || !Valid({edge.first, edge.second, p}, excluded))
           continue;
+        if (candidates)
+          candidates->push_back(p);
         const auto& a = result_.vertices[edge.first];
         const auto& b = result_.vertices[edge.second];
         const auto& v = result_.vertices[p];
@@ -291,6 +309,33 @@ private:
         return best;
     }
     return invalid_;
+  }
+  std::optional<ArticleFrontAdditionalPair> AdditionalPair(Edge base) const {
+    std::vector<VertexId> apices;
+    Best(base, nullptr, &apices);
+    std::optional<ArticleFrontAdditionalPair> best;
+    for (const auto apex : apices) {
+      const std::array<VertexId, 3> triangle{base.first, base.second, apex};
+      const std::array<Edge, 2> sides{{{apex, base.second}, {base.first, apex}}};
+      for (std::size_t side = 0; side < sides.size(); ++side) {
+        const auto edge = sides[side];
+        std::vector<VertexId> companions;
+        Best(edge, &triangle, &companions);
+        for (const auto other : companions) {
+          const auto quad = side == 0
+                                ? std::array<VertexId, 4>{base.first, base.second, other, apex}
+                                : std::array<VertexId, 4>{base.first, base.second, apex, other};
+          const auto score = Shape(quad);
+          // Loops retain vertex ID, side and companion ID order for exact ties.
+          if (std::isfinite(score) && score <= 1.5 && (!best || score < best->choice.score)) {
+            best = ArticleFrontAdditionalPair{
+                triangle,
+                {{edge.first, edge.second, other}, quad, static_cast<int>(side), score, true}};
+          }
+        }
+      }
+    }
+    return best;
   }
   double Shape(const std::array<VertexId, 4>& q) const {
     double score = 1;

@@ -157,3 +157,20 @@ and smoothing format.
 
 The portable application test verifies the guarded trace vertices and
 ordered face cycles against the actual pre-smoothing OBJ.
+
+
+## Additional local-pair comparison
+
+The portable runner's opt-in `--additional-pairs` applies only to the
+successor build. It runs when the original proposal would retain a TRI.
+It enumerates the apex and companion sets using the original first
+nonempty local search windows, keeps S <= 1.5, and takes the lowest score.
+Exact ties retain apex ID, side, and companion ID order. The original
+TRI remains the fallback. Base selection, initial templates, original
+curves and guarded smoothing retain their existing rules.
+
+The guarded trace uses `apmesh.quad.article_front_guarded_pairs.v1` and
+records the extra first/second triangles and score when a replacement
+occurs. The original best TRI and its two prospective alternatives
+remain in the same transaction. This is a reversible experimental
+comparison. Regional shape and admission are observed separately.

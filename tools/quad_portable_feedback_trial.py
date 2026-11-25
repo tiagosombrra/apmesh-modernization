@@ -31,11 +31,13 @@ def model_evaluator(model, directory):
     return "source.bp", lambda u, v: bernstein(controls, u, v)
 
 
-def write_plan(path, step, faces=(), curves=(), reference=None):
+def write_plan(path, step, faces=(), curves=(), reference=None, *, additional_pairs=False):
     with path.open("x", encoding="ascii", newline="\n") as file:
         file.write(f"apmesh_single_patch_feedback_v1 {step}\n")
         if reference is not None:
             file.write(f'reference "{reference.name}"\n')
+        if additional_pairs:
+            file.write("additional_pairs\n")
         for row in curves:
             file.write(f"curve {row['interval']}\n")
         for row in faces:
@@ -66,7 +68,8 @@ def source_hashes(archive):
     return {name: digest(archive / name) for name in SOURCE_FILES}
 
 
-def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=None):
+def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=None,
+        additional_pairs=False):
     if step < 1:
         raise ValueError("Select a positive accepted TRI source step")
     if relative_tolerance is not None and (not isfinite(relative_tolerance) or relative_tolerance < 0):
@@ -87,6 +90,8 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
                   engine_sha256=digest(exe), step=step, source_sha256=hashes,
                   relative_residual_tolerance=relative_tolerance, face_requests=faces,
                   curve_requests=curves, mixed_adaptive_epochs=0)
+    if additional_pairs:
+        result["additional_pair_search"] = True
     if not faces and not curves:
         if relative_tolerance is None or verify_rejection:
             raise ValueError("The requested comparison needs active feedback")
@@ -94,7 +99,7 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
         write_json(out / "result.json", result)
         return result
     request = out / "successor.plan"
-    write_plan(request, step, faces, curves, archive)
+    write_plan(request, step, faces, curves, archive, additional_pairs=additional_pairs)
     code, log = run_native(exe, out, native_model, "successor", request)
     if code != 0:
         raise ValueError(f"Native successor invocation failed with exit {code}. See {log.name}")
@@ -112,7 +117,7 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
         with binding.open("ab") as file:
             file.write(b"corrupted provenance\n")
         forged_plan = out / "foreign.plan"
-        write_plan(forged_plan, step, faces, curves, forged)
+        write_plan(forged_plan, step, faces, curves, forged, additional_pairs=additional_pairs)
         code, log = run_native(exe, out, native_model, "foreign", forged_plan)
         reason = b"Single-patch feedback did not reproduce its original source binding"
         if (code == 0 or reason not in log.read_bytes() or (out / "foreign.steps").exists()
@@ -131,12 +136,15 @@ def main():
     parser.add_argument("--step", type=int, required=True, help="Accepted step of the original TRI generator")
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--verify-rejection", action="store_true")
+    parser.add_argument("--additional-pairs", action="store_true",
+                        help="Try remaining local pairs when the original choice is a TRI")
     parser.add_argument("--relative-tolerance", type=float,
                         help="Experimental dimensionless trigger with no default tolerance")
     args = parser.parse_args()
     try:
         result = run(args.exe.resolve(strict=True), args.out.resolve(), args.model, args.step,
-                     args.verify_rejection, relative_tolerance=args.relative_tolerance)
+                     args.verify_rejection, relative_tolerance=args.relative_tolerance,
+                     additional_pairs=args.additional_pairs)
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         parser.exit(1, f"Single-patch feedback failed: {error}\n")
     print(json.dumps(result, indent=2))

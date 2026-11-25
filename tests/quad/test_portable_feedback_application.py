@@ -23,6 +23,18 @@ def ribbed_fixture(destination):
     return str(destination)
 
 
+def verify_birth_trace(feedback, schema):
+    trace = json.loads((feedback / "candidate_front/front.json").read_text(encoding="utf-8"))
+    _, uv, faces = load_physical_obj(feedback / "smoothing_comparison/before.obj")
+    if (trace["schema"] != schema
+            or trace["smoothing"] is not None or not trace["commits"]
+            or [tuple(site) for site in trace["vertices"]] != uv
+            or [tuple(face) for face in trace["seed_faces"]]
+            + [tuple(step["polygon"]) for step in trace["commits"]] != faces):
+        raise ValueError(f"Guarded birth history differs from its native frame: {feedback}")
+    return trace
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--exe", type=Path, required=True)
@@ -45,15 +57,8 @@ def main():
                 or result["mixed_adaptive_epochs"] != 0
                 or (negative and result.get("foreign_tree_control") != "rejected_before_feedback")):
             raise ValueError(f"Missing portable native feedback evidence for {name}: {successor}")
-        feedback = directory / name / "successor.steps/feedback"
-        trace = json.loads((feedback / "candidate_front/front.json").read_text(encoding="utf-8"))
-        _, uv, faces = load_physical_obj(feedback / "smoothing_comparison/before.obj")
-        if (trace["schema"] != "apmesh.quad.article_front_guarded.v1"
-                or trace["smoothing"] is not None or not trace["commits"]
-                or [tuple(site) for site in trace["vertices"]] != uv
-                or [tuple(face) for face in trace["seed_faces"]]
-                + [tuple(step["polygon"]) for step in trace["commits"]] != faces):
-            raise ValueError(f"Guarded birth history differs from its native frame: {name}")
+        verify_birth_trace(directory / name / "successor.steps/feedback",
+                           "apmesh.quad.article_front_guarded.v1")
         print(name, result["source_sha256"], successor, flush=True)
 
     quiet = run(exe, directory / "relative-no-action", cases[1][1], cases[1][2],
@@ -64,6 +69,17 @@ def main():
             or quiet["source_sha256"] != result["source_sha256"]):
         raise ValueError("Relative threshold control did not retain only the original source")
     print("relative-no-action", quiet["source_sha256"], quiet["successor"], flush=True)
+
+    pairs_dir = directory / "selective-additional-pairs"
+    paired = run(exe, pairs_dir, cases[0][1], cases[0][2],
+                 relative_tolerance=.034341894205194436, additional_pairs=True)
+    if paired["successor"]["status"] != "staged" or paired["mixed_adaptive_epochs"] != 0:
+        raise ValueError("The alternate local-pair contract did not stage")
+    trace = verify_birth_trace(pairs_dir / "successor.steps/feedback",
+                               "apmesh.quad.article_front_guarded_pairs.v1")
+    if not any(step.get("additional_pair") for step in trace["commits"]):
+        raise ValueError("The alternate local-pair contract did not exercise its fallback")
+    print("selective-additional-pairs", paired["source_sha256"], paired["successor"], flush=True)
 
 
 if __name__ == "__main__":

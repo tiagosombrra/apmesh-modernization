@@ -204,6 +204,7 @@ struct Candidate {
   std::vector<UvVertex> article_uv_before_smoothing;
   std::vector<Xyz> article_xyz_before_smoothing;
   bool guarded_smoothing_comparison = false;
+  bool additional_pair_search = false;
   MixedUvSmoothingTrace article_smoothing;
   std::vector<std::vector<Xyz>> article_smoothing_xyz;
   std::size_t clearance_excluded_cells = 0;
@@ -513,7 +514,8 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    const RealBoundarySource* source = nullptr, bool pair_during_front = false,
                    bool article_front = false, bool article_area_centroid = false,
                    const Candidate* previous_search = nullptr,
-                   const std::filesystem::path* guarded_smoothing = nullptr) {
+                   const std::filesystem::path* guarded_smoothing = nullptr,
+                   bool additional_pairs = false) {
   ValidateSourceCurves(patch);
   Require(!article_front || !pair_during_front, "Article and TRI-observer modes are exclusive");
   Require(!article_area_centroid || article_front, "Area centroid requires the article mode");
@@ -615,7 +617,9 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
       }
       boxes = previous_search->article_leaves;
     }
-    article = ArticleMixedFront(selected.uv_quads, contour, std::move(boxes)).Run();
+    article =
+        ArticleMixedFront(selected.uv_quads, contour, std::move(boxes), additional_pairs).Run();
+    result.additional_pair_search = additional_pairs;
     std::vector<std::array<UvVertex, 3>> audit_triangles;
     for (std::size_t i = article.seed_quads; i < article.faces.size(); ++i) {
       const auto& face = article.faces[i];
@@ -911,7 +915,9 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     trace << ']';
   };
   trace << "{\"schema\":\""
-        << (guarded ? "apmesh.quad.article_front_guarded.v1" : "apmesh.quad.article_front.v1")
+        << (candidate.additional_pair_search ? "apmesh.quad.article_front_guarded_pairs.v1"
+            : guarded                        ? "apmesh.quad.article_front_guarded.v1"
+                                             : "apmesh.quad.article_front.v1")
         << "\",\"point_rule\":\""
         << (candidate.article_area_centroid ? "polygon_area_centroid_uv_v1" : "vertex_mean_uv_v1")
         << "\",\"clearance\":{"
@@ -995,7 +1001,16 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
         trace << "null";
       trace << '}';
     }
-    trace << "]}";
+    trace << ']';
+    if (step.additional_pair) {
+      const auto& extra = *step.additional_pair;
+      trace << ",\"additional_pair\":{\"first_triangle\":";
+      ids(extra.first_triangle);
+      trace << ",\"second_triangle\":";
+      ids(extra.choice.triangle);
+      trace << ",\"side\":" << extra.choice.side << ",\"score\":" << extra.choice.score << '}';
+    }
+    trace << '}';
     if (!guarded) {
       faces.push_back(step.polygon);
       frame(i + 1);
@@ -2233,6 +2248,7 @@ struct FeedbackPlan {
   std::vector<std::size_t> curve_intervals;
   bool replay_previous_search = false;
   bool guarded_smoothing = false;
+  bool additional_pairs = false;
 };
 
 FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
@@ -2298,7 +2314,10 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
   auto& feedback = plan.feedback;
   feedback.guarded_smoothing = true;
   while (input >> kind) {
-    if (kind == "reference") {
+    if (kind == "additional_pairs") {
+      Require(!feedback.additional_pairs, "Duplicate additional-pair request");
+      feedback.additional_pairs = true;
+    } else if (kind == "reference") {
       std::string path;
       input >> std::quoted(path);
       Require(bool(input) && !path.empty() && !plan.reference,
@@ -2323,6 +2342,8 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
   const bool have_requests = !feedback.recovered.empty() || !feedback.curve_intervals.empty();
   Require(have_requests == plan.reference.has_value(),
           "Single-patch feedback requests and reference must be supplied together");
+  Require(!feedback.additional_pairs || have_requests,
+          "Additional local pairs require a successor request");
   return plan;
 }
 
@@ -2482,7 +2503,7 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
       staged = Generate(
           patch, false, [&]() { return std::move(tree); }, &effective_source, false, true, true,
           comparison && comparison->replay_previous_search ? &previous : nullptr,
-          guarded ? &guarded_path : nullptr);
+          guarded ? &guarded_path : nullptr, comparison && comparison->additional_pairs);
     } catch (const std::runtime_error& error) {
       rejection = error.what();
     } catch (const std::invalid_argument& error) {
