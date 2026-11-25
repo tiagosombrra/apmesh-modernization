@@ -4825,3 +4825,21 @@ Native compatibility, three refusals, the boundary contracts and
 ten progressive checks pass. [Combined results](CONTOUR_TEMPLATE_HANDOFF_20261125.md).
 PR 280 exact checks pass and PR 281 checks are running. Next align
 prospective front point placement. Zero accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - test bounded legacy ideal points on both native fronts
+
+Draft PR 282 at ffdf0b26 adds a point only to a sub-floor transition
+TRI whose active front supplies no eligible existing apex. CurvaBezier
+inserts two points and reduces the number of transition TRI below the
+floor, but a later TRI at one of the inserted points is 1.00° at birth
+and 1.85° after smoothing. Ribbed inserts no points and reproduces the
+control mesh. Both preserve the certified curve, requests and grouped
+tree. Both meet growth and remain blocked on shape. Independent archive
+replay verifies each insertion. MSVC C++17 builds, original-curve native
+controls, progressive Python controls, direct three-stage article
+application and byte-identical default replay passed. The build-directory
+CTest invocation and validation adapter limitations are retained.
+All four PR 281 hosted checks passed. PR 282 hosted checks were running.
+[Native results](LEGACY_IDEAL_FRONT_POINT_20261125.md).
+Next compare the whole affected closure with and without the point under
+one shared rule, pending alignment. Zero accepted mixed epochs.

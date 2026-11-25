@@ -12,6 +12,26 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - test the original TRI ideal point in the mixed front
+
+[Draft PR 282](https://github.com/tiagosombrra/apmesh-modernization/pull/282)
+at `ffdf0b267cd9bbb6b59e3e4bd1397bf7efd79ee9` adds the optional bounded
+ideal-point trial. CurvaBezier inserts two vertices and reduces poor
+transition TRI from 37 to 27. The final minimum falls from 3.15° to
+1.85° after a new 1.00° TRI is born later in the same front, and the
+interior minimum also regresses. Ribbed Bracket inserts zero vertices
+and reproduces the control mesh. Both keep their certified curves and
+fit the face budget. Both remain blocked on shape. The default replay,
+native boundary contracts and progressive and article application
+controls passed within their recorded scopes. [Evidence](LEGACY_IDEAL_FRONT_POINT_20261125.md).
+
+**Next:** compare the local front closure with and without the inserted
+point, after alignment, using the same experimental rule on both models.
+Shorter offsets already show individual face feasibility in both
+retained histories. Confirm the complete affected region before advancing
+to reserved cases. The shared-curve, ownership reentry and global mixed
+curvature gates remain open. Zero accepted mixed epochs.
+
 ### 2026-11-25 - combine certified curves, protected grouping and AFT handoff near the contour
 
 [Draft PR 281](https://github.com/tiagosombrra/apmesh-modernization/pull/281)
