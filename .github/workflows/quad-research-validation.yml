@@ -115,6 +115,7 @@ jobs:
           python3 tests/quad/test_domain_factor_bounds_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/domain-factor-bounds
           python3 tests/quad/test_live_pair_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/live-pairs
           python3 tests/quad/test_article_front_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/article-front
+          python3 tests/quad/test_grouping_trial_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/grouping-trial
       - name: AddressSanitizer and UBSan controlled typed history (Linux)
         if: runner.os == 'Linux'
         shell: bash
@@ -150,6 +151,8 @@ jobs:
           python tests/quad/test_live_pair_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/live-pairs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python tests/quad/test_article_front_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/article-front
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python tests/quad/test_grouping_trial_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/grouping-trial
           exit $LASTEXITCODE
       - name: Retain controlled application output
         if: always()
