@@ -4550,3 +4550,17 @@ The active next item remains relative geometric trigger qualification,
 not reimplementation of the common entry. Preserve no-action, regional
 shape/growth, realized-size, shared-source and two-epoch limits. No source
 merge, threshold adoption, main update or PR-state change was made.
+
+## 2026-11-25 Fortaleza - qualify the relative mixed refinement trigger
+
+Implement the aligned geometry-first trigger behind explicit tolerance on
+draft PR 272 at 7d17c5d3. Test flat no action, graded influence on a flat
+neighbor, rescaling and invalid parameters. The same native image
+reproduces both zero-tolerance successors, rejects the foreign tree and
+records a native no-action Ribbed source. Measure the four threshold
+breakpoints and one selective CurvaBezier reconstruction. It reduces
+RMS by 23.8 percent with 6.6 percent more faces and preserves the
+minimum contour-edge QUAD angle. All local native and 33 Python tests pass.
+[Report and receipt](RELATIVE_MIXED_TRIGGER_20261125.md).
+PR 271 completes four hosted checks. Tolerance adoption, quality admission,
+reserved cases, shared curves, subsequent epochs and curvature remain open.

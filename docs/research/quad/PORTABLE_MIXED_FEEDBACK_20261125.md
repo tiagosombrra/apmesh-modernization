@@ -91,3 +91,5 @@ adaptive generation, retain and reenter from the previous mixed candidate's
 native curve and tree after approved admission. The current path recreates
 its first mixed input from a TRI step. Global mixed curvature and the
 two-accepted-epoch milestone remain open.
+
+All four jobs in the recorded PR 271 run subsequently completed successfully.

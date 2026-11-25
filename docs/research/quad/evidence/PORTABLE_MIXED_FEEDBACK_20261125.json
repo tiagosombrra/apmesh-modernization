@@ -2161,5 +2161,35 @@
         "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45583661335/job/139099679340"
       }
     ]
+  },
+  "hosted_latest": {
+    "id": 45583661335,
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45583661335",
+    "jobs": [
+      {
+        "name": "QUAD native (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45583661335/job/139099678877"
+      },
+      {
+        "name": "TRI baseline and tooling controls (Linux)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45583661335/job/139099679260"
+      },
+      {
+        "name": "QUAD native (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45583661335/job/139099679263"
+      },
+      {
+        "name": "TRI scientific equivalence against frozen baseline",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45583661335/job/139099679340"
+      }
+    ]
   }
 }

@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: qualify the relative geometric refinement trigger
+## Active: align a transferable relative tolerance and mixed admission
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,36 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - qualify an explicit relative geometric trigger
+
+[Draft PR 272](https://github.com/tiagosombrra/apmesh-modernization/pull/272)
+at 7d17c5d3 uses the researcher's selected relative geometric indicator
+with an explicit tolerance and shape measured on the staged output.
+The exact flat control now sends no requests. A curved TRI can still
+propagate a size request to its flat QUAD neighbor. The scaled control
+preserves the request pattern. Zero-tolerance native cases reproduce the
+prior candidate OBJ bytes. Ribbed also preserves only its source under
+the high-tolerance no-action control.
+
+Selectively suppressing the CurvaBezier QUAD seed at its measured
+breakpoint gives 780 faces and 16 contour segments instead of 796 and
+21. Against the mixed input, the RMS improves 23.8 percent at 6.6
+percent growth and the minimum contour-edge QUAD angle stays at 19.44
+degrees. The TRI minimum improves to 2.27 degrees. Interior QUAD minimum
+declines from 64.41 to 50.86 degrees (both-seed control reaches 27.63).
+See the
+[relative trigger and sensitivity evidence](RELATIVE_MIXED_TRIGGER_20261125.md)
+with 33 Python checks and the directed native suite. PR 271 has four
+successful exact-head hosted jobs and independent Linux replay. PR 272 checks are recorded with the
+receipt; independent review is pending.
+
+**Next:** align how to choose one relative tolerance on development
+cases and how to measure the regional quality and element-budget
+admission guards. Freeze both before executing reserved geometries.
+The selective cutoff is a development measurement. Native owned
+successor reentry, the two shared patches and global curvature remain
+open. Zero accepted mixed epochs.
 
 ### 2026-11-25 - independently verify the portable feedback checkpoint
 
