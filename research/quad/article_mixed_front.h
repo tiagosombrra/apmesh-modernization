@@ -7,6 +7,7 @@
 #include <array>
 #include <cmath>
 #include <cstddef>
+#include <functional>
 #include <limits>
 #include <optional>
 #include <set>
@@ -27,6 +28,15 @@ struct ArticleFrontAdditionalPair {
   std::array<VertexId, 3> first_triangle{};
   ArticleFrontChoice choice;
 };
+struct ArticleFrontPairScreen {
+  double limit;
+  std::function<std::optional<double>(const std::array<UvVertex, 4>&)> measure;
+};
+struct ArticleFrontPairMeasurement {
+  std::array<VertexId, 4> quad;
+  double score;
+  std::optional<double> relative_error;
+};
 struct ArticleFrontCommit {
   std::vector<std::pair<VertexId, VertexId>> before;
   std::vector<VertexId> polygon;
@@ -34,6 +44,7 @@ struct ArticleFrontCommit {
   std::array<VertexId, 3> best{};
   int selected_side = -1;
   std::optional<ArticleFrontAdditionalPair> additional_pair;
+  std::vector<ArticleFrontPairMeasurement> pair_measurements;
 };
 struct ArticleFrontResult {
   std::vector<UvVertex> vertices;
@@ -51,8 +62,13 @@ public:
   using Box = std::array<double, 4>;
 
   ArticleMixedFront(const UvMesh& seed, const std::vector<UvVertex>& boundary,
-                    std::vector<Box> leaves, bool additional_pairs = false)
-      : leaves_(std::move(leaves)), additional_pairs_(additional_pairs) {
+                    std::vector<Box> leaves, bool additional_pairs = false,
+                    std::optional<ArticleFrontPairScreen> pair_screen = std::nullopt)
+      : leaves_(std::move(leaves)), additional_pairs_(additional_pairs),
+        pair_screen_(std::move(pair_screen)) {
+    Require(!pair_screen_ || (additional_pairs_ && pair_screen_->measure &&
+                              std::isfinite(pair_screen_->limit) && pair_screen_->limit >= 0),
+            "Invalid additional-pair geometry screen");
     Require(boundary.size() >= 3 && !leaves_.empty(), "Article front needs boundary and leaves");
     result_.vertices = seed.vertices;
     result_.leaves = leaves_;
@@ -132,7 +148,7 @@ public:
         }
       }
       if (additional_pairs_ && step.selected_side < 0) {
-        step.additional_pair = AdditionalPair(base);
+        step.additional_pair = AdditionalPair(base, step.pair_measurements);
         if (step.additional_pair) {
           const auto& quad = step.additional_pair->choice.quad;
           step.polygon.assign(quad.begin(), quad.end());
@@ -161,6 +177,7 @@ private:
   std::vector<Edge> front_;
   bool attempted_ = false;
   bool additional_pairs_ = false;
+  std::optional<ArticleFrontPairScreen> pair_screen_;
 
   static void Require(bool ok, const char* message) {
     if (!ok)
@@ -310,7 +327,8 @@ private:
     }
     return invalid_;
   }
-  std::optional<ArticleFrontAdditionalPair> AdditionalPair(Edge base) const {
+  std::optional<ArticleFrontAdditionalPair>
+  AdditionalPair(Edge base, std::vector<ArticleFrontPairMeasurement>& measurements) const {
     std::vector<VertexId> apices;
     Best(base, nullptr, &apices);
     std::optional<ArticleFrontAdditionalPair> best;
@@ -326,8 +344,19 @@ private:
                                 ? std::array<VertexId, 4>{base.first, base.second, other, apex}
                                 : std::array<VertexId, 4>{base.first, base.second, apex, other};
           const auto score = Shape(quad);
+          if (!std::isfinite(score) || score > 1.5)
+            continue;
+          if (pair_screen_) {
+            const std::array<UvVertex, 4> corners{
+                result_.vertices[quad[0]], result_.vertices[quad[1]], result_.vertices[quad[2]],
+                result_.vertices[quad[3]]};
+            const auto error = pair_screen_->measure(corners);
+            measurements.push_back({quad, score, error});
+            if (!error || *error > pair_screen_->limit)
+              continue;
+          }
           // Loops retain vertex ID, side and companion ID order for exact ties.
-          if (std::isfinite(score) && score <= 1.5 && (!best || score < best->choice.score)) {
+          if (!best || score < best->choice.score) {
             best = ArticleFrontAdditionalPair{
                 triangle,
                 {{edge.first, edge.second, other}, quad, static_cast<int>(side), score, true}};

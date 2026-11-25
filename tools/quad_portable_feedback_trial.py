@@ -31,13 +31,16 @@ def model_evaluator(model, directory):
     return "source.bp", lambda u, v: bernstein(controls, u, v)
 
 
-def write_plan(path, step, faces=(), curves=(), reference=None, *, additional_pairs=False):
+def write_plan(path, step, faces=(), curves=(), reference=None, *, additional_pairs=False,
+               additional_pair_error_limit=None):
     with path.open("x", encoding="ascii", newline="\n") as file:
         file.write(f"apmesh_single_patch_feedback_v1 {step}\n")
         if reference is not None:
             file.write(f'reference "{reference.name}"\n')
         if additional_pairs:
             file.write("additional_pairs\n")
+        if additional_pair_error_limit is not None:
+            file.write(f"additional_pair_error_limit {additional_pair_error_limit:.17g}\n")
         for row in curves:
             file.write(f"curve {row['interval']}\n")
         for row in faces:
@@ -69,11 +72,14 @@ def source_hashes(archive):
 
 
 def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=None,
-        additional_pairs=False):
+        additional_pairs=False, additional_pair_error_limit=None):
     if step < 1:
         raise ValueError("Select a positive accepted TRI source step")
     if relative_tolerance is not None and (not isfinite(relative_tolerance) or relative_tolerance < 0):
         raise ValueError("Relative residual tolerance must be finite and nonnegative")
+    if additional_pair_error_limit is not None and (
+            not additional_pairs or not isfinite(additional_pair_error_limit) or additional_pair_error_limit < 0):
+        raise ValueError("A finite nonnegative additional-pair error limit requires --additional-pairs")
     out.mkdir(parents=True)
     native_model, evaluate = model_evaluator(model, out)
     model_fingerprint = digest(out / native_model) if native_model == "source.bp" else native_model
@@ -92,6 +98,8 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
                   curve_requests=curves, mixed_adaptive_epochs=0)
     if additional_pairs:
         result["additional_pair_search"] = True
+    if additional_pair_error_limit is not None:
+        result["additional_pair_error_limit"] = additional_pair_error_limit
     if not faces and not curves:
         if relative_tolerance is None or verify_rejection:
             raise ValueError("The requested comparison needs active feedback")
@@ -99,7 +107,8 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
         write_json(out / "result.json", result)
         return result
     request = out / "successor.plan"
-    write_plan(request, step, faces, curves, archive, additional_pairs=additional_pairs)
+    write_plan(request, step, faces, curves, archive, additional_pairs=additional_pairs,
+               additional_pair_error_limit=additional_pair_error_limit)
     code, log = run_native(exe, out, native_model, "successor", request)
     if code != 0:
         raise ValueError(f"Native successor invocation failed with exit {code}. See {log.name}")
@@ -117,7 +126,8 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
         with binding.open("ab") as file:
             file.write(b"corrupted provenance\n")
         forged_plan = out / "foreign.plan"
-        write_plan(forged_plan, step, faces, curves, forged, additional_pairs=additional_pairs)
+        write_plan(forged_plan, step, faces, curves, forged, additional_pairs=additional_pairs,
+                   additional_pair_error_limit=additional_pair_error_limit)
         code, log = run_native(exe, out, native_model, "foreign", forged_plan)
         reason = b"Single-patch feedback did not reproduce its original source binding"
         if (code == 0 or reason not in log.read_bytes() or (out / "foreign.steps").exists()
@@ -138,13 +148,16 @@ def main():
     parser.add_argument("--verify-rejection", action="store_true")
     parser.add_argument("--additional-pairs", action="store_true",
                         help="Try remaining local pairs when the original choice is a TRI")
+    parser.add_argument("--additional-pair-error-limit", type=float,
+                        help="Maximum sampled XYZ deviation divided by the physical active edge length")
     parser.add_argument("--relative-tolerance", type=float,
                         help="Experimental dimensionless trigger with no default tolerance")
     args = parser.parse_args()
     try:
         result = run(args.exe.resolve(strict=True), args.out.resolve(), args.model, args.step,
                      args.verify_rejection, relative_tolerance=args.relative_tolerance,
-                     additional_pairs=args.additional_pairs)
+                     additional_pairs=args.additional_pairs,
+                     additional_pair_error_limit=args.additional_pair_error_limit)
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         parser.exit(1, f"Single-patch feedback failed: {error}\n")
     print(json.dumps(result, indent=2))

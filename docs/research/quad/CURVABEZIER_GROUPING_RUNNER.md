@@ -174,3 +174,17 @@ records the extra first/second triangles and score when a replacement
 occurs. The original best TRI and its two prospective alternatives
 remain in the same transaction. This is a reversible experimental
 comparison. Regional shape and admission are observed separately.
+
+Add `--additional-pair-error-limit 0.045` to trial the common development
+ceiling. The screen uses the existing five bilinear source samples of a
+prospective QUAD. It divides their maximum physical deviation by the
+length of the selected physical edge. The result is dimensionless. The
+screen runs only on additional shape-eligible pairs, before comparing S.
+An unavailable chord or an excessive deviation excludes the pair.
+
+The `apmesh.quad.article_front_screened_pairs.v1` trace records the limit
+and every evaluated pair with its S score and relative deviation. Existing
+trace schemas remain available when the ceiling is omitted. The portable
+regression includes the CurvaBezier Step 3 selective run and the Ribbed
+Bracket Step 2 original request profile. This ceiling does not decide
+mixed epoch acceptance or alter the reference TRI generator.
