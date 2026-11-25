@@ -1,0 +1,1683 @@
+{
+  "schema": "apmesh.quad.admission_contract_development_replay.v1",
+  "executable_evaluator_commit": "e93205007b8f937b72d7b612694cbc8091c637dc",
+  "existing_diagnostic_profile_sha256": "790bd838d197661b2bba1d4608f5ac743c91bd0ac08e258d161403ba1485cff0",
+  "existing_diagnostic_profile": {
+    "max_face_growth": 0.10420475319926874,
+    "regional_floors": {
+      "contour_edge_TRI": {
+        "min_angle_deg": 10.367272360473434,
+        "min_shape": 0.30088697922437296
+      },
+      "contour_edge_QUAD": {
+        "min_angle_deg": 19.438606955832434,
+        "min_shape": 0.32843100153567506
+      },
+      "contour_vertex_TRI": {
+        "min_angle_deg": 1.4181974567977775,
+        "min_shape": 0.04268083753878802
+      },
+      "contour_vertex_QUAD": {
+        "min_angle_deg": 0,
+        "min_shape": 0
+      },
+      "interior_TRI": {
+        "min_angle_deg": 26.57091996655889,
+        "min_shape": 0.6929450141702036
+      },
+      "interior_QUAD": {
+        "min_angle_deg": 26.450085727709634,
+        "min_shape": 0.3248423057881177
+      }
+    }
+  },
+  "cases": {
+    "curva_screened": {
+      "source_sha256": {
+        "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+        "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+        "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+      },
+      "candidate_sha256": "66127ed67bed8f32eb3f6709dae0cc5ee88f475ae98aa0bbd9bfb32f422e96e5",
+      "analytic_source": "builtin:curva_bezier",
+      "native_certificate_sha256": "1b6f6209033987064fa51571a978294c4a4482261939d833b16ec38f038f4759",
+      "ordered_boundary": {
+        "preserved_original_curve_records": 18,
+        "old_count": 14,
+        "new_count": 16,
+        "preserved_sites": 14,
+        "inserted_sites": 2,
+        "split_parent_intervals": 2,
+        "max_interior_insertions": 1
+      },
+      "rejected_mutations": [
+        "changed_original_curve",
+        "missing_parent_site",
+        "reordered_sites",
+        "displaced_boundary_vertex",
+        "wrong_certificate_parent_endpoint"
+      ],
+      "common_geometry": {
+        "24": {
+          "common_sites": 576,
+          "before_rms": 0.01182092568456974,
+          "after_rms": 0.008942766269276288,
+          "before_max": 0.049100482457393006,
+          "after_max": 0.040148706524736344,
+          "rms_fraction_drop": 0.24348003634355064
+        },
+        "48": {
+          "common_sites": 2304,
+          "before_rms": 0.011914927232780577,
+          "after_rms": 0.009079034654457278,
+          "before_max": 0.0499742617604889,
+          "after_max": 0.04419218491628824,
+          "rms_fraction_drop": 0.2380117413156445
+        }
+      },
+      "zero_slack_geometry_probe": true,
+      "largest_adjacent_physical_size_ratio": {
+        "baseline": 12.238209200218554,
+        "candidate": 8.929596877999252
+      },
+      "diagnostic": {
+        "status": "blocked",
+        "blocking_guards": [
+          "interior_TRI.min_angle_deg",
+          "interior_TRI.min_shape"
+        ],
+        "growth": {
+          "predecessor_faces": 732,
+          "candidate_faces": 779,
+          "fraction": 0.06420765027322405,
+          "limit": 0.10420475319926874
+        },
+        "regions": {
+          "contour_edge_TRI": {
+            "predecessor_count": 8,
+            "candidate_count": 8,
+            "min_angle_deg": {
+              "floor": 10.367272360473434,
+              "predecessor_min": 10.367272360473434,
+              "candidate_min": 10.367272360473434,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.30088697922437296,
+              "predecessor_min": 0.30088697922437296,
+              "candidate_min": 0.30088697922437296,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_edge_QUAD": {
+            "predecessor_count": 6,
+            "candidate_count": 8,
+            "min_angle_deg": {
+              "floor": 19.438606955832434,
+              "predecessor_min": 19.438606955832434,
+              "candidate_min": 19.438606955832434,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.32843100153567506,
+              "predecessor_min": 0.32843100153567506,
+              "candidate_min": 0.32843100153567506,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_vertex_TRI": {
+            "predecessor_count": 94,
+            "candidate_count": 92,
+            "min_angle_deg": {
+              "floor": 1.4181974567977775,
+              "predecessor_min": 1.4181974567977775,
+              "candidate_min": 2.272288298004088,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.04268083753878802,
+              "predecessor_min": 0.04268083753878802,
+              "candidate_min": 0.06802131608967615,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_vertex_QUAD": {
+            "predecessor_count": 0,
+            "candidate_count": 0,
+            "min_angle_deg": {
+              "floor": 0,
+              "predecessor_min": null,
+              "candidate_min": null,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "absent"
+            },
+            "min_shape": {
+              "floor": 0,
+              "predecessor_min": null,
+              "candidate_min": null,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "absent"
+            }
+          },
+          "interior_TRI": {
+            "predecessor_count": 0,
+            "candidate_count": 2,
+            "min_angle_deg": {
+              "floor": 26.57091996655889,
+              "predecessor_min": null,
+              "candidate_min": 14.360406798940785,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 1,
+              "status": "blocked"
+            },
+            "min_shape": {
+              "floor": 0.6929450141702036,
+              "predecessor_min": null,
+              "candidate_min": 0.377193811758363,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 1,
+              "status": "blocked"
+            }
+          },
+          "interior_QUAD": {
+            "predecessor_count": 624,
+            "candidate_count": 669,
+            "min_angle_deg": {
+              "floor": 26.450085727709634,
+              "predecessor_min": 64.40510702872767,
+              "candidate_min": 44.56605203816204,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.3248423057881177,
+              "predecessor_min": 0.9014446997284595,
+              "candidate_min": 0.6913273288174268,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          }
+        }
+      },
+      "absolute_floor_failures_at_current_diagnostic_values": [
+        "interior_TRI.min_angle_deg",
+        "interior_TRI.min_shape"
+      ],
+      "target_probe_at_current_diagnostic_values": {
+        "contour_edge_TRI": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_edge_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_vertex_TRI": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_vertex_QUAD": {
+          "min_angle_deg": "absent",
+          "min_shape": "absent"
+        },
+        "interior_TRI": {
+          "min_angle_deg": "blocked",
+          "min_shape": "blocked"
+        },
+        "interior_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        }
+      },
+      "worsened_tail_at_some_threshold": [
+        "contour_edge_TRI.min_shape",
+        "interior_QUAD.min_angle_deg",
+        "interior_QUAD.min_shape"
+      ],
+      "largest_tail_fraction_increase": {
+        "contour_edge_TRI": {
+          "min_angle_deg": {
+            "threshold": 10.367272360473434,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          },
+          "min_shape": {
+            "threshold": 0.44549153561923566,
+            "before_count": 2,
+            "after_count": 3,
+            "fraction_increase": 0.125
+          }
+        },
+        "contour_edge_QUAD": {
+          "min_angle_deg": {
+            "threshold": 19.438606955832434,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          },
+          "min_shape": {
+            "threshold": 0.32843100153567506,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          }
+        },
+        "contour_vertex_TRI": {
+          "min_angle_deg": {
+            "threshold": 1.4181974567977775,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          },
+          "min_shape": {
+            "threshold": 0.04268083753878802,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          }
+        },
+        "contour_vertex_QUAD": {
+          "min_angle_deg": null,
+          "min_shape": null
+        },
+        "interior_TRI": {
+          "min_angle_deg": null,
+          "min_shape": null
+        },
+        "interior_QUAD": {
+          "min_angle_deg": {
+            "threshold": 89.30614237938262,
+            "before_count": 404,
+            "after_count": 466,
+            "fraction_increase": 0.04912613544900535
+          },
+          "min_shape": {
+            "threshold": 0.9998677729391915,
+            "before_count": 393,
+            "after_count": 454,
+            "fraction_increase": 0.04881712084626888
+          }
+        }
+      },
+      "transition_angle_counts": {
+        "5": {
+          "parent": [
+            38,
+            94
+          ],
+          "candidate": [
+            25,
+            92
+          ]
+        },
+        "10": {
+          "parent": [
+            58,
+            94
+          ],
+          "candidate": [
+            47,
+            92
+          ]
+        },
+        "20": {
+          "parent": [
+            82,
+            94
+          ],
+          "candidate": [
+            71,
+            92
+          ]
+        }
+      }
+    },
+    "curva_grouped": {
+      "source_sha256": {
+        "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+        "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+        "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+      },
+      "candidate_sha256": "1ee2cb34f67534e1ef622f1ec2be9ef8477213d11d8f0fef55070e7dd23d35c5",
+      "analytic_source": "builtin:curva_bezier",
+      "native_certificate_sha256": "1b6f6209033987064fa51571a978294c4a4482261939d833b16ec38f038f4759",
+      "ordered_boundary": {
+        "preserved_original_curve_records": 18,
+        "old_count": 14,
+        "new_count": 16,
+        "preserved_sites": 14,
+        "inserted_sites": 2,
+        "split_parent_intervals": 2,
+        "max_interior_insertions": 1
+      },
+      "rejected_mutations": [
+        "changed_original_curve",
+        "missing_parent_site",
+        "reordered_sites",
+        "displaced_boundary_vertex",
+        "wrong_certificate_parent_endpoint"
+      ],
+      "common_geometry": {
+        "24": {
+          "common_sites": 576,
+          "before_rms": 0.01182092568456974,
+          "after_rms": 0.008848448577029572,
+          "before_max": 0.049100482457393006,
+          "after_max": 0.04013334254804927,
+          "rms_fraction_drop": 0.2514589116671502
+        },
+        "48": {
+          "common_sites": 2304,
+          "before_rms": 0.011914927232780577,
+          "after_rms": 0.008987707188285694,
+          "before_max": 0.0499742617604889,
+          "after_max": 0.04418786782332599,
+          "rms_fraction_drop": 0.2456767034582854
+        }
+      },
+      "zero_slack_geometry_probe": true,
+      "largest_adjacent_physical_size_ratio": {
+        "baseline": 12.238209200218554,
+        "candidate": 8.929596877999252
+      },
+      "diagnostic": {
+        "status": "blocked",
+        "blocking_guards": [
+          "interior_TRI.min_angle_deg",
+          "interior_TRI.min_shape"
+        ],
+        "growth": {
+          "predecessor_faces": 732,
+          "candidate_faces": 754,
+          "fraction": 0.030054644808743168,
+          "limit": 0.10420475319926874
+        },
+        "regions": {
+          "contour_edge_TRI": {
+            "predecessor_count": 8,
+            "candidate_count": 8,
+            "min_angle_deg": {
+              "floor": 10.367272360473434,
+              "predecessor_min": 10.367272360473434,
+              "candidate_min": 10.367272360473434,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.30088697922437296,
+              "predecessor_min": 0.30088697922437296,
+              "candidate_min": 0.30088697922437296,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_edge_QUAD": {
+            "predecessor_count": 6,
+            "candidate_count": 8,
+            "min_angle_deg": {
+              "floor": 19.438606955832434,
+              "predecessor_min": 19.438606955832434,
+              "candidate_min": 19.438606955832434,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.32843100153567506,
+              "predecessor_min": 0.32843100153567506,
+              "candidate_min": 0.32843100153567506,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_vertex_TRI": {
+            "predecessor_count": 94,
+            "candidate_count": 90,
+            "min_angle_deg": {
+              "floor": 1.4181974567977775,
+              "predecessor_min": 1.4181974567977775,
+              "candidate_min": 2.272288298004088,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.04268083753878802,
+              "predecessor_min": 0.04268083753878802,
+              "candidate_min": 0.06802131608967615,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_vertex_QUAD": {
+            "predecessor_count": 0,
+            "candidate_count": 0,
+            "min_angle_deg": {
+              "floor": 0,
+              "predecessor_min": null,
+              "candidate_min": null,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "absent"
+            },
+            "min_shape": {
+              "floor": 0,
+              "predecessor_min": null,
+              "candidate_min": null,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "absent"
+            }
+          },
+          "interior_TRI": {
+            "predecessor_count": 0,
+            "candidate_count": 2,
+            "min_angle_deg": {
+              "floor": 26.57091996655889,
+              "predecessor_min": null,
+              "candidate_min": 18.157798219525517,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 1,
+              "status": "blocked"
+            },
+            "min_shape": {
+              "floor": 0.6929450141702036,
+              "predecessor_min": null,
+              "candidate_min": 0.49691430793384883,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 1,
+              "status": "blocked"
+            }
+          },
+          "interior_QUAD": {
+            "predecessor_count": 624,
+            "candidate_count": 646,
+            "min_angle_deg": {
+              "floor": 26.450085727709634,
+              "predecessor_min": 64.40510702872767,
+              "candidate_min": 48.4735749779695,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.3248423057881177,
+              "predecessor_min": 0.9014446997284595,
+              "candidate_min": 0.748640148109636,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          }
+        }
+      },
+      "absolute_floor_failures_at_current_diagnostic_values": [
+        "interior_TRI.min_angle_deg",
+        "interior_TRI.min_shape"
+      ],
+      "target_probe_at_current_diagnostic_values": {
+        "contour_edge_TRI": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_edge_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_vertex_TRI": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_vertex_QUAD": {
+          "min_angle_deg": "absent",
+          "min_shape": "absent"
+        },
+        "interior_TRI": {
+          "min_angle_deg": "blocked",
+          "min_shape": "blocked"
+        },
+        "interior_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        }
+      },
+      "worsened_tail_at_some_threshold": [
+        "contour_edge_TRI.min_angle_deg",
+        "contour_edge_TRI.min_shape",
+        "interior_QUAD.min_angle_deg",
+        "interior_QUAD.min_shape"
+      ],
+      "largest_tail_fraction_increase": {
+        "contour_edge_TRI": {
+          "min_angle_deg": {
+            "threshold": 20.82662135088025,
+            "before_count": 3,
+            "after_count": 4,
+            "fraction_increase": 0.125
+          },
+          "min_shape": {
+            "threshold": 0.44549153561923566,
+            "before_count": 2,
+            "after_count": 4,
+            "fraction_increase": 0.25
+          }
+        },
+        "contour_edge_QUAD": {
+          "min_angle_deg": {
+            "threshold": 19.438606955832434,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          },
+          "min_shape": {
+            "threshold": 0.32843100153567506,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          }
+        },
+        "contour_vertex_TRI": {
+          "min_angle_deg": {
+            "threshold": 1.4181974567977775,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          },
+          "min_shape": {
+            "threshold": 0.04268083753878802,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          }
+        },
+        "contour_vertex_QUAD": {
+          "min_angle_deg": null,
+          "min_shape": null
+        },
+        "interior_TRI": {
+          "min_angle_deg": null,
+          "min_shape": null
+        },
+        "interior_QUAD": {
+          "min_angle_deg": {
+            "threshold": 87.04563734164421,
+            "before_count": 239,
+            "after_count": 336,
+            "fraction_increase": 0.1371110184964674
+          },
+          "min_shape": {
+            "threshold": 0.9985696117559394,
+            "before_count": 247,
+            "after_count": 346,
+            "fraction_increase": 0.1397703818369453
+          }
+        }
+      },
+      "transition_angle_counts": {
+        "5": {
+          "parent": [
+            38,
+            94
+          ],
+          "candidate": [
+            23,
+            90
+          ]
+        },
+        "10": {
+          "parent": [
+            58,
+            94
+          ],
+          "candidate": [
+            44,
+            90
+          ]
+        },
+        "20": {
+          "parent": [
+            82,
+            94
+          ],
+          "candidate": [
+            69,
+            90
+          ]
+        }
+      }
+    },
+    "curva_refined": {
+      "source_sha256": {
+        "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+        "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+        "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+      },
+      "candidate_sha256": "3dcf7d3ad117b1a370140be560f2fe20f3484ecbdc1c96acd59ae40ce3ca496e",
+      "analytic_source": "builtin:curva_bezier",
+      "native_certificate_sha256": "1b6f6209033987064fa51571a978294c4a4482261939d833b16ec38f038f4759",
+      "ordered_boundary": {
+        "preserved_original_curve_records": 18,
+        "old_count": 14,
+        "new_count": 16,
+        "preserved_sites": 14,
+        "inserted_sites": 2,
+        "split_parent_intervals": 2,
+        "max_interior_insertions": 1
+      },
+      "rejected_mutations": [
+        "changed_original_curve",
+        "missing_parent_site",
+        "reordered_sites",
+        "displaced_boundary_vertex",
+        "wrong_certificate_parent_endpoint"
+      ],
+      "common_geometry": {
+        "24": {
+          "common_sites": 576,
+          "before_rms": 0.01182092568456974,
+          "after_rms": 0.008876709927067548,
+          "before_max": 0.049100482457393006,
+          "after_max": 0.040148706524736344,
+          "rms_fraction_drop": 0.2490681217415467
+        },
+        "48": {
+          "common_sites": 2304,
+          "before_rms": 0.011914927232780577,
+          "after_rms": 0.009014564764969082,
+          "before_max": 0.0499742617604889,
+          "after_max": 0.04419218491628824,
+          "rms_fraction_drop": 0.24342259177479164
+        }
+      },
+      "zero_slack_geometry_probe": true,
+      "largest_adjacent_physical_size_ratio": {
+        "baseline": 12.238209200218554,
+        "candidate": 8.929596877999252
+      },
+      "diagnostic": {
+        "status": "passes_configured_guards",
+        "blocking_guards": [],
+        "growth": {
+          "predecessor_faces": 732,
+          "candidate_faces": 789,
+          "fraction": 0.0778688524590164,
+          "limit": 0.10420475319926874
+        },
+        "regions": {
+          "contour_edge_TRI": {
+            "predecessor_count": 8,
+            "candidate_count": 9,
+            "min_angle_deg": {
+              "floor": 10.367272360473434,
+              "predecessor_min": 10.367272360473434,
+              "candidate_min": 10.367272360473434,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.30088697922437296,
+              "predecessor_min": 0.30088697922437296,
+              "candidate_min": 0.30088697922437296,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_edge_QUAD": {
+            "predecessor_count": 6,
+            "candidate_count": 7,
+            "min_angle_deg": {
+              "floor": 19.438606955832434,
+              "predecessor_min": 19.438606955832434,
+              "candidate_min": 19.438606955832434,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.32843100153567506,
+              "predecessor_min": 0.32843100153567506,
+              "candidate_min": 0.32843100153567506,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_vertex_TRI": {
+            "predecessor_count": 94,
+            "candidate_count": 97,
+            "min_angle_deg": {
+              "floor": 1.4181974567977775,
+              "predecessor_min": 1.4181974567977775,
+              "candidate_min": 2.272288298004088,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.04268083753878802,
+              "predecessor_min": 0.04268083753878802,
+              "candidate_min": 0.06802131608967615,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_vertex_QUAD": {
+            "predecessor_count": 0,
+            "candidate_count": 0,
+            "min_angle_deg": {
+              "floor": 0,
+              "predecessor_min": null,
+              "candidate_min": null,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "absent"
+            },
+            "min_shape": {
+              "floor": 0,
+              "predecessor_min": null,
+              "candidate_min": null,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "absent"
+            }
+          },
+          "interior_TRI": {
+            "predecessor_count": 0,
+            "candidate_count": 0,
+            "min_angle_deg": {
+              "floor": 26.57091996655889,
+              "predecessor_min": null,
+              "candidate_min": null,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "absent"
+            },
+            "min_shape": {
+              "floor": 0.6929450141702036,
+              "predecessor_min": null,
+              "candidate_min": null,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "absent"
+            }
+          },
+          "interior_QUAD": {
+            "predecessor_count": 624,
+            "candidate_count": 676,
+            "min_angle_deg": {
+              "floor": 26.450085727709634,
+              "predecessor_min": 64.40510702872767,
+              "candidate_min": 58.40019270530869,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.3248423057881177,
+              "predecessor_min": 0.9014446997284595,
+              "candidate_min": 0.8516521717993449,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          }
+        }
+      },
+      "absolute_floor_failures_at_current_diagnostic_values": [],
+      "target_probe_at_current_diagnostic_values": {
+        "contour_edge_TRI": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_edge_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_vertex_TRI": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_vertex_QUAD": {
+          "min_angle_deg": "absent",
+          "min_shape": "absent"
+        },
+        "interior_TRI": {
+          "min_angle_deg": "absent",
+          "min_shape": "absent"
+        },
+        "interior_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        }
+      },
+      "worsened_tail_at_some_threshold": [
+        "contour_edge_TRI.min_angle_deg",
+        "contour_edge_TRI.min_shape",
+        "contour_edge_QUAD.min_angle_deg",
+        "contour_edge_QUAD.min_shape",
+        "interior_QUAD.min_angle_deg",
+        "interior_QUAD.min_shape"
+      ],
+      "largest_tail_fraction_increase": {
+        "contour_edge_TRI": {
+          "min_angle_deg": {
+            "threshold": 20.82662135088025,
+            "before_count": 3,
+            "after_count": 4,
+            "fraction_increase": 0.06944444444444442
+          },
+          "min_shape": {
+            "threshold": 0.44549153561923566,
+            "before_count": 2,
+            "after_count": 4,
+            "fraction_increase": 0.19444444444444442
+          }
+        },
+        "contour_edge_QUAD": {
+          "min_angle_deg": {
+            "threshold": 23.383455463276544,
+            "before_count": 4,
+            "after_count": 5,
+            "fraction_increase": 0.04761904761904767
+          },
+          "min_shape": {
+            "threshold": 0.3916627558219357,
+            "before_count": 4,
+            "after_count": 5,
+            "fraction_increase": 0.04761904761904767
+          }
+        },
+        "contour_vertex_TRI": {
+          "min_angle_deg": {
+            "threshold": 1.4181974567977775,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          },
+          "min_shape": {
+            "threshold": 0.04268083753878802,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          }
+        },
+        "contour_vertex_QUAD": {
+          "min_angle_deg": null,
+          "min_shape": null
+        },
+        "interior_TRI": {
+          "min_angle_deg": null,
+          "min_shape": null
+        },
+        "interior_QUAD": {
+          "min_angle_deg": {
+            "threshold": 83.16243030592695,
+            "before_count": 130,
+            "after_count": 156,
+            "fraction_increase": 0.02243589743589744
+          },
+          "min_shape": {
+            "threshold": 0.9927148548279705,
+            "before_count": 131,
+            "after_count": 157,
+            "fraction_increase": 0.022312623274161725
+          }
+        }
+      },
+      "transition_angle_counts": {
+        "5": {
+          "parent": [
+            38,
+            94
+          ],
+          "candidate": [
+            26,
+            97
+          ]
+        },
+        "10": {
+          "parent": [
+            58,
+            94
+          ],
+          "candidate": [
+            50,
+            97
+          ]
+        },
+        "20": {
+          "parent": [
+            82,
+            94
+          ],
+          "candidate": [
+            75,
+            97
+          ]
+        }
+      }
+    },
+    "ribbed_screened": {
+      "source_sha256": {
+        "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+        "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+        "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+      },
+      "candidate_sha256": "129d70a63f964df5d9ceaceded7b03c086d31f76dc1d727221e853c4e4e9a6a6",
+      "analytic_source": "5cd6aa9372680cde7b2d805ef6089b816544ddc3061d2507a7cfd9720f05da3f",
+      "native_certificate_sha256": "1a8995a506215aee0f8567111f9b9731034a059f873c3c6f4ace274d64df3e19",
+      "ordered_boundary": {
+        "preserved_original_curve_records": 18,
+        "old_count": 14,
+        "new_count": 22,
+        "preserved_sites": 14,
+        "inserted_sites": 8,
+        "split_parent_intervals": 8,
+        "max_interior_insertions": 1
+      },
+      "rejected_mutations": [
+        "changed_original_curve",
+        "missing_parent_site",
+        "reordered_sites",
+        "displaced_boundary_vertex",
+        "wrong_certificate_parent_endpoint"
+      ],
+      "common_geometry": {
+        "24": {
+          "common_sites": 576,
+          "before_rms": 0.027384233947918835,
+          "after_rms": 0.017300947249785724,
+          "before_max": 0.12330781811253737,
+          "after_max": 0.10280771781289116,
+          "rms_fraction_drop": 0.36821503633478225
+        },
+        "48": {
+          "common_sites": 2304,
+          "before_rms": 0.027488072891660026,
+          "after_rms": 0.017364848941323,
+          "before_max": 0.1256181753351185,
+          "after_max": 0.1074959120816572,
+          "rms_fraction_drop": 0.3682769610745774
+        }
+      },
+      "zero_slack_geometry_probe": true,
+      "largest_adjacent_physical_size_ratio": {
+        "baseline": 6.186777869509267,
+        "candidate": 5.666256068991779
+      },
+      "diagnostic": {
+        "status": "blocked",
+        "blocking_guards": [
+          "face_growth",
+          "interior_TRI.min_angle_deg",
+          "interior_TRI.min_shape",
+          "interior_QUAD.min_shape"
+        ],
+        "growth": {
+          "predecessor_faces": 547,
+          "candidate_faces": 648,
+          "fraction": 0.1846435100548446,
+          "limit": 0.10420475319926874
+        },
+        "regions": {
+          "contour_edge_TRI": {
+            "predecessor_count": 5,
+            "candidate_count": 7,
+            "min_angle_deg": {
+              "floor": 10.367272360473434,
+              "predecessor_min": 13.898520058107152,
+              "candidate_min": 25.403182168278605,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.30088697922437296,
+              "predecessor_min": 0.4038422549621266,
+              "candidate_min": 0.5120430499404189,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_edge_QUAD": {
+            "predecessor_count": 9,
+            "candidate_count": 14,
+            "min_angle_deg": {
+              "floor": 19.438606955832434,
+              "predecessor_min": 26.181796056164885,
+              "candidate_min": 25.335621873573015,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.32843100153567506,
+              "predecessor_min": 0.41805176069673416,
+              "candidate_min": 0.4205384262090846,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_vertex_TRI": {
+            "predecessor_count": 53,
+            "candidate_count": 51,
+            "min_angle_deg": {
+              "floor": 1.4181974567977775,
+              "predecessor_min": 3.791336324177119,
+              "candidate_min": 6.3281535843349985,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.04268083753878802,
+              "predecessor_min": 0.11387110070270551,
+              "candidate_min": 0.18954876728000306,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_vertex_QUAD": {
+            "predecessor_count": 0,
+            "candidate_count": 3,
+            "min_angle_deg": {
+              "floor": 0,
+              "predecessor_min": null,
+              "candidate_min": 29.656004629816906,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0,
+              "predecessor_min": null,
+              "candidate_min": 0.4801824644108338,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "interior_TRI": {
+            "predecessor_count": 2,
+            "candidate_count": 16,
+            "min_angle_deg": {
+              "floor": 26.57091996655889,
+              "predecessor_min": 26.57091996655889,
+              "candidate_min": 18.37051561928486,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 7,
+              "status": "blocked"
+            },
+            "min_shape": {
+              "floor": 0.6929450141702036,
+              "predecessor_min": 0.6929450141702036,
+              "candidate_min": 0.4330453078501855,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 8,
+              "status": "blocked"
+            }
+          },
+          "interior_QUAD": {
+            "predecessor_count": 478,
+            "candidate_count": 557,
+            "min_angle_deg": {
+              "floor": 26.450085727709634,
+              "predecessor_min": 26.450085727709634,
+              "candidate_min": 26.70763827932339,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.3248423057881177,
+              "predecessor_min": 0.3248423057881177,
+              "candidate_min": 0.32332895608451606,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 1,
+              "status": "blocked"
+            }
+          }
+        }
+      },
+      "absolute_floor_failures_at_current_diagnostic_values": [
+        "interior_TRI.min_angle_deg",
+        "interior_TRI.min_shape",
+        "interior_QUAD.min_shape"
+      ],
+      "target_probe_at_current_diagnostic_values": {
+        "contour_edge_TRI": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_edge_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_vertex_TRI": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_vertex_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "interior_TRI": {
+          "min_angle_deg": "blocked",
+          "min_shape": "blocked"
+        },
+        "interior_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "blocked"
+        }
+      },
+      "worsened_tail_at_some_threshold": [
+        "contour_edge_QUAD.min_angle_deg",
+        "contour_edge_QUAD.min_shape",
+        "interior_TRI.min_angle_deg",
+        "interior_TRI.min_shape",
+        "interior_QUAD.min_angle_deg",
+        "interior_QUAD.min_shape"
+      ],
+      "largest_tail_fraction_increase": {
+        "contour_edge_TRI": {
+          "min_angle_deg": {
+            "threshold": 13.898520058107152,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          },
+          "min_shape": {
+            "threshold": 0.4038422549621266,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          }
+        },
+        "contour_edge_QUAD": {
+          "min_angle_deg": {
+            "threshold": 26.181796056164885,
+            "before_count": 0,
+            "after_count": 1,
+            "fraction_increase": 0.07142857142857142
+          },
+          "min_shape": {
+            "threshold": 0.8930580378082549,
+            "before_count": 7,
+            "after_count": 11,
+            "fraction_increase": 0.007936507936507908
+          }
+        },
+        "contour_vertex_TRI": {
+          "min_angle_deg": {
+            "threshold": 3.791336324177119,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          },
+          "min_shape": {
+            "threshold": 0.11387110070270551,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          }
+        },
+        "contour_vertex_QUAD": {
+          "min_angle_deg": null,
+          "min_shape": null
+        },
+        "interior_TRI": {
+          "min_angle_deg": {
+            "threshold": 26.57091996655889,
+            "before_count": 0,
+            "after_count": 7,
+            "fraction_increase": 0.4375
+          },
+          "min_shape": {
+            "threshold": 0.6929450141702036,
+            "before_count": 0,
+            "after_count": 8,
+            "fraction_increase": 0.5
+          }
+        },
+        "interior_QUAD": {
+          "min_angle_deg": {
+            "threshold": 89.88998536480463,
+            "before_count": 242,
+            "after_count": 340,
+            "fraction_increase": 0.10413677576376734
+          },
+          "min_shape": {
+            "threshold": 0.9995788890381956,
+            "before_count": 190,
+            "after_count": 277,
+            "fraction_increase": 0.0998174620463782
+          }
+        }
+      },
+      "transition_angle_counts": {
+        "5": {
+          "parent": [
+            5,
+            53
+          ],
+          "candidate": [
+            0,
+            51
+          ]
+        },
+        "10": {
+          "parent": [
+            28,
+            53
+          ],
+          "candidate": [
+            11,
+            51
+          ]
+        },
+        "20": {
+          "parent": [
+            42,
+            53
+          ],
+          "candidate": [
+            33,
+            51
+          ]
+        }
+      }
+    },
+    "ribbed_selective": {
+      "source_sha256": {
+        "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+        "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+        "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+      },
+      "candidate_sha256": "3f805ba3d2a72a86c0d2252892773aa84498a79c61ae44744c947e62ba9c8f6b",
+      "analytic_source": "07cd08d6258f72a140198d4d9f72360888da9486954216a467c87e949c870e10",
+      "native_certificate_sha256": null,
+      "ordered_boundary": {
+        "preserved_original_curve_records": 18,
+        "old_count": 14,
+        "new_count": 19,
+        "preserved_sites": 14,
+        "inserted_sites": 5,
+        "split_parent_intervals": 5,
+        "max_interior_insertions": 1
+      },
+      "rejected_mutations": [
+        "changed_original_curve",
+        "missing_parent_site",
+        "reordered_sites",
+        "displaced_boundary_vertex"
+      ],
+      "common_geometry": {
+        "24": {
+          "common_sites": 576,
+          "before_rms": 0.027384233947918835,
+          "after_rms": 0.023854708887058353,
+          "before_max": 0.12330781811253737,
+          "after_max": 0.12024896572105419,
+          "rms_fraction_drop": 0.1288889463759756
+        },
+        "48": {
+          "common_sites": 2304,
+          "before_rms": 0.027488072891660026,
+          "after_rms": 0.02390935276382623,
+          "before_max": 0.1256181753351185,
+          "after_max": 0.12408874913937688,
+          "rms_fraction_drop": 0.13019174323128313
+        }
+      },
+      "zero_slack_geometry_probe": true,
+      "largest_adjacent_physical_size_ratio": {
+        "baseline": 6.186777869509267,
+        "candidate": 5.666256068991779
+      },
+      "diagnostic": {
+        "status": "blocked",
+        "blocking_guards": [
+          "interior_TRI.min_angle_deg",
+          "interior_TRI.min_shape",
+          "interior_QUAD.min_shape"
+        ],
+        "growth": {
+          "predecessor_faces": 547,
+          "candidate_faces": 604,
+          "fraction": 0.10420475319926874,
+          "limit": 0.10420475319926874
+        },
+        "regions": {
+          "contour_edge_TRI": {
+            "predecessor_count": 5,
+            "candidate_count": 6,
+            "min_angle_deg": {
+              "floor": 10.367272360473434,
+              "predecessor_min": 13.898520058107152,
+              "candidate_min": 15.272553372902465,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.30088697922437296,
+              "predecessor_min": 0.4038422549621266,
+              "candidate_min": 0.44064959353240957,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_edge_QUAD": {
+            "predecessor_count": 9,
+            "candidate_count": 13,
+            "min_angle_deg": {
+              "floor": 19.438606955832434,
+              "predecessor_min": 26.181796056164885,
+              "candidate_min": 25.335621873573015,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.32843100153567506,
+              "predecessor_min": 0.41805176069673416,
+              "candidate_min": 0.4205384262090846,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_vertex_TRI": {
+            "predecessor_count": 53,
+            "candidate_count": 48,
+            "min_angle_deg": {
+              "floor": 1.4181974567977775,
+              "predecessor_min": 3.791336324177119,
+              "candidate_min": 5.851075953627282,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.04268083753878802,
+              "predecessor_min": 0.11387110070270551,
+              "candidate_min": 0.17532978008416306,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "contour_vertex_QUAD": {
+            "predecessor_count": 0,
+            "candidate_count": 2,
+            "min_angle_deg": {
+              "floor": 0,
+              "predecessor_min": null,
+              "candidate_min": 36.593641274972036,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0,
+              "predecessor_min": null,
+              "candidate_min": 0.4801824644108338,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            }
+          },
+          "interior_TRI": {
+            "predecessor_count": 2,
+            "candidate_count": 11,
+            "min_angle_deg": {
+              "floor": 26.57091996655889,
+              "predecessor_min": 26.57091996655889,
+              "candidate_min": 18.37051561928486,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 3,
+              "status": "blocked"
+            },
+            "min_shape": {
+              "floor": 0.6929450141702036,
+              "predecessor_min": 0.6929450141702036,
+              "candidate_min": 0.4330453078501855,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 4,
+              "status": "blocked"
+            }
+          },
+          "interior_QUAD": {
+            "predecessor_count": 478,
+            "candidate_count": 524,
+            "min_angle_deg": {
+              "floor": 26.450085727709634,
+              "predecessor_min": 26.450085727709634,
+              "candidate_min": 26.450085727709634,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 0,
+              "status": "meets_floor"
+            },
+            "min_shape": {
+              "floor": 0.3248423057881177,
+              "predecessor_min": 0.3248423057881177,
+              "candidate_min": 0.32332895608451606,
+              "predecessor_below_floor": 0,
+              "candidate_below_floor": 1,
+              "status": "blocked"
+            }
+          }
+        }
+      },
+      "absolute_floor_failures_at_current_diagnostic_values": [
+        "interior_TRI.min_angle_deg",
+        "interior_TRI.min_shape",
+        "interior_QUAD.min_shape"
+      ],
+      "target_probe_at_current_diagnostic_values": {
+        "contour_edge_TRI": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_edge_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_vertex_TRI": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "contour_vertex_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "met"
+        },
+        "interior_TRI": {
+          "min_angle_deg": "blocked",
+          "min_shape": "blocked"
+        },
+        "interior_QUAD": {
+          "min_angle_deg": "met",
+          "min_shape": "blocked"
+        }
+      },
+      "worsened_tail_at_some_threshold": [
+        "contour_edge_QUAD.min_angle_deg",
+        "contour_edge_QUAD.min_shape",
+        "interior_TRI.min_angle_deg",
+        "interior_TRI.min_shape",
+        "interior_QUAD.min_angle_deg",
+        "interior_QUAD.min_shape"
+      ],
+      "largest_tail_fraction_increase": {
+        "contour_edge_TRI": {
+          "min_angle_deg": {
+            "threshold": 13.898520058107152,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          },
+          "min_shape": {
+            "threshold": 0.4038422549621266,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          }
+        },
+        "contour_edge_QUAD": {
+          "min_angle_deg": {
+            "threshold": 26.181796056164885,
+            "before_count": 0,
+            "after_count": 1,
+            "fraction_increase": 0.07692307692307693
+          },
+          "min_shape": {
+            "threshold": 0.8930580378082549,
+            "before_count": 7,
+            "after_count": 11,
+            "fraction_increase": 0.06837606837606836
+          }
+        },
+        "contour_vertex_TRI": {
+          "min_angle_deg": {
+            "threshold": 3.791336324177119,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          },
+          "min_shape": {
+            "threshold": 0.11387110070270551,
+            "before_count": 0,
+            "after_count": 0,
+            "fraction_increase": 0.0
+          }
+        },
+        "contour_vertex_QUAD": {
+          "min_angle_deg": null,
+          "min_shape": null
+        },
+        "interior_TRI": {
+          "min_angle_deg": {
+            "threshold": 26.57091996655889,
+            "before_count": 0,
+            "after_count": 3,
+            "fraction_increase": 0.2727272727272727
+          },
+          "min_shape": {
+            "threshold": 0.6929450141702036,
+            "before_count": 0,
+            "after_count": 4,
+            "fraction_increase": 0.36363636363636365
+          }
+        },
+        "interior_QUAD": {
+          "min_angle_deg": {
+            "threshold": 86.29254507350771,
+            "before_count": 156,
+            "after_count": 207,
+            "fraction_increase": 0.06867833530294803
+          },
+          "min_shape": {
+            "threshold": 0.999531353143337,
+            "before_count": 189,
+            "after_count": 245,
+            "fraction_increase": 0.07215976236864796
+          }
+        }
+      },
+      "transition_angle_counts": {
+        "5": {
+          "parent": [
+            5,
+            53
+          ],
+          "candidate": [
+            0,
+            48
+          ]
+        },
+        "10": {
+          "parent": [
+            28,
+            53
+          ],
+          "candidate": [
+            13,
+            48
+          ]
+        },
+        "20": {
+          "parent": [
+            42,
+            53
+          ],
+          "candidate": [
+            31,
+            48
+          ]
+        }
+      }
+    }
+  },
+  "target_probe_synthetic_controls": {
+    "improved_minimum_with_more_subtarget_faces": "blocked",
+    "same_burden_with_improved_minimum": "below_target_without_regression",
+    "same_count_with_larger_subtarget_fraction": "blocked",
+    "new_subtarget_class": "blocked",
+    "new_qualified_class": "met",
+    "removed_class": "removed",
+    "absent_class": "absent"
+  },
+  "geometry_rejected_controls": [
+    "same_geometry_error",
+    "improved_rms_with_larger_maximum"
+  ],
+  "native_generation": false,
+  "reserved_geometries_run": 0,
+  "accepted_mixed_epochs": 0,
+  "artifact_receipt": {
+    "replay_command": [
+      "python",
+      "build/quad-mixed-admission-contract-20261125/replay.py"
+    ],
+    "replay_script_sha256": "7dfc581cd38364db93a887cbeef5858f55b5a17a99c9ecfd029d216ecb5ac1cc",
+    "local_archive_json_sha256": "a4ab1d104390a72f7bc5b3272c4d40c45e182cc1fbff4dd2f9bedb604095f4a6",
+    "local_probe_result": {
+      "exit": 0,
+      "seconds": 12.722828388214111,
+      "timeout": 75
+    },
+    "hosted_evaluator_source_checks": {
+      "run": 45653182415,
+      "passed": 4,
+      "total": 4
+    }
+  }
+}

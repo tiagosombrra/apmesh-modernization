@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: specify and review mixed-cycle admission before reserved validation
+## Active: align one mixed-cycle admission profile before native implementation
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,26 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - replay the prospective admission contract on both development models
+
+Five bound staged archives reduce geometric RMS and maximum distance on
+both common grids. Four carry native ordered boundary certificates. The
+old Ribbed selective output preserves the ordered boundary on replay and
+lacks the native certificate required by the proposal. CurvaBezier's
+directed refinement clears the existing diagnostic but retains 26 of 97
+contour-vertex TRI below 5 degrees. At the same illustrative cut-off both
+Ribbed successors remove the original five affected transition TRI while
+introducing additional interior TRI below the diagnostic angle and shape
+targets. [Admission draft and replay](MIXED_ADMISSION_CONTRACT_20261125.md).
+
+**Next:** align one geometry-independent profile with explicit safety
+floors, regional targets, minimum geometric gain and growth budgets.
+Implement the aligned decision as an opt-in gate on candidate and accepted
+owner state, with rollback and exact predecessor binding. Review the
+design before using reserved geometry. The archive replay ran no native
+generation and admitted zero epochs. Global mixed-curvature error and
+shared-curve qualification are open.
 
 ### 2026-11-25 - refine the coarse side of the transition in the native run
 
@@ -25,12 +45,8 @@ under the existing diagnostic quality and growth profile. The interior TRI
 class is absent on both sides of that diagnostic. Native staging succeeded.
 No mixed epoch was admitted. [Measured trial](NATIVE_LEAF154_REFINEMENT_20261125.md).
 
-**Next:** prepare a single prospective admission and stopping contract for
-mixed feedback. Use archived CurvaBezier and Ribbed development results to
-show how it handles regional shape, absent groups, sampled geometric error,
-growth, and rejection. Seek alignment before adopting thresholds or running
-the reserved cases. Keep leaf 154 as evidence of a size-transition mechanism
-and require model-independent sizing for transfer.
+The prospective contract replay is recorded above. Leaf 154 remains
+development evidence for the size transition and general sizing requirement.
 
 ### 2026-11-25 - measure the operation 74 size transition
 

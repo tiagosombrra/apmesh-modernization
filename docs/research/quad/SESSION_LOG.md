@@ -4725,3 +4725,18 @@ predecessor and this candidate. [Trial evidence](NATIVE_LEAF154_REFINEMENT_20261
 Exact PR 278 hosted checks remain 4/4. Prepare a prospective mixed admission
 and stopping contract using both development cases before reserved runs.
 No accepted mixed epoch.
+
+## 2026-11-25 Fortaleza - draft mixed admission and stopping using both development histories
+
+Recompute geometric residual and physical regional shape for five native
+staged archives at their original mixed predecessor. Bind the source, mesh
+and four native certificates. Reject 24 contour and certificate mutations
+in the detached replay. All five improve sampled RMS and maximum deviation.
+Only one clears the old diagnostic. It retains 26 of 97 contour-vertex TRI
+below 5 degrees. The Ribbed successor improves those transition angles
+while making additional low-quality interior TRI. Evaluate the existing
+profile and a prospective check of both the count and fraction of faces
+below a regional target. Record the proposed safety, growth, stop and
+rollback rules for alignment. [Admission draft](MIXED_ADMISSION_CONTRACT_20261125.md).
+No new native generation, adopted thresholds, reserved geometries or
+accepted mixed epochs in this replay.

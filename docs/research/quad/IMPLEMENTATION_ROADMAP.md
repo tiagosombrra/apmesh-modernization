@@ -42,9 +42,11 @@ projects one refinement on the coarser side and compares local alternatives.
 The [directed native refinement](NATIVE_LEAF154_REFINEMENT_20261125.md)
 removes both interior TRI on CurvaBezier, improves interior QUAD shape and
 reduces sampled geometric RMS with 10 additional faces. The poorest TRI
-at the contour transition remains. Prepare a model-independent admission
-and stopping contract from the two development histories and align it
-before freezing a profile for reserved geometries. Retain the shared-curve and two-epoch
+at the contour transition remains. The [admission draft and archive
+replay](MIXED_ADMISSION_CONTRACT_20261125.md) compare five candidates in
+the two development models and show why geometric gain is insufficient.
+Align a common numerical profile before the opt-in native decision and a
+frozen run on reserved geometries. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
