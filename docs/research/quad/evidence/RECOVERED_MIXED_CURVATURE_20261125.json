@@ -1,0 +1,1182 @@
+{
+  "scope": "read-only nodal estimator and existing geometric sizing replay",
+  "probe_source": "c93a383e2775d33eb8a7e5f28cbc410e3d98593d",
+  "probe_sha256": "c93db69b961d094a26cce162c5415c93b02a51679f5b8868fa255a7fe4e5636d",
+  "runner_source": "0fd8ae1ecc68f8f7a887943ce9fad0e5e418a355",
+  "selection": {
+    "schema": "apmesh.curvabezier_grouping_selection.v1",
+    "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+    "baseline_front_sha256": "41c4a429088fc166f21ec9668dae2beb02bc2d3c5a6eaf53f36d8408da85e73f",
+    "image_sha256": "2abf0d45c3b3e0633ec14738ce3f2e49e562922440fd8e42abf338a893f5ec64",
+    "control": null,
+    "mixed_adaptive_epochs": 0,
+    "status": "eligible_candidate_selected",
+    "selected_source": "staging.steps/adjacent_trial/candidate.obj",
+    "selected_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+    "selected_front": "staging.steps/adjacent_trial/candidate_front/front.json",
+    "selected_front_sha256": "c1582b869ceeaae01d4aef267d37f1f66923b2c83ed0e8f673bf571ff4690c7b",
+    "projection": "eligible",
+    "decision": {
+      "verdict": "eligible",
+      "vetoes": [],
+      "sampling_disagreements": [],
+      "geometric_directions": {
+        "regional_error_rms_source_area": [
+          -1,
+          -1
+        ],
+        "regional_error_max_xyz": [
+          -1,
+          -1
+        ],
+        "global_error_rms_source_area": [
+          -1,
+          -1
+        ],
+        "global_error_max_xyz": [
+          -1,
+          -1
+        ]
+      }
+    },
+    "candidate_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+    "reference_history_files": [
+      "step_0_retry_-1_accepted_quad_tri.obj",
+      "step_0_retry_-1_accepted_tri.obj",
+      "step_1_retry_0_accepted_quad_tri.obj",
+      "step_1_retry_0_accepted_tri.obj",
+      "step_2_retry_0_accepted_quad_tri.obj",
+      "step_2_retry_0_accepted_tri.obj",
+      "step_3_retry_0_accepted_quad_tri.obj",
+      "step_3_retry_0_accepted_tri.obj"
+    ]
+  },
+  "site_region": [
+    [
+      0.0,
+      0.5
+    ],
+    [
+      0.125,
+      0.125
+    ],
+    [
+      0.125,
+      0.15625
+    ]
+  ],
+  "observations": {
+    "tri_reference": {
+      "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+      "policy": {
+        "bounded": {
+          "agreement": {
+            "coefficient": 7.771561172376096e-15,
+            "K": 9.992007221626409e-15,
+            "H": 3.9968028886505635e-15
+          },
+          "metrics": {
+            "whole_patch": {
+              "nodes": 223,
+              "available": 223,
+              "K": {
+                "count": 223,
+                "median": 0.0011637179155196409,
+                "p95": 0.5220399987059954,
+                "maximum": 6.121652466048991
+              },
+              "H": {
+                "count": 223,
+                "median": 0.006148709435033064,
+                "p95": 0.6169120303432722,
+                "maximum": 5.538321502477354
+              }
+            },
+            "boundary": {
+              "nodes": 14,
+              "available": 14,
+              "K": {
+                "count": 14,
+                "median": 1.2678025573886822,
+                "p95": 6.121652466048991,
+                "maximum": 6.121652466048991
+              },
+              "H": {
+                "count": 14,
+                "median": 1.0598027623199293,
+                "p95": 5.538321502477354,
+                "maximum": 5.538321502477354
+              }
+            },
+            "transition": {
+              "nodes": 45,
+              "available": 45,
+              "K": {
+                "count": 45,
+                "median": 0.02451988996398389,
+                "p95": 0.6445946331695915,
+                "maximum": 1.5788233360614767
+              },
+              "H": {
+                "count": 45,
+                "median": 0.07139980864363882,
+                "p95": 0.7636251483987379,
+                "maximum": 1.1553857546671173
+              }
+            },
+            "interior": {
+              "nodes": 164,
+              "available": 164,
+              "K": {
+                "count": 164,
+                "median": 0.0007063149025966675,
+                "p95": 0.0261264919671294,
+                "maximum": 0.15074939560383185
+              },
+              "H": {
+                "count": 164,
+                "median": 0.002502095808097399,
+                "p95": 0.05859698598758878,
+                "maximum": 0.24991363009658007
+              }
+            },
+            "target_footprint": {
+              "nodes": 2,
+              "available": 2,
+              "K": {
+                "count": 2,
+                "median": 0.19498636296351404,
+                "p95": 0.365559650422173,
+                "maximum": 0.365559650422173
+              },
+              "H": {
+                "count": 2,
+                "median": 0.7459778541252693,
+                "p95": 0.7636251483987379,
+                "maximum": 0.7636251483987379
+              }
+            }
+          },
+          "forgeries_rejected": 9
+        },
+        "complete_two_ring": {
+          "agreement": {
+            "coefficient": 1.3322676295501878e-15,
+            "K": 2.9976021664879227e-15,
+            "H": 4.440892098500626e-15
+          },
+          "metrics": {
+            "whole_patch": {
+              "nodes": 223,
+              "available": 223,
+              "K": {
+                "count": 223,
+                "median": 0.002769832752930983,
+                "p95": 0.4289035648234242,
+                "maximum": 6.886762073500142
+              },
+              "H": {
+                "count": 223,
+                "median": 0.013127361586096953,
+                "p95": 1.1553857546671173,
+                "maximum": 6.058981904243562
+              }
+            },
+            "boundary": {
+              "nodes": 14,
+              "available": 14,
+              "K": {
+                "count": 14,
+                "median": 1.4296031396245754,
+                "p95": 6.886762073500142,
+                "maximum": 6.886762073500142
+              },
+              "H": {
+                "count": 14,
+                "median": 1.029652205631018,
+                "p95": 6.058981904243562,
+                "maximum": 6.058981904243562
+              }
+            },
+            "transition": {
+              "nodes": 45,
+              "available": 45,
+              "K": {
+                "count": 45,
+                "median": 0.030861705770951754,
+                "p95": 0.5573775562402089,
+                "maximum": 1.5788233360614767
+              },
+              "H": {
+                "count": 45,
+                "median": 0.12961594220692996,
+                "p95": 1.3119684735755586,
+                "maximum": 1.6574065675350513
+              }
+            },
+            "interior": {
+              "nodes": 164,
+              "available": 164,
+              "K": {
+                "count": 164,
+                "median": 0.0017001561857251473,
+                "p95": 0.17222557887584353,
+                "maximum": 0.4289035648234242
+              },
+              "H": {
+                "count": 164,
+                "median": 0.006898562793113242,
+                "p95": 0.2002046395872893,
+                "maximum": 0.5299032221010761
+              }
+            },
+            "target_footprint": {
+              "nodes": 2,
+              "available": 2,
+              "K": {
+                "count": 2,
+                "median": 0.13434615177274972,
+                "p95": 0.204531442971383,
+                "maximum": 0.204531442971383
+              },
+              "H": {
+                "count": 2,
+                "median": 0.7121669262779742,
+                "p95": 0.849072988538018,
+                "maximum": 0.849072988538018
+              }
+            }
+          },
+          "forgeries_rejected": 9
+        }
+      },
+      "faces": 430,
+      "element_counts": {
+        "3": 430
+      }
+    },
+    "mixed_predecessor": {
+      "sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "policy": {
+        "bounded": {
+          "agreement": {
+            "coefficient": 3.623767952376511e-13,
+            "K": 5.6288307348495437e-14,
+            "H": 1.0769163338864018e-14
+          },
+          "metrics": {
+            "whole_patch": {
+              "nodes": 689,
+              "available": 689,
+              "K": {
+                "count": 689,
+                "median": 0.00046318331280262304,
+                "p95": 0.12206979006760475,
+                "maximum": 6.241405258881981
+              },
+              "H": {
+                "count": 689,
+                "median": 0.0016054007183118127,
+                "p95": 0.19694223504201436,
+                "maximum": 6.209270830695165
+              }
+            },
+            "boundary": {
+              "nodes": 14,
+              "available": 14,
+              "K": {
+                "count": 14,
+                "median": 1.309260200735673,
+                "p95": 6.241405258881981,
+                "maximum": 6.241405258881981
+              },
+              "H": {
+                "count": 14,
+                "median": 1.6863837671769566,
+                "p95": 6.209270830695165,
+                "maximum": 6.209270830695165
+              }
+            },
+            "transition": {
+              "nodes": 100,
+              "available": 100,
+              "K": {
+                "count": 100,
+                "median": 0.008741471826466252,
+                "p95": 0.5128229786162385,
+                "maximum": 0.7579012492240966
+              },
+              "H": {
+                "count": 100,
+                "median": 0.05704022187868735,
+                "p95": 0.5633054270551145,
+                "maximum": 0.9860333284843016
+              }
+            },
+            "interior": {
+              "nodes": 575,
+              "available": 575,
+              "K": {
+                "count": 575,
+                "median": 0.0002196934271987694,
+                "p95": 0.01994230331305538,
+                "maximum": 0.22142467084231537
+              },
+              "H": {
+                "count": 575,
+                "median": 0.0008598491498739008,
+                "p95": 0.03357251987351417,
+                "maximum": 0.23470470776696217
+              }
+            },
+            "target_footprint": {
+              "nodes": 1,
+              "available": 1,
+              "K": {
+                "count": 1,
+                "median": 0.060743610037238126,
+                "p95": 0.060743610037238126,
+                "maximum": 0.060743610037238126
+              },
+              "H": {
+                "count": 1,
+                "median": 2.2042694197570927,
+                "p95": 2.2042694197570927,
+                "maximum": 2.2042694197570927
+              }
+            }
+          },
+          "forgeries_rejected": 9
+        },
+        "complete_two_ring": {
+          "agreement": {
+            "coefficient": 4.274358644806853e-15,
+            "K": 5.995204332975845e-15,
+            "H": 5.9396931817445875e-15
+          },
+          "metrics": {
+            "whole_patch": {
+              "nodes": 689,
+              "available": 689,
+              "K": {
+                "count": 689,
+                "median": 0.0015567381598300713,
+                "p95": 0.24315416365384812,
+                "maximum": 7.11038828725771
+              },
+              "H": {
+                "count": 689,
+                "median": 0.005297755070545362,
+                "p95": 0.33732238906790046,
+                "maximum": 6.4875758757183055
+              }
+            },
+            "boundary": {
+              "nodes": 14,
+              "available": 14,
+              "K": {
+                "count": 14,
+                "median": 1.4975638365105186,
+                "p95": 7.11038828725771,
+                "maximum": 7.11038828725771
+              },
+              "H": {
+                "count": 14,
+                "median": 0.9966856347135644,
+                "p95": 6.4875758757183055,
+                "maximum": 6.4875758757183055
+              }
+            },
+            "transition": {
+              "nodes": 100,
+              "available": 100,
+              "K": {
+                "count": 100,
+                "median": 0.006807152220449555,
+                "p95": 0.597465587797622,
+                "maximum": 0.8800479321860294
+              },
+              "H": {
+                "count": 100,
+                "median": 0.09295414330041486,
+                "p95": 1.5434419496319336,
+                "maximum": 2.2207219386246546
+              }
+            },
+            "interior": {
+              "nodes": 575,
+              "available": 575,
+              "K": {
+                "count": 575,
+                "median": 0.0007927299059810825,
+                "p95": 0.0893961388130385,
+                "maximum": 0.7979227431318203
+              },
+              "H": {
+                "count": 575,
+                "median": 0.002891159809528643,
+                "p95": 0.10066406591453014,
+                "maximum": 0.6355779920314667
+              }
+            },
+            "target_footprint": {
+              "nodes": 1,
+              "available": 1,
+              "K": {
+                "count": 1,
+                "median": 0.06285669389102672,
+                "p95": 0.06285669389102672,
+                "maximum": 0.06285669389102672
+              },
+              "H": {
+                "count": 1,
+                "median": 0.5702787001506903,
+                "p95": 0.5702787001506903,
+                "maximum": 0.5702787001506903
+              }
+            }
+          },
+          "forgeries_rejected": 9
+        }
+      },
+      "faces": 732,
+      "element_counts": {
+        "4": 630,
+        "3": 102
+      }
+    },
+    "mixed_recovered": {
+      "sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+      "policy": {
+        "bounded": {
+          "agreement": {
+            "coefficient": 2.1938006966593093e-13,
+            "K": 4.39648317751562e-14,
+            "H": 8.0629947163402e-15
+          },
+          "metrics": {
+            "whole_patch": {
+              "nodes": 683,
+              "available": 683,
+              "K": {
+                "count": 683,
+                "median": 0.00045027269056913816,
+                "p95": 0.10074925388681003,
+                "maximum": 6.241405258881981
+              },
+              "H": {
+                "count": 683,
+                "median": 0.0015156091721741372,
+                "p95": 0.15748136318434514,
+                "maximum": 6.209270830695165
+              }
+            },
+            "boundary": {
+              "nodes": 14,
+              "available": 14,
+              "K": {
+                "count": 14,
+                "median": 1.309260200735673,
+                "p95": 6.241405258881981,
+                "maximum": 6.241405258881981
+              },
+              "H": {
+                "count": 14,
+                "median": 1.6816621944632673,
+                "p95": 6.209270830695165,
+                "maximum": 6.209270830695165
+              }
+            },
+            "transition": {
+              "nodes": 98,
+              "available": 98,
+              "K": {
+                "count": 98,
+                "median": 0.007985264977061616,
+                "p95": 0.5458929803313206,
+                "maximum": 0.7579012492240966
+              },
+              "H": {
+                "count": 98,
+                "median": 0.05560095284147365,
+                "p95": 0.643599320538178,
+                "maximum": 0.9755802928954826
+              }
+            },
+            "interior": {
+              "nodes": 571,
+              "available": 571,
+              "K": {
+                "count": 571,
+                "median": 0.0002156705689927707,
+                "p95": 0.02293685928433309,
+                "maximum": 0.18470120543213703
+              },
+              "H": {
+                "count": 571,
+                "median": 0.0008598491498739008,
+                "p95": 0.02842986222851729,
+                "maximum": 0.21535908348812394
+              }
+            },
+            "target_footprint": {
+              "nodes": 1,
+              "available": 1,
+              "K": {
+                "count": 1,
+                "median": 0.06020181022937427,
+                "p95": 0.06020181022937427,
+                "maximum": 0.06020181022937427
+              },
+              "H": {
+                "count": 1,
+                "median": 2.1511002992740353,
+                "p95": 2.1511002992740353,
+                "maximum": 2.1511002992740353
+              }
+            }
+          },
+          "forgeries_rejected": 9
+        },
+        "complete_two_ring": {
+          "agreement": {
+            "coefficient": 5.051514762044462e-15,
+            "K": 8.659739592076221e-15,
+            "H": 4.6629367034256575e-15
+          },
+          "metrics": {
+            "whole_patch": {
+              "nodes": 683,
+              "available": 683,
+              "K": {
+                "count": 683,
+                "median": 0.0014891547460153393,
+                "p95": 0.20812256417128827,
+                "maximum": 7.11038828725771
+              },
+              "H": {
+                "count": 683,
+                "median": 0.0052398450269866,
+                "p95": 0.3678115188794763,
+                "maximum": 6.4875758757183055
+              }
+            },
+            "boundary": {
+              "nodes": 14,
+              "available": 14,
+              "K": {
+                "count": 14,
+                "median": 1.4975638365105186,
+                "p95": 7.11038828725771,
+                "maximum": 7.11038828725771
+              },
+              "H": {
+                "count": 14,
+                "median": 0.9986748072373042,
+                "p95": 6.4875758757183055,
+                "maximum": 6.4875758757183055
+              }
+            },
+            "transition": {
+              "nodes": 98,
+              "available": 98,
+              "K": {
+                "count": 98,
+                "median": 0.005896467146952883,
+                "p95": 0.6487961277364378,
+                "maximum": 0.8800479321860294
+              },
+              "H": {
+                "count": 98,
+                "median": 0.07894422895889934,
+                "p95": 1.8194376115186666,
+                "maximum": 2.2225652205403446
+              }
+            },
+            "interior": {
+              "nodes": 571,
+              "available": 571,
+              "K": {
+                "count": 571,
+                "median": 0.0007702310498242052,
+                "p95": 0.08596492794235693,
+                "maximum": 0.7979227431318203
+              },
+              "H": {
+                "count": 571,
+                "median": 0.0027916280673348504,
+                "p95": 0.09626773350151685,
+                "maximum": 0.6694866524641324
+              }
+            },
+            "target_footprint": {
+              "nodes": 1,
+              "available": 1,
+              "K": {
+                "count": 1,
+                "median": 0.06397061477023258,
+                "p95": 0.06397061477023258,
+                "maximum": 0.06397061477023258
+              },
+              "H": {
+                "count": 1,
+                "median": 0.5682673784109044,
+                "p95": 0.5682673784109044,
+                "maximum": 0.5682673784109044
+              }
+            }
+          },
+          "forgeries_rejected": 9
+        }
+      },
+      "faces": 725,
+      "element_counts": {
+        "4": 625,
+        "3": 100
+      }
+    }
+  },
+  "same_uv": {
+    "bounded": {
+      "boundary": {
+        "sites": 14,
+        "K": {
+          "median_paired_delta": 0.0,
+          "improved": 4,
+          "worse": 1
+        },
+        "H": {
+          "median_paired_delta": 0.0,
+          "improved": 3,
+          "worse": 2
+        }
+      },
+      "all_exact_uv": {
+        "sites": 590,
+        "K": {
+          "median_paired_delta": 0.0,
+          "improved": 6,
+          "worse": 20
+        },
+        "H": {
+          "median_paired_delta": 0.0,
+          "improved": 6,
+          "worse": 20
+        }
+      }
+    },
+    "complete_two_ring": {
+      "boundary": {
+        "sites": 14,
+        "K": {
+          "median_paired_delta": 0.0,
+          "improved": 3,
+          "worse": 4
+        },
+        "H": {
+          "median_paired_delta": 0.0,
+          "improved": 3,
+          "worse": 4
+        }
+      },
+      "all_exact_uv": {
+        "sites": 590,
+        "K": {
+          "median_paired_delta": 0.0,
+          "improved": 9,
+          "worse": 53
+        },
+        "H": {
+          "median_paired_delta": 0.0,
+          "improved": 20,
+          "worse": 42
+        }
+      }
+    }
+  },
+  "protected_requests": {
+    "mixed_predecessor": [
+      {
+        "face": 628,
+        "site": [
+          0.7067691737661483,
+          0.014565789505955055
+        ],
+        "h": 0.10836980891535
+      },
+      {
+        "face": 629,
+        "site": [
+          0.8324218866183535,
+          0.013675165375908693
+        ],
+        "h": 0.061162297793275394
+      },
+      {
+        "face": 631,
+        "site": [
+          0.9528462143978667,
+          0.008149705850222034
+        ],
+        "h": 0.10744000702139153
+      },
+      {
+        "face": 635,
+        "site": [
+          0.14999339362481104,
+          0.9810015915494215
+        ],
+        "h": 0.17609604195274953
+      },
+      {
+        "face": 680,
+        "site": [
+          0.45289714797534075,
+          0.9545971259868965
+        ],
+        "h": 0.16578722891535144
+      },
+      {
+        "face": 681,
+        "site": [
+          0.44044504675845547,
+          0.9554695591374329
+        ],
+        "h": 0.12280535475211217
+      },
+      {
+        "face": 682,
+        "site": [
+          0.36091082033560107,
+          0.931761117056966
+        ],
+        "h": 0.136347108249921
+      },
+      {
+        "face": 683,
+        "site": [
+          0.8349967699993028,
+          0.0434489698756209
+        ],
+        "h": 0.07518689897616898
+      },
+      {
+        "face": 685,
+        "site": [
+          0.8725382104220061,
+          0.019253056574234026
+        ],
+        "h": 0.07958519038621595
+      },
+      {
+        "face": 687,
+        "site": [
+          0.7559920453863785,
+          0.025000616453283282
+        ],
+        "h": 0.07505254323049917
+      },
+      {
+        "face": 690,
+        "site": [
+          0.08340101869198199,
+          0.9594335686033604
+        ],
+        "h": 0.13044151255759223
+      },
+      {
+        "face": 691,
+        "site": [
+          0.05939913059528403,
+          0.9571607981058936
+        ],
+        "h": 0.11154660993716747
+      },
+      {
+        "face": 693,
+        "site": [
+          0.046787672362420096,
+          0.9591591899497308
+        ],
+        "h": 0.1505879234151761
+      }
+    ],
+    "mixed_recovered": [
+      {
+        "face": 623,
+        "site": [
+          0.7067691737661483,
+          0.014565789505955055
+        ],
+        "h": 0.10836980891535
+      },
+      {
+        "face": 624,
+        "site": [
+          0.8324218866183535,
+          0.013675165375908693
+        ],
+        "h": 0.061162297793275394
+      },
+      {
+        "face": 626,
+        "site": [
+          0.9528462143978667,
+          0.008149705850222034
+        ],
+        "h": 0.10744000702139153
+      },
+      {
+        "face": 630,
+        "site": [
+          0.14999339362481104,
+          0.9810015915494215
+        ],
+        "h": 0.17609604195274953
+      },
+      {
+        "face": 676,
+        "site": [
+          0.45289714797534075,
+          0.9545971259868965
+        ],
+        "h": 0.16578722891535144
+      },
+      {
+        "face": 677,
+        "site": [
+          0.44044504675845547,
+          0.9554695591374329
+        ],
+        "h": 0.12280535475211217
+      },
+      {
+        "face": 678,
+        "site": [
+          0.36091082033560107,
+          0.931761117056966
+        ],
+        "h": 0.136347108249921
+      },
+      {
+        "face": 679,
+        "site": [
+          0.8349967699993028,
+          0.0434489698756209
+        ],
+        "h": 0.07518689897616898
+      },
+      {
+        "face": 681,
+        "site": [
+          0.8725382104220061,
+          0.019253056574234026
+        ],
+        "h": 0.07958519038621595
+      },
+      {
+        "face": 683,
+        "site": [
+          0.7559920453863785,
+          0.025000616453283282
+        ],
+        "h": 0.07505254323049917
+      },
+      {
+        "face": 686,
+        "site": [
+          0.08340101869198199,
+          0.9594335686033604
+        ],
+        "h": 0.13044151255759223
+      },
+      {
+        "face": 687,
+        "site": [
+          0.05939913059528403,
+          0.9571607981058936
+        ],
+        "h": 0.11154660993716747
+      },
+      {
+        "face": 689,
+        "site": [
+          0.046787672362420096,
+          0.9591591899497308
+        ],
+        "h": 0.1505879234151761
+      }
+    ]
+  },
+  "mixed_global_error": null,
+  "accepted_mixed_epochs": 0,
+  "sizing_requests_same_sites_values_and_leaf_boxes": true,
+  "matched_request_leaves": [
+    {
+      "site": [
+        0.7067691737661483,
+        0.014565789505955055
+      ],
+      "h": 0.10836980891535,
+      "leaf": [
+        0.6875,
+        0,
+        0.75,
+        0.0625
+      ]
+    },
+    {
+      "site": [
+        0.8324218866183535,
+        0.013675165375908693
+      ],
+      "h": 0.061162297793275394,
+      "leaf": [
+        0.8125,
+        0,
+        0.875,
+        0.0625
+      ]
+    },
+    {
+      "site": [
+        0.9528462143978667,
+        0.008149705850222034
+      ],
+      "h": 0.10744000702139153,
+      "leaf": [
+        0.875,
+        0,
+        1,
+        0.125
+      ]
+    },
+    {
+      "site": [
+        0.14999339362481104,
+        0.9810015915494215
+      ],
+      "h": 0.17609604195274953,
+      "leaf": [
+        0.125,
+        0.875,
+        0.25,
+        1
+      ]
+    },
+    {
+      "site": [
+        0.45289714797534075,
+        0.9545971259868965
+      ],
+      "h": 0.16578722891535144,
+      "leaf": [
+        0.4375,
+        0.9375,
+        0.5,
+        1
+      ]
+    },
+    {
+      "site": [
+        0.44044504675845547,
+        0.9554695591374329
+      ],
+      "h": 0.12280535475211217,
+      "leaf": [
+        0.4375,
+        0.9375,
+        0.5,
+        1
+      ]
+    },
+    {
+      "site": [
+        0.36091082033560107,
+        0.931761117056966
+      ],
+      "h": 0.136347108249921,
+      "leaf": [
+        0.3125,
+        0.875,
+        0.375,
+        0.9375
+      ]
+    },
+    {
+      "site": [
+        0.8349967699993028,
+        0.0434489698756209
+      ],
+      "h": 0.07518689897616898,
+      "leaf": [
+        0.8125,
+        0,
+        0.875,
+        0.0625
+      ]
+    },
+    {
+      "site": [
+        0.8725382104220061,
+        0.019253056574234026
+      ],
+      "h": 0.07958519038621595,
+      "leaf": [
+        0.8125,
+        0,
+        0.875,
+        0.0625
+      ]
+    },
+    {
+      "site": [
+        0.7559920453863785,
+        0.025000616453283282
+      ],
+      "h": 0.07505254323049917,
+      "leaf": [
+        0.75,
+        0,
+        0.8125,
+        0.0625
+      ]
+    },
+    {
+      "site": [
+        0.08340101869198199,
+        0.9594335686033604
+      ],
+      "h": 0.13044151255759223,
+      "leaf": [
+        0,
+        0.875,
+        0.125,
+        1
+      ]
+    },
+    {
+      "site": [
+        0.05939913059528403,
+        0.9571607981058936
+      ],
+      "h": 0.11154660993716747,
+      "leaf": [
+        0,
+        0.875,
+        0.125,
+        1
+      ]
+    },
+    {
+      "site": [
+        0.046787672362420096,
+        0.9591591899497308
+      ],
+      "h": 0.1505879234151761,
+      "leaf": [
+        0,
+        0.875,
+        0.125,
+        1
+      ]
+    }
+  ],
+  "distinct_request_leaves": 8,
+  "commands": {
+    "probe-build": {
+      "command": [
+        "cmake",
+        "--build",
+        "build/quad-contour-clearance-20261118/native-msvc",
+        "--target",
+        "quad_quadratic_jet_probe",
+        "quad_quadratic_jet_contracts",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 1.7111599445343018,
+        "timeout": 180
+      },
+      "stdout_sha256": "0c7732f5fdf72f9efaf6d66a7680a8c994d3f50df1bd0386091d1d14b5da7b45"
+    },
+    "probe-contracts": {
+      "command": [
+        "ctest",
+        "--test-dir",
+        "build/quad-contour-clearance-20261118/native-msvc",
+        "-C",
+        "Debug",
+        "-R",
+        "quad.curvature.quadratic_jet",
+        "--output-on-failure",
+        "--no-tests=error"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 0.7577006816864014,
+        "timeout": 180
+      },
+      "stdout_sha256": "d49b3c2808cd75353c01508077ad33462888b0bdb696129b9c5806d924545894"
+    },
+    "grouping": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/quad_grouping_trial.py",
+        "--exe",
+        "build/quad-grouping-runner-results/msvc/bin/Debug/ap_mesh.exe",
+        "--out",
+        "build/quad-selected-curvature-20261125/curvabezier"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 84.4052038192749,
+        "timeout": 180
+      },
+      "stdout_sha256": "c6559bf977995717219e7b35151f68563b18aacd88d60d8ab584fd28a14b892a"
+    },
+    "recover": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/quad_grouping_trial.py",
+        "--recover",
+        "build/quad-selected-curvature-20261125/curvabezier"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 0.201279878616333,
+        "timeout": 60
+      },
+      "stdout_sha256": "c6559bf977995717219e7b35151f68563b18aacd88d60d8ab584fd28a14b892a"
+    },
+    "curvature": {
+      "command": [
+        "python",
+        "build/quad-selected-curvature-20261125/measure.py"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 6.368042945861816,
+        "timeout": 120
+      },
+      "stdout_sha256": "6d18eeea67df20093606208859f437c453c64fbce0167fd0c596902ca5056d35"
+    }
+  },
+  "scripts_sha256": {
+    "measure": "6f4d5a3be565a794add75d3cf5ba3fa187944af2e573ffbba16d47ebd2cf2931",
+    "correlate": "bb8e5465238beff54b802db7e2e6fe460425a7e54c587cfa14ec5cd20169ff9a"
+  },
+  "compiler": "MSVC 19.44.35229.0 Debug x64 C++17",
+  "prior_drafts_hosted_success": {
+    "243": 4,
+    "265": 4,
+    "266": 4,
+    "267": 4
+  },
+  "negative_controls_rejected": 54,
+  "confirmed_case": "one CurvaBezier Stage 3 patch"
+}

@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: qualify the transition from recovered selection to mixed-state feedback
+## Active: run native geometric feedback from the recovered mixed source
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,22 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - compare curvature and size requests after mixed-mesh recovery
+
+The [diagnostic](RECOVERED_MIXED_CURVATURE_20261125.md) measures both approved
+quadratic fits on the recovered CurvaBezier, its mixed predecessor and the
+TRI control. The complete second ring lowers boundary H median error but
+raises boundary K and both interior errors. The 14 shared contour sites
+have a zero median paired change in absolute error after grouping. Native
+probe and independent controls pass, including 54 forged records. Both
+mixed meshes give the same 13 geometric size requests at the same eight
+native leaves. PRs 243 and 265 through 267 have four passing checks each.
+
+**Next:** stage one native successor from the recovered mixed source using the
+already approved geometric sizing pilot and unchanged limits. Report applied
+and saturated requests and preserve the reference on rejection. Global
+curvature and scientific acceptance remain open. Zero accepted mixed epochs.
 
 ### 2026-11-25 - recover the recorded mixed selection after interruption
 

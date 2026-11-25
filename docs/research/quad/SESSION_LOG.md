@@ -4425,3 +4425,15 @@ of the record commit, corrupt artifacts and legacy records. The exact
 MSVC executable from PR 266 reproduces and recovers each native outcome.
 [Evidence](CURVABEZIER_SELECTION_RECOVERY_20261125.md).
 No integration, accepted mixed epochs or full adaptive owner transaction.
+
+## 2026-11-25 Fortaleza - measure curvature and size requests on the recovered mixed mesh
+
+Regenerate and recover the exact CurvaBezier grouped output from PR 267.
+Apply the existing native quadratic jet and independent oracle under both
+recorded policies to TRI, the mixed predecessor and the recovered mesh.
+All nodes have estimates, but boundary K/H accuracy remains inadequate for
+global qualification. The complete second ring changes the balance of
+errors. Recompute the approved geometric pilot requests on the recovered
+mesh and obtain the same 13 positions and physical sizes in eight leaf
+boxes as on its predecessor. [Evidence](RECOVERED_MIXED_CURVATURE_20261125.md).
+Next run the bounded native geometric handoff. No accepted mixed epochs.
