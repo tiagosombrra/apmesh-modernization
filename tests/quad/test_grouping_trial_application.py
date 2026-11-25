@@ -43,6 +43,8 @@ def check(exe, out, control=None):
             raise ValueError("Expected a distinct, eligible native candidate")
         if len(result["reference_history_files"]) != 8:
             raise ValueError("Expected eight compared native histories")
+    if control == "force-reject" and result.get("native_rejection_verified") is not True:
+        raise ValueError("Forced rejection did not verify native owner and output retention")
     selected = staged if control is None else base
     if digest(out/"selected.obj") != digest(selected) or result["selected_sha256"] != digest(selected):
         raise ValueError("Selected file differs from the recorded outcome")

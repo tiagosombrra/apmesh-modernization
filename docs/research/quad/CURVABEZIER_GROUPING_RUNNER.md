@@ -21,8 +21,9 @@ available. See the [decision protocol](GROUPING_ADMISSION_AND_TRANSFER_20261124.
 - `selection.json` records the leaf projection and the active size requests.
 - `comparison-24.json` and `comparison-48.json` retain both comparison arms.
 - `baseline.steps` and `staging.steps` retain native traces and meshes.
-- `--control force-reject` stages and measures a candidate and retains the
-  reference as selected. `--control protect-neighbor` injects one fine-size
+- `--control force-reject` verifies that the native attempt restores the
+  reference owner and OBJ after a temporary candidate link. It then stages
+  and measures a retry and retains the reference as selected. `--control protect-neighbor` injects one fine-size
   request and verifies the selector veto without generating a candidate.
 
 The runner passes the plan path through `APMESH_QUAD_GROUPING_PLAN` only

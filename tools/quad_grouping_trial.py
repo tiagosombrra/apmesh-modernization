@@ -82,8 +82,17 @@ def run_trial(exe, out, control):
             return finish(out, state, basis)
         rows = ["apmesh_adjacent_group_v1"]
         rows += [" ".join(map(str, box)) for box in selection["selection"]["blocks"]]
+        if control == "force-reject":
+            rows.append("verify_native_rejection")
         (out/"grouping.plan").write_text("\n".join(rows)+"\n", encoding="ascii")
         run_mesh(exe, out, "staging", grouped=True)
+        if control == "force-reject":
+            native_log = (out/"staging.stdout").read_bytes()
+            witness = (b"QUAD_GROUPING_REJECTION previous_owner_preserved=1 "
+                       b"previous_obj_preserved=1 candidate_unpublished=1")
+            if native_log.splitlines().count(witness) != 1:
+                raise ValueError("Grouping did not verify one native rejection")
+            state["native_rejection_verified"] = True
         staged_steps = out/"staging.steps"
         peers = sorted(p.name for p in baseline_steps.glob("step_*.obj"))
         if not peers or any(digest(baseline_steps/p) != digest(staged_steps/p) for p in peers):

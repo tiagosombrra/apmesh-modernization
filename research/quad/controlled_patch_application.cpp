@@ -1935,13 +1935,19 @@ Candidate SnapshotTriStage(const SubMesh& mesh, PatchBezier& patch) {
 
 using GroupingBoxes = std::array<std::array<double, 4>, 2>;
 
-GroupingBoxes ReadGroupingPlan(const std::filesystem::path& path) {
+struct GroupingPlan {
+  GroupingBoxes boxes{};
+  bool verify_rejection = false;
+};
+
+GroupingPlan ReadGroupingPlan(const std::filesystem::path& path) {
   std::ifstream input(path);
   input.imbue(std::locale::classic());
   std::string schema;
   input >> schema;
   Require(bool(input) && schema == "apmesh_adjacent_group_v1", "Invalid grouping plan schema");
-  GroupingBoxes boxes{};
+  GroupingPlan plan;
+  auto& boxes = plan.boxes;
   for (auto& box : boxes) {
     for (auto& coordinate : box)
       input >> coordinate;
@@ -1960,14 +1966,18 @@ GroupingBoxes ReadGroupingPlan(const std::filesystem::path& path) {
               boxes[0][3] - boxes[0][1] == boxes[1][3] - boxes[1][1],
           "Grouping boxes must have the same size");
   std::string extra;
+  if (input >> extra) {
+    Require(extra == "verify_native_rejection", "Unknown grouping control");
+    plan.verify_rejection = true;
+  }
   Require(!(input >> extra) && input.eof(), "Unexpected trailing grouping plan data");
-  return boxes;
+  return plan;
 }
 
-void StageGroupingCandidate(PatchBezier& patch, Candidate& previous,
-                            const RealBoundarySource& source, const GroupingBoxes& boxes,
-                            const std::filesystem::path& directory,
-                            const std::filesystem::path& previous_path) {
+Candidate StageGroupingCandidate(PatchBezier& patch, Candidate previous,
+                                 const RealBoundarySource source, const GroupingPlan& plan,
+                                 const std::filesystem::path& directory,
+                                 const std::filesystem::path& previous_path) {
   struct RestorePatchLink {
     PatchBezier& patch;
     SubMesh* original;
@@ -1978,7 +1988,7 @@ void StageGroupingCandidate(PatchBezier& patch, Candidate& previous,
   CheckTypedIncidence(*previous.mesh, previous);
   const auto witness = SnapshotOwnerRehearsal(*previous.mesh);
   const auto bytes = ReadRehearsalOutput(previous_path);
-  const auto grouped = GroupTwoTemplateBlocks(source, boxes);
+  const auto grouped = GroupTwoTemplateBlocks(source, plan.boxes);
   for (const auto& cell : grouped.cells) {
     if (cell.subdivided)
       continue;
@@ -1994,11 +2004,23 @@ void StageGroupingCandidate(PatchBezier& patch, Candidate& previous,
       Require(!horizontal && !vertical, "Grouping would violate native 2:1 balance");
     }
   }
-  {
+  const auto verify_previous = [&]() {
+    RequireOwnerRehearsalUnchanged(patch, witness);
+    Require(ReadRehearsalOutput(previous_path) == bytes, "Grouping changed the previous OBJ");
+  };
+  const auto attempt = [&](bool reject) {
     auto candidate = Generate(
         patch, false, [&]() { return ReplayRealSourceTree(patch, grouped); }, &source, false, true,
         true);
     CheckTypedIncidence(*candidate.mesh, candidate);
+    if (reject) {
+      candidate.mesh->SetPatch(&patch);
+      RestorePatchLink undo{patch, patch.GetSubMesh()};
+      patch.SetSubMesh(candidate.mesh.get());
+      Require(patch.GetSubMesh() == candidate.mesh.get(),
+              "Grouping rejection did not exercise the temporary candidate link");
+      throw PublicationFailure("Injected grouping rejection after temporary candidate link");
+    }
     candidate.source_witness = &source;
     candidate.generation_step = source.source_step;
     candidate.reference_accepted = source.reference_tri_accepted;
@@ -2006,16 +2028,30 @@ void StageGroupingCandidate(PatchBezier& patch, Candidate& previous,
     Require(std::filesystem::create_directory(directory), "Cannot reserve staged grouping output");
     Export(candidate, directory / "candidate.obj");
     ExportArticleSteps(candidate, directory / "candidate_front");
+  };
+  if (plan.verify_rejection) {
+    bool rejected = false;
+    try {
+      attempt(true);
+    } catch (const PublicationFailure&) {
+      rejected = true;
+    }
+    Require(rejected && !std::filesystem::exists(directory),
+            "Grouping rejection did not leave the candidate unpublished");
+    verify_previous();
+    std::cout << "QUAD_GROUPING_REJECTION previous_owner_preserved=1 previous_obj_preserved=1 "
+                 "candidate_unpublished=1\n";
   }
-  RequireOwnerRehearsalUnchanged(patch, witness);
-  Require(ReadRehearsalOutput(previous_path) == bytes, "Grouping changed the previous OBJ");
+  attempt(false);
+  verify_previous();
   std::cout << "QUAD_ADJACENT_GROUP staged=1 previous_owner_preserved=1 mixed_adaptive_epochs=0\n";
+  return previous;
 }
 
 } // namespace
 
 int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
-  std::optional<GroupingBoxes> grouping_plan;
+  std::optional<GroupingPlan> grouping_plan;
   if (const char* plan_path = std::getenv("APMESH_QUAD_GROUPING_PLAN")) {
     Require(*plan_path != '\0' &&
                 config.quad_experimental_case == "curved_bezier_article_front_area_centroid_v1" &&
@@ -2231,8 +2267,9 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
       ExportArticleSteps(layout, staging / (stem + "_article_front"));
     if (grouping_plan && source && stage.step == 3 && stage.accepted &&
         stage.outer.global_retry == 0) {
-      StageGroupingCandidate(*patch, layout, *source, *grouping_plan, staging / "adjacent_trial",
-                             staging / (stem + "_quad_tri.obj"));
+      layout =
+          StageGroupingCandidate(*patch, std::move(layout), *source, *grouping_plan,
+                                 staging / "adjacent_trial", staging / (stem + "_quad_tri.obj"));
       grouped_candidate_staged = true;
     }
     if (live_pairs)
