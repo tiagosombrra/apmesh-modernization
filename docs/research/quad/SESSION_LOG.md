@@ -4405,3 +4405,13 @@ repeats the three selected OBJ hashes, passes configured 527 tooling, 26
 reporting tests and 54 original source negatives. The new workflow passes all four hosted checks, including 85 CTests and 527 tooling tests.
 [Review and evidence](CURVABEZIER_GROUPING_REVIEW_20261124.md).
 No independent approval, integration or accepted mixed epochs.
+
+## 2026-11-24 Fortaleza - retain the native mixed owner through a failed attempt and retry
+
+Verify PR 265 remains green and unreviewed. Draft PR 266 at d7ab5327 moves the
+mixed predecessor into the native attempt scope and copies its curve/tree
+source. The injected fault temporarily switches the patch link and restores
+the previous owner and OBJ before retry. The MSVC runner suite and 54 source
+negatives pass; selected output hashes and the candidate reproduce the
+preceding run. [Evidence](CURVABEZIER_OWNED_PREDECESSOR_20261124.md).
+No independent approval, durable adaptive commit or accepted mixed epochs.

@@ -3,7 +3,7 @@
 Updated 2026-11-24 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: finish review of the portable grouping trial before accepted history
+## Active: review native predecessor retention before accepted history
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,21 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-24 - keep one native mixed predecessor through rejection and retry
+
+[Draft PR 266](https://github.com/tiagosombrra/apmesh-modernization/pull/266)
+at d7ab5327 adds controlled ownership and a real injected failure after the
+temporary patch link. The same predecessor and source are retained and used
+for the retry in one native process. All three selected mesh hashes reproduce
+the previous runner. Exact MSVC, 54 source negatives and 26 reporting tests
+pass. PR 265 has four passing checks and still awaits independent review.
+Hosted validation at checkpoint has 1 successful, 3 pending and 0 failed jobs.
+See the [native ownership checkpoint](CURVABEZIER_OWNED_PREDECESSOR_20261124.md).
+
+**Next:** complete independent review of the runner and its ownership follow-up.
+Carry the typed predecessor into a durable previous-state transaction, then
+qualify the source-compatible mixed estimator. No accepted mixed epochs.
 
 ### 2026-11-24 - repair the portable runner's production-inventory regression
 

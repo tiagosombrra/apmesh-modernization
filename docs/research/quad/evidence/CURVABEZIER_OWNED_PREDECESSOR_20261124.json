@@ -1,0 +1,219 @@
+{
+  "canonical_base": "25727f67dc83c74188c487c0da71e1040a214aac",
+  "runner_parent": "d6170d040482e0e6c858cf156e0f170b9068e87c",
+  "head": "d7ab532797501fa106e737c97bb8d18d1b0fa36a",
+  "tree": "994a16a372e6293beb8f112e7ef66217da539a44",
+  "merge_preview": "d82064516b10558029bef417e59e39d1e41ea855",
+  "executable_sha256": "2abf0d45c3b3e0633ec14738ce3f2e49e562922440fd8e42abf338a893f5ec64",
+  "compiler": "MSVC 19.44.35229.0, Debug x64 C++17",
+  "files": [
+    "docs/research/quad/CURVABEZIER_GROUPING_RUNNER.md",
+    "research/quad/controlled_patch_application.cpp",
+    "tests/quad/test_grouping_trial_application.py",
+    "tools/quad_grouping_trial.py"
+  ],
+  "native": {
+    "owner-build": {
+      "run": {
+        "exit": 0,
+        "seconds": 6.117037534713745,
+        "timeout": 180
+      },
+      "command": [
+        "cmake",
+        "--build",
+        "build/quad-grouping-runner-results/msvc",
+        "--target",
+        "ap_mesh",
+        "quad_real_boundary_source_contracts",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "stdout_sha256": "ea7aac1f1adb0cfb6f096bfd6fb28d917cc5d690e184845d3023401136b7ab8d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "owner-source-contracts": {
+      "run": {
+        "exit": 0,
+        "seconds": 2.9827499389648438,
+        "timeout": 60
+      },
+      "command": [
+        "build/quad-grouping-runner-results/msvc/bin/Debug/quad_real_boundary_source_contracts.exe",
+        "configs/quad/curved_patch_original_curves.conf"
+      ],
+      "stdout_sha256": "1364cb3b105a042774118b25050242f43d51b36b4513bb154736f5e216c0d4ba",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "owner-suite": {
+      "run": {
+        "exit": 0,
+        "seconds": 176.13009667396545,
+        "timeout": 365
+      },
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tests/quad/test_grouping_trial_application.py",
+        "--exe",
+        "build/quad-grouping-runner-results/msvc/bin/Debug/ap_mesh.exe",
+        "--directory",
+        "build/quad-grouping-runner-results/owned-predecessor-suite"
+      ],
+      "stdout_sha256": "f992b1fb556b2e3ad5e0373a5bb6a5313eba0c822eabca0df754207f50f28161",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "outcomes": [
+    {
+      "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "image_sha256": "2abf0d45c3b3e0633ec14738ce3f2e49e562922440fd8e42abf338a893f5ec64",
+      "control": null,
+      "mixed_adaptive_epochs": 0,
+      "projection": "eligible",
+      "decision": {
+        "verdict": "eligible",
+        "vetoes": [],
+        "sampling_disagreements": [],
+        "geometric_directions": {
+          "regional_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "regional_error_max_xyz": [
+            -1,
+            -1
+          ],
+          "global_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "global_error_max_xyz": [
+            -1,
+            -1
+          ]
+        }
+      },
+      "candidate_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+      "reference_history_files": [
+        "step_0_retry_-1_accepted_quad_tri.obj",
+        "step_0_retry_-1_accepted_tri.obj",
+        "step_1_retry_0_accepted_quad_tri.obj",
+        "step_1_retry_0_accepted_tri.obj",
+        "step_2_retry_0_accepted_quad_tri.obj",
+        "step_2_retry_0_accepted_tri.obj",
+        "step_3_retry_0_accepted_quad_tri.obj",
+        "step_3_retry_0_accepted_tri.obj"
+      ],
+      "status": "eligible_candidate_selected",
+      "selected_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+      "selected_source": "staging.steps/adjacent_trial/candidate.obj"
+    },
+    {
+      "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "image_sha256": "2abf0d45c3b3e0633ec14738ce3f2e49e562922440fd8e42abf338a893f5ec64",
+      "control": "force-reject",
+      "mixed_adaptive_epochs": 0,
+      "projection": "eligible",
+      "native_rejection_verified": true,
+      "decision": {
+        "verdict": "eligible",
+        "vetoes": [],
+        "sampling_disagreements": [],
+        "geometric_directions": {
+          "regional_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "regional_error_max_xyz": [
+            -1,
+            -1
+          ],
+          "global_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "global_error_max_xyz": [
+            -1,
+            -1
+          ]
+        }
+      },
+      "candidate_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+      "reference_history_files": [
+        "step_0_retry_-1_accepted_quad_tri.obj",
+        "step_0_retry_-1_accepted_tri.obj",
+        "step_1_retry_0_accepted_quad_tri.obj",
+        "step_1_retry_0_accepted_tri.obj",
+        "step_2_retry_0_accepted_quad_tri.obj",
+        "step_2_retry_0_accepted_tri.obj",
+        "step_3_retry_0_accepted_quad_tri.obj",
+        "step_3_retry_0_accepted_tri.obj"
+      ],
+      "status": "rejected_control",
+      "selected_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "selected_source": "baseline.steps/step_3_retry_0_accepted_quad_tri.obj"
+    },
+    {
+      "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "image_sha256": "2abf0d45c3b3e0633ec14738ce3f2e49e562922440fd8e42abf338a893f5ec64",
+      "control": "protect-neighbor",
+      "mixed_adaptive_epochs": 0,
+      "projection": "active_smaller_size_request",
+      "status": "no_action",
+      "selected_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "selected_source": "baseline.steps/step_3_retry_0_accepted_quad_tri.obj"
+    }
+  ],
+  "checks": {
+    "headRefOid": "d7ab532797501fa106e737c97bb8d18d1b0fa36a",
+    "isDraft": true,
+    "reviews": [],
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45535550100/job/138941136230",
+        "name": "QUAD native (ubuntu-24.04)",
+        "startedAt": "2026-11-25T02:48:25Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45535550100/job/138941135869",
+        "name": "QUAD native (windows-2022)",
+        "startedAt": "2026-11-25T02:48:25Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45535550100/job/138941136237",
+        "name": "TRI baseline and tooling controls (Linux)",
+        "startedAt": "2026-11-25T02:48:25Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T02:50:34Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45535550100/job/138941136223",
+        "name": "TRI scientific equivalence against frozen baseline",
+        "startedAt": "2026-11-25T02:48:25Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      }
+    ]
+  },
+  "reporting_tests": 26,
+  "source_negative_controls": 54,
+  "mixed_adaptive_epochs": 0
+}

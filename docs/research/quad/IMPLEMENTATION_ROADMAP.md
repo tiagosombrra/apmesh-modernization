@@ -19,8 +19,10 @@ reproduce the T6 veto on a second native geometry. The approved
 [adjacent group run](ADJACENT_TEMPLATE_GROUP_TRANSFER_20261124.md) stages an
 eligible candidate on that geometry. The [portable research runner](CURVABEZIER_GROUPING_RUNNER_20261124.md)
 passes the native and frozen TRI gates on PR 265 and awaits independent
-review. Then demonstrate two distinct accepted
-epochs under issue 221. Keep the TRI-only
+review. The [owned predecessor rehearsal](CURVABEZIER_OWNED_PREDECESSOR_20261124.md)
+retains the real mixed state across an injected native rejection and retry.
+Complete accepted-state and estimator qualification before two distinct
+accepted epochs under issue 221. Keep the TRI-only
 control and report both local and patch-wide effects.
 The dated entries below document earlier decisions and measured scope.
 
