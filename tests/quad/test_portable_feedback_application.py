@@ -90,8 +90,10 @@ def main():
     cases = (("curva", "builtin:curva_bezier", 3, False),
              ("ribbed", ribbed_fixture(directory / "ribbed original patch.bp"), 2, True))
     image = None
+    original = {}
     for name, model, step, negative in cases:
         result = run(exe, directory / name, model, step, negative)
+        original[name] = result
         successor = result["successor"]
         if image is not None and image != result["engine_sha256"]:
             raise ValueError("Development cases used different application images")
@@ -134,8 +136,7 @@ def main():
         if (result["successor"]["status"] != "staged" or result["mixed_adaptive_epochs"] != 0
                 or result["engine_sha256"] != image):
             raise ValueError(f"Screened pair comparison did not stage for {name}")
-        reference = paired if name == "curva" else json.loads(
-            (directory / "ribbed/result.json").read_text(encoding="utf-8"))
+        reference = paired if name == "curva" else original[name]
         for key in ("source_sha256", "face_requests", "curve_requests"):
             if result[key] != reference[key]:
                 raise ValueError(f"The screened pair comparison changed {name} {key}")
