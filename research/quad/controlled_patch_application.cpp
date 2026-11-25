@@ -226,10 +226,9 @@ struct PublicationFailure : std::runtime_error {
   using std::runtime_error::runtime_error;
 };
 
-template <std::size_t N>
-RealBoundarySource GroupTemplateBlocks(const RealBoundarySource& source,
-                                       const std::array<std::array<double, 4>, N>& boxes) {
-  Require(source.source_leaves >= 4 * N &&
+template <class Boxes>
+RealBoundarySource GroupTemplateBlocks(const RealBoundarySource& source, const Boxes& boxes) {
+  Require(source.source_leaves / 4 >= boxes.size() &&
               std::is_sorted(source.leaf_order.begin(), source.leaf_order.end()),
           "Grouping requires its ordered native tree");
   auto result = source;
@@ -264,8 +263,9 @@ RealBoundarySource GroupTemplateBlocks(const RealBoundarySource& source,
   // Subdivision appends children in increasing captured cell ID order.
   std::sort(result.leaf_order.begin(), result.leaf_order.end());
   result.source_leaves = result.leaf_order.size();
-  Require(grouped == boxes.size() && result.source_leaves + 3 * N == source.source_leaves &&
-              source.cells.size() - result.cells.size() == 4 * N,
+  Require(grouped == boxes.size() &&
+              result.source_leaves + 3 * boxes.size() == source.source_leaves &&
+              source.cells.size() - result.cells.size() == 4 * boxes.size(),
           "Grouping changed more than the approved children");
   return result;
 }
@@ -2314,7 +2314,7 @@ struct FeedbackPlan {
   bool additional_pairs = false;
   std::optional<double> additional_pair_error_limit;
   bool certify_boundary_refinement = false;
-  std::optional<std::array<double, 4>> group_feedback_parent;
+  std::vector<std::array<double, 4>> group_feedback_parents;
 };
 
 FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
@@ -2384,11 +2384,14 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
       std::array<double, 4> box{};
       for (double& coordinate : box)
         input >> coordinate;
-      Require(bool(input) && !feedback.group_feedback_parent && 0 < box[0] && 0 < box[1] &&
-                  box[0] < box[2] && box[1] < box[3] && box[2] < 1 && box[3] < 1 &&
-                  box[2] - box[0] == box[3] - box[1],
+      Require(bool(input) && 0 < box[0] && 0 < box[1] && box[0] < box[2] && box[1] < box[3] &&
+                  box[2] < 1 && box[3] < 1 && box[2] - box[0] == box[3] - box[1],
               "Invalid interior feedback grouping parent");
-      feedback.group_feedback_parent = box;
+      for (const auto& prior : feedback.group_feedback_parents)
+        Require(std::max(prior[0], box[0]) >= std::min(prior[2], box[2]) ||
+                    std::max(prior[1], box[1]) >= std::min(prior[3], box[3]),
+                "Feedback grouping parents must have disjoint interiors");
+      feedback.group_feedback_parents.push_back(box);
     } else if (kind == "certify_boundary_refinement") {
       Require(!feedback.certify_boundary_refinement, "Duplicate boundary refinement certification");
       feedback.certify_boundary_refinement = true;
@@ -2433,7 +2436,7 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
           "An additional-pair error limit requires additional local pairs");
   Require(!feedback.certify_boundary_refinement || have_requests,
           "Boundary refinement certification requires a bound successor request");
-  Require(!feedback.group_feedback_parent || feedback.certify_boundary_refinement,
+  Require(feedback.group_feedback_parents.empty() || feedback.certify_boundary_refinement,
           "Feedback grouping requires certified predecessor boundary refinement");
   return plan;
 }
@@ -2600,30 +2603,40 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
                 Par2DJMesh::AFT::QUAD_REFINE_ACCORDING_TO_NEIGHBORS_DONE,
             "Geometric feedback could not balance the native tree");
   const auto refined = tree->GetLeafCount();
-  const bool group_parent = comparison && comparison->group_feedback_parent.has_value();
+  const bool group_parent = comparison && !comparison->group_feedback_parents.empty();
   if (group_parent) {
-    const auto& parent_box = *comparison->group_feedback_parent;
+    const auto& parents = comparison->group_feedback_parents;
     auto captured = effective_source;
     CaptureRealSourceTree(*tree, captured);
     const auto contains = [](const std::array<double, 4>& box, UvVertex site) {
       return box[0] <= site.u && site.u <= box[2] && box[1] <= site.v && site.v <= box[3];
     };
-    for (const auto& request : requests) {
-      Require(!contains(parent_box, request.site), "Grouping would remove a refinement request");
-      for (const auto& cell : captured.cells)
-        Require(cell.subdivided || !ShareTreeSide(cell.box, parent_box) ||
-                    !contains(cell.box, request.site),
-                "Grouping would alter a neighbor with a refinement request");
+    for (const auto& parent_box : parents) {
+      for (const auto& request : requests) {
+        Require(!contains(parent_box, request.site), "Grouping would remove a refinement request");
+        for (const auto& cell : captured.cells)
+          Require(cell.subdivided || !ShareTreeSide(cell.box, parent_box) ||
+                      !contains(cell.box, request.site),
+                  "Grouping would alter a neighbor with a refinement request");
+      }
     }
-    const std::array<std::array<double, 4>, 1> boxes{parent_box};
-    const auto grouped = GroupTemplateBlocks(captured, boxes);
+    const auto grouped = GroupTemplateBlocks(captured, parents);
     CheckGroupedBalance(grouped);
     tree = ReplayRealSourceTree(patch, grouped);
-    std::ofstream evidence(directory / "grouped_parent.json", std::ios::binary);
+    const bool single = parents.size() == 1;
+    std::ofstream evidence(directory / (single ? "grouped_parent.json" : "grouped_parents.json"),
+                           std::ios::binary);
     evidence.imbue(std::locale::classic());
-    evidence << "{\"parent\":[" << std::setprecision(17) << parent_box[0] << ',' << parent_box[1]
-             << ',' << parent_box[2] << ',' << parent_box[3]
-             << "],\"leaves_after_requests\":" << refined
+    evidence << std::setprecision(17) << (single ? "{\"parent\":" : "{\"parents\":[");
+    for (std::size_t i = 0; i < parents.size(); ++i) {
+      const auto& box = parents[i];
+      if (i)
+        evidence << ',';
+      evidence << '[' << box[0] << ',' << box[1] << ',' << box[2] << ',' << box[3] << ']';
+    }
+    if (!single)
+      evidence << ']';
+    evidence << ",\"leaves_after_requests\":" << refined
              << ",\"leaves_after_grouping\":" << tree->GetLeafCount() << "}\n";
     evidence.close();
     Require(bool(evidence), "Cannot retain the native feedback grouping evidence");
