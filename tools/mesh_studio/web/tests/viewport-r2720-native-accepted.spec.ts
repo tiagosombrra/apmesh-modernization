@@ -130,6 +130,14 @@ test('R2.7.20 synthetic TRI source import keeps XYZ and patch-local UV distinct'
   await expect(page.getByTestId('r2720-corners').locator('tbody tr')).toHaveCount(3);
   await expect(page.getByTestId('r2720-linked-samples')).toContainText('nó 102');
   await expect(page.getByTestId('r2720-source-sha')).toHaveText('a'.repeat(64));
+  // Both navigation entries must retain one imported source and one panel.
+  await page.getByTestId('workspace-native').click();
+  await expect(page.getByTestId('r2720-panel')).toHaveCount(1);
+  await expect(page.getByTestId('r2720-tri-count')).toHaveText('4');
+  await expect(page.getByTestId('r2720-source-node-id')).toHaveText('102');
+  await page.getByTestId('workspace-mesh').click();
+  await expect(page.getByTestId('r2720-panel')).toHaveCount(1);
+  await expect(page.getByTestId('r2720-native-element-id')).toHaveText('5002');
 });
 
 test('R2.7.20 Book has all 28 original patch-scoped TRI and real ID tuples',async({page})=>{
@@ -143,6 +151,40 @@ test('R2.7.20 Book has all 28 original patch-scoped TRI and real ID tuples',asyn
   await expect(page.getByTestId('r2720-source-node-id')).toHaveText('127');
   await page.getByTestId('r2720-highlight-source-sample').click();
   await expect(page.getByTestId('r2720-native-element-id')).toHaveText('5027');
+});
+
+test('native XYZ camera renders filled faces for both synthetic sheet fans', async ({page}) => {
+  await page.goto('/?nativeScene=1');
+  await upload(page, example());
+  for (const [modelIndex, faceCount] of [['0', '4'], ['1', '28']]) {
+    await page.getByTestId('r2720-model').selectOption(modelIndex);
+    await expect(page.getByTestId('r2720-tri-count')).toHaveText(faceCount);
+    const canvas = page.getByTestId('r2720-viewport-xyz').locator('canvas').first();
+    await expect(canvas).toBeVisible();
+    // A visible WebGL canvas or a source-count attribute does not prove that
+    // any faces were rendered. Inspect the actual screenshot, not GPU state.
+    const png = await canvas.screenshot();
+    const coloredFraction = await page.evaluate(async (base64) => {
+      const image = new Image();
+      image.src = `data:image/png;base64,${base64}`;
+      await image.decode();
+      const sampled = document.createElement('canvas');
+      sampled.width = image.width;
+      sampled.height = image.height;
+      const context = sampled.getContext('2d');
+      if (!context) throw new Error('Missing screenshot pixel reader');
+      context.drawImage(image, 0, 0);
+      const pixels = context.getImageData(0, 0, sampled.width, sampled.height).data;
+      let colored = 0;
+      for (let i = 0; i < pixels.length; i += 4) {
+        if (Math.max(Math.abs(pixels[i] - 12), Math.abs(pixels[i + 1] - 22),
+          Math.abs(pixels[i + 2] - 32)) > 20) colored++;
+      }
+      return colored / (sampled.width * sampled.height);
+    }, png.toString('base64'));
+    // The marker and seam alone occupy less than 1%; the filled fan must show.
+    expect.soft(coloredFraction, `${faceCount}-face synthetic XYZ coverage`).toBeGreaterThan(0.01);
+  }
 });
 
 test('R2.7.20 rejects forged native face ID, source SHA and welding semantics',async({page})=>{

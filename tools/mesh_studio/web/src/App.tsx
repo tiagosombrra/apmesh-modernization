@@ -3,6 +3,7 @@ import { studyApi } from './api';
 import { Viewer } from './Viewer';
 import { NativeIdentityInspector } from './NativeIdentityInspector';
 import { NativeAcceptedScenePanel } from './NativeAcceptedScenePanel';
+import { BezierWorkspace } from './BezierWorkspace';
 import type { ViewerHandle } from './Viewer';
 import { CAMERA_SCHEMA, parseCameraRecipe, storageKey } from './camera';
 import type { FaceDetail, MeshGeometry, ModelEntry } from './contracts';
@@ -14,7 +15,15 @@ const statuses: Record<string, string> = {
   STAGED_UNACCEPTED: 'Candidata real · Não aceita',
 };
 
+type Workspace = 'mesh' | 'bezier' | 'native';
+function currentWorkspace(): Workspace {
+  const value = new URLSearchParams(window.location.search).get('workspace');
+  return value === 'bezier' || value === 'native' ? value : 'mesh';
+}
+
 export default function App() {
+  const [workspace, setWorkspace] = useState<Workspace>(currentWorkspace);
+  const [visited, setVisited] = useState(() => new Set<Workspace>([currentWorkspace()]));
   const [catalog, setCatalog] = useState<ModelEntry[]>([]);
   const [modelId, setModelId] = useState('p1');
   const [xyz, setXyz] = useState<MeshGeometry | null>(null);
@@ -32,15 +41,34 @@ export default function App() {
   const xyzRef = useRef<ViewerHandle>(null);
   const uvRef = useRef<ViewerHandle>(null);
   const model = useMemo(() => catalog.find((item) => item.id === modelId), [catalog, modelId]);
+  const meshVisited = visited.has('mesh');
+
+  const openWorkspace = (next: Workspace) => {
+    setVisited(values => new Set([...values, next]));
+    setWorkspace(next);
+  };
+  const navigate = (next: Workspace) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('workspace', next);
+    window.history.pushState({}, '', url);
+    openWorkspace(next);
+  };
+  useEffect(() => {
+    const back = () => openWorkspace(currentWorkspace());
+    window.addEventListener('popstate', back);
+    return () => window.removeEventListener('popstate', back);
+  }, []);
 
   useEffect(() => {
+    if (!meshVisited) return;
     const controller = new AbortController();
     studyApi.catalog(controller.signal)
       .then((data) => { if (!controller.signal.aborted) setCatalog(data.models); })
       .catch((e: Error) => { if (!controller.signal.aborted) setError(e.message); });
     return () => controller.abort();
-  }, []);
+  }, [meshVisited]);
   useEffect(() => {
+    if (!meshVisited) return;
     const controller = new AbortController();
     setLoading(true);
     setError(null);
@@ -63,7 +91,7 @@ export default function App() {
         if (!controller.signal.aborted) setLoading(false);
       });
     return () => controller.abort();
-  }, [modelId]);
+  }, [modelId, meshVisited]);
   useEffect(() => {
     const controller = new AbortController();
     setDetail(null);
@@ -122,9 +150,20 @@ export default function App() {
       <header className="topbar">
         <div className="brand"><span className="brand-mark">M<span>∕</span></span>
           <div><strong>Mesh Studio</strong><small>APMESH · RESEARCH WORKSPACE</small></div></div>
-        <div className="topbar-right"><span className="top-pill">Scientific Viewer</span><span className="version">R1 / PROTOTYPE</span></div>
+        <div className="topbar-right"><span className="top-pill">Scientific Viewer</span><span className="version">RESEARCH WORKSPACE</span></div>
       </header>
-      <div className="workspace">
+      <nav className="workspace-nav" aria-label="Research workspaces">
+        <button type="button" aria-current={workspace === 'mesh' ? 'page' : undefined} data-testid="workspace-mesh"
+          onClick={() => navigate('mesh')}>Mesh &amp; UV <small>Controlled / staged</small></button>
+        <button type="button" aria-current={workspace === 'bezier' ? 'page' : undefined} data-testid="workspace-bezier"
+          onClick={() => navigate('bezier')}>Bézier sources <small>Patches / declared curves</small></button>
+        <button type="button" aria-current={workspace === 'native' ? 'page' : undefined} data-testid="workspace-native"
+          onClick={() => navigate('native')}>Original TRI <small>Accepted source evidence</small></button>
+      </nav>
+      {visited.has('bezier') && <div hidden={workspace !== 'bezier'}>
+        <BezierWorkspace active={workspace === 'bezier'} />
+      </div>}
+      {meshVisited && <div className="workspace" hidden={workspace !== 'mesh'}>
         <aside className="left-sidebar">
           <div className="sidebar-eyebrow">WORKSPACE / 01</div>
           <h2>Explorar malhas</h2>
@@ -141,7 +180,10 @@ export default function App() {
           <label className="layer-row"><input data-testid="toggle-edges" type="checkbox" checked={edges} onChange={() => setEdges(!edges)}/><span className="layer-dot edges" />Arestas <b>ON</b></label>
           <div className="section-break" />
           <div className="field-label">INTEGRIDADE</div>
-          <div className="integrity"><span className="status-dot"/>OBJ com SHA-256 conferido</div>
+          <div className="integrity" data-testid="mesh-integrity"
+            data-state={error ? 'unavailable' : loading || !xyz || !uv ? 'pending' : 'verified'}>
+            <span className="status-dot"/>{error ? 'Source verification unavailable' : loading || !xyz || !uv
+              ? 'Verifying source…' : 'OBJ com SHA-256 conferido'}</div>
           <p className="small-note">A associação de faces UV / XYZ preserva os IDs originais. Não é uma prova global de validade.</p>
           <div className="sidebar-bottom">Fonte APMesh · leitura local<br/>Sem soldagem implícita de patches.</div>
         </aside>
@@ -185,7 +227,6 @@ export default function App() {
               Os SHA declarados são verificados estruturalmente no navegador,
               mas esta importação não autentica por si só os arquivos C++ brutos.</p>
           </section>
-          {showOriginalNativeTri && <NativeAcceptedScenePanel/>}
         </main>
         <aside className="right-sidebar"><div className="sidebar-eyebrow">INSPECTOR / 02</div><h2>Face selecionada</h2>
           {selected === null ? <div className="inspector-empty"><span className="empty-icon">⌖</span><strong>Selecione uma face</strong><p>Clique em qualquer elemento no espaço físico ou UV para inspecionar os dados originais.</p></div>
@@ -199,7 +240,14 @@ export default function App() {
               <button type="button" className="clear-btn" onClick={() => setSelected(null)}>Limpar seleção</button></div>}
           <div className="inspector-footer">Métricas calculadas pelo motor Python; não pelo navegador.</div>
         </aside>
-      </div>
+      </div>}
+      {(visited.has('native') || showOriginalNativeTri) && <section className="native-workspace"
+        aria-label="Original accepted TRI workspace"
+        hidden={workspace !== 'native' && !(workspace === 'mesh' && showOriginalNativeTri)}>
+        <div className="eyebrow">ORIGINAL NATIVE / ACCEPTED TRI</div>
+        <h1>Eistute &amp; Book</h1><p>Inspect retained accepted TRI evidence, patch UV and original source identities.</p>
+        <NativeAcceptedScenePanel />
+      </section>}
     </div>
   );
 }

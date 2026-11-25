@@ -1,0 +1,221 @@
+{
+  "schema": "apmesh.meshstudio.bezier_source_workspace_validation.v1",
+  "classification": "ENGINEERING_SOURCE_INSPECTION_AND_VIEWER_REPAIR_REVIEW_CANDIDATE",
+  "audited_base": "9bc721ab1fb212c9449702a2279268c636d7976b",
+  "recorded_utc": "2026-11-25T09:31:46.103656+00:00",
+  "delivery_revision": "See owning PR 262; source hashes below identify tested implementation bytes.",
+  "local_environment": {
+    "python": "3.12.14",
+    "node": "24.22.3",
+    "npm": "11.19.1",
+    "playwright": "1.56.1",
+    "chromium": "141.0.7390.37",
+    "official_pinned_install_qualified": false
+  },
+  "tested_source_sha256": {
+    ".gitattributes": "b7a5088f64e4839f0230c894a64c6062c9e6fe41e95b8235c7d5a8a1b9fc57b5",
+    ".github/workflows/mesh-studio-fast-web.yml": "8d9c65f8a2c073f0895af5436fbede58b69938b0512a167ab3e4e6966e62fb5c",
+    "tools/mesh_studio/web/package.json": "afebc99d8002f4cca4b1f5e23fdffba01bbe9f3c5a5319dd907e4dac11b2a64e",
+    "tools/mesh_studio/web/package-lock.json": "12f5a67d1b56007022f5843cbad324c0df987df006b9eac6591247f16cf38a90",
+    "tools/mesh_studio/web/src/App.tsx": "8e5ff869f6424a6d8f713eaff646977c2613185a77f8b1c7151d8a45176ca28b",
+    "tools/mesh_studio/web/src/NativeAcceptedTriViewer.tsx": "f8c357952ab500d21f84d9f8e8eb98e4fac7470b9743cfa04c8aa50b95d9c2f6",
+    "tools/mesh_studio/web/src/BezierWorkspace.tsx": "dab4e0335256bc9f0135d16429d688d104599ceb1fd975a8e66731e22448a441",
+    "tools/mesh_studio/web/src/BezierSourceViewer.tsx": "480efed0efa38504b2ecaf4f66f67d8ec896332495adff8d8c778ad14818805a",
+    "tools/mesh_studio/web/src/bezierSource.ts": "e0e4806c30ea1ec6e706cf1b131bc2ef7c7ceaf30fea2c099bc5973de0874a5e",
+    "tools/mesh_studio/web/src/style.css": "7d9cac255e5527460e8c226778b66a8ae8464b9fc18c3532a81944dc76169e9c",
+    "tools/mesh_studio/web/src/fixtures/four_sheet_curved.bp": "b1b6610b63f10dfe91e84fc8de85d8cbb8b9bdb50a7b0ecdbc95efd89b64fdd4",
+    "tools/mesh_studio/web/scripts/test-bezier-source.mjs": "219c7edd19cdee86e956deaafaad25f6c07a6cb1189528a6d54df78dc41e26a5",
+    "tools/mesh_studio/web/tests/bezier-source.spec.ts": "e06b85cc7d18ccb252d85cf19f578e01e98ce9d181a450c7d839fc5b6debac3b",
+    "tools/mesh_studio/web/tests/viewport-r2720-native-accepted.spec.ts": "6aa3f06a1924544ce847d8be5134fb2eb9d9e3e2a20e00ecdf4c80ae53a2f73f"
+  },
+  "checks": {
+    "contracts": {
+      "status": "PASS",
+      "legacy_r26_r27": "PASS",
+      "report_audit_tests": 8,
+      "bezier_tests": 13,
+      "command": "npm run test:contracts"
+    },
+    "production_build": {
+      "status": "PASS",
+      "command": "npm run build",
+      "static_asset_count": 7,
+      "inventory": {
+        "schema": "apmesh.meshstudio.v511.static_research_inventory.v1",
+        "classification": "LOCAL_STATIC_RESEARCH_REVIEW_NOT_PRODUCTION_DISTRIBUTION",
+        "npm_source_lock_sha256": "12f5a67d1b56007022f5843cbad324c0df987df006b9eac6591247f16cf38a90",
+        "static_asset_count": 7,
+        "static_assets": {
+          "assets/bench-BIlrNTGh.js": {
+            "size": 12892,
+            "sha256": "b6c851e6c30cc58e2603a642577ea6857004de07ebea84c55d638311b9efb9cc"
+          },
+          "assets/main-iNOHSiPr.js": {
+            "size": 83479,
+            "sha256": "71aaa1d6c7040ef1dedb46d13b6aa89f91bb75e67267003f20f44e2bab6e4de1"
+          },
+          "assets/style-DvpwrAme.js": {
+            "size": 1102888,
+            "sha256": "36d511aa68eb14af8ae88221603404f24289d778b745bc23ad93c48f899248ee"
+          },
+          "assets/style-OjyQ7KcD.css": {
+            "size": 20316,
+            "sha256": "5b183b79077aca34e563875b2db99b48c1602994717792a3d2e2009d6c56e49b"
+          },
+          "assets/xyzBvh.worker-Dvika-5O.js": {
+            "size": 4232,
+            "sha256": "8444485a331021ffececd1a91ae8c9a66efa3effaecef6fe5a54b7a1cceebdf9"
+          },
+          "bench.html": {
+            "size": 550,
+            "sha256": "cc716561b3a7e9130ec1d577701bfd66701f104c5a0a93f4ff130f58a7889766"
+          },
+          "index.html": {
+            "size": 534,
+            "sha256": "ebcc93c0083c71ac374cb5dbdf7568cf03e97d537ac8ff91cf1d6e3903e3411f"
+          }
+        },
+        "vite_dev_server_required_to_serve": false,
+        "native_cpp_recompiled": false,
+        "scientific_lod_qualified": false,
+        "physical_gpu_certified": false
+      }
+    },
+    "development_browser": {
+      "status": "PASS",
+      "passed": 39,
+      "new_source_tests": 12,
+      "existing_fast_tests": 18,
+      "native_scene_tests": 9,
+      "command": "npm exec -- playwright test tests/bezier-source.spec.ts tests/mesh-view.spec.ts tests/transport-v2-r24.spec.ts tests/viewport-v5-source-request-races.spec.ts tests/viewport-v5-article-source-export.spec.ts tests/viewport-r2720-native-accepted.spec.ts --reporter=line"
+    },
+    "built_single_port_browser": {
+      "status": "PASS",
+      "passed": 29,
+      "base_url": "http://127.0.0.1:8765",
+      "asgi": "tools.mesh_studio.local_review_asgi:local_review_app",
+      "includes": "12 source + 8 P1 + 9 native scene tests",
+      "vite_running": false
+    },
+    "full_local_python": {
+      "status": "FAIL",
+      "enumerated": 614,
+      "passed": 610,
+      "failed": 2,
+      "skipped": 2,
+      "exit_code": 1,
+      "failed_tests": [
+        "test_latex_figure_pair_compiles",
+        "test_latex_smoke_compiles_with_actual_vector_pdf_when_available"
+      ],
+      "failure_reason": "pdflatex exists but pdflatex.fmt/configuration/index is missing; fmtutil-user produced zero formats. No test assertion or discovery weakened.",
+      "skips": [
+        "source preflight requires Python 3.13",
+        "specific original retained corpus absent"
+      ],
+      "display": "Xvfb over local TCP; previous display-less/Unix-socket attempts aborted and remain failures",
+      "command": "python3 -m unittest discover -s tools/mesh_studio -p 'test_*.py' -t . -v"
+    },
+    "historical_native_replay": {
+      "classification": "LOCAL_BROWSER_REPLAY_OF_HISTORICAL_ACCEPTED_NATIVE_SOURCE",
+      "source_run": 45363214163,
+      "source_commit": "9977f2a88b199bbed39fd9583cbb58737a4db638",
+      "source_sha256": "b01035bb82cc4c83dbb5e0fdf85ee7b3c884ea94f8f0934096e1cf337ded0689",
+      "playwright": "1.56.1",
+      "models": [
+        {
+          "model": "eistute",
+          "source_sha256": "57eaa949e382aee4537325e7214694fc250d1cf20eeec96beeb6f923f6b518e6",
+          "accepted_step": 1,
+          "tri_faces": 1168,
+          "patches": 4,
+          "selected_patch": 3,
+          "selected_patch_tri_faces": 292,
+          "first_sample_node": 200,
+          "second_sample_node": 81,
+          "first_selected_element": 5350,
+          "samples": 11,
+          "seam_segments": "40",
+          "canvases": 2
+        },
+        {
+          "model": "book",
+          "source_sha256": "e5be7af26f0064a01929e33f7db9129a50a17959d20d743f09c224551358524a",
+          "accepted_step": 1,
+          "tri_faces": 4256,
+          "patches": 28,
+          "selected_patch": 27,
+          "selected_patch_tri_faces": 152,
+          "first_sample_node": 909,
+          "second_sample_node": 170,
+          "first_selected_element": 4250,
+          "samples": 13,
+          "seam_segments": "336",
+          "canvases": 2
+        }
+      ],
+      "page_errors": [],
+      "new_native_generation": false,
+      "physical_gpu_qualified": false,
+      "browser": "141.0.7390.37",
+      "navigation_retained_import": true,
+      "status": "PASS_DOM_AND_MANUAL_VISUAL_REPLAY",
+      "visual_review": {
+        "status": "PASS",
+        "method": "Manual inspection of full-page Chromium screenshots after the camera frame repair",
+        "finding": "Eistute and Book accepted native TRI surfaces and their edges are visible in XYZ; corresponding selected-patch triangles are visible in UV. This review does not qualify physical GPU output or scientific meshing.",
+        "screenshots": [
+          {
+            "file": "native-eistute-historical.png",
+            "size_bytes": 331240,
+            "sha256": "8d5139257681929c7d62af1d085a5c3d4c63c06d01405fd36a7b46d833a3fbd3"
+          },
+          {
+            "file": "native-book-historical.png",
+            "size_bytes": 347378,
+            "sha256": "af7338cf761d917342e3dae1829a5576ed438d801d1e211966f80dca961642f3"
+          }
+        ]
+      },
+      "tested_working_tree_files_sha256": {
+        "tools/mesh_studio/web/src/NativeAcceptedTriViewer.tsx": "f8c357952ab500d21f84d9f8e8eb98e4fac7470b9743cfa04c8aa50b95d9c2f6",
+        "tools/mesh_studio/web/src/App.tsx": "2ca5642829668d6078064aa46fd9538f1239f3a1e4769653083a245c4d157b2e"
+      }
+    },
+    "native_camera_negative": {
+      "before_repair": "FAIL",
+      "synthetic_fans": [
+        4,
+        28
+      ],
+      "colored_fraction_before": 0.001074269,
+      "minimum_colored_fraction": 0.01,
+      "after_repair": "PASS for both fans",
+      "scope": "screenshot pixels, not native scientific admission"
+    },
+    "source_lock_audit": "PASS",
+    "whitespace": "PASS"
+  },
+  "local_log_sha256": {
+    "contracts-final.log": "d0f0db878744412206fa5f8af08566e915f5544574eb1a81e3e532013e0809db",
+    "build-static-final.log": "710f607592e99084491a6ef5783e865168cd0b010e09366b20b98bed5e863988",
+    "browser-final.log": "2a8c5af78b43a9e25b6cf93afa8c46b83b36c32195b42dbdd19eeeee7d2bbd22",
+    "static-browser-final.log": "984acb27da673309262097207705de5811e654f9dd8539162e689e4be1b8b322",
+    "python-regression.log": "c30b823befe83aa66b36ccee1eecf54ca8ae5d80a9c9c1aa3993621a0cd1ebed",
+    "python-regression-xvfb.log": "5095903ae54753ffc98258eadcf91b74e368612cc91856905a4a1d94c5bab681",
+    "python-regression-xvfb-tcp.log": "553e1c03642029c5d880e1bb61f193b4d98bac02a10c3162ac3fe4b53ce7816c",
+    "latex-format-repair.log": "2974cb81e16e8d9481355960934e748f1f4efe67c6fe5c1f2baaab06cbd88a98",
+    "native-historical-smoke.json": "841c7d6b4497b78458a1b440446fbb402c4bbe001cc6897eedd4fc59b395e96b"
+  },
+  "limits": {
+    "full_local_python_regression_passed": false,
+    "hosted_ci_status": "Check exact delivery SHA in PR 262; not inferred from historical CI.",
+    "native_cpp_changed": false,
+    "new_native_generation": false,
+    "new_accepted_epochs": false,
+    "continuous_error_bound": false,
+    "physical_gpu_qualified": false,
+    "release_or_main_merge": false,
+    "legal_approval": false
+  }
+}

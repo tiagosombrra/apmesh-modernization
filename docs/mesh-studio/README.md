@@ -1,32 +1,158 @@
-# Mesh Studio — canonical state, runbook and plan
+# Mesh Studio — current state, runbook and plan
 
-**2026-11-24 | Research-only V5.11 draft | P0 bounded CI regression closed; P1 review proposal complete; P2 physical acceptance pending.**
-This is the sole current operational plan. [History](HISTORY.md) indexes dated
-science and earlier plans; [evidence registry](EVIDENCE_REGISTRY.json) records
-immutable evidence references. Do not resume old plans as live instructions.
+**2026-11-25 | Research draft | Active delivery: integrated Bézier source workspace.**
+This is the sole operational plan. [History](HISTORY.md) preserves previous
+checkpoints and their evidence. The [evidence registry](EVIDENCE_REGISTRY.json)
+is an immutable historical snapshot; its P0_ACTIVE / NOT_RUN fields describe
+its pre-run state, not the current implementation.
 
-## Admission status
+## Current state and useful capabilities
 
-| Scope | Historical certificate | Limit |
-|---|---|---|
-| Native TRI | [45147268663](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45147268663) | Eistute 1168 faces / 4 patches, Book 4256 / 28; only global accepted step [1] each |
-| Original ten-file mirror | [45189301366](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45189301366), 2/2 | Reopens exact original bytes, not recompiled |
-| Static V5.11 | [45189641930](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45189641930), 3/3 | 36 Python + 4 Chromium per OS; seven static assets identical |
-| Actual npm/Python attribution | [45209742219](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45209742219), 4/4 | 13 browser graph packages and 13 minimal API distributions per OS |
-| Notice candidate | [45255136596](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45255136596), 2/2 | 58 files; original spark-md5 MIT alternative proven, not elected |
-| Physical acceptance | [#255](https://github.com/tiagosombrra/apmesh-modernization/issues/255) | Independent physical Windows/Linux NOT RUN |
-| Distribution | [#250](https://github.com/tiagosombrra/apmesh-modernization/issues/250) | OPEN: actual artifact and human legal approval absent; full scientific PyMuPDF profile not cleared |
-| Editorial | [#251](https://github.com/tiagosombrra/apmesh-modernization/issues/251), separate PR #253 | Adviser/venue decision pending |
-| Scientific R2.8 | Historical R2.7 reports | BLOCKED: no distinct second globally accepted original epoch, certified descendants or continuous CAD error bound; no physical welding |
+Audit base: `9bc721ab1fb212c9449702a2279268c636d7976b`.
+[PR #262](https://github.com/tiagosombrra/apmesh-modernization/pull/262) remains
+the active Draft review target. P0's bounded automated stabilization and P1's
+integration proposal are historical completed scopes. The source workspace is
+**IMPLEMENTED, REVIEW CANDIDATE**. Local feature and browser checks pass; the
+full local Python run still has two LaTeX environment failures. Exact delivery
+SHA and hosted results are recorded in the owning PR before qualification.
+No previous static certificate covers a changed build.
 
-These certificates concern their own revisions, not today's revision. Read
-current CI separately; pending or skipped required checks never mean PASS.
-Certified static inventory SHA256:
-`ad6c4627090a335c0ed7e3bf1bae0c0d062ed1e48249f120b10f3ba8ff8a85f5`.
+| Available at the audit base | Scope |
+| --- | --- |
+| Paired XYZ / UV views, face selection and camera recipes | Controlled P1 and staged research candidates; source identity is preserved |
+| Original native TRI scene and identity inspection | Retained accepted Eistute / Book evidence, with manual report import |
+| Vector publication and Python metrics | Source-bound discrete observations; editorial acceptance remains separate |
+| Local static reviewer | Loopback frontend and API on one port; no Vite server required |
+| Integrated Bézier source inspection | Local BP import, authored Four-Sheet example, XYZ preview, patch UV, declared incidence/orientation and source-bound CSV |
+| Visible workspace navigation | Bézier sources, original TRI and controlled/staged mesh views; one retained native import |
+
+## Audit findings and decisions
+
+The following findings refer to the immutable audit base, not to unmeasured
+results of this delivery. Exact source and historical conclusions remain in the
+[previous runbook](https://github.com/tiagosombrra/apmesh-modernization/blob/9bc721ab1fb212c9449702a2279268c636d7976b/docs/mesh-studio/README.md)
+and [frontend entry](https://github.com/tiagosombrra/apmesh-modernization/blob/9bc721ab1fb212c9449702a2279268c636d7976b/tools/mesh_studio/web/src/App.tsx).
+
+| Priority | Evidence at the audit base | Decision |
+| --- | --- | --- |
+| High | AGENTS Studio checkpoint limits feature work during P0; README lines 121–132 closes P0, while lines 379–395 defer Studio work behind scientific and external gates | Continue bounded product engineering; retain each scientific, physical and distribution gate for its own scope |
+| High | README lines 238–249 records a separate Four-Sheet HTML with stub-DOM tests and no actual Chromium run | Integrate source inspection into the existing app and verify the user flow in a real browser |
+| High | App.tsx starts with P1 at line 19; original TRI is a lower expandable section, and native identity uses a query flag at lines 172–188 | Make source, native and candidate workflows discoverable; reuse existing native components |
+| Medium | App.tsx shows an unconditional integrity label and an R1 / PROTOTYPE label at lines 125–145 | Derive integrity from loaded data and use a current product description |
+| High | NativeAcceptedTriViewer.tsx sets Z view-up after fitting a default Z-facing camera; screenshots show an empty XYZ view although counters pass | Set a nonparallel camera direction before fitting; require actual rendered-face pixel coverage |
+| Medium | The 408-line runbook mixes live work with repeated historical checkpoints | Keep one finite delivery here; retain the complete previous text by immutable link in History |
+| High for integration | README lines 140–177 documents a stacked PR chain, unrelated ancestry and a capped comparison with main | Preserve the review target; an eventual integration requires a complete, isolated source delta |
+
+## Active delivery: Bézier source workspace
+
+**Classification: engineering-only, read-only source inspection.** The user can
+open a Bézier source, inspect its patches and shared curves, follow orientation
+and export the observed incidence information inside the existing Studio.
+This does not execute or modify APMesh generation or its acceptance policy.
+
+The implementation contract is:
+
+1. Provide a visible source workspace and local `.bp` import, with the authored
+   Four-Sheet example available for immediate inspection.
+2. Parse the supported format strictly: finite coordinates, valid integer
+   indices, complete control nets and explicit input limits. Reject malformed
+   files with a useful error and allow a subsequent valid import.
+3. Identify curves by ordered control indices, allowing reversal. Coincident
+   coordinates with different indices must remain different source identities.
+   Count distinct incident patches separately from side occurrences.
+4. Allow patch and curve selection, patch visibility, and canonical parameter
+   inspection with the corresponding local parameter for every orientation.
+5. Label the surface display as sampled source geometry. Display tessellation
+   is not native TRI, QUAD, an accepted adaptive epoch or a continuous error bound.
+6. Export incidence CSV with source metadata and orientation information. A
+   computed hash identifies the imported bytes; it authenticates an external
+   source only when checked against an independently retained reference.
+7. Preserve the existing candidate and native inspection paths. Update integrity
+   states only after the associated data have actually loaded and passed checks.
+
+### Acceptance and current validation
+
+The implemented entry is `/?workspace=bezier`; the other visible entries are
+`/?workspace=mesh` and `/?workspace=native`. The legacy `?nativeScene=1` link
+still works and shares the same native panel. Opening a source workspace does
+not load the mesh API. File reads remain in the browser and later imports win
+over stale asynchronous reads. BP limits are 2 MiB, 128 patches and 20,000
+controls. The profile is indexed, non-rational bicubic BP; the CSV explicitly
+records `DECLARED_BP_CONTROL_IDS`, not native post-loader topology.
+
+Local validation on the delivery source uses Node 24.22.3 / npm 11.19.1,
+Python 3.12.14 and repository Playwright 1.56.1 / Chromium 141.0.7390.37.
+These are measured local environments, not the supported pinned 22/10/3.13
+reviewer certificate. The owning PR records the final commit and CI disposition.
+The [validation receipt](evidence/BEZIER_SOURCE_WORKSPACE_20261125.json) binds
+implementation files, new static inventory, commands and retained failures to
+their hashes. It does not turn a skipped or failed check into a pass.
+
+| Actual local check | Result and limit |
+| --- | --- |
+| `npm run test:contracts` | Existing R2.6/R2.7 contracts, 8 report-audit tests and 13 new Bézier tests pass |
+| TypeScript and production Vite build | Pass; dependencies and package lock unchanged; 7 rebuilt static assets have a new inventory |
+| Affected development browser suite | 39 pass: 12 source-workspace tests, 18 existing fast checks and 9 native scene checks |
+| Built, guarded single-port browser | 29 pass for source workspace, P1 and native scene; this does not certify the official install environment |
+| Original Eistute/Book replay | Retained 1168/4256 TRI, 4/28 patches, source IDs and 40/336 local seam segments; post-repair screenshots inspected, zero JavaScript errors |
+| Full local Python discovery | 614 enumerated: 610 pass, 2 fail, 2 skip. Both failures are missing `pdflatex.fmt`; skips require Python 3.13 and a specific historical corpus. Full local regression is not green |
+| Dependency-lock audit / whitespace | Pass; no dependency or native production change |
+
+The initial Python attempt aborted without an X display. A local Xvfb TCP
+display allowed the complete run; VTK checks then passed. The incomplete TeX
+installation remained failed after `fmtutil-user` produced zero formats. Tests
+and tool discovery were not weakened. The first browser run also exposed a
+test-only regex reading the `t` in `C(t)` instead of coordinates; it was fixed
+without changing the independent analytic expected values.
+
+The native XYZ pixel regression failed on the previous camera (0.1074% filled
+coverage for both synthetic fans, required >1%), then passed after the repair.
+Actual historical native screenshots were inspected separately; synthetic
+camera controls do not establish new C++ science. A late-file-read test now
+waits for the stale digest and React frames before checking the selected source.
+
+Required controls include the original Four-Sheet counts (52 controls, 4 patches,
+13 curves and one four-patch shared curve), reversed P1 orientation, and a
+negative case that duplicates common indices while retaining equal coordinates.
+Also exercise invalid/truncated input, non-finite values, out-of-range indices,
+input limits, and successful recovery after an invalid import.
+
+The browser acceptance flow opens the example, selects patches and curves,
+changes visibility and parameter, imports a file, handles a rejected import,
+and exports incidence data. Confirm the existing candidate/native entry points
+remain usable. Type checking, production build and the affected contracts and
+browser tests are required. Physical acceptance is reported separately.
+
+## Delivery sequence
+
+Only the first row is active. Each later item requires its own concrete source
+inputs, bounded change and relevant validation; it is not an automatic audit queue.
+
+| Order | User capability | Dependency and completion criterion |
+| --- | --- | --- |
+| Current | Integrated Bézier source workspace | Available authored source; the contract and browser flow above pass on the delivery revision |
+| Next | Open the original native corpus with fewer manual steps | Reauthenticate the retained Eistute / Book source bundle and import compatible scene/publication files together, retaining original model/patch/curve/sample identities |
+| Following | Compare source-bound samples and export figures / metrics | Explicitly comparable evidence; every result retains source, orientation and observation scope |
+| MODEL-dependent | Inspect Four-Sheet native TRI and later adaptive evolution | M0/M1 and actual accepted/rejected native evidence; multiple epochs or LOD require their own demonstrated lineage |
+
+## Independent gates and retained limits
+
+| Gate | Current evidence and scope |
+| --- | --- |
+| MODEL M0/M1 | At [MODEL #225](https://github.com/tiagosombrra/apmesh-modernization/pull/225), revision `07ca312d01f960669b1dc09a2cb30b1aa9d03165`: full-checkout M0 BLOCKED, Four-Sheet native M1 NOT RUN. Recheck that owning branch before admitting new results. These are not prerequisites for read-only source UI engineering |
+| Native science / R2.8 | Eistute 1168 faces / 4 patches and Book 4256 / 28; only accepted global step [1] each. No second qualified epoch, certified LOD descendants, continuous CAD error bound or inferred physical welding |
+| Physical acceptance | [#255](https://github.com/tiagosombrra/apmesh-modernization/issues/255): independent physical Windows/Linux review remains NOT RUN; automated Chromium does not replace it |
+| Distribution | [#250](https://github.com/tiagosombrra/apmesh-modernization/issues/250): specific artifact and human legal decision remain open; the spark-md5 alternative is not elected and the full PyMuPDF profile is not cleared |
+| Editorial | [#251](https://github.com/tiagosombrra/apmesh-modernization/issues/251): adviser/venue review pending; the distinct print-layout work in PR #253 is not silently included |
+| Evidence continuity | [#260](https://github.com/tiagosombrra/apmesh-modernization/issues/260): ten-file mirror and licensing evidence expire in February 2027; retained renewal target is 2027-02-10 |
+
+No main merge, tag, release, installer, legal clearance or scientific admission
+is implied by this engineering delivery. Existing scientific criteria and native
+production behavior remain unchanged.
 
 ## Supported local review
 
-Python 3.13, Node 22, npm 10. From repository root (Windows: substitute
+Python 3.13, Node 22 and npm 10. From the repository root (Windows: substitute
 `py -3.13` for `python3.13`):
 
 ```sh
@@ -35,373 +161,71 @@ python3.13 -m tools.mesh_studio.local_reviewer_launcher preflight
 python3.13 -m tools.mesh_studio.local_reviewer_launcher serve
 ```
 
-Open http://127.0.0.1:8765/. Stop Vite on 5173 first. Loopback only; do not
-expose raw ASGI or development Vite to the network. Minimal server uses
-hash-locked dependencies, separate from scientific/PDF/VTK tooling.
+Open http://127.0.0.1:8765/. Stop Vite on port 5173 first. The supported
+reviewer is loopback-only. Its hash-locked minimal API environment is separate
+from the full scientific/PDF/VTK environment.
 
-For original-source review extract the verified ten-file corpus into
-`build/v59-native-reviewer/`, install Chromium with
-`npm exec playwright install chromium` in the web directory (Linux may
-need --with-deps), then from root:
+For original-source review, extract the verified ten-file corpus into
+`build/v59-native-reviewer/`. In `tools/mesh_studio/web`, install Chromium using
+`npm exec playwright install chromium` (Linux may need `--with-deps`), then:
 
 ```sh
 python3.13 -m tools.mesh_studio.v59_reviewer preflight
 python3.13 -m tools.mesh_studio.local_reviewer_launcher original-smoke
 ```
 
-For physical acceptance use the privately archived R2 reviewer kit, its
-pinned checkout and exact source corpus; retain reviewer attestation,
-13 controls, screenshots, OS/GPU evidence. Hosted CI is not human approval.
-See [original protocol](V5_11_STATIC_SINGLE_PORT_REVIEW_PROTOCOL_20261123.md).
+The R2 physical-review kit requires its exact historical checkout
+`4f361d9b1e754c1e128ae74a42eb4173822bcaf6` and its source corpus. Preserve the
+revision guard and reviewer attestation, 13 controls and OS/GPU evidence.
+See the [static review protocol](V5_11_STATIC_SINGLE_PORT_REVIEW_PROTOCOL_20261123.md)
+and the [historical handoff](https://github.com/tiagosombrra/apmesh-modernization/blob/9bc721ab1fb212c9449702a2279268c636d7976b/docs/mesh-studio/README.md#p2-handoff-verification--2026-11-24).
+A new workspace build does not inherit that kit's certificate.
 
 ## Architecture and regression
 
-Python inspection, topology, metrics and publication: tools/mesh_studio.
-React/TypeScript/vtk.js UI: tools/mesh_studio/web. VTK is the default picker;
-experimental BVH and synthetic stress remain opt-in. Keep source UV and XYZ
-identity distinct. Native observers and discrete seam evidence are not
-welding, scientific LOD or new accepted meshes. C++ scientific changes are
-separate; read [QUAD state](../research/quad/STATE.md) for that research line.
+Python inspection, topology, metrics and publication live in `tools/mesh_studio`;
+React/TypeScript/vtk.js live in `tools/mesh_studio/web`. VTK remains the default
+native picker; experimental BVH and synthetic stress are opt-in. Preserve source
+UV/XYZ and patch-local identities. Reuse native seam inspection rather than
+introducing another interpretation of its evidence. C++ and [QUAD science](../research/quad/STATE.md)
+retain their separate review routes.
 
-| Workflow | Scope |
-|---|---|
-| mesh-studio-validation.yml | Complete Python research suite on both OSs, fresh native serial capture and broad browser suite |
-| mesh-studio-fast-web.yml | Developer frontend smoke and contracts |
-| mesh-studio-v511-built-reviewer.yml | Static original-source Windows/Linux review, security negatives, cross-OS bytes |
-| mesh-studio-v511-installed-license-audit.yml | Installed sources and actual bundle attribution |
-| mesh-studio-v511-notice-candidate.yml | Regenerate/reopen proposed notices from certified source |
-| mesh-studio-v511-cpp-evidence-continuity.yml | Explicit original-corpus renewal |
-| mesh-studio-v56-sbom.yml / v561-installed-license.yml | Wider scientific dependency inventory |
-| mesh-studio-lock-bootstrap.yml | Intentional lock regeneration |
-| R2.4/R2.5/R2.6 500k diagnostics | Optional synthetic stress, not native science |
+Local regression commands from the repository root:
 
-Local baseline: `python -m tools.mesh_studio.dependency_lock_audit`;
-`python -m unittest discover -s tools/mesh_studio -p 'test_*.py' -t . -v`
-with platform-specific full research hash lock (Linux VTK may need Xvfb).
-In web: `npm ci --no-audit --no-fund`, `npm run test:contracts`,
-`npm run build`. Broad developer browser tests require same-run native
-artifacts; static reviewer tests use the independent historical corpus.
-Never weaken negatives, invent fixtures or silently drop required coverage.
+```sh
+python -m tools.mesh_studio.dependency_lock_audit
+python -m unittest discover -s tools/mesh_studio -p 'test_*.py' -t . -v
+```
 
-## P0 regression checkpoint — 2026-11-24
+Use the platform-specific full research hash lock; Linux VTK may require Xvfb.
+In the web directory run `npm ci --no-audit --no-fund`,
+`npm run test:contracts` and `npm run build`. Broad developer browser tests
+need same-run native artifacts; static reviewer tests use the retained original
+corpus. Report absent dependencies, failures and skips explicitly.
 
-The audited implementation revision is `9977f2a88b199bbed39fd9583cbb58737a4db638`. The evidence registry's
-initial stabilization status is the pre-run snapshot; this section records
-the live work checkpoint and links the authoritative CI results.
+Existing validation, fast-web, static-reviewer, installed-license and
+notice-candidate workflows keep their distinct scopes. Reuse unchanged evidence
+by identity and run the gates affected by the actual delta. Never weaken
+negative controls or claim unavailable checks passed. Required unmeasured gates
+keep the corresponding closure and integration open.
 
-- [Full scientific regression #45363214163](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214163):
-  Python discovery PASS in both OSs: Linux 609 passed / 5 skipped and Windows
-  603 passed / 11 skipped (614 enumerated each, no failures). Final result:
-  **4/4 jobs SUCCESS**. Fresh Linux serial native C++ capture, source-bound
-  Eistute/Book accepted TRI, OFF/ON numerical parity, SVG/PDF independent
-  re-audit and R2.7.24–R2.7.34 research observer controls all passed. Dependent
-  broad Chromium suite: **63 passed** (2.8 min), including actual source
-  import/performance and production build; same-run source evidence recovered.
-- [Fast web #45363214119](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214119):
-  1/1 SUCCESS, 18 Chromium tests passed.
-- [Static reviewer #45363214240](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214240):
-  3/3 SUCCESS; 36 Python controls and 4 Chromium tests per OS, original native
-  corpus reopened, no orphan ports, seven identical compiled assets with
-  unchanged certified inventory SHA.
-- [Installed/bundle licensing #45363214125](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214125):
-  4/4 SUCCESS. The source-exact notice generator and its pinned input evidence
-  are unchanged from the previous certified notice run; it was not re-run by
-  this documentation/CI-only push.
+## Historical baseline and handoff
 
-Inventory verification: 12 remaining workflows with 120 approved SHA-pinned
-action references, no write permissions; 97 local Markdown links in the
-history index resolve. All 54 Python test files and 29 browser spec files,
-native code, models, frontend code and original scientific historical files
-remain present. Three superseded reviewer workflows were retired, with exact
-historical definitions linked from HISTORY.md. Four environment-specific
-optional JSON Schema/LaTeX skips and one absent-corpus skip occur in each
-ordinary Python checkout; Windows adds six unqualified GPU/VTK controls.
-The dedicated static reviewer exercises the retained original corpus.
+P0 tested implementation: `9977f2a88b199bbed39fd9583cbb58737a4db638`.
+[Full regression](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214163)
+passed 4/4 jobs: Linux 609 Python / 5 skips, Windows 603 / 11 skips,
+native capture/parity and 63 Chromium tests. [Fast web](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214119),
+[static reviewer](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214240)
+and [installed-license audit](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214125)
+retain their revision-specific results. Optional JSON Schema/LaTeX and physical
+GPU coverage were not claimed. The old seven-asset inventory hash remains
+`ad6c4627090a335c0ed7e3bf1bae0c0d062ed1e48249f120b10f3ba8ff8a85f5`;
+it is a historical identity, not the expected hash of a changed frontend.
 
-**P0 bounded automated regression CLOSED.** Final native and broad browser
-jobs were independently checked via Actions job/step results and the Python
-and Chromium logs. No failure to repair in this run. Exact skip reasons:
-two optional JSON Schema tests, two unavailable LaTeX toolchain tests and
-one original-corpus test in ordinary checkout on each OS; Windows additionally
-skips six hosted WGL/OSMesa/VTK controls. The dedicated static reviewer covers
-the original corpus; JSON Schema/LaTeX and physical GPU coverage are not
-claimed. The remote pre-update HEAD `c87f80b7290fd424ffe028cf5f95ddbd17670f98`
-is one commit ahead of the tested revision, with only this README changed.
-The registry remains the immutable initial pre-run snapshot; this section is
-the authoritative live status. No source or workflow change is required.
-P1 review may proceed; no physical GPU acceptance, new native epoch or legal clearance.
-
-## P1 review and integration proposal — 2026-11-24
-
-Audited remote snapshot `3ecb9ab5fd20c55070851b60c5570e50bea4de57` (documentation-only
-descendant of the P0 tested implementation). All PRs remain Draft/open;
-no branch retarget, merge, closure or cherry-pick was performed.
-
-- The review chain #246 → #248 → #249 → #252 → #254 → #256 → #257 →
-  #258 → #259 → #261 → #262 has ten exact base/head SHA matches.
-  Keep #262 as the sole operational review target; earlier PRs provide
-  review slices, not independent deliveries.
-- #244 is ancestral to the certified V5.3 base `38e03cd1de260a1791a9cb6e176181067d4c94bb`
-  (12 ahead, 0 behind). #245 diverges by history, not by its six-file
-  change content: all six final Git blobs are exactly equal between #245
-  HEAD `23a1255b91cc63f7e2dd2d57b98ec8973a71c7b7` and that certified base.
-  Four remain byte-identical in #262 (PDF implementation, test,
-  direct requirements, preregistration); the workflow now uses hash-locked
-  dependencies and retains both identical native PDF export/audit commands
-  and archive, and the result report has subsequent certificate evidence.
-  Do not cherry-pick or independently merge #245.
-- #239 HEAD equals #246 HEAD `740a357f73d055d7e3f2f345810b8e0d885233ac`.
-  #262 contains it (121 ahead, 0 behind at audited snapshot). Review
-  #239 as history, not a second delivery.
-- #253 is a separate editorial delivery, **not merely documentation**:
-  two unique Book print-layout reports, one Python exporter, one test file
-  and a divergent workflow. The four files do not exist in #262. Its
-  certified original-source run #45147268663 remains valid for its own
-  revision. Do not merge the older workflow or silently lose the unique
-  print-layout work; editorial issue #251 controls future admission.
-- Integration scope caution: compared with the original #239 base
-  `9227ec41a21b65c19a96cf9611be24e117507877`, the audited #262 snapshot
-  is 588 commits ahead, 0 behind, with 244 changed paths including 12
-  outside Studio docs/tools/CI (native observers, adapter/generator,
-  probes and root files). Compared with main `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`,
-  it is 1150 ahead and 2 behind; the comparison returned 300 files
-  (API limit; not a complete inventory), including unrelated QUAD history.
-  **Do not retarget #262 to main or squash this entire research ancestry.**
-
-**P1 review/proposal complete; integration remains NOT AUTHORIZED.**
-Retain the current branch stack and immutable references; no new PR is
-needed for physical research review. If integration is later authorized,
-first freeze the target base and agree on the exact allowed source paths
-and native observer dependencies, construct an isolated integration
-candidate, compare complete trees (not a capped API list), review its
-actual delta and rerun all relevant source/CI gates on that exact SHA.
-No automatic closure of historical drafts. The independent editorial
-branch is not in that proposed scope.
-
-**P2 next:** issue #255 requires real independent physical Windows/Linux
-review on the pinned reviewer kit. Automated local-loopback and browser
-checks have evidence; human sign-off and physical GPU checks do not.
-Use the existing static V5.11 launcher protocol above, not the superseded
-V5.8 dev-server path in the original issue. Do not create another
-instrumentation or version milestone while waiting for external evidence.
-
-## P2 handoff verification — 2026-11-24
-
-**Physical acceptance still NOT RUN.** The original R2 kit is specified in
-[issue #255](https://github.com/tiagosombrra/apmesh-modernization/issues/255#issuecomment-7102250713):
-it requires the clean exact historical checkout
-`4f361d9b1e754c1e128ae74a42eb4173822bcaf6`, not today's #262 HEAD.
-Its documented ZIP SHA256 is
-`1ae3490d11a89ac09a50a40236954cb61a7e5b9bf9c3df6ebecda658cd82ede6`
-(806931 bytes). Do not bypass the kit revision guard. The current search
-could not re-locate the kit in the accessible archive; prior reported
-archive verification is historical, not a new byte verification.
-No missing-file deletion is inferred.
-
-For an independently reproducible manual review fallback, the GitHub
-[ten-file source mirror](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45189301366/artifacts/14825221229)
-and [chain-of-custody receipt](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45189301366/artifacts/14823419997)
-were confirmed unexpired by artifact metadata (expire 2027-02-21
-13:58:48 UTC). The mirror ZIP is a distinct packaging of the ten source
-files, not the private kit or its nested ZIP; authenticate the extracted
-files with the pinned `v59_reviewer preflight` and the receipt, never
-substitute a ZIP SHA. Extract only the ten expected files into
-`build/v59-native-reviewer/`, follow the supported build/preflight/
-original-smoke/serve sequence and V5.11 protocol, check the certified
-seven-asset inventory SHA above. Record actual checkout SHA and
-independent per-OS reviewer evidence; manual fallback is not a new kit
-certificate. The current #262 snapshot is 40 commits ahead of the R2
-checkout with no commits behind; this is not permission to mix their
-attestation records. No physical approval, release or new scientific
-result was inferred.
-
-## Parallel scientific support — Four-Sheet Curved inspection
-
-2026-11-24. Bounded, offline research companion only, not a change to the
-certified Studio runtime. Align with [MODEL PR #225](https://github.com/tiagosombrra/apmesh-modernization/pull/225)
-and its canonical M0–M5 plan. M0 full-checkout regression remains blocked
-and M1 native TRI NOT RUN; this work cannot change the model roster.
-
-Read the exact [authored BP fixture](https://github.com/tiagosombrra/apmesh-modernization/blob/07ca312d01f960669b1dc09a2cb30b1aa9d03165/docs/research/nonmanifold-benchmark/fixtures/four_sheet_curved.bp)
-at MODEL SHA `07ca312d01f960669b1dc09a2cb30b1aa9d03165`, Git blob
-`398bef93f78368c3b41a90e4e8ca433e00ba5aa0`, SHA256
-`b1b6610b63f10dfe91e84fc8de85d8cbb8b9bdb50a7b0ecdbc95efd89b64fdd4`.
-Independent indexed boundary grouping yields 52 controls, 4 patches,
-13 distinct curves, histogram {1:12,4:1}. C0 indices are [0,1,2,3],
-with P1 reversed [3,2,1,0]. Independent Bernstein evaluation at 101
-canonical parameters against the four local incidences found maximum
-same-local-parameter separation 5.0 model units, corrected residual
-4.44390651272216e-16. A negative control duplicating P1's four common
-indices while keeping XYZ unchanged yields 56 controls, 14 curves and
-histogram {1:13,3:1}; the four-way incidence is lost.
-
-An offline HTML research companion was delivered in the conversation:
-`STUDIO_Four_Sheet_Curved_Inspecao.html`, SHA256
-`2b9d57939eb5376ccf83709e4c6479fd1b5d60b71e3708326c1b1759739c9306`.
-Embedded coordinates and patch IDs were extracted from a byte-identical
-BP copy. It displays projected isoparametric curves (not generated
-TRI/QUAD), patch visibility, canonical/local parameter correspondence,
-and the two negative controls. Node VM tests with a stub DOM passed
-topology, orientation, duplicate-index control, reset and SVG markup.
-Actual Chromium launch was blocked by missing browser binaries; real
-browser rendering and physical user approval NOT RUN. The HTML is not
-claimed to be committed or archived in Drive. No production source,
-fixture, tests, CI or admitted scientific result changed.
-
-Next scientific admission: await actual M1 accepted native TRI and
-source-bound patch/curve sample IDs; only then compare per-leaf native
-sampling, order/orientation, missing/excess samples, and accepted versus
-rejected steps using a read-only Studio evidence adapter. Do not
-substitute analytic samples for native observations or infer welding
-from coincident positions. No new instrumentation-only version,
-scientific LOD, distribution or main merge.
-
-## Historical native curve-count audit — 2026-11-24
-
-Read-only analysis addressing the isolated versus shared curve question.
-MODEL #225 remains at `07ca312d01f960669b1dc09a2cb30b1aa9d03165`,
-M0 full regression blocked and M1 NOT RUN. Reopened actual original
-accepted Eistute/Book step-1 NDJSON from
-[run #45363214163 / artifact #14906480102](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45363214163/artifacts/14906480102),
-implementation `9977f2a88b199bbed39fd9583cbb58737a4db638`.
-ZIP SHA256 `21742b5c40cd3116335f0431250e44b7340488a59d761608b2e5eb1955469774`;
-expires 2026-12-01. NDJSON SHA256 verified against CI logs and audit
-receipts; stderr hashes also checked. Independent Python standard-library
-analysis recovers original TRI edges by UV side, canonical reversal,
-native patch/node IDs and complete ordered chains. Count from the
-recorded last source endpoint index + 1 is independently cross-checked
-against actual boundary nodes. Isolated means incidence one, not a
-separate generation of the same curve.
-
-| Model | Isolated curves / points each | Shared curves / points each | Shared patch-local nodes / segments |
-| --- | --- | --- | --- |
-| Eistute | 12 / 11 | 1 / 11 (4 patches) | 44 / 40 |
-| Book | 84 / 9 | 1 / 13 (28 patches) | 364 / 336 |
-
-98 distinct curves, 128 complete patch-side chains with source counts
-matching, 384 pair comparisons. For the shared source curve slot 3 in
-both models, maximum paired canonical t and XYZ differences are exactly
-zero in the serialized observations, yet 0/6 Eistute and 0/378 Book
-pairs match every logical node ID: the canonical t=0 endpoint has
-4 and 28 different IDs respectively, all other samples share one
-logical ID within each fan. This agrees with R2.7.15/16/21 logs and does
-not prove physical welding. Book's shared curve has 4 additional
-points (44.44% relative to 9), Eistute has none. One shared curve per
-model, different geometry/configuration; no causal incidence effect
-established. The future controlled comparison must keep the same
-curve geometry, discretization configuration and tolerance while
-varying incidence, with explicit accepted/rejected evidence.
-
-Reproduction package delivered in conversation:
-`STUDIO_Auditoria_Curvas_Nativas_Eistute_Book.zip`, SHA256
-`30727364b6a66c30c15727fad5d59dc4e0f740457dfd22926960c4521e913b6e`.
-Includes original source ZIP, four CSV tables, JSON receipt, Python
-script and README. Repeated computation produced byte-identical 5/5
-CSV/JSON outputs; tampered NDJSON rejected; synthetic side reversal
-and duplicated-edge rejection checked. No new native compile,
-full-regression replay, physical acceptance, new version or source
-change. Package is delivered locally, not asserted to be on Drive or
-in Git. Stop independent Studio scientific implementation until
-actual M1 native evidence or a separately approved controlled
-experiment exists; use the existing native seam audit rather than
-duplicating the certified runtime.
-
-## Controlled curve-incidence experiment preparation — 2026-11-24
-
-MODEL #225 remains at `07ca312d01f960669b1dc09a2cb30b1aa9d03165`:
-M0 full regression BLOCKED, M1 NOT RUN. This is a proposed N1 controlled
-experiment, not new native results or admission. Use the byte-verified
-Four-Sheet Curved BP pinned above. All 15 nonempty subsets of P0–P3
-were generated (4/6/4/1 for incidence 1/2/3/4); exact coordinate tokens,
-per-patch control ordering and C0 identity/orientation preserved, with
-explicit local-to-original index maps. E4 is byte-identical to source.
-Eight local standard-library unit tests PASS, including all subsets,
-reverse P1, tampered source rejection, duplicated-index negative,
-byte-identical regeneration and 30 blank NOT_RUN replay rows.
-
-Conversation package `STUDIO_Experimento_Incidencia_Bezier.zip`
-(22 files, 16321 bytes, SHA256
-`c7e3e532fc1be3ce804faebf510458fb4547809f51927affb903b1e934f141ea`)
-includes the original BP, 15 input cases, manifest, execution ledger,
-generator of BP subsets, tests and proposed protocol. Not claimed
-archived in Drive or committed as runtime code.
-
-Main comparison: eight subsets containing P0 against its own isolated
-case (1/3/3/1); all 15 reported, secondary same-patch comparisons for
-P1–P3. Two fresh serial process repetitions per case assess repeatability,
-not independent statistical samples. Freeze binary/config/tolerances/
-resource bounds before execution; no numerical configuration selected
-yet. M0 then M1 actual E4 admission and scientific protocol agreement
-are prerequisites. Report canonical unique sample counts including
-endpoints, parameter spacing, discrete XYZ, real TRI edge-chain
-coverage, logical IDs and separate per-leaf references, failures and
-accepted/rejected steps. Control curve geometry and selected patch
-geometry; composition/orientation/global domain still vary, so do not
-claim a universal causal incidence effect. No new native execution,
-OCCT subset audit, runtime code, CI, main merge or scientific admission.
-Stop at preparation until prerequisite evidence is available.
-
-## Independent OCCT subset topology audit — 2026-11-24
-
-Local OCP 7.9.3.1 audit of the exact 15 prepared BP subsets, without
-executing APMesh. The original preparation ZIP SHA256 was verified
-against the preceding entry. All 15 input hashes, ordered source poles
-and all nonempty subset identities checked. Reconstructed actual
-Geom_BezierSurface faces, native BRepCheck validity, sewing tolerance
-1e-8, and TopoDS IsSame edge identity on distinct owning faces.
-For k=1 use the face directly; for k=2,3,4 nonmanifold sewing.
-Every case has k faces and 3k+1 distinct edges; incidence histogram
-{1:4} for k=1, {1:3k,k:1} otherwise. The exact central edge was
-identified by 17 samples against the analytic spine in both
-orientations. All 15 B-Reps were serialized and reopened independently,
-with the same incidence and validity results.
-
-2592 analytic surface evaluations, maximum sampled error
-9.155396550919762e-16 (screen 2e-12), maximum sampled central curve
-error before/after serialization 4.654751537338637e-17.
-These are sampled observations, not continuous error bounds.
-Two negative kernel controls passed: ordinary manifold sewing E4
-produced two distinct central edges each with incidence 2; displacement
-of P3 by 2e-5 yielded maximum incidence 3. Tampered E2_P01 BP rejected
-by SHA256. Two independent executions produced identical JSON bytes.
-
-Delivered locally: `STUDIO_Auditoria_OCCT_Incidencia_Bezier.zip`
-(20723 bytes, SHA256
-`011f4597f06395df4d2ea5fff868c11a7ff98af8e9b25409a592d5096a37cb97`),
-original preparation package, standalone Python audit, JSON receipt,
-CSV and README. JSON SHA256
-`0ad3ed1d131fb743fff7e635cbdf26559b15abf64bfbd8a81cf61906c6a29b21`.
-No archived Drive upload asserted. This closes only the prior
-OCCT-subset preparation gap; M0 remains BLOCKED and M1 NOT RUN at
-MODEL #225 revision `07ca312d01f960669b1dc09a2cb30b1aa9d03165`.
-No TRI result, new scientific admission, physical approval, CI change,
-production source modification or main merge. Next substantive native
-experiment requires M0/M1 and protocol freeze; do not create more
-Studio-only milestones while blocked.
-
-## Priorities and handoff
-
-1. **P0 CLOSED (bounded automated scope):** documentation consolidation,
-   workflow audit and exact-candidate broad regression completed. Explicit
-   environment/physical and editorial gates remain open.
-2. **P1 REVIEW COMPLETE:** bounded consolidation proposal; keep #262 as
-   active Draft review target, with no integration, retarget or closures.
-3. **P2 ACTIVE / HUMAN EVIDENCE REQUIRED:** independent physical reviewers,
-   #255. No hosted-CI substitution.
-4. P3: specific distribution decision and legal review, #250. No release.
-5. P4: return to scientific priorities: genuine non-manifold models, complete
-   patches, original native accepted/rejected results, separate QUAD/TRI
-   experiments and adviser-aligned metrics. Studio is supporting tooling,
-   not a substitute for this research. R2.8 remains blocked.
-6. Parallel external gates: editorial #251; renew ten-file mirror and
-   license evidence before expiry, #260 (target 2027-02-10).
-
-Maintain only this operational plan. At each meaningful session verify
-remote SHA and concurrent changes; update current status and the owning
-issue with exact tested revision, runs, failures, skips and next action.
-Historical preregistrations, results (including rejected trials), figures,
-schemas, tests and original provenance remain preserved. Archive obsolete
-instructions by immutable Git link; do not create another version or
-instrumentation-only milestone. No private Drive URLs in public records.
-No main merge, release, tag, installer, legal clearance or scientific
-acceptance without the required authorization and evidence.
+The complete P1 ancestry review, P2 kit caveats, Four-Sheet inspection, native
+curve-count audit and 15-case OCCT preparation remain in [History](HISTORY.md).
+Those preparations do not count as new native generation. Preserve failed and
+rejected observations, raw provenance, fixtures and immutable evidence records.
+At delivery, recheck remote changes, record the tested revision and remaining
+limits, and update the owning review item. Keep private archive URLs out of
+public records. Do not retarget the accumulated PR ancestry to main.

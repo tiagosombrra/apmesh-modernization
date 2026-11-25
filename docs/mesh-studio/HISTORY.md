@@ -109,6 +109,7 @@
 
 ## Prior operational instructions
 
+- [Complete canonical runbook at 9bc721a, 2026-11-24](https://github.com/tiagosombrra/apmesh-modernization/blob/9bc721ab1fb212c9449702a2279268c636d7976b/docs/mesh-studio/README.md): preserves the P0 results, P1 integration/ancestry audit, P2 kit handoff, Four-Sheet HTML inspection, Eistute/Book curve-count audit, 15-case incidence preparation and OCCT subset audit, including original hashes, limitations and then-current stop decisions. Its historical successor instructions are superseded by the current product plan; scientific acceptance criteria and original evidence are preserved.
 - [tools/mesh_studio/README.md](https://github.com/tiagosombrra/apmesh-modernization/blob/74f80e8136c2d836acbb6e307f8c2f552ea6c3c5/tools/mesh_studio/README.md)
 - [tools/mesh_studio/web/README.md](https://github.com/tiagosombrra/apmesh-modernization/blob/74f80e8136c2d836acbb6e307f8c2f552ea6c3c5/tools/mesh_studio/web/README.md)
 

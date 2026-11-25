@@ -130,12 +130,26 @@ export function NativeAcceptedTriViewer({
       camera.setParallelScale(0.7);
       renderer.resetCameraClippingRange();
     } else {
-      renderer.resetCamera();
+      const minima = [Infinity, Infinity, Infinity];
+      const maxima = [-Infinity, -Infinity, -Infinity];
+      for (let offset = 0; offset < prepared.positions.length; offset += 3) {
+        for (let axis = 0; axis < 3; axis += 1) {
+          minima[axis] = Math.min(minima[axis], prepared.positions[offset + axis]);
+          maxima[axis] = Math.max(maxima[axis], prepared.positions[offset + axis]);
+        }
+      }
+      const center = minima.map((value, axis) => (value + maxima[axis]) / 2);
+      const diagonal = Math.max(Math.hypot(...maxima.map((value, axis) => value - minima[axis])), 1e-3);
       const camera = renderer.getActiveCamera();
+      // Set a view direction independent of the Z-up vector before fitting.
+      // The default Z-facing camera becomes singular when its view-up is Z.
+      camera.setParallelProjection(false);
+      camera.setFocalPoint(center[0], center[1], center[2]);
+      camera.setPosition(center[0] + diagonal, center[1] - 1.3 * diagonal,
+        center[2] + diagonal);
       camera.setViewUp(0,0,1);
-      camera.azimuth(18);
-      camera.elevation(12);
       camera.orthogonalizeViewUp();
+      renderer.resetCamera();
       renderer.resetCameraClippingRange();
     }
     const renderStart = performance.now();
