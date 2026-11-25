@@ -2,6 +2,7 @@ name: Mesh Studio V5.4 / fast frontend and source-contract smoke
 on:
   push:
     branches:
+      - audit/mesh-studio-v511-third-party-notices-candidate-20261123
       - feature/mesh-studio-fixture-first-20261114
       - feature/mesh-studio-r27-bvh-20261116
       - feature/mesh-studio-v55-pinned-actions-20261122
@@ -62,7 +63,7 @@ jobs:
       - name: Run verified P1 and staged candidate browser source smoke only
         working-directory: tools/mesh_studio/web
         run: |
-          npx playwright test tests/mesh-view.spec.ts tests/transport-v2-r24.spec.ts tests/viewport-v5-source-request-races.spec.ts tests/viewport-v5-article-source-export.spec.ts
+          npx playwright test tests/mesh-view.spec.ts tests/bezier-source.spec.ts tests/transport-v2-r24.spec.ts tests/viewport-v5-source-request-races.spec.ts tests/viewport-v5-article-source-export.spec.ts
       - name: Explicitly report source-native research qualification remains separate
         run: |
           echo 'V54_FAST_ONLY_SOURCE_SCOPED_WEB=PASS'

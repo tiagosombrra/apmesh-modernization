@@ -3,6 +3,7 @@ name: Mesh Studio V5.11 installed license evidence — Windows and Linux source-
 on:
   push:
     branches:
+      - audit/mesh-studio-v511-third-party-notices-candidate-20261123
       - audit/mesh-studio-v511-runtime-license-evidence-20261123
     paths:
       - '.github/workflows/mesh-studio-v511-installed-license-audit.yml'
@@ -12,6 +13,10 @@ on:
       - 'tools/mesh_studio/web/scripts/audit-v511-bundle.mjs'
       - 'tools/mesh_studio/web/package-lock.json'
       - 'tools/mesh_studio/web/package.json'
+      - 'tools/mesh_studio/web/src/**'
+      - 'tools/mesh_studio/web/vite.config.ts'
+      - 'tools/mesh_studio/local_reviewer_launcher.py'
+      - 'tools/mesh_studio/license_sources/**'
       - 'tools/mesh_studio/local_launcher.py'
       - 'tools/mesh_studio/local_static_site.py'
       - 'tools/mesh_studio/locks/**'

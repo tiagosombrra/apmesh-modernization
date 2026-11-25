@@ -1,0 +1,72 @@
+{
+  "schema": "apmesh.meshstudio.evidence_registry.v1",
+  "current_review_branch": "audit/mesh-studio-v511-third-party-notices-candidate-20261123",
+  "historical_base": "74f80e8136c2d836acbb6e307f8c2f552ea6c3c5",
+  "original_native": {
+    "run": 45147268663,
+    "commit": "7d41ab8ec55b34bf879f9efc2a547168e50143de",
+    "accepted_steps": {
+      "eistute": [
+        1
+      ],
+      "book": [
+        1
+      ]
+    },
+    "faces": {
+      "eistute": 1168,
+      "book": 4256
+    },
+    "mirror": {
+      "run": 45189301366,
+      "commit": "6765536f05dbf83453aa7f2c65b79b696b9447c5",
+      "artifact": 14825221229,
+      "receipt": 14823419997,
+      "independent": 14825735383,
+      "files": 10,
+      "expires": "2027-02-21T13:58:48Z",
+      "renew_by": "2027-02-10"
+    }
+  },
+  "static_reviewer": {
+    "run": 45189641930,
+    "commit": "7d52e7f602e1f23595724c0a0f1dd5689fc69cc2",
+    "assets": 7,
+    "inventory_sha256": "ad6c4627090a335c0ed7e3bf1bae0c0d062ed1e48249f120b10f3ba8ff8a85f5"
+  },
+  "license_sources": {
+    "run": 45209742219,
+    "commit": "fb665764143da62b9a44516654ed1057858c2639",
+    "artifacts": [
+      14836090442,
+      14835613038,
+      14833519977,
+      14835223617,
+      14835278629,
+      14833469944
+    ],
+    "expires": "2027-02-21"
+  },
+  "notice_candidate": {
+    "run": 45255136596,
+    "commit": "d46f36bf9ee1043dd5380b54d773b861c140424f",
+    "artifacts": [
+      14858290978,
+      14855399849
+    ],
+    "files": 58,
+    "expires": "2027-02-21T20:02:17Z",
+    "spark_md5_license_elected": false
+  },
+  "open_gates": {
+    "physical": 255,
+    "legal": 250,
+    "editorial": 251,
+    "renewal": 260,
+    "r28_qualified": false
+  },
+  "stabilization": {
+    "state": "P0_ACTIVE",
+    "current_regression": "NOT_RUN"
+  }
+}

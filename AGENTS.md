@@ -68,3 +68,12 @@ missing CI status or missing oracle comparisons as successful checks.
 This is a **required handoff procedure**, not automatic background execution.
 Preserve the default TRI scientific behavior, keep QUAD implementation opt-in,
 and direct scientific changes through their own research milestones and PRs.
+
+## Studio checkpoint
+
+For Studio work read docs/mesh-studio/README.md and EVIDENCE_REGISTRY.json.
+Maintain one active review target and update the canonical state and owning
+issue after each meaningful session. Preserve dated evidence, separate native
+science from UI/legal checks, and report exact SHA and actual test status.
+No feature work during P0 stabilization. Standard read-only hosted Studio
+regression on the candidate is permitted; no main merge or release.

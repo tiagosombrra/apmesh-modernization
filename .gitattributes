@@ -63,5 +63,7 @@ tools/mesh_studio/test_native_selected_curve_seam.py text eol=lf
 # Windows checkout must never rewrite package.json or pip wheel-hash receipts.
 tools/mesh_studio/web/package.json text eol=lf
 tools/mesh_studio/web/package-lock.json text eol=lf
+# Keep the authored BP example byte-identical to its pinned source on both OSs.
+tools/mesh_studio/web/src/fixtures/*.bp text eol=lf
 tools/mesh_studio/locks/*.lock text eol=lf
 tools/mesh_studio/requirements-*.txt text eol=lf

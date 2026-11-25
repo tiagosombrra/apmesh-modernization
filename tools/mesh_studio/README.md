@@ -1,49 +1,6 @@
-# APMesh Mesh Studio — scientific inspection and publication modules S0–S5
+# Mesh Studio research tool reference
 
-## V5.11 — modo recomendado para a revisão local: frontend compilado em uma só porta
-
-Para inspecionar o STUDIO sem executar o **servidor de desenvolvimento Vite/HMR**, utilize a V5.11 na raiz do repositório (Python 3.13, Node 22 e npm 10 no build inicial). Após compilar, toda a interface e a API compartilham somente `http://127.0.0.1:8765/`. O launcher é **local e voltado à pesquisa**, não um instalador assinado nem um serviço seguro para a internet.
-
-```bash
-python3.13 -m tools.mesh_studio.local_reviewer_launcher build
-python3.13 -m tools.mesh_studio.local_reviewer_launcher preflight
-python3.13 -m tools.mesh_studio.local_reviewer_launcher serve
-```
-
-No Windows PowerShell, use `py -3.13` no lugar de `python3.13`. Para uma revisão **automatizada com fontes C++ originais**, extraia primeiro os dez arquivos de `build/v59-native-reviewer/` do pacote preservado no Drive pessoal e execute `python3.13 -m tools.mesh_studio.local_reviewer_launcher original-smoke` (Chromium Playwright instalado). O comando não gera novos epochs nativos, mas reaudita o C++ original e faz a jornada Eistute/Book no navegador.
-
-[**Protocolo V5.11 e recibos Linux/Windows**](../../docs/mesh-studio/V5_11_STATIC_SINGLE_PORT_REVIEW_PROTOCOL_20261123.md): **[CI 3/3 aprovado](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45165895108)**, 36 controles Python + 4 testes de navegador em **cada OS**, e **terceira auditoria independente com sete arquivos compilados absolutamente idênticos entre plataformas**, SHA256 do inventário `ad6c4627090a335c0ed7e3bf1bae0c0d062ed1e48249f120b10f3ba8ff8a85f5`. O Vite `5173` continua reservado para os scripts **legados de desenvolvimento** e **não deve estar ativo** ao executar este modo compilado. A validação humana em máquinas físicas e a revisão de licenças continuam pendentes; R2.8 científica continua bloqueada.
-
-
-## V5.10 — inicialização local protegida e revisão independente
-
-O `local_launcher` agora oferece uma variante da API protegida por Host e Origin exatos (`127.0.0.1:8765`), com Vite restrito a `127.0.0.1:5173` e oito testes HTTP hostis contra ambos os serviços. A [V5.10 foi validada no Linux e no Windows](../../docs/mesh-studio/V5_10_LOCAL_SECURITY_AND_PHYSICAL_REVIEW_PROTOCOL_20261123.md): 24 testes Python + 2 testes de navegador por sistema e os oito bloqueios HTTP observados. **Execute pelo launcher**, não exponha `web_api:app` diretamente como serviço protegido e não use `localhost:5173` como endereço alternativo. O sistema continua em modo Vite de desenvolvimento, sem autenticação de produção.
-
-Para a **avaliação independente em equipamento físico**, siga o protocolo V5.10: extraia o corpus original C++ da pasta privada de experimentos do Doutorado, execute `python3.13 -m tools.mesh_studio.v59_reviewer preflight`, `local_launcher setup`, instale o Chromium do Playwright e execute `v59_reviewer smoke`. No Windows PowerShell use `py -3.13`. A revisão por pessoas em máquinas físicas permanece **não realizada**, mesmo após o CI 2/2 aprovado. R2.8 científica segue bloqueada.
-
-## V5.9 — reproducible full original-native source reviewer on V5.8 launcher
-
-In addition to the lean research startup, V5.9 validates a finite **real original C++ accepted Eistute/Book step-1** browser task: original NDJSON/SVG/manifest source-SHA re-audit, original P1 linked XYZ/UV quality and source face, Book/Eistute source patch/triangle/native node and curve sampling, original vector SVG downloads, staged/nonaccepted guardrails and negative forged LOD/UV. **Both Ubuntu and Windows CI PASS**, including cross-platform canonical source SVG bytes and clean server shutdown. Use the pinned ten-file source corpus and the `python3.13 -m tools.mesh_studio.v59_reviewer preflight` / `smoke` commands described in [V5.9 research review protocol](../../docs/mesh-studio/V5_9_ORIGINAL_NATIVE_LOCAL_REVIEWER_RESULTS_20261123.md). This does not recompile native C++ or authorize physical machine GPU/LOD claims.
-
-
-## V5.8 — inicialização segura do STUDIO de pesquisa
-
-O novo launcher local, auditado em Linux/Windows, executa a interface React/vtk.js e a API FastAPI com um ambiente Python **mínimo de 13 pacotes**, derivado dos locks com hashes; **PyMuPDF e VTK não são instalados no ambiente local da API**. A aplicação permanece em desenvolvimento, com portas estritamente `127.0.0.1`, e o gerador científico C++ não é executado pelo launcher.
-
-A partir da raiz do repositório, com Python 3.13, Node 22 e npm 10:
-
-```bash
-python3.13 -m tools.mesh_studio.local_launcher preflight
-python3.13 -m tools.mesh_studio.local_launcher setup
-python3.13 -m tools.mesh_studio.local_launcher serve
-```
-
-No Windows PowerShell, troque `python3.13` por `py -3.13`. Para verificar e encerrar ambos os serviços automaticamente, use `smoke` no lugar de `serve`. Abra `http://127.0.0.1:5173`. [Evidências, escopo e riscos da V5.8](../../docs/mesh-studio/V5_8_MINIMAL_LOCAL_LAUNCH_AND_SOURCE_LOCK_RESULTS_20261123.md). **Não é distribuição de produção, lançamento oficial nem evidência de LOD.**
-
-
-**Current project roadmap and 2026-11-20 wide audit:** [Mesh Studio Master Plan V5](../../docs/mesh-studio/MASTER_PLAN_V5_AUDIT_AND_RECOVERY_20261120.md), with the [current evidence/qualification index](../../docs/mesh-studio/README.md). Previous planning and research documents are retained as dated historical evidence.
-
-The Studio Python/Web modules live under `tools/mesh_studio/`. The isolated research PR #239 also includes **default-OFF, compile-time guarded observation changes in original C++ source files** and separate serial research executables; these do not authorize production numerical-policy changes, public releases or merges. Do not claim that the complete Studio PR has zero edits outside this Python directory.
+Start with the [canonical runbook](../../docs/mesh-studio/README.md). The older developer/research commands below are not current reviewer instructions. [Original full README](https://github.com/tiagosombrra/apmesh-modernization/blob/74f80e8136c2d836acbb6e307f8c2f552ea6c3c5/tools/mesh_studio/README.md).
 
 ## Initial research-safe deliverables
 
