@@ -29,10 +29,11 @@ ordinary TRI accepts steps 0 through 3 and physically matches all
 85 directed seam intervals across those stages. At least one endpoint
 ID differs in every stage. The mixed source observer rejects at the
 second patch on two equal-XYZ corner pairs with different original sample IDs.
-MSVC default/source controls pass six captures and 54 negatives. Exact
-PR 270 hosted snapshot: 1 successful, 3 pending, 0 other jobs.
+MSVC default/source controls pass six captures and 54 negatives. All
+four exact-head checks for PR 270 passed in run 45579448136.
 The [report and receipts](MIXED_FEEDBACK_ADMISSION_SHARED_SOURCE_20261125.md)
-retain both expected opt-in stops. No shared mixed predecessor exists.
+retain both expected opt-in stops and the verified local PNG/Blender
+visuals from the archived run. No shared mixed predecessor exists.
 
 **Next:** qualify a research source record that stores the native curve
 samples separately from each patch's actual accepted TRI corner IDs.

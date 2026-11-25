@@ -4483,3 +4483,14 @@ regression passes with 54 negative controls. [Report and receipts](MIXED_FEEDBAC
 Next qualify native curve and patch-corner provenance before shared
 binary subdivision. Admission criteria and global curvature are still
 open, and zero mixed adaptive epochs are accepted.
+
+## 2026-11-25 Fortaleza - deliver visual evidence for both mixed feedback cases
+
+Render two plates from the archived CurvaBezier, Ribbed and shared TRI
+source files. Verify all six comparison OBJ hashes and four accepted
+seam incidence archives. Highlight the corner QUAD on each experimental
+successor, using the same UV frame for predecessor and successor.
+Reopen the three-scene Blender 5.3 file and verify its face cycles, vertex
+counts and camera extents. [Report and artifact hashes](MIXED_FEEDBACK_ADMISSION_SHARED_SOURCE_20261125.md).
+PR 270 has four green exact-head jobs. Shared mixed capture, the admission
+rule and global mixed curvature remain open. Zero mixed epochs accepted.

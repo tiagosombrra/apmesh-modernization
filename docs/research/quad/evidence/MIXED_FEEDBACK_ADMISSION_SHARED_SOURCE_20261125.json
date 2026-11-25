@@ -1268,5 +1268,123 @@
         ]
       ]
     }
+  },
+  "visual_proof": {
+    "data_snapshot": "640a472c2ce2f368131c46aa636b04becb4c33df",
+    "local_folder": "build/quad-visual-proof-20261125",
+    "authoritative_evidence_sha256": "00d8aee524588f5914b09351afcb29691cec09d68a7b77c6fece944ff97566ba",
+    "sources": {
+      "curvabezier": {
+        "tri": {
+          "sha256": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+          "path": "build/quad-feedback-search-curves-20261125/guarded/staging.steps/step_3_retry_0_accepted_tri.obj",
+          "nodes": 223,
+          "tri": 430,
+          "quad": 0
+        },
+        "prior": {
+          "sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+          "path": "build/quad-feedback-search-curves-20261125/guarded/staging.steps/adjacent_trial/candidate.obj",
+          "nodes": 683,
+          "tri": 100,
+          "quad": 625
+        },
+        "candidate": {
+          "sha256": "d886e75bebfcdf96b6999c61bed3ee6ea8183923de1f6990112e08a9a05c6d90",
+          "path": "build/quad-feedback-search-curves-20261125/guarded/staging.steps/feedback_recovered/candidate.obj",
+          "nodes": 813,
+          "tri": 104,
+          "quad": 748
+        }
+      },
+      "ribbed_patch_12": {
+        "tri": {
+          "sha256": "2c242c53882b7b97207cca6bf030ce839071cbdc14614e2482690bba1be4a851",
+          "path": "build/quad-front-shape-request-20261123/ribbed.steps.pending/step_2_retry_0_accepted_tri.obj",
+          "nodes": 147,
+          "tri": 278,
+          "quad": 0
+        },
+        "prior": {
+          "sha256": "8fe269d99999e6f9ee78fa97576cdb24cda2bc7fed217af6aea16a811108245e",
+          "path": "build/quad-front-shape-request-20261123/ribbed.steps.pending/ordinary_step2_comparison/guarded_typed.obj",
+          "nodes": 525,
+          "tri": 60,
+          "quad": 487
+        },
+        "candidate": {
+          "sha256": "f758ed931cbfc440d4bc4825450bbe2c5373f3edafc939ba13e0268d8cec2c57",
+          "path": "build/quad-front-shape-request-20261123/ribbed.steps.pending/residual_only/guarded_typed.obj",
+          "nodes": 623,
+          "tri": 74,
+          "quad": 574
+        }
+      }
+    },
+    "seam_step1_sha256": "bde0f66fe7221af770d7eccd954154bbdc74d5f8c8b70e9332d7f9e8632a8fca",
+    "seam_edges": [
+      1,
+      4,
+      16,
+      64
+    ],
+    "files": {
+      "comparacao_triquad.png": "ff7d3d32886bfbee2d4544954d7dcdc27605dbf72b655b082154cd57fc5322db",
+      "curva_compartilhada.png": "fb3f24b9d4a6fa8dc289d07b899253ca36228e3761adbe5b512f149371f6db28"
+    },
+    "blender": {
+      "version": "5.3.0",
+      "scenes": {
+        "01 - CurvaBezier": {
+          "mesh_counts": [
+            {
+              "nodes": 223,
+              "faces": 430
+            },
+            {
+              "nodes": 683,
+              "faces": 725
+            },
+            {
+              "nodes": 813,
+              "faces": 852
+            }
+          ],
+          "outside_camera": []
+        },
+        "02 - Ribbed Bracket": {
+          "mesh_counts": [
+            {
+              "nodes": 147,
+              "faces": 278
+            },
+            {
+              "nodes": 525,
+              "faces": 547
+            },
+            {
+              "nodes": 623,
+              "faces": 648
+            }
+          ],
+          "outside_camera": []
+        },
+        "03 - Curva compartilhada": {
+          "mesh_counts": [
+            {
+              "nodes": 38,
+              "faces": 52
+            }
+          ],
+          "outside_camera": []
+        }
+      },
+      "sha256": "48bab3d468c9528d00bf0816f6287270e2c7bf78b415b45fd27c8fc0ab7a4a2a"
+    },
+    "reviewed_hosted_status": {
+      "run": 45579448136,
+      "passed": 4,
+      "pending": 0
+    }
   }
 }

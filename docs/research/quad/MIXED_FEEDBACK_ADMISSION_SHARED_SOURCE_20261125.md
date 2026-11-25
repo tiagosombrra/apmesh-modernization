@@ -98,3 +98,21 @@ native commands used the established compiler profile directly.
 At checkpoint the exact draft head had 1 successful, 3 pending and 0 other hosted jobs. Independent review,
 mixed shared-curve construction, native multipatch memory/rollback
 qualification and accepted mixed epochs remain pending.
+
+## Visual evidence from the archived run
+
+Local delivery in `build/quad-visual-proof-20261125`: two scientific PNG
+figures and a Blender 5.3 file with three scenes. The comparison uses the
+actual six archived typed meshes. It highlights the successor's worst
+contour-edge QUAD and compares the same UV corner across the mixed meshes.
+The seam figure uses the accepted TRI incidence archive and marks the
+coincident Step 1 endpoint with IDs 12 and 21. The seam scene remains
+an original TRI control.
+
+Input SHA-256 values and counts match the native receipt. The two figures
+were inspected visually. Blender was reopened to check ordered face cycles,
+stored coordinates at Blender precision, mesh counts and camera bounds.
+The archive includes an artifact manifest with SHA-256 values. The visual
+files remain local. No new native generation or acceptance occurred.
+A fresh read of PR 270 shows four successful hosted checks. Independent
+review and shared TRI/QUAD source qualification remain pending.
