@@ -151,6 +151,7 @@ jobs:
           python tests/quad/test_live_pair_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/live-pairs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python tests/quad/test_article_front_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/article-front
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python tests/quad/test_grouping_trial_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/grouping-trial
           exit $LASTEXITCODE
       - name: Retain controlled application output

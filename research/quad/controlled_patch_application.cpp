@@ -36,6 +36,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cstdlib>
 #include <cmath>
 #include <iostream>
 #include <iterator>
@@ -2014,9 +2015,14 @@ void StageGroupingCandidate(PatchBezier& patch, Candidate& previous,
 } // namespace
 
 int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
-  const auto grouping_plan = config.quad_grouping_plan.empty()
-                                 ? std::nullopt
-                                 : std::optional{ReadGroupingPlan(config.quad_grouping_plan)};
+  std::optional<GroupingBoxes> grouping_plan;
+  if (const char* plan_path = std::getenv("APMESH_QUAD_GROUPING_PLAN")) {
+    Require(*plan_path != '\0' &&
+                config.quad_experimental_case == "curved_bezier_article_front_area_centroid_v1" &&
+                config.input_model == "builtin:curva_bezier" && !config.quad_verify_rollback,
+            "A grouping plan requires the CurvaBezier area-centroid trial");
+    grouping_plan = ReadGroupingPlan(plan_path);
+  }
   bool grouped_candidate_staged = false;
   const auto output = std::filesystem::path(config.output_prefix + ".obj");
   const auto steps = std::filesystem::path(config.output_prefix + ".steps");

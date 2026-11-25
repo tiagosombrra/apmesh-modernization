@@ -25,8 +25,8 @@ available. See the [decision protocol](GROUPING_ADMISSION_AND_TRANSFER_20261124.
   reference as selected. `--control protect-neighbor` injects one fine-size
   request and verifies the selector veto without generating a candidate.
 
-`QUAD_GROUPING_PLAN` is the internal opt-in path used by the runner. It
-only applies with `quad_uv`, the article-front area centroid profile and
-built-in CurvaBezier. The native engine retains the experimental reference
+The runner passes the plan path through `APMESH_QUAD_GROUPING_PLAN` only
+to its staging subprocess. The experimental application accepts it on the
+built-in CurvaBezier article-front area-centroid path. The native engine retains the experimental reference
 owner during staging. The runner selects an OBJ for this one comparison.
 The selected file does not represent a scientifically accepted adaptive epoch.

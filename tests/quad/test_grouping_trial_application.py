@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -21,7 +22,10 @@ def check(exe, out, control=None):
     command = [sys.executable, str(ENTRY), "--exe", str(exe), "--out", str(out)]
     if control:
         command += ["--control", control]
-    subprocess.run(command, cwd=out.parent, check=True, timeout=365)
+    # An inherited plan must never leak into the independent reference process.
+    environment = os.environ.copy()
+    environment["APMESH_QUAD_GROUPING_PLAN"] = "nonexistent-inherited.plan"
+    subprocess.run(command, cwd=out.parent, check=True, timeout=365, env=environment)
     result = json.loads((out/"result.json").read_text(encoding="utf-8"))
     base = out/"baseline.steps"/STEM
     staged = out/"staging.steps/adjacent_trial/candidate.obj"

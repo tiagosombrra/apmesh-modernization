@@ -56,9 +56,6 @@ std::unordered_map<std::string, std::string> ReadConfigFile(const std::string& p
           value != "curved_bezier_article_front_vertex_mean_v1" &&
           value != "curved_bezier_article_front_area_centroid_v1")
         throw std::runtime_error("Unsupported QUAD experimental case");
-    } else if (key == "QUAD_GROUPING_PLAN") {
-      if (value.empty())
-        throw std::runtime_error("QUAD_GROUPING_PLAN requires a plan path");
     } else if (key == "QUAD_VERIFY_ROLLBACK") {
       if (value != "0" && value != "1")
         throw std::runtime_error("QUAD_VERIFY_ROLLBACK must be 0 or 1");
@@ -98,12 +95,6 @@ RuntimeConfig LoadRuntimeConfig(const std::string& path) {
   if (config.mesh_element_kind == "tri" &&
       (values.count("QUAD_EXPERIMENTAL_CASE") || values.count("QUAD_VERIFY_ROLLBACK")))
     throw std::runtime_error("Experimental QUAD keys require MESH_ELEMENT_KIND=quad_uv");
-  config.quad_grouping_plan = GetConfigValue(values, "QUAD_GROUPING_PLAN");
-  if (!config.quad_grouping_plan.empty() &&
-      (config.mesh_element_kind != "quad_uv" ||
-       config.quad_experimental_case != "curved_bezier_article_front_area_centroid_v1" ||
-       config.input_model != "builtin:curva_bezier" || config.quad_verify_rollback))
-    throw std::runtime_error("QUAD_GROUPING_PLAN requires the serial CurvaBezier grouping trial");
   config.adaptive_mode = GetConfigValue(values, "ADAPTIVE_MODE", "adaptive_stable");
   config.adaptive_intensity = atof(GetConfigValue(values, "ADAPTIVE_INTENSITY", "0.45").c_str());
   config.adaptive_quality_priority =

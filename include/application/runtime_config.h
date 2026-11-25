@@ -21,7 +21,6 @@ struct RuntimeConfig {
   std::string mesh_element_kind = "tri";
   std::string quad_experimental_case;
   bool quad_verify_rollback = false;
-  std::string quad_grouping_plan;
   std::string adaptive_mode = "adaptive_stable";
   double adaptive_intensity = 0.45;
   double adaptive_quality_priority = 0.75;

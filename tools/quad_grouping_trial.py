@@ -41,13 +41,15 @@ def run_mesh(exe, out, arm, grouped=False):
     config = (Path(__file__).resolve().parents[1]/"configs/quad/curved_patch_article_front.conf")
     lines = [f"OUTPUT_PREFIX={arm}" if line.startswith("OUTPUT_PREFIX=") else line
              for line in config.read_text(encoding="ascii").splitlines()]
+    environment = os.environ.copy()
+    environment.pop("APMESH_QUAD_GROUPING_PLAN", None)
     if grouped:
-        lines.append("QUAD_GROUPING_PLAN=grouping.plan")
+        environment["APMESH_QUAD_GROUPING_PLAN"] = "grouping.plan"
     conf = out/f"{arm}.conf"
     conf.write_text("\n".join(lines)+"\n", encoding="ascii")
     with (out/f"{arm}.stdout").open("xb") as stdout, (out/f"{arm}.stderr").open("xb") as stderr:
         subprocess.run([str(exe), "--config", conf.name], cwd=out, check=True, timeout=180,
-                       stdout=stdout, stderr=stderr)
+                       stdout=stdout, stderr=stderr, env=environment)
 
 
 def finish(out, result, source):
