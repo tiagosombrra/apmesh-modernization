@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: correct contour-adjacent transition quality under the common profile
+## Active: obtain quality-compliant front candidates before narrow closure
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,24 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - combine certified curves, protected grouping and AFT handoff near the contour
+
+[Draft PR 281](https://github.com/tiagosombrra/apmesh-modernization/pull/281)
+adds the explicit contour-parent plan. Five CurvaBezier and one Ribbed
+parents are excluded from seed dispatch by the existing policy and filled
+by the native front. The local minimum transition TRI angles reach 7.75
+and 13.57 degrees. Counts fall to 704 and 538 faces. RMS grows versus
+the prior batches, while both still improve geometry versus their exact
+predecessors and fit the budget. Both remain blocked on shape. At each
+worst recorded transition base only one active vertex gives a valid TRI
+and it misses the safety floor. [Combined trial](CONTOUR_TEMPLATE_HANDOFF_20261125.md).
+
+**Next:** inspect candidate space earlier in those front histories.
+Align a bounded analytic-surface interior-point rule where visible TRI
+apices cannot satisfy the frozen profile, then test on both development
+models. The scopes for ownership reentry, shared curves, reserved
+validation and global mixed curvature remain open. Zero accepted epochs.
 
 ### 2026-11-25 - achieve the common face budget with a protected interface batch
 
@@ -24,12 +42,8 @@ frozen 10 percent budget. The worst transition TRI reaches 3.15 and
 sub-floor transition TRI, 25 and 14 touch a template edge backed by
 a parent that touches the contour. [Batch evidence](INTERFACE_PARENT_BATCH_20261125.md).
 
-**Next:** project a common contour-adjacent template handoff under the
-existing clearance and request protection. Use it to target the remaining
-shape failures and verify both full meshes against the frozen profile
-before attempting the accepted-owner transaction. Exact PR 280 hosted
-checks are running. Zero accepted epochs. Shared curves, reserved
-validation and global mixed curvature remain open.
+The next native contour-side trial appears above. All four PR 280
+exact-head checks now pass.
 
 ### 2026-11-25 - apply coordinated native sizes to both development cases
 

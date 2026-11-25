@@ -4811,3 +4811,17 @@ contour-touching parent evidence covers 25 and 14 poor TRI.
 [Batch results](INTERFACE_PARENT_BATCH_20261125.md).
 Hosted exact-head checks run. Next project the contour-adjacent
 handoff. Zero accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - combine protected contour-side handoff with interior grouping
+
+Project five CurvaBezier and one Ribbed contour parents under the same
+request guards, clearance and template dispatcher. Draft PR 281 at
+acb12e6b stages both cases with exact predecessor and contour evidence.
+The transferred regions improve locally and both patches use fewer
+elements than their mixed predecessors. Record the RMS tradeoff and
+remaining shape veto. Existing-only apex replay finds just one valid
+TRI at each worst active base and no TRI above the profile floor.
+Native compatibility, three refusals, the boundary contracts and
+ten progressive checks pass. [Combined results](CONTOUR_TEMPLATE_HANDOFF_20261125.md).
+PR 280 exact checks pass and PR 281 checks are running. Next align
+prospective front point placement. Zero accepted mixed epochs.

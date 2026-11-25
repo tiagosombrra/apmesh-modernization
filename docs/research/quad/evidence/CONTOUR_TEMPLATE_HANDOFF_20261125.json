@@ -1,0 +1,1614 @@
+{
+  "schema": "apmesh.quad.contour_template_handoff.v1",
+  "date_fortaleza": "2026-11-25",
+  "pr": 281,
+  "head": "acb12e6ba97f3cfeecbc0bde7e57102b56932818",
+  "tree": "d4c3b9637cb81afef92b826403aff96631670d9e",
+  "parent": "3e01614c6e0559cc001bbed00984957dab3c12b5",
+  "local_commit": "cdaece5909d5c664e8f27b734aed55d8b9e45e06",
+  "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+  "native_image_sha256": "8d5e1b12ffb9b24fc7adfa260f57111ed9d24325b8f9abe22472ef0d5ff060d3",
+  "compiler": "MSVC x64 Debug C++17",
+  "projection": {
+    "curva": {
+      "retained_groups": [
+        [
+          0.75,
+          0.125,
+          0.875,
+          0.25
+        ],
+        [
+          0.75,
+          0.75,
+          0.875,
+          0.875
+        ],
+        [
+          0.125,
+          0.75,
+          0.25,
+          0.875
+        ]
+      ],
+      "selected": [
+        [
+          0.0,
+          0.5,
+          0.125,
+          0.625
+        ],
+        [
+          0.875,
+          0.25,
+          1.0,
+          0.375
+        ],
+        [
+          0.0,
+          0.625,
+          0.125,
+          0.75
+        ],
+        [
+          0.125,
+          0.0,
+          0.25,
+          0.125
+        ],
+        [
+          0.75,
+          0.0,
+          0.875,
+          0.125
+        ]
+      ],
+      "proposals": [
+        {
+          "parent": [
+            0.0,
+            0.5,
+            0.125,
+            0.625
+          ],
+          "target_tri_count": 2,
+          "children": [
+            [
+              0,
+              0.5,
+              0.0625,
+              0.5625
+            ],
+            [
+              0,
+              0.5625,
+              0.0625,
+              0.625
+            ],
+            [
+              0.0625,
+              0.5,
+              0.125,
+              0.5625
+            ],
+            [
+              0.0625,
+              0.5625,
+              0.125,
+              0.625
+            ]
+          ],
+          "seed_quads_released": 8
+        },
+        {
+          "parent": [
+            0.875,
+            0.25,
+            1.0,
+            0.375
+          ],
+          "target_tri_count": 2,
+          "children": [
+            [
+              0.875,
+              0.25,
+              0.9375,
+              0.3125
+            ],
+            [
+              0.875,
+              0.3125,
+              0.9375,
+              0.375
+            ],
+            [
+              0.9375,
+              0.25,
+              1,
+              0.3125
+            ],
+            [
+              0.9375,
+              0.3125,
+              1,
+              0.375
+            ]
+          ],
+          "seed_quads_released": 8
+        },
+        {
+          "parent": [
+            0.0,
+            0.625,
+            0.125,
+            0.75
+          ],
+          "target_tri_count": 1,
+          "children": [
+            [
+              0,
+              0.625,
+              0.0625,
+              0.6875
+            ],
+            [
+              0,
+              0.6875,
+              0.0625,
+              0.75
+            ],
+            [
+              0.0625,
+              0.625,
+              0.125,
+              0.6875
+            ],
+            [
+              0.0625,
+              0.6875,
+              0.125,
+              0.75
+            ]
+          ],
+          "seed_quads_released": 8
+        },
+        {
+          "parent": [
+            0.125,
+            0.0,
+            0.25,
+            0.125
+          ],
+          "target_tri_count": 1,
+          "children": [
+            [
+              0.125,
+              0,
+              0.1875,
+              0.0625
+            ],
+            [
+              0.125,
+              0.0625,
+              0.1875,
+              0.125
+            ],
+            [
+              0.1875,
+              0,
+              0.25,
+              0.0625
+            ],
+            [
+              0.1875,
+              0.0625,
+              0.25,
+              0.125
+            ]
+          ],
+          "seed_quads_released": 8
+        },
+        {
+          "parent": [
+            0.75,
+            0.0,
+            0.875,
+            0.125
+          ],
+          "target_tri_count": 1,
+          "children": [
+            [
+              0.75,
+              0,
+              0.8125,
+              0.0625
+            ],
+            [
+              0.75,
+              0.0625,
+              0.8125,
+              0.125
+            ],
+            [
+              0.8125,
+              0,
+              0.875,
+              0.0625
+            ],
+            [
+              0.8125,
+              0.0625,
+              0.875,
+              0.125
+            ]
+          ],
+          "seed_quads_released": 8
+        }
+      ],
+      "vetoes": [
+        {
+          "parent": [
+            0.25,
+            0.75,
+            0.5,
+            1.0
+          ],
+          "target_tri_count": 4,
+          "status": "not_four_disjoint_leaf_children"
+        },
+        {
+          "parent": [
+            0.75,
+            0.75,
+            1.0,
+            1.0
+          ],
+          "target_tri_count": 4,
+          "status": "not_four_disjoint_leaf_children"
+        },
+        {
+          "parent": [
+            0.0,
+            0.0,
+            0.125,
+            0.125
+          ],
+          "target_tri_count": 2,
+          "status": "protected_request",
+          "request_faces": [
+            646,
+            648
+          ]
+        },
+        {
+          "parent": [
+            0.0,
+            0.125,
+            0.125,
+            0.25
+          ],
+          "target_tri_count": 2,
+          "status": "protected_request",
+          "request_faces": [
+            637,
+            729,
+            730,
+            731
+          ]
+        },
+        {
+          "parent": [
+            0.0,
+            0.25,
+            0.125,
+            0.375
+          ],
+          "target_tri_count": 2,
+          "status": "protected_request",
+          "request_faces": [
+            637,
+            696,
+            729,
+            730,
+            731
+          ]
+        },
+        {
+          "parent": [
+            0.0,
+            0.375,
+            0.125,
+            0.5
+          ],
+          "target_tri_count": 2,
+          "status": "protected_request",
+          "request_faces": [
+            696
+          ]
+        },
+        {
+          "parent": [
+            0.0,
+            0.75,
+            0.25,
+            1.0
+          ],
+          "target_tri_count": 2,
+          "status": "not_four_disjoint_leaf_children"
+        }
+      ],
+      "current_leaves": 217,
+      "projected_leaves": 202,
+      "old_seed_quads": 645,
+      "projected_seed_quads": 607,
+      "weak_transition_tri": 41,
+      "covered_weak_tri": 7,
+      "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+      "source_receipt_sha256": "b38afcc2dadfcf192846e79b5f5ebb4f6ab2f7bcdde56d294928a3d5168e13e7"
+    },
+    "ribbed": {
+      "retained_groups": [
+        [
+          0.375,
+          0.125,
+          0.5,
+          0.25
+        ],
+        [
+          0.125,
+          0.5,
+          0.25,
+          0.625
+        ],
+        [
+          0.125,
+          0.375,
+          0.25,
+          0.5
+        ],
+        [
+          0.5,
+          0.75,
+          0.625,
+          0.875
+        ],
+        [
+          0.375,
+          0.75,
+          0.5,
+          0.875
+        ],
+        [
+          0.5,
+          0.125,
+          0.625,
+          0.25
+        ]
+      ],
+      "selected": [
+        [
+          0.25,
+          0.875,
+          0.375,
+          1.0
+        ]
+      ],
+      "proposals": [
+        {
+          "parent": [
+            0.25,
+            0.875,
+            0.375,
+            1.0
+          ],
+          "target_tri_count": 4,
+          "children": [
+            [
+              0.25,
+              0.875,
+              0.3125,
+              0.9375
+            ],
+            [
+              0.25,
+              0.9375,
+              0.3125,
+              1
+            ],
+            [
+              0.3125,
+              0.875,
+              0.375,
+              0.9375
+            ],
+            [
+              0.3125,
+              0.9375,
+              0.375,
+              1
+            ]
+          ],
+          "seed_quads_released": 8
+        }
+      ],
+      "vetoes": [
+        {
+          "parent": [
+            0.625,
+            0.875,
+            0.75,
+            1.0
+          ],
+          "target_tri_count": 4,
+          "status": "protected_request",
+          "request_faces": [
+            490
+          ]
+        },
+        {
+          "parent": [
+            0.625,
+            0.0,
+            0.75,
+            0.125
+          ],
+          "target_tri_count": 3,
+          "status": "protected_request",
+          "request_faces": [
+            477,
+            478,
+            503
+          ]
+        },
+        {
+          "parent": [
+            0.875,
+            0.875,
+            1.0,
+            1.0
+          ],
+          "target_tri_count": 2,
+          "status": "protected_request",
+          "request_faces": [
+            480,
+            490,
+            542,
+            543
+          ]
+        },
+        {
+          "parent": [
+            0.25,
+            0.0,
+            0.5,
+            0.25
+          ],
+          "target_tri_count": 1,
+          "status": "not_four_disjoint_leaf_children"
+        }
+      ],
+      "current_leaves": 115,
+      "projected_leaves": 112,
+      "old_seed_quads": 470,
+      "projected_seed_quads": 455,
+      "weak_transition_tri": 14,
+      "covered_weak_tri": 4,
+      "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+      "source_receipt_sha256": "d039767af92f4465ce42b9616398e56c777573fb89cd5be7fa456811cf7936f3"
+    }
+  },
+  "native_cases": {
+    "curva": {
+      "process": {
+        "exit": 0,
+        "seconds": 78.71533274650574,
+        "timeout": 210
+      },
+      "native_status": "staged",
+      "admission_status": "blocked",
+      "blockers": [
+        "contour_edge_QUAD.min_angle_deg.below_safety_floor",
+        "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+        "contour_vertex_TRI.min_shape.below_safety_floor",
+        "interior_TRI.min_angle_deg.below_safety_floor",
+        "interior_QUAD.min_angle_deg.regional_regression"
+      ],
+      "grouping": {
+        "parents": [
+          [
+            0.75,
+            0.125,
+            0.875,
+            0.25
+          ],
+          [
+            0.75,
+            0.75,
+            0.875,
+            0.875
+          ],
+          [
+            0.125,
+            0.75,
+            0.25,
+            0.875
+          ],
+          [
+            0,
+            0.5,
+            0.125,
+            0.625
+          ],
+          [
+            0.875,
+            0.25,
+            1,
+            0.375
+          ],
+          [
+            0,
+            0.625,
+            0.125,
+            0.75
+          ],
+          [
+            0.125,
+            0,
+            0.25,
+            0.125
+          ],
+          [
+            0.75,
+            0,
+            0.875,
+            0.125
+          ]
+        ],
+        "leaves_after_requests": 226,
+        "leaves_after_grouping": 202
+      },
+      "actual_removed_leaves": [
+        [
+          0,
+          0.5,
+          0.0625,
+          0.5625
+        ],
+        [
+          0,
+          0.5625,
+          0.0625,
+          0.625
+        ],
+        [
+          0,
+          0.625,
+          0.0625,
+          0.6875
+        ],
+        [
+          0,
+          0.6875,
+          0.0625,
+          0.75
+        ],
+        [
+          0.0625,
+          0.5,
+          0.125,
+          0.5625
+        ],
+        [
+          0.0625,
+          0.5625,
+          0.125,
+          0.625
+        ],
+        [
+          0.0625,
+          0.625,
+          0.125,
+          0.6875
+        ],
+        [
+          0.0625,
+          0.6875,
+          0.125,
+          0.75
+        ],
+        [
+          0.125,
+          0,
+          0.1875,
+          0.0625
+        ],
+        [
+          0.125,
+          0.0625,
+          0.1875,
+          0.125
+        ],
+        [
+          0.1875,
+          0,
+          0.25,
+          0.0625
+        ],
+        [
+          0.1875,
+          0.0625,
+          0.25,
+          0.125
+        ],
+        [
+          0.75,
+          0,
+          0.8125,
+          0.0625
+        ],
+        [
+          0.75,
+          0.0625,
+          0.8125,
+          0.125
+        ],
+        [
+          0.8125,
+          0,
+          0.875,
+          0.0625
+        ],
+        [
+          0.8125,
+          0.0625,
+          0.875,
+          0.125
+        ],
+        [
+          0.875,
+          0.25,
+          0.9375,
+          0.3125
+        ],
+        [
+          0.875,
+          0.3125,
+          0.9375,
+          0.375
+        ],
+        [
+          0.9375,
+          0.25,
+          1,
+          0.3125
+        ],
+        [
+          0.9375,
+          0.3125,
+          1,
+          0.375
+        ]
+      ],
+      "actual_contour_parents": [
+        [
+          0.0,
+          0.5,
+          0.125,
+          0.625
+        ],
+        [
+          0.0,
+          0.625,
+          0.125,
+          0.75
+        ],
+        [
+          0.125,
+          0.0,
+          0.25,
+          0.125
+        ],
+        [
+          0.75,
+          0.0,
+          0.875,
+          0.125
+        ],
+        [
+          0.875,
+          0.25,
+          1.0,
+          0.375
+        ]
+      ],
+      "result_sha256": "2d9d14ea7902ef42ad203e5e8746a7c3174810597885e4d7050a4e39f2e00833",
+      "candidate_sha256": "5f8af094a982daed4389899acd1337194d04e3b42ce22aa0fd628bdb942aab85",
+      "source_sha256": {
+        "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+        "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+        "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+      },
+      "request_trace_unchanged": true,
+      "contour_certificate_sha256": "114e0b9ca2a3e5fd4c1b29e0dc215ba666654d6476243cfc7dde2aaf35e79fb5",
+      "contour_unchanged": true,
+      "contour_segments": 17,
+      "growth": -0.03825136612021858,
+      "seed_quads": 607,
+      "comparison": {
+        "batch": {
+          "birth": {
+            "interior_QUAD": {
+              "count": 646,
+              "minimum_angle": 26.83266874960625,
+              "minimum_shape": 0.45136091944818013,
+              "below_safety": 0
+            },
+            "contour_edge_QUAD": {
+              "count": 9,
+              "minimum_angle": 19.438606955832434,
+              "minimum_shape": 0.32843100153567506,
+              "below_safety": 5
+            },
+            "contour_edge_TRI": {
+              "count": 8,
+              "minimum_angle": 10.367272360473434,
+              "minimum_shape": 0.30088697922437296,
+              "below_safety": 1
+            },
+            "interior_TRI": {
+              "count": 8,
+              "minimum_angle": 3.8113097783603287,
+              "minimum_shape": 0.11262007061328144,
+              "below_safety": 2
+            },
+            "contour_vertex_TRI": {
+              "count": 77,
+              "minimum_angle": 2.4722260945075663,
+              "minimum_shape": 0.07380556874664701,
+              "below_safety": 41
+            },
+            "contour_vertex_QUAD": {
+              "count": 1,
+              "minimum_angle": 56.59967356303402,
+              "minimum_shape": 0.599546817468734,
+              "below_safety": 0
+            }
+          },
+          "birth_transferred_area": {
+            "transition_tri_count": 20,
+            "min_angle": 5.65163656606361,
+            "below_safety": 8
+          },
+          "final": {
+            "interior_QUAD": {
+              "count": 646,
+              "minimum_angle": 36.83403970843952,
+              "minimum_shape": 0.5994800458847213,
+              "below_safety": 0
+            },
+            "contour_edge_QUAD": {
+              "count": 9,
+              "minimum_angle": 19.438606955832434,
+              "minimum_shape": 0.32843100153567506,
+              "below_safety": 5
+            },
+            "contour_vertex_QUAD": {
+              "count": 1,
+              "minimum_angle": 56.59967356303402,
+              "minimum_shape": 0.599546817468734,
+              "below_safety": 0
+            },
+            "contour_edge_TRI": {
+              "count": 8,
+              "minimum_angle": 10.367272360473434,
+              "minimum_shape": 0.30088697922437296,
+              "below_safety": 1
+            },
+            "interior_TRI": {
+              "count": 8,
+              "minimum_angle": 7.887662445262817,
+              "minimum_shape": 0.2251676341985339,
+              "below_safety": 2
+            },
+            "contour_vertex_TRI": {
+              "count": 77,
+              "minimum_angle": 3.1455964932958866,
+              "minimum_shape": 0.0935865285368823,
+              "below_safety": 41
+            }
+          },
+          "final_transferred_area": {
+            "transition_tri_count": 20,
+            "min_angle": 5.65163656606361,
+            "below_safety": 8
+          },
+          "24": {
+            "faces": 749,
+            "boundary_segments": 17,
+            "global_error": {
+              "sample_count": 576,
+              "max_xyz": 0.03939654415646278,
+              "rms_uv": 0.007993854206530407,
+              "rms_source_area": 0.0075506220315866525,
+              "tri_sites": 130,
+              "quad_sites": 446
+            },
+            "max_adjacent_size_ratio": 7.62927357732771
+          },
+          "48": {
+            "faces": 749,
+            "boundary_segments": 17,
+            "global_error": {
+              "sample_count": 2304,
+              "max_xyz": 0.04382005393601518,
+              "rms_uv": 0.008156655872927568,
+              "rms_source_area": 0.007684716144829851,
+              "tri_sites": 584,
+              "quad_sites": 1720
+            },
+            "max_adjacent_size_ratio": 7.62927357732771
+          }
+        },
+        "handoff": {
+          "birth": {
+            "interior_QUAD": {
+              "count": 610,
+              "minimum_angle": 28.981182264110192,
+              "minimum_shape": 0.484509368008931,
+              "below_safety": 0
+            },
+            "contour_edge_QUAD": {
+              "count": 11,
+              "minimum_angle": 19.438606955832434,
+              "minimum_shape": 0.32843100153567506,
+              "below_safety": 4
+            },
+            "contour_edge_TRI": {
+              "count": 6,
+              "minimum_angle": 18.831908305542832,
+              "minimum_shape": 0.4461823495614415,
+              "below_safety": 0
+            },
+            "interior_TRI": {
+              "count": 7,
+              "minimum_angle": 10.110511600887017,
+              "minimum_shape": 0.2791018472876159,
+              "below_safety": 3
+            },
+            "contour_vertex_TRI": {
+              "count": 70,
+              "minimum_angle": 2.4722260945075663,
+              "minimum_shape": 0.07380556874664701,
+              "below_safety": 38
+            }
+          },
+          "birth_transferred_area": {
+            "transition_tri_count": 11,
+            "min_angle": 7.74763008560553,
+            "below_safety": 4
+          },
+          "final": {
+            "interior_QUAD": {
+              "count": 610,
+              "minimum_angle": 39.72251967333946,
+              "minimum_shape": 0.5675352976543959,
+              "below_safety": 0
+            },
+            "contour_edge_QUAD": {
+              "count": 11,
+              "minimum_angle": 19.438606955832434,
+              "minimum_shape": 0.32843100153567506,
+              "below_safety": 4
+            },
+            "contour_edge_TRI": {
+              "count": 6,
+              "minimum_angle": 17.274705150823866,
+              "minimum_shape": 0.3857990913797301,
+              "below_safety": 0
+            },
+            "interior_TRI": {
+              "count": 7,
+              "minimum_angle": 12.074325827530048,
+              "minimum_shape": 0.3232608412413648,
+              "below_safety": 1
+            },
+            "contour_vertex_TRI": {
+              "count": 70,
+              "minimum_angle": 3.1455964932958866,
+              "minimum_shape": 0.0935865285368823,
+              "below_safety": 37
+            }
+          },
+          "final_transferred_area": {
+            "transition_tri_count": 12,
+            "min_angle": 7.74763008560553,
+            "below_safety": 3
+          },
+          "24": {
+            "faces": 704,
+            "boundary_segments": 17,
+            "global_error": {
+              "sample_count": 576,
+              "max_xyz": 0.039742105155318994,
+              "rms_uv": 0.00807255386329179,
+              "rms_source_area": 0.007637653597215685,
+              "tri_sites": 134,
+              "quad_sites": 442
+            },
+            "max_adjacent_size_ratio": 7.62927357732771
+          },
+          "48": {
+            "faces": 704,
+            "boundary_segments": 17,
+            "global_error": {
+              "sample_count": 2304,
+              "max_xyz": 0.04399111909395774,
+              "rms_uv": 0.008226839744436018,
+              "rms_source_area": 0.007764928750628515,
+              "tri_sites": 574,
+              "quad_sites": 1730
+            },
+            "max_adjacent_size_ratio": 7.62927357732771
+          }
+        }
+      },
+      "candidate_plan_sha256": "cb6e5deeefd22506fa7220afa074bbbfe5306e8e471d9f722f54cf26ffa41d25",
+      "control_plan_sha256": "a64e1e1bfa35dfa9cd098ff922fedd0344fe4ed3a24add9c0051b0c0f7d0b64f",
+      "plan_lines": [
+        "apmesh_single_patch_feedback_v1 3",
+        "reference \"source.steps\"",
+        "certify_boundary_refinement",
+        "additional_pairs",
+        "additional_pair_error_limit 0.044999999999999998",
+        "curve 12",
+        "curve 13",
+        "face 637 0.041666666666666664 0.20833333333333331 0.097787182916615728",
+        "face 646 0.050000000000000003 0.03125 0.071039036072819819",
+        "face 648 0.050000000000000003 0.043750000000000004 0.072434950308604237",
+        "face 696 0.083333333333333329 0.32291666666666663 0.10345663744811938",
+        "face 729 0.083333333333333329 0.26041666666666663 0.073855809353387328",
+        "face 730 0.083333333333333329 0.30208333333333331 0.076634546257866198",
+        "face 731 0.083333333333333329 0.28125 0.075265308809064776",
+        "curve 8",
+        "group_feedback_parent 0.75 0.125 0.875 0.25",
+        "group_feedback_parent 0.75 0.75 0.875 0.875",
+        "group_feedback_parent 0.125 0.75 0.25 0.875",
+        "group_feedback_contour_parent 0 0.5 0.125 0.625",
+        "group_feedback_contour_parent 0.875 0.25 1 0.375",
+        "group_feedback_contour_parent 0 0.625 0.125 0.75",
+        "group_feedback_contour_parent 0.125 0 0.25 0.125",
+        "group_feedback_contour_parent 0.75 0 0.875 0.125"
+      ],
+      "gain_from_actual_mixed_predecessor": {
+        "24": 0.3538870135030646,
+        "48": 0.34830246136413706
+      }
+    },
+    "ribbed": {
+      "process": {
+        "exit": 0,
+        "seconds": 44.91561818122864,
+        "timeout": 210
+      },
+      "native_status": "staged",
+      "admission_status": "blocked",
+      "blockers": [
+        "contour_edge_QUAD.min_angle_deg.regional_regression",
+        "contour_edge_QUAD.min_shape.regional_regression",
+        "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+        "contour_vertex_QUAD.min_angle_deg.regional_regression",
+        "interior_TRI.min_angle_deg.regional_regression",
+        "interior_QUAD.min_angle_deg.regional_regression",
+        "interior_QUAD.min_shape.regional_regression"
+      ],
+      "grouping": {
+        "parents": [
+          [
+            0.375,
+            0.125,
+            0.5,
+            0.25
+          ],
+          [
+            0.125,
+            0.5,
+            0.25,
+            0.625
+          ],
+          [
+            0.125,
+            0.375,
+            0.25,
+            0.5
+          ],
+          [
+            0.5,
+            0.75,
+            0.625,
+            0.875
+          ],
+          [
+            0.375,
+            0.75,
+            0.5,
+            0.875
+          ],
+          [
+            0.5,
+            0.125,
+            0.625,
+            0.25
+          ],
+          [
+            0.25,
+            0.875,
+            0.375,
+            1
+          ]
+        ],
+        "leaves_after_requests": 133,
+        "leaves_after_grouping": 112
+      },
+      "actual_removed_leaves": [
+        [
+          0.25,
+          0.875,
+          0.3125,
+          0.9375
+        ],
+        [
+          0.25,
+          0.9375,
+          0.3125,
+          1
+        ],
+        [
+          0.3125,
+          0.875,
+          0.375,
+          0.9375
+        ],
+        [
+          0.3125,
+          0.9375,
+          0.375,
+          1
+        ]
+      ],
+      "actual_contour_parents": [
+        [
+          0.25,
+          0.875,
+          0.375,
+          1.0
+        ]
+      ],
+      "result_sha256": "f40901c37087a301eec35adebcbaebf23ab54d4f853a2b10841cd0fbadc7ffd4",
+      "candidate_sha256": "1505abed0121eeb54cc5b7bec7e29a0fb15e79e96675ede7e2f3e1b1ae50e743",
+      "source_sha256": {
+        "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+        "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+        "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+      },
+      "request_trace_unchanged": true,
+      "contour_certificate_sha256": "7d5e7778f95659441d1110d3472dd333e9f921d042efe5d8eba2466e67d30c32",
+      "contour_unchanged": true,
+      "contour_segments": 23,
+      "growth": -0.016453382084095063,
+      "seed_quads": 455,
+      "comparison": {
+        "batch": {
+          "birth": {
+            "interior_QUAD": {
+              "count": 474,
+              "minimum_angle": 26.062329924849276,
+              "minimum_shape": 0.3187473918768228,
+              "below_safety": 0
+            },
+            "contour_edge_TRI": {
+              "count": 7,
+              "minimum_angle": 26.05476418930295,
+              "minimum_shape": 0.524430241463529,
+              "below_safety": 0
+            },
+            "contour_edge_QUAD": {
+              "count": 15,
+              "minimum_angle": 25.335621873573015,
+              "minimum_shape": 0.4205384262090846,
+              "below_safety": 0
+            },
+            "contour_vertex_TRI": {
+              "count": 41,
+              "minimum_angle": 8.04156052292977,
+              "minimum_shape": 0.236777663982146,
+              "below_safety": 16
+            },
+            "interior_TRI": {
+              "count": 19,
+              "minimum_angle": 12.53672132968701,
+              "minimum_shape": 0.3648603604889334,
+              "below_safety": 2
+            },
+            "contour_vertex_QUAD": {
+              "count": 3,
+              "minimum_angle": 43.44077822153558,
+              "minimum_shape": 0.6799611085434666,
+              "below_safety": 0
+            }
+          },
+          "birth_transferred_area": {
+            "transition_tri_count": 4,
+            "min_angle": 8.04156052292977,
+            "below_safety": 4
+          },
+          "final": {
+            "interior_QUAD": {
+              "count": 474,
+              "minimum_angle": 26.289863992652087,
+              "minimum_shape": 0.3187473918768228,
+              "below_safety": 0
+            },
+            "contour_edge_QUAD": {
+              "count": 15,
+              "minimum_angle": 25.335621873573015,
+              "minimum_shape": 0.4205384262090846,
+              "below_safety": 0
+            },
+            "contour_vertex_QUAD": {
+              "count": 3,
+              "minimum_angle": 43.44077822153558,
+              "minimum_shape": 0.6636177057726924,
+              "below_safety": 0
+            },
+            "contour_edge_TRI": {
+              "count": 7,
+              "minimum_angle": 25.403182168278605,
+              "minimum_shape": 0.5120430499404189,
+              "below_safety": 0
+            },
+            "contour_vertex_TRI": {
+              "count": 41,
+              "minimum_angle": 8.04156052292977,
+              "minimum_shape": 0.236777663982146,
+              "below_safety": 14
+            },
+            "interior_TRI": {
+              "count": 19,
+              "minimum_angle": 18.37051561928486,
+              "minimum_shape": 0.4330453078501855,
+              "below_safety": 0
+            }
+          },
+          "final_transferred_area": {
+            "transition_tri_count": 4,
+            "min_angle": 8.04156052292977,
+            "below_safety": 4
+          },
+          "24": {
+            "faces": 559,
+            "boundary_segments": 23,
+            "global_error": {
+              "sample_count": 576,
+              "max_xyz": 0.10278111763359259,
+              "rms_uv": 0.017235302976304125,
+              "rms_source_area": 0.017243726769617277,
+              "tri_sites": 78,
+              "quad_sites": 498
+            },
+            "max_adjacent_size_ratio": 4.461463978375069
+          },
+          "48": {
+            "faces": 559,
+            "boundary_segments": 23,
+            "global_error": {
+              "sample_count": 2304,
+              "max_xyz": 0.10748410563240578,
+              "rms_uv": 0.01731763976114069,
+              "rms_source_area": 0.01732366424786303,
+              "tri_sites": 357,
+              "quad_sites": 1947
+            },
+            "max_adjacent_size_ratio": 4.461463978375069
+          }
+        },
+        "handoff": {
+          "birth": {
+            "interior_QUAD": {
+              "count": 459,
+              "minimum_angle": 26.062329924849276,
+              "minimum_shape": 0.3187473918768228,
+              "below_safety": 0
+            },
+            "contour_edge_TRI": {
+              "count": 6,
+              "minimum_angle": 26.05476418930295,
+              "minimum_shape": 0.524430241463529,
+              "below_safety": 0
+            },
+            "contour_edge_QUAD": {
+              "count": 16,
+              "minimum_angle": 25.335621873573015,
+              "minimum_shape": 0.4205384262090846,
+              "below_safety": 0
+            },
+            "contour_vertex_TRI": {
+              "count": 41,
+              "minimum_angle": 8.056232366391924,
+              "minimum_shape": 0.2372959082137662,
+              "below_safety": 16
+            },
+            "interior_TRI": {
+              "count": 14,
+              "minimum_angle": 12.53672132968701,
+              "minimum_shape": 0.3648603604889334,
+              "below_safety": 2
+            },
+            "contour_vertex_QUAD": {
+              "count": 2,
+              "minimum_angle": 43.44077822153558,
+              "minimum_shape": 0.6799611085434666,
+              "below_safety": 0
+            }
+          },
+          "birth_transferred_area": {
+            "transition_tri_count": 1,
+            "min_angle": 13.565188834671508,
+            "below_safety": 1
+          },
+          "final": {
+            "interior_QUAD": {
+              "count": 459,
+              "minimum_angle": 26.289863992652087,
+              "minimum_shape": 0.3187473918768228,
+              "below_safety": 0
+            },
+            "contour_edge_QUAD": {
+              "count": 16,
+              "minimum_angle": 25.335621873573015,
+              "minimum_shape": 0.4205384262090846,
+              "below_safety": 0
+            },
+            "contour_vertex_QUAD": {
+              "count": 2,
+              "minimum_angle": 43.44077822153558,
+              "minimum_shape": 0.6636177057726924,
+              "below_safety": 0
+            },
+            "contour_edge_TRI": {
+              "count": 6,
+              "minimum_angle": 25.403182168278605,
+              "minimum_shape": 0.5120430499404189,
+              "below_safety": 0
+            },
+            "contour_vertex_TRI": {
+              "count": 41,
+              "minimum_angle": 8.056232366391924,
+              "minimum_shape": 0.2372959082137662,
+              "below_safety": 14
+            },
+            "interior_TRI": {
+              "count": 14,
+              "minimum_angle": 18.564257167560097,
+              "minimum_shape": 0.4373188570045186,
+              "below_safety": 0
+            }
+          },
+          "final_transferred_area": {
+            "transition_tri_count": 1,
+            "min_angle": 13.565188834671508,
+            "below_safety": 1
+          },
+          "24": {
+            "faces": 538,
+            "boundary_segments": 23,
+            "global_error": {
+              "sample_count": 576,
+              "max_xyz": 0.10278111763359259,
+              "rms_uv": 0.01776422733109163,
+              "rms_source_area": 0.01778565085238507,
+              "tri_sites": 77,
+              "quad_sites": 499
+            },
+            "max_adjacent_size_ratio": 4.837826816471032
+          },
+          "48": {
+            "faces": 538,
+            "boundary_segments": 23,
+            "global_error": {
+              "sample_count": 2304,
+              "max_xyz": 0.10748410563240578,
+              "rms_uv": 0.01785534924896093,
+              "rms_source_area": 0.017874159985239443,
+              "tri_sites": 349,
+              "quad_sites": 1955
+            },
+            "max_adjacent_size_ratio": 4.837826816471032
+          }
+        }
+      },
+      "candidate_plan_sha256": "c77b4480cf3cc374d1f3393c18b6b2743c4c1a861bb222a3fb4f78932e375480",
+      "control_plan_sha256": "eaab6944b0f887b895a3e62e20d9d79a93d90f296ce0a7fc77ee6c17fe2e74d4",
+      "plan_lines": [
+        "apmesh_single_patch_feedback_v1 2",
+        "reference \"source.steps\"",
+        "certify_boundary_refinement",
+        "additional_pairs",
+        "additional_pair_error_limit 0.044999999999999998",
+        "curve 2",
+        "curve 3",
+        "curve 4",
+        "curve 5",
+        "curve 6",
+        "curve 7",
+        "curve 8",
+        "curve 9",
+        "face 92 0.86509958902994788 0.27403089735243052 0.24346132681921751",
+        "face 477 0.64068221626803279 0.0625 0.45102559192493713",
+        "face 478 0.84378432808443904 0.09375 0.38298137195051996",
+        "face 479 0.96875 0.68429444392677397 0.59220220219599229",
+        "face 480 0.96875 0.9181889632018283 0.4641953630457234",
+        "face 486 0.77734375 0.16796875 0.28368990514853326",
+        "face 488 0.97499999999999998 0.099887027591466906 0.443708268128024",
+        "face 489 0.97956349206349214 0.3233048830950071 0.47115354518404984",
+        "face 490 0.75 0.92500000000000004 0.66182471591384584",
+        "face 503 0.73758238740265369 0.050000000000000003 0.33409303105550897",
+        "face 504 0.76249999999999996 0.21249999999999999 0.38298137195051996",
+        "face 509 0.90000000000000002 0.28738702759146689 0.32867279120594367",
+        "face 510 0.95456349206349211 0.28576215848563208 0.34900262606225912",
+        "face 515 0.90000000000000002 0.71273489408195023 0.43866829792295725",
+        "face 541 0.90000000000000002 0.78773489408195019 0.49138779207920813",
+        "face 542 0.9375 0.94999999999999996 0.49024048435701062",
+        "face 543 0.91249999999999998 0.94999999999999996 0.49024053030655246",
+        "curve 1",
+        "group_feedback_parent 0.375 0.125 0.5 0.25",
+        "group_feedback_parent 0.125 0.5 0.25 0.625",
+        "group_feedback_parent 0.125 0.375 0.25 0.5",
+        "group_feedback_parent 0.5 0.75 0.625 0.875",
+        "group_feedback_parent 0.375 0.75 0.5 0.875",
+        "group_feedback_parent 0.5 0.125 0.625 0.25",
+        "group_feedback_contour_parent 0.25 0.875 0.375 1"
+      ],
+      "gain_from_actual_mixed_predecessor": {
+        "24": 0.3505149391357448,
+        "48": 0.3497485234527837
+      }
+    }
+  },
+  "existing_apex_replay": {
+    "curva": {
+      "operation": 77,
+      "final_worst_angle": 3.1455964932958866,
+      "active_vertex_count": 31,
+      "valid_existing_uv_tri": 1,
+      "existing_tri_meeting_floor": 0,
+      "existing_apices": [
+        {
+          "apex": 665,
+          "local": true,
+          "min_angle": 3.1455964932958866,
+          "shape": 0.0935865285368823
+        }
+      ]
+    },
+    "ribbed": {
+      "operation": 82,
+      "final_worst_angle": 8.056232366391924,
+      "active_vertex_count": 5,
+      "valid_existing_uv_tri": 1,
+      "existing_tri_meeting_floor": 0,
+      "existing_apices": [
+        {
+          "apex": 512,
+          "local": true,
+          "min_angle": 8.056232366391924,
+          "shape": 0.2372959082137662
+        }
+      ]
+    }
+  },
+  "prior_plan_compatibility": {
+    "candidate.obj": "69a8f51f782180ecb4711288540485c9783967f7eaedb3d4932c2413087a1681",
+    "boundary_refinement.json": "7d5e7778f95659441d1110d3472dd333e9f921d042efe5d8eba2466e67d30c32",
+    "grouped_parents.json": "6dd9ae3c1b083b0dcae032bc9a214a089c09aab0ed0c5f4233f013a7c1a1bb01",
+    "leaves.csv": "1d79821b973993e296e9d3d238389f9b8cf47c50937b82b12b2267e18330e178",
+    "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b",
+    "result.txt": "0fdfcb34fc995e1132c91ba1d6f201f97c01d8479253143e9611f22663b9e75b",
+    "candidate_front/front.json": "4f1ac3266e631b8a3fe516de35d76b82a08046b84ea712e8d25d9c984fa38bc2"
+  },
+  "refused_controls": {
+    "contour-wrong-kind-curva": {
+      "exit": 4294967295,
+      "reasons": [
+        "Invalid interior feedback grouping parent"
+      ],
+      "source_sha256": {
+        "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+        "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+        "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+      }
+    },
+    "interior-wrong-kind-curva": {
+      "exit": 4294967295,
+      "reasons": [
+        "Invalid contour feedback grouping parent"
+      ],
+      "source_sha256": {
+        "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+        "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+        "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+      }
+    },
+    "protected-ribbed": {
+      "exit": 4294967295,
+      "reasons": [
+        "Grouping would remove a refinement request"
+      ],
+      "source_sha256": {
+        "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+        "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+        "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+      }
+    }
+  },
+  "commands": {
+    "contour-handoff-projection": {
+      "command": [
+        "python",
+        "build/quad-contour-handoff-20261125/project.py"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 0.353132963180542,
+        "timeout": 75
+      }
+    },
+    "contour-handoff-build": {
+      "command": [
+        "cmake",
+        "--build",
+        "build/quad-grouping-runner-results/msvc",
+        "--target",
+        "ap_mesh",
+        "quad_real_boundary_source_contracts",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 9.1965913772583,
+        "timeout": 300
+      }
+    },
+    "contour-handoff-boundary-contracts": {
+      "command": [
+        "build/quad-grouping-runner-results/msvc/bin/Debug/quad_real_boundary_source_contracts.exe",
+        "configs/quad/curved_patch_original_curves.conf"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 3.6346638202667236,
+        "timeout": 90
+      }
+    },
+    "contour-handoff-compare": {
+      "command": [
+        "python",
+        "build/quad-contour-handoff-20261125/compare.py"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 1.1151249408721924,
+        "timeout": 75
+      }
+    },
+    "contour-handoff-apices": {
+      "command": [
+        "python",
+        "build/quad-contour-handoff-20261125/trace_apices.py"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 0.30271077156066895,
+        "timeout": 75
+      }
+    },
+    "handoff-native-curva-handoff": {
+      "command": [
+        "python",
+        "build/quad-contour-handoff-20261125/run.py",
+        "curva",
+        "handoff"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 78.71533274650574,
+        "timeout": 210
+      }
+    },
+    "handoff-native-ribbed-handoff": {
+      "command": [
+        "python",
+        "build/quad-contour-handoff-20261125/run.py",
+        "ribbed",
+        "handoff"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 44.91561818122864,
+        "timeout": 210
+      }
+    },
+    "handoff-native-ribbed-compat": {
+      "command": [
+        "python",
+        "build/quad-contour-handoff-20261125/run.py",
+        "ribbed",
+        "compat"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 41.95927023887634,
+        "timeout": 210
+      }
+    },
+    "handoff-native-curva-contour-wrong-kind": {
+      "command": [
+        "python",
+        "build/quad-contour-handoff-20261125/run.py",
+        "curva",
+        "contour-wrong-kind"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 0.3438527584075928,
+        "timeout": 210
+      }
+    },
+    "handoff-native-curva-interior-wrong-kind": {
+      "command": [
+        "python",
+        "build/quad-contour-handoff-20261125/run.py",
+        "curva",
+        "interior-wrong-kind"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 0.3608255386352539,
+        "timeout": 210
+      }
+    },
+    "handoff-native-ribbed-protected": {
+      "command": [
+        "python",
+        "build/quad-contour-handoff-20261125/run.py",
+        "ribbed",
+        "protected"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 20.085163593292236,
+        "timeout": 210
+      }
+    }
+  },
+  "local_progressive_tests_passed": 10,
+  "native_boundary_contracts": {
+    "captures": 6,
+    "reversed": 3,
+    "original_refusals": 54,
+    "certified": 6,
+    "unchanged": 6,
+    "certification_refusals": 24
+  },
+  "hosted": {
+    "previous_run": 45682472818,
+    "previous_passed": 4,
+    "current_run": 45688349735,
+    "current_in_progress": 4
+  },
+  "validation_planner": "local validation-baseline.json absent",
+  "accepted_mixed_epochs": 0,
+  "reserved_cases_run": 0
+}
