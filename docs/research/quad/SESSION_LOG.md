@@ -4700,3 +4700,14 @@ shape. [Native comparison](NATIVE_OP81_PARENT_GROUPING_20261125.md).
 The operation 74 seed edge comes from leaf 148, whose parent touches the
 contour. Next assess the contiguous physical transition.
 No accepted mixed epoch.
+
+## 2026-11-25 Fortaleza - diagnose the level-4 to level-3 transition at operation 74
+
+Read the final PR 278 matrix with all four jobs passing, and bind the
+archived grouped CurvaBezier front. All 74 front states retain the short
+edge without a better closure. Nineteen region-preserving reconnections
+and the guarded single-node displacement sweep do not clear both TRI
+floors. Project one refinement of the adjoining coarse leaf 154 on the
+ungrouped control. Two children satisfy the existing template clearance.
+[Transition evidence](CURVABEZIER_OP74_SIZE_TRANSITION_20261125.md).
+Await alignment on the single native request. No accepted mixed epoch.

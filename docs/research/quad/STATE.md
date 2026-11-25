@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: resolve the remaining CurvaBezier transition quality veto
+## Active: align a native refinement request on the coarse side of the transition
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,25 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - measure the operation 74 size transition
+
+The limiting TRI bridges level-4 leaf 148 and level-3 leaf 154.
+Its base is 0.05382 model units and its longest edge is 0.16659.
+The only available apex at operation 74 gives 17.09 degrees at birth.
+All 74 archived closure states lack a better TRI or eligible QUAD for
+that edge. Fixed-position reconnections of up to five faces and sampled
+guarded single-vertex motions do not meet the two TRI floors. Projection
+shows that one refinement of leaf 154 could add two eligible template
+cells with the certified 16-site contour and 2:1 balance. All four exact
+checks pass for PR 278. [Transition evidence](CURVABEZIER_OP74_SIZE_TRANSITION_20261125.md).
+
+**Next:** pending alignment, run a single native refinement request at
+(0.09375, 0.796875) in leaf 154 on the ungrouped screened control. It is
+adjacent to the previously grouped parent, which rejects requests there.
+Keep the prior grouping comparison as a separate control. Reuse the
+certified contour, original requests, screening, smoothing and diagnostic
+floors. No new native run or admitted mixed epoch in this readback.
 
 ### 2026-11-25 - measure one native parent grouping after feedback
 
@@ -26,11 +45,9 @@ boundary and certification controls pass. The previously local diagnosis
 was also published and read back on `quad-templates` at 84af5cbb.
 [Native result](NATIVE_OP81_PARENT_GROUPING_20261125.md).
 
-**Next:** assess the physical size field across the boundary-adjacent
-transition around native leaf 148, which supplies operation 74's new
-limiting edge. Its parent touches the contour and falls outside the tested
-grouping scope. The grouped output still fails the interior TRI
-angle and shape diagnostics. No mixed epoch accepted.
+The transition and alternate refinement projection are recorded above.
+The grouped output still fails the interior TRI angle and shape
+diagnostics. No mixed epoch accepted.
 
 ### 2026-11-25 - trace the operation 81 closure to a level-4 template edge
 

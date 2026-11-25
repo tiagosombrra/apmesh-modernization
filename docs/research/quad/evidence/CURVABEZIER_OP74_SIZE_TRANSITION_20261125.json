@@ -1,0 +1,2589 @@
+{
+  "schema": "apmesh.quad.curvabezier_op74_physical_transition.v1",
+  "observed_utc": "2026-11-25T17:21:08+00:00",
+  "hosted": {
+    "headRefOid": "e93205007b8f937b72d7b612694cbc8091c637dc",
+    "isDraft": true,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T16:35:21Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45653182415/job/139342810869",
+        "name": "QUAD native (ubuntu-24.04)",
+        "startedAt": "2026-11-25T16:22:46Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T16:40:03Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45653182415/job/139342810720",
+        "name": "QUAD native (windows-2022)",
+        "startedAt": "2026-11-25T16:22:46Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T16:30:11Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45653182415/job/139342809613",
+        "name": "TRI baseline and tooling controls (Linux)",
+        "startedAt": "2026-11-25T16:22:46Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T16:24:49Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45653182415/job/139342810358",
+        "name": "TRI scientific equivalence against frozen baseline",
+        "startedAt": "2026-11-25T16:22:46Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      }
+    ]
+  },
+  "archived_transition": {
+    "trace_sha256": "21442cd8ed7f13c2385ae581af43a45d01c9fcb89f4f4d3165f17252c18927e9",
+    "target": [
+      83,
+      352,
+      365
+    ],
+    "leaves": {
+      "148": [
+        4,
+        [
+          0.0625,
+          0.6875,
+          0.125,
+          0.75
+        ]
+      ],
+      "154": [
+        3,
+        [
+          0.0,
+          0.75,
+          0.125,
+          0.875
+        ]
+      ]
+    },
+    "neighbors": [
+      {
+        "edge": [
+          83,
+          352
+        ],
+        "length": 0.05382454470738428,
+        "neighbor": [
+          83,
+          353,
+          354,
+          352
+        ],
+        "median_birth_edge": 0.05916342422101073,
+        "physical_ratio": 0.006039263822923454,
+        "final_angle": 89.29469719455109
+      },
+      {
+        "edge": [
+          352,
+          365
+        ],
+        "length": 0.136865550592506,
+        "neighbor": [
+          352,
+          66,
+          365
+        ],
+        "median_birth_edge": 0.12450039781792652,
+        "physical_ratio": 0.006189081332964278,
+        "final_angle": 29.001299202293314
+      },
+      {
+        "edge": [
+          365,
+          83
+        ],
+        "length": 0.16658994588268336,
+        "neighbor": [
+          365,
+          710,
+          83
+        ],
+        "median_birth_edge": 0.16658994588268336,
+        "physical_ratio": 0.027125640547658682,
+        "final_angle": 10.353637098988896
+      }
+    ],
+    "birth": {
+      "kind": "TRI",
+      "tri_q": 0.4700353723104027,
+      "quad_corner_jacobian": null,
+      "min_angle_xyz": 17.090023193990305,
+      "max_angle_xyz": 114.55593941789893,
+      "edge_ratio_xyz": 3.0950553653234825,
+      "S_uv": null,
+      "S_xyz": null
+    },
+    "final": {
+      "kind": "TRI",
+      "tri_q": 0.49691430793384883,
+      "quad_corner_jacobian": null,
+      "min_angle_xyz": 18.157798219525517,
+      "max_angle_xyz": 111.65711597767813,
+      "edge_ratio_xyz": 2.9823629873045525,
+      "S_uv": null,
+      "S_xyz": null
+    },
+    "relative_birth_residual": 0.009459653574139382,
+    "prefix": [
+      {
+        "operation": 1,
+        "active_edges": 116,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 2,
+        "active_edges": 116,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 3,
+        "active_edges": 116,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 4,
+        "active_edges": 116,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 5,
+        "active_edges": 116,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 6,
+        "active_edges": 116,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 7,
+        "active_edges": 116,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 8,
+        "active_edges": 116,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 9,
+        "active_edges": 117,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 10,
+        "active_edges": 118,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 11,
+        "active_edges": 119,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 12,
+        "active_edges": 120,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 13,
+        "active_edges": 121,
+        "local_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "global_triangles": [
+          [
+            89,
+            11.321574828556574
+          ],
+          [
+            365,
+            17.090023193990305
+          ],
+          [
+            709,
+            6.345768552850629
+          ]
+        ],
+        "convex_local_quads": [
+          [
+            [
+              83,
+              352,
+              89,
+              709
+            ],
+            1.6559582607547385
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              89
+            ],
+            1.7048327646991335
+          ],
+          [
+            [
+              83,
+              352,
+              365,
+              709
+            ],
+            1.7816241771327412
+          ]
+        ]
+      },
+      {
+        "operation": 14,
+        "active_edges": 121,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 15,
+        "active_edges": 122,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 16,
+        "active_edges": 123,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 17,
+        "active_edges": 124,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 18,
+        "active_edges": 123,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 19,
+        "active_edges": 124,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 20,
+        "active_edges": 121,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 21,
+        "active_edges": 118,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 22,
+        "active_edges": 119,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 23,
+        "active_edges": 116,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 24,
+        "active_edges": 113,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 25,
+        "active_edges": 114,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 26,
+        "active_edges": 111,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 27,
+        "active_edges": 110,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 28,
+        "active_edges": 109,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 29,
+        "active_edges": 108,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 30,
+        "active_edges": 107,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 31,
+        "active_edges": 106,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 32,
+        "active_edges": 105,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 33,
+        "active_edges": 104,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 34,
+        "active_edges": 105,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 35,
+        "active_edges": 104,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 36,
+        "active_edges": 103,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 37,
+        "active_edges": 100,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 38,
+        "active_edges": 99,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 39,
+        "active_edges": 96,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 40,
+        "active_edges": 93,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 41,
+        "active_edges": 94,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 42,
+        "active_edges": 93,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 43,
+        "active_edges": 92,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 44,
+        "active_edges": 91,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 45,
+        "active_edges": 90,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 46,
+        "active_edges": 89,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 47,
+        "active_edges": 88,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 48,
+        "active_edges": 87,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 49,
+        "active_edges": 86,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 50,
+        "active_edges": 85,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 51,
+        "active_edges": 84,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 52,
+        "active_edges": 85,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 53,
+        "active_edges": 82,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 54,
+        "active_edges": 81,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 55,
+        "active_edges": 80,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 56,
+        "active_edges": 77,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 57,
+        "active_edges": 76,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 58,
+        "active_edges": 75,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 59,
+        "active_edges": 74,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 60,
+        "active_edges": 71,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 61,
+        "active_edges": 72,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 62,
+        "active_edges": 71,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 63,
+        "active_edges": 70,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 64,
+        "active_edges": 67,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 65,
+        "active_edges": 66,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 66,
+        "active_edges": 65,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 67,
+        "active_edges": 62,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 68,
+        "active_edges": 59,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 69,
+        "active_edges": 56,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 70,
+        "active_edges": 55,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 71,
+        "active_edges": 54,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 72,
+        "active_edges": 53,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 73,
+        "active_edges": 52,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      },
+      {
+        "operation": 74,
+        "active_edges": 51,
+        "local_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "global_triangles": [
+          [
+            365,
+            17.090023193990305
+          ]
+        ],
+        "convex_local_quads": []
+      }
+    ]
+  },
+  "reconnections": {
+    "search": [
+      {
+        "face_count": 2,
+        "disk_cavities": 2,
+        "valid_nonidentity": 0,
+        "alternatives_changing_regional_counts": 0,
+        "meets_floors": 0,
+        "best": null
+      },
+      {
+        "face_count": 3,
+        "disk_cavities": 3,
+        "valid_nonidentity": 1,
+        "alternatives_changing_regional_counts": 9,
+        "meets_floors": 0,
+        "best": {
+          "cavity": [
+            658,
+            719,
+            753
+          ],
+          "replacement": [
+            [
+              83,
+              365,
+              709,
+              710
+            ],
+            [
+              83,
+              352,
+              365
+            ],
+            [
+              365,
+              89,
+              709
+            ]
+          ],
+          "quality": [
+            [
+              31.58944352665601,
+              0.4246359848973455,
+              1.2929229668083584
+            ],
+            [
+              18.157798219525517,
+              0.49691430793384883,
+              0.6833710779445425
+            ],
+            [
+              13.511803810218227,
+              0.3686800058183094,
+              8.638068676212265
+            ]
+          ],
+          "predecessor_fraction_of_floor": 0.6833710779445425,
+          "min_fraction_of_floor": 0.6833710779445425,
+          "min_angle": 13.511803810218227
+        }
+      },
+      {
+        "face_count": 4,
+        "disk_cavities": 5,
+        "valid_nonidentity": 5,
+        "alternatives_changing_regional_counts": 36,
+        "meets_floors": 0,
+        "best": {
+          "cavity": [
+            658,
+            717,
+            719,
+            753
+          ],
+          "replacement": [
+            [
+              66,
+              365,
+              352
+            ],
+            [
+              365,
+              83,
+              352
+            ],
+            [
+              365,
+              709,
+              710,
+              83
+            ],
+            [
+              365,
+              89,
+              709
+            ]
+          ],
+          "quality": [
+            [
+              29.001299202293314,
+              0.7408371876433805,
+              1.0691139592519145
+            ],
+            [
+              18.157798219525517,
+              0.49691430793384866,
+              0.6833710779445425
+            ],
+            [
+              31.58944352665601,
+              0.4246359848973455,
+              1.2929229668083584
+            ],
+            [
+              13.511803810218227,
+              0.3686800058183094,
+              8.638068676212265
+            ]
+          ],
+          "predecessor_fraction_of_floor": 0.6833710779445425,
+          "min_fraction_of_floor": 0.6833710779445425,
+          "min_angle": 13.511803810218227
+        }
+      },
+      {
+        "face_count": 5,
+        "disk_cavities": 7,
+        "valid_nonidentity": 13,
+        "alternatives_changing_regional_counts": 81,
+        "meets_floors": 0,
+        "best": {
+          "cavity": [
+            658,
+            716,
+            718,
+            719,
+            753
+          ],
+          "replacement": [
+            [
+              82,
+              353,
+              710
+            ],
+            [
+              353,
+              83,
+              710
+            ],
+            [
+              83,
+              365,
+              709,
+              710
+            ],
+            [
+              83,
+              352,
+              365
+            ],
+            [
+              365,
+              89,
+              709
+            ]
+          ],
+          "quality": [
+            [
+              29.94620284808474,
+              0.7242056507491399,
+              16.967934382519726
+            ],
+            [
+              35.01289775265265,
+              0.8359556723520833,
+              19.5862059078005
+            ],
+            [
+              31.58944352665601,
+              0.4246359848973455,
+              1.2929229668083584
+            ],
+            [
+              18.157798219525517,
+              0.49691430793384883,
+              0.6833710779445425
+            ],
+            [
+              13.511803810218227,
+              0.3686800058183094,
+              8.638068676212265
+            ]
+          ],
+          "predecessor_fraction_of_floor": 0.6833710779445425,
+          "min_fraction_of_floor": 0.6833710779445425,
+          "min_angle": 13.511803810218227
+        }
+      }
+    ],
+    "passing": []
+  },
+  "guarded_smoothing_witness": {
+    "same_vertices": [
+      83,
+      352,
+      365
+    ],
+    "original": {
+      "kind": "TRI",
+      "tri_q": 0.49691430793384883,
+      "quad_corner_jacobian": null,
+      "min_angle_xyz": 18.157798219525517,
+      "max_angle_xyz": 111.65711597767813,
+      "edge_ratio_xyz": 2.9823629873045525,
+      "S_uv": null,
+      "S_xyz": null
+    },
+    "trajectory": [
+      {
+        "frame": "before",
+        "angle": 17.090023193990305,
+        "q": 0.4700353723104027,
+        "sites": {
+          "83": [
+            0.0625,
+            0.75
+          ],
+          "352": [
+            0.09375,
+            0.75
+          ],
+          "365": [
+            0.125,
+            0.8125
+          ]
+        }
+      },
+      {
+        "frame": "guarded_1",
+        "angle": 18.157798219525517,
+        "q": 0.49691430793384883,
+        "sites": {
+          "83": [
+            0.0625,
+            0.75
+          ],
+          "352": [
+            0.09375,
+            0.75
+          ],
+          "365": [
+            0.12065972222222222,
+            0.811873541937934
+          ]
+        }
+      },
+      {
+        "frame": "guarded_2",
+        "angle": 18.157798219525517,
+        "q": 0.49691430793384883,
+        "sites": {
+          "83": [
+            0.0625,
+            0.75
+          ],
+          "352": [
+            0.09375,
+            0.75
+          ],
+          "365": [
+            0.12065972222222222,
+            0.811873541937934
+          ]
+        }
+      },
+      {
+        "frame": "guarded_3",
+        "angle": 18.157798219525517,
+        "q": 0.49691430793384883,
+        "sites": {
+          "83": [
+            0.0625,
+            0.75
+          ],
+          "352": [
+            0.09375,
+            0.75
+          ],
+          "365": [
+            0.12065972222222222,
+            0.811873541937934
+          ]
+        }
+      },
+      {
+        "frame": "guarded_4",
+        "angle": 18.157798219525517,
+        "q": 0.49691430793384883,
+        "sites": {
+          "83": [
+            0.0625,
+            0.75
+          ],
+          "352": [
+            0.09375,
+            0.75
+          ],
+          "365": [
+            0.12065972222222222,
+            0.811873541937934
+          ]
+        }
+      },
+      {
+        "frame": "guarded_5",
+        "angle": 18.157798219525517,
+        "q": 0.49691430793384883,
+        "sites": {
+          "83": [
+            0.0625,
+            0.75
+          ],
+          "352": [
+            0.09375,
+            0.75
+          ],
+          "365": [
+            0.12065972222222222,
+            0.811873541937934
+          ]
+        }
+      }
+    ],
+    "stencil_uv_radius": 0.03125,
+    "stencil_step": 0.00048828125,
+    "diagnostic_only": true,
+    "vertices": {
+      "83": {
+        "incident_count": 4,
+        "old_scores": [
+          0.24442893326937604,
+          10.353637098988896,
+          0.9998646309194952,
+          89.29469719455109,
+          -1.200569199495877
+        ],
+        "one_point_motions_meeting_floors_and_local_guard": 0,
+        "one_point_motions_meeting_floors_and_local_validity": 276,
+        "best_with_guard": null,
+        "best_valid": {
+          "position": [
+            0.0634765625,
+            0.76904296875
+          ],
+          "angle": 28.35058283485749,
+          "q": 0.7343635146072768,
+          "fraction_of_floors": 1.0597716984610555,
+          "uv_displacement": 0.01906799237281898,
+          "neighborhood": [
+            0.036662405523425604,
+            1.8050788915116152,
+            0.8053507965642202,
+            54.62888686474151,
+            -1.9171351080474914
+          ]
+        }
+      },
+      "352": {
+        "incident_count": 4,
+        "old_scores": [
+          0.49691430793384883,
+          18.157798219525517,
+          0.9984931280386761,
+          88.38452740437654,
+          -1.200569199495877
+        ],
+        "one_point_motions_meeting_floors_and_local_guard": 0,
+        "one_point_motions_meeting_floors_and_local_validity": 2005,
+        "best_with_guard": null,
+        "best_valid": {
+          "position": [
+            0.12451171875,
+            0.7470703125
+          ],
+          "angle": 42.58198866296721,
+          "q": 0.8945042842855089,
+          "fraction_of_floors": 1.290873396869261,
+          "uv_displacement": 0.03090091275839207,
+          "neighborhood": [
+            0.13715716867696856,
+            4.575888927929986,
+            0.03536310356563572,
+            46.21649858593604,
+            -6.237695377173482
+          ]
+        }
+      },
+      "365": {
+        "incident_count": 6,
+        "old_scores": [
+          0.24442893326937604,
+          10.353637098988896,
+          0.7075084854409164,
+          45.05532502244912,
+          -4.190550479021977
+        ],
+        "one_point_motions_meeting_floors_and_local_guard": 0,
+        "one_point_motions_meeting_floors_and_local_validity": 480,
+        "best_with_guard": {
+          "position": [
+            0.11968315972222222,
+            0.810896979437934
+          ],
+          "angle": 18.522710398571522,
+          "q": 0.5052531494622146,
+          "fraction_of_floors": 0.6971045948685056,
+          "uv_displacement": 0.0013810679320049757,
+          "neighborhood": [
+            0.2459240438746243,
+            10.477822794234223,
+            0.7075084854409164,
+            45.05532502244912,
+            -4.120506826587877
+          ]
+        },
+        "best_valid": {
+          "position": [
+            0.09673394097222222,
+            0.791854010687934
+          ],
+          "angle": 31.357276860620505,
+          "q": 0.7595494622143726,
+          "fraction_of_floors": 1.0961179410806892,
+          "uv_displacement": 0.03119654852531892,
+          "neighborhood": [
+            0.2995441056805534,
+            14.336778536844204,
+            0.5366465618083074,
+            45.05532502244912,
+            -3.004929646403237
+          ]
+        }
+      }
+    }
+  },
+  "projected_leaf_refinement": {
+    "coarse_leaf": 154,
+    "old_box": [
+      0.0,
+      0.75,
+      0.125,
+      0.875
+    ],
+    "unregrouped_leaves": 226,
+    "projected_leaf_count": 229,
+    "projected_2_to_1": true,
+    "children": [
+      {
+        "box": [
+          0,
+          0.75,
+          0.0625,
+          0.8125
+        ],
+        "clearance_margin_uv": -0.054510498046875,
+        "limiting_segment": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.727447509765625
+          ]
+        ],
+        "template_possible": false,
+        "native_mask": []
+      },
+      {
+        "box": [
+          0,
+          0.8125,
+          0.0625,
+          0.875
+        ],
+        "clearance_margin_uv": -0.054510498046875,
+        "limiting_segment": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.727447509765625
+          ]
+        ],
+        "template_possible": false,
+        "native_mask": []
+      },
+      {
+        "box": [
+          0.0625,
+          0.75,
+          0.125,
+          0.8125
+        ],
+        "clearance_margin_uv": 0.007989501953124999,
+        "limiting_segment": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.727447509765625
+          ]
+        ],
+        "template_possible": true,
+        "native_mask": []
+      },
+      {
+        "box": [
+          0.0625,
+          0.8125,
+          0.125,
+          0.875
+        ],
+        "clearance_margin_uv": 0.007989501953124999,
+        "limiting_segment": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.727447509765625
+          ]
+        ],
+        "template_possible": true,
+        "native_mask": []
+      }
+    ],
+    "outer_contour_sites": 16,
+    "proposed_request": {
+      "face": 636,
+      "site": [
+        0.09375,
+        0.796875
+      ],
+      "h": 0.05916342422101073
+    },
+    "parent_face_uv": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.5
+      ],
+      [
+        0.125,
+        0.75
+      ]
+    ],
+    "requires_no_grouping": true,
+    "reason": "Existing grouping protects requests on adjacent leaves."
+  },
+  "commands": {
+    "transition": {
+      "command": [
+        "python",
+        "build/quad-op74-investigation-20261125/trace_transition.py"
+      ],
+      "exit": 0,
+      "seconds": 1.1166703701019287,
+      "timeout": 100
+    },
+    "reconnect": {
+      "command": [
+        "python",
+        "build/quad-op74-investigation-20261125/search_patch.py"
+      ],
+      "exit": 0,
+      "seconds": 0.43606042861938477,
+      "timeout": 80
+    },
+    "smoothing-witness": {
+      "command": [
+        "python",
+        "build/quad-op74-investigation-20261125/smooth_feasibility.py"
+      ],
+      "exit": 0,
+      "seconds": 34.09536695480347,
+      "timeout": 120
+    },
+    "coarse-projection": {
+      "command": [
+        "python",
+        "build/quad-op74-investigation-20261125/project_coarse_leaf.py"
+      ],
+      "exit": 0,
+      "seconds": 0.3444817066192627,
+      "timeout": 90
+    }
+  },
+  "native_trial_approved": false,
+  "new_native_mesh": false,
+  "accepted_mixed_epochs": 0
+}
