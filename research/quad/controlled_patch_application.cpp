@@ -1935,6 +1935,40 @@ Candidate SnapshotTriStage(const SubMesh& mesh, PatchBezier& patch) {
 
 using GroupingBoxes = std::array<std::array<double, 4>, 2>;
 
+struct GeometricRequest {
+  std::size_t face;
+  UvVertex site;
+  double size;
+};
+
+struct FeedbackPlan {
+  std::vector<GeometricRequest> predecessor, recovered;
+};
+
+FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
+  std::ifstream input(path);
+  input.imbue(std::locale::classic());
+  std::string schema;
+  input >> schema;
+  Require(bool(input) && schema == "apmesh_curvabezier_feedback_v1",
+          "Invalid geometric feedback plan");
+  FeedbackPlan plan;
+  std::string arm;
+  while (input >> arm) {
+    GeometricRequest request{};
+    input >> request.face >> request.site.u >> request.site.v >> request.size;
+    Require(bool(input) && request.site.u >= 0 && request.site.u <= 1 && request.site.v >= 0 &&
+                request.site.v <= 1 && std::isfinite(request.size) && request.size > 0,
+            "Invalid geometric feedback request");
+    Require(arm == "predecessor" || arm == "recovered", "Unknown geometric feedback arm");
+    auto& requests = arm == "predecessor" ? plan.predecessor : plan.recovered;
+    requests.push_back(request);
+  }
+  Require(input.eof() && !plan.predecessor.empty() && !plan.recovered.empty(),
+          "Geometric feedback needs both measured request lists");
+  return plan;
+}
+
 struct GroupingPlan {
   GroupingBoxes boxes{};
   bool verify_rejection = false;
@@ -1974,10 +2008,117 @@ GroupingPlan ReadGroupingPlan(const std::filesystem::path& path) {
   return plan;
 }
 
+void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
+                            const RealBoundarySource& source,
+                            const std::vector<GeometricRequest>& requests,
+                            const std::filesystem::path& directory,
+                            const std::filesystem::path& previous_path) {
+  struct RestorePatchLink {
+    PatchBezier& patch;
+    SubMesh* original;
+    ~RestorePatchLink() { patch.SetSubMesh(original); }
+  } restore{patch, patch.GetSubMesh()};
+  previous.mesh->SetPatch(&patch);
+  patch.SetSubMesh(previous.mesh.get());
+  CheckTypedIncidence(*previous.mesh, previous);
+  const auto witness = SnapshotOwnerRehearsal(*previous.mesh);
+  const auto bytes = ReadRehearsalOutput(previous_path);
+  auto tree = ReplayRealSourceTree(patch, source);
+  const auto leaves = tree->getLeaves();
+  const auto cap = tree->getMaxLevelCap();
+  std::set<long> requested;
+  Require(std::filesystem::create_directory(directory),
+          "Cannot reserve geometric feedback evidence");
+  std::ofstream trace(directory / "requests.csv", std::ios::binary);
+  trace.imbue(std::locale::classic());
+  trace << "face,u,v,requested_size,leaf_id,leaf_level,cap,disposition\n" << std::setprecision(17);
+  for (const auto& request : requests) {
+    Require(request.face < previous.faces.size(),
+            "Geometric feedback face is outside the predecessor");
+    QuadtreeCell* chosen = nullptr;
+    for (auto* leaf : leaves) {
+      if (request.site.u >= leaf->getMin()->getX() && request.site.u <= leaf->getMax()->getX() &&
+          request.site.v >= leaf->getMin()->getY() && request.site.v <= leaf->getMax()->getY() &&
+          (!chosen || leaf->getLevel() > chosen->getLevel()))
+        chosen = leaf;
+    }
+    Require(chosen != nullptr, "Geometric feedback site is outside the native tree");
+    const auto level = chosen->getLevel();
+    const bool capped = cap >= 0 && level >= cap;
+    if (!capped)
+      requested.insert(chosen->getId());
+    trace << request.face << ',' << request.site.u << ',' << request.site.v << ',' << request.size
+          << ',' << chosen->getId() << ',' << level << ',' << cap << ','
+          << (capped ? "capped" : "actionable") << '\n';
+  }
+  trace.close();
+  Require(bool(trace), "Cannot retain geometric request evidence");
+
+  const auto before = tree->GetLeafCount();
+  for (auto* leaf : leaves)
+    if (requested.count(leaf->getId()))
+      leaf->subdivideToLevel(leaf->getLevel() + 1);
+  Require(tree->GetLeafCount() == before + 3 * requested.size(),
+          "Native tree did not apply every distinct actionable request");
+  if (!requested.empty())
+    Require(tree->refineAccordingToNeighbors() ==
+                Par2DJMesh::AFT::QUAD_REFINE_ACCORDING_TO_NEIGHBORS_DONE,
+            "Geometric feedback could not balance the native tree");
+  const auto after = tree->GetLeafCount();
+  std::ofstream realized(directory / "leaves.csv", std::ios::binary);
+  realized.imbue(std::locale::classic());
+  realized << "id,level,u0,v0,u1,v1\n" << std::setprecision(17);
+  for (auto* leaf : tree->getLeaves()) {
+    Require(cap < 0 || leaf->getLevel() <= cap, "Geometric feedback exceeded the original cap");
+    realized << leaf->getId() << ',' << leaf->getLevel() << ',' << leaf->getMin()->getX() << ','
+             << leaf->getMin()->getY() << ',' << leaf->getMax()->getX() << ','
+             << leaf->getMax()->getY() << '\n';
+  }
+  realized.close();
+  Require(bool(realized), "Cannot retain realized feedback leaves");
+
+  std::optional<Candidate> staged;
+  std::string outcome = "no_action";
+  std::string rejection;
+  if (after > before) {
+    try {
+      staged =
+          Generate(patch, false, [&]() { return std::move(tree); }, &source, false, true, true);
+    } catch (const std::runtime_error& error) {
+      rejection = error.what();
+    } catch (const std::invalid_argument& error) {
+      rejection = error.what();
+    }
+    outcome = staged ? "staged" : "rejected";
+  }
+  if (staged) {
+    CheckTypedIncidence(*staged->mesh, *staged);
+    staged->source_witness = &source;
+    staged->generation_step = source.source_step;
+    staged->reference_accepted = source.reference_tri_accepted;
+    staged->stage_reason = "geometric_feedback_staged";
+    Export(*staged, directory / "candidate.obj");
+    ExportArticleSteps(*staged, directory / "candidate_front");
+    staged.reset();
+  }
+  RequireOwnerRehearsalUnchanged(patch, witness);
+  Require(ReadRehearsalOutput(previous_path) == bytes,
+          "Geometric feedback changed its predecessor OBJ");
+
+  std::ofstream result(directory / "result.txt", std::ios::binary);
+  result.imbue(std::locale::classic());
+  result << outcome << '\n'
+         << cap << ' ' << before << ' ' << after << ' ' << requested.size() << '\n'
+         << rejection << '\n';
+  result.close();
+  Require(bool(result), "Cannot retain geometric feedback outcome");
+}
+
 Candidate StageGroupingCandidate(PatchBezier& patch, Candidate previous,
                                  const RealBoundarySource source, const GroupingPlan& plan,
                                  const std::filesystem::path& directory,
-                                 const std::filesystem::path& previous_path) {
+                                 const std::filesystem::path& previous_path,
+                                 const FeedbackPlan* feedback) {
   struct RestorePatchLink {
     PatchBezier& patch;
     SubMesh* original;
@@ -2028,6 +2169,10 @@ Candidate StageGroupingCandidate(PatchBezier& patch, Candidate previous,
     Require(std::filesystem::create_directory(directory), "Cannot reserve staged grouping output");
     Export(candidate, directory / "candidate.obj");
     ExportArticleSteps(candidate, directory / "candidate_front");
+    if (feedback)
+      StageGeometricFeedback(patch, candidate, grouped, feedback->recovered,
+                             directory.parent_path() / "feedback_recovered",
+                             directory / "candidate.obj");
   };
   if (plan.verify_rejection) {
     bool rejected = false;
@@ -2058,6 +2203,12 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
                 config.input_model == "builtin:curva_bezier" && !config.quad_verify_rollback,
             "A grouping plan requires the CurvaBezier area-centroid trial");
     grouping_plan = ReadGroupingPlan(plan_path);
+  }
+  std::optional<FeedbackPlan> feedback;
+  if (const char* plan_path = std::getenv("APMESH_QUAD_FEEDBACK_PLAN")) {
+    Require(*plan_path != '\0' && grouping_plan && !grouping_plan->verify_rejection,
+            "Geometric feedback requires the recovered grouping comparison");
+    feedback = ReadFeedbackPlan(plan_path);
   }
   bool grouped_candidate_staged = false;
   const auto output = std::filesystem::path(config.output_prefix + ".obj");
@@ -2267,9 +2418,13 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
       ExportArticleSteps(layout, staging / (stem + "_article_front"));
     if (grouping_plan && source && stage.step == 3 && stage.accepted &&
         stage.outer.global_retry == 0) {
-      layout =
-          StageGroupingCandidate(*patch, std::move(layout), *source, *grouping_plan,
-                                 staging / "adjacent_trial", staging / (stem + "_quad_tri.obj"));
+      const auto previous_obj = staging / (stem + "_quad_tri.obj");
+      if (feedback)
+        StageGeometricFeedback(*patch, layout, *source, feedback->predecessor,
+                               staging / "feedback_predecessor", previous_obj);
+      layout = StageGroupingCandidate(*patch, std::move(layout), *source, *grouping_plan,
+                                      staging / "adjacent_trial", previous_obj,
+                                      feedback ? &*feedback : nullptr);
       grouped_candidate_staged = true;
     }
     if (live_pairs)

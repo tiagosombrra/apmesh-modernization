@@ -49,3 +49,19 @@ recreating `selected.obj`. A stopped candidate without a recorded selection
 leaves the baseline authoritative. The recovery command reads the current
 record format and should be used after the original process stops. The
 protocol covers interrupted processes and makes no power-loss guarantee.
+
+## Replay measured geometric size requests
+
+Use a completed eligible grouped trial as input and select a fresh output
+directory. The command recovers the recorded native identities and generates
+matched successors, with the source contour fixed:
+
+```text
+python tools/quad_geometric_feedback_trial.py --exe <path-to-ap_mesh> --source <completed-trial> --out <new-directory>
+```
+
+For each source mesh it applies one split to each distinct actionable leaf,
+uses the original 2:1 balancing and preserves the captured depth cap.
+The runner retains the request and leaf traces, any staged candidate and
+common-site measurements. The selected source remains authoritative during
+the trial. A staged successor is an experimental comparison.

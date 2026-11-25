@@ -90,14 +90,17 @@ def recover(out):
     return record
 
 
-def run_mesh(exe, out, arm, grouped=False):
+def run_mesh(exe, out, arm, grouped=False, feedback=False):
     config = (Path(__file__).resolve().parents[1]/"configs/quad/curved_patch_article_front.conf")
     lines = [f"OUTPUT_PREFIX={arm}" if line.startswith("OUTPUT_PREFIX=") else line
              for line in config.read_text(encoding="ascii").splitlines()]
     environment = os.environ.copy()
     environment.pop("APMESH_QUAD_GROUPING_PLAN", None)
+    environment.pop("APMESH_QUAD_FEEDBACK_PLAN", None)
     if grouped:
         environment["APMESH_QUAD_GROUPING_PLAN"] = "grouping.plan"
+    if feedback:
+        environment["APMESH_QUAD_FEEDBACK_PLAN"] = "feedback.plan"
     conf = out/f"{arm}.conf"
     conf.write_text("\n".join(lines)+"\n", encoding="ascii")
     with (out/f"{arm}.stdout").open("xb") as stdout, (out/f"{arm}.stderr").open("xb") as stderr:

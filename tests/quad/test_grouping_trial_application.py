@@ -53,6 +53,21 @@ def check(exe, out, control=None):
                    check=True, timeout=30, stdout=subprocess.DEVNULL)
     if digest(out/"selected.obj") != digest(selected):
         raise ValueError("Recovery did not reproduce the selected native OBJ")
+    if control is None:
+        feedback = out.parent/"geometric-feedback"
+        script = ENTRY.with_name("quad_geometric_feedback_trial.py")
+        subprocess.run([sys.executable, str(script), "--exe", str(exe), "--source", str(out),
+                        "--out", str(feedback)], cwd=out.parent, check=True, timeout=185)
+        evidence = json.loads((feedback/"feedback-result.json").read_text(encoding="utf-8"))
+        if evidence["recovered_sha256"] != result["selected_sha256"] or digest(out/"selected.obj") != digest(selected):
+            raise ValueError("Feedback lost the selected source mesh")
+        before, after = (evidence[arm] for arm in ("predecessor", "recovered"))
+        for key in ("depth_cap", "requests", "capped_requests", "direct_leaf_edits"):
+            if before[key] != after[key]:
+                raise ValueError("Matched feedback arms did not execute the same requests")
+        if not after["capped_requests"] or not after["direct_leaf_edits"] or evidence["mixed_adaptive_epochs"] != 0:
+            raise ValueError("Expected native feedback edits, saturation and zero adaptive epochs")
+
 
 
 
