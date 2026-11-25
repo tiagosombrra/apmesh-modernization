@@ -4459,7 +4459,11 @@ comparison stages a valid 813-node, 852-face mesh and five valid passes.
 The fine-grid geometric RMS decreases from 0.00971171 to 0.00296791. Retain
 the boundary QUAD minimum-angle decrease and the different next requests.
 Final MSVC runner, real source contracts and 30 reporting/recovery tests
-pass. [Report and commands](FEEDBACK_SEARCH_AND_CURVES_20261125.md).
+pass. The final executable reproduces all three native dispositions.
+For six of the ten split intervals, a child still exceeds the target
+arclength. The next face requests reach six distinct eligible leaves.
+Exact PR 269 hosted run 45543991736 completes four successful checks.
+[Report and commands](FEEDBACK_SEARCH_AND_CURVES_20261125.md).
 Next align admission, extend comparative coverage, and qualify the
 staged source for a subsequent native generation. Zero accepted mixed
 adaptive epochs and no global mixed curvature qualification.

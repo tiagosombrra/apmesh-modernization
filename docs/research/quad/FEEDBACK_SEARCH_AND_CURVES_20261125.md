@@ -71,7 +71,15 @@ the minimum, since the number of boundary elements changes.
 Recomputing the approved sizing diagnostic from the staged mixed geometry
 yields 21 face and 6 curve requests, compared with 13 and 10 from the input.
 None of the face requests retains both the same UV site and the same size.
-These new requests are measured and have yet to be applied.
+These new requests are measured and have yet to be applied. On the exported
+226-leaf tree, 15 sites reach six distinct level-three leaves and six sites
+are already at level four. All request sites are strictly assigned to one
+leaf by the box test. This is an offline projection.
+
+For the ten split intervals, six still have a child whose arclength exceeds
+the requested size after the bounded single subdivision. The largest
+child-to-request ratio is 3.32. The size audit uses the same arclength scale
+as the request calculation and records chord lengths separately.
 
 ## Validation and next action
 
@@ -81,9 +89,15 @@ size veto and both original tree-only feedback arms. The source contracts
 passed six captures, three reversed captures and 54 negative controls.
 Python reporting and recovery checks passed. The same-site comparison checks
 analytic surface membership, oriented edge incidence, unit-chart area and
-disk incidence. The observed unguarded native rejection is retained.
+disk incidence. The final MSVC image reproduces the 106-operation lookup equivalence and
+unguarded rejection as separate invocations. The same executable produces
+the guarded candidate. Negative evidence is retained.
 See the receipt for command invocations, image hashes and exit results.
-Draft review and hosted validation are tracked on the exact PR head.
+All four exact-head [hosted jobs](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45543991736)
+pass. Hosted checks cover the native application on Linux and Windows,
+configured TRI and tooling baselines, and frozen TRI scientific parity.
+The three opt-in variants above have separate exact local MSVC evidence.
+Independent review is pending.
 
 The completed milestone is a valid mixed successor generated from its mixed
 predecessor's residual and able to supply a different next set of requests.

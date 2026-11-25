@@ -24,11 +24,13 @@ of 104 TRI and 748 QUAD. On both common grids the sampled geometric RMS falls
 by about 69 percent. Face count grows 17.5 percent. Whole-patch minimum TRI
 and QUAD angles improve, while the contour-edge QUAD minimum falls from
 18.92 to 18.57 degrees. The new mesh gives 21 face and six curve size
-requests. See the [native comparison and receipt](FEEDBACK_SEARCH_AND_CURVES_20261125.md).
+requests. Fifteen face requests reach six distinct leaves below the cap
+on the archived tree. Six of ten split intervals still exceed their target
+arclength after one subdivision. See the [native comparison and receipt](FEEDBACK_SEARCH_AND_CURVES_20261125.md).
 Exact MSVC build, directed runner, six source captures with 54 negatives
 and 30 reporting and recovery tests pass. The previous PR 268 has four
-successful hosted checks. PR 269 awaits independent review and hosted
-qualification at the checkpoint.
+successful hosted checks. All four exact-head hosted jobs for PR 269
+passed in run 45543991736. Independent review is pending.
 
 **Next:** align an experimental admission rule for changed contour and
 controlled growth using these measured shape and error tradeoffs.
