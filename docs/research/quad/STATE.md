@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align a geometric screen for prospective local pairs
+## Active: align the native prospective geometry comparison
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,24 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - screen prospective additional pairs on archived fronts
+
+The read-only search verifies 178 original TRI fallback windows and
+cross-checks 81 on the alternate Ribbed history. Twelve original eligible
+QUADs include two local RMS improvements and ten degradations across
+three sampling sets. The largest beneficial relative deviation using the
+active physical edge is 3.946 percent. The smallest detrimental value is
+4.887 percent. The candidate-size denominator overlaps across labels.
+Unit-scale checks pass. [Prospective screen and receipt](PROSPECTIVE_PAIR_GEOMETRY_SCREEN_20261125.md).
+
+**Next:** pending scientific alignment, trial a single ceiling of 0.045 on
+the five-site maximum deviation normalized by the active edge, only when
+the optional additional-pair search runs. Keep the existing S rule among
+passing pairs. Measure matched native CurvaBezier and Ribbed outcomes,
+including raw front and final quality, before qualification on reserved
+geometries. PR 275 exact-head hosted checks are 4/4 successful. No new
+code, native reconstruction, scientific admission rule or mixed epoch.
 
 ### 2026-11-25 - complete the additional-pair transfer to Ribbed Bracket
 
@@ -26,12 +44,8 @@ percent of the net squared-error increase on same-site comparison. The
 other eligible options on that base also increase local error offline.
 [Transfer and exact receipt](ADDITIONAL_LOCAL_PAIRS_RIBBED_20261125.md).
 
-**Next:** align one prospective test that uses the existing relative
-surface deviation and physical size on the local front. Verify the
-predicted screen on both development cases before another native test.
-Keep the minimum-S-only flag experimental. No new native policy, held-out
-input, shared curve, global curvature error or accepted mixed epoch in
-this transfer.
+The proposed prospective screen and next test are described above.
+The unfiltered minimum-S flag remains experimental.
 
 ### 2026-11-25 - measure additional local pairs on CurvaBezier
 

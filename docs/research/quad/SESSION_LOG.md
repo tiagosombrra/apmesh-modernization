@@ -4633,3 +4633,15 @@ replacement accounts for about 91 percent of the net squared-error
 increase. [Transfer and receipt](ADDITIONAL_LOCAL_PAIRS_RIBBED_20261125.md).
 Keep minimum-S fallback experimental and align a local relative deviation
 and physical size test. No policy adopted and zero mixed epochs accepted.
+
+## 2026-11-25 Fortaleza - screen prospective QUAD geometry on both development fronts
+
+Assess all 12 eligible QUADs in the two original histories at matched
+footprints with five, 64 and 256 samples. Two improve local geometric RMS
+and ten degrade it. The maximum sampled deviation normalized by the
+active physical edge separates both groups over all three sampling sets.
+The proposed single development ceiling is 0.045. The initial screen
+stopped on a nonconvex union without a shape score. The corrected replay
+and 24 scale controls pass. [Report and receipt](PROSPECTIVE_PAIR_GEOMETRY_SCREEN_20261125.md).
+PR 275 hosted matrix is 4/4 on its exact head. Await alignment on the
+new native criterion. No new native run, policy or accepted mixed epoch.

@@ -1,0 +1,1228 @@
+{
+  "schema": "apmesh.quad.prospective_local_pair_geometry_screen.v1",
+  "held_out_cases": 0,
+  "accepted_mixed_epochs": 0,
+  "scientific_rule_adopted": false,
+  "histories": [
+    {
+      "case": "CurvaBezier_original",
+      "eligible_windows": [
+        {
+          "operation": 13,
+          "tri": [
+            733,
+            734,
+            87
+          ],
+          "local_tri_size": 0.46269570805694166,
+          "base_size": 0.5000095016895614,
+          "candidates": [
+            {
+              "quad": [
+                733,
+                734,
+                389,
+                96
+              ],
+              "S": 1.5,
+              "quad_median_edge": 0.30441777271970305,
+              "min_physical_angle": 41.86004627579385,
+              "scaled_corner_jacobian": 0.6626499378953562,
+              "quad_to_tri_size": 0.6579221882089294,
+              "quad_to_base_size": 0.6088239757265763,
+              "benefit_at_all_stencils": true,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.013645615293269235,
+                  "candidate_rms": 0.010288141768290906,
+                  "completed_control_rms": 0.010859163597117418,
+                  "relative_quad": 0.04482529114958616,
+                  "relative_tri": 0.02949155364023808,
+                  "relative_base": 0.02729071197079236
+                },
+                "dense_64": {
+                  "maximum": 0.019067066364937907,
+                  "candidate_rms": 0.009801245864613603,
+                  "completed_control_rms": 0.010207494033727964,
+                  "relative_quad": 0.0626345373812789,
+                  "relative_tri": 0.04120865189134501,
+                  "relative_base": 0.03813340806626509
+                },
+                "verification_256": {
+                  "maximum": 0.019728457530162617,
+                  "candidate_rms": 0.00980091889084439,
+                  "completed_control_rms": 0.010198994117669492,
+                  "relative_quad": 0.06480718045436812,
+                  "relative_tri": 0.04263808197618884,
+                  "relative_base": 0.03945616525985807
+                }
+              }
+            }
+          ],
+          "observed_extra": null
+        }
+      ],
+      "fallbacks_scanned": 104,
+      "trace_sha256": "2b15d8e01882181f217c214e4844c50a880532e091a09adf3b708720dceec829"
+    },
+    {
+      "case": "Ribbed_original",
+      "eligible_windows": [
+        {
+          "operation": 1,
+          "tri": [
+            601,
+            602,
+            1
+          ],
+          "local_tri_size": 1.034132626148868,
+          "base_size": 1.0001929335496231,
+          "candidates": [
+            {
+              "quad": [
+                601,
+                602,
+                197,
+                622
+              ],
+              "S": 1.1559948173665686,
+              "quad_median_edge": 1.5074622653909848,
+              "min_physical_angle": 83.08510035380488,
+              "scaled_corner_jacobian": 0.9652255105506942,
+              "quad_to_tri_size": 1.4577069007142793,
+              "quad_to_base_size": 1.5071714814471784,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.11496542549478608,
+                  "candidate_rms": 0.09290889900231353,
+                  "completed_control_rms": 0.05914060228677345,
+                  "relative_quad": 0.0762642144577781,
+                  "relative_tri": 0.11117087169265687,
+                  "relative_base": 0.11494324908573475
+                },
+                "dense_64": {
+                  "maximum": 0.11539937679099783,
+                  "candidate_rms": 0.08368571935373603,
+                  "completed_control_rms": 0.05425310800093898,
+                  "relative_quad": 0.07655208321985237,
+                  "relative_tri": 0.11159049997363257,
+                  "relative_base": 0.11537711667433258
+                },
+                "verification_256": {
+                  "maximum": 0.11585543911644627,
+                  "candidate_rms": 0.08365105357896911,
+                  "completed_control_rms": 0.05426049228756111,
+                  "relative_quad": 0.07685461969848863,
+                  "relative_tri": 0.11203150948625847,
+                  "relative_base": 0.11583309102703061
+                }
+              }
+            },
+            {
+              "quad": [
+                601,
+                602,
+                1,
+                622
+              ],
+              "S": 1.2934394403736744,
+              "quad_median_edge": 1.2217192377411457,
+              "min_physical_angle": 45.68723237560289,
+              "scaled_corner_jacobian": 0.6983594720424121,
+              "quad_to_tri_size": 1.181395119783479,
+              "quad_to_base_size": 1.2214835725796815,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.08313058272453877,
+                  "candidate_rms": 0.068642277286491,
+                  "completed_control_rms": 0.055676299580933314,
+                  "relative_quad": 0.06804393362769674,
+                  "relative_tri": 0.08038677111863189,
+                  "relative_base": 0.08311454713993374
+                },
+                "dense_64": {
+                  "maximum": 0.10738252462002462,
+                  "candidate_rms": 0.06208148279739983,
+                  "completed_control_rms": 0.05414033190966678,
+                  "relative_quad": 0.08789460074195583,
+                  "relative_tri": 0.10383825237186399,
+                  "relative_base": 0.10736181092474895
+                },
+                "verification_256": {
+                  "maximum": 0.10928061099798175,
+                  "candidate_rms": 0.06202404672381014,
+                  "completed_control_rms": 0.05412927331928564,
+                  "relative_quad": 0.08944821987090279,
+                  "relative_tri": 0.10567369042880417,
+                  "relative_base": 0.1092595311688032
+                }
+              }
+            },
+            {
+              "quad": [
+                601,
+                602,
+                197,
+                14
+              ],
+              "S": 1.2951672353008665,
+              "quad_median_edge": 1.518587269929883,
+              "min_physical_angle": 75.9803625769628,
+              "scaled_corner_jacobian": 0.9451881038535856,
+              "quad_to_tri_size": 1.468464712872598,
+              "quad_to_base_size": 1.5182943400134916,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.11500908439329863,
+                  "candidate_rms": 0.09305306681369889,
+                  "completed_control_rms": 0.0479130150974637,
+                  "relative_quad": 0.07573426082954646,
+                  "relative_tri": 0.11121308958367837,
+                  "relative_base": 0.11498689956260585
+                },
+                "dense_64": {
+                  "maximum": 0.11518666587245724,
+                  "candidate_rms": 0.0839649585063164,
+                  "completed_control_rms": 0.044419324180973704,
+                  "relative_quad": 0.07585119943602299,
+                  "relative_tri": 0.11138480980086167,
+                  "relative_base": 0.11516444678694825
+                },
+                "verification_256": {
+                  "maximum": 0.11562680327080686,
+                  "candidate_rms": 0.08393599799526419,
+                  "completed_control_rms": 0.04443523395870549,
+                  "relative_quad": 0.07614103289312155,
+                  "relative_tri": 0.11181042000522076,
+                  "relative_base": 0.11560449928440751
+                }
+              }
+            },
+            {
+              "quad": [
+                601,
+                602,
+                14,
+                622
+              ],
+              "S": 1.2951983081086802,
+              "quad_median_edge": 1.5074622653909848,
+              "min_physical_angle": 76.23777590497413,
+              "scaled_corner_jacobian": 0.9443793586365997,
+              "quad_to_tri_size": 1.4577069007142793,
+              "quad_to_base_size": 1.5071714814471784,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.11455794377777234,
+                  "candidate_rms": 0.09263671103870254,
+                  "completed_control_rms": 0.06345695499900245,
+                  "relative_quad": 0.07599390472839457,
+                  "relative_tri": 0.11077683933480426,
+                  "relative_base": 0.11453584597045018
+                },
+                "dense_64": {
+                  "maximum": 0.1153385510408991,
+                  "candidate_rms": 0.08350245386923184,
+                  "completed_control_rms": 0.057940239299242725,
+                  "relative_quad": 0.07651173345356288,
+                  "relative_tri": 0.1115316818408702,
+                  "relative_base": 0.11531630265729802
+                },
+                "verification_256": {
+                  "maximum": 0.1157709887835491,
+                  "candidate_rms": 0.08347048225048707,
+                  "completed_control_rms": 0.057925603077687494,
+                  "relative_quad": 0.07679859817487505,
+                  "relative_tri": 0.11194984652469843,
+                  "relative_base": 0.11574865698429301
+                }
+              }
+            }
+          ],
+          "observed_extra": null
+        },
+        {
+          "operation": 3,
+          "tri": [
+            603,
+            604,
+            149
+          ],
+          "local_tri_size": 0.530226542962608,
+          "base_size": 0.5000963500437721,
+          "candidates": [
+            {
+              "quad": [
+                603,
+                604,
+                230,
+                32
+              ],
+              "S": 1.2947941066306685,
+              "quad_median_edge": 0.7731570408019115,
+              "min_physical_angle": 76.54216582841495,
+              "scaled_corner_jacobian": 0.9642261116778342,
+              "quad_to_tri_size": 1.4581635926446541,
+              "quad_to_base_size": 1.5460161641536458,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.03475534414301192,
+                  "candidate_rms": 0.02801667971199931,
+                  "completed_control_rms": 0.014589592963028497,
+                  "relative_quad": 0.04495250293131133,
+                  "relative_tri": 0.06554810317269028,
+                  "relative_base": 0.06949729615097147
+                },
+                "dense_64": {
+                  "maximum": 0.03521925038044995,
+                  "candidate_rms": 0.02537586788182402,
+                  "completed_control_rms": 0.013757483955138922,
+                  "relative_quad": 0.04555251846884931,
+                  "relative_tri": 0.06642302398454926,
+                  "relative_base": 0.07042492987074851
+                },
+                "verification_256": {
+                  "maximum": 0.03560544625443746,
+                  "candidate_rms": 0.02537428065433213,
+                  "completed_control_rms": 0.013773698173359793,
+                  "relative_quad": 0.04605202355462975,
+                  "relative_tri": 0.06715138411497515,
+                  "relative_base": 0.07119717280744203
+                }
+              }
+            },
+            {
+              "quad": [
+                603,
+                604,
+                32,
+                226
+              ],
+              "S": 1.295633304646772,
+              "quad_median_edge": 0.7725710203011877,
+              "min_physical_angle": 76.37216536038146,
+              "scaled_corner_jacobian": 0.9630110125980286,
+              "quad_to_tri_size": 1.4570583660042649,
+              "quad_to_base_size": 1.5448443489610886,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.03504840171484187,
+                  "candidate_rms": 0.028251604076048313,
+                  "completed_control_rms": 0.018608539111606242,
+                  "relative_quad": 0.04536592856042958,
+                  "relative_tri": 0.06610080574052574,
+                  "relative_base": 0.0700832983719521
+                },
+                "dense_64": {
+                  "maximum": 0.03543063142647703,
+                  "candidate_rms": 0.025585662544515882,
+                  "completed_control_rms": 0.017211945272462382,
+                  "relative_quad": 0.04586067881845265,
+                  "relative_tri": 0.06682168574306102,
+                  "relative_base": 0.07084761051220607
+                },
+                "verification_256": {
+                  "maximum": 0.035808306162353504,
+                  "candidate_rms": 0.025583969201592255,
+                  "completed_control_rms": 0.017218276717191637,
+                  "relative_quad": 0.046349533209767035,
+                  "relative_tri": 0.06753397512368357,
+                  "relative_base": 0.07160281445609291
+                }
+              }
+            },
+            {
+              "quad": [
+                603,
+                604,
+                149,
+                9
+              ],
+              "S": 1.2963328342393843,
+              "quad_median_edge": 0.6223074475761808,
+              "min_physical_angle": 44.536030333222584,
+              "scaled_corner_jacobian": 0.6942776639666418,
+              "quad_to_tri_size": 1.1736633253006847,
+              "quad_to_base_size": 1.2443751039608906,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.024605233792199546,
+                  "candidate_rms": 0.020385562197858916,
+                  "completed_control_rms": 0.01723196798516253,
+                  "relative_quad": 0.039538710147266,
+                  "relative_tri": 0.04640513402954014,
+                  "relative_base": 0.04920098654998365
+                },
+                "dense_64": {
+                  "maximum": 0.0333133183862446,
+                  "candidate_rms": 0.018643620398465403,
+                  "completed_control_rms": 0.017095743515243376,
+                  "relative_quad": 0.05353192946026328,
+                  "relative_tri": 0.06282846234009429,
+                  "relative_base": 0.06661380028734218
+                },
+                "verification_256": {
+                  "maximum": 0.0342297594739432,
+                  "candidate_rms": 0.018632866440420538,
+                  "completed_control_rms": 0.01708209989503955,
+                  "relative_quad": 0.05500457950047739,
+                  "relative_tri": 0.06455685768329616,
+                  "relative_base": 0.06844632933423163
+                }
+              }
+            },
+            {
+              "quad": [
+                603,
+                604,
+                149,
+                226
+              ],
+              "S": 1.3754996825605155,
+              "quad_median_edge": 0.5817849005521507,
+              "min_physical_angle": 43.30941833246328,
+              "scaled_corner_jacobian": 0.5907318605477919,
+              "quad_to_tri_size": 1.0972383564607378,
+              "quad_to_base_size": 1.1633456243006546,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.024440462795423213,
+                  "candidate_rms": 0.020259461336446787,
+                  "completed_control_rms": 0.014747244739454955,
+                  "relative_quad": 0.042009448461497824,
+                  "relative_tri": 0.04609437818571594,
+                  "relative_base": 0.04887150804696736
+                },
+                "dense_64": {
+                  "maximum": 0.03300352476620559,
+                  "candidate_rms": 0.018520859961150184,
+                  "completed_control_rms": 0.015084906184180855,
+                  "relative_quad": 0.05672805315999634,
+                  "relative_tri": 0.06224419581449175,
+                  "relative_base": 0.06599433241877667
+                },
+                "verification_256": {
+                  "maximum": 0.03390963947052886,
+                  "candidate_rms": 0.018509943649055966,
+                  "completed_control_rms": 0.015098985297159135,
+                  "relative_quad": 0.05828552689893887,
+                  "relative_tri": 0.06395311574003981,
+                  "relative_base": 0.06780621267793864
+                }
+              }
+            },
+            {
+              "quad": [
+                603,
+                604,
+                149,
+                178
+              ],
+              "S": 1.398634914602026,
+              "quad_median_edge": 0.6684879972866766,
+              "min_physical_angle": 44.011451169044264,
+              "scaled_corner_jacobian": 0.6873619787825052,
+              "quad_to_tri_size": 1.2607592097361655,
+              "quad_to_base_size": 1.336718408818952,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.024768881309206216,
+                  "candidate_rms": 0.020506429331513025,
+                  "completed_control_rms": 0.01913735130882276,
+                  "relative_quad": 0.03705209578891548,
+                  "relative_tri": 0.04671377100590179,
+                  "relative_base": 0.0495282185263665
+                },
+                "dense_64": {
+                  "maximum": 0.03360976331809369,
+                  "candidate_rms": 0.01876139501399378,
+                  "completed_control_rms": 0.018570069397237744,
+                  "relative_quad": 0.05027728763195784,
+                  "relative_tri": 0.06338755342254505,
+                  "relative_base": 0.06720657592312346
+                },
+                "verification_256": {
+                  "maximum": 0.03453572950154185,
+                  "candidate_rms": 0.01875077660603236,
+                  "completed_control_rms": 0.018541098436591873,
+                  "relative_quad": 0.05166245264196035,
+                  "relative_tri": 0.06513391296591,
+                  "relative_base": 0.06905815149124571
+                }
+              }
+            },
+            {
+              "quad": [
+                603,
+                604,
+                226,
+                9
+              ],
+              "S": 1.41003835760422,
+              "quad_median_edge": 0.7687452058949248,
+              "min_physical_angle": 70.05026775794917,
+              "scaled_corner_jacobian": 0.9312825823043228,
+              "quad_to_tri_size": 1.449842932418299,
+              "quad_to_base_size": 1.537194194334029,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.035318044000060445,
+                  "candidate_rms": 0.028467450845715,
+                  "completed_control_rms": 0.021905480988694267,
+                  "relative_quad": 0.04594245756491632,
+                  "relative_tri": 0.06660934739842156,
+                  "relative_base": 0.07062247904222686
+                },
+                "dense_64": {
+                  "maximum": 0.035621370077350216,
+                  "candidate_rms": 0.025778257888921245,
+                  "completed_control_rms": 0.02002154632375415,
+                  "relative_quad": 0.04633703053260938,
+                  "relative_tri": 0.06718141622695464,
+                  "relative_base": 0.07122901431740579
+                },
+                "verification_256": {
+                  "maximum": 0.035991665422833496,
+                  "candidate_rms": 0.025776461841520673,
+                  "completed_control_rms": 0.020024420312079072,
+                  "relative_quad": 0.0468187185387833,
+                  "relative_tri": 0.06787978817833655,
+                  "relative_base": 0.07196946232397666
+                }
+              }
+            }
+          ],
+          "observed_extra": null
+        },
+        {
+          "operation": 61,
+          "tri": [
+            355,
+            59,
+            538
+          ],
+          "local_tri_size": 0.25418072462434693,
+          "base_size": 0.25418072462434693,
+          "candidates": [
+            {
+              "quad": [
+                355,
+                59,
+                599,
+                161
+              ],
+              "S": 1.155958260754739,
+              "quad_median_edge": 0.409292019296301,
+              "min_physical_angle": 62.80306139302451,
+              "scaled_corner_jacobian": 0.8887302406619055,
+              "quad_to_tri_size": 1.6102401938667563,
+              "quad_to_base_size": 1.6102401938667563,
+              "benefit_at_all_stencils": true,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.004488076898461646,
+                  "candidate_rms": 0.00361944665622176,
+                  "completed_control_rms": 0.006228657663911582,
+                  "relative_quad": 0.010965463988714053,
+                  "relative_tri": 0.01765703085902585,
+                  "relative_base": 0.01765703085902585
+                },
+                "dense_64": {
+                  "maximum": 0.004454106618131819,
+                  "candidate_rms": 0.003151078136675263,
+                  "completed_control_rms": 0.005334609041085525,
+                  "relative_quad": 0.01088246632756192,
+                  "relative_tri": 0.017523384689041754,
+                  "relative_base": 0.017523384689041754
+                },
+                "verification_256": {
+                  "maximum": 0.004488830446973709,
+                  "candidate_rms": 0.0031425423701431474,
+                  "completed_control_rms": 0.005318150296122735,
+                  "relative_quad": 0.010967305091097038,
+                  "relative_tri": 0.017659995476083958,
+                  "relative_base": 0.017659995476083958
+                }
+              }
+            }
+          ],
+          "observed_extra": null
+        }
+      ],
+      "fallbacks_scanned": 74,
+      "trace_sha256": "e6d7a0445a2562e9ba7ff600547dd2d4aeaaaacabeed95608db11276fafa4959"
+    },
+    {
+      "case": "Ribbed_additional",
+      "eligible_windows": [
+        {
+          "operation": 1,
+          "tri": [
+            601,
+            602,
+            1
+          ],
+          "local_tri_size": 1.034132626148868,
+          "base_size": 1.0001929335496231,
+          "candidates": [
+            {
+              "quad": [
+                601,
+                602,
+                197,
+                622
+              ],
+              "S": 1.1559948173665686,
+              "quad_median_edge": 1.5074622653909848,
+              "min_physical_angle": 83.08510035380488,
+              "scaled_corner_jacobian": 0.9652255105506942,
+              "quad_to_tri_size": 1.4577069007142793,
+              "quad_to_base_size": 1.5071714814471784,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.11496542549478608,
+                  "candidate_rms": 0.09290889900231353,
+                  "completed_control_rms": 0.05914060228677345,
+                  "relative_quad": 0.0762642144577781,
+                  "relative_tri": 0.11117087169265687,
+                  "relative_base": 0.11494324908573475
+                },
+                "dense_64": {
+                  "maximum": 0.11539937679099783,
+                  "candidate_rms": 0.08368571935373603,
+                  "completed_control_rms": 0.05425310800093898,
+                  "relative_quad": 0.07655208321985237,
+                  "relative_tri": 0.11159049997363257,
+                  "relative_base": 0.11537711667433258
+                },
+                "verification_256": {
+                  "maximum": 0.11585543911644627,
+                  "candidate_rms": 0.08365105357896911,
+                  "completed_control_rms": 0.05426049228756111,
+                  "relative_quad": 0.07685461969848863,
+                  "relative_tri": 0.11203150948625847,
+                  "relative_base": 0.11583309102703061
+                }
+              }
+            },
+            {
+              "quad": [
+                601,
+                602,
+                1,
+                622
+              ],
+              "S": 1.2934394403736744,
+              "quad_median_edge": 1.2217192377411457,
+              "min_physical_angle": 45.68723237560289,
+              "scaled_corner_jacobian": 0.6983594720424121,
+              "quad_to_tri_size": 1.181395119783479,
+              "quad_to_base_size": 1.2214835725796815,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.08313058272453877,
+                  "candidate_rms": 0.068642277286491,
+                  "completed_control_rms": 0.055676299580933314,
+                  "relative_quad": 0.06804393362769674,
+                  "relative_tri": 0.08038677111863189,
+                  "relative_base": 0.08311454713993374
+                },
+                "dense_64": {
+                  "maximum": 0.10738252462002462,
+                  "candidate_rms": 0.06208148279739983,
+                  "completed_control_rms": 0.05414033190966678,
+                  "relative_quad": 0.08789460074195583,
+                  "relative_tri": 0.10383825237186399,
+                  "relative_base": 0.10736181092474895
+                },
+                "verification_256": {
+                  "maximum": 0.10928061099798175,
+                  "candidate_rms": 0.06202404672381014,
+                  "completed_control_rms": 0.05412927331928564,
+                  "relative_quad": 0.08944821987090279,
+                  "relative_tri": 0.10567369042880417,
+                  "relative_base": 0.1092595311688032
+                }
+              }
+            },
+            {
+              "quad": [
+                601,
+                602,
+                197,
+                14
+              ],
+              "S": 1.2951672353008665,
+              "quad_median_edge": 1.518587269929883,
+              "min_physical_angle": 75.9803625769628,
+              "scaled_corner_jacobian": 0.9451881038535856,
+              "quad_to_tri_size": 1.468464712872598,
+              "quad_to_base_size": 1.5182943400134916,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.11500908439329863,
+                  "candidate_rms": 0.09305306681369889,
+                  "completed_control_rms": 0.0479130150974637,
+                  "relative_quad": 0.07573426082954646,
+                  "relative_tri": 0.11121308958367837,
+                  "relative_base": 0.11498689956260585
+                },
+                "dense_64": {
+                  "maximum": 0.11518666587245724,
+                  "candidate_rms": 0.0839649585063164,
+                  "completed_control_rms": 0.044419324180973704,
+                  "relative_quad": 0.07585119943602299,
+                  "relative_tri": 0.11138480980086167,
+                  "relative_base": 0.11516444678694825
+                },
+                "verification_256": {
+                  "maximum": 0.11562680327080686,
+                  "candidate_rms": 0.08393599799526419,
+                  "completed_control_rms": 0.04443523395870549,
+                  "relative_quad": 0.07614103289312155,
+                  "relative_tri": 0.11181042000522076,
+                  "relative_base": 0.11560449928440751
+                }
+              }
+            },
+            {
+              "quad": [
+                601,
+                602,
+                14,
+                622
+              ],
+              "S": 1.2951983081086802,
+              "quad_median_edge": 1.5074622653909848,
+              "min_physical_angle": 76.23777590497413,
+              "scaled_corner_jacobian": 0.9443793586365997,
+              "quad_to_tri_size": 1.4577069007142793,
+              "quad_to_base_size": 1.5071714814471784,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.11455794377777234,
+                  "candidate_rms": 0.09263671103870254,
+                  "completed_control_rms": 0.06345695499900245,
+                  "relative_quad": 0.07599390472839457,
+                  "relative_tri": 0.11077683933480426,
+                  "relative_base": 0.11453584597045018
+                },
+                "dense_64": {
+                  "maximum": 0.1153385510408991,
+                  "candidate_rms": 0.08350245386923184,
+                  "completed_control_rms": 0.057940239299242725,
+                  "relative_quad": 0.07651173345356288,
+                  "relative_tri": 0.1115316818408702,
+                  "relative_base": 0.11531630265729802
+                },
+                "verification_256": {
+                  "maximum": 0.1157709887835491,
+                  "candidate_rms": 0.08347048225048707,
+                  "completed_control_rms": 0.057925603077687494,
+                  "relative_quad": 0.07679859817487505,
+                  "relative_tri": 0.11194984652469843,
+                  "relative_base": 0.11574865698429301
+                }
+              }
+            }
+          ],
+          "observed_extra": [
+            601,
+            602,
+            197,
+            622
+          ]
+        },
+        {
+          "operation": 3,
+          "tri": [
+            603,
+            604,
+            149
+          ],
+          "local_tri_size": 0.530226542962608,
+          "base_size": 0.5000963500437721,
+          "candidates": [
+            {
+              "quad": [
+                603,
+                604,
+                230,
+                32
+              ],
+              "S": 1.2947941066306685,
+              "quad_median_edge": 0.7731570408019115,
+              "min_physical_angle": 76.54216582841495,
+              "scaled_corner_jacobian": 0.9642261116778342,
+              "quad_to_tri_size": 1.4581635926446541,
+              "quad_to_base_size": 1.5460161641536458,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.03475534414301192,
+                  "candidate_rms": 0.02801667971199931,
+                  "completed_control_rms": 0.014589592963028497,
+                  "relative_quad": 0.04495250293131133,
+                  "relative_tri": 0.06554810317269028,
+                  "relative_base": 0.06949729615097147
+                },
+                "dense_64": {
+                  "maximum": 0.03521925038044995,
+                  "candidate_rms": 0.02537586788182402,
+                  "completed_control_rms": 0.013757483955138922,
+                  "relative_quad": 0.04555251846884931,
+                  "relative_tri": 0.06642302398454926,
+                  "relative_base": 0.07042492987074851
+                },
+                "verification_256": {
+                  "maximum": 0.03560544625443746,
+                  "candidate_rms": 0.02537428065433213,
+                  "completed_control_rms": 0.013773698173359793,
+                  "relative_quad": 0.04605202355462975,
+                  "relative_tri": 0.06715138411497515,
+                  "relative_base": 0.07119717280744203
+                }
+              }
+            },
+            {
+              "quad": [
+                603,
+                604,
+                32,
+                226
+              ],
+              "S": 1.295633304646772,
+              "quad_median_edge": 0.7725710203011877,
+              "min_physical_angle": 76.37216536038146,
+              "scaled_corner_jacobian": 0.9630110125980286,
+              "quad_to_tri_size": 1.4570583660042649,
+              "quad_to_base_size": 1.5448443489610886,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.03504840171484187,
+                  "candidate_rms": 0.028251604076048313,
+                  "completed_control_rms": 0.018608539111606242,
+                  "relative_quad": 0.04536592856042958,
+                  "relative_tri": 0.06610080574052574,
+                  "relative_base": 0.0700832983719521
+                },
+                "dense_64": {
+                  "maximum": 0.03543063142647703,
+                  "candidate_rms": 0.025585662544515882,
+                  "completed_control_rms": 0.017211945272462382,
+                  "relative_quad": 0.04586067881845265,
+                  "relative_tri": 0.06682168574306102,
+                  "relative_base": 0.07084761051220607
+                },
+                "verification_256": {
+                  "maximum": 0.035808306162353504,
+                  "candidate_rms": 0.025583969201592255,
+                  "completed_control_rms": 0.017218276717191637,
+                  "relative_quad": 0.046349533209767035,
+                  "relative_tri": 0.06753397512368357,
+                  "relative_base": 0.07160281445609291
+                }
+              }
+            },
+            {
+              "quad": [
+                603,
+                604,
+                149,
+                9
+              ],
+              "S": 1.2963328342393843,
+              "quad_median_edge": 0.6223074475761808,
+              "min_physical_angle": 44.536030333222584,
+              "scaled_corner_jacobian": 0.6942776639666418,
+              "quad_to_tri_size": 1.1736633253006847,
+              "quad_to_base_size": 1.2443751039608906,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.024605233792199546,
+                  "candidate_rms": 0.020385562197858916,
+                  "completed_control_rms": 0.01723196798516253,
+                  "relative_quad": 0.039538710147266,
+                  "relative_tri": 0.04640513402954014,
+                  "relative_base": 0.04920098654998365
+                },
+                "dense_64": {
+                  "maximum": 0.0333133183862446,
+                  "candidate_rms": 0.018643620398465403,
+                  "completed_control_rms": 0.017095743515243376,
+                  "relative_quad": 0.05353192946026328,
+                  "relative_tri": 0.06282846234009429,
+                  "relative_base": 0.06661380028734218
+                },
+                "verification_256": {
+                  "maximum": 0.0342297594739432,
+                  "candidate_rms": 0.018632866440420538,
+                  "completed_control_rms": 0.01708209989503955,
+                  "relative_quad": 0.05500457950047739,
+                  "relative_tri": 0.06455685768329616,
+                  "relative_base": 0.06844632933423163
+                }
+              }
+            },
+            {
+              "quad": [
+                603,
+                604,
+                149,
+                226
+              ],
+              "S": 1.3754996825605155,
+              "quad_median_edge": 0.5817849005521507,
+              "min_physical_angle": 43.30941833246328,
+              "scaled_corner_jacobian": 0.5907318605477919,
+              "quad_to_tri_size": 1.0972383564607378,
+              "quad_to_base_size": 1.1633456243006546,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.024440462795423213,
+                  "candidate_rms": 0.020259461336446787,
+                  "completed_control_rms": 0.014747244739454955,
+                  "relative_quad": 0.042009448461497824,
+                  "relative_tri": 0.04609437818571594,
+                  "relative_base": 0.04887150804696736
+                },
+                "dense_64": {
+                  "maximum": 0.03300352476620559,
+                  "candidate_rms": 0.018520859961150184,
+                  "completed_control_rms": 0.015084906184180855,
+                  "relative_quad": 0.05672805315999634,
+                  "relative_tri": 0.06224419581449175,
+                  "relative_base": 0.06599433241877667
+                },
+                "verification_256": {
+                  "maximum": 0.03390963947052886,
+                  "candidate_rms": 0.018509943649055966,
+                  "completed_control_rms": 0.015098985297159135,
+                  "relative_quad": 0.05828552689893887,
+                  "relative_tri": 0.06395311574003981,
+                  "relative_base": 0.06780621267793864
+                }
+              }
+            },
+            {
+              "quad": [
+                603,
+                604,
+                149,
+                178
+              ],
+              "S": 1.398634914602026,
+              "quad_median_edge": 0.6684879972866766,
+              "min_physical_angle": 44.011451169044264,
+              "scaled_corner_jacobian": 0.6873619787825052,
+              "quad_to_tri_size": 1.2607592097361655,
+              "quad_to_base_size": 1.336718408818952,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.024768881309206216,
+                  "candidate_rms": 0.020506429331513025,
+                  "completed_control_rms": 0.01913735130882276,
+                  "relative_quad": 0.03705209578891548,
+                  "relative_tri": 0.04671377100590179,
+                  "relative_base": 0.0495282185263665
+                },
+                "dense_64": {
+                  "maximum": 0.03360976331809369,
+                  "candidate_rms": 0.01876139501399378,
+                  "completed_control_rms": 0.018570069397237744,
+                  "relative_quad": 0.05027728763195784,
+                  "relative_tri": 0.06338755342254505,
+                  "relative_base": 0.06720657592312346
+                },
+                "verification_256": {
+                  "maximum": 0.03453572950154185,
+                  "candidate_rms": 0.01875077660603236,
+                  "completed_control_rms": 0.018541098436591873,
+                  "relative_quad": 0.05166245264196035,
+                  "relative_tri": 0.06513391296591,
+                  "relative_base": 0.06905815149124571
+                }
+              }
+            },
+            {
+              "quad": [
+                603,
+                604,
+                226,
+                9
+              ],
+              "S": 1.41003835760422,
+              "quad_median_edge": 0.7687452058949248,
+              "min_physical_angle": 70.05026775794917,
+              "scaled_corner_jacobian": 0.9312825823043228,
+              "quad_to_tri_size": 1.449842932418299,
+              "quad_to_base_size": 1.537194194334029,
+              "benefit_at_all_stencils": false,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.035318044000060445,
+                  "candidate_rms": 0.028467450845715,
+                  "completed_control_rms": 0.021905480988694267,
+                  "relative_quad": 0.04594245756491632,
+                  "relative_tri": 0.06660934739842156,
+                  "relative_base": 0.07062247904222686
+                },
+                "dense_64": {
+                  "maximum": 0.035621370077350216,
+                  "candidate_rms": 0.025778257888921245,
+                  "completed_control_rms": 0.02002154632375415,
+                  "relative_quad": 0.04633703053260938,
+                  "relative_tri": 0.06718141622695464,
+                  "relative_base": 0.07122901431740579
+                },
+                "verification_256": {
+                  "maximum": 0.035991665422833496,
+                  "candidate_rms": 0.025776461841520673,
+                  "completed_control_rms": 0.020024420312079072,
+                  "relative_quad": 0.0468187185387833,
+                  "relative_tri": 0.06787978817833655,
+                  "relative_base": 0.07196946232397666
+                }
+              }
+            }
+          ],
+          "observed_extra": [
+            603,
+            604,
+            230,
+            32
+          ]
+        },
+        {
+          "operation": 60,
+          "tri": [
+            355,
+            59,
+            538
+          ],
+          "local_tri_size": 0.25418072462434693,
+          "base_size": 0.25418072462434693,
+          "candidates": [
+            {
+              "quad": [
+                355,
+                59,
+                599,
+                161
+              ],
+              "S": 1.155958260754739,
+              "quad_median_edge": 0.409292019296301,
+              "min_physical_angle": 62.80306139302451,
+              "scaled_corner_jacobian": 0.8887302406619055,
+              "quad_to_tri_size": 1.6102401938667563,
+              "quad_to_base_size": 1.6102401938667563,
+              "benefit_at_all_stencils": true,
+              "samples": {
+                "pilot_5": {
+                  "maximum": 0.004488076898461646,
+                  "candidate_rms": 0.00361944665622176,
+                  "completed_control_rms": 0.006228657663911582,
+                  "relative_quad": 0.010965463988714053,
+                  "relative_tri": 0.01765703085902585,
+                  "relative_base": 0.01765703085902585
+                },
+                "dense_64": {
+                  "maximum": 0.004454106618131819,
+                  "candidate_rms": 0.003151078136675263,
+                  "completed_control_rms": 0.005334609041085525,
+                  "relative_quad": 0.01088246632756192,
+                  "relative_tri": 0.017523384689041754,
+                  "relative_base": 0.017523384689041754
+                },
+                "verification_256": {
+                  "maximum": 0.004488830446973709,
+                  "candidate_rms": 0.0031425423701431474,
+                  "completed_control_rms": 0.005318150296122735,
+                  "relative_quad": 0.010967305091097038,
+                  "relative_tri": 0.017659995476083958,
+                  "relative_base": 0.017659995476083958
+                }
+              }
+            }
+          ],
+          "observed_extra": [
+            355,
+            59,
+            599,
+            161
+          ]
+        }
+      ],
+      "fallbacks_scanned": 81,
+      "trace_sha256": "d98cb913bd591bbf77910af9f57590c9057323d7cc1456896a4c833d9f5f4023"
+    }
+  ],
+  "separation": {
+    "relative_quad": {
+      "maximum_beneficial": 0.06480718045436812,
+      "minimum_detrimental": 0.03705209578891548,
+      "supports_a_common_limit": false
+    },
+    "relative_tri": {
+      "maximum_beneficial": 0.04263808197618884,
+      "minimum_detrimental": 0.04609437818571594,
+      "supports_a_common_limit": true
+    },
+    "relative_base": {
+      "maximum_beneficial": 0.03945616525985807,
+      "minimum_detrimental": 0.04887150804696736,
+      "supports_a_common_limit": true
+    }
+  },
+  "trial_limit": 0.045,
+  "conditional_predictions": {
+    "CurvaBezier_original": [
+      {
+        "operation": 13,
+        "passing": [
+          [
+            733,
+            734,
+            389,
+            96
+          ]
+        ]
+      }
+    ],
+    "Ribbed_original": [
+      {
+        "operation": 1,
+        "passing": []
+      },
+      {
+        "operation": 3,
+        "passing": []
+      },
+      {
+        "operation": 61,
+        "passing": [
+          [
+            355,
+            59,
+            599,
+            161
+          ]
+        ]
+      }
+    ],
+    "Ribbed_additional": [
+      {
+        "operation": 1,
+        "passing": []
+      },
+      {
+        "operation": 3,
+        "passing": []
+      },
+      {
+        "operation": 60,
+        "passing": [
+          [
+            355,
+            59,
+            599,
+            161
+          ]
+        ]
+      }
+    ]
+  },
+  "size_135_blocks_beneficial": 1,
+  "size_135_allows_detrimental": 4,
+  "unit_scale_checks": 24,
+  "remote_pr_275": {
+    "observed_utc": "2026-11-25T12:43:01+00:00",
+    "headRefOid": "779ac3437a7ab7099dda3d26c8deb478892dc922",
+    "isDraft": true,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T12:38:57Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45613458333/job/139202681583",
+        "name": "QUAD native (ubuntu-24.04)",
+        "startedAt": "2026-11-25T12:24:42Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T12:38:56Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45613458333/job/139202682157",
+        "name": "QUAD native (windows-2022)",
+        "startedAt": "2026-11-25T12:24:42Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T12:33:13Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45613458333/job/139202681931",
+        "name": "TRI baseline and tooling controls (Linux)",
+        "startedAt": "2026-11-25T12:24:43Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T12:26:48Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45613458333/job/139202682217",
+        "name": "TRI scientific equivalence against frozen baseline",
+        "startedAt": "2026-11-25T12:24:43Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      }
+    ]
+  },
+  "diagnostic_runs": {
+    "expanded-screen": {
+      "command": [
+        "python",
+        "build/quad-prospective-screen-20261125/screen.py"
+      ],
+      "exit": 0,
+      "seconds": 5.422908544540405,
+      "timeout": 90
+    },
+    "complete-screen": {
+      "command": [
+        "python",
+        "build/quad-prospective-screen-20261125/screen.py"
+      ],
+      "exit": 0,
+      "seconds": 5.187077760696411,
+      "timeout": 90
+    }
+  },
+  "initial_script_failure": {
+    "exit": 1,
+    "reason": "Nonconvex union score was None before comparison with shape limit."
+  },
+  "current_script_sha256": "3e8e3039c7b74815eb9f11e2a86b4b019ef22d4449de6e8115850ce99254e882"
+}
