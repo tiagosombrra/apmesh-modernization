@@ -10,7 +10,7 @@ is implemented/compared in reviewed15e2915 and integrated as51d51f6/PR240. Exact
 native20/20, three-profile application histories and hosted44496523827 all4 succeed. Historical dated missing-stage
 entries below retain their original scope; no whole-stage closure follows.
 
-## Current execution order - 2026-11-24
+## Current execution order - 2026-11-25
 
 Follow the [four research deliverables and their exit evidence](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions).
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
@@ -27,8 +27,14 @@ adds durable file provenance for one experimental decision. The
 boundary curvature limitations and identical requested leaves with the existing
 geometric indicator. The [native handoff](NATIVE_RECOVERED_GEOMETRIC_FEEDBACK_20261125.md)
 stages two successors and locates their regression in the advancing-front
-search neighborhood. Align the bounded search comparison before issue 221. Keep the TRI-only
-control and report both local and patch-wide effects.
+search neighborhood. The [coupled native successor](FEEDBACK_SEARCH_AND_CURVES_20261125.md)
+isolates the lookup regression and applies the original requested curve splits.
+The guarded arm stages a valid successor with smaller sampled geometric
+deviation and changed next sizing requests. Remaining gate for issue 221:
+align admission for changed contour, growth and local shape, exercise the
+same coupled step on another real transition and a shared patch edge, then
+drive a subsequent native generation from the staged source. Keep the TRI-only
+control and report both local and patch-wide effects. Zero accepted epochs.
 The dated entries below document earlier decisions and measured scope.
 
 ## Execution history beginning 2026-11-19

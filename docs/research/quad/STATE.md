@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: resolve advancing-front search regression after tree-only feedback
+## Active: qualify experimental admission for native TRI/QUAD feedback
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,31 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - produce a valid successor with coupled curve and tree feedback
+
+[Draft PR 269](https://github.com/tiagosombrra/apmesh-modernization/pull/269)
+at 219183c7 reproduces all 106 front transactions with exact predecessor
+search boxes and refined native leaves. Ten requested splits use the
+original binary curve workflow, preserving existing samples and taking the
+contour from 14 to 24 segments. Standard UV smoothing rejects at pass one.
+The guarded comparison passes all five stages and publishes a staged mesh
+of 104 TRI and 748 QUAD. On both common grids the sampled geometric RMS falls
+by about 69 percent. Face count grows 17.5 percent. Whole-patch minimum TRI
+and QUAD angles improve, while the contour-edge QUAD minimum falls from
+18.92 to 18.57 degrees. The new mesh gives 21 face and six curve size
+requests. See the [native comparison and receipt](FEEDBACK_SEARCH_AND_CURVES_20261125.md).
+Exact MSVC build, directed runner, six source captures with 54 negatives
+and 30 reporting and recovery tests pass. The previous PR 268 has four
+successful hosted checks. PR 269 awaits independent review and hosted
+qualification at the checkpoint.
+
+**Next:** align an experimental admission rule for changed contour and
+controlled growth using these measured shape and error tradeoffs.
+Exercise the same coupled step on another real transition and a shared
+patch edge against the unchanged TRI control. Then use the staged mesh and
+its stored curve/tree state to test a subsequent native generation.
+Zero accepted mixed epochs. The global mixed curvature error remains open.
 
 ### 2026-11-25 - stage matched native geometric successors from the recovered source
 

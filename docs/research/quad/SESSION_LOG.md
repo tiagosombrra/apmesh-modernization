@@ -4448,3 +4448,18 @@ candidate neighborhood. Exact native suite and independent audits pass.
 [Report and evidence](NATIVE_RECOVERED_GEOMETRIC_FEEDBACK_20261125.md).
 Keep the two negative candidates, align the planned search-only comparison,
 and count zero accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - generate a native mixed successor with curve feedback
+
+PR 268 is green at 7fea0630. Draft PR 269 at 219183c7 keeps three native
+leaf edits and reproduces all 106 front operations with the preceding
+lookup boxes. Applying ten original interval splits gives 24 contour
+segments. Retain the standard pass-one smoothing rejection. The guarded
+comparison stages a valid 813-node, 852-face mesh and five valid passes.
+The fine-grid geometric RMS decreases from 0.00971171 to 0.00296791. Retain
+the boundary QUAD minimum-angle decrease and the different next requests.
+Final MSVC runner, real source contracts and 30 reporting/recovery tests
+pass. [Report and commands](FEEDBACK_SEARCH_AND_CURVES_20261125.md).
+Next align admission, extend comparative coverage, and qualify the
+staged source for a subsequent native generation. Zero accepted mixed
+adaptive epochs and no global mixed curvature qualification.
