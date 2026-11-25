@@ -17,8 +17,10 @@ for the current sequence. The [portable single-patch path](PORTABLE_MIXED_FEEDBA
 runs the two development cases with the same executable. The [parameterized
 relative trigger](RELATIVE_MIXED_TRIGGER_20261125.md) reproduces those outputs
 when both seeds are active, skips a flat case, and measures one selective
-native alternative. Align and freeze a transferable tolerance and admission
-rule before running reserved geometries. Measure regional shape and error versus face cost, and keep
+native alternative. The [common interval comparison](COMMON_RELATIVE_CALIBRATION_20261125.md)
+now covers both development surfaces, including native selective Ribbed.
+Align and freeze a transferable tolerance and admission rule before
+running reserved geometries. Measure regional shape and error versus face cost, and keep
 the shared-curve and two-epoch gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)

@@ -4564,3 +4564,16 @@ minimum contour-edge QUAD angle. All local native and 33 Python tests pass.
 [Report and receipt](RELATIVE_MIXED_TRIGGER_20261125.md).
 PR 271 completes four hosted checks. Tolerance adoption, quality admission,
 reserved cases, shared curves, subsequent epochs and curvature remain open.
+
+## 2026-11-25 Fortaleza - compare a common relative tolerance across both native inputs
+
+Verify four exact-head checks for PR 272. Use the retained MSVC image
+to stage the one missing selective Ribbed geometry. The QUAD-only
+arm gives 604 faces, 19 contour segments and 13.0 percent smaller
+geometric RMS. Match complete ordered requests for the five common
+tolerance intervals to all native outcomes or no action. Retain regional
+angle and shape losses and the first-pass unguarded smoothing rejection.
+The initial read-only matcher fails its tuple-to-array comparison;
+the canonical JSON replay succeeds. [Report and receipt](COMMON_RELATIVE_CALIBRATION_20261125.md).
+Next align regional quality and growth before freezing any common
+tolerance for reserved inputs. No mixed adaptive epochs accepted.

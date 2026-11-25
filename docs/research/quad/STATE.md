@@ -12,6 +12,26 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - measure all common tolerance regimes on the two development inputs
+
+One new native Ribbed QUAD-only trial fills the missing active regime
+at its measured TRI breakpoint. The same exact PR 272 source and MSVC
+image stage 604 faces and 19 contour segments. Geometric RMS improves
+13.0 percent at 10.4 percent growth. Its low interior TRI angle and
+slightly reduced contour QUAD angle remain visible. Complete ordered
+request replay matches all five common tolerance intervals to four
+native candidates or no action. The joint selective interval is
+[0.06030906936233993, 0.06494207378531465) on these inputs.
+[Comparison and receipt](COMMON_RELATIVE_CALIBRATION_20261125.md).
+All four hosted checks on PR 272 now pass. Independent review is pending.
+
+**Next:** align whether to use per-type regional quality floors with
+improvement below the floor, or a strict relative minimum veto. Set
+quality and growth limits and freeze them with a common tolerance
+before reserved cases. No tolerance, scientific admission or new
+mixed adaptive epoch is adopted. Shared curve, owned successor reentry
+and global curvature remain open.
+
 ### 2026-11-25 - qualify an explicit relative geometric trigger
 
 [Draft PR 272](https://github.com/tiagosombrra/apmesh-modernization/pull/272)
