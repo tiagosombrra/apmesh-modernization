@@ -25,10 +25,11 @@ a limiting interior TRI shared by both CurvaBezier seed regimes. The
 a missed eligible local pair on the earlier chosen base. The
 [additional local pairs experiment](ADDITIONAL_LOCAL_PAIRS_20261125.md)
 removes that limiting interior TRI on CurvaBezier and records an interior
-QUAD smoothing tradeoff. Compare the same option on the independent Ribbed
-case before freezing a transferable tolerance, quality and growth profile
-for reserved geometries. Measure regional quality at birth and after
-smoothing, error and face cost, and keep the shared-curve and two-epoch
+QUAD smoothing tradeoff. The [Ribbed Bracket transfer](ADDITIONAL_LOCAL_PAIRS_RIBBED_20261125.md)
+records worse interior TRI quality and geometric error with the same option.
+Keep the option experimental. Align a prospective geometric and physical
+size screen before freezing any transferable tolerance, quality or growth
+profile for reserved geometries. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)

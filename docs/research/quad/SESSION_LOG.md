@@ -4618,3 +4618,18 @@ wrapper failures are retained with a successful independent artifact readback.
 [Report and receipt](ADDITIONAL_LOCAL_PAIRS_20261125.md).
 Next align one native transfer comparison on Ribbed Bracket. No profile
 adopted and zero mixed adaptive epochs accepted.
+
+## 2026-11-25 Fortaleza - transfer additional local pairs to Ribbed Bracket
+
+Run the approved comparison with the exact PR 275 image, matched Step 2
+requests and archived baseline. The experimental run stages. Both sides
+have 623 nodes, 22 contour segments and the same sampled source and leaf
+tree. Three fallback QUADs appear. The final interior TRI minimum angle
+falls from 18.37 to 10.90 degrees, and shared-site geometric RMS rises
+35.49 percent. Independent replay passes 100 operation checks and rejects
+a forged score. Two initial analysis failures are retained. The final
+readback verifies exact coordinates and oriented face cycles. The first
+replacement accounts for about 91 percent of the net squared-error
+increase. [Transfer and receipt](ADDITIONAL_LOCAL_PAIRS_RIBBED_20261125.md).
+Keep minimum-S fallback experimental and align a local relative deviation
+and physical size test. No policy adopted and zero mixed epochs accepted.

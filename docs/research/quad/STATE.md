@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: test transfer of additional local pairs
+## Active: align a geometric screen for prospective local pairs
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,27 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - complete the additional-pair transfer to Ribbed Bracket
+
+The exact PR 275 image stages the same Ribbed Bracket Step 2 input with
+the additional-pair flag. Controls confirm identical model, requests,
+predecessor, tree and 22 contour segments. Independent replay verifies
+100 operations and rejects a forged shape score. With 623 nodes in both
+arms, faces change from 648 to 650. The final interior TRI minimum angle
+falls from 18.37 to 10.90 degrees, with a 35.49 percent increase in sampled
+geometric RMS. A new 0.29 degree transition TRI improves to 22.81 degrees
+under guarded smoothing. The first additional QUAD accounts for 91.22
+percent of the net squared-error increase on same-site comparison. The
+other eligible options on that base also increase local error offline.
+[Transfer and exact receipt](ADDITIONAL_LOCAL_PAIRS_RIBBED_20261125.md).
+
+**Next:** align one prospective test that uses the existing relative
+surface deviation and physical size on the local front. Verify the
+predicted screen on both development cases before another native test.
+Keep the minimum-S-only flag experimental. No new native policy, held-out
+input, shared curve, global curvature error or accepted mixed epoch in
+this transfer.
 
 ### 2026-11-25 - measure additional local pairs on CurvaBezier
 
@@ -26,12 +47,8 @@ block the candidate. The ordinary and directed native suites, boundary
 source controls and 39 Python checks pass locally.
 [Paired result and receipts](ADDITIONAL_LOCAL_PAIRS_20261125.md).
 
-**Next:** align a matched native Ribbed Bracket comparison with the same
-flag and no recalibration. The read-only Ribbed front scan located three
-opportunities across 74 TRI fallbacks. Compare regional quality at birth and
-after smoothing, deviation and cost before deciding whether to retain the
-selection for reserved models. Shared curves, admitted mixed successor
-reentry and global curvature remain open. Zero accepted mixed epochs.
+The aligned Ribbed native transfer is measured above. The original read-only
+Ribbed scan located three opportunities across 74 TRI fallbacks.
 
 ### 2026-11-25 - locate the missed QUAD before the limiting TRI
 
