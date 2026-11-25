@@ -195,6 +195,8 @@ struct IdealFrontLimits {
   std::size_t points;
   double min_angle;
   double min_shape;
+  // Shape and angle, in the same order as the scoring routine.
+  std::optional<std::array<double, 2>> quad_floors;
 };
 
 struct Candidate {
@@ -367,6 +369,89 @@ void CheckMixedSmoothingFace(PatchBezier& patch, const std::vector<VertexId>& fa
     const auto b = Difference(physical[face[(i + face.size() - 1) % face.size()]], point);
     angle = std::min(angle, std::atan2(Norm(Cross(a, b)), Dot(a, b)) * 180 / std::acos(-1.0));
   }
+}
+
+ArticleFrontFaces ChangedClosureFaces(const ArticleFrontFaces& faces,
+                                      const ArticleFrontFaces& other) {
+  const auto canonical = [](ArticleFrontFaces polygons) {
+    for (auto& polygon : polygons)
+      std::rotate(polygon.begin(), std::min_element(polygon.begin(), polygon.end()), polygon.end());
+    std::sort(polygons.begin(), polygons.end());
+    return polygons;
+  };
+  const auto a = canonical(faces), b = canonical(other);
+  ArticleFrontFaces changed;
+  std::set_difference(a.begin(), a.end(), b.begin(), b.end(), std::back_inserter(changed));
+  return changed;
+}
+
+auto ClosureBoundary(const ArticleFrontFaces& faces) {
+  std::map<std::pair<VertexId, VertexId>, int> boundary;
+  for (const auto& face : faces) {
+    for (std::size_t i = 0; i < face.size(); ++i) {
+      const auto a = face[i], b = face[(i + 1) % face.size()];
+      const auto key = std::make_pair(std::min(a, b), std::max(a, b));
+      auto& balance = boundary[key];
+      balance += a < b ? 1 : -1;
+      if (balance == 0)
+        boundary.erase(key);
+    }
+  }
+  return boundary;
+}
+
+std::size_t ClosureRegion(const std::vector<VertexId>& face, const std::vector<UvVertex>& uv) {
+  bool touches_contour = false;
+  const auto on_side = [](double x) { return x == 0 || x == 1; };
+  for (std::size_t i = 0; i < face.size(); ++i) {
+    const auto a = uv[face[i]], b = uv[face[(i + 1) % face.size()]];
+    if ((a.u == b.u && on_side(a.u)) || (a.v == b.v && on_side(a.v)))
+      return 0; // Contour edge.
+    touches_contour |= on_side(a.u) || on_side(a.v);
+  }
+  return touches_contour ? 1 : 2; // Contour vertex, then interior.
+}
+
+bool PreservesClosureQuality(PatchBezier& patch, const PhysicalLift& lift,
+                             const IdealFrontLimits& limits, const std::vector<UvVertex>& uv,
+                             const ArticleFrontFaces& control, const ArticleFrontFaces& trial) {
+  const auto replaced = ChangedClosureFaces(control, trial);
+  const auto replacement = ChangedClosureFaces(trial, control);
+  if (replaced.empty() || replacement.empty() ||
+      ClosureBoundary(replaced) != ClosureBoundary(replacement))
+    return false;
+  std::vector<Xyz> xyz;
+  xyz.reserve(uv.size());
+  for (const auto p : uv)
+    xyz.push_back(lift(p));
+  const auto score = [&](const ArticleFrontFaces& faces) {
+    std::array<TrialScores, 3> regional;
+    for (auto& values : regional)
+      values.fill(std::numeric_limits<double>::infinity());
+    std::vector<std::array<UvVertex, 3>> facets;
+    for (const auto& face : faces)
+      CheckMixedSmoothingFace(patch, face, uv, xyz, &facets, &regional[ClosureRegion(face, uv)]);
+    RequireMixedGeometry(AuditUvOverlap({}, facets).no_overlap, "Overlapping preview closure");
+    return regional;
+  };
+  try {
+    const auto before = score(replaced), after = score(replacement);
+    const auto& quad = *limits.quad_floors;
+    const std::array<double, 4> floors{limits.min_shape, limits.min_angle, quad[0], quad[1]};
+    for (std::size_t region = 0; region < before.size(); ++region) {
+      for (std::size_t metric = 0; metric < floors.size(); ++metric) {
+        if (!std::isfinite(after[region][metric]))
+          continue;
+        const auto reference =
+            std::isfinite(before[region][metric]) ? before[region][metric] : floors[metric];
+        if (after[region][metric] < reference - 1e-12 * std::max(1.0, std::abs(reference)))
+          return false;
+      }
+    }
+  } catch (const MixedGeometryRejection&) {
+    return false;
+  }
+  return true;
 }
 
 std::vector<Xyz> ValidateMixedSmoothing(PatchBezier& patch, const TrialFaces& faces,
@@ -682,7 +767,14 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
             return std::isfinite(scores[0]) && scores[0] >= limits.min_shape &&
                    std::isfinite(scores[1]) && scores[1] >= limits.min_angle;
           };
-      ideal_point.emplace(ArticleFrontIdealPoint{ideal_front_limits->points, meets_floor});
+      ideal_point.emplace(ArticleFrontIdealPoint{ideal_front_limits->points, meets_floor, {}});
+      if (ideal_front_limits->quad_floors)
+        ideal_point->preserves_closure = [&](const std::vector<UvVertex>& uv,
+                                             const ArticleFrontFaces& control,
+                                             const ArticleFrontFaces& trial) {
+          return PreservesClosureQuality(patch, physical_point, *ideal_front_limits, uv, control,
+                                         trial);
+        };
     }
     article = ArticleMixedFront(selected.uv_quads, contour, std::move(boxes), additional_pairs,
                                 std::move(pair_screen), std::move(ideal_point))
@@ -994,9 +1086,15 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     trace << ",\"additional_pair_error_limit\":" << *candidate.additional_pair_error_limit;
   if (candidate.ideal_front_limits) {
     const auto& limits = *candidate.ideal_front_limits;
-    trace << ",\"ideal_front_points\":{\"policy\":\"legacy_unit_leaf_height_v1\",\"limit\":"
-          << limits.points << ",\"min_angle_deg\":" << limits.min_angle
-          << ",\"min_shape\":" << limits.min_shape << '}';
+    trace << ",\"ideal_front_points\":{\"policy\":\""
+          << (limits.quad_floors ? "legacy_leaf_height_guarded_closure_v1"
+                                 : "legacy_unit_leaf_height_v1")
+          << "\",\"limit\":" << limits.points << ",\"min_angle_deg\":" << limits.min_angle
+          << ",\"min_shape\":" << limits.min_shape;
+    if (limits.quad_floors)
+      trace << ",\"quad_min_angle_deg\":" << (*limits.quad_floors)[1]
+            << ",\"quad_min_shape\":" << (*limits.quad_floors)[0];
+    trace << '}';
   }
   trace << ",\"point_rule\":\""
         << (candidate.article_area_centroid ? "polygon_area_centroid_uv_v1" : "vertex_mean_uv_v1")
@@ -1092,6 +1190,21 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     }
     if (step.introduced_vertex)
       trace << ",\"introduced_vertex\":" << *step.introduced_vertex;
+    if (!step.closure_trials.empty()) {
+      trace << ",\"closure_trials\":[";
+      for (std::size_t j = 0; j < step.closure_trials.size(); ++j) {
+        const auto& trial = step.closure_trials[j];
+        if (j)
+          trace << ',';
+        const char* status = "incomplete";
+        if (trial.outcome == ArticleClosureOutcome::shape_regression)
+          status = "shape_regression";
+        else if (trial.outcome == ArticleClosureOutcome::accepted)
+          status = "accepted";
+        trace << "{\"fraction\":" << trial.fraction << ",\"status\":\"" << status << "\"}";
+      }
+      trace << ']';
+    }
     if (candidate.additional_pair_error_limit && step.selected_side < 0) {
       trace << ",\"pair_measurements\":[";
       for (std::size_t j = 0; j < step.pair_measurements.size(); ++j) {
@@ -2447,7 +2560,7 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
                   !feedback.additional_pair_error_limit,
               "Invalid additional-pair relative error limit");
       feedback.additional_pair_error_limit = limit;
-    } else if (kind == "ideal_front_points") {
+    } else if (kind == "ideal_front_points" || kind == "guarded_ideal_closure") {
       long long limit = 0;
       IdealFrontLimits floors{};
       input >> limit >> floors.min_angle >> floors.min_shape;
@@ -2458,6 +2571,13 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
                   floors.min_shape <= 1 && !feedback.ideal_front_limits,
               "Invalid ideal front point limits");
       floors.points = static_cast<std::size_t>(limit);
+      if (kind == "guarded_ideal_closure") {
+        std::array<double, 2> quad{};
+        input >> quad[1] >> quad[0];
+        Require(bool(input) && quad[1] > 0 && quad[1] <= 90 && quad[0] > 0 && quad[0] <= 1,
+                "Invalid ideal closure QUAD quality limits");
+        floors.quad_floors = quad;
+      }
       feedback.ideal_front_limits = floors;
     } else if (kind == "reference") {
       std::string path;
