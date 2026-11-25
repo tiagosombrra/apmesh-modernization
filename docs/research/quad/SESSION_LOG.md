@@ -4437,3 +4437,14 @@ errors. Recompute the approved geometric pilot requests on the recovered
 mesh and obtain the same 13 positions and physical sizes in eight leaf
 boxes as on its predecessor. [Evidence](RECOVERED_MIXED_CURVATURE_20261125.md).
 Next run the bounded native geometric handoff. No accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - measure matched native feedback from recovered CurvaBezier
+
+PR 268 at 7fea0630 applies three native leaf edits per arm under the original
+cap. Eight requests saturate. Both successors preserve the contour and seed
+cycles, then worsen final shape and deviation. The trace first diverges at
+transaction 9 because the former valid apex falls outside the smaller
+candidate neighborhood. Exact native suite and independent audits pass.
+[Report and evidence](NATIVE_RECOVERED_GEOMETRIC_FEEDBACK_20261125.md).
+Keep the two negative candidates, align the planned search-only comparison,
+and count zero accepted mixed epochs.

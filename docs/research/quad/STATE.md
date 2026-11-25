@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: run native geometric feedback from the recovered mixed source
+## Active: resolve advancing-front search regression after tree-only feedback
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,23 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - stage matched native geometric successors from the recovered source
+
+[Draft PR 268](https://github.com/tiagosombrra/apmesh-modernization/pull/268)
+at 7fea0630 produces both native successors with cap four. Eight of 13
+requests saturate and five reach the same three distinct leaves in each arm.
+Both candidates stage with identical contours, worse sampled deviation and
+worse minimum angles. The first divergence is advancing-front transaction 9.
+The seed mesh and contour are unchanged, but the smaller search neighborhood
+drops the still-valid original apex. The [native feedback audit](NATIVE_RECOVERED_GEOMETRIC_FEEDBACK_20261125.md)
+retains both results. The directed MSVC suite and independent checks pass.
+Hosted validation had 0 successful, 4 pending and 0 failed jobs at checkpoint.
+
+**Next:** align one search-window comparison that uses the predecessor boxes
+for lookup with identical seed and curve geometry, keeping the measured
+refinement. This can isolate the observed regression without selecting a
+new curvature estimator or loosening native limits. Zero accepted epochs.
 
 ### 2026-11-25 - compare curvature and size requests after mixed-mesh recovery
 

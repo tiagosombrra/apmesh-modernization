@@ -25,7 +25,9 @@ The [selection recovery trial](CURVABEZIER_SELECTION_RECOVERY_20261125.md)
 adds durable file provenance for one experimental decision. The
 [recovered-state diagnostic](RECOVERED_MIXED_CURVATURE_20261125.md) shows the
 boundary curvature limitations and identical requested leaves with the existing
-geometric indicator. Exercise that handoff natively before advancing issue 221. Keep the TRI-only
+geometric indicator. The [native handoff](NATIVE_RECOVERED_GEOMETRIC_FEEDBACK_20261125.md)
+stages two successors and locates their regression in the advancing-front
+search neighborhood. Align the bounded search comparison before issue 221. Keep the TRI-only
 control and report both local and patch-wide effects.
 The dated entries below document earlier decisions and measured scope.
 
