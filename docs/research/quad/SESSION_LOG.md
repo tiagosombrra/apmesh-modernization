@@ -4797,3 +4797,17 @@ Trace 44 of 47 and 19 of 19 remaining poor transition TRI to a seed
 edge at birth. [Native result and lineage](COORDINATED_TRANSITION_SIZING_20261125.md).
 Next project a common correction across the complete interface.
 No accepted mixed epoch.
+
+## 2026-11-25 Fortaleza - batch protected template parents and reach the common face budget
+
+Project the full contour-vertex interface with the frozen physical
+floors and original protection rules. Stage two additional parents
+on CurvaBezier and five on Ribbed with draft PR 280 at 3e01614c.
+Both fit 10 percent growth, with 749 and 559 faces. The one-parent
+control reproduces seven native artifacts. Duplicate and protected
+requests are refused, and the native boundary contracts and ten
+progressive checks pass. Shape still blocks both. The remaining
+contour-touching parent evidence covers 25 and 14 poor TRI.
+[Batch results](INTERFACE_PARENT_BATCH_20261125.md).
+Hosted exact-head checks run. Next project the contour-adjacent
+handoff. Zero accepted mixed epochs.

@@ -55,9 +55,11 @@ improves the worst transition TRI on both development models, with the
 remaining size gap and a new CurvaBezier interior quality limitation.
 The [coordinated native trial](COORDINATED_TRANSITION_SIZING_20261125.md)
 improves interior or transition quality at lower face counts and
-locates the continuing gap along multiple seed edges. Project a bounded
-correction across the whole transition before owner reentry and
-reserved validation. Retain the shared-curve and two-epoch
+locates the continuing gap along multiple seed edges.
+The [protected parent batch](INTERFACE_PARENT_BATCH_20261125.md) now
+meets the common face budget on both models while regional shape remains
+blocked. Address the contour-adjacent transition before owner reentry
+and reserved validation. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)

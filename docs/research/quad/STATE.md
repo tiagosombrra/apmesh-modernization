@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: address the full contour-to-template transition under the common profile
+## Active: correct contour-adjacent transition quality under the common profile
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,25 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - achieve the common face budget with a protected interface batch
+
+[Draft PR 280](https://github.com/tiagosombrra/apmesh-modernization/pull/280)
+stages disjoint protected template parents in one native plan.
+The common interface projection selects two new parents on CurvaBezier
+and five on Ribbed. Paired native meshes have 749 and 559 faces,
+2.32 and 2.19 percent above their own predecessors. Both satisfy the
+frozen 10 percent budget. The worst transition TRI reaches 3.15 and
+8.04 degrees. Shape still blocks both. Of the 41 and 14 remaining
+sub-floor transition TRI, 25 and 14 touch a template edge backed by
+a parent that touches the contour. [Batch evidence](INTERFACE_PARENT_BATCH_20261125.md).
+
+**Next:** project a common contour-adjacent template handoff under the
+existing clearance and request protection. Use it to target the remaining
+shape failures and verify both full meshes against the frozen profile
+before attempting the accepted-owner transaction. Exact PR 280 hosted
+checks are running. Zero accepted epochs. Shared curves, reserved
+validation and global mixed curvature remain open.
 
 ### 2026-11-25 - apply coordinated native sizes to both development cases
 
@@ -24,12 +43,8 @@ Both profiles remain blocked. Of the remaining sub-floor transition TRI,
 44 of 47 on CurvaBezier and 19 of 19 on Ribbed start from seed edges.
 [Native comparison](COORDINATED_TRANSITION_SIZING_20261125.md).
 
-**Next:** measure and project the size mismatch across the complete
-contour-to-template interface before closure. Use one common bounded
-selection of admissible curve and tree changes, preserving 2:1 balance
-and active size requests, then assess both models under the frozen
-profile. Native owner reentry, reserved cases, shared curves and global
-mixed curvature remain open. Zero accepted mixed epochs.
+The whole-interface grouping comparison and its remaining scope appear
+above.
 
 ### 2026-11-25 - measure the same additional contour division in both development models
 
