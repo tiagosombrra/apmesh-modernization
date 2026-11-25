@@ -4494,3 +4494,16 @@ Reopen the three-scene Blender 5.3 file and verify its face cycles, vertex
 counts and camera extents. [Report and artifact hashes](MIXED_FEEDBACK_ADMISSION_SHARED_SOURCE_20261125.md).
 PR 270 has four green exact-head jobs. Shared mixed capture, the admission
 rule and global mixed curvature remain open. Zero mixed epochs accepted.
+
+## 2026-11-25 Fortaleza - revise transfer qualification for mixed feedback
+
+Audit the current model and accepted-step restrictions. The archived
+CurvaBezier/Ribbed successors used distinct experimental drivers.
+Read-only replay of the common sizing logic yields 13/10 and 17/8
+face/curve requests on the archived inputs. A conforming unit plane with
+zero residual at all indicator sites still yields three face and two
+curve requests. Retain it as a negative control for the trigger.
+[Generalization gate and evidence](MIXED_FEEDBACK_GENERALIZATION_20261125.md).
+Use one native opt-in entry for both development cases and align a frozen
+policy before reserved cases. Preserve shared-curve and two-epoch gates.
+No new native execution, threshold or mixed scientific acceptance.

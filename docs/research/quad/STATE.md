@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: qualify original shared curve capture for native TRI/QUAD feedback
+## Active: qualify model-independent native TRI/QUAD feedback
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,25 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - require transfer under one frozen executable policy
+
+The [generalization gate](MIXED_FEEDBACK_GENERALIZATION_20261125.md) records
+that current native feedback requires CurvaBezier and an accepted Step 3.
+CurvaBezier and Ribbed used distinct trial drivers and remain development
+cases. A read-only replay with each actual surface evaluates the same
+size rule on their archives (13/10 and 17/8 face/curve requests). An
+exactly represented unit plane with zero geometric residual still issues
+three face and two curve requests under the existing two-seed trigger.
+No new native meshes or scientific rule were adopted. PR 270 remains a
+draft with four exact-head checks passed.
+
+**Next:** implement and validate one model-independent experimental entry
+using the captured original curve, tree and typed predecessor for either
+development case. Then align the field trigger, growth and admission before
+running fixed-policy comparisons on reserved geometries. Keep the two-patch
+capture rejection open as a required shared-curve gate. Two distinct
+accepted epochs and global mixed-curvature qualification remain open.
 
 ### 2026-11-25 - compare two residual successors and locate the shared source blocker
 

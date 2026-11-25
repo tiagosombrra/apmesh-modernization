@@ -12,7 +12,13 @@ entries below retain their original scope; no whole-stage closure follows.
 
 ## Current execution order - 2026-11-25
 
-Follow the [four research deliverables and their exit evidence](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions).
+Follow the [generalization gate](MIXED_FEEDBACK_GENERALIZATION_20261125.md)
+for the current sequence. First qualify the same native single-patch
+entry with actual source data on both development cases. Then align and
+freeze a common physical size and admission rule before running reserved
+geometries. Measure regional shape and error versus face cost, and keep
+the shared-curve and two-epoch gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
+retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
 is measured locally. The [frozen admission and transfer control](GROUPING_ADMISSION_AND_TRANSFER_20261124.md)
 reproduce the T6 veto on a second native geometry. The approved
@@ -34,10 +40,9 @@ deviation and changed next sizing requests. The [comparative admission and
 shared source audit](MIXED_FEEDBACK_ADMISSION_SHARED_SOURCE_20261125.md) confirms
 the geometric gains and regional shape tradeoffs against paired TRI controls
 on both cases. A two-patch native source capture rejects real equal-position
-corners because their curve IDs differ. Qualify separate curve and accepted
-patch-corner provenance, verify a shared binary subdivision, align growth
-and regional shape admission, then drive a subsequent native generation
-from the staged source. Keep the TRI-only control. Zero accepted epochs.
+corners because the original sample IDs differ. This remains a required
+shared-curve gate after the portable single-patch path. Keep the TRI-only
+control. Zero accepted epochs.
 The dated entries below document earlier decisions and measured scope.
 
 ## Execution history beginning 2026-11-19
