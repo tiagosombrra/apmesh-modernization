@@ -33,17 +33,26 @@ struct ArticleFrontPairScreen {
   std::function<std::optional<double>(const std::array<UvVertex, 4>&)> measure;
 };
 using ArticleFrontFaces = std::vector<std::vector<VertexId>>;
+using ArticleClosureGuard = std::function<bool(const std::vector<UvVertex>&,
+                                               const ArticleFrontFaces&, const ArticleFrontFaces&)>;
+using ArticleTriangleFloor = std::function<bool(const std::array<UvVertex, 3>&)>;
 
 struct ArticleFrontIdealPoint {
   std::size_t limit;
-  std::function<bool(const std::array<UvVertex, 3>&)> meets_floor;
-  std::function<bool(const std::vector<UvVertex>&, const ArticleFrontFaces&,
-                     const ArticleFrontFaces&)>
-      preserves_closure;
+  ArticleTriangleFloor meets_floor;
+  ArticleClosureGuard preserves_closure;
+};
+struct ArticleFrontOrder {
+  ArticleTriangleFloor meets_floor;
+  ArticleClosureGuard improves_closure;
 };
 enum class ArticleClosureOutcome { incomplete, shape_regression, accepted };
 struct ArticleClosureTrial {
   double fraction;
+  ArticleClosureOutcome outcome;
+};
+struct ArticleOrderTrial {
+  std::pair<VertexId, VertexId> base;
   ArticleClosureOutcome outcome;
 };
 struct ArticleFrontPairMeasurement {
@@ -60,6 +69,8 @@ struct ArticleFrontCommit {
   std::optional<ArticleFrontAdditionalPair> additional_pair;
   std::optional<VertexId> introduced_vertex;
   std::vector<ArticleClosureTrial> closure_trials;
+  std::optional<std::array<VertexId, 3>> original_order_triangle;
+  std::vector<ArticleOrderTrial> order_trials;
   std::vector<ArticleFrontPairMeasurement> pair_measurements;
 };
 struct ArticleFrontResult {
@@ -80,15 +91,19 @@ public:
   ArticleMixedFront(const UvMesh& seed, const std::vector<UvVertex>& boundary,
                     std::vector<Box> leaves, bool additional_pairs = false,
                     std::optional<ArticleFrontPairScreen> pair_screen = std::nullopt,
-                    std::optional<ArticleFrontIdealPoint> ideal_point = std::nullopt)
+                    std::optional<ArticleFrontIdealPoint> ideal_point = std::nullopt,
+                    std::optional<ArticleFrontOrder> alternate_order = std::nullopt)
       : leaves_(std::move(leaves)), additional_pairs_(additional_pairs),
         pair_screen_(std::move(pair_screen)), ideal_point_(std::move(ideal_point)),
-        boundary_begin_(seed.vertices.size()) {
+        alternate_order_(std::move(alternate_order)), boundary_begin_(seed.vertices.size()) {
     Require(!pair_screen_ || (additional_pairs_ && pair_screen_->measure &&
                               std::isfinite(pair_screen_->limit) && pair_screen_->limit >= 0),
             "Invalid additional-pair geometry screen");
     Require(!ideal_point_ || (ideal_point_->limit > 0 && ideal_point_->meets_floor),
             "Invalid article ideal-point policy");
+    Require(!alternate_order_ || (!ideal_point_ && alternate_order_->meets_floor &&
+                                  alternate_order_->improves_closure),
+            "Invalid alternate front-order policy");
     Require(boundary.size() >= 3 && !leaves_.empty(), "Article front needs boundary and leaves");
     result_.vertices = seed.vertices;
     result_.leaves = leaves_;
@@ -136,49 +151,21 @@ public:
       Require(result_.commits.size() < 4 * result_.vertices.size(),
               "Article front did not terminate");
       const auto base = front_.front();
-      const auto best = Best(base, nullptr);
-      if (best == invalid_) {
+      auto step = Choose(base);
+      if (!step) {
         std::rotate(front_.begin(), front_.begin() + 1, front_.end());
         Require(++skipped < front_.size(), "Article local search exhausted active contour");
         continue;
       }
       skipped = 0;
-      ArticleFrontCommit step;
-      step.before = front_;
-      step.best = {base.first, base.second, best};
-      step.polygon.assign(step.best.begin(), step.best.end());
-      const std::array<Edge, 2> sides{{{best, base.second}, {base.first, best}}};
-      for (std::size_t side = 0; side < sides.size(); ++side) {
-        auto& choice = step.alternatives[side];
-        choice.side = static_cast<int>(side);
-        const auto other = Best(sides[side], &step.best);
-        if (other == invalid_)
-          continue;
-        choice.triangle = {sides[side].first, sides[side].second, other};
-        choice.quad = side == 0 ? std::array<VertexId, 4>{base.first, base.second, other, best}
-                                : std::array<VertexId, 4>{base.first, base.second, best, other};
-        choice.score = Shape(choice.quad);
-        choice.eligible = std::isfinite(choice.score) && choice.score <= 1.5;
-        // The paper does not prescribe a tie rule: minimum S, then side order.
-        if (choice.eligible &&
-            (step.selected_side < 0 ||
-             choice.score <
-                 step.alternatives[static_cast<std::size_t>(step.selected_side)].score)) {
-          step.selected_side = static_cast<int>(side);
-          step.polygon.assign(choice.quad.begin(), choice.quad.end());
-        }
+      if (step->polygon.size() == 3) {
+        if (ideal_point_)
+          TryIdealPoint(*step, base);
+        if (alternate_order_)
+          TryAlternateOrder(*step, base);
       }
-      if (additional_pairs_ && step.selected_side < 0) {
-        step.additional_pair = AdditionalPair(base, step.pair_measurements);
-        if (step.additional_pair) {
-          const auto& quad = step.additional_pair->choice.quad;
-          step.polygon.assign(quad.begin(), quad.end());
-        }
-      }
-      if (ideal_point_ && step.polygon.size() == 3)
-        TryIdealPoint(step, base);
       Require(result_.commits.size() != abort_before_commit, "Injected article precommit failure");
-      Commit(std::move(step));
+      Commit(std::move(*step));
     }
     return std::move(result_);
   }
@@ -193,8 +180,53 @@ private:
   bool additional_pairs_ = false;
   std::optional<ArticleFrontPairScreen> pair_screen_;
   std::optional<ArticleFrontIdealPoint> ideal_point_;
+  std::optional<ArticleFrontOrder> alternate_order_;
   std::size_t boundary_begin_;
   std::size_t boundary_end_ = 0;
+
+  bool TouchesOneContourVertex(const std::array<VertexId, 3>& triangle) const {
+    return std::count_if(triangle.begin(), triangle.end(), [&](VertexId vertex) {
+             return boundary_begin_ <= vertex && vertex < boundary_end_;
+           }) == 1;
+  }
+
+  std::optional<ArticleFrontCommit> Choose(Edge base) const {
+    const auto best = Best(base, nullptr);
+    if (best == invalid_)
+      return std::nullopt;
+    ArticleFrontCommit step;
+    step.before = front_;
+    step.best = {base.first, base.second, best};
+    step.polygon.assign(step.best.begin(), step.best.end());
+    const std::array<Edge, 2> sides{{{best, base.second}, {base.first, best}}};
+    for (std::size_t side = 0; side < sides.size(); ++side) {
+      auto& choice = step.alternatives[side];
+      choice.side = static_cast<int>(side);
+      const auto other = Best(sides[side], &step.best);
+      if (other == invalid_)
+        continue;
+      choice.triangle = {sides[side].first, sides[side].second, other};
+      choice.quad = side == 0 ? std::array<VertexId, 4>{base.first, base.second, other, best}
+                              : std::array<VertexId, 4>{base.first, base.second, best, other};
+      choice.score = Shape(choice.quad);
+      choice.eligible = std::isfinite(choice.score) && choice.score <= 1.5;
+      // The paper does not prescribe a tie rule: minimum S, then side order.
+      if (choice.eligible &&
+          (step.selected_side < 0 ||
+           choice.score < step.alternatives[static_cast<std::size_t>(step.selected_side)].score)) {
+        step.selected_side = static_cast<int>(side);
+        step.polygon.assign(choice.quad.begin(), choice.quad.end());
+      }
+    }
+    if (additional_pairs_ && step.selected_side < 0) {
+      step.additional_pair = AdditionalPair(base, step.pair_measurements);
+      if (step.additional_pair) {
+        const auto& quad = step.additional_pair->choice.quad;
+        step.polygon.assign(quad.begin(), quad.end());
+      }
+    }
+    return step;
+  }
 
   // Use the leaf on the unmeshed side at the base midpoint. The unit left
   // normal times the square leaf width is the legacy geometry-phase offset.
@@ -241,10 +273,11 @@ private:
 
   std::optional<ArticleFrontFaces> PreviewClosure(std::vector<VertexId> first,
                                                   std::size_t vertex_count) const {
-    // A preview has its own ordered front and vertices. Further ideal points
+    // A preview has its own ordered front and vertices. Further experiments
     // are disabled so it measures exactly the consequences of this choice.
     auto preview = *this;
     preview.ideal_point_.reset();
+    preview.alternate_order_.reset();
     preview.attempted_ = false;
     preview.result_.vertices.resize(vertex_count);
     const auto completed = result_.faces.size();
@@ -260,14 +293,46 @@ private:
     }
   }
 
+  void TryAlternateOrder(ArticleFrontCommit& step, Edge base) {
+    if (!TouchesOneContourVertex(step.best) ||
+        alternate_order_->meets_floor({result_.vertices[step.best[0]],
+                                       result_.vertices[step.best[1]],
+                                       result_.vertices[step.best[2]]}))
+      return;
+    const auto predecessor = std::find_if(front_.begin() + 1, front_.end(),
+                                          [&](Edge e) { return e.second == base.first; });
+    const auto successor = std::find_if(front_.begin() + 1, front_.end(),
+                                        [&](Edge e) { return e.first == base.second; });
+    const auto reference = PreviewClosure(step.polygon, result_.vertices.size());
+    step.original_order_triangle = step.best;
+    for (auto neighbor : {predecessor, successor}) {
+      if (neighbor == front_.end() ||
+          (!step.order_trials.empty() && step.order_trials.back().base == *neighbor))
+        continue;
+      auto alternative = Choose(*neighbor);
+      const auto trial = alternative && reference
+                             ? PreviewClosure(alternative->polygon, result_.vertices.size())
+                             : std::nullopt;
+      auto outcome = ArticleClosureOutcome::incomplete;
+      if (trial)
+        outcome = alternate_order_->improves_closure(result_.vertices, *reference, *trial)
+                      ? ArticleClosureOutcome::accepted
+                      : ArticleClosureOutcome::shape_regression;
+      step.order_trials.push_back({*neighbor, outcome});
+      if (outcome == ArticleClosureOutcome::accepted) {
+        alternative->original_order_triangle = step.original_order_triangle;
+        alternative->order_trials = std::move(step.order_trials);
+        step = std::move(*alternative);
+        return;
+      }
+    }
+  }
+
   void TryIdealPoint(ArticleFrontCommit& step, Edge base) {
     const auto id = result_.vertices.size();
     if (id - boundary_end_ >= ideal_point_->limit)
       return;
-    const auto on_boundary = [&](VertexId vertex) {
-      return boundary_begin_ <= vertex && vertex < boundary_end_;
-    };
-    if (std::count_if(step.best.begin(), step.best.end(), on_boundary) != 1)
+    if (!TouchesOneContourVertex(step.best))
       return;
     const auto meets_floor = [&](VertexId apex) {
       return ideal_point_->meets_floor(

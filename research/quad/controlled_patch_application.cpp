@@ -197,6 +197,7 @@ struct IdealFrontLimits {
   double min_shape;
   // Shape and angle, in the same order as the scoring routine.
   std::optional<std::array<double, 2>> quad_floors;
+  bool order_only = false;
 };
 
 struct Candidate {
@@ -438,20 +439,23 @@ bool PreservesClosureQuality(PatchBezier& patch, const PhysicalLift& lift,
     const auto before = score(replaced), after = score(replacement);
     const auto& quad = *limits.quad_floors;
     const std::array<double, 4> floors{limits.min_shape, limits.min_angle, quad[0], quad[1]};
+    bool improves = false;
     for (std::size_t region = 0; region < before.size(); ++region) {
       for (std::size_t metric = 0; metric < floors.size(); ++metric) {
         if (!std::isfinite(after[region][metric]))
           continue;
-        const auto reference =
-            std::isfinite(before[region][metric]) ? before[region][metric] : floors[metric];
-        if (after[region][metric] < reference - 1e-12 * std::max(1.0, std::abs(reference)))
+        const bool comparable = std::isfinite(before[region][metric]);
+        const auto reference = comparable ? before[region][metric] : floors[metric];
+        const auto tolerance = 1e-12 * std::max(1.0, std::abs(reference));
+        if (after[region][metric] < reference - tolerance)
           return false;
+        improves |= comparable && after[region][metric] > reference + tolerance;
       }
     }
+    return !limits.order_only || improves;
   } catch (const MixedGeometryRejection&) {
     return false;
   }
-  return true;
 }
 
 std::vector<Xyz> ValidateMixedSmoothing(PatchBezier& patch, const TrialFaces& faces,
@@ -751,6 +755,7 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
       pair_screen.emplace(ArticleFrontPairScreen{*additional_pair_error_limit, measure});
     }
     std::optional<ArticleFrontIdealPoint> ideal_point;
+    std::optional<ArticleFrontOrder> alternate_order;
     if (ideal_front_limits) {
       const auto meets_floor =
           [&, limits = *ideal_front_limits](const std::array<UvVertex, 3>& corners) {
@@ -767,17 +772,23 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
             return std::isfinite(scores[0]) && scores[0] >= limits.min_shape &&
                    std::isfinite(scores[1]) && scores[1] >= limits.min_angle;
           };
-      ideal_point.emplace(ArticleFrontIdealPoint{ideal_front_limits->points, meets_floor, {}});
-      if (ideal_front_limits->quad_floors)
-        ideal_point->preserves_closure = [&](const std::vector<UvVertex>& uv,
-                                             const ArticleFrontFaces& control,
-                                             const ArticleFrontFaces& trial) {
-          return PreservesClosureQuality(patch, physical_point, *ideal_front_limits, uv, control,
-                                         trial);
-        };
+      const auto check_closure = [&](const std::vector<UvVertex>& uv,
+                                     const ArticleFrontFaces& control,
+                                     const ArticleFrontFaces& trial) {
+        return PreservesClosureQuality(patch, physical_point, *ideal_front_limits, uv, control,
+                                       trial);
+      };
+      if (ideal_front_limits->order_only) {
+        alternate_order.emplace(ArticleFrontOrder{meets_floor, check_closure});
+      } else {
+        ideal_point.emplace(ArticleFrontIdealPoint{ideal_front_limits->points, meets_floor, {}});
+        if (ideal_front_limits->quad_floors)
+          ideal_point->preserves_closure = check_closure;
+      }
     }
     article = ArticleMixedFront(selected.uv_quads, contour, std::move(boxes), additional_pairs,
-                                std::move(pair_screen), std::move(ideal_point))
+                                std::move(pair_screen), std::move(ideal_point),
+                                std::move(alternate_order))
                   .Run();
     result.additional_pair_search = additional_pairs;
     result.additional_pair_error_limit = additional_pair_error_limit;
@@ -1084,7 +1095,13 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
         << '"';
   if (candidate.additional_pair_error_limit)
     trace << ",\"additional_pair_error_limit\":" << *candidate.additional_pair_error_limit;
-  if (candidate.ideal_front_limits) {
+  if (candidate.ideal_front_limits && candidate.ideal_front_limits->order_only) {
+    const auto& limits = *candidate.ideal_front_limits;
+    trace << ",\"front_order\":{\"policy\":\"paired_adjacent_base_closure_v1\",\"min_angle_deg\":"
+          << limits.min_angle << ",\"min_shape\":" << limits.min_shape
+          << ",\"quad_min_angle_deg\":" << (*limits.quad_floors)[1]
+          << ",\"quad_min_shape\":" << (*limits.quad_floors)[0] << '}';
+  } else if (candidate.ideal_front_limits) {
     const auto& limits = *candidate.ideal_front_limits;
     trace << ",\"ideal_front_points\":{\"policy\":\""
           << (limits.quad_floors ? "legacy_leaf_height_guarded_closure_v1"
@@ -1202,6 +1219,25 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
         else if (trial.outcome == ArticleClosureOutcome::accepted)
           status = "accepted";
         trace << "{\"fraction\":" << trial.fraction << ",\"status\":\"" << status << "\"}";
+      }
+      trace << ']';
+    }
+    if (step.original_order_triangle) {
+      trace << ",\"original_order_triangle\":";
+      ids(*step.original_order_triangle);
+      trace << ",\"order_trials\":[";
+      for (std::size_t j = 0; j < step.order_trials.size(); ++j) {
+        const auto& trial = step.order_trials[j];
+        if (j)
+          trace << ',';
+        trace << "{\"base\":";
+        ids(std::array<VertexId, 2>{trial.base.first, trial.base.second});
+        const char* status = "incomplete";
+        if (trial.outcome == ArticleClosureOutcome::shape_regression)
+          status = "quality_rejected";
+        else if (trial.outcome == ArticleClosureOutcome::accepted)
+          status = "accepted";
+        trace << ",\"status\":\"" << status << "\"}";
       }
       trace << ']';
     }
@@ -2560,18 +2596,22 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
                   !feedback.additional_pair_error_limit,
               "Invalid additional-pair relative error limit");
       feedback.additional_pair_error_limit = limit;
-    } else if (kind == "ideal_front_points" || kind == "guarded_ideal_closure") {
+    } else if (kind == "ideal_front_points" || kind == "guarded_ideal_closure" ||
+               kind == "guarded_front_order") {
       long long limit = 0;
       IdealFrontLimits floors{};
-      input >> limit >> floors.min_angle >> floors.min_shape;
-      Require(bool(input) && limit > 0 &&
+      floors.order_only = kind == "guarded_front_order";
+      if (!floors.order_only)
+        input >> limit;
+      input >> floors.min_angle >> floors.min_shape;
+      Require(bool(input) && (floors.order_only || limit > 0) &&
                   static_cast<unsigned long long>(limit) <=
                       std::numeric_limits<std::size_t>::max() &&
                   floors.min_angle > 0 && floors.min_angle <= 60 && floors.min_shape > 0 &&
                   floors.min_shape <= 1 && !feedback.ideal_front_limits,
-              "Invalid ideal front point limits");
+              "Invalid guarded front policy limits");
       floors.points = static_cast<std::size_t>(limit);
-      if (kind == "guarded_ideal_closure") {
+      if (kind != "ideal_front_points") {
         std::array<double, 2> quad{};
         input >> quad[1] >> quad[0];
         Require(bool(input) && quad[1] > 0 && quad[1] <= 90 && quad[0] > 0 && quad[0] <= 1,
