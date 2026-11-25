@@ -2380,13 +2380,18 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
   auto& feedback = plan.feedback;
   feedback.guarded_smoothing = true;
   while (input >> kind) {
-    if (kind == "group_feedback_parent") {
+    if (kind == "group_feedback_parent" || kind == "group_feedback_contour_parent") {
       std::array<double, 4> box{};
       for (double& coordinate : box)
         input >> coordinate;
-      Require(bool(input) && 0 < box[0] && 0 < box[1] && box[0] < box[2] && box[1] < box[3] &&
-                  box[2] < 1 && box[3] < 1 && box[2] - box[0] == box[3] - box[1],
-              "Invalid interior feedback grouping parent");
+      const bool on_contour = box[0] == 0 || box[1] == 0 || box[2] == 1 || box[3] == 1;
+      const bool contour_plan = kind == "group_feedback_contour_parent";
+      // Contour parents are handed to the advancing front by the existing template dispatcher.
+      Require(bool(input) && 0 <= box[0] && 0 <= box[1] && box[0] < box[2] && box[1] < box[3] &&
+                  box[2] <= 1 && box[3] <= 1 && box[2] - box[0] == box[3] - box[1] &&
+                  on_contour == contour_plan,
+              contour_plan ? "Invalid contour feedback grouping parent"
+                           : "Invalid interior feedback grouping parent");
       for (const auto& prior : feedback.group_feedback_parents)
         Require(std::max(prior[0], box[0]) >= std::min(prior[2], box[2]) ||
                     std::max(prior[1], box[1]) >= std::min(prior[3], box[3]),
