@@ -17,7 +17,9 @@ footprint and the two common grids. On eligibility, the runner replaces
 `selected.obj` with the candidate. The original meshes and logs remain
 available. See the [decision protocol](GROUPING_ADMISSION_AND_TRANSFER_20261124.md).
 
-- `result.json` binds the selected OBJ hash to the reference or candidate.
+- `result.json` records the authoritative selection, with hashes of the
+  reference and selected OBJ and native fronts. The runner records the baseline
+  before staging and replaces the record before materializing `selected.obj`.
 - `selection.json` records the leaf projection and the active size requests.
 - `comparison-24.json` and `comparison-48.json` retain both comparison arms.
 - `baseline.steps` and `staging.steps` retain native traces and meshes.
@@ -31,3 +33,19 @@ to its staging subprocess. The experimental application accepts it on the
 built-in CurvaBezier article-front area-centroid path. The native engine retains the experimental reference
 owner during staging. The runner selects an OBJ for this one comparison.
 The selected file does not represent a scientifically accepted adaptive epoch.
+
+
+## Recovery after a stopped process
+
+If the runner stopped after writing a selection record, or the selected copy
+is missing, run:
+
+```text
+python tools/quad_grouping_trial.py --recover <trial-directory>
+```
+
+Recovery verifies the retained mesh, curve and front identities before
+recreating `selected.obj`. A stopped candidate without a recorded selection
+leaves the baseline authoritative. The recovery command reads the current
+record format and should be used after the original process stops. The
+protocol covers interrupted processes and makes no power-loss guarantee.

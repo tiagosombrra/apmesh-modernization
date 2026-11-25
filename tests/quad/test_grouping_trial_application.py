@@ -48,6 +48,12 @@ def check(exe, out, control=None):
     selected = staged if control is None else base
     if digest(out/"selected.obj") != digest(selected) or result["selected_sha256"] != digest(selected):
         raise ValueError("Selected file differs from the recorded outcome")
+    (out/"selected.obj").unlink()
+    subprocess.run([sys.executable, str(ENTRY), "--recover", str(out)], cwd=out.parent,
+                   check=True, timeout=30, stdout=subprocess.DEVNULL)
+    if digest(out/"selected.obj") != digest(selected):
+        raise ValueError("Recovery did not reproduce the selected native OBJ")
+
 
 
 def main():
