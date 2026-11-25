@@ -4754,3 +4754,17 @@ and retain that failed invocation in the evidence. Exact-head hosted
 checks are running. [Implementation evidence](PROGRESSIVE_ADMISSION_GATE_20261125.md).
 Align a numerical profile before moving eligible candidates into native
 accepted-owner state. Zero accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - replay one frozen progressive profile across both models
+
+Fix the [common development profile](profiles/progressive_admission_development_v1.json)
+before evaluation. Its safety floors, quality targets, geometric gain
+and cost limits are identical across the four certified archives.
+All improve geometry. All are blocked on transition TRI safety, and
+Ribbed also exceeds the growth cap. Match faces by oriented connectivity
+after an initial export-order assumption failed. The worst transition
+TRI in CurvaBezier and Ribbed already fail at native birth. Confirm 10
+local progressive tests and four exact PR 279 hosted jobs. [Replay and
+trace](COMMON_PROGRESSIVE_PROFILE_20261125.md).
+Compare one common size realization rule before front closure next.
+No new generation, reserved case or accepted mixed epoch.

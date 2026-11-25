@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: specify one numerical profile for accepted mixed-owner reentry
+## Active: correct the common boundary-to-template transition before owner reentry
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,26 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - fix and measure one numerical profile across both development models
+
+The [common profile and replay](COMMON_PROGRESSIVE_PROFILE_20261125.md) use
+the same safety floors, regional targets and growth limits on four
+certified archives. All improve sampled geometry on both grids. All
+remain blocked on transition TRI quality. CurvaBezier's worst TRI is
+2.27 degrees at native operation 36 in all three variants. Ribbed's
+worst TRI is 6.33 degrees at operation 26 and the patch grows 18.46
+percent, past the 10 percent cap. Those worst angles are unchanged by
+smoothing. Ten local progressive checks and four hosted PR 279 jobs pass.
+The archived no-request and missing-certificate controls retain their
+expected dispositions. No new generation or accepted mixed epoch.
+
+**Next:** use the frozen profile for one common transition-sizing trial.
+Start by locating which physical requests are not realized at the
+contour/template interface before front closure in both models. Assess
+the same proposed sizing rule at native birth and after smoothing.
+Native owner reentry, shared-curve qualification, reserved models and
+global mixed-curvature error remain open.
 
 ### 2026-11-25 - implement the selected progressive admission assessment
 
@@ -23,11 +43,8 @@ grids and growth budgets. A fresh MSVC CurvaBezier run reproduces the
 refusals exercise the same gate. All 36 local Python checks pass. Four
 hosted jobs are in progress. [Result](PROGRESSIVE_ADMISSION_GATE_20261125.md).
 
-**Next:** propose and align one numerical profile grounded in element
-quality and cost requirements, then evaluate both development cases
-before native accepted-owner reentry. The gate reports eligibility and
-does not publish native ownership. Zero accepted mixed epochs. Global
-mixed-curvature error and shared-curve qualification remain open.
+The numerical profile and first cross-model replay follow above. The
+assessor evaluates eligibility for a future native owner transaction.
 
 ### 2026-11-25 - replay the prospective admission contract on both development models
 

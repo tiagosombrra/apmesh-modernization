@@ -47,9 +47,11 @@ replay](MIXED_ADMISSION_CONTRACT_20261125.md) compare five candidates in
 the two development models and show why geometric gain is insufficient.
 Research alignment selects progression by stages. The [opt-in
 assessment](PROGRESSIVE_ADMISSION_GATE_20261125.md) now evaluates bound
-staged candidates using an explicit profile. Align the profile's numerical
-limits before native owner reentry and a frozen run on reserved geometries.
-Retain the shared-curve and two-epoch
+staged candidates using an explicit profile. The [frozen common profile
+replay](COMMON_PROGRESSIVE_PROFILE_20261125.md) identifies transition TRI
+safety failures already at native birth in both development models.
+Measure a shared size realization correction before owner reentry and
+reserved validation. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
