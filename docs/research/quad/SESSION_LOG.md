@@ -4673,3 +4673,14 @@ born at operation 81 is the sole interior TRI below both diagnostic floors.
 [Report and receipts](CERTIFIED_BOUNDARY_REFINEMENT_20261125.md).
 The operation has no eligible extra QUAD. Next inspect the seed edge
 from QUAD 204. Mixed owner reentry and acceptance remain open.
+
+## 2026-11-25 Fortaleza - trace the limiting CurvaBezier template edge
+
+Inspect all 81 recorded front states for seed QUAD 204's short edge.
+The original TRI already gives the best physical birth angle at that
+base. The local fixed-position reconnections preserve group counts only
+when the diagnostic floors remain unmet. The balanced parent grouping
+projection doubles the UV edge length without removing an active size
+request. PR 277 exact-head hosted jobs pass 4/4. Await alignment on the
+single native grouping trial. [Diagnosis](CURVABEZIER_OP81_TEMPLATE_EDGE_20261125.md).
+No regenerated state or admitted mixed epoch in this checkpoint.

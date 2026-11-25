@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: resolve the CurvaBezier interior quality veto before mixed admission
+## Active: align one native grouping at the limiting CurvaBezier seed edge
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,25 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - trace the operation 81 closure to a level-4 template edge
+
+Seed QUAD 204 is on level-4 leaf 161 next to level-3 boundary leaf 154.
+All 81 recorded front states retain the short edge, with no eligible QUAD
+or better TRI for that base. No fixed-vertex reconnecting patch of up to
+five generated faces passes the current floors with regional counts
+preserved. The best two-face alternative reaches 18.72 degrees. Project
+a single grouping of four existing fine siblings. It retains 2:1 balance,
+positive clearance, and all active requests. The T1 west side would give
+two edges rather than four, increasing the relevant length from 0.05985
+to 0.11782 model units. PR 277 exact-head checks complete 4/4.
+[Diagnosis and projection](CURVABEZIER_OP81_TEMPLATE_EDGE_20261125.md).
+
+**Next:** pending alignment, run one opt-in CurvaBezier comparison with
+that single grouping after native requests and before template dispatch.
+Require certificate replay, unchanged numerical controls and whole-mesh
+quality/error comparison. No native regeneration or accepted mixed epoch
+in this diagnostic.
 
 ### 2026-11-25 - certify native boundary subdivision before mixed staging
 
@@ -24,12 +43,8 @@ The original 54 negative controls and ordinary native regression pass.
 The exact PR 276 hosted matrix passed 4/4. Independent approval is open.
 [Certificate and admission diagnosis](CERTIFIED_BOUNDARY_REFINEMENT_20261125.md).
 
-**Next:** trace the short template edge from seed QUAD 204 into the
-CurvaBezier closure at operation 81. It produces the only interior TRI
-below both diagnostic floors. There is no eligible extra QUAD at that
-operation. Keep the original growth and quality diagnostics and use the
-certified parent refinement for the experimental path. No shared-curve
-qualification, mixed owner reentry or admitted epoch yet.
+The seed edge diagnosis is recorded above. No shared-curve qualification,
+mixed owner reentry or admitted epoch yet.
 
 ### 2026-11-25 - run the opt-in native geometry screen on both development meshes
 
