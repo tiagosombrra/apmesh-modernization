@@ -1,0 +1,2070 @@
+{
+  "front_sha256": "2b15d8e01882181f217c214e4844c50a880532e091a09adf3b708720dceec829",
+  "birth_sha256": "543eb9ac42e7906bfd5f95380046611e58eedcb2e068f9c198bf635101d5196c",
+  "front_replay": {
+    "clearance_excluded_cells": 16,
+    "commits": 112,
+    "selected_quads": 8,
+    "retained_triangles": 104,
+    "rejected_unions": 103,
+    "competing_alternatives": 2
+  },
+  "missing_active_edge_control": "rejected",
+  "target_operation": 83,
+  "typed_face": 751,
+  "native_entry": {
+    "before": [
+      [
+        389,
+        96
+      ],
+      [
+        96,
+        388
+      ],
+      [
+        97,
+        392
+      ],
+      [
+        12,
+        391
+      ],
+      [
+        392,
+        88
+      ],
+      [
+        530,
+        31
+      ],
+      [
+        143,
+        530
+      ],
+      [
+        533,
+        143
+      ],
+      [
+        40,
+        533
+      ],
+      [
+        635,
+        48
+      ],
+      [
+        174,
+        635
+      ],
+      [
+        638,
+        174
+      ],
+      [
+        55,
+        638
+      ],
+      [
+        650,
+        178
+      ],
+      [
+        179,
+        650
+      ],
+      [
+        653,
+        179
+      ],
+      [
+        180,
+        653
+      ],
+      [
+        661,
+        59
+      ],
+      [
+        182,
+        661
+      ],
+      [
+        664,
+        182
+      ],
+      [
+        178,
+        664
+      ],
+      [
+        711,
+        180
+      ],
+      [
+        192,
+        711
+      ],
+      [
+        714,
+        192
+      ],
+      [
+        81,
+        714
+      ],
+      [
+        92,
+        717
+      ],
+      [
+        717,
+        193
+      ],
+      [
+        193,
+        719
+      ],
+      [
+        719,
+        14
+      ],
+      [
+        391,
+        722
+      ],
+      [
+        721,
+        97
+      ],
+      [
+        31,
+        730
+      ],
+      [
+        730,
+        55
+      ],
+      [
+        59,
+        732
+      ],
+      [
+        733,
+        87
+      ],
+      [
+        14,
+        736
+      ],
+      [
+        88,
+        721
+      ],
+      [
+        722,
+        12
+      ],
+      [
+        730,
+        40
+      ],
+      [
+        48,
+        730
+      ],
+      [
+        732,
+        81
+      ],
+      [
+        736,
+        92
+      ],
+      [
+        87,
+        389
+      ],
+      [
+        388,
+        733
+      ]
+    ],
+    "best": [
+      389,
+      96,
+      87
+    ],
+    "selected_side": -1,
+    "polygon": [
+      389,
+      96,
+      87
+    ],
+    "alternatives": [
+      {
+        "side": 0,
+        "triangle": [
+          87,
+          96,
+          733
+        ],
+        "quad": [
+          389,
+          96,
+          733,
+          87
+        ],
+        "eligible": false,
+        "score": 1.6559582607547387
+      },
+      {
+        "side": 1,
+        "triangle": [
+          0,
+          0,
+          0
+        ],
+        "quad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "eligible": false,
+        "score": 0
+      }
+    ]
+  },
+  "base_uv": [
+    [
+      0.125,
+      0.84375
+    ],
+    [
+      0.125,
+      0.875
+    ]
+  ],
+  "seed_quad_neighbors": [
+    208
+  ],
+  "native_birth_minimum": 6.367729919053874,
+  "target_state": {
+    "before_commit": 83,
+    "base_is_selected": true,
+    "active_vertices": 43,
+    "active_edges": 44,
+    "valid_apices": [
+      {
+        "vertex": 87,
+        "uv": [
+          0.0625,
+          0.75
+        ],
+        "in_local_search": true,
+        "opposite_uv_angle_radians": 0.12435499454676144,
+        "minimum_physical_angle": 6.367729919053874
+      },
+      {
+        "vertex": 733,
+        "uv": [
+          0.0,
+          1.0
+        ],
+        "in_local_search": true,
+        "opposite_uv_angle_radians": 0.11065722117389565,
+        "minimum_physical_angle": 6.954238298599652
+      }
+    ],
+    "quad_options": [
+      {
+        "apex": 87,
+        "side": 0,
+        "companion": 733,
+        "quad": [
+          389,
+          96,
+          733,
+          87
+        ],
+        "local": true,
+        "article_shape_score": 1.6559582607547385,
+        "eligible": false,
+        "minimum_physical_angle": 32.631770698936236
+      },
+      {
+        "apex": 733,
+        "side": 0,
+        "companion": 388,
+        "quad": [
+          389,
+          96,
+          388,
+          733
+        ],
+        "local": true,
+        "article_shape_score": null,
+        "eligible": false,
+        "minimum_physical_angle": null
+      },
+      {
+        "apex": 733,
+        "side": 1,
+        "companion": 87,
+        "quad": [
+          389,
+          96,
+          733,
+          87
+        ],
+        "local": true,
+        "article_shape_score": 1.6559582607547385,
+        "eligible": false,
+        "minimum_physical_angle": 32.631770698936236
+      }
+    ]
+  },
+  "after_birth_through_smoothing_minimum": 8.040471829840511,
+  "states_with_better_apex": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83
+  ],
+  "states_with_eligible_quad": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "best_physical_angle_over_active_base_states": [
+    6.954238298599652,
+    83,
+    733
+  ],
+  "pre_loss_native_base": {
+    "operation": 13,
+    "base": [
+      733,
+      734
+    ],
+    "chosen": [
+      733,
+      734,
+      87
+    ],
+    "chosen_physical_minimum": 12.486412390893506,
+    "apices": [
+      71,
+      86,
+      87,
+      94,
+      96,
+      365,
+      368,
+      381,
+      389
+    ],
+    "valid_prospective_quads": [
+      {
+        "apex": 96,
+        "side": 0,
+        "companion": 389,
+        "quad": [
+          733,
+          734,
+          389,
+          96
+        ],
+        "local": true,
+        "article_shape_score": 1.5,
+        "eligible": true,
+        "minimum_physical_angle": 41.86004627579385
+      },
+      {
+        "apex": 389,
+        "side": 1,
+        "companion": 96,
+        "quad": [
+          733,
+          734,
+          389,
+          96
+        ],
+        "local": true,
+        "article_shape_score": 1.5,
+        "eligible": true,
+        "minimum_physical_angle": 41.86004627579385
+      }
+    ],
+    "all_local_quad_options": [
+      {
+        "apex": 71,
+        "side": 0,
+        "companion": 328,
+        "quad": [
+          733,
+          734,
+          328,
+          71
+        ],
+        "local": true,
+        "article_shape_score": 1.8948630865774978,
+        "eligible": false,
+        "minimum_physical_angle": 8.084396494715488
+      },
+      {
+        "apex": 71,
+        "side": 0,
+        "companion": 735,
+        "quad": [
+          733,
+          734,
+          735,
+          71
+        ],
+        "local": true,
+        "article_shape_score": null,
+        "eligible": false,
+        "minimum_physical_angle": null
+      },
+      {
+        "apex": 71,
+        "side": 1,
+        "companion": 365,
+        "quad": [
+          733,
+          734,
+          71,
+          365
+        ],
+        "local": true,
+        "article_shape_score": 1.8855017059025991,
+        "eligible": false,
+        "minimum_physical_angle": 8.866920373523183
+      },
+      {
+        "apex": 86,
+        "side": 0,
+        "companion": 365,
+        "quad": [
+          733,
+          734,
+          365,
+          86
+        ],
+        "local": true,
+        "article_shape_score": 1.8743340836220024,
+        "eligible": false,
+        "minimum_physical_angle": 9.81976964711195
+      },
+      {
+        "apex": 86,
+        "side": 1,
+        "companion": 368,
+        "quad": [
+          733,
+          734,
+          86,
+          368
+        ],
+        "local": true,
+        "article_shape_score": 1.8607910254538722,
+        "eligible": false,
+        "minimum_physical_angle": 10.999019774705049
+      },
+      {
+        "apex": 87,
+        "side": 0,
+        "companion": 368,
+        "quad": [
+          733,
+          734,
+          368,
+          87
+        ],
+        "local": true,
+        "article_shape_score": 1.8440417392452613,
+        "eligible": false,
+        "minimum_physical_angle": 12.486412390893506
+      },
+      {
+        "apex": 87,
+        "side": 1,
+        "companion": 94,
+        "quad": [
+          733,
+          734,
+          87,
+          94
+        ],
+        "local": true,
+        "article_shape_score": 1.7204607073057347,
+        "eligible": false,
+        "minimum_physical_angle": 32.682354619375836
+      },
+      {
+        "apex": 87,
+        "side": 1,
+        "companion": 96,
+        "quad": [
+          733,
+          734,
+          87,
+          96
+        ],
+        "local": true,
+        "article_shape_score": 1.515627942606602,
+        "eligible": false,
+        "minimum_physical_angle": 45.05532502244912
+      },
+      {
+        "apex": 87,
+        "side": 1,
+        "companion": 367,
+        "quad": [
+          733,
+          734,
+          87,
+          367
+        ],
+        "local": true,
+        "article_shape_score": null,
+        "eligible": false,
+        "minimum_physical_angle": null
+      },
+      {
+        "apex": 87,
+        "side": 1,
+        "companion": 381,
+        "quad": [
+          733,
+          734,
+          87,
+          381
+        ],
+        "local": true,
+        "article_shape_score": 1.9252934720048684,
+        "eligible": false,
+        "minimum_physical_angle": 28.39606151645122
+      },
+      {
+        "apex": 87,
+        "side": 1,
+        "companion": 389,
+        "quad": [
+          733,
+          734,
+          87,
+          389
+        ],
+        "local": true,
+        "article_shape_score": 1.5947947909277331,
+        "eligible": false,
+        "minimum_physical_angle": 38.12213479739553
+      },
+      {
+        "apex": 94,
+        "side": 0,
+        "companion": 87,
+        "quad": [
+          733,
+          734,
+          87,
+          94
+        ],
+        "local": true,
+        "article_shape_score": 1.7204607073057347,
+        "eligible": false,
+        "minimum_physical_angle": 32.682354619375836
+      },
+      {
+        "apex": 94,
+        "side": 0,
+        "companion": 381,
+        "quad": [
+          733,
+          734,
+          381,
+          94
+        ],
+        "local": true,
+        "article_shape_score": 1.6256659163780025,
+        "eligible": false,
+        "minimum_physical_angle": 32.682354619375836
+      },
+      {
+        "apex": 94,
+        "side": 1,
+        "companion": 389,
+        "quad": [
+          733,
+          734,
+          94,
+          389
+        ],
+        "local": true,
+        "article_shape_score": 1.5704465749545546,
+        "eligible": false,
+        "minimum_physical_angle": 38.12213479739553
+      },
+      {
+        "apex": 96,
+        "side": 0,
+        "companion": 87,
+        "quad": [
+          733,
+          734,
+          87,
+          96
+        ],
+        "local": true,
+        "article_shape_score": 1.515627942606602,
+        "eligible": false,
+        "minimum_physical_angle": 45.05532502244912
+      },
+      {
+        "apex": 96,
+        "side": 0,
+        "companion": 389,
+        "quad": [
+          733,
+          734,
+          389,
+          96
+        ],
+        "local": true,
+        "article_shape_score": 1.5,
+        "eligible": true,
+        "minimum_physical_angle": 41.86004627579385
+      },
+      {
+        "apex": 96,
+        "side": 1,
+        "companion": 388,
+        "quad": [
+          733,
+          734,
+          96,
+          388
+        ],
+        "local": true,
+        "article_shape_score": null,
+        "eligible": false,
+        "minimum_physical_angle": null
+      },
+      {
+        "apex": 365,
+        "side": 0,
+        "companion": 71,
+        "quad": [
+          733,
+          734,
+          71,
+          365
+        ],
+        "local": true,
+        "article_shape_score": 1.8855017059025991,
+        "eligible": false,
+        "minimum_physical_angle": 8.866920373523183
+      },
+      {
+        "apex": 365,
+        "side": 1,
+        "companion": 86,
+        "quad": [
+          733,
+          734,
+          365,
+          86
+        ],
+        "local": true,
+        "article_shape_score": 1.8743340836220024,
+        "eligible": false,
+        "minimum_physical_angle": 9.81976964711195
+      },
+      {
+        "apex": 368,
+        "side": 0,
+        "companion": 86,
+        "quad": [
+          733,
+          734,
+          86,
+          368
+        ],
+        "local": true,
+        "article_shape_score": 1.8607910254538722,
+        "eligible": false,
+        "minimum_physical_angle": 10.999019774705049
+      },
+      {
+        "apex": 368,
+        "side": 1,
+        "companion": 87,
+        "quad": [
+          733,
+          734,
+          368,
+          87
+        ],
+        "local": true,
+        "article_shape_score": 1.8440417392452613,
+        "eligible": false,
+        "minimum_physical_angle": 12.486412390893506
+      },
+      {
+        "apex": 381,
+        "side": 0,
+        "companion": 87,
+        "quad": [
+          733,
+          734,
+          87,
+          381
+        ],
+        "local": true,
+        "article_shape_score": 1.9252934720048684,
+        "eligible": false,
+        "minimum_physical_angle": 28.39606151645122
+      },
+      {
+        "apex": 381,
+        "side": 1,
+        "companion": 94,
+        "quad": [
+          733,
+          734,
+          381,
+          94
+        ],
+        "local": true,
+        "article_shape_score": 1.6256659163780025,
+        "eligible": false,
+        "minimum_physical_angle": 32.682354619375836
+      },
+      {
+        "apex": 389,
+        "side": 0,
+        "companion": 87,
+        "quad": [
+          733,
+          734,
+          87,
+          389
+        ],
+        "local": true,
+        "article_shape_score": 1.5947947909277331,
+        "eligible": false,
+        "minimum_physical_angle": 38.12213479739553
+      },
+      {
+        "apex": 389,
+        "side": 0,
+        "companion": 94,
+        "quad": [
+          733,
+          734,
+          94,
+          389
+        ],
+        "local": true,
+        "article_shape_score": 1.5704465749545546,
+        "eligible": false,
+        "minimum_physical_angle": 38.12213479739553
+      },
+      {
+        "apex": 389,
+        "side": 1,
+        "companion": 96,
+        "quad": [
+          733,
+          734,
+          389,
+          96
+        ],
+        "local": true,
+        "article_shape_score": 1.5,
+        "eligible": true,
+        "minimum_physical_angle": 41.86004627579385
+      }
+    ]
+  },
+  "prefix_fallback_opportunities": [
+    {
+      "operation": 13,
+      "unique_quads": [
+        [
+          733,
+          734,
+          389,
+          96
+        ]
+      ]
+    }
+  ],
+  "all_states": [
+    {
+      "before_commit": 1,
+      "active_vertices": 120,
+      "active_edges": 120,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 2,
+      "active_vertices": 120,
+      "active_edges": 120,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 3,
+      "active_vertices": 120,
+      "active_edges": 120,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 4,
+      "active_vertices": 120,
+      "active_edges": 120,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 5,
+      "active_vertices": 120,
+      "active_edges": 120,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 6,
+      "active_vertices": 120,
+      "active_edges": 120,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 7,
+      "active_vertices": 120,
+      "active_edges": 120,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 8,
+      "active_vertices": 120,
+      "active_edges": 120,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 9,
+      "active_vertices": 120,
+      "active_edges": 121,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 10,
+      "active_vertices": 120,
+      "active_edges": 122,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 11,
+      "active_vertices": 120,
+      "active_edges": 123,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 12,
+      "active_vertices": 120,
+      "active_edges": 124,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 13,
+      "active_vertices": 120,
+      "active_edges": 125,
+      "valid_apices": [
+        87,
+        367,
+        733,
+        734
+      ],
+      "eligible_quads": [
+        [
+          389,
+          96,
+          733,
+          734
+        ]
+      ]
+    },
+    {
+      "before_commit": 14,
+      "active_vertices": 120,
+      "active_edges": 126,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 15,
+      "active_vertices": 120,
+      "active_edges": 127,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 16,
+      "active_vertices": 120,
+      "active_edges": 128,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 17,
+      "active_vertices": 120,
+      "active_edges": 129,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 18,
+      "active_vertices": 119,
+      "active_edges": 128,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 19,
+      "active_vertices": 119,
+      "active_edges": 129,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 20,
+      "active_vertices": 117,
+      "active_edges": 126,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 21,
+      "active_vertices": 114,
+      "active_edges": 123,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 22,
+      "active_vertices": 114,
+      "active_edges": 124,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 23,
+      "active_vertices": 112,
+      "active_edges": 121,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 24,
+      "active_vertices": 109,
+      "active_edges": 118,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 25,
+      "active_vertices": 109,
+      "active_edges": 119,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 26,
+      "active_vertices": 107,
+      "active_edges": 116,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 27,
+      "active_vertices": 107,
+      "active_edges": 115,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 28,
+      "active_vertices": 106,
+      "active_edges": 114,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 29,
+      "active_vertices": 105,
+      "active_edges": 113,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 30,
+      "active_vertices": 104,
+      "active_edges": 112,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 31,
+      "active_vertices": 103,
+      "active_edges": 111,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 32,
+      "active_vertices": 102,
+      "active_edges": 110,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 33,
+      "active_vertices": 101,
+      "active_edges": 109,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 34,
+      "active_vertices": 101,
+      "active_edges": 110,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 35,
+      "active_vertices": 100,
+      "active_edges": 109,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 36,
+      "active_vertices": 99,
+      "active_edges": 108,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 37,
+      "active_vertices": 98,
+      "active_edges": 105,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 38,
+      "active_vertices": 97,
+      "active_edges": 104,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 39,
+      "active_vertices": 94,
+      "active_edges": 101,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 40,
+      "active_vertices": 91,
+      "active_edges": 98,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 41,
+      "active_vertices": 91,
+      "active_edges": 99,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 42,
+      "active_vertices": 90,
+      "active_edges": 98,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 43,
+      "active_vertices": 89,
+      "active_edges": 97,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 44,
+      "active_vertices": 88,
+      "active_edges": 96,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 45,
+      "active_vertices": 87,
+      "active_edges": 95,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 46,
+      "active_vertices": 86,
+      "active_edges": 94,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 47,
+      "active_vertices": 85,
+      "active_edges": 93,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 48,
+      "active_vertices": 84,
+      "active_edges": 92,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 49,
+      "active_vertices": 84,
+      "active_edges": 91,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 50,
+      "active_vertices": 83,
+      "active_edges": 90,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 51,
+      "active_vertices": 82,
+      "active_edges": 89,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 52,
+      "active_vertices": 82,
+      "active_edges": 90,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 53,
+      "active_vertices": 80,
+      "active_edges": 87,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 54,
+      "active_vertices": 79,
+      "active_edges": 86,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 55,
+      "active_vertices": 78,
+      "active_edges": 85,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 56,
+      "active_vertices": 76,
+      "active_edges": 82,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 57,
+      "active_vertices": 75,
+      "active_edges": 81,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 58,
+      "active_vertices": 74,
+      "active_edges": 80,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 59,
+      "active_vertices": 73,
+      "active_edges": 79,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 60,
+      "active_vertices": 71,
+      "active_edges": 76,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 61,
+      "active_vertices": 71,
+      "active_edges": 77,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 62,
+      "active_vertices": 70,
+      "active_edges": 76,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 63,
+      "active_vertices": 69,
+      "active_edges": 75,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 64,
+      "active_vertices": 68,
+      "active_edges": 72,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 65,
+      "active_vertices": 67,
+      "active_edges": 71,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 66,
+      "active_vertices": 67,
+      "active_edges": 70,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 67,
+      "active_vertices": 64,
+      "active_edges": 67,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 68,
+      "active_vertices": 61,
+      "active_edges": 64,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 69,
+      "active_vertices": 58,
+      "active_edges": 61,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 70,
+      "active_vertices": 57,
+      "active_edges": 60,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 71,
+      "active_vertices": 56,
+      "active_edges": 59,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 72,
+      "active_vertices": 55,
+      "active_edges": 58,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 73,
+      "active_vertices": 54,
+      "active_edges": 57,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 74,
+      "active_vertices": 52,
+      "active_edges": 54,
+      "valid_apices": [
+        87,
+        367,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 75,
+      "active_vertices": 50,
+      "active_edges": 52,
+      "valid_apices": [
+        87,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 76,
+      "active_vertices": 50,
+      "active_edges": 51,
+      "valid_apices": [
+        87,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 77,
+      "active_vertices": 49,
+      "active_edges": 50,
+      "valid_apices": [
+        87,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 78,
+      "active_vertices": 48,
+      "active_edges": 49,
+      "valid_apices": [
+        87,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 79,
+      "active_vertices": 47,
+      "active_edges": 48,
+      "valid_apices": [
+        87,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 80,
+      "active_vertices": 46,
+      "active_edges": 47,
+      "valid_apices": [
+        87,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 81,
+      "active_vertices": 45,
+      "active_edges": 46,
+      "valid_apices": [
+        87,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 82,
+      "active_vertices": 44,
+      "active_edges": 45,
+      "valid_apices": [
+        87,
+        733
+      ],
+      "eligible_quads": []
+    },
+    {
+      "before_commit": 83,
+      "active_vertices": 43,
+      "active_edges": 44,
+      "valid_apices": [
+        87,
+        733
+      ],
+      "eligible_quads": []
+    }
+  ],
+  "head": "84113d9c375a1bdd89fbe4f653d4787dab86241d",
+  "draft_pr": 274,
+  "engine_sha256": "5615342821d550e29d3bd7e4c48643ba52c71b667054779d693ac0ad89cd69a8",
+  "toolchain": "MSVC x64 Debug C++17",
+  "mixed_adaptive_epochs": 0,
+  "runs": {
+    "validation-environment": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/validation_session.py",
+        "environment"
+      ],
+      "exit": 0,
+      "seconds": 0.1431732177734375,
+      "timeout": 60,
+      "stdout_sha256": "ae8a6914858dd542153da3f4b21de08d0b1a721edcca0bebf3a8bb9016760ad3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "validation-plan": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/validation_session.py",
+        "plan",
+        "--scope",
+        "iteration"
+      ],
+      "exit": 1,
+      "seconds": 0.12865209579467773,
+      "timeout": 60,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "70f7f0df33af1570b8db7942c2f239395a2526a2d1c74bc8b383f299ae3622fa"
+    },
+    "build": {
+      "command": [
+        "cmake",
+        "--build",
+        "build/quad-grouping-runner-results/msvc",
+        "--target",
+        "ap_mesh",
+        "quad_real_boundary_source_contracts",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "exit": 0,
+      "seconds": 10.638143539428711,
+      "timeout": 180,
+      "stdout_sha256": "0ac7bbb85a79c487d875479824e91652fc20b7f057a03b872d2452bd54456431",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "traced-curva": {
+      "command": [
+        "python",
+        "build/quad-interior-front-trace-20261125/replay.py"
+      ],
+      "exit": 0,
+      "seconds": 52.37766647338867,
+      "timeout": 240,
+      "stdout_sha256": "a4d69c8df42e5f904e982798712ae13a9745a1a1988511d35d151079cdf7831c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source-contracts": {
+      "command": [
+        "build/quad-interior-front-trace-20261125/quad_real_boundary_source_contracts.exe",
+        "configs/quad/curved_patch_original_curves.conf"
+      ],
+      "exit": 0,
+      "seconds": 3.9320995807647705,
+      "timeout": 120,
+      "stdout_sha256": "8f1408e8456ac6c30154ce2e14b5d33f585d49b9f7a8f1759d6a18468dae3861",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reporting": {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "build/quad-grouping-runner-source/tests/quad/test_generation_metrics.py",
+        "build/quad-grouping-runner-source/tests/quad/test_grouping_admission.py",
+        "build/quad-grouping-runner-source/tests/quad/test_grouping_recovery.py",
+        "build/quad-grouping-runner-source/tests/quad/test_transition_comparison.py",
+        "build/quad-grouping-runner-source/tests/quad/test_relative_feedback_requests.py",
+        "build/quad-grouping-runner-source/tests/quad/test_regional_quality_guards.py"
+      ],
+      "exit": 0,
+      "seconds": 1.6701312065124512,
+      "timeout": 90,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e5c68cb40d07c022ae141681e16a96f78ddc1631a033ab2057df5ba8ceb5a7c2"
+    },
+    "directed-portable": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tests/quad/test_portable_feedback_application.py",
+        "--exe",
+        "build/quad-interior-front-trace-20261125/ap_mesh.exe",
+        "--directory",
+        "build/quad-interior-front-trace-20261125/portable-suite"
+      ],
+      "exit": 0,
+      "seconds": 164.88211917877197,
+      "timeout": 420,
+      "stdout_sha256": "acd4a2e1859a70a4a7661a9401585870e4021001e274643a9783d86b4c6061a9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ordinary-front": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tests/quad/test_article_front_application.py",
+        "--exe",
+        "build/quad-interior-front-trace-20261125/ap_mesh.exe",
+        "--directory",
+        "build/quad-interior-front-trace-20261125/ordinary-suite"
+      ],
+      "exit": 0,
+      "seconds": 50.39744544029236,
+      "timeout": 420,
+      "stdout_sha256": "3a9f596b179eed76f0e0c809bd4d292437e793375c2c3e3c4d38c911c7d6338e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "front-audit-prefix": {
+      "command": [
+        "python",
+        "build/quad-interior-front-trace-20261125/front-audit.py"
+      ],
+      "exit": 0,
+      "seconds": 8.308522701263428,
+      "timeout": 120,
+      "stdout_sha256": "6fc63f4800d679bbf78dae4e09a65835416ad2980d8a85f7aca573011f94496d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "hosted": {
+    "databaseId": 45611953490,
+    "headSha": "84113d9c375a1bdd89fbe4f653d4787dab86241d",
+    "jobs": [
+      {
+        "name": "TRI scientific equivalence against frozen baseline",
+        "status": "in_progress",
+        "conclusion": "",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45611953490/job/139197481359"
+      },
+      {
+        "name": "QUAD native (ubuntu-24.04)",
+        "status": "in_progress",
+        "conclusion": "",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45611953490/job/139197481564"
+      },
+      {
+        "name": "TRI baseline and tooling controls (Linux)",
+        "status": "in_progress",
+        "conclusion": "",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45611953490/job/139197481613"
+      },
+      {
+        "name": "QUAD native (windows-2022)",
+        "status": "in_progress",
+        "conclusion": "",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45611953490/job/139197481814"
+      }
+    ],
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45611953490"
+  }
+}

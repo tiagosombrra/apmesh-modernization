@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: locate the interior size transition blocking mixed admission
+## Active: test additional local pairs before retaining a TRI
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,24 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - locate the missed QUAD before the limiting TRI
+
+[Draft PR 274](https://github.com/tiagosombrra/apmesh-modernization/pull/274)
+at 84113d9c records the guarded native birth front without changing
+decisions. Exact selective CurvaBezier source, candidate and smoothing
+archives reproduce. All 112 commits pass independent replay. The
+limiting face is formed at operation 83. Only two valid apices remain,
+both local, and every prospective QUAD fails the existing shape limit.
+At operation 13, alternate pairs on the already chosen base could yield
+one eligible QUAD at S = 1.50 and 41.86 degrees. The native TRI at that
+operation removes the opportunity. [Trace and receipt](GUARDED_INTERIOR_FRONT_TRACE_20261125.md).
+Native standard/portable tests, source contracts and 39 Python controls pass.
+
+**Next:** execute the approved same-window alternate-pair experiment
+only where the existing selection would retain a TRI, with the original
+S limit and edge order. Compare the first changed operation and the
+whole candidate. No policy adopted and zero accepted mixed epochs.
 
 ### 2026-11-25 - measure explicit regional floors and the common limiting TRI
 

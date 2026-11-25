@@ -20,8 +20,10 @@ when both seeds are active, skips a flat case, and measures one selective
 native alternative. The [common interval comparison](COMMON_RELATIVE_CALIBRATION_20261125.md)
 now covers both development surfaces, including native selective Ribbed.
 The [regional quality controls](REGIONAL_QUALITY_GUARDS_20261125.md) identify
-a limiting interior TRI shared by both CurvaBezier seed regimes. Trace its
-native construction before freezing a transferable tolerance, quality and
+a limiting interior TRI shared by both CurvaBezier seed regimes. The
+[guarded front trace](GUARDED_INTERIOR_FRONT_TRACE_20261125.md) identifies
+a missed eligible local pair on the earlier chosen base. Test the aligned
+same-window expansion before freezing a transferable tolerance, quality and
 growth profile for reserved geometries. Measure regional shape and error versus face cost, and keep
 the shared-curve and two-epoch gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

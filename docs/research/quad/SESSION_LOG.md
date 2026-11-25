@@ -4590,3 +4590,16 @@ seed regimes. It measures 6.37 degrees before guarded smoothing and
 [Report and receipts](REGIONAL_QUALITY_GUARDS_20261125.md).
 Next trace native creation and the adjacent size change. No new native
 run, adopted quality profile or accepted mixed epoch.
+
+## 2026-11-25 Fortaleza - retain the guarded birth front and localize the missed pair
+
+Draft PR 274 at 84113d9c exposes the guarded birth trace. Selective
+CurvaBezier source and candidate stages reproduce byte for byte.
+Replay 112 transactions independently and reject a forged active edge.
+The limiting TRI appears at operation 83. At operation 13, the chosen
+base could form a QUAD of S = 1.50 using alternate active local vertices.
+Local native regressions and 39 Python controls pass.
+[Evidence](GUARDED_INTERIOR_FRONT_TRACE_20261125.md).
+The researcher approves testing remaining local pairs only on a TRI
+fallback. Candidate selection and scientific acceptance are unchanged
+in this checkpoint.
