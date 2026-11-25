@@ -89,6 +89,8 @@ def verify_screened_pairs(feedback, evaluate, limit):
 
 
 def main():
+    from test_progressive_admission import fixture_profile
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--exe", type=Path, required=True)
     parser.add_argument("--directory", type=Path, required=True)
@@ -96,6 +98,8 @@ def main():
     exe = args.exe.resolve(strict=True)
     directory = args.directory.resolve()
     directory.mkdir(parents=True)
+    progressive_profile = directory / "progressive-test-profile.json"
+    progressive_profile.write_text(json.dumps(fixture_profile()), encoding="ascii")
     cases = (("curva", "builtin:curva_bezier", 3, False),
              ("ribbed", ribbed_fixture(directory / "ribbed original patch.bp"), 2, True))
     image = None
@@ -110,6 +114,7 @@ def main():
         if (successor["status"] != "staged" or successor["segments_after"] <= successor["segments_before"]
                 or successor["requests"] <= 0 or successor["direct_leaf_edits"] <= 0
                 or result["mixed_adaptive_epochs"] != 0
+                or "progressive_admission" in result
                 or (negative and result.get("foreign_tree_control") != "rejected_before_feedback")):
             raise ValueError(f"Missing portable native feedback evidence for {name}: {successor}")
         verify_birth_trace(directory / name / "successor.steps/feedback",
@@ -117,11 +122,12 @@ def main():
         print(name, result["source_sha256"], successor, flush=True)
 
     quiet = run(exe, directory / "relative-no-action", cases[1][1], cases[1][2],
-                relative_tolerance=1)
+                relative_tolerance=1, progressive_profile=progressive_profile)
     if (quiet["successor"]["status"] != "no_action" or quiet["face_requests"]
             or quiet["curve_requests"] or quiet["mixed_adaptive_epochs"] != 0
             or (directory / "relative-no-action/successor.steps").exists()
-            or quiet["source_sha256"] != result["source_sha256"]):
+            or quiet["source_sha256"] != result["source_sha256"]
+            or quiet["progressive_admission"]["status"] != "no_action"):
         raise ValueError("Relative threshold control did not retain only the original source")
     print("relative-no-action", quiet["source_sha256"], quiet["successor"], flush=True)
 
@@ -140,11 +146,17 @@ def main():
     for name, model, step, _ in cases:
         screened = directory / f"screened-{name}"
         result = run(exe, screened, model, step, additional_pairs=True,
-                     additional_pair_error_limit=limit, certify_boundary_refinement=True,
+                     additional_pair_error_limit=limit, progressive_profile=progressive_profile,
                      relative_tolerance=.034341894205194436 if name == "curva" else None)
         if (result["successor"]["status"] != "staged" or result["mixed_adaptive_epochs"] != 0
                 or result["engine_sha256"] != image):
             raise ValueError(f"Screened pair comparison did not stage for {name}")
+        assessment = result["progressive_admission"]
+        if (assessment["status"] != "eligible" or assessment["mixed_adaptive_epochs"] != 0
+                or assessment["predecessor_sha256"] != result["source_sha256"]["source.obj"]
+                or assessment["candidate_sha256"] != result["successor"]["candidate_sha256"]
+                or assessment["boundary_certificate_sha256"] != result["boundary_refinement_sha256"]):
+            raise ValueError(f"Missing opt-in progressive assessment for {name}")
         reference = paired if name == "curva" else original[name]
         for key in ("source_sha256", "face_requests", "curve_requests"):
             if result[key] != reference[key]:
