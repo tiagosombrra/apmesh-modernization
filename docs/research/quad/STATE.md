@@ -12,6 +12,22 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-24 - repair the portable runner's production-inventory regression
+
+The first [PR 265](https://github.com/tiagosombrra/apmesh-modernization/pull/265)
+head da4501a4 passed Linux/Windows native QUAD and frozen TRI. Its Linux
+full CTest job failed at 84/85 due to the production source inventory.
+Head d6170d04 restores the shared production configuration bytes and passes
+the plan only to the experimental staging subprocess. Exact local MSVC,
+the three portable outcomes, 54 source negatives, 527 tooling and 26 reporting
+tests pass. Selected OBJ hashes reproduce exactly.
+The new workflow passes all four hosted checks, including 85 CTests and 527 tooling tests.
+See the [review checkpoint](CURVABEZIER_GROUPING_REVIEW_20261124.md).
+
+**Next:** complete independent review of the corrected draft and required
+gates before integration. Then implement the owned previous mixed state and
+qualify its source-compatible estimator under issue 221. Zero accepted epochs.
+
 ### 2026-11-24 - run the portable grouping trial through selection and rejection
 
 [Draft PR 265](https://github.com/tiagosombrra/apmesh-modernization/pull/265)

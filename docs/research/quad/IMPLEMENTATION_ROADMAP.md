@@ -18,7 +18,8 @@ is measured locally. The [frozen admission and transfer control](GROUPING_ADMISS
 reproduce the T6 veto on a second native geometry. The approved
 [adjacent group run](ADJACENT_TEMPLATE_GROUP_TRANSFER_20261124.md) stages an
 eligible candidate on that geometry. The [portable research runner](CURVABEZIER_GROUPING_RUNNER_20261124.md)
-is measured locally and under review. Then demonstrate two distinct accepted
+passes the native and frozen TRI gates on PR 265 and awaits independent
+review. Then demonstrate two distinct accepted
 epochs under issue 221. Keep the TRI-only
 control and report both local and patch-wide effects.
 The dated entries below document earlier decisions and measured scope.

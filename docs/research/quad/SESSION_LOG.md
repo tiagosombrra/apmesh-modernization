@@ -4395,3 +4395,13 @@ contains spaces and the runner starts outside its checkout. The native source
 contracts and 26 Python tests pass. The earlier candidate and grid reports
 match. [Runner and evidence](CURVABEZIER_GROUPING_RUNNER_20261124.md).
 Hosted checks pending at checkpoint. No accepted mixed epochs or integration.
+
+## 2026-11-24 Fortaleza - repair the runner baseline gate
+
+The first PR 265 workflow failed the retained production inventory at root
+CTest 84/85. Restore shared configuration bytes and scope the plan handoff
+to the experimental staging subprocess. Exact corrective revision d6170d04
+repeats the three selected OBJ hashes, passes configured 527 tooling, 26
+reporting tests and 54 original source negatives. The new workflow passes all four hosted checks, including 85 CTests and 527 tooling tests.
+[Review and evidence](CURVABEZIER_GROUPING_REVIEW_20261124.md).
+No independent approval, integration or accepted mixed epochs.
