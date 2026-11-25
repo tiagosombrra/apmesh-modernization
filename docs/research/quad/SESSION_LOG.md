@@ -4371,3 +4371,17 @@ two-group variant passes the frozen comparator; it motivates one scoped neighbor
 selection experiment. Draft PR 264 at e1775f38 has five passing tests with hosted
 checks in progress. [Scope and receipt](GROUPING_ADMISSION_AND_TRANSFER_20261124.md).
 No adaptive epoch or new native candidate acceptance.
+
+## 2026-11-24 Fortaleza - stage the automatically selected adjacent group
+
+The researcher approves the bounded CurvaBezier Step 3 transfer. The selector
+identifies the unique finer neighbor, predicts T6 to T5 and vetoes an injected
+fine request. The native application stages both groups while retaining the
+reference owner and OBJ. Independent checks replay 106 front commits and five
+smoothing passes and reject nine forged boundaries. Rules at grids 24 and 48
+classify the final mesh as eligible. The regional final angle improves from
+6.99 to 8.24 degrees and the global minimum is 1.87 degrees in both cases.
+MSVC evidence and the corrected Python import are recorded in the
+[transfer report](ADJACENT_TEMPLATE_GROUP_TRANSFER_20261124.md). PR 264 has
+four successful hosted checks. Continue with portable experimental wiring.
+No accepted mixed epochs.

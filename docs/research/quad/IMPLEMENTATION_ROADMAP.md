@@ -15,9 +15,10 @@ entries below retain their original scope; no whole-stage closure follows.
 Follow the [four research deliverables and their exit evidence](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions).
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
 is measured locally. The [frozen admission and transfer control](GROUPING_ADMISSION_AND_TRANSFER_20261124.md)
-reproduce the T6 veto on a second native geometry. Test the targeted adjacent
-group hypothesis once aligned, then demonstrate two distinct accepted epochs
-under issue 221. Keep the TRI-only
+reproduce the T6 veto on a second native geometry. The approved
+[adjacent group run](ADJACENT_TEMPLATE_GROUP_TRANSFER_20261124.md) stages an
+eligible candidate on that geometry. Connect a portable research runner before
+demonstrating two distinct accepted epochs under issue 221. Keep the TRI-only
 control and report both local and patch-wide effects.
 The dated entries below document earlier decisions and measured scope.
 

@@ -3,7 +3,7 @@
 Updated 2026-11-24 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: resolve the single-group transfer limitation
+## Active: connect the measured grouping trial to a portable experimental runner
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,24 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-24 - reproduce the eligible CurvaBezier layout by selecting its neighbor
+
+The [native transfer](ADJACENT_TEMPLATE_GROUP_TRANSFER_20261124.md) identifies
+the unique adjacent parent that forces the T6 split and stages the joint grouping
+under the existing 2:1 and size-request checks. The final angle on the fixed
+footprint rises from 6.99 to 8.24 degrees and both error grids improve.
+The global minimum remains 1.87 degrees. The 14-interval contour, previous
+owner and baseline OBJ are preserved. The protected-size control vetoes
+the projected group. MSVC build/native pass, 106 front commits, five smoothing
+passes and nine boundary negatives checked. The staged variant is eligible.
+Draft PR 264 remains green at e1775f38. Zero mixed epochs accepted.
+
+**Next:** make the local selector/staging/evaluator sequence portable through an
+opt-in research runner, with accepted/rejected outcome evidence and retained
+predecessor on rejection. Preserve the existing criterion and source inputs.
+Source-compatible global mixed curvature and full epoch admission remain
+open under issue 221.
 
 ### 2026-11-24 - measure the conservative rule and the native transfer veto
 
