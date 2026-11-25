@@ -3,7 +3,7 @@
 import argparse
 from functools import partial
 import json
-from math import dist, isclose
+from math import dist, isclose, isfinite
 from pathlib import Path
 import sys
 
@@ -55,16 +55,25 @@ def verify_screened_pairs(feedback, evaluate, limit):
             face = row["quad"]
             if face[:2] != step["best"][:2] or not 1 <= row["score"] <= 1.5:
                 raise ValueError("Additional pair changed the active base or shape limit")
+            chord = dist(xyz[face[0]], xyz[face[1]])
+            if not isfinite(chord) or chord <= 0:
+                if row["relative_error"] is not None:
+                    raise ValueError("Unavailable active edge has a measured relative error")
+                blocked += 1
+                continue
             sites = []
             for s, t in ((.5, .5), (.25, .25), (.75, .25), (.75, .75), (.25, .75)):
                 weights = ((1-s)*(1-t), s*(1-t), s*t, (1-s)*t)
                 sites.append(tuple(sum(w*uv[i][axis] for w, i in zip(weights, face))
                                    for axis in range(2)))
-            chord = dist(xyz[face[0]], xyz[face[1]])
             observed = geometry_error_at_sites(xyz, uv, (face,), sites, evaluate)["max_xyz"]/chord
-            if not isclose(observed, row["relative_error"], rel_tol=2e-9, abs_tol=1e-11):
+            measured = row["relative_error"]
+            if measured is None and not isfinite(observed):
+                blocked += 1
+                continue
+            if measured is None or not isclose(observed, measured, rel_tol=2e-9, abs_tol=1e-11):
                 raise ValueError("Additional-pair error differs from independent analytic samples")
-            if row["relative_error"] <= limit:
+            if measured <= limit:
                 passing.append(row)
             else:
                 blocked += 1
@@ -131,7 +140,7 @@ def main():
     for name, model, step, _ in cases:
         screened = directory / f"screened-{name}"
         result = run(exe, screened, model, step, additional_pairs=True,
-                     additional_pair_error_limit=limit,
+                     additional_pair_error_limit=limit, certify_boundary_refinement=True,
                      relative_tolerance=.034341894205194436 if name == "curva" else None)
         if (result["successor"]["status"] != "staged" or result["mixed_adaptive_epochs"] != 0
                 or result["engine_sha256"] != image):
@@ -140,6 +149,14 @@ def main():
         for key in ("source_sha256", "face_requests", "curve_requests"):
             if result[key] != reference[key]:
                 raise ValueError(f"The screened pair comparison changed {name} {key}")
+        certificate = json.loads((screened / "successor.steps/feedback/boundary_refinement.json")
+                                 .read_text(encoding="ascii"))
+        if (certificate["schema"] != "apmesh.quad.boundary_refinement.v1"
+                or certificate["parent_sites"] != result["successor"]["segments_before"]
+                or certificate["candidate_sites"] != result["successor"]["segments_after"]
+                or [row["parent_interval"] for row in certificate["splits"]]
+                != sorted(row["interval"] for row in result["curve_requests"])):
+            raise ValueError(f"Native refinement certificate does not match {name} requests")
         evaluate = golden
         if name == "ribbed":
             points, patches = parse_bp(Path(model).read_text(encoding="ascii"))

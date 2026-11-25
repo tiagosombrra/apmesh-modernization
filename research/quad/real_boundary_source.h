@@ -60,11 +60,21 @@ struct RealBoundarySource {
   std::size_t source_leaves = 0;
 };
 
+struct CertifiedBoundarySplit {
+  std::size_t parent_interval;
+  std::size_t inserted_site;
+};
+
 RealBoundarySource CaptureRealBoundary(PatchBezier& patch, Par2DJMesh::AFT::Quadtree& tree);
 std::unique_ptr<Par2DJMesh::AFT::Quadtree> ReplayRealSourceTree(PatchBezier& patch,
                                                                 const RealBoundarySource& source);
 RealBoundarySource SplitFeedbackIntervals(PatchBezier& patch, const RealBoundarySource& source,
                                           const std::vector<bool>& split, unsigned long next_id);
 void ValidateRealBoundary(PatchBezier& patch, const RealBoundarySource& source);
+std::vector<CertifiedBoundarySplit> CertifyBoundaryRefinement(PatchBezier& patch,
+                                                              const RealBoundarySource& parent,
+                                                              const RealBoundarySource& candidate,
+                                                              const std::vector<bool>& requested,
+                                                              unsigned long last_parent_node_id);
 } // namespace apmesh::quad
 #endif

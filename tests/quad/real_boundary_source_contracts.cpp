@@ -104,6 +104,41 @@ unsigned CheckNegatives(PatchBezier& patch, const apmesh::quad::RealBoundarySour
   return rejected;
 }
 
+void CheckCertifiedRefinement(PatchBezier& patch, const apmesh::quad::RealBoundarySource& source) {
+  using namespace apmesh::quad;
+  unsigned long last_id = 0;
+  for (const auto& site : source.sites)
+    last_id = std::max(last_id, site.source_id);
+  std::vector<bool> requested(source.sites.size(), false);
+  Require(CertifyBoundaryRefinement(patch, source, source, requested, last_id).empty(),
+          "Unchanged boundary has a certified split");
+  requested[0] = true;
+  const auto refined = SplitFeedbackIntervals(patch, source, requested, last_id);
+  const auto splits = CertifyBoundaryRefinement(patch, source, refined, requested, last_id);
+  Require(splits.size() == 1 && splits.front().parent_interval == 0 &&
+              splits.front().inserted_site == 1,
+          "Native boundary refinement lost the requested parent interval");
+  const auto* previous_owner = patch.GetSubMesh();
+  const auto reject = [&](const auto& candidate, const auto& expected, unsigned long last) {
+    try {
+      (void)CertifyBoundaryRefinement(patch, source, candidate, expected, last);
+    } catch (const std::runtime_error&) {
+      Require(patch.GetSubMesh() == previous_owner, "Refinement proof changed the existing owner");
+      return;
+    }
+    throw std::runtime_error("Invalid boundary refinement was certified");
+  };
+  reject(source, requested, last_id);
+  reject(refined, requested, refined.sites[1].source_id);
+  auto wrong_interval = requested;
+  wrong_interval[0] = false;
+  wrong_interval[1] = true;
+  reject(refined, wrong_interval, last_id);
+  auto moved = refined;
+  moved.sites[0].xyz[2] += 1;
+  reject(moved, requested, last_id);
+}
+
 void ReportCornerWitness(PatchBezier& patch, unsigned patch_index) {
   const auto endpoint = [&](unsigned side, bool local_end) {
     auto* curve = patch.GetCurve(side);
@@ -279,6 +314,7 @@ void Run(const apmesh::application::RuntimeConfig& base, bool reverse, unsigned&
       ++actual;
     }
     negatives += CheckNegatives(*patch, source);
+    CheckCertifiedRefinement(*patch, source);
     ++captures;
     apmesh::quad::LeafPolygonMesh result;
     result.source_leaves = source.source_leaves;
@@ -310,6 +346,8 @@ int main(int argc, char** argv) {
     std::cout << "REAL_BOUNDARY_SOURCE_CONTRACTS captures=" << captures
               << " reversed_captures=" << captures - before_reversed
               << " negative_controls=" << negatives << '\n';
+    std::cout << "CERTIFIED_BOUNDARY_REFINEMENT confirmed=" << captures << " unchanged=" << captures
+              << " negative_controls=" << 4 * captures << '\n';
     return 0;
   } catch (const std::exception& error) {
     std::cerr << "Real-boundary source contracts failed: " << error.what() << '\n';

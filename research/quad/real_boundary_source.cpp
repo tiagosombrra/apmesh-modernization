@@ -363,4 +363,41 @@ RealBoundarySource SplitFeedbackIntervals(PatchBezier& patch, const RealBoundary
   ValidateRealBoundary(patch, result);
   return result;
 }
+
+std::vector<CertifiedBoundarySplit> CertifyBoundaryRefinement(PatchBezier& patch,
+                                                              const RealBoundarySource& parent,
+                                                              const RealBoundarySource& candidate,
+                                                              const std::vector<bool>& requested,
+                                                              unsigned long last_parent_node_id) {
+  ValidateRealBoundary(patch, parent);
+  ValidateRealBoundary(patch, candidate);
+  Require(parent.source_step == candidate.source_step &&
+              parent.domain_generation == candidate.domain_generation &&
+              parent.reference_tri_accepted == candidate.reference_tri_accepted &&
+              requested.size() == parent.sites.size(),
+          "Boundary refinement changed the source attempt or interval count");
+  const auto count = static_cast<std::size_t>(std::count(requested.begin(), requested.end(), true));
+  Require(candidate.sites.size() == parent.sites.size() + count,
+          "Boundary refinement did not realize the requested split count");
+  std::vector<CertifiedBoundarySplit> splits;
+  splits.reserve(count);
+  std::size_t next = 0;
+  for (std::size_t i = 0; i < parent.sites.size(); ++i) {
+    const auto& a = parent.sites[i];
+    const auto& kept = candidate.sites[next++];
+    Require(a.uv.u == kept.uv.u && a.uv.v == kept.uv.v && a.xyz == kept.xyz &&
+                a.source_id == kept.source_id && a.side == kept.side &&
+                a.parameter == kept.parameter,
+            "Boundary refinement moved, replaced or reordered a previous site");
+    if (!requested[i])
+      continue;
+    const auto& end = parent.sites[(i + 1) % parent.sites.size()];
+    const auto& added = candidate.sites[next];
+    Require(added.source_id > last_parent_node_id && Side(a.uv, added.uv) == a.side &&
+                Side(added.uv, end.uv) == a.side,
+            "Boundary refinement reused an owner ID or left its parent interval");
+    splits.push_back({i, next++});
+  }
+  return splits;
+}
 } // namespace apmesh::quad

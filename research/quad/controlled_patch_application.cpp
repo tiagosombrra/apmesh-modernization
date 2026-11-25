@@ -2296,6 +2296,7 @@ struct FeedbackPlan {
   bool guarded_smoothing = false;
   bool additional_pairs = false;
   std::optional<double> additional_pair_error_limit;
+  bool certify_boundary_refinement = false;
 };
 
 FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
@@ -2361,7 +2362,10 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
   auto& feedback = plan.feedback;
   feedback.guarded_smoothing = true;
   while (input >> kind) {
-    if (kind == "additional_pairs") {
+    if (kind == "certify_boundary_refinement") {
+      Require(!feedback.certify_boundary_refinement, "Duplicate boundary refinement certification");
+      feedback.certify_boundary_refinement = true;
+    } else if (kind == "additional_pairs") {
       Require(!feedback.additional_pairs, "Duplicate additional-pair request");
       feedback.additional_pairs = true;
     } else if (kind == "additional_pair_error_limit") {
@@ -2400,6 +2404,8 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
           "Additional local pairs require a successor request");
   Require(!feedback.additional_pair_error_limit || feedback.additional_pairs,
           "An additional-pair error limit requires additional local pairs");
+  Require(!feedback.certify_boundary_refinement || have_requests,
+          "Boundary refinement certification requires a bound successor request");
   return plan;
 }
 
@@ -2483,8 +2489,11 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   const auto witness = SnapshotOwnerRehearsal(*previous.mesh);
   const auto bytes = ReadRehearsalOutput(previous_path);
   std::optional<RealBoundarySource> split_source;
+  const bool certify_boundary = comparison && comparison->certify_boundary_refinement;
+  std::vector<bool> split;
+  if (certify_boundary || (comparison && !comparison->curve_intervals.empty()))
+    split.resize(source.sites.size(), false);
   if (comparison && !comparison->curve_intervals.empty()) {
-    std::vector<bool> split(source.sites.size(), false);
     for (const auto i : comparison->curve_intervals) {
       Require(i < split.size() && !split[i], "Invalid or repeated feedback curve interval");
       split[i] = true;
@@ -2493,12 +2502,39 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
     split_source = SplitFeedbackIntervals(patch, source, split, last_id);
   }
   const auto& effective_source = split_source ? *split_source : source;
+  std::vector<CertifiedBoundarySplit> certificate;
+  if (certify_boundary) {
+    const auto last_id = *std::max_element(previous.node_ids.begin(), previous.node_ids.end());
+    certificate = CertifyBoundaryRefinement(patch, source, effective_source, split, last_id);
+  }
   auto tree = ReplayRealSourceTree(patch, effective_source);
   const auto leaves = tree->getLeaves();
   const auto cap = tree->getMaxLevelCap();
   std::set<long> requested;
   Require(std::filesystem::create_directory(directory),
           "Cannot reserve geometric feedback evidence");
+  if (certify_boundary) {
+    std::ofstream evidence(directory / "boundary_refinement.json", std::ios::binary);
+    evidence.imbue(std::locale::classic());
+    evidence << "{\"schema\":\"apmesh.quad.boundary_refinement.v1\",\"parent_sites\":"
+             << source.sites.size() << ",\"candidate_sites\":" << effective_source.sites.size()
+             << ",\"splits\":[";
+    for (std::size_t i = 0; i < certificate.size(); ++i) {
+      const auto& item = certificate[i];
+      const auto& start = source.sites[item.parent_interval];
+      const auto& end = source.sites[(item.parent_interval + 1) % source.sites.size()];
+      const auto& added = effective_source.sites[item.inserted_site];
+      if (i)
+        evidence << ',';
+      evidence << "{\"parent_interval\":" << item.parent_interval
+               << ",\"start_id\":" << start.source_id << ",\"end_id\":" << end.source_id
+               << ",\"inserted_id\":" << added.source_id << ",\"side\":" << added.side
+               << ",\"parameter\":" << std::setprecision(17) << added.parameter << '}';
+    }
+    evidence << "]}\n";
+    evidence.close();
+    Require(bool(evidence), "Cannot retain the boundary refinement certificate");
+  }
   std::ofstream trace(directory / "requests.csv", std::ios::binary);
   trace.imbue(std::locale::classic());
   trace << "face,u,v,requested_size,leaf_id,leaf_level,cap,disposition\n" << std::setprecision(17);

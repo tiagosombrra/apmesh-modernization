@@ -32,11 +32,13 @@ def model_evaluator(model, directory):
 
 
 def write_plan(path, step, faces=(), curves=(), reference=None, *, additional_pairs=False,
-               additional_pair_error_limit=None):
+               additional_pair_error_limit=None, certify_boundary_refinement=False):
     with path.open("x", encoding="ascii", newline="\n") as file:
         file.write(f"apmesh_single_patch_feedback_v1 {step}\n")
         if reference is not None:
             file.write(f'reference "{reference.name}"\n')
+        if certify_boundary_refinement:
+            file.write("certify_boundary_refinement\n")
         if additional_pairs:
             file.write("additional_pairs\n")
         if additional_pair_error_limit is not None:
@@ -72,7 +74,7 @@ def source_hashes(archive):
 
 
 def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=None,
-        additional_pairs=False, additional_pair_error_limit=None):
+        additional_pairs=False, additional_pair_error_limit=None, certify_boundary_refinement=False):
     if step < 1:
         raise ValueError("Select a positive accepted TRI source step")
     if relative_tolerance is not None and (not isfinite(relative_tolerance) or relative_tolerance < 0):
@@ -108,7 +110,8 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
         return result
     request = out / "successor.plan"
     write_plan(request, step, faces, curves, archive, additional_pairs=additional_pairs,
-               additional_pair_error_limit=additional_pair_error_limit)
+               additional_pair_error_limit=additional_pair_error_limit,
+               certify_boundary_refinement=certify_boundary_refinement)
     code, log = run_native(exe, out, native_model, "successor", request)
     if code != 0:
         raise ValueError(f"Native successor invocation failed with exit {code}. See {log.name}")
@@ -116,6 +119,9 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
     if source_hashes(successor) != hashes or source_hashes(archive) != hashes:
         raise ValueError("Native source replay changed the original TRI, mixed mesh or tree")
     result["successor"] = observations(successor / "feedback", source, len(curves), evaluate)
+    if certify_boundary_refinement:
+        certificate = successor / "feedback/boundary_refinement.json"
+        result["boundary_refinement_sha256"] = digest(certificate)
     write_json(out / "result.json", result)
     if verify_rejection:
         forged = out / "forged_source"
@@ -127,7 +133,8 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
             file.write(b"corrupted provenance\n")
         forged_plan = out / "foreign.plan"
         write_plan(forged_plan, step, faces, curves, forged, additional_pairs=additional_pairs,
-                   additional_pair_error_limit=additional_pair_error_limit)
+                   additional_pair_error_limit=additional_pair_error_limit,
+                   certify_boundary_refinement=certify_boundary_refinement)
         code, log = run_native(exe, out, native_model, "foreign", forged_plan)
         reason = b"Single-patch feedback did not reproduce its original source binding"
         if (code == 0 or reason not in log.read_bytes() or (out / "foreign.steps").exists()
@@ -150,6 +157,8 @@ def main():
                         help="Try remaining local pairs when the original choice is a TRI")
     parser.add_argument("--additional-pair-error-limit", type=float,
                         help="Maximum sampled XYZ deviation divided by the physical active edge length")
+    parser.add_argument("--certify-boundary-refinement", action="store_true",
+                        help="Verify ordered native curve splits against the bound predecessor")
     parser.add_argument("--relative-tolerance", type=float,
                         help="Experimental dimensionless trigger with no default tolerance")
     args = parser.parse_args()
@@ -157,7 +166,8 @@ def main():
         result = run(args.exe.resolve(strict=True), args.out.resolve(), args.model, args.step,
                      args.verify_rejection, relative_tolerance=args.relative_tolerance,
                      additional_pairs=args.additional_pairs,
-                     additional_pair_error_limit=args.additional_pair_error_limit)
+                     additional_pair_error_limit=args.additional_pair_error_limit,
+                     certify_boundary_refinement=args.certify_boundary_refinement)
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         parser.exit(1, f"Single-patch feedback failed: {error}\n")
     print(json.dumps(result, indent=2))

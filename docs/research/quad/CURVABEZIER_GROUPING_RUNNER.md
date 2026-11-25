@@ -188,3 +188,12 @@ trace schemas remain available when the ceiling is omitted. The portable
 regression includes the CurvaBezier Step 3 selective run and the Ribbed
 Bracket Step 2 original request profile. This ceiling does not decide
 mixed epoch acceptance or alter the reference TRI generator.
+
+The optional `--certify-boundary-refinement` checks the ordered, native
+curve partition before staging a successor. The original sampled sites
+must keep their curve, parameter, UV, XYZ and source ID. Each requested
+interval must have one inserted analytic site strictly between its original
+endpoints, with an ID beyond the previous mesh's IDs. The input owner and
+attempt are bound by the existing source replay. The resulting
+`boundary_refinement.json` records the parent endpoint IDs and inserted
+site of each split. It is evidence of refinement, with no epoch admission.
