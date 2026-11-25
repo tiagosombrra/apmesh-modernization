@@ -36,6 +36,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cstdlib>
 #include <cmath>
 #include <iostream>
 #include <iterator>
@@ -221,6 +222,49 @@ struct Candidate {
 struct PublicationFailure : std::runtime_error {
   using std::runtime_error::runtime_error;
 };
+
+RealBoundarySource GroupTwoTemplateBlocks(const RealBoundarySource& source,
+                                          const std::array<std::array<double, 4>, 2>& boxes) {
+  Require(source.source_step == 3 && source.reference_tri_accepted && source.source_leaves >= 8 &&
+              std::is_sorted(source.leaf_order.begin(), source.leaf_order.end()),
+          "Two-block trial requires its retained Step 3 native tree");
+  auto result = source;
+  result.cells.clear();
+  result.leaf_order.clear();
+  std::size_t grouped = 0;
+  const auto copy = [&](auto&& recurse, std::size_t original) -> std::size_t {
+    const auto& cell = source.cells.at(original);
+    const auto index = result.cells.size();
+    result.cells.push_back(cell);
+    if (std::find(boxes.begin(), boxes.end(), cell.box) != boxes.end()) {
+      Require(cell.subdivided && std::all_of(cell.children.begin(), cell.children.end(),
+                                             [&](std::size_t child) {
+                                               return !source.cells.at(child).subdivided;
+                                             }),
+              "Two-block trial requires four leaf children in each approved block");
+      result.cells[index].children = {};
+      result.cells[index].subdivided = false;
+      ++grouped;
+    }
+    if (result.cells[index].subdivided) {
+      for (std::size_t i = 0; i < cell.children.size(); ++i) {
+        const auto child = recurse(recurse, cell.children[i]);
+        result.cells[index].children[i] = child;
+      }
+    } else {
+      result.leaf_order.push_back(cell.source_id);
+    }
+    return index;
+  };
+  copy(copy, 0);
+  // Subdivision appends children in increasing captured cell ID order.
+  std::sort(result.leaf_order.begin(), result.leaf_order.end());
+  result.source_leaves = result.leaf_order.size();
+  Require(grouped == boxes.size() && result.source_leaves + 6 == source.source_leaves &&
+              source.cells.size() - result.cells.size() == 8,
+          "Two-block trial changed more than the approved children");
+  return result;
+}
 
 using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
 
@@ -1889,9 +1933,133 @@ Candidate SnapshotTriStage(const SubMesh& mesh, PatchBezier& patch) {
   return result;
 }
 
+using GroupingBoxes = std::array<std::array<double, 4>, 2>;
+
+struct GroupingPlan {
+  GroupingBoxes boxes{};
+  bool verify_rejection = false;
+};
+
+GroupingPlan ReadGroupingPlan(const std::filesystem::path& path) {
+  std::ifstream input(path);
+  input.imbue(std::locale::classic());
+  std::string schema;
+  input >> schema;
+  Require(bool(input) && schema == "apmesh_adjacent_group_v1", "Invalid grouping plan schema");
+  GroupingPlan plan;
+  auto& boxes = plan.boxes;
+  for (auto& box : boxes) {
+    for (auto& coordinate : box)
+      input >> coordinate;
+    Require(bool(input) &&
+                std::all_of(box.begin(), box.end(),
+                            [](double value) { return value >= 0 && value <= 1; }) &&
+                box[0] < box[2] && box[1] < box[3],
+            "Invalid grouping plan box");
+  }
+  const auto& [ax, ay, a_right, a_top] = boxes[0];
+  const auto& [bx, by, b_right, b_top] = boxes[1];
+  const bool horizontal = (ax == b_right || bx == a_right) && ay == by && a_top == b_top;
+  const bool vertical = (ay == b_top || by == a_top) && ax == bx && a_right == b_right;
+  Require(horizontal || vertical, "Grouping boxes must share a complete side");
+  Require(boxes[0][2] - boxes[0][0] == boxes[1][2] - boxes[1][0] &&
+              boxes[0][3] - boxes[0][1] == boxes[1][3] - boxes[1][1],
+          "Grouping boxes must have the same size");
+  std::string extra;
+  if (input >> extra) {
+    Require(extra == "verify_native_rejection", "Unknown grouping control");
+    plan.verify_rejection = true;
+  }
+  Require(!(input >> extra) && input.eof(), "Unexpected trailing grouping plan data");
+  return plan;
+}
+
+Candidate StageGroupingCandidate(PatchBezier& patch, Candidate previous,
+                                 const RealBoundarySource source, const GroupingPlan& plan,
+                                 const std::filesystem::path& directory,
+                                 const std::filesystem::path& previous_path) {
+  struct RestorePatchLink {
+    PatchBezier& patch;
+    SubMesh* original;
+    ~RestorePatchLink() { patch.SetSubMesh(original); }
+  } restore{patch, patch.GetSubMesh()};
+  previous.mesh->SetPatch(&patch);
+  patch.SetSubMesh(previous.mesh.get());
+  CheckTypedIncidence(*previous.mesh, previous);
+  const auto witness = SnapshotOwnerRehearsal(*previous.mesh);
+  const auto bytes = ReadRehearsalOutput(previous_path);
+  const auto grouped = GroupTwoTemplateBlocks(source, plan.boxes);
+  for (const auto& cell : grouped.cells) {
+    if (cell.subdivided)
+      continue;
+    for (const auto& other : grouped.cells) {
+      if (other.subdivided || cell.level <= other.level + 1)
+        continue;
+      const auto& [ax, ay, a_right, a_top] = cell.box;
+      const auto& [bx, by, b_right, b_top] = other.box;
+      const bool horizontal =
+          (ax == b_right || bx == a_right) && std::max(ay, by) < std::min(a_top, b_top);
+      const bool vertical =
+          (ay == b_top || by == a_top) && std::max(ax, bx) < std::min(a_right, b_right);
+      Require(!horizontal && !vertical, "Grouping would violate native 2:1 balance");
+    }
+  }
+  const auto verify_previous = [&]() {
+    RequireOwnerRehearsalUnchanged(patch, witness);
+    Require(ReadRehearsalOutput(previous_path) == bytes, "Grouping changed the previous OBJ");
+  };
+  const auto attempt = [&](bool reject) {
+    auto candidate = Generate(
+        patch, false, [&]() { return ReplayRealSourceTree(patch, grouped); }, &source, false, true,
+        true);
+    CheckTypedIncidence(*candidate.mesh, candidate);
+    if (reject) {
+      candidate.mesh->SetPatch(&patch);
+      RestorePatchLink undo{patch, patch.GetSubMesh()};
+      patch.SetSubMesh(candidate.mesh.get());
+      Require(patch.GetSubMesh() == candidate.mesh.get(),
+              "Grouping rejection did not exercise the temporary candidate link");
+      throw PublicationFailure("Injected grouping rejection after temporary candidate link");
+    }
+    candidate.source_witness = &source;
+    candidate.generation_step = source.source_step;
+    candidate.reference_accepted = source.reference_tri_accepted;
+    candidate.stage_reason = "staged_adjacent_group";
+    Require(std::filesystem::create_directory(directory), "Cannot reserve staged grouping output");
+    Export(candidate, directory / "candidate.obj");
+    ExportArticleSteps(candidate, directory / "candidate_front");
+  };
+  if (plan.verify_rejection) {
+    bool rejected = false;
+    try {
+      attempt(true);
+    } catch (const PublicationFailure&) {
+      rejected = true;
+    }
+    Require(rejected && !std::filesystem::exists(directory),
+            "Grouping rejection did not leave the candidate unpublished");
+    verify_previous();
+    std::cout << "QUAD_GROUPING_REJECTION previous_owner_preserved=1 previous_obj_preserved=1 "
+                 "candidate_unpublished=1\n";
+  }
+  attempt(false);
+  verify_previous();
+  std::cout << "QUAD_ADJACENT_GROUP staged=1 previous_owner_preserved=1 mixed_adaptive_epochs=0\n";
+  return previous;
+}
+
 } // namespace
 
 int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
+  std::optional<GroupingPlan> grouping_plan;
+  if (const char* plan_path = std::getenv("APMESH_QUAD_GROUPING_PLAN")) {
+    Require(*plan_path != '\0' &&
+                config.quad_experimental_case == "curved_bezier_article_front_area_centroid_v1" &&
+                config.input_model == "builtin:curva_bezier" && !config.quad_verify_rollback,
+            "A grouping plan requires the CurvaBezier area-centroid trial");
+    grouping_plan = ReadGroupingPlan(plan_path);
+  }
+  bool grouped_candidate_staged = false;
   const auto output = std::filesystem::path(config.output_prefix + ".obj");
   const auto steps = std::filesystem::path(config.output_prefix + ".steps");
   const auto staging = std::filesystem::path(config.output_prefix + ".steps.pending");
@@ -2097,6 +2265,13 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     Export(layout, staging / (stem + "_quad_tri.obj"));
     if (article_front && !layout.article_commits.empty())
       ExportArticleSteps(layout, staging / (stem + "_article_front"));
+    if (grouping_plan && source && stage.step == 3 && stage.accepted &&
+        stage.outer.global_retry == 0) {
+      layout =
+          StageGroupingCandidate(*patch, std::move(layout), *source, *grouping_plan,
+                                 staging / "adjacent_trial", staging / (stem + "_quad_tri.obj"));
+      grouped_candidate_staged = true;
+    }
     if (live_pairs)
       Export(layout, staging / (stem + "_aft_source.obj"), true);
     // Completed-output diagnostics only. No candidate replaces any mesh element.
@@ -2184,6 +2359,8 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   trace << curve_trace.str();
   trace.close();
   Require(bool(trace), "Cannot complete curve-stage trace");
+  Require(!grouping_plan || grouped_candidate_staged,
+          "Grouping trial could not reproduce the admitted Step 3 source");
   std::filesystem::rename(staging, steps);
   RequireOwnerRehearsalUnchanged(*patch, previous);
   CheckTypedIncidence(*candidate.mesh, candidate);
