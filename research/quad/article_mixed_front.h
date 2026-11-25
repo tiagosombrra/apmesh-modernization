@@ -7,7 +7,9 @@
 #include <array>
 #include <cmath>
 #include <cstddef>
+#include <functional>
 #include <limits>
+#include <optional>
 #include <set>
 #include <stdexcept>
 #include <utility>
@@ -22,16 +24,47 @@ struct ArticleFrontChoice {
   double score = 0.0;
   bool eligible = false;
 };
+struct ArticleFrontAdditionalPair {
+  std::array<VertexId, 3> first_triangle{};
+  ArticleFrontChoice choice;
+};
+struct ArticleFrontPairScreen {
+  double limit;
+  std::function<std::optional<double>(const std::array<UvVertex, 4>&)> measure;
+};
+using ArticleFrontFaces = std::vector<std::vector<VertexId>>;
+
+struct ArticleFrontIdealPoint {
+  std::size_t limit;
+  std::function<bool(const std::array<UvVertex, 3>&)> meets_floor;
+  std::function<bool(const std::vector<UvVertex>&, const ArticleFrontFaces&,
+                     const ArticleFrontFaces&)>
+      preserves_closure;
+};
+enum class ArticleClosureOutcome { incomplete, shape_regression, accepted };
+struct ArticleClosureTrial {
+  double fraction;
+  ArticleClosureOutcome outcome;
+};
+struct ArticleFrontPairMeasurement {
+  std::array<VertexId, 4> quad;
+  double score;
+  std::optional<double> relative_error;
+};
 struct ArticleFrontCommit {
   std::vector<std::pair<VertexId, VertexId>> before;
   std::vector<VertexId> polygon;
   std::array<ArticleFrontChoice, 2> alternatives{};
   std::array<VertexId, 3> best{};
   int selected_side = -1;
+  std::optional<ArticleFrontAdditionalPair> additional_pair;
+  std::optional<VertexId> introduced_vertex;
+  std::vector<ArticleClosureTrial> closure_trials;
+  std::vector<ArticleFrontPairMeasurement> pair_measurements;
 };
 struct ArticleFrontResult {
   std::vector<UvVertex> vertices;
-  std::vector<std::vector<VertexId>> faces;
+  ArticleFrontFaces faces;
   std::vector<ArticleFrontCommit> commits;
   std::size_t seed_quads = 0;
   std::vector<std::array<double, 4>> leaves;
@@ -45,8 +78,17 @@ public:
   using Box = std::array<double, 4>;
 
   ArticleMixedFront(const UvMesh& seed, const std::vector<UvVertex>& boundary,
-                    std::vector<Box> leaves)
-      : leaves_(std::move(leaves)) {
+                    std::vector<Box> leaves, bool additional_pairs = false,
+                    std::optional<ArticleFrontPairScreen> pair_screen = std::nullopt,
+                    std::optional<ArticleFrontIdealPoint> ideal_point = std::nullopt)
+      : leaves_(std::move(leaves)), additional_pairs_(additional_pairs),
+        pair_screen_(std::move(pair_screen)), ideal_point_(std::move(ideal_point)),
+        boundary_begin_(seed.vertices.size()) {
+    Require(!pair_screen_ || (additional_pairs_ && pair_screen_->measure &&
+                              std::isfinite(pair_screen_->limit) && pair_screen_->limit >= 0),
+            "Invalid additional-pair geometry screen");
+    Require(!ideal_point_ || (ideal_point_->limit > 0 && ideal_point_->meets_floor),
+            "Invalid article ideal-point policy");
     Require(boundary.size() >= 3 && !leaves_.empty(), "Article front needs boundary and leaves");
     result_.vertices = seed.vertices;
     result_.leaves = leaves_;
@@ -66,6 +108,7 @@ public:
       outer.push_back(result_.vertices.size());
       result_.vertices.push_back(p);
     }
+    boundary_end_ = result_.vertices.size();
     for (std::size_t i = 0; i < outer.size(); ++i)
       front_.emplace_back(outer[i], outer[(i + 1) % outer.size()]);
     std::vector<Edge> seed_front;
@@ -125,17 +168,17 @@ public:
           step.polygon.assign(choice.quad.begin(), choice.quad.end());
         }
       }
+      if (additional_pairs_ && step.selected_side < 0) {
+        step.additional_pair = AdditionalPair(base, step.pair_measurements);
+        if (step.additional_pair) {
+          const auto& quad = step.additional_pair->choice.quad;
+          step.polygon.assign(quad.begin(), quad.end());
+        }
+      }
+      if (ideal_point_ && step.polygon.size() == 3)
+        TryIdealPoint(step, base);
       Require(result_.commits.size() != abort_before_commit, "Injected article precommit failure");
-      // Prepare every allocating operation before the contour is committed.
-      auto next = front_;
-      for (std::size_t i = 0; i < step.polygon.size(); ++i)
-        Toggle(next, {step.polygon[(i + 1) % step.polygon.size()], step.polygon[i]});
-      auto face = step.polygon;
-      result_.faces.reserve(result_.faces.size() + 1);
-      result_.commits.reserve(result_.commits.size() + 1);
-      result_.faces.push_back(std::move(face));
-      result_.commits.push_back(std::move(step));
-      front_.swap(next);
+      Commit(std::move(step));
     }
     return std::move(result_);
   }
@@ -147,6 +190,133 @@ private:
   std::vector<Box> leaves_;
   std::vector<Edge> front_;
   bool attempted_ = false;
+  bool additional_pairs_ = false;
+  std::optional<ArticleFrontPairScreen> pair_screen_;
+  std::optional<ArticleFrontIdealPoint> ideal_point_;
+  std::size_t boundary_begin_;
+  std::size_t boundary_end_ = 0;
+
+  // Use the leaf on the unmeshed side at the base midpoint. The unit left
+  // normal times the square leaf width is the legacy geometry-phase offset.
+  std::optional<UvVertex> IdealPoint(Edge base, double fraction) const {
+    const auto a = result_.vertices[base.first];
+    const auto b = result_.vertices[base.second];
+    const std::array<double, 2> middle{(a.u + b.u) / 2, (a.v + b.v) / 2};
+    const std::array<double, 2> inward{a.v - b.v, b.u - a.u};
+    const auto in_direction = [&](const Box& box, std::size_t k) {
+      return box[k] <= middle[k] && middle[k] <= box[k + 2] &&
+             (middle[k] != box[k] || inward[k] >= 0) && (middle[k] != box[k + 2] || inward[k] <= 0);
+    };
+    const Box* exterior = nullptr;
+    for (const auto& box : leaves_) {
+      if (!in_direction(box, 0) || !in_direction(box, 1))
+        continue;
+      if (exterior)
+        return std::nullopt;
+      exterior = &box;
+    }
+    if (!exterior)
+      return std::nullopt;
+    const double height = fraction * ((*exterior)[2] - (*exterior)[0]);
+    const double length = std::hypot(inward[0], inward[1]);
+    const UvVertex point{middle[0] + height * inward[0] / length,
+                         middle[1] + height * inward[1] / length};
+    if (!(0 < point.u && point.u < 1 && 0 < point.v && point.v < 1))
+      return std::nullopt;
+    return point;
+  }
+
+  void Commit(ArticleFrontCommit step) {
+    // Prepare every allocating operation before the contour is committed.
+    auto next = front_;
+    for (std::size_t i = 0; i < step.polygon.size(); ++i)
+      Toggle(next, {step.polygon[(i + 1) % step.polygon.size()], step.polygon[i]});
+    auto face = step.polygon;
+    result_.faces.reserve(result_.faces.size() + 1);
+    result_.commits.reserve(result_.commits.size() + 1);
+    result_.faces.push_back(std::move(face));
+    result_.commits.push_back(std::move(step));
+    front_.swap(next);
+  }
+
+  std::optional<ArticleFrontFaces> PreviewClosure(std::vector<VertexId> first,
+                                                  std::size_t vertex_count) const {
+    // A preview has its own ordered front and vertices. Further ideal points
+    // are disabled so it measures exactly the consequences of this choice.
+    auto preview = *this;
+    preview.ideal_point_.reset();
+    preview.attempted_ = false;
+    preview.result_.vertices.resize(vertex_count);
+    const auto completed = result_.faces.size();
+    ArticleFrontCommit step;
+    step.polygon = std::move(first);
+    try {
+      preview.Commit(std::move(step));
+      auto finished = preview.Run();
+      finished.faces.erase(finished.faces.begin(), finished.faces.begin() + completed);
+      return std::move(finished.faces);
+    } catch (const std::runtime_error&) {
+      return std::nullopt;
+    }
+  }
+
+  void TryIdealPoint(ArticleFrontCommit& step, Edge base) {
+    const auto id = result_.vertices.size();
+    if (id - boundary_end_ >= ideal_point_->limit)
+      return;
+    const auto on_boundary = [&](VertexId vertex) {
+      return boundary_begin_ <= vertex && vertex < boundary_end_;
+    };
+    if (std::count_if(step.best.begin(), step.best.end(), on_boundary) != 1)
+      return;
+    const auto meets_floor = [&](VertexId apex) {
+      return ideal_point_->meets_floor(
+          {result_.vertices[base.first], result_.vertices[base.second], result_.vertices[apex]});
+    };
+    if (meets_floor(step.best[2]))
+      return;
+    for (const auto& edge : front_) {
+      // Every vertex on the closed active front occurs as an edge origin.
+      const auto apex = edge.first;
+      if (Valid({base.first, base.second, apex}, nullptr) && meets_floor(apex))
+        return;
+    }
+    const auto& guard = ideal_point_->preserves_closure;
+    const std::array<double, 4> fractions{1.0, 0.5, 0.25, 0.125};
+    std::optional<ArticleFrontFaces> reference;
+    for (std::size_t i = 0; i < (guard ? fractions.size() : 1); ++i) {
+      const auto fraction = fractions[i];
+      const auto point = IdealPoint(base, fraction);
+      if (!point || std::any_of(result_.vertices.begin(), result_.vertices.end(), [&](UvVertex p) {
+            return std::hypot(p.u - point->u, p.v - point->v) <= epsilon_;
+          }))
+        continue;
+      result_.vertices.push_back(*point);
+      const bool touches_front = std::any_of(front_.begin(), front_.end(), [&](Edge edge) {
+        return OnSegment(edge.first, edge.second, id);
+      });
+      if (!touches_front && Valid({base.first, base.second, id}, nullptr) && meets_floor(id)) {
+        auto outcome = ArticleClosureOutcome::accepted;
+        if (guard) {
+          if (!reference && step.closure_trials.empty())
+            reference = PreviewClosure(step.polygon, id);
+          const auto trial =
+              reference ? PreviewClosure({base.first, base.second, id}, id + 1) : std::nullopt;
+          if (!trial)
+            outcome = ArticleClosureOutcome::incomplete;
+          else if (!guard(result_.vertices, *reference, *trial))
+            outcome = ArticleClosureOutcome::shape_regression;
+          step.closure_trials.push_back({fraction, outcome});
+        }
+        if (outcome == ArticleClosureOutcome::accepted) {
+          step.polygon[2] = id;
+          step.introduced_vertex = id;
+          return;
+        }
+      }
+      result_.vertices.pop_back();
+    }
+  }
 
   static void Require(bool ok, const char* message) {
     if (!ok)
@@ -246,7 +416,9 @@ private:
     const auto& p = result_.vertices[v];
     return p.u >= b[0] && p.u <= b[2] && p.v >= b[1] && p.v <= b[3];
   }
-  VertexId Best(Edge edge, const std::array<VertexId, 3>* excluded) const {
+  // Optional collection shares the original first nonempty neighborhood.
+  VertexId Best(Edge edge, const std::array<VertexId, 3>* excluded,
+                std::vector<VertexId>* candidates = nullptr) const {
     std::vector<bool> cells(leaves_.size(), false);
     for (std::size_t i = 0; i < leaves_.size(); ++i)
       cells[i] = InBox(edge.first, leaves_[i]) || InBox(edge.second, leaves_[i]);
@@ -276,6 +448,8 @@ private:
           }
         if (!in || !Valid({edge.first, edge.second, p}, excluded))
           continue;
+        if (candidates)
+          candidates->push_back(p);
         const auto& a = result_.vertices[edge.first];
         const auto& b = result_.vertices[edge.second];
         const auto& v = result_.vertices[p];
@@ -291,6 +465,45 @@ private:
         return best;
     }
     return invalid_;
+  }
+  std::optional<ArticleFrontAdditionalPair>
+  AdditionalPair(Edge base, std::vector<ArticleFrontPairMeasurement>& measurements) const {
+    std::vector<VertexId> apices;
+    Best(base, nullptr, &apices);
+    std::optional<ArticleFrontAdditionalPair> best;
+    for (const auto apex : apices) {
+      const std::array<VertexId, 3> triangle{base.first, base.second, apex};
+      const std::array<Edge, 2> sides{{{apex, base.second}, {base.first, apex}}};
+      for (std::size_t side = 0; side < sides.size(); ++side) {
+        const auto edge = sides[side];
+        std::vector<VertexId> companions;
+        Best(edge, &triangle, &companions);
+        for (const auto other : companions) {
+          const auto quad = side == 0
+                                ? std::array<VertexId, 4>{base.first, base.second, other, apex}
+                                : std::array<VertexId, 4>{base.first, base.second, apex, other};
+          const auto score = Shape(quad);
+          if (!std::isfinite(score) || score > 1.5)
+            continue;
+          if (pair_screen_) {
+            const std::array<UvVertex, 4> corners{
+                result_.vertices[quad[0]], result_.vertices[quad[1]], result_.vertices[quad[2]],
+                result_.vertices[quad[3]]};
+            const auto error = pair_screen_->measure(corners);
+            measurements.push_back({quad, score, error});
+            if (!error || *error > pair_screen_->limit)
+              continue;
+          }
+          // Loops retain vertex ID, side and companion ID order for exact ties.
+          if (!best || score < best->choice.score) {
+            best = ArticleFrontAdditionalPair{
+                triangle,
+                {{edge.first, edge.second, other}, quad, static_cast<int>(side), score, true}};
+          }
+        }
+      }
+    }
+    return best;
   }
   double Shape(const std::array<VertexId, 4>& q) const {
     double score = 1;
