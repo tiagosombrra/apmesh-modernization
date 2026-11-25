@@ -3,7 +3,7 @@
 Updated 2026-11-24 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: connect the measured grouping trial to a portable experimental runner
+## Active: finish review of the portable grouping trial before accepted history
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,23 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-24 - run the portable grouping trial through selection and rejection
+
+[Draft PR 265](https://github.com/tiagosombrra/apmesh-modernization/pull/265)
+at da4501a4 exposes one checkout-relative runner with selected OBJ and full
+comparison receipts. The exact MSVC suite runs outside the checkout and confirms
+eligible candidate selection, retained reference on a forced rejection, and
+no staging with an injected fine-size veto. Eight reference meshes and the
+front match between native processes; the eligible OBJ matches the earlier run.
+Source contracts cover 54 negatives and 26 Python tests pass. See the
+[runner checkpoint](CURVABEZIER_GROUPING_RUNNER_20261124.md).
+Hosted Linux/Windows and frozen TRI checks were pending. No accepted epochs.
+
+**Next:** read exact PR 265 checks and complete review of the measured runner.
+Continue toward a previously accepted mixed-state source and a qualified
+source-compatible estimator under issue 221, preserving the paired evidence.
+The runner handles a single grouping trial.
 
 ### 2026-11-24 - reproduce the eligible CurvaBezier layout by selecting its neighbor
 

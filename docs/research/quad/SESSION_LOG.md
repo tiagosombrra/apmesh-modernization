@@ -4385,3 +4385,13 @@ MSVC evidence and the corrected Python import are recorded in the
 [transfer report](ADJACENT_TEMPLATE_GROUP_TRANSFER_20261124.md). PR 264 has
 four successful hosted checks. Continue with portable experimental wiring.
 No accepted mixed epochs.
+
+## 2026-11-24 Fortaleza - wire the portable CurvaBezier grouping trial
+
+Publish the runner and its dependencies as draft PR 265 at da4501a4. The exact
+MSVC suite selects the eligible candidate, retains the original OBJ after a
+forced rejection and prevents staging under a finer request. The output path
+contains spaces and the runner starts outside its checkout. The native source
+contracts and 26 Python tests pass. The earlier candidate and grid reports
+match. [Runner and evidence](CURVABEZIER_GROUPING_RUNNER_20261124.md).
+Hosted checks pending at checkpoint. No accepted mixed epochs or integration.

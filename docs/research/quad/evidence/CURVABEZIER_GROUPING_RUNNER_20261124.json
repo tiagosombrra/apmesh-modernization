@@ -1,0 +1,373 @@
+{
+  "trials": {
+    "eligible": {
+      "outcome": {
+        "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+        "image_sha256": "f5e1922d3ddee5da14f76ca9fe84be2e1deb372e2b0f15742bd35fbce677b9aa",
+        "control": null,
+        "mixed_adaptive_epochs": 0,
+        "projection": "eligible",
+        "decision": {
+          "verdict": "eligible",
+          "vetoes": [],
+          "sampling_disagreements": [],
+          "geometric_directions": {
+            "regional_error_rms_source_area": [
+              -1,
+              -1
+            ],
+            "regional_error_max_xyz": [
+              -1,
+              -1
+            ],
+            "global_error_rms_source_area": [
+              -1,
+              -1
+            ],
+            "global_error_max_xyz": [
+              -1,
+              -1
+            ]
+          }
+        },
+        "candidate_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+        "reference_history_files": [
+          "step_0_retry_-1_accepted_quad_tri.obj",
+          "step_0_retry_-1_accepted_tri.obj",
+          "step_1_retry_0_accepted_quad_tri.obj",
+          "step_1_retry_0_accepted_tri.obj",
+          "step_2_retry_0_accepted_quad_tri.obj",
+          "step_2_retry_0_accepted_tri.obj",
+          "step_3_retry_0_accepted_quad_tri.obj",
+          "step_3_retry_0_accepted_tri.obj"
+        ],
+        "status": "eligible_candidate_selected",
+        "selected_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+        "selected_source": "staging.steps/adjacent_trial/candidate.obj"
+      },
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/quad_grouping_trial.py",
+        "--exe",
+        "build/quad-grouping-runner-results/msvc/bin/Debug/ap_mesh.exe",
+        "--out",
+        "build/quad-grouping-runner-results/eligible trial"
+      ],
+      "run": {
+        "exit": 0,
+        "seconds": 64.0031669139862,
+        "timeout": 180
+      }
+    },
+    "forced": {
+      "outcome": {
+        "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+        "image_sha256": "f5e1922d3ddee5da14f76ca9fe84be2e1deb372e2b0f15742bd35fbce677b9aa",
+        "control": "force-reject",
+        "mixed_adaptive_epochs": 0,
+        "projection": "eligible",
+        "decision": {
+          "verdict": "eligible",
+          "vetoes": [],
+          "sampling_disagreements": [],
+          "geometric_directions": {
+            "regional_error_rms_source_area": [
+              -1,
+              -1
+            ],
+            "regional_error_max_xyz": [
+              -1,
+              -1
+            ],
+            "global_error_rms_source_area": [
+              -1,
+              -1
+            ],
+            "global_error_max_xyz": [
+              -1,
+              -1
+            ]
+          }
+        },
+        "candidate_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+        "reference_history_files": [
+          "step_0_retry_-1_accepted_quad_tri.obj",
+          "step_0_retry_-1_accepted_tri.obj",
+          "step_1_retry_0_accepted_quad_tri.obj",
+          "step_1_retry_0_accepted_tri.obj",
+          "step_2_retry_0_accepted_quad_tri.obj",
+          "step_2_retry_0_accepted_tri.obj",
+          "step_3_retry_0_accepted_quad_tri.obj",
+          "step_3_retry_0_accepted_tri.obj"
+        ],
+        "status": "rejected_control",
+        "selected_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+        "selected_source": "baseline.steps/step_3_retry_0_accepted_quad_tri.obj"
+      },
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/quad_grouping_trial.py",
+        "--exe",
+        "build/quad-grouping-runner-results/msvc/bin/Debug/ap_mesh.exe",
+        "--out",
+        "build/quad-grouping-runner-results/forced trial",
+        "--control",
+        "force-reject"
+      ],
+      "run": {
+        "exit": 0,
+        "seconds": 64.4843909740448,
+        "timeout": 180
+      }
+    },
+    "protected": {
+      "outcome": {
+        "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+        "image_sha256": "f5e1922d3ddee5da14f76ca9fe84be2e1deb372e2b0f15742bd35fbce677b9aa",
+        "control": "protect-neighbor",
+        "mixed_adaptive_epochs": 0,
+        "projection": "active_smaller_size_request",
+        "status": "no_action",
+        "selected_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+        "selected_source": "baseline.steps/step_3_retry_0_accepted_quad_tri.obj"
+      },
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/quad_grouping_trial.py",
+        "--exe",
+        "build/quad-grouping-runner-results/msvc/bin/Debug/ap_mesh.exe",
+        "--out",
+        "build/quad-grouping-runner-results/protected trial",
+        "--control",
+        "protect-neighbor"
+      ],
+      "run": {
+        "exit": 0,
+        "seconds": 23.74456286430359,
+        "timeout": 180
+      }
+    }
+  },
+  "matches_previous_native_candidate": true,
+  "matches_previous_comparisons": true,
+  "compiler": "MSVC 19.44.35229.0 x64 Debug C++17",
+  "source_contracts": {
+    "exit": 0,
+    "seconds": 4.211808681488037,
+    "timeout": 60
+  },
+  "source_contract_outcomes": {
+    "captures": 6,
+    "reversed": 3,
+    "negative_controls": 54
+  },
+  "python_tests": 26,
+  "mixed_adaptive_epochs": 0,
+  "feature_commit": "da4501a4a9970f9b0644abadfb12ca37f53c4aff",
+  "feature_tree": "8d360190e64aee2dc43b63490a33574c58524cd3",
+  "pr": 265,
+  "exact_executable_sha256": "9bc2b5a04fd8f8da66d95cc89a7b1edf6ed84586eba6b80918abbcfda4603105",
+  "exact_checks": {
+    "configure": {
+      "command": [
+        "cmake",
+        "-S",
+        "build/quad-grouping-runner-source",
+        "-B",
+        "build/quad-grouping-runner-results/msvc",
+        "-G",
+        "Visual Studio 17 2022",
+        "-A",
+        "x64",
+        "-DCMAKE_CXX_STANDARD=17",
+        "-DAP_MESH_USE_MPI=OFF",
+        "-DAP_MESH_USE_OPENMP=OFF",
+        "-DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON",
+        "-DAP_MESH_ENABLE_LTO=OFF",
+        "-DAP_MESH_DISABLE_STRICT_ALIASING=ON",
+        "-DAP_MESH_ENABLE_WARNINGS=ON",
+        "-DAP_MESH_STATIC_MINGW_RUNTIME=ON",
+        "-DBUILD_TESTING=ON"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 9.106759548187256,
+        "timeout": 180
+      },
+      "stdout_sha256": "eb2fbe8b9c6354dac7553643912b2ce7682986ad61d0031f01faa154cb2f6d3a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native-build": {
+      "command": [
+        "cmake",
+        "--build",
+        "build/quad-grouping-runner-results/msvc",
+        "--target",
+        "ap_mesh",
+        "quad_real_boundary_source_contracts",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 164.27646684646606,
+        "timeout": 300
+      },
+      "stdout_sha256": "600e0f93c9afc2b8bf9dc224f8387319ea81f71674adb2e38e1f489464a87c0a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exact-build": {
+      "command": [
+        "cmake",
+        "--build",
+        "build/quad-grouping-runner-results/msvc",
+        "--target",
+        "ap_mesh",
+        "quad_real_boundary_source_contracts",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 6.062275409698486,
+        "timeout": 180
+      },
+      "stdout_sha256": "9e8c2addee3c4d68878a9d0ffe077146af5a203e3fc85a3a87246fe61776f363",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exact-source-contracts": {
+      "command": [
+        "build/quad-grouping-runner-results/msvc/bin/Debug/quad_real_boundary_source_contracts.exe",
+        "configs/quad/curved_patch_original_curves.conf"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 4.942473411560059,
+        "timeout": 60
+      },
+      "stdout_sha256": "18cb1f51196b0387ac7bab88433f9420c3f57b946cf063a1ea2f2f6c2f0b9e26",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exact-runner-suite": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tests/quad/test_grouping_trial_application.py",
+        "--exe",
+        "build/quad-grouping-runner-results/msvc/bin/Debug/ap_mesh.exe",
+        "--directory",
+        "build/quad-grouping-runner-results/portable-suite"
+      ],
+      "result": {
+        "exit": 0,
+        "seconds": 119.03607320785522,
+        "timeout": 365
+      },
+      "stdout_sha256": "bf40f65928b598ffe5a12af5c2a4b1eacd039a209fde17e47eb50ed72d905e6e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "exact_suite_outcomes": [
+    {
+      "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "image_sha256": "9bc2b5a04fd8f8da66d95cc89a7b1edf6ed84586eba6b80918abbcfda4603105",
+      "control": null,
+      "mixed_adaptive_epochs": 0,
+      "projection": "eligible",
+      "decision": {
+        "verdict": "eligible",
+        "vetoes": [],
+        "sampling_disagreements": [],
+        "geometric_directions": {
+          "regional_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "regional_error_max_xyz": [
+            -1,
+            -1
+          ],
+          "global_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "global_error_max_xyz": [
+            -1,
+            -1
+          ]
+        }
+      },
+      "candidate_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+      "reference_history_files": [
+        "step_0_retry_-1_accepted_quad_tri.obj",
+        "step_0_retry_-1_accepted_tri.obj",
+        "step_1_retry_0_accepted_quad_tri.obj",
+        "step_1_retry_0_accepted_tri.obj",
+        "step_2_retry_0_accepted_quad_tri.obj",
+        "step_2_retry_0_accepted_tri.obj",
+        "step_3_retry_0_accepted_quad_tri.obj",
+        "step_3_retry_0_accepted_tri.obj"
+      ],
+      "status": "eligible_candidate_selected",
+      "selected_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+      "selected_source": "staging.steps/adjacent_trial/candidate.obj"
+    },
+    {
+      "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "image_sha256": "9bc2b5a04fd8f8da66d95cc89a7b1edf6ed84586eba6b80918abbcfda4603105",
+      "control": "force-reject",
+      "mixed_adaptive_epochs": 0,
+      "projection": "eligible",
+      "decision": {
+        "verdict": "eligible",
+        "vetoes": [],
+        "sampling_disagreements": [],
+        "geometric_directions": {
+          "regional_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "regional_error_max_xyz": [
+            -1,
+            -1
+          ],
+          "global_error_rms_source_area": [
+            -1,
+            -1
+          ],
+          "global_error_max_xyz": [
+            -1,
+            -1
+          ]
+        }
+      },
+      "candidate_sha256": "2579c96ac0945cec621b091eef65ab8a6cd48a3dedd104db8d351f00323bc4f6",
+      "reference_history_files": [
+        "step_0_retry_-1_accepted_quad_tri.obj",
+        "step_0_retry_-1_accepted_tri.obj",
+        "step_1_retry_0_accepted_quad_tri.obj",
+        "step_1_retry_0_accepted_tri.obj",
+        "step_2_retry_0_accepted_quad_tri.obj",
+        "step_2_retry_0_accepted_tri.obj",
+        "step_3_retry_0_accepted_quad_tri.obj",
+        "step_3_retry_0_accepted_tri.obj"
+      ],
+      "status": "rejected_control",
+      "selected_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "selected_source": "baseline.steps/step_3_retry_0_accepted_quad_tri.obj"
+    },
+    {
+      "baseline_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "image_sha256": "9bc2b5a04fd8f8da66d95cc89a7b1edf6ed84586eba6b80918abbcfda4603105",
+      "control": "protect-neighbor",
+      "mixed_adaptive_epochs": 0,
+      "projection": "active_smaller_size_request",
+      "status": "no_action",
+      "selected_sha256": "08c509f73ccdb69f438790f4c9e17cc6027a2c6ee0863b099193305f32771402",
+      "selected_source": "baseline.steps/step_3_retry_0_accepted_quad_tri.obj"
+    }
+  ]
+}

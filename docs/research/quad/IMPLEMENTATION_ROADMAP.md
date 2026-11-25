@@ -17,8 +17,9 @@ The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
 is measured locally. The [frozen admission and transfer control](GROUPING_ADMISSION_AND_TRANSFER_20261124.md)
 reproduce the T6 veto on a second native geometry. The approved
 [adjacent group run](ADJACENT_TEMPLATE_GROUP_TRANSFER_20261124.md) stages an
-eligible candidate on that geometry. Connect a portable research runner before
-demonstrating two distinct accepted epochs under issue 221. Keep the TRI-only
+eligible candidate on that geometry. The [portable research runner](CURVABEZIER_GROUPING_RUNNER_20261124.md)
+is measured locally and under review. Then demonstrate two distinct accepted
+epochs under issue 221. Keep the TRI-only
 control and report both local and patch-wide effects.
 The dated entries below document earlier decisions and measured scope.
 

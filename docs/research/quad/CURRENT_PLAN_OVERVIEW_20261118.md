@@ -36,8 +36,9 @@ positive and negative comparisons. Native CurvaBezier transfer reproduces the
 single-group veto. The archived manual two-group layout is eligible and motivates
 one scoped test of neighbor selection. The [fresh native transfer](ADJACENT_TEMPLATE_GROUP_TRANSFER_20261124.md)
 now stages the eligible automatic two-block variant on this patch with the
-predecessor retained. The next implementation connects the existing decisions
-to a portable opt-in runner. Epoch admission and the estimator are still open.
+predecessor retained. The [portable opt-in runner](CURVABEZIER_GROUPING_RUNNER_20261124.md) now
+connects those decisions and native staging on draft PR 265.
+Epoch admission and the estimator are still open.
 
 Compare geometry on identical analytic UV sites with area weighting. Report physical
 TRI and QUAD shape by contour-edge, contour-vertex-only and interior faces, before
