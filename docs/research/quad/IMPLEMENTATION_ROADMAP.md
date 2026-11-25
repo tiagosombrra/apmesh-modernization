@@ -50,7 +50,10 @@ assessment](PROGRESSIVE_ADMISSION_GATE_20261125.md) now evaluates bound
 staged candidates using an explicit profile. The [frozen common profile
 replay](COMMON_PROGRESSIVE_PROFILE_20261125.md) identifies transition TRI
 safety failures already at native birth in both development models.
-Measure a shared size realization correction before owner reentry and
+The [common native contour division trial](COMMON_TRANSITION_CONTOUR_SPLIT_20261125.md)
+improves the worst transition TRI on both development models, with the
+remaining size gap and a new CurvaBezier interior quality limitation.
+Project coordinated contour and template sizing before owner reentry and
 reserved validation. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

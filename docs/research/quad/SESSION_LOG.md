@@ -4768,3 +4768,18 @@ local progressive tests and four exact PR 279 hosted jobs. [Replay and
 trace](COMMON_PROGRESSIVE_PROFILE_20261125.md).
 Compare one common size realization rule before front closure next.
 No new generation, reserved case or accepted mixed epoch.
+
+## 2026-11-25 Fortaleza - test one additional native contour division on both development models
+
+Reproduce archived physical curve and face requests. Bind each
+limiting transition TRI to a short seed QUAD edge and an original
+long contour interval without a size request. Use the common 1.35
+selection rule to add one original binary interval division per model.
+Face request traces and realized leaf lists remain byte-identical.
+The worst TRI at the contour transition improves modestly in both
+arms and the original faces are absent. A 4.43 degree interior TRI
+remains on CurvaBezier, and Ribbed remains above the growth limit.
+Both candidates stage and both remain blocked by the common profile.
+[Native evidence](COMMON_TRANSITION_CONTOUR_SPLIT_20261125.md).
+Next project coordinated contour and template sizes. Zero accepted
+mixed epochs.

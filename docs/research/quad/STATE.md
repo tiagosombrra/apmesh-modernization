@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: correct the common boundary-to-template transition before owner reentry
+## Active: coordinate contour and template sizes under the common profile
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,26 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - measure the same additional contour division in both development models
+
+The two limiting TRI use short template edges and reach coarse contour
+intervals. Neither supporting leaf had a direct request. In the screened
+controls, 2/2 CurvaBezier curve requests and 5/8 Ribbed curve requests
+still have a child above target. One common selection rule adds a native
+binary interval division to each bound plan. The final transition TRI
+minimum rises from 2.27 to 2.47 degrees on CurvaBezier and from 6.33 to
+6.69 on Ribbed. Both original limiting TRI disappear. CurvaBezier's
+interior TRI minimum falls to 4.43 degrees. Both successors stage without
+passing the frozen profile. No accepted mixed epoch.
+[Native comparison](COMMON_TRANSITION_CONTOUR_SPLIT_20261125.md).
+
+**Next:** project a common sizing correction that permits changes to
+both contour intervals and supporting template sizes while protecting
+active fine requests and preserving 2:1 balance. Compare the affected
+transition and interior together using the frozen profile. Native owner
+reentry, reserved cases, shared curves and global mixed curvature remain
+open.
 
 ### 2026-11-25 - fix and measure one numerical profile across both development models
 
@@ -25,12 +45,8 @@ smoothing. Ten local progressive checks and four hosted PR 279 jobs pass.
 The archived no-request and missing-certificate controls retain their
 expected dispositions. No new generation or accepted mixed epoch.
 
-**Next:** use the frozen profile for one common transition-sizing trial.
-Start by locating which physical requests are not realized at the
-contour/template interface before front closure in both models. Assess
-the same proposed sizing rule at native birth and after smoothing.
-Native owner reentry, shared-curve qualification, reserved models and
-global mixed-curvature error remain open.
+The first common native sizing trial and its remaining blockers are
+recorded above.
 
 ### 2026-11-25 - implement the selected progressive admission assessment
 
