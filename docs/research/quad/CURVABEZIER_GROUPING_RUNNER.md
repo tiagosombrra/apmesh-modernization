@@ -115,3 +115,29 @@ reconstruction apply to active requests. With zero requests the archive
 contains only the reproduced source and a no-action result. There is no
 default tolerance for this option. It measures geometric deviation and
 leaves shape assessment to the independent staged-candidate reports.
+
+
+## Read-only regional quality guards
+
+`tools/quad_regional_quality_guards.py` compares two staged physical
+OBJs on the same analytical patch. It requires `--profile` with a
+nonnegative `max_face_growth` fraction and `regional_floors` for six
+groups: `contour_edge_TRI`, `contour_edge_QUAD`, `contour_vertex_TRI`,
+`contour_vertex_QUAD`, `interior_TRI`, and `interior_QUAD`. Each group
+has a `min_angle_deg` floor and a `min_shape` floor. Shape is the existing
+triangle score or the minimum scaled QUAD corner Jacobian.
+
+A new group must meet both floors. For an existing group below either
+floor, that minimum has to improve if the candidate remains below it.
+An above-floor minimum can fall as far as the floor; counts below it
+remain visible. The receipt records absent/replaced groups. Geometry,
+sampled error and grading are reported on common sites. The assessment
+does not publish a mesh, decide geometric admission or increment epochs.
+
+Use `--source-bp` and optionally `--patch` for an indexed B?zier file.
+The builtin CurvaBezier remains the default analytical source.
+
+```sh
+python tools/quad_regional_quality_guards.py <predecessor.obj> <candidate.obj> \
+  --profile <profile.json> --source-bp <model.bp> --patch <index>
+```
