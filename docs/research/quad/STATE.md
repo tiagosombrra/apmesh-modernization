@@ -12,6 +12,27 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - test the adjacent advancing-front order with fixed vertices
+
+[Draft PR 284](https://github.com/tiagosombrra/apmesh-modernization/pull/284)
+at `df57d744e664e9531f8f8834bc71102730eedd81` examines 108 alternate
+bases under the paired mixed closure guard. Six CurvaBezier alternatives
+are incomplete; 102 completed alternatives fail the quality comparison.
+Both native meshes reproduce the fixed-vertex controls byte for byte,
+with 704 and 538 faces and worst transition TRI angles of 3.15° and
+8.06°. Source, contour, admission and native compatibility checks passed.
+The direct article rollback gate fails before the intentional rejection
+because Windows denied the pending baseline rename.
+[Order trial and size evidence](MIXED_FRONT_ORDER_TRIAL_20261125.md).
+
+**Next:** align whether the physical size mismatch can originate a native
+size request before template dispatch. The fixed-vertex limiting TRI in
+both models joins a short template edge to the contour with an edge ratio
+of 8.12 or 5.85. Retain the same frozen admission profile. Resolve the
+exact-tree rollback test outcome before integration. Zero accepted mixed
+epochs. Shared curves, ownership reentry, reserved models and global
+mixed curvature remain open.
+
 ### 2026-11-25 - protect the full front closure when placing shorter ideal points
 
 [Draft PR 283](https://github.com/tiagosombrra/apmesh-modernization/pull/283)

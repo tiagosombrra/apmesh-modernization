@@ -1,0 +1,2660 @@
+{
+ "schema": "apmesh.quad.adjacent_front_order_evidence.v1",
+ "revision": "df57d744e664e9531f8f8834bc71102730eedd81",
+ "tree": "50fbeeec1b8a91f30388b649ebcb04b9f365dec3",
+ "parent_revision": "45718e0b3c3e231754e7a250332cac568ab7dc2e",
+ "executable_sha256": "e58b188eb771d1c91ac46a31fce3600abf1dca268591ccc310426dd7a74810a7",
+ "compiler": "MSVC 19.44 x64 C++17 Debug",
+ "tasks": {
+  "build": {
+   "process": {
+    "exit": 0,
+    "seconds": 10.396953582763672,
+    "timeout": 300
+   },
+   "command": [
+    "cmake",
+    "--build",
+    "build/quad-grouping-runner-results/msvc",
+    "--target",
+    "ap_mesh",
+    "quad_real_boundary_source_contracts",
+    "--config",
+    "Debug",
+    "--parallel",
+    "4"
+   ]
+  },
+  "curva": {
+   "process": {
+    "exit": 0,
+    "seconds": 86.68167495727539,
+    "timeout": 240
+   },
+   "command": [
+    "python",
+    "build/quad-mixed-front-order-20261125/run.py",
+    "curva",
+    "order"
+   ]
+  },
+  "ribbed": {
+   "process": {
+    "exit": 0,
+    "seconds": 45.75038957595825,
+    "timeout": 240
+   },
+   "command": [
+    "python",
+    "build/quad-mixed-front-order-20261125/run.py",
+    "ribbed",
+    "order"
+   ]
+  },
+  "compat": {
+   "process": {
+    "exit": 0,
+    "seconds": 53.34422945976257,
+    "timeout": 240
+   },
+   "command": [
+    "python",
+    "build/quad-mixed-front-order-20261125/run.py",
+    "curva",
+    "control"
+   ]
+  },
+  "prior": {
+   "process": {
+    "exit": 0,
+    "seconds": 80.88178968429565,
+    "timeout": 240
+   },
+   "command": [
+    "python",
+    "build/quad-mixed-front-order-20261125/run.py",
+    "curva",
+    "prior"
+   ]
+  }
+ },
+ "compatibility": {
+  "control": {
+   "boundary_refinement.json": "114e0b9ca2a3e5fd4c1b29e0dc215ba666654d6476243cfc7dde2aaf35e79fb5",
+   "requests.csv": "faa9e7a827941324e9e571759927349ec2dc0da48c5722b334e98e1b3f10406a",
+   "leaves.csv": "e934dd330a3ac2f301521347260f9a9eeb529017d257e8561a0678dd474c8c92",
+   "grouped_parents.json": "ff0cc6685d1ef836c753b93a2f7b41a45add5d39521e1c96512addc197e72dff",
+   "candidate.obj": "5f8af094a982daed4389899acd1337194d04e3b42ce22aa0fd628bdb942aab85",
+   "candidate_front/front.json": "b26cff7437ce695d332a1f036760635908976c9a9838146098f917574a913986",
+   "result.txt": "01e5b24ebf48b3d41a77050ad5298d48789db402390a6b5672ee5a68d4dcf881",
+   "smoothing_comparison/before.obj": "b3310f83ec6212c9566c7114b5e6735594f2bcd552819831eef446e5ed74f015",
+   "smoothing_comparison/passes.csv": "17c5bd937701bd3f91215aea497550c5fd0493b2b199d4d79186406fb9db805d"
+  },
+  "prior": {
+   "boundary_refinement.json": "114e0b9ca2a3e5fd4c1b29e0dc215ba666654d6476243cfc7dde2aaf35e79fb5",
+   "requests.csv": "faa9e7a827941324e9e571759927349ec2dc0da48c5722b334e98e1b3f10406a",
+   "leaves.csv": "e934dd330a3ac2f301521347260f9a9eeb529017d257e8561a0678dd474c8c92",
+   "grouped_parents.json": "ff0cc6685d1ef836c753b93a2f7b41a45add5d39521e1c96512addc197e72dff",
+   "candidate.obj": "ff3d56c11570fb9f4cc61ecf10f7c3bae5a2699b7da26add8cfe22675a8d0b86",
+   "candidate_front/front.json": "478e70a5053fec640395ff04880c7cc7d48813be782daa780be482c04d21a13a",
+   "result.txt": "01e5b24ebf48b3d41a77050ad5298d48789db402390a6b5672ee5a68d4dcf881",
+   "smoothing_comparison/before.obj": "b8c16dfc28eaf63ed108ab0b3451b568bb18d7b41269a51a661d4edee435ca5c",
+   "smoothing_comparison/passes.csv": "3735d474c9860c11d928b53c1d4a2f395fc9a9feaff24b800ba654f2458ceccf"
+  }
+ },
+ "rollback": {
+  "result": "failed_before_injected_rejection",
+  "reason": "Windows denied rename of the pending baseline directory",
+  "expected_marker_present": false,
+  "stdout_sha256": "a777bab5ed661448727a2fae69dce6f22496e6bf3987d98b49748da0286f7812",
+  "stderr_sha256": "29838a59762bf841573ca3965c5d1f0747b10fae72c9ddd9cb4f8a407cb77962"
+ },
+ "models": {
+  "curva": {
+   "witnesses": [
+    {
+     "operation": 28,
+     "original_triangle": [
+      17,
+      208,
+      670
+     ],
+     "chosen": [
+      17,
+      208,
+      670
+     ],
+     "trials": [
+      {
+       "base": [
+        653,
+        17
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        208,
+        20
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 6.520439759122581
+    },
+    {
+     "operation": 29,
+     "original_triangle": [
+      208,
+      20,
+      670
+     ],
+     "chosen": [
+      208,
+      20,
+      670
+     ],
+     "trials": [
+      {
+       "base": [
+        670,
+        208
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        20,
+        212
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 11.299385992076578
+    },
+    {
+     "operation": 41,
+     "original_triangle": [
+      35,
+      236,
+      665
+     ],
+     "chosen": [
+      35,
+      236,
+      665
+     ],
+     "trials": [
+      {
+       "base": [
+        239,
+        35
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        236,
+        665
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 12.047934229405675
+    },
+    {
+     "operation": 45,
+     "original_triangle": [
+      41,
+      250,
+      665
+     ],
+     "chosen": [
+      41,
+      250,
+      665
+     ],
+     "trials": [
+      {
+       "base": [
+        253,
+        41
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        250,
+        665
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 13.762589782364262
+    },
+    {
+     "operation": 46,
+     "original_triangle": [
+      253,
+      41,
+      665
+     ],
+     "chosen": [
+      253,
+      41,
+      665
+     ],
+     "trials": [
+      {
+       "base": [
+        42,
+        253
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        41,
+        665
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 10.210298074669003
+    },
+    {
+     "operation": 47,
+     "original_triangle": [
+      42,
+      253,
+      665
+     ],
+     "chosen": [
+      42,
+      253,
+      665
+     ],
+     "trials": [
+      {
+       "base": [
+        567,
+        42
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        253,
+        665
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 7.41721113266488
+    },
+    {
+     "operation": 48,
+     "original_triangle": [
+      260,
+      45,
+      666
+     ],
+     "chosen": [
+      260,
+      45,
+      666
+     ],
+     "trials": [
+      {
+       "base": [
+        46,
+        260
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        45,
+        570
+       ],
+       "status": "incomplete"
+      }
+     ],
+     "birth_angle": 7.754242694306499
+    },
+    {
+     "operation": 49,
+     "original_triangle": [
+      46,
+      260,
+      666
+     ],
+     "chosen": [
+      46,
+      260,
+      666
+     ],
+     "trials": [
+      {
+       "base": [
+        269,
+        46
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        260,
+        666
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 12.406915373522544
+    },
+    {
+     "operation": 50,
+     "original_triangle": [
+      269,
+      46,
+      666
+     ],
+     "chosen": [
+      269,
+      46,
+      666
+     ],
+     "trials": [
+      {
+       "base": [
+        51,
+        269
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        46,
+        666
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 12.460560642269478
+    },
+    {
+     "operation": 51,
+     "original_triangle": [
+      51,
+      269,
+      666
+     ],
+     "chosen": [
+      51,
+      269,
+      666
+     ],
+     "trials": [
+      {
+       "base": [
+        593,
+        51
+       ],
+       "status": "incomplete"
+      },
+      {
+       "base": [
+        269,
+        666
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 7.793816797383957
+    },
+    {
+     "operation": 54,
+     "original_triangle": [
+      298,
+      65,
+      667
+     ],
+     "chosen": [
+      298,
+      65,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        66,
+        298
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        65,
+        648
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 5.792560110151064
+    },
+    {
+     "operation": 55,
+     "original_triangle": [
+      66,
+      298,
+      667
+     ],
+     "chosen": [
+      66,
+      298,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        305,
+        66
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        298,
+        667
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 4.282905837222929
+    },
+    {
+     "operation": 56,
+     "original_triangle": [
+      305,
+      66,
+      667
+     ],
+     "chosen": [
+      305,
+      66,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        68,
+        305
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        66,
+        667
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 3.2530930027968985
+    },
+    {
+     "operation": 57,
+     "original_triangle": [
+      68,
+      305,
+      667
+     ],
+     "chosen": [
+      68,
+      305,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        317,
+        68
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        305,
+        667
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 2.5325085084300167
+    },
+    {
+     "operation": 58,
+     "original_triangle": [
+      69,
+      311,
+      671
+     ],
+     "chosen": [
+      69,
+      311,
+      671
+     ],
+     "trials": [
+      {
+       "base": [
+        322,
+        69
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        311,
+        72
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 6.120140296838185
+    },
+    {
+     "operation": 59,
+     "original_triangle": [
+      311,
+      72,
+      671
+     ],
+     "chosen": [
+      311,
+      72,
+      671
+     ],
+     "trials": [
+      {
+       "base": [
+        671,
+        311
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        72,
+        315
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 9.890961249178483
+    },
+    {
+     "operation": 63,
+     "original_triangle": [
+      317,
+      68,
+      668
+     ],
+     "chosen": [
+      317,
+      68,
+      668
+     ],
+     "trials": [
+      {
+       "base": [
+        75,
+        317
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        68,
+        668
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 7.793341823644152
+    },
+    {
+     "operation": 64,
+     "original_triangle": [
+      75,
+      317,
+      668
+     ],
+     "chosen": [
+      75,
+      317,
+      668
+     ],
+     "trials": [
+      {
+       "base": [
+        668,
+        75
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        317,
+        668
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 12.457843096409603
+    },
+    {
+     "operation": 65,
+     "original_triangle": [
+      76,
+      322,
+      655
+     ],
+     "chosen": [
+      76,
+      322,
+      655
+     ],
+     "trials": [
+      {
+       "base": [
+        655,
+        76
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        322,
+        69
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 5.601669962674793
+    },
+    {
+     "operation": 69,
+     "original_triangle": [
+      322,
+      69,
+      655
+     ],
+     "chosen": [
+      322,
+      69,
+      655
+     ],
+     "trials": [
+      {
+       "base": [
+        655,
+        322
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        69,
+        655
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 4.1027797646110065
+    },
+    {
+     "operation": 71,
+     "original_triangle": [
+      462,
+      6,
+      664
+     ],
+     "chosen": [
+      462,
+      6,
+      664
+     ],
+     "trials": [
+      {
+       "base": [
+        124,
+        462
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        6,
+        664
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 14.641934619989176
+    },
+    {
+     "operation": 72,
+     "original_triangle": [
+      124,
+      462,
+      664
+     ],
+     "chosen": [
+      124,
+      462,
+      664
+     ],
+     "trials": [
+      {
+       "base": [
+        465,
+        124
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        462,
+        664
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 12.681845040574922
+    },
+    {
+     "operation": 73,
+     "original_triangle": [
+      465,
+      124,
+      664
+     ],
+     "chosen": [
+      465,
+      124,
+      664
+     ],
+     "trials": [
+      {
+       "base": [
+        34,
+        465
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        124,
+        664
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 10.097824846590704
+    },
+    {
+     "operation": 74,
+     "original_triangle": [
+      34,
+      465,
+      664
+     ],
+     "chosen": [
+      34,
+      465,
+      664
+     ],
+     "trials": [
+      {
+       "base": [
+        664,
+        34
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        465,
+        664
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 7.74763008560553
+    },
+    {
+     "operation": 75,
+     "original_triangle": [
+      567,
+      42,
+      665
+     ],
+     "chosen": [
+      567,
+      42,
+      665
+     ],
+     "trials": [
+      {
+       "base": [
+        155,
+        567
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        42,
+        665
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 5.4480470345469065
+    },
+    {
+     "operation": 76,
+     "original_triangle": [
+      155,
+      567,
+      665
+     ],
+     "chosen": [
+      155,
+      567,
+      665
+     ],
+     "trials": [
+      {
+       "base": [
+        570,
+        155
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        567,
+        665
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 4.090966195048703
+    },
+    {
+     "operation": 77,
+     "original_triangle": [
+      570,
+      155,
+      665
+     ],
+     "chosen": [
+      570,
+      155,
+      665
+     ],
+     "trials": [
+      {
+       "base": [
+        45,
+        570
+       ],
+       "status": "incomplete"
+      },
+      {
+       "base": [
+        155,
+        665
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 3.1455964932958866
+    },
+    {
+     "operation": 78,
+     "original_triangle": [
+      582,
+      159,
+      667
+     ],
+     "chosen": [
+      582,
+      159,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        160,
+        582
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        159,
+        596
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 8.036785339967942
+    },
+    {
+     "operation": 79,
+     "original_triangle": [
+      160,
+      582,
+      667
+     ],
+     "chosen": [
+      160,
+      582,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        585,
+        160
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        582,
+        667
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 11.271414584974702
+    },
+    {
+     "operation": 82,
+     "original_triangle": [
+      163,
+      593,
+      667
+     ],
+     "chosen": [
+      163,
+      593,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        596,
+        163
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        593,
+        51
+       ],
+       "status": "incomplete"
+      }
+     ],
+     "birth_angle": 3.2528169651680092
+    },
+    {
+     "operation": 83,
+     "original_triangle": [
+      596,
+      163,
+      667
+     ],
+     "chosen": [
+      596,
+      163,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        159,
+        596
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        163,
+        667
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 4.2835559711252085
+    },
+    {
+     "operation": 84,
+     "original_triangle": [
+      159,
+      596,
+      667
+     ],
+     "chosen": [
+      159,
+      596,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        667,
+        159
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        596,
+        667
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 5.7944277301987
+    },
+    {
+     "operation": 88,
+     "original_triangle": [
+      648,
+      174,
+      667
+     ],
+     "chosen": [
+      648,
+      174,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        65,
+        648
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        174,
+        667
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 11.266027304078793
+    },
+    {
+     "operation": 89,
+     "original_triangle": [
+      65,
+      648,
+      667
+     ],
+     "chosen": [
+      65,
+      648,
+      667
+     ],
+     "trials": [
+      {
+       "base": [
+        667,
+        65
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        648,
+        667
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 8.033282741681463
+    },
+    {
+     "operation": 92,
+     "original_triangle": [
+      175,
+      653,
+      671
+     ],
+     "chosen": [
+      175,
+      653,
+      671
+     ],
+     "trials": [
+      {
+       "base": [
+        671,
+        175
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        653,
+        17
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 12.18613706457717
+    },
+    {
+     "operation": 93,
+     "original_triangle": [
+      653,
+      17,
+      671
+     ],
+     "chosen": [
+      653,
+      17,
+      671
+     ],
+     "trials": [
+      {
+       "base": [
+        671,
+        653
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        17,
+        671
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 7.285740897031633
+    },
+    {
+     "operation": 95,
+     "original_triangle": [
+      665,
+      45,
+      570
+     ],
+     "chosen": [
+      665,
+      45,
+      570
+     ],
+     "trials": [
+      {
+       "base": [
+        570,
+        665
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        45,
+        570
+       ],
+       "status": "incomplete"
+      }
+     ],
+     "birth_angle": 2.4722260945075663
+    },
+    {
+     "operation": 96,
+     "original_triangle": [
+      51,
+      667,
+      593
+     ],
+     "chosen": [
+      51,
+      667,
+      593
+     ],
+     "trials": [
+      {
+       "base": [
+        593,
+        51
+       ],
+       "status": "incomplete"
+      },
+      {
+       "base": [
+        667,
+        593
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 2.5314663267635877
+    }
+   ],
+   "order_trials": {
+    "quality_rejected": 70,
+    "incomplete": 6
+   },
+   "policy": {
+    "policy": "paired_adjacent_base_closure_v1",
+    "min_angle_deg": 15,
+    "min_shape": 0.125,
+    "quad_min_angle_deg": 22.5,
+    "quad_min_shape": 0.25
+   },
+   "source_sha256": {
+    "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+    "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+    "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+   },
+   "frozen_artifacts": {
+    "boundary_refinement.json": "114e0b9ca2a3e5fd4c1b29e0dc215ba666654d6476243cfc7dde2aaf35e79fb5",
+    "leaves.csv": "e934dd330a3ac2f301521347260f9a9eeb529017d257e8561a0678dd474c8c92",
+    "requests.csv": "faa9e7a827941324e9e571759927349ec2dc0da48c5722b334e98e1b3f10406a",
+    "grouped_parents.json": "ff0cc6685d1ef836c753b93a2f7b41a45add5d39521e1c96512addc197e72dff"
+   },
+   "comparison": {
+    "control": {
+     "grids": {
+      "24": {
+       "faces": 704,
+       "boundary_segments": 17,
+       "global_error": {
+        "sample_count": 576,
+        "max_xyz": 0.039742105155318994,
+        "rms_uv": 0.00807255386329179,
+        "rms_source_area": 0.007637653597215685,
+        "tri_sites": 134,
+        "quad_sites": 442
+       },
+       "max_adjacent_size_ratio": 7.62927357732771
+      },
+      "48": {
+       "faces": 704,
+       "boundary_segments": 17,
+       "global_error": {
+        "sample_count": 2304,
+        "max_xyz": 0.04399111909395774,
+        "rms_uv": 0.008226839744436018,
+        "rms_source_area": 0.007764928750628515,
+        "tri_sites": 574,
+        "quad_sites": 1730
+       },
+       "max_adjacent_size_ratio": 7.62927357732771
+      }
+     },
+     "stages": {
+      "birth": {
+       "interior_QUAD": {
+        "count": 610,
+        "minimum_angle": 28.981182264110192,
+        "minimum_shape": 0.484509368008931,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 11,
+        "minimum_angle": 19.438606955832434,
+        "minimum_shape": 0.32843100153567506,
+        "below_safety": 4
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 18.831908305542832,
+        "minimum_shape": 0.4461823495614415,
+        "below_safety": 0
+       },
+       "interior_TRI": {
+        "count": 7,
+        "minimum_angle": 10.110511600887017,
+        "minimum_shape": 0.2791018472876159,
+        "below_safety": 3
+       },
+       "contour_vertex_TRI": {
+        "count": 70,
+        "minimum_angle": 2.4722260945075663,
+        "minimum_shape": 0.07380556874664701,
+        "below_safety": 38
+       }
+      },
+      "final": {
+       "interior_QUAD": {
+        "count": 610,
+        "minimum_angle": 39.72251967333946,
+        "minimum_shape": 0.5675352976543959,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 11,
+        "minimum_angle": 19.438606955832434,
+        "minimum_shape": 0.32843100153567506,
+        "below_safety": 4
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 17.274705150823866,
+        "minimum_shape": 0.3857990913797301,
+        "below_safety": 0
+       },
+       "interior_TRI": {
+        "count": 7,
+        "minimum_angle": 12.074325827530048,
+        "minimum_shape": 0.3232608412413648,
+        "below_safety": 1
+       },
+       "contour_vertex_TRI": {
+        "count": 70,
+        "minimum_angle": 3.1455964932958866,
+        "minimum_shape": 0.0935865285368823,
+        "below_safety": 37
+       }
+      }
+     },
+     "admission": {
+      "status": "blocked",
+      "face_growth": -0.03825136612021858,
+      "blockers": [
+       "contour_edge_QUAD.min_angle_deg.below_safety_floor",
+       "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+       "contour_vertex_TRI.min_shape.below_safety_floor",
+       "interior_TRI.min_angle_deg.below_safety_floor",
+       "interior_QUAD.min_angle_deg.regional_regression"
+      ],
+      "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+      "mixed_adaptive_epochs": 0
+     },
+     "plan_sha256": "cb6e5deeefd22506fa7220afa074bbbfe5306e8e471d9f722f54cf26ffa41d25",
+     "mesh_sha256": "5f8af094a982daed4389899acd1337194d04e3b42ce22aa0fd628bdb942aab85",
+     "front_sha256": "b26cff7437ce695d332a1f036760635908976c9a9838146098f917574a913986"
+    },
+    "order": {
+     "grids": {
+      "24": {
+       "faces": 704,
+       "boundary_segments": 17,
+       "global_error": {
+        "sample_count": 576,
+        "max_xyz": 0.039742105155318994,
+        "rms_uv": 0.00807255386329179,
+        "rms_source_area": 0.007637653597215685,
+        "tri_sites": 134,
+        "quad_sites": 442
+       },
+       "max_adjacent_size_ratio": 7.62927357732771
+      },
+      "48": {
+       "faces": 704,
+       "boundary_segments": 17,
+       "global_error": {
+        "sample_count": 2304,
+        "max_xyz": 0.04399111909395774,
+        "rms_uv": 0.008226839744436018,
+        "rms_source_area": 0.007764928750628515,
+        "tri_sites": 574,
+        "quad_sites": 1730
+       },
+       "max_adjacent_size_ratio": 7.62927357732771
+      }
+     },
+     "stages": {
+      "birth": {
+       "interior_QUAD": {
+        "count": 610,
+        "minimum_angle": 28.981182264110192,
+        "minimum_shape": 0.484509368008931,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 11,
+        "minimum_angle": 19.438606955832434,
+        "minimum_shape": 0.32843100153567506,
+        "below_safety": 4
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 18.831908305542832,
+        "minimum_shape": 0.4461823495614415,
+        "below_safety": 0
+       },
+       "interior_TRI": {
+        "count": 7,
+        "minimum_angle": 10.110511600887017,
+        "minimum_shape": 0.2791018472876159,
+        "below_safety": 3
+       },
+       "contour_vertex_TRI": {
+        "count": 70,
+        "minimum_angle": 2.4722260945075663,
+        "minimum_shape": 0.07380556874664701,
+        "below_safety": 38
+       }
+      },
+      "final": {
+       "interior_QUAD": {
+        "count": 610,
+        "minimum_angle": 39.72251967333946,
+        "minimum_shape": 0.5675352976543959,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 11,
+        "minimum_angle": 19.438606955832434,
+        "minimum_shape": 0.32843100153567506,
+        "below_safety": 4
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 17.274705150823866,
+        "minimum_shape": 0.3857990913797301,
+        "below_safety": 0
+       },
+       "interior_TRI": {
+        "count": 7,
+        "minimum_angle": 12.074325827530048,
+        "minimum_shape": 0.3232608412413648,
+        "below_safety": 1
+       },
+       "contour_vertex_TRI": {
+        "count": 70,
+        "minimum_angle": 3.1455964932958866,
+        "minimum_shape": 0.0935865285368823,
+        "below_safety": 37
+       }
+      }
+     },
+     "admission": {
+      "status": "blocked",
+      "face_growth": -0.03825136612021858,
+      "blockers": [
+       "contour_edge_QUAD.min_angle_deg.below_safety_floor",
+       "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+       "contour_vertex_TRI.min_shape.below_safety_floor",
+       "interior_TRI.min_angle_deg.below_safety_floor",
+       "interior_QUAD.min_angle_deg.regional_regression"
+      ],
+      "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+      "mixed_adaptive_epochs": 0
+     },
+     "plan_sha256": "dab1cb791b7f80b868895f86ddf252be7e4a9db61690b85a692a2472dcda8b88",
+     "mesh_sha256": "5f8af094a982daed4389899acd1337194d04e3b42ce22aa0fd628bdb942aab85",
+     "front_sha256": "40604086b18546a9c87ad0a5d9241a3ecf49959bd683ee27e1926004035b4879"
+    },
+    "guarded_points": {
+     "grids": {
+      "24": {
+       "faces": 710,
+       "boundary_segments": 17,
+       "global_error": {
+        "sample_count": 576,
+        "max_xyz": 0.039742105155318994,
+        "rms_uv": 0.008067885362993613,
+        "rms_source_area": 0.0076326252659706315,
+        "tri_sites": 134,
+        "quad_sites": 442
+       },
+       "max_adjacent_size_ratio": 7.62927357732771
+      },
+      "48": {
+       "faces": 710,
+       "boundary_segments": 17,
+       "global_error": {
+        "sample_count": 2304,
+        "max_xyz": 0.04399111909395774,
+        "rms_uv": 0.008222349203921913,
+        "rms_source_area": 0.007760046621091839,
+        "tri_sites": 574,
+        "quad_sites": 1730
+       },
+       "max_adjacent_size_ratio": 7.62927357732771
+      }
+     },
+     "stages": {
+      "birth": {
+       "interior_QUAD": {
+        "count": 610,
+        "minimum_angle": 28.981182264110192,
+        "minimum_shape": 0.484509368008931,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 11,
+        "minimum_angle": 19.438606955832434,
+        "minimum_shape": 0.32843100153567506,
+        "below_safety": 4
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 18.831908305542832,
+        "minimum_shape": 0.4461823495614415,
+        "below_safety": 0
+       },
+       "interior_TRI": {
+        "count": 13,
+        "minimum_angle": 10.110511600887017,
+        "minimum_shape": 0.2791018472876159,
+        "below_safety": 3
+       },
+       "contour_vertex_TRI": {
+        "count": 70,
+        "minimum_angle": 2.4722260945075663,
+        "minimum_shape": 0.07380556874664701,
+        "below_safety": 38
+       }
+      },
+      "final": {
+       "interior_QUAD": {
+        "count": 610,
+        "minimum_angle": 39.72251967333946,
+        "minimum_shape": 0.5675352976543959,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 11,
+        "minimum_angle": 19.438606955832434,
+        "minimum_shape": 0.32843100153567506,
+        "below_safety": 4
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 17.274705150823866,
+        "minimum_shape": 0.3857990913797301,
+        "below_safety": 0
+       },
+       "interior_TRI": {
+        "count": 13,
+        "minimum_angle": 12.074325827530048,
+        "minimum_shape": 0.3232608412413648,
+        "below_safety": 1
+       },
+       "contour_vertex_TRI": {
+        "count": 70,
+        "minimum_angle": 3.1455964932958866,
+        "minimum_shape": 0.0935865285368823,
+        "below_safety": 37
+       }
+      }
+     },
+     "admission": {
+      "status": "blocked",
+      "face_growth": -0.030054644808743168,
+      "blockers": [
+       "contour_edge_QUAD.min_angle_deg.below_safety_floor",
+       "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+       "contour_vertex_TRI.min_shape.below_safety_floor",
+       "interior_TRI.min_angle_deg.below_safety_floor",
+       "interior_QUAD.min_angle_deg.regional_regression"
+      ],
+      "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+      "mixed_adaptive_epochs": 0
+     },
+     "plan_sha256": "963ece1f0a8d44b9854525aff30d7688c1e0050c065afd2d380180155743ccdc",
+     "mesh_sha256": "ff3d56c11570fb9f4cc61ecf10f7c3bae5a2699b7da26add8cfe22675a8d0b86",
+     "front_sha256": "478e70a5053fec640395ff04880c7cc7d48813be782daa780be482c04d21a13a"
+    }
+   }
+  },
+  "ribbed": {
+   "witnesses": [
+    {
+     "operation": 23,
+     "original_triangle": [
+      132,
+      0,
+      499
+     ],
+     "chosen": [
+      132,
+      0,
+      499
+     ],
+     "trials": [
+      {
+       "base": [
+        499,
+        132
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        0,
+        499
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 13.567747506655751
+    },
+    {
+     "operation": 26,
+     "original_triangle": [
+      142,
+      5,
+      498
+     ],
+     "chosen": [
+      142,
+      5,
+      498
+     ],
+     "trials": [
+      {
+       "base": [
+        498,
+        142
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        5,
+        498
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 13.584004982982485
+    },
+    {
+     "operation": 42,
+     "original_triangle": [
+      52,
+      237,
+      515
+     ],
+     "chosen": [
+      52,
+      237,
+      515
+     ],
+     "trials": [
+      {
+       "base": [
+        443,
+        52
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        237,
+        515
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 13.565188834671508
+    },
+    {
+     "operation": 43,
+     "original_triangle": [
+      244,
+      45,
+      514
+     ],
+     "chosen": [
+      244,
+      45,
+      514
+     ],
+     "trials": [
+      {
+       "base": [
+        51,
+        244
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        45,
+        514
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 13.547763119491673
+    },
+    {
+     "operation": 44,
+     "original_triangle": [
+      51,
+      244,
+      514
+     ],
+     "chosen": [
+      51,
+      244,
+      514
+     ],
+     "trials": [
+      {
+       "base": [
+        514,
+        51
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        244,
+        514
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 12.197858218656553
+    },
+    {
+     "operation": 48,
+     "original_triangle": [
+      264,
+      60,
+      513
+     ],
+     "chosen": [
+      264,
+      60,
+      513
+     ],
+     "trials": [
+      {
+       "base": [
+        61,
+        264
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        60,
+        268
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 10.030865307043848
+    },
+    {
+     "operation": 50,
+     "original_triangle": [
+      61,
+      264,
+      513
+     ],
+     "chosen": [
+      61,
+      264,
+      513
+     ],
+     "trials": [
+      {
+       "base": [
+        513,
+        61
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        264,
+        513
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 8.06261087394466
+    },
+    {
+     "operation": 52,
+     "original_triangle": [
+      268,
+      62,
+      513
+     ],
+     "chosen": [
+      268,
+      62,
+      513
+     ],
+     "trials": [
+      {
+       "base": [
+        60,
+        268
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        62,
+        267
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 13.234498177721493
+    },
+    {
+     "operation": 54,
+     "original_triangle": [
+      60,
+      268,
+      513
+     ],
+     "chosen": [
+      60,
+      268,
+      513
+     ],
+     "trials": [
+      {
+       "base": [
+        513,
+        60
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        268,
+        513
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 11.967772407811895
+    },
+    {
+     "operation": 58,
+     "original_triangle": [
+      443,
+      52,
+      515
+     ],
+     "chosen": [
+      443,
+      52,
+      515
+     ],
+     "trials": [
+      {
+       "base": [
+        515,
+        443
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        52,
+        515
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 13.582322668749095
+    },
+    {
+     "operation": 60,
+     "original_triangle": [
+      115,
+      450,
+      503
+     ],
+     "chosen": [
+      115,
+      450,
+      503
+     ],
+     "trials": [
+      {
+       "base": [
+        453,
+        115
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        450,
+        503
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 13.543368474520799
+    },
+    {
+     "operation": 64,
+     "original_triangle": [
+      118,
+      456,
+      502
+     ],
+     "chosen": [
+      118,
+      456,
+      502
+     ],
+     "trials": [
+      {
+       "base": [
+        502,
+        118
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        456,
+        502
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 13.25963107536915
+    },
+    {
+     "operation": 65,
+     "original_triangle": [
+      460,
+      119,
+      501
+     ],
+     "chosen": [
+      460,
+      119,
+      501
+     ],
+     "trials": [
+      {
+       "base": [
+        117,
+        460
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        119,
+        461
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 13.260358509497227
+    },
+    {
+     "operation": 67,
+     "original_triangle": [
+      117,
+      460,
+      501
+     ],
+     "chosen": [
+      117,
+      460,
+      501
+     ],
+     "trials": [
+      {
+       "base": [
+        501,
+        117
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        460,
+        501
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 11.96166576168765
+    },
+    {
+     "operation": 81,
+     "original_triangle": [
+      494,
+      130,
+      512
+     ],
+     "chosen": [
+      494,
+      130,
+      512
+     ],
+     "trials": [
+      {
+       "base": [
+        131,
+        494
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        130,
+        512
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 10.010453319642684
+    },
+    {
+     "operation": 82,
+     "original_triangle": [
+      131,
+      494,
+      512
+     ],
+     "chosen": [
+      131,
+      494,
+      512
+     ],
+     "trials": [
+      {
+       "base": [
+        512,
+        131
+       ],
+       "status": "quality_rejected"
+      },
+      {
+       "base": [
+        494,
+        512
+       ],
+       "status": "quality_rejected"
+      }
+     ],
+     "birth_angle": 8.056232366391924
+    }
+   ],
+   "order_trials": {
+    "quality_rejected": 32
+   },
+   "policy": {
+    "policy": "paired_adjacent_base_closure_v1",
+    "min_angle_deg": 15,
+    "min_shape": 0.125,
+    "quad_min_angle_deg": 22.5,
+    "quad_min_shape": 0.25
+   },
+   "source_sha256": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "frozen_artifacts": {
+    "boundary_refinement.json": "7d5e7778f95659441d1110d3472dd333e9f921d042efe5d8eba2466e67d30c32",
+    "leaves.csv": "af4f03e077cf15bc495475a5700d793a42d2db4bbd8bbb830db08e64a4bb9cc1",
+    "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b",
+    "grouped_parents.json": "8aac98719fa6b8e1147acb9888d5996b4098d3da83a56bbbdb853202c04444fa"
+   },
+   "comparison": {
+    "control": {
+     "grids": {
+      "24": {
+       "faces": 538,
+       "boundary_segments": 23,
+       "global_error": {
+        "sample_count": 576,
+        "max_xyz": 0.10278111763359259,
+        "rms_uv": 0.01776422733109163,
+        "rms_source_area": 0.01778565085238507,
+        "tri_sites": 77,
+        "quad_sites": 499
+       },
+       "max_adjacent_size_ratio": 4.837826816471032
+      },
+      "48": {
+       "faces": 538,
+       "boundary_segments": 23,
+       "global_error": {
+        "sample_count": 2304,
+        "max_xyz": 0.10748410563240578,
+        "rms_uv": 0.01785534924896093,
+        "rms_source_area": 0.017874159985239443,
+        "tri_sites": 349,
+        "quad_sites": 1955
+       },
+       "max_adjacent_size_ratio": 4.837826816471032
+      }
+     },
+     "stages": {
+      "birth": {
+       "interior_QUAD": {
+        "count": 459,
+        "minimum_angle": 26.062329924849276,
+        "minimum_shape": 0.3187473918768228,
+        "below_safety": 0
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 26.05476418930295,
+        "minimum_shape": 0.524430241463529,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 16,
+        "minimum_angle": 25.335621873573015,
+        "minimum_shape": 0.4205384262090846,
+        "below_safety": 0
+       },
+       "contour_vertex_TRI": {
+        "count": 41,
+        "minimum_angle": 8.056232366391924,
+        "minimum_shape": 0.2372959082137662,
+        "below_safety": 16
+       },
+       "interior_TRI": {
+        "count": 14,
+        "minimum_angle": 12.53672132968701,
+        "minimum_shape": 0.3648603604889334,
+        "below_safety": 2
+       },
+       "contour_vertex_QUAD": {
+        "count": 2,
+        "minimum_angle": 43.44077822153558,
+        "minimum_shape": 0.6799611085434666,
+        "below_safety": 0
+       }
+      },
+      "final": {
+       "interior_QUAD": {
+        "count": 459,
+        "minimum_angle": 26.289863992652087,
+        "minimum_shape": 0.3187473918768228,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 16,
+        "minimum_angle": 25.335621873573015,
+        "minimum_shape": 0.4205384262090846,
+        "below_safety": 0
+       },
+       "contour_vertex_QUAD": {
+        "count": 2,
+        "minimum_angle": 43.44077822153558,
+        "minimum_shape": 0.6636177057726924,
+        "below_safety": 0
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 25.403182168278605,
+        "minimum_shape": 0.5120430499404189,
+        "below_safety": 0
+       },
+       "contour_vertex_TRI": {
+        "count": 41,
+        "minimum_angle": 8.056232366391924,
+        "minimum_shape": 0.2372959082137662,
+        "below_safety": 14
+       },
+       "interior_TRI": {
+        "count": 14,
+        "minimum_angle": 18.564257167560097,
+        "minimum_shape": 0.4373188570045186,
+        "below_safety": 0
+       }
+      }
+     },
+     "admission": {
+      "status": "blocked",
+      "face_growth": -0.016453382084095063,
+      "blockers": [
+       "contour_edge_QUAD.min_angle_deg.regional_regression",
+       "contour_edge_QUAD.min_shape.regional_regression",
+       "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+       "contour_vertex_QUAD.min_angle_deg.regional_regression",
+       "interior_TRI.min_angle_deg.regional_regression",
+       "interior_QUAD.min_angle_deg.regional_regression",
+       "interior_QUAD.min_shape.regional_regression"
+      ],
+      "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+      "mixed_adaptive_epochs": 0
+     },
+     "plan_sha256": "c77b4480cf3cc374d1f3393c18b6b2743c4c1a861bb222a3fb4f78932e375480",
+     "mesh_sha256": "1505abed0121eeb54cc5b7bec7e29a0fb15e79e96675ede7e2f3e1b1ae50e743",
+     "front_sha256": "33123f48c550fbc2b8c5db712142acc63903b40fe79b59a97e5341d9599258cb"
+    },
+    "order": {
+     "grids": {
+      "24": {
+       "faces": 538,
+       "boundary_segments": 23,
+       "global_error": {
+        "sample_count": 576,
+        "max_xyz": 0.10278111763359259,
+        "rms_uv": 0.01776422733109163,
+        "rms_source_area": 0.01778565085238507,
+        "tri_sites": 77,
+        "quad_sites": 499
+       },
+       "max_adjacent_size_ratio": 4.837826816471032
+      },
+      "48": {
+       "faces": 538,
+       "boundary_segments": 23,
+       "global_error": {
+        "sample_count": 2304,
+        "max_xyz": 0.10748410563240578,
+        "rms_uv": 0.01785534924896093,
+        "rms_source_area": 0.017874159985239443,
+        "tri_sites": 349,
+        "quad_sites": 1955
+       },
+       "max_adjacent_size_ratio": 4.837826816471032
+      }
+     },
+     "stages": {
+      "birth": {
+       "interior_QUAD": {
+        "count": 459,
+        "minimum_angle": 26.062329924849276,
+        "minimum_shape": 0.3187473918768228,
+        "below_safety": 0
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 26.05476418930295,
+        "minimum_shape": 0.524430241463529,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 16,
+        "minimum_angle": 25.335621873573015,
+        "minimum_shape": 0.4205384262090846,
+        "below_safety": 0
+       },
+       "contour_vertex_TRI": {
+        "count": 41,
+        "minimum_angle": 8.056232366391924,
+        "minimum_shape": 0.2372959082137662,
+        "below_safety": 16
+       },
+       "interior_TRI": {
+        "count": 14,
+        "minimum_angle": 12.53672132968701,
+        "minimum_shape": 0.3648603604889334,
+        "below_safety": 2
+       },
+       "contour_vertex_QUAD": {
+        "count": 2,
+        "minimum_angle": 43.44077822153558,
+        "minimum_shape": 0.6799611085434666,
+        "below_safety": 0
+       }
+      },
+      "final": {
+       "interior_QUAD": {
+        "count": 459,
+        "minimum_angle": 26.289863992652087,
+        "minimum_shape": 0.3187473918768228,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 16,
+        "minimum_angle": 25.335621873573015,
+        "minimum_shape": 0.4205384262090846,
+        "below_safety": 0
+       },
+       "contour_vertex_QUAD": {
+        "count": 2,
+        "minimum_angle": 43.44077822153558,
+        "minimum_shape": 0.6636177057726924,
+        "below_safety": 0
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 25.403182168278605,
+        "minimum_shape": 0.5120430499404189,
+        "below_safety": 0
+       },
+       "contour_vertex_TRI": {
+        "count": 41,
+        "minimum_angle": 8.056232366391924,
+        "minimum_shape": 0.2372959082137662,
+        "below_safety": 14
+       },
+       "interior_TRI": {
+        "count": 14,
+        "minimum_angle": 18.564257167560097,
+        "minimum_shape": 0.4373188570045186,
+        "below_safety": 0
+       }
+      }
+     },
+     "admission": {
+      "status": "blocked",
+      "face_growth": -0.016453382084095063,
+      "blockers": [
+       "contour_edge_QUAD.min_angle_deg.regional_regression",
+       "contour_edge_QUAD.min_shape.regional_regression",
+       "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+       "contour_vertex_QUAD.min_angle_deg.regional_regression",
+       "interior_TRI.min_angle_deg.regional_regression",
+       "interior_QUAD.min_angle_deg.regional_regression",
+       "interior_QUAD.min_shape.regional_regression"
+      ],
+      "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+      "mixed_adaptive_epochs": 0
+     },
+     "plan_sha256": "a4d68d20146c88ae5aeda8b50cf2a0ff1506109f41cb0efacdad4bb9a044d17c",
+     "mesh_sha256": "1505abed0121eeb54cc5b7bec7e29a0fb15e79e96675ede7e2f3e1b1ae50e743",
+     "front_sha256": "5c9fb16807ac878697dd19b57358f4b0c7393dd27a74acdd13f4b2c2f74d3cd3"
+    },
+    "guarded_points": {
+     "grids": {
+      "24": {
+       "faces": 544,
+       "boundary_segments": 23,
+       "global_error": {
+        "sample_count": 576,
+        "max_xyz": 0.10278111763359259,
+        "rms_uv": 0.0177618421042732,
+        "rms_source_area": 0.017783141277905055,
+        "tri_sites": 77,
+        "quad_sites": 499
+       },
+       "max_adjacent_size_ratio": 5.59782956250618
+      },
+      "48": {
+       "faces": 544,
+       "boundary_segments": 23,
+       "global_error": {
+        "sample_count": 2304,
+        "max_xyz": 0.10748410563240578,
+        "rms_uv": 0.017850561986289405,
+        "rms_source_area": 0.01786919458533468,
+        "tri_sites": 349,
+        "quad_sites": 1955
+       },
+       "max_adjacent_size_ratio": 5.59782956250618
+      }
+     },
+     "stages": {
+      "birth": {
+       "interior_QUAD": {
+        "count": 459,
+        "minimum_angle": 26.062329924849276,
+        "minimum_shape": 0.3187473918768228,
+        "below_safety": 0
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 26.05476418930295,
+        "minimum_shape": 0.524430241463529,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 16,
+        "minimum_angle": 25.335621873573015,
+        "minimum_shape": 0.4205384262090846,
+        "below_safety": 0
+       },
+       "contour_vertex_TRI": {
+        "count": 40,
+        "minimum_angle": 8.622547164897838,
+        "minimum_shape": 0.25624757737741277,
+        "below_safety": 14
+       },
+       "interior_TRI": {
+        "count": 21,
+        "minimum_angle": 12.53672132968701,
+        "minimum_shape": 0.3648603604889334,
+        "below_safety": 2
+       },
+       "contour_vertex_QUAD": {
+        "count": 2,
+        "minimum_angle": 43.44077822153558,
+        "minimum_shape": 0.6799611085434666,
+        "below_safety": 0
+       }
+      },
+      "final": {
+       "interior_QUAD": {
+        "count": 459,
+        "minimum_angle": 26.289863992652087,
+        "minimum_shape": 0.3187473918768228,
+        "below_safety": 0
+       },
+       "contour_edge_QUAD": {
+        "count": 16,
+        "minimum_angle": 25.335621873573015,
+        "minimum_shape": 0.4205384262090846,
+        "below_safety": 0
+       },
+       "contour_vertex_QUAD": {
+        "count": 2,
+        "minimum_angle": 43.44077822153558,
+        "minimum_shape": 0.6636177057726924,
+        "below_safety": 0
+       },
+       "contour_edge_TRI": {
+        "count": 6,
+        "minimum_angle": 25.403182168278605,
+        "minimum_shape": 0.5120430499404189,
+        "below_safety": 0
+       },
+       "contour_vertex_TRI": {
+        "count": 40,
+        "minimum_angle": 8.757804326637606,
+        "minimum_shape": 0.25763321122284416,
+        "below_safety": 12
+       },
+       "interior_TRI": {
+        "count": 21,
+        "minimum_angle": 18.564257167560097,
+        "minimum_shape": 0.4373188570045186,
+        "below_safety": 0
+       }
+      }
+     },
+     "admission": {
+      "status": "blocked",
+      "face_growth": -0.005484460694698354,
+      "blockers": [
+       "contour_edge_QUAD.min_angle_deg.regional_regression",
+       "contour_edge_QUAD.min_shape.regional_regression",
+       "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+       "contour_vertex_QUAD.min_angle_deg.regional_regression",
+       "interior_TRI.min_angle_deg.regional_regression",
+       "interior_QUAD.min_angle_deg.regional_regression",
+       "interior_QUAD.min_shape.regional_regression"
+      ],
+      "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+      "mixed_adaptive_epochs": 0
+     },
+     "plan_sha256": "46d4dbc03ad0c60f30354436f12a5738f8d23c40ac74ba655d3d067ef78ab561",
+     "mesh_sha256": "7b1bfefe815eb0b56a8f753cc0960caebb1e949af4a7ec0702caa2ff65a38ae9",
+     "front_sha256": "6f350dce371b476457bc7c24c8200a6f5e034a71c6a835b89bbaebb048b262e0"
+    }
+   }
+  }
+ },
+ "limiting_transition_size_evidence": {
+  "curva": {
+   "operation": 77,
+   "edges": [
+    {
+     "edge": [
+      570,
+      155
+     ],
+     "length_xyz": 0.06508300321405061,
+     "neighbor_kind": "seed_quad",
+     "neighbor_face": 480,
+     "neighbor_operation": null,
+     "uv": [
+      [
+       0.875,
+       0.71875
+      ],
+      [
+       0.875,
+       0.6875
+      ]
+     ],
+     "is_base": true
+    },
+    {
+     "edge": [
+      155,
+      665
+     ],
+     "length_xyz": 0.46939877430870386,
+     "neighbor_kind": "front_tri",
+     "neighbor_face": 682,
+     "neighbor_operation": 76,
+     "uv": [
+      [
+       0.875,
+       0.6875
+      ],
+      [
+       1.0,
+       0.5
+      ]
+     ],
+     "is_base": false
+    },
+    {
+     "edge": [
+      665,
+      570
+     ],
+     "length_xyz": 0.5284606551391854,
+     "neighbor_kind": "front_tri",
+     "neighbor_face": 701,
+     "neighbor_operation": 95,
+     "uv": [
+      [
+       1.0,
+       0.5
+      ],
+      [
+       0.875,
+       0.71875
+      ]
+     ],
+     "is_base": false
+    }
+   ],
+   "aspect_edge_xyz": 8.119795169886956,
+   "worst_final_angle": 3.1455964932958866,
+   "nearest_request_uv": [
+    0.08333333333333333,
+    0.32291666666666663
+   ],
+   "nearest_request_distance_uv": 0.8900003901372427,
+   "nearest_requested_length_xyz": 0.10345663744811938,
+   "nearest_request_disposition": "actionable"
+  },
+  "ribbed": {
+   "operation": 82,
+   "edges": [
+    {
+     "edge": [
+      131,
+      494
+     ],
+     "length_xyz": 0.12500265079482803,
+     "neighbor_kind": "seed_quad",
+     "neighbor_face": 454,
+     "neighbor_operation": null,
+     "uv": [
+      [
+       0.875,
+       0.9375
+      ],
+      [
+       0.90625,
+       0.9375
+      ]
+     ],
+     "is_base": true
+    },
+    {
+     "edge": [
+      494,
+      512
+     ],
+     "length_xyz": 0.6518582789207319,
+     "neighbor_kind": "front_tri",
+     "neighbor_face": 535,
+     "neighbor_operation": 81,
+     "uv": [
+      [
+       0.90625,
+       0.9375
+      ],
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "is_base": false
+    },
+    {
+     "edge": [
+      512,
+      131
+     ],
+     "length_xyz": 0.7307479754939331,
+     "neighbor_kind": "front_tri",
+     "neighbor_face": 469,
+     "neighbor_operation": 15,
+     "uv": [
+      [
+       1.0,
+       1.0
+      ],
+      [
+       0.875,
+       0.9375
+      ]
+     ],
+     "is_base": false
+    }
+   ],
+   "aspect_edge_xyz": 5.845859834551346,
+   "worst_final_angle": 8.056232366391924,
+   "nearest_request_uv": [
+    0.9375,
+    0.95
+   ],
+   "nearest_request_distance_uv": 0.013339842161318456,
+   "nearest_requested_length_xyz": 0.4902404843570106,
+   "nearest_request_disposition": "actionable"
+  }
+ },
+ "mixed_adaptive_epochs": 0
+}

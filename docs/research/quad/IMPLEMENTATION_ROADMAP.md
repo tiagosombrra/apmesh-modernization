@@ -65,8 +65,10 @@ but introduces worse downstream TRI on CurvaBezier and leaves Ribbed
 unchanged. The [guarded closure trial](GUARDED_IDEAL_FRONT_CLOSURE_20261125.md)
 avoids the regression and modestly improves Ribbed, with insufficient
 quality for either model. Both immediate fixed-vertex TRI cavities have
-no alternative closure. Compare a wider mixed region before owner
-reentry and reserved validation.
+no alternative closure. The [adjacent base-order trial](MIXED_FRONT_ORDER_TRIAL_20261125.md)
+has no choice meeting its complete closure quality comparison in the two
+development cases. Move upstream to the measured physical sizing gap,
+with alignment on the trigger before changing the size field.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

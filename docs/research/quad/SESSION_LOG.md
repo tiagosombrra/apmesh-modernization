@@ -4859,3 +4859,17 @@ respective scopes. The two immediate three-TRI patches have one valid
 triangulation each. Next align and compare a wider mixed closure before
 moving to reserved cases. Zero accepted mixed epochs.
 [Native evidence](GUARDED_IDEAL_FRONT_CLOSURE_20261125.md).
+
+## 2026-11-25 Fortaleza - compare adjacent front orders with the same vertices
+
+Draft PR 284 at df57d744 evaluates 108 adjacent bases with the frozen
+mixed selector and paired closure comparison. Six alternatives are
+incomplete and neither mesh changes. Both remain blocked on shape.
+The limiting TRI uses a short template base in both models, with
+physical edge ratios of 8.12 and 5.85. Native build, contour contracts,
+progressive controls, compatibility and independent trace checks passed.
+The exact-tree application rollback gate retains the first Windows
+pending-directory rename refusal. Hosted qualification is in progress.
+Next align whether to report transition size mismatch to the existing
+size field before template dispatch. Zero accepted mixed epochs.
+[Order trial evidence](MIXED_FRONT_ORDER_TRIAL_20261125.md).
