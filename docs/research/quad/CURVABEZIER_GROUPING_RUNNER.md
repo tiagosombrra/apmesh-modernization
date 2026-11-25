@@ -65,3 +65,12 @@ uses the original 2:1 balancing and preserves the captured depth cap.
 The runner retains the request and leaf traces, any staged candidate and
 common-site measurements. The selected source remains authoritative during
 the trial. A staged successor is an experimental comparison.
+
+Optional feedback comparisons use the recovered arm. `--mode previous-search`
+keeps the refined tree while replaying the original search boxes only after
+exact seed and contour equality. `--mode curve-and-tree` uses one native
+binary split per interval requested by the recorded geometric sizing replay.
+`--mode guarded-curve-and-tree` measures the same inputs with the retained
+guarded smoothing comparison and writes its control and guarded frames.
+Compare each result against its recorded predecessor. The lookup replay and
+the independent smoothing arms are research observations.

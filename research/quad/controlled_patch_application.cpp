@@ -203,6 +203,7 @@ struct Candidate {
   std::vector<ArticleMixedFront::Box> article_leaves;
   std::vector<UvVertex> article_uv_before_smoothing;
   std::vector<Xyz> article_xyz_before_smoothing;
+  bool guarded_smoothing_comparison = false;
   MixedUvSmoothingTrace article_smoothing;
   std::vector<std::vector<Xyz>> article_smoothing_xyz;
   std::size_t clearance_excluded_cells = 0;
@@ -266,12 +267,253 @@ RealBoundarySource GroupTwoTemplateBlocks(const RealBoundarySource& source,
   return result;
 }
 
+class MixedGeometryRejection : public std::runtime_error {
+public:
+  using std::runtime_error::runtime_error;
+};
+
+void RequireMixedGeometry(bool condition, const char* message) {
+  if (!condition)
+    throw MixedGeometryRejection(message);
+}
+
+using PhysicalLift = std::function<Xyz(UvVertex)>;
+using TrialFaces = std::vector<std::vector<VertexId>>;
+using TrialScores = std::array<double, 5>;
+
+void CheckMixedSmoothingFace(PatchBezier& patch, const std::vector<VertexId>& face,
+                             const std::vector<UvVertex>& positions,
+                             const std::vector<Xyz>& physical,
+                             std::vector<std::array<UvVertex, 3>>* facets,
+                             TrialScores* scores = nullptr) {
+  double alignment = 1.0;
+  const auto check = [&](std::size_t a, std::size_t b, std::size_t c) {
+    const std::array<UvVertex, 3> triangle{positions[face[a]], positions[face[b]],
+                                           positions[face[c]]};
+    try {
+      CheckFacet(patch, FaceUv{triangle}, alignment);
+    } catch (const std::runtime_error& error) {
+      throw MixedGeometryRejection(error.what());
+    }
+    if (facets)
+      facets->push_back(triangle);
+  };
+  check(0, 1, 2);
+  if (face.size() == 4) {
+    check(0, 2, 3);
+    research::PhysicalQuadCorners corners{}, normals{};
+    for (std::size_t i = 0; i < 4; ++i) {
+      const auto uv = positions[face[i]];
+      const auto next = positions[face[(i + 1) % 4]], prev = positions[face[(i + 3) % 4]];
+      RequireMixedGeometry((next.u - uv.u) * (prev.v - uv.v) - (next.v - uv.v) * (prev.u - uv.u) >
+                               1e-14,
+                           "Mixed smoothing inverted or collapsed a UV quad");
+      corners[i] = physical[face[i]];
+      normals[i] = Cross(Values(patch.Qu(uv.u, uv.v)), Values(patch.Qv(uv.u, uv.v)));
+    }
+    try {
+      const auto q = research::ObservePhysicalQuadQuality(corners, normals);
+      if (scores) {
+        (*scores)[2] = std::min((*scores)[2], q.min_scaled_jacobian);
+        (*scores)[4] = std::min((*scores)[4], -q.edge_ratio);
+      }
+    } catch (const std::invalid_argument& error) {
+      throw MixedGeometryRejection(error.what());
+    }
+  }
+  if (!scores)
+    return;
+  if (face.size() == 3) {
+    const auto a = positions[face[0]], b = positions[face[1]], c = positions[face[2]];
+    RequireMixedGeometry((b.u - a.u) * (c.v - a.v) - (b.v - a.v) * (c.u - a.u) > 1e-14,
+                         "Local mixed smoothing inverted or collapsed a UV triangle");
+    const auto ab = Difference(physical[face[1]], physical[face[0]]);
+    const auto ac = Difference(physical[face[2]], physical[face[0]]);
+    const auto bc = Difference(physical[face[2]], physical[face[1]]);
+    const auto q =
+        2 * std::sqrt(3.0) * Norm(Cross(ab, ac)) / (Dot(ab, ab) + Dot(ac, ac) + Dot(bc, bc));
+    (*scores)[0] = std::min((*scores)[0], q);
+  }
+  auto& angle = (*scores)[face.size() == 3 ? 1 : 3];
+  for (std::size_t i = 0; i < face.size(); ++i) {
+    const auto& point = physical[face[i]];
+    const auto a = Difference(physical[face[(i + 1) % face.size()]], point);
+    const auto b = Difference(physical[face[(i + face.size() - 1) % face.size()]], point);
+    angle = std::min(angle, std::atan2(Norm(Cross(a, b)), Dot(a, b)) * 180 / std::acos(-1.0));
+  }
+}
+
+std::vector<Xyz> ValidateMixedSmoothing(PatchBezier& patch, const TrialFaces& faces,
+                                        const std::vector<UvVertex>& positions,
+                                        const PhysicalLift& lift) {
+  std::vector<Xyz> physical;
+  for (const auto uv : positions)
+    physical.push_back(lift(uv));
+  std::vector<std::array<UvVertex, 3>> facets;
+  for (std::size_t i = 0; i < faces.size(); ++i) {
+    try {
+      CheckMixedSmoothingFace(patch, faces[i], positions, physical, &facets);
+    } catch (const MixedGeometryRejection& error) {
+      throw MixedGeometryRejection(std::string(error.what()) + " at face " + std::to_string(i));
+    }
+  }
+  RequireMixedGeometry(AuditUvOverlap({}, facets).no_overlap,
+                       "Mixed smoothing overlaps physical facets");
+  return physical;
+}
+
+void SaveMixedSmoothingFrame(const std::filesystem::path& path, const TrialFaces& faces,
+                             const std::vector<UvVertex>& uv, const std::vector<Xyz>& xyz) {
+  std::ofstream out(path, std::ios::binary);
+  out.imbue(std::locale::classic());
+  out << std::setprecision(17);
+  for (const auto& p : xyz)
+    out << "v " << p[0] << ' ' << p[1] << ' ' << p[2] << '\n';
+  for (const auto p : uv)
+    out << "vt " << p.u << ' ' << p.v << '\n';
+  for (const auto& face : faces) {
+    out << 'f';
+    for (auto id : face)
+      out << ' ' << id + 1 << '/' << id + 1;
+    out << '\n';
+  }
+  out.close();
+  Require(bool(out), "Cannot retain mixed smoothing frame");
+}
+
+bool BetterMixedNeighborhood(const TrialScores& old, const TrialScores& next) {
+  bool improves = false;
+  for (std::size_t i = 0; i < old.size(); ++i) {
+    if (!std::isfinite(old[i]))
+      continue;
+    const double tolerance = 1e-12 * std::max({1.0, std::abs(old[i]), std::abs(next[i])});
+    if (next[i] < old[i] - tolerance)
+      return false;
+    improves |= next[i] > old[i] + tolerance;
+  }
+  return improves;
+}
+
+std::vector<UvVertex> CompareMixedSmoothing(PatchBezier& patch, const ArticleFrontResult& article,
+                                            const PhysicalLift& lift,
+                                            const RealBoundarySource& source,
+                                            const std::filesystem::path& directory) {
+  std::ofstream journal(directory / "passes.csv", std::ios::binary);
+  journal << "arm,pass,status,full,half,quarter,eighth,skipped,reason\n";
+  std::vector<Xyz> lifted;
+  for (auto p : article.vertices)
+    lifted.push_back(lift(p));
+  SaveMixedSmoothingFrame(directory / "before.obj", article.faces, article.vertices, lifted);
+  try {
+    (void)ValidateMixedSmoothing(patch, article.faces, article.vertices, lift);
+    journal << "both,0,valid,0,0,0,0,0,\n";
+  } catch (const MixedGeometryRejection& error) {
+    journal << "both,0,rejected,0,0,0,0,0," << error.what() << '\n';
+    journal.close();
+    throw;
+  }
+  std::vector<std::vector<std::size_t>> incidence(article.vertices.size());
+  for (std::size_t i = 0; i < article.faces.size(); ++i)
+    for (const auto id : article.faces[i])
+      incidence[id].push_back(i);
+  std::set<VertexId> fixed;
+  for (VertexId i = 0; i < article.vertices.size(); ++i)
+    for (const auto& site : source.sites)
+      if (site.uv.u == article.vertices[i].u && site.uv.v == article.vertices[i].v)
+        fixed.insert(i);
+  Require(fixed.size() == source.sites.size(), "Comparison lost a source contour vertex");
+
+  auto last = article.vertices;
+  for (const bool guarded : {false, true}) {
+    const auto arm = guarded ? "guarded" : "control";
+    last = article.vertices;
+    std::size_t current_pass = 0;
+    std::array<std::size_t, 5> counts{};
+    MixedUvPassFilter filter;
+    if (guarded)
+      filter = [&](std::size_t pass, const auto& current, auto& means) {
+        current_pass = pass;
+        counts.fill(0);
+        auto working = current;
+        std::vector<Xyz> physical;
+        for (const auto p : working)
+          physical.push_back(lift(p));
+        const auto score = [&](VertexId node) {
+          TrialScores values;
+          values.fill(std::numeric_limits<double>::infinity());
+          for (auto f : incidence[node])
+            CheckMixedSmoothingFace(patch, article.faces[f], working, physical, nullptr, &values);
+          return values;
+        };
+        constexpr std::array<double, 4> fractions{1.0, 0.5, 0.25, 0.125};
+        for (VertexId id = 0; id < working.size(); ++id) {
+          const auto origin = working[id], target = means[id];
+          if (fixed.count(id) || (origin.u == target.u && origin.v == target.v))
+            continue;
+          const auto before = score(id);
+          const auto start = physical[id];
+          std::size_t accepted = fractions.size();
+          for (std::size_t t = 0; t < fractions.size(); ++t) {
+            const double a = fractions[t];
+            working[id] = t == 0 ? target
+                                 : UvVertex{origin.u + a * (target.u - origin.u),
+                                            origin.v + a * (target.v - origin.v)};
+            physical[id] = lift(working[id]);
+            try {
+              if (BetterMixedNeighborhood(before, score(id))) {
+                accepted = t;
+                break;
+              }
+            } catch (const MixedGeometryRejection&) {
+              // Try a shorter displacement for this same node.
+            }
+          }
+          if (accepted == fractions.size()) {
+            working[id] = origin;
+            physical[id] = start;
+          }
+          ++counts[accepted];
+        }
+        means.swap(working);
+      };
+    try {
+      (void)SmoothMixedUv(
+          article.vertices, article.faces,
+          [&](std::size_t pass, const auto& uv) {
+            current_pass = pass;
+            const auto physical = ValidateMixedSmoothing(patch, article.faces, uv, lift);
+            SaveMixedSmoothingFrame(directory /
+                                        (std::string(arm) + "_" + std::to_string(pass) + ".obj"),
+                                    article.faces, uv, physical);
+            last = uv;
+            journal << arm << ',' << pass << ",valid";
+            for (auto n : counts)
+              journal << ',' << n;
+            journal << ",\n";
+          },
+          filter);
+    } catch (const MixedGeometryRejection& error) {
+      journal << arm << ',' << current_pass << ",rejected";
+      for (auto n : counts)
+        journal << ',' << n;
+      journal << ',' << error.what() << '\n';
+    }
+    SaveMixedSmoothingFrame(directory / (std::string(arm) + "_final.obj"), article.faces, last,
+                            ValidateMixedSmoothing(patch, article.faces, last, lift));
+  }
+  journal.close();
+  Require(bool(journal), "Cannot retain mixed smoothing comparison trace");
+  return last;
+}
+
 using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
 
 Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    const ResearchSourceTreeFactory& source_tree_factory = {},
                    const RealBoundarySource* source = nullptr, bool pair_during_front = false,
-                   bool article_front = false, bool article_area_centroid = false) {
+                   bool article_front = false, bool article_area_centroid = false,
+                   const Candidate* previous_search = nullptr,
+                   const std::filesystem::path* guarded_smoothing = nullptr) {
   ValidateSourceCurves(patch);
   Require(!article_front || !pair_during_front, "Article and TRI-observer modes are exclusive");
   Require(!article_area_centroid || article_front, "Area centroid requires the article mode");
@@ -354,6 +596,25 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
     for (auto* leaf : raw->getLeaves())
       boxes.push_back({leaf->getMin()->getX(), leaf->getMin()->getY(), leaf->getMax()->getX(),
                        leaf->getMax()->getY()});
+    if (previous_search) {
+      const auto& seed = selected.uv_quads;
+      const auto& reference_uv = previous_search->article_uv_before_smoothing;
+      const auto same_uv = [](UvVertex a, UvVertex b) { return a.u == b.u && a.v == b.v; };
+      Require(reference_uv.size() == seed.vertices.size() + contour.size() &&
+                  seed.quads.size() == previous_search->seed_quads &&
+                  std::equal(seed.vertices.begin(), seed.vertices.end(), reference_uv.begin(),
+                             same_uv) &&
+                  std::equal(contour.begin(), contour.end(),
+                             reference_uv.begin() + seed.vertices.size(), same_uv),
+              "Previous lookup requires identical ordered seed vertices and contour");
+      for (std::size_t i = 0; i < seed.quads.size(); ++i) {
+        const auto& corners = seed.quads[i].vertices;
+        const auto& reference = previous_search->faces[i];
+        Require(std::equal(corners.begin(), corners.end(), reference.begin(), reference.end()),
+                "Previous lookup requires identical ordered seed QUADs");
+      }
+      boxes = previous_search->article_leaves;
+    }
     article = ArticleMixedFront(selected.uv_quads, contour, std::move(boxes)).Run();
     std::vector<std::array<UvVertex, 3>> audit_triangles;
     for (std::size_t i = article.seed_quads; i < article.faces.size(); ++i) {
@@ -370,43 +631,52 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
     result.article_uv_before_smoothing = article.vertices;
     for (const auto uv : article.vertices)
       result.article_xyz_before_smoothing.push_back(physical_point(uv));
-    result.article_smoothing = SmoothMixedUv(
-        article.vertices, article.faces, [&](std::size_t, const std::vector<UvVertex>& positions) {
-          std::vector<Xyz> physical;
-          for (const auto uv : positions)
-            physical.push_back(physical_point(uv));
-          std::vector<std::array<UvVertex, 3>> facets;
-          double alignment = 1.0;
-          for (const auto& face : article.faces) {
-            const auto check = [&](std::size_t a, std::size_t b, std::size_t c) {
-              const std::array<UvVertex, 3> triangle{positions[face[a]], positions[face[b]],
-                                                     positions[face[c]]};
-              CheckFacet(patch, FaceUv{triangle}, alignment);
-              facets.push_back(triangle);
-            };
-            check(0, 1, 2);
-            if (face.size() == 4) {
-              check(0, 2, 3);
-              research::PhysicalQuadCorners corners{}, normals{};
-              for (std::size_t i = 0; i < 4; ++i) {
-                const auto uv = positions[face[i]];
-                const auto next = positions[face[(i + 1) % 4]], prev = positions[face[(i + 3) % 4]];
-                Require((next.u - uv.u) * (prev.v - uv.v) - (next.v - uv.v) * (prev.u - uv.u) >
-                            1e-14,
-                        "Mixed smoothing inverted or collapsed a UV quad");
-                corners[i] = physical[face[i]];
-                normals[i] = Cross(Values(patch.Qu(uv.u, uv.v)), Values(patch.Qv(uv.u, uv.v)));
+    if (guarded_smoothing) {
+      Require(source != nullptr, "Guarded smoothing comparison needs the native curve");
+      result.guarded_smoothing_comparison = true;
+      article.vertices =
+          CompareMixedSmoothing(patch, article, physical_point, *source, *guarded_smoothing);
+    } else {
+      result.article_smoothing = SmoothMixedUv(
+          article.vertices, article.faces,
+          [&](std::size_t, const std::vector<UvVertex>& positions) {
+            std::vector<Xyz> physical;
+            for (const auto uv : positions)
+              physical.push_back(physical_point(uv));
+            std::vector<std::array<UvVertex, 3>> facets;
+            double alignment = 1.0;
+            for (const auto& face : article.faces) {
+              const auto check = [&](std::size_t a, std::size_t b, std::size_t c) {
+                const std::array<UvVertex, 3> triangle{positions[face[a]], positions[face[b]],
+                                                       positions[face[c]]};
+                CheckFacet(patch, FaceUv{triangle}, alignment);
+                facets.push_back(triangle);
+              };
+              check(0, 1, 2);
+              if (face.size() == 4) {
+                check(0, 2, 3);
+                research::PhysicalQuadCorners corners{}, normals{};
+                for (std::size_t i = 0; i < 4; ++i) {
+                  const auto uv = positions[face[i]];
+                  const auto next = positions[face[(i + 1) % 4]],
+                             prev = positions[face[(i + 3) % 4]];
+                  Require((next.u - uv.u) * (prev.v - uv.v) - (next.v - uv.v) * (prev.u - uv.u) >
+                              1e-14,
+                          "Mixed smoothing inverted or collapsed a UV quad");
+                  corners[i] = physical[face[i]];
+                  normals[i] = Cross(Values(patch.Qu(uv.u, uv.v)), Values(patch.Qv(uv.u, uv.v)));
+                }
+                (void)research::ObservePhysicalQuadQuality(corners, normals);
               }
-              (void)research::ObservePhysicalQuadQuality(corners, normals);
             }
-          }
-          // Reuse the existing complete TRI intersection audit for all facets,
-          // including the two halves of each QUAD, with unchanged tolerances.
-          Require(AuditUvOverlap({}, facets).no_overlap,
-                  "Mixed smoothing overlaps physical facets");
-          result.article_smoothing_xyz.push_back(std::move(physical));
-        });
-    article.vertices = result.article_smoothing.passes.back();
+            // Reuse the existing complete TRI intersection audit for all facets,
+            // including the two halves of each QUAD, with unchanged tolerances.
+            Require(AuditUvOverlap({}, facets).no_overlap,
+                    "Mixed smoothing overlaps physical facets");
+            result.article_smoothing_xyz.push_back(std::move(physical));
+          });
+      article.vertices = result.article_smoothing.passes.back();
+    }
   } else {
     const auto report = aft->AttemptExteriorTriangulation(selected);
     Require(report.front_drained && report.triangles_positive && report.seam_orientation_complete &&
@@ -1340,7 +1610,10 @@ void Export(const Candidate& result, const std::filesystem::path& path,
     const auto quads = source_scaffold ? result.seed_quads : result.quads;
     if (!result.article_commits.empty())
       out << "# article_front planar_UV_1993_rule prospective_choice_before_front_update=1"
-             " smoothing=uv_distinct_incident_vertices_jacobi_5_v1 curved_XYZ_lift=experimental\n";
+             " smoothing="
+          << (result.guarded_smoothing_comparison ? "guarded_uv_comparison"
+                                                  : "uv_distinct_incident_vertices_jacobi_5_v1")
+          << " curved_XYZ_lift=experimental\n";
     if (result.article_area_centroid)
       out << "# point_rule=polygon_area_centroid_uv_v1 historical_numeric_identity=unproven\n";
     if (!result.source_faces.empty()) {
@@ -1943,6 +2216,9 @@ struct GeometricRequest {
 
 struct FeedbackPlan {
   std::vector<GeometricRequest> predecessor, recovered;
+  std::vector<std::size_t> curve_intervals;
+  bool replay_previous_search = false;
+  bool guarded_smoothing = false;
 };
 
 FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
@@ -1955,6 +2231,23 @@ FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
   FeedbackPlan plan;
   std::string arm;
   while (input >> arm) {
+    if (arm == "previous_search") {
+      Require(!plan.replay_previous_search, "Duplicate predecessor lookup control");
+      plan.replay_previous_search = true;
+      continue;
+    }
+    if (arm == "guarded_smoothing") {
+      Require(!plan.guarded_smoothing, "Duplicate guarded smoothing comparison");
+      plan.guarded_smoothing = true;
+      continue;
+    }
+    if (arm == "curve") {
+      std::size_t i = 0;
+      input >> i;
+      Require(bool(input), "Missing feedback curve interval");
+      plan.curve_intervals.push_back(i);
+      continue;
+    }
     GeometricRequest request{};
     input >> request.face >> request.site.u >> request.site.v >> request.size;
     Require(bool(input) && request.site.u >= 0 && request.site.u <= 1 && request.site.v >= 0 &&
@@ -1966,6 +2259,10 @@ FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
   }
   Require(input.eof() && !plan.predecessor.empty() && !plan.recovered.empty(),
           "Geometric feedback needs both measured request lists");
+  Require(!plan.replay_previous_search || plan.curve_intervals.empty(),
+          "Previous lookup requires an unchanged curve");
+  Require(!plan.guarded_smoothing || !plan.curve_intervals.empty(),
+          "Guarded smoothing comparison requires curve feedback");
   return plan;
 }
 
@@ -2012,7 +2309,8 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
                             const RealBoundarySource& source,
                             const std::vector<GeometricRequest>& requests,
                             const std::filesystem::path& directory,
-                            const std::filesystem::path& previous_path) {
+                            const std::filesystem::path& previous_path,
+                            const FeedbackPlan* comparison = nullptr) {
   struct RestorePatchLink {
     PatchBezier& patch;
     SubMesh* original;
@@ -2023,7 +2321,18 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   CheckTypedIncidence(*previous.mesh, previous);
   const auto witness = SnapshotOwnerRehearsal(*previous.mesh);
   const auto bytes = ReadRehearsalOutput(previous_path);
-  auto tree = ReplayRealSourceTree(patch, source);
+  std::optional<RealBoundarySource> split_source;
+  if (comparison && !comparison->curve_intervals.empty()) {
+    std::vector<bool> split(source.sites.size(), false);
+    for (const auto i : comparison->curve_intervals) {
+      Require(i < split.size() && !split[i], "Invalid or repeated feedback curve interval");
+      split[i] = true;
+    }
+    const auto last_id = *std::max_element(previous.node_ids.begin(), previous.node_ids.end());
+    split_source = SplitFeedbackIntervals(patch, source, split, last_id);
+  }
+  const auto& effective_source = split_source ? *split_source : source;
+  auto tree = ReplayRealSourceTree(patch, effective_source);
   const auto leaves = tree->getLeaves();
   const auto cap = tree->getMaxLevelCap();
   std::set<long> requested;
@@ -2080,10 +2389,16 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   std::optional<Candidate> staged;
   std::string outcome = "no_action";
   std::string rejection;
-  if (after > before) {
+  const auto guarded_path = directory / "smoothing_comparison";
+  const bool guarded = comparison && comparison->guarded_smoothing;
+  if (guarded)
+    Require(std::filesystem::create_directory(guarded_path), "Cannot reserve smoothing comparison");
+  if (after > before || split_source) {
     try {
-      staged =
-          Generate(patch, false, [&]() { return std::move(tree); }, &source, false, true, true);
+      staged = Generate(
+          patch, false, [&]() { return std::move(tree); }, &effective_source, false, true, true,
+          comparison && comparison->replay_previous_search ? &previous : nullptr,
+          guarded ? &guarded_path : nullptr);
     } catch (const std::runtime_error& error) {
       rejection = error.what();
     } catch (const std::invalid_argument& error) {
@@ -2093,12 +2408,13 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   }
   if (staged) {
     CheckTypedIncidence(*staged->mesh, *staged);
-    staged->source_witness = &source;
+    staged->source_witness = &effective_source;
     staged->generation_step = source.source_step;
     staged->reference_accepted = source.reference_tri_accepted;
     staged->stage_reason = "geometric_feedback_staged";
     Export(*staged, directory / "candidate.obj");
-    ExportArticleSteps(*staged, directory / "candidate_front");
+    if (!guarded)
+      ExportArticleSteps(*staged, directory / "candidate_front");
     staged.reset();
   }
   RequireOwnerRehearsalUnchanged(patch, witness);
@@ -2109,7 +2425,8 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   result.imbue(std::locale::classic());
   result << outcome << '\n'
          << cap << ' ' << before << ' ' << after << ' ' << requested.size() << '\n'
-         << rejection << '\n';
+         << rejection << '\n'
+         << source.sites.size() << ' ' << effective_source.sites.size() << '\n';
   result.close();
   Require(bool(result), "Cannot retain geometric feedback outcome");
 }
@@ -2172,7 +2489,7 @@ Candidate StageGroupingCandidate(PatchBezier& patch, Candidate previous,
     if (feedback)
       StageGeometricFeedback(patch, candidate, grouped, feedback->recovered,
                              directory.parent_path() / "feedback_recovered",
-                             directory / "candidate.obj");
+                             directory / "candidate.obj", feedback);
   };
   if (plan.verify_rejection) {
     bool rejected = false;
@@ -2419,7 +2736,7 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     if (grouping_plan && source && stage.step == 3 && stage.accepted &&
         stage.outer.global_retry == 0) {
       const auto previous_obj = staging / (stem + "_quad_tri.obj");
-      if (feedback)
+      if (feedback && !feedback->replay_previous_search && feedback->curve_intervals.empty())
         StageGeometricFeedback(*patch, layout, *source, feedback->predecessor,
                                staging / "feedback_predecessor", previous_obj);
       layout = StageGroupingCandidate(*patch, std::move(layout), *source, *grouping_plan,

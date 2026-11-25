@@ -202,7 +202,7 @@ def use_neighbor(front, target, requests):
                 protected_requests=protected, changed_neighbor_boxes=changed)
 
 
-def protected_size_requests(path):
+def geometric_size_requests(path):
     """Replay the approved residual seeds and three synchronous grading passes."""
     xyz, uv, faces = load_physical_obj(path)
     contour_rows = [line.split() for line in path.read_text(encoding="ascii").splitlines()
@@ -267,8 +267,15 @@ def protected_size_requests(path):
                     if distances[j] <= 3 and 1.35*target[j] < updated[i]:
                         updated[i] = 1.35*target[j]
         target = updated
-    return [dict(face=i, site=at, h=target[i]) for i,at in enumerate(sites)
-            if target[i]<initial[i]]
+    faces = [dict(face=i, site=at, h=target[i]) for i,at in enumerate(sites)
+             if target[i]<initial[i]]
+    curves = [dict(interval=i, previous_size=initial[count+i], h=target[count+i])
+              for i in range(len(contour)) if target[count+i]<initial[count+i]]
+    return faces, curves
+
+
+def protected_size_requests(path):
+    return geometric_size_requests(path)[0]
 
 
 def select_adjacent_group(front_dir, front, predecessor, protect_neighbor=False):
