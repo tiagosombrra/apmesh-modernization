@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: review the native geometry screen and align mixed admission
+## Active: resolve the CurvaBezier interior quality veto before mixed admission
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,25 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - certify native boundary subdivision before mixed staging
+
+[Draft PR 277](https://github.com/tiagosombrra/apmesh-modernization/pull/277)
+at 9aabc278 implements the aligned opt-in certificate for ordered native
+curve subdivision. Both candidate meshes and front histories match PR 276
+byte for byte. CurvaBezier certifies 2 insertions from 14 to 16 sites.
+Ribbed certifies 8 from 14 to 22. Native MSVC validates six split and
+unchanged captures, including reversed orientation, and 24 refusal cases.
+The original 54 negative controls and ordinary native regression pass.
+The exact PR 276 hosted matrix passed 4/4. Independent approval is open.
+[Certificate and admission diagnosis](CERTIFIED_BOUNDARY_REFINEMENT_20261125.md).
+
+**Next:** trace the short template edge from seed QUAD 204 into the
+CurvaBezier closure at operation 81. It produces the only interior TRI
+below both diagnostic floors. There is no eligible extra QUAD at that
+operation. Keep the original growth and quality diagnostics and use the
+certified parent refinement for the experimental path. No shared-curve
+qualification, mixed owner reentry or admitted epoch yet.
 
 ### 2026-11-25 - run the opt-in native geometry screen on both development meshes
 
@@ -27,12 +46,11 @@ a single-QUAD measurement. The initial native rejection and the portable
 verifier's tuple/list failure remain in the receipt.
 [Native comparison and receipt](NATIVE_PAIR_GEOMETRY_SCREEN_20261125.md).
 
-**Next:** review the scoped code and measurements, then align the candidate
-admission rule needed for the first genuine accepted mixed successor.
-The unadopted regional control still blocks both candidates and CurvaBezier
-has a remaining 2.27-degree transition TRI. Keep 0.045 as development
-scope. Held-out geometry, shared curves, accepted reentry and global
-mixed curvature remain open. Zero accepted mixed epochs.
+The certified boundary witness is recorded above. The unadopted regional
+control still blocks both candidates and CurvaBezier has a remaining
+2.27-degree transition TRI. Keep 0.045 as development scope. Held-out
+geometry, shared curves, accepted reentry and global mixed curvature remain
+open. Zero accepted mixed epochs.
 
 ### 2026-11-25 - screen prospective additional pairs on archived fronts
 

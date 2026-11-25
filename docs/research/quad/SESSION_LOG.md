@@ -4659,3 +4659,17 @@ boundary controls, ordinary native application and independent archived
 decision replays pass. [Report and receipts](NATIVE_PAIR_GEOMETRY_SCREEN_20261125.md).
 Next review the scoped changes and align mixed admission. No reserved
 geometry or accepted mixed epoch in this experiment.
+
+## 2026-11-25 Fortaleza - certify ordered subdivision on real native boundaries
+
+After alignment on the boundary relationship, implement the optional
+refinement certificate in draft PR 277 at 9aabc278. Directed native
+replays preserve both PR 276 meshes and certify 2 and 8 insertions.
+Six boundary captures validate split and unchanged input with 24 new
+negative controls. A foreign bound tree is rejected before feedback.
+PR 276 exact-head hosted checks complete 4/4. Archive admission replay
+still finds interior TRI angle and shape blockers. The CurvaBezier face
+born at operation 81 is the sole interior TRI below both diagnostic floors.
+[Report and receipts](CERTIFIED_BOUNDARY_REFINEMENT_20261125.md).
+The operation has no eligible extra QUAD. Next inspect the seed edge
+from QUAD 204. Mixed owner reentry and acceptance remain open.

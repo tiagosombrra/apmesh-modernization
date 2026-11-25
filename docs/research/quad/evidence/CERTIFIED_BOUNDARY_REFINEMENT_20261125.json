@@ -1,0 +1,726 @@
+{
+  "schema": "apmesh.quad.review_and_certified_boundary_refinement.v1",
+  "observed_utc": "2026-11-25T15:42:25+00:00",
+  "exact_feature_head": "9aabc278e78d72d72f2e3790fc160874634ff690",
+  "toolchain": "Windows MSVC x64 Debug C++17",
+  "screen_review_hosted": {
+    "headRefOid": "6b4d5b6d3371ce945b82393f7311d4be44ea9499",
+    "isDraft": true,
+    "reviews": [],
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T14:47:33Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45634635475/job/139276869555",
+        "name": "QUAD native (ubuntu-24.04)",
+        "startedAt": "2026-11-25T14:29:54Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T14:46:15Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45634635475/job/139276869114",
+        "name": "QUAD native (windows-2022)",
+        "startedAt": "2026-11-25T14:29:53Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T14:36:51Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45634635475/job/139276869845",
+        "name": "TRI baseline and tooling controls (Linux)",
+        "startedAt": "2026-11-25T14:29:53Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-25T14:32:02Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45634635475/job/139276870275",
+        "name": "TRI scientific equivalence against frozen baseline",
+        "startedAt": "2026-11-25T14:29:55Z",
+        "status": "COMPLETED",
+        "workflowName": "QUAD research native validation"
+      }
+    ]
+  },
+  "native_refinement_hosted": {
+    "headRefOid": "9aabc278e78d72d72f2e3790fc160874634ff690",
+    "isDraft": true,
+    "reviews": [],
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45647661367/job/139322937129",
+        "name": "QUAD native (ubuntu-24.04)",
+        "startedAt": "2026-11-25T15:40:52Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45647661367/job/139322937418",
+        "name": "QUAD native (windows-2022)",
+        "startedAt": "2026-11-25T15:41:36Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45647661367/job/139322936777",
+        "name": "TRI baseline and tooling controls (Linux)",
+        "startedAt": "2026-11-25T15:41:08Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45647661367/job/139322937013",
+        "name": "TRI scientific equivalence against frozen baseline",
+        "startedAt": "2026-11-25T15:40:32Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "QUAD research native validation"
+      }
+    ]
+  },
+  "native_certificate": {
+    "curva": {
+      "certificate": {
+        "schema": "apmesh.quad.boundary_refinement.v1",
+        "parent_sites": 14,
+        "candidate_sites": 16,
+        "splits": [
+          {
+            "parent_interval": 12,
+            "start_id": 116,
+            "end_id": 118,
+            "inserted_id": 794,
+            "side": 3,
+            "parameter": 0.727447509765625
+          },
+          {
+            "parent_interval": 13,
+            "start_id": 118,
+            "end_id": 102,
+            "inserted_id": 795,
+            "side": 3,
+            "parameter": 0.272552490234375
+          }
+        ]
+      },
+      "certificate_sha256": "1b6f6209033987064fa51571a978294c4a4482261939d833b16ec38f038f4759",
+      "staged_candidate_sha256": "66127ed67bed8f32eb3f6709dae0cc5ee88f475ae98aa0bbd9bfb32f422e96e5",
+      "exact_mesh_and_front_replay": true,
+      "source_sha256": {
+        "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+        "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+        "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+      },
+      "engine_sha256": "0b428383fe51210f4f9cf435c0795127dc60d5002c96c3bb18da160fee936c1b",
+      "foreign_tree_control": null
+    },
+    "ribbed": {
+      "certificate": {
+        "schema": "apmesh.quad.boundary_refinement.v1",
+        "parent_sites": 14,
+        "candidate_sites": 22,
+        "splits": [
+          {
+            "parent_interval": 2,
+            "start_id": 27,
+            "end_id": 28,
+            "inserted_id": 551,
+            "side": 0,
+            "parameter": 0.6251144325360656
+          },
+          {
+            "parent_interval": 3,
+            "start_id": 28,
+            "end_id": 24,
+            "inserted_id": 552,
+            "side": 0,
+            "parameter": 0.8751296578016081
+          },
+          {
+            "parent_interval": 4,
+            "start_id": 24,
+            "end_id": 31,
+            "inserted_id": 553,
+            "side": 1,
+            "parameter": 0.1222207817090748
+          },
+          {
+            "parent_interval": 5,
+            "start_id": 31,
+            "end_id": 32,
+            "inserted_id": 554,
+            "side": 1,
+            "parameter": 0.3757121461353563
+          },
+          {
+            "parent_interval": 6,
+            "start_id": 32,
+            "end_id": 33,
+            "inserted_id": 555,
+            "side": 1,
+            "parameter": 0.6248056355254903
+          },
+          {
+            "parent_interval": 7,
+            "start_id": 33,
+            "end_id": 29,
+            "inserted_id": 556,
+            "side": 1,
+            "parameter": 0.8783512883289859
+          },
+          {
+            "parent_interval": 8,
+            "start_id": 29,
+            "end_id": 35,
+            "inserted_id": 557,
+            "side": 2,
+            "parameter": 0.75
+          },
+          {
+            "parent_interval": 9,
+            "start_id": 35,
+            "end_id": 34,
+            "inserted_id": 558,
+            "side": 2,
+            "parameter": 0.25
+          }
+        ]
+      },
+      "certificate_sha256": "1a8995a506215aee0f8567111f9b9731034a059f873c3c6f4ace274d64df3e19",
+      "staged_candidate_sha256": "129d70a63f964df5d9ceaceded7b03c086d31f76dc1d727221e853c4e4e9a6a6",
+      "exact_mesh_and_front_replay": true,
+      "source_sha256": {
+        "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+        "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+        "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+      },
+      "engine_sha256": "0b428383fe51210f4f9cf435c0795127dc60d5002c96c3bb18da160fee936c1b",
+      "foreign_tree_control": "rejected_before_feedback"
+    }
+  },
+  "unchanged_controls": 6,
+  "split_controls": 6,
+  "reversed_captures": 3,
+  "original_negative_controls": 54,
+  "refinement_negative_controls": 24,
+  "archive_review": {
+    "schema": "apmesh.quad.mixed_admission_archive_replay.v1",
+    "model_scope": "isolated native patches with positive refinement",
+    "quality_profile_sha256": "790bd838d197661b2bba1d4608f5ac743c91bd0ac08e258d161403ba1485cff0",
+    "fixture_results": {
+      "curvabezier": {
+        "parent_sha256": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+        "candidate_sha256": "66127ed67bed8f32eb3f6709dae0cc5ee88f475ae98aa0bbd9bfb32f422e96e5",
+        "boundary": {
+          "preserved_original_curve_records": 18,
+          "old_count": 14,
+          "new_count": 16,
+          "preserved_sites": 14,
+          "inserted_sites": 2,
+          "split_parent_intervals": 2,
+          "max_interior_insertions": 1
+        },
+        "identical_sampled_boundary": false,
+        "growth": {
+          "predecessor_faces": 732,
+          "candidate_faces": 779,
+          "fraction": 0.06420765027322405,
+          "limit": 0.10420475319926874
+        },
+        "geometric_checks": {
+          "24": {
+            "sample_count": 576,
+            "before": {
+              "sample_count": 576,
+              "max_xyz": 0.049100482457393006,
+              "rms_uv": 0.012357098802300836,
+              "rms_source_area": 0.01182092568456974,
+              "tri_sites": 204,
+              "quad_sites": 372
+            },
+            "after": {
+              "sample_count": 576,
+              "max_xyz": 0.040148706524736344,
+              "rms_uv": 0.009423715079638415,
+              "rms_source_area": 0.008942766269276288,
+              "tri_sites": 154,
+              "quad_sites": 422
+            },
+            "rms_reduction": 0.24348003634355064,
+            "improves_both": true
+          },
+          "48": {
+            "sample_count": 2304,
+            "before": {
+              "sample_count": 2304,
+              "max_xyz": 0.0499742617604889,
+              "rms_uv": 0.012476199826746128,
+              "rms_source_area": 0.011914927232780577,
+              "tri_sites": 840,
+              "quad_sites": 1464
+            },
+            "after": {
+              "sample_count": 2304,
+              "max_xyz": 0.04419218491628824,
+              "rms_uv": 0.009589351028676791,
+              "rms_source_area": 0.009079034654457278,
+              "tri_sites": 678,
+              "quad_sites": 1626
+            },
+            "rms_reduction": 0.2380117413156445,
+            "improves_both": true
+          }
+        },
+        "blockers": [
+          "interior_TRI.min_angle_deg",
+          "interior_TRI.min_shape"
+        ],
+        "blocked_details": {
+          "interior_TRI.min_angle_deg": {
+            "floor": 26.57091996655889,
+            "predecessor_min": null,
+            "candidate_min": 14.360406798940785,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 1,
+            "status": "blocked"
+          },
+          "interior_TRI.min_shape": {
+            "floor": 0.6929450141702036,
+            "predecessor_min": null,
+            "candidate_min": 0.377193811758363,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 1,
+            "status": "blocked"
+          }
+        },
+        "negative_controls": [
+          "changed_original_curve",
+          "missing_parent_site",
+          "reordered_sites",
+          "displaced_boundary_vertex"
+        ],
+        "limiting_interior_faces": [
+          {
+            "typed_obj_face": 749,
+            "native_operation": 81,
+            "ids_zero_based": [
+              94,
+              389,
+              87
+            ],
+            "edge_lengths": [
+              0.0753986748894056,
+              0.21522395165499167,
+              0.15524943671503777
+            ],
+            "minimum_angle_at_birth": 10.571950098942574,
+            "minimum_angle_after_smoothing": 14.360406798940785,
+            "shape_at_birth": 0.2934404898031634,
+            "shape_after_smoothing": 0.377193811758363
+          }
+        ]
+      },
+      "ribbed_both": {
+        "parent_sha256": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+        "candidate_sha256": "129d70a63f964df5d9ceaceded7b03c086d31f76dc1d727221e853c4e4e9a6a6",
+        "boundary": {
+          "preserved_original_curve_records": 18,
+          "old_count": 14,
+          "new_count": 22,
+          "preserved_sites": 14,
+          "inserted_sites": 8,
+          "split_parent_intervals": 8,
+          "max_interior_insertions": 1
+        },
+        "identical_sampled_boundary": false,
+        "growth": {
+          "predecessor_faces": 547,
+          "candidate_faces": 648,
+          "fraction": 0.1846435100548446,
+          "limit": 0.10420475319926874
+        },
+        "geometric_checks": {
+          "24": {
+            "sample_count": 576,
+            "before": {
+              "sample_count": 576,
+              "max_xyz": 0.12330781811253737,
+              "rms_uv": 0.027355917150157002,
+              "rms_source_area": 0.027384233947918835,
+              "tri_sites": 139,
+              "quad_sites": 437
+            },
+            "after": {
+              "sample_count": 576,
+              "max_xyz": 0.10280771781289116,
+              "rms_uv": 0.017291082729854353,
+              "rms_source_area": 0.017300947249785724,
+              "tri_sites": 85,
+              "quad_sites": 491
+            },
+            "rms_reduction": 0.36821503633478225,
+            "improves_both": true
+          },
+          "48": {
+            "sample_count": 2304,
+            "before": {
+              "sample_count": 2304,
+              "max_xyz": 0.1256181753351185,
+              "rms_uv": 0.0274623867600248,
+              "rms_source_area": 0.027488072891660026,
+              "tri_sites": 561,
+              "quad_sites": 1743
+            },
+            "after": {
+              "sample_count": 2304,
+              "max_xyz": 0.1074959120816572,
+              "rms_uv": 0.017357333409647662,
+              "rms_source_area": 0.017364848941323,
+              "tri_sites": 377,
+              "quad_sites": 1927
+            },
+            "rms_reduction": 0.3682769610745774,
+            "improves_both": true
+          }
+        },
+        "blockers": [
+          "face_growth",
+          "interior_TRI.min_angle_deg",
+          "interior_TRI.min_shape",
+          "interior_QUAD.min_shape"
+        ],
+        "blocked_details": {
+          "interior_TRI.min_angle_deg": {
+            "floor": 26.57091996655889,
+            "predecessor_min": 26.57091996655889,
+            "candidate_min": 18.37051561928486,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 7,
+            "status": "blocked"
+          },
+          "interior_TRI.min_shape": {
+            "floor": 0.6929450141702036,
+            "predecessor_min": 0.6929450141702036,
+            "candidate_min": 0.4330453078501855,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 8,
+            "status": "blocked"
+          },
+          "interior_QUAD.min_shape": {
+            "floor": 0.3248423057881177,
+            "predecessor_min": 0.3248423057881177,
+            "candidate_min": 0.32332895608451606,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 1,
+            "status": "blocked"
+          }
+        },
+        "negative_controls": [
+          "changed_original_curve",
+          "missing_parent_site",
+          "reordered_sites",
+          "displaced_boundary_vertex"
+        ]
+      },
+      "ribbed_quad_only": {
+        "parent_sha256": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+        "candidate_sha256": "3f805ba3d2a72a86c0d2252892773aa84498a79c61ae44744c947e62ba9c8f6b",
+        "boundary": {
+          "preserved_original_curve_records": 18,
+          "old_count": 14,
+          "new_count": 19,
+          "preserved_sites": 14,
+          "inserted_sites": 5,
+          "split_parent_intervals": 5,
+          "max_interior_insertions": 1
+        },
+        "identical_sampled_boundary": false,
+        "growth": {
+          "predecessor_faces": 547,
+          "candidate_faces": 604,
+          "fraction": 0.10420475319926874,
+          "limit": 0.10420475319926874
+        },
+        "geometric_checks": {
+          "24": {
+            "sample_count": 576,
+            "before": {
+              "sample_count": 576,
+              "max_xyz": 0.12330781811253737,
+              "rms_uv": 0.027355917150157002,
+              "rms_source_area": 0.027384233947918835,
+              "tri_sites": 139,
+              "quad_sites": 437
+            },
+            "after": {
+              "sample_count": 576,
+              "max_xyz": 0.12024896572105419,
+              "rms_uv": 0.023840265919588103,
+              "rms_source_area": 0.023854708887058353,
+              "tri_sites": 91,
+              "quad_sites": 485
+            },
+            "rms_reduction": 0.1288889463759756,
+            "improves_both": true
+          },
+          "48": {
+            "sample_count": 2304,
+            "before": {
+              "sample_count": 2304,
+              "max_xyz": 0.1256181753351185,
+              "rms_uv": 0.0274623867600248,
+              "rms_source_area": 0.027488072891660026,
+              "tri_sites": 561,
+              "quad_sites": 1743
+            },
+            "after": {
+              "sample_count": 2304,
+              "max_xyz": 0.12408874913937688,
+              "rms_uv": 0.02389755319008031,
+              "rms_source_area": 0.02390935276382623,
+              "tri_sites": 386,
+              "quad_sites": 1918
+            },
+            "rms_reduction": 0.13019174323128313,
+            "improves_both": true
+          }
+        },
+        "blockers": [
+          "interior_TRI.min_angle_deg",
+          "interior_TRI.min_shape",
+          "interior_QUAD.min_shape"
+        ],
+        "blocked_details": {
+          "interior_TRI.min_angle_deg": {
+            "floor": 26.57091996655889,
+            "predecessor_min": 26.57091996655889,
+            "candidate_min": 18.37051561928486,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 3,
+            "status": "blocked"
+          },
+          "interior_TRI.min_shape": {
+            "floor": 0.6929450141702036,
+            "predecessor_min": 0.6929450141702036,
+            "candidate_min": 0.4330453078501855,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 4,
+            "status": "blocked"
+          },
+          "interior_QUAD.min_shape": {
+            "floor": 0.3248423057881177,
+            "predecessor_min": 0.3248423057881177,
+            "candidate_min": 0.32332895608451606,
+            "predecessor_below_floor": 0,
+            "candidate_below_floor": 1,
+            "status": "blocked"
+          }
+        },
+        "negative_controls": [
+          "changed_original_curve",
+          "missing_parent_site",
+          "reordered_sites",
+          "displaced_boundary_vertex"
+        ]
+      }
+    },
+    "native_regeneration": false,
+    "admitted_epochs": 0
+  },
+  "front_operation_81": {
+    "op": 81,
+    "base": [
+      94,
+      389
+    ],
+    "triangle_candidates": [
+      {
+        "apex": 87,
+        "physical_minimum_angle": 10.571950098942574
+      },
+      {
+        "apex": 734,
+        "physical_minimum_angle": 8.483596997943007
+      }
+    ],
+    "convex_quad_scores": [
+      {
+        "vertices": [
+          94,
+          389,
+          734,
+          87
+        ],
+        "score": 1.7433971084596593
+      }
+    ],
+    "eligible_by_shape": 0
+  },
+  "commands": {
+    "replay": {
+      "command": [
+        "python",
+        "build/quad-admission-review-20261125/audit_admission_boundary.py"
+      ],
+      "exit": 1,
+      "seconds": 0.4518241882324219,
+      "timeout": 120,
+      "diagnostic": "Initial archive check expected identical full curve sample lists instead of ordered preservation."
+    },
+    "refined-replay": {
+      "command": [
+        "python",
+        "build/quad-admission-review-20261125/audit_admission_boundary.py"
+      ],
+      "exit": 0,
+      "seconds": 4.393656969070435,
+      "timeout": 120
+    },
+    "traced-replay": {
+      "command": [
+        "python",
+        "build/quad-admission-review-20261125/audit_admission_boundary.py"
+      ],
+      "exit": 0,
+      "seconds": 4.279780387878418,
+      "timeout": 120
+    },
+    "build": {
+      "command": [
+        "cmake",
+        "--build",
+        "build/quad-grouping-runner-results/msvc",
+        "--target",
+        "ap_mesh",
+        "quad_real_boundary_source_contracts",
+        "--config",
+        "Debug",
+        "--parallel",
+        "4"
+      ],
+      "exit": 0,
+      "seconds": 15.083722114562988,
+      "timeout": 180
+    },
+    "native-contracts": {
+      "command": [
+        "build/quad-admission-review-20261125/quad_real_boundary_source_contracts.exe",
+        "configs/quad/curved_patch_original_curves.conf"
+      ],
+      "exit": 0,
+      "seconds": 4.257198333740234,
+      "timeout": 120
+    },
+    "certified-curva": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/quad_portable_feedback_trial.py",
+        "--exe",
+        "build/quad-admission-review-20261125/ap_mesh.exe",
+        "--model",
+        "builtin:curva_bezier",
+        "--step",
+        "3",
+        "--relative-tolerance",
+        "0.034341894205194436",
+        "--out",
+        "build/quad-admission-review-20261125/curva",
+        "--additional-pairs",
+        "--additional-pair-error-limit",
+        "0.045",
+        "--certify-boundary-refinement"
+      ],
+      "exit": 0,
+      "seconds": 87.48514008522034,
+      "timeout": 300
+    },
+    "certified-ribbed": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/quad_portable_feedback_trial.py",
+        "--exe",
+        "build/quad-admission-review-20261125/ap_mesh.exe",
+        "--model",
+        "build/quad-local-pairs-20261125/portable-suite/ribbed original patch.bp",
+        "--step",
+        "2",
+        "--out",
+        "build/quad-admission-review-20261125/ribbed",
+        "--additional-pairs",
+        "--additional-pair-error-limit",
+        "0.045",
+        "--certify-boundary-refinement",
+        "--verify-rejection"
+      ],
+      "exit": 0,
+      "seconds": 64.04570651054382,
+      "timeout": 300
+    },
+    "ordinary": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tests/quad/test_article_front_application.py",
+        "--exe",
+        "build/quad-admission-review-20261125/ap_mesh.exe",
+        "--directory",
+        "build/quad-admission-review-20261125/ordinary-suite"
+      ],
+      "exit": 0,
+      "seconds": 55.30345964431763,
+      "timeout": 240
+    },
+    "staged-quality": {
+      "command": [
+        "python",
+        "build/quad-grouping-runner-source/tools/check_staged.py"
+      ],
+      "exit": 0,
+      "seconds": 0.7049734592437744,
+      "timeout": 60
+    },
+    "feature-commit": {
+      "command": [
+        "git",
+        "-C",
+        "build/quad-grouping-runner-source",
+        "commit",
+        "-m",
+        "Certify native curve subdivision against the mixed predecessor"
+      ],
+      "exit": 0,
+      "seconds": 0.19644594192504883,
+      "timeout": 60
+    },
+    "certificate-readback": {
+      "command": [
+        "python",
+        "build/quad-admission-review-20261125/verify_native_certificate.py"
+      ],
+      "exit": 0,
+      "seconds": 0.12264800071716309,
+      "timeout": 60
+    }
+  },
+  "adaptive_epochs": 0,
+  "numerical_admission_approved": false,
+  "shared_curves_qualified": false
+}
