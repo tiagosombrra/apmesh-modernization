@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: coordinate contour and template sizes under the common profile
+## Active: address the full contour-to-template transition under the common profile
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,25 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - apply coordinated native sizes to both development cases
+
+Keep the extra certified contour split and apply one protected interior
+parent grouping selected by the same seed-edge rule. Both replace four
+children by their parent. The expected longer template edges are realized.
+Elements fall from 788 to 782 on CurvaBezier and from 648 to 635 on
+Ribbed. The CurvaBezier interior TRI minimum improves from 4.43 to 7.89
+degrees. Ribbed's transition minimum improves from 6.69 to 6.86 degrees.
+Both profiles remain blocked. Of the remaining sub-floor transition TRI,
+44 of 47 on CurvaBezier and 19 of 19 on Ribbed start from seed edges.
+[Native comparison](COORDINATED_TRANSITION_SIZING_20261125.md).
+
+**Next:** measure and project the size mismatch across the complete
+contour-to-template interface before closure. Use one common bounded
+selection of admissible curve and tree changes, preserving 2:1 balance
+and active size requests, then assess both models under the frozen
+profile. Native owner reentry, reserved cases, shared curves and global
+mixed curvature remain open. Zero accepted mixed epochs.
 
 ### 2026-11-25 - measure the same additional contour division in both development models
 
@@ -25,12 +44,8 @@ interior TRI minimum falls to 4.43 degrees. Both successors stage without
 passing the frozen profile. No accepted mixed epoch.
 [Native comparison](COMMON_TRANSITION_CONTOUR_SPLIT_20261125.md).
 
-**Next:** project a common sizing correction that permits changes to
-both contour intervals and supporting template sizes while protecting
-active fine requests and preserving 2:1 balance. Compare the affected
-transition and interior together using the frozen profile. Native owner
-reentry, reserved cases, shared curves and global mixed curvature remain
-open.
+The coordinated grouping comparison and the resulting transition
+scope are recorded above.
 
 ### 2026-11-25 - fix and measure one numerical profile across both development models
 

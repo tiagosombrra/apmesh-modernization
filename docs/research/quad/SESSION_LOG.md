@@ -4783,3 +4783,17 @@ Both candidates stage and both remain blocked by the common profile.
 [Native evidence](COMMON_TRANSITION_CONTOUR_SPLIT_20261125.md).
 Next project coordinated contour and template sizes. Zero accepted
 mixed epochs.
+
+## 2026-11-25 Fortaleza - coordinate one protected template grouping with each extra contour split
+
+Use the existing interior grouping on the parent supplying the short
+seed edge. Both projections retain 2:1 balance and every active size
+request after correcting the clearance metadata lookup. Two directed
+native runs keep their certified contour and replace exactly the
+proposed four leaves. The projected longer seed edges are present.
+CurvaBezier improves the poorest interior TRI and Ribbed improves
+its poorest transition TRI. Neither passes the frozen profile.
+Trace 44 of 47 and 19 of 19 remaining poor transition TRI to a seed
+edge at birth. [Native result and lineage](COORDINATED_TRANSITION_SIZING_20261125.md).
+Next project a common correction across the complete interface.
+No accepted mixed epoch.

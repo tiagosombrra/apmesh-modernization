@@ -53,7 +53,10 @@ safety failures already at native birth in both development models.
 The [common native contour division trial](COMMON_TRANSITION_CONTOUR_SPLIT_20261125.md)
 improves the worst transition TRI on both development models, with the
 remaining size gap and a new CurvaBezier interior quality limitation.
-Project coordinated contour and template sizing before owner reentry and
+The [coordinated native trial](COORDINATED_TRANSITION_SIZING_20261125.md)
+improves interior or transition quality at lower face counts and
+locates the continuing gap along multiple seed edges. Project a bounded
+correction across the whole transition before owner reentry and
 reserved validation. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
