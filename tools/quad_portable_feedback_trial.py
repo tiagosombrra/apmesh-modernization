@@ -8,7 +8,7 @@ from pathlib import Path
 import shutil
 import subprocess
 
-from quad_adjacent_group_selector import geometric_size_requests
+from quad_adjacent_group_selector import geometric_size_requests, transition_size_requests
 from quad_geometric_feedback_trial import observations
 from quad_grouping_trial import digest, write_json
 from quad_progressive_admission import SOURCE_FILES, assess_trial, load_profile
@@ -75,7 +75,7 @@ def source_hashes(archive):
 
 def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=None,
         additional_pairs=False, additional_pair_error_limit=None, certify_boundary_refinement=False,
-        progressive_profile=None):
+        progressive_profile=None, transition_size_feedback=False):
     if step < 1:
         raise ValueError("Select a positive accepted TRI source step")
     if relative_tolerance is not None and (not isfinite(relative_tolerance) or relative_tolerance < 0):
@@ -84,7 +84,8 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
             not additional_pairs or not isfinite(additional_pair_error_limit) or additional_pair_error_limit < 0):
         raise ValueError("A finite nonnegative additional-pair error limit requires --additional-pairs")
     admission_profile = load_profile(progressive_profile) if progressive_profile is not None else None
-    certify_boundary_refinement = certify_boundary_refinement or admission_profile is not None
+    certify_boundary_refinement = (certify_boundary_refinement or admission_profile is not None
+                                   or transition_size_feedback)
     out.mkdir(parents=True)
     native_model, evaluate = model_evaluator(model, out)
     model_fingerprint = digest(out / native_model) if native_model == "source.bp" else native_model
@@ -96,11 +97,17 @@ def run(exe, out, model, step, verify_rejection=False, *, relative_tolerance=Non
     archive = out / "source.steps"
     hashes = source_hashes(archive)
     source = archive / "source.obj"
-    faces, curves = geometric_size_requests(source, evaluate, relative_tolerance=relative_tolerance)
+    if transition_size_feedback:
+        faces, curves, transition = transition_size_requests(
+            source, evaluate, relative_tolerance=relative_tolerance)
+    else:
+        faces, curves = geometric_size_requests(source, evaluate, relative_tolerance=relative_tolerance)
     result = dict(model=native_model, model_fingerprint=model_fingerprint,
                   engine_sha256=digest(exe), step=step, source_sha256=hashes,
                   relative_residual_tolerance=relative_tolerance, face_requests=faces,
                   curve_requests=curves, mixed_adaptive_epochs=0)
+    if transition_size_feedback:
+        result["transition_size_seed"] = transition
 
     def save_progressive_assessment():
         if admission_profile is not None:
@@ -172,6 +179,8 @@ def main():
                         help="Verify ordered native curve splits against the bound predecessor")
     parser.add_argument("--relative-tolerance", type=float,
                         help="Experimental dimensionless trigger with no default tolerance")
+    parser.add_argument("--transition-size-feedback", action="store_true",
+                        help="Grade one supplemental contour size seed during active geometric feedback")
     parser.add_argument("--progressive-profile", type=Path,
                         help="Certify the native curve and assess the candidate with an explicit progressive profile")
     args = parser.parse_args()
@@ -181,7 +190,8 @@ def main():
                      additional_pairs=args.additional_pairs,
                      additional_pair_error_limit=args.additional_pair_error_limit,
                      certify_boundary_refinement=args.certify_boundary_refinement,
-                     progressive_profile=args.progressive_profile)
+                     progressive_profile=args.progressive_profile,
+                     transition_size_feedback=args.transition_size_feedback)
     except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as error:
         parser.exit(1, f"Single-patch feedback failed: {error}\n")
     print(json.dumps(result, indent=2))

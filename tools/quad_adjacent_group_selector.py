@@ -202,8 +202,66 @@ def use_neighbor(front, target, requests):
                 protected_requests=protected, changed_neighbor_boxes=changed)
 
 
-def geometric_size_requests(path, evaluate=golden, *, relative_tolerance=None):
-    """Replay geometric sizing with an optional dimensionless trigger."""
+_GRADATION_RATIO = 1.35
+_GRADATION_PASSES = 3
+
+
+def _grade_sizes(initial, graph, seeds):
+    start = list(seeds) or [0]
+    distances = dict.fromkeys(start, 0)
+    queue = deque(start)
+    target = initial[:]
+    for index, size in seeds.items():
+        target[index] = size
+    while queue:
+        i = queue.popleft()
+        for j in sorted(graph[i]):
+            if j not in distances:
+                distances[j] = distances[i] + 1
+                queue.append(j)
+    if len(distances) != len(graph):
+        raise ValueError("Disconnected mixed sizing graph")
+    if not seeds:
+        return target
+    for _ in range(_GRADATION_PASSES):
+        updated = target[:]
+        for i, adjacent in enumerate(graph):
+            if distances[i] <= _GRADATION_PASSES:
+                for j in sorted(adjacent):
+                    if distances[j] <= _GRADATION_PASSES and _GRADATION_RATIO * target[j] < updated[i]:
+                        updated[i] = _GRADATION_RATIO * target[j]
+        target = updated
+    return target
+
+
+def _transition_seed(xyz, faces, owners, contour, arc_sizes, already_requested):
+    contour_index = {vertex: i for i, vertex in enumerate(contour)}
+    proposals = []
+    for i, face in enumerate(faces):
+        if len(face) != 3:
+            continue
+        on_curve = [v for v in face if v in contour_index]
+        if len(on_curve) != 1:
+            continue
+        quad_edge = tuple(sorted(v for v in face if v != on_curve[0]))
+        if not any(len(faces[peer]) == 4 for peer in owners[quad_edge]):
+            continue
+        width = dist(*(xyz[v] for v in quad_edge))
+        if not isfinite(width) or width <= 0:
+            raise ValueError("Transition sizing needs a finite positive physical QUAD edge")
+        k = contour_index[on_curve[0]]
+        for interval in (k, (k - 1) % len(contour)):
+            arc = arc_sizes[interval]
+            if interval in already_requested or arc <= _GRADATION_RATIO * width:
+                continue
+            proposals.append(dict(face=i, interval=interval, quad_edge=quad_edge,
+                                  quad_edge_length=width, previous_size=arc, ratio=arc / width,
+                                  h=max(arc / 2, _GRADATION_RATIO * width)))
+    return max(proposals, key=lambda row: (row["ratio"], -row["interval"], -row["face"]),
+               default=None)
+
+
+def _size_requests(path, evaluate, relative_tolerance, transition_feedback, reserved_intervals):
     if relative_tolerance is not None and (not isfinite(relative_tolerance) or relative_tolerance < 0):
         raise ValueError("Relative residual tolerance must be finite and nonnegative")
     xyz, uv, faces = load_physical_obj(path)
@@ -257,35 +315,32 @@ def geometric_size_requests(path, evaluate=golden, *, relative_tolerance=None):
              for arity in (3,4)]
     if relative_tolerance is not None:
         seeds = [i for i in seeds if errors[i] > relative_tolerance]
-    start = seeds or [0]
-    distances = dict.fromkeys(start,0)
-    queue = deque(start)
-    target = initial[:]
-    for i in seeds:
-        target[i] /= 2
-    while queue:
-        i = queue.popleft()
-        for j in sorted(graph[i]):
-            if j not in distances:
-                distances[j] = distances[i]+1
-                queue.append(j)
-    if len(distances) != len(graph):
-        raise ValueError("Disconnected mixed sizing graph")
-    if not seeds:
-        return [], []
-    for _ in range(3):
-        updated = target[:]
-        for i, adjacent in enumerate(graph):
-            if distances[i] <= 3:
-                for j in sorted(adjacent):
-                    if distances[j] <= 3 and 1.35*target[j] < updated[i]:
-                        updated[i] = 1.35*target[j]
-        target = updated
+    target = _grade_sizes(initial, graph, {i: initial[i] / 2 for i in seeds})
+    transition = None
+    if transition_feedback and seeds:
+        taken = set(reserved_intervals)
+        taken.update(i for i in range(len(contour)) if target[count + i] < initial[count + i])
+        transition = _transition_seed(xyz, faces, owners, contour, initial[count:], taken)
+        if transition is not None:
+            supplemental = _grade_sizes(initial, graph, {count + transition["interval"]: transition["h"]})
+            target = [min(a, b) for a, b in zip(target, supplemental)]
     faces = [dict(face=i, site=at, h=target[i]) for i,at in enumerate(sites)
              if target[i]<initial[i]]
     curves = [dict(interval=i, previous_size=initial[count+i], h=target[count+i])
               for i in range(len(contour)) if target[count+i]<initial[count+i]]
+    return faces, curves, transition
+
+
+def geometric_size_requests(path, evaluate=golden, *, relative_tolerance=None):
+    """Replay geometric sizing with an optional dimensionless trigger."""
+    faces, curves, _ = _size_requests(path, evaluate, relative_tolerance, False, ())
     return faces, curves
+
+
+def transition_size_requests(path, evaluate=golden, *, relative_tolerance=None,
+                             reserved_intervals=()):
+    """Supplement active geometric feedback with one physical contour size seed."""
+    return _size_requests(path, evaluate, relative_tolerance, True, reserved_intervals)
 
 
 def protected_size_requests(path):
