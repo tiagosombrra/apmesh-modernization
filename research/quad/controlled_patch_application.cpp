@@ -191,6 +191,12 @@ void CheckFacet(PatchBezier& patch, const FaceUv& face, double& smallest_alignme
   smallest_alignment = std::min(smallest_alignment, alignment);
 }
 
+struct IdealFrontLimits {
+  std::size_t points;
+  double min_angle;
+  double min_shape;
+};
+
 struct Candidate {
   std::unique_ptr<SubMesh> mesh = std::make_unique<SubMesh>();
   std::vector<UvVertex> uv;
@@ -206,6 +212,7 @@ struct Candidate {
   bool guarded_smoothing_comparison = false;
   bool additional_pair_search = false;
   std::optional<double> additional_pair_error_limit;
+  std::optional<IdealFrontLimits> ideal_front_limits;
   MixedUvSmoothingTrace article_smoothing;
   std::vector<std::vector<Xyz>> article_smoothing_xyz;
   std::size_t clearance_excluded_cells = 0;
@@ -534,7 +541,8 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    const Candidate* previous_search = nullptr,
                    const std::filesystem::path* guarded_smoothing = nullptr,
                    bool additional_pairs = false,
-                   std::optional<double> additional_pair_error_limit = std::nullopt) {
+                   std::optional<double> additional_pair_error_limit = std::nullopt,
+                   std::optional<IdealFrontLimits> ideal_front_limits = std::nullopt) {
   ValidateSourceCurves(patch);
   Require(!article_front || !pair_during_front, "Article and TRI-observer modes are exclusive");
   Require(!article_area_centroid || article_front, "Area centroid requires the article mode");
@@ -657,11 +665,31 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
       };
       pair_screen.emplace(ArticleFrontPairScreen{*additional_pair_error_limit, measure});
     }
+    std::optional<ArticleFrontIdealPoint> ideal_point;
+    if (ideal_front_limits) {
+      const auto meets_floor =
+          [&, limits = *ideal_front_limits](const std::array<UvVertex, 3>& corners) {
+            const std::vector<UvVertex> uv(corners.begin(), corners.end());
+            const std::vector<Xyz> xyz{physical_point(uv[0]), physical_point(uv[1]),
+                                       physical_point(uv[2])};
+            TrialScores scores;
+            scores.fill(std::numeric_limits<double>::infinity());
+            try {
+              CheckMixedSmoothingFace(patch, {0, 1, 2}, uv, xyz, nullptr, &scores);
+            } catch (const MixedGeometryRejection&) {
+              return false;
+            }
+            return std::isfinite(scores[0]) && scores[0] >= limits.min_shape &&
+                   std::isfinite(scores[1]) && scores[1] >= limits.min_angle;
+          };
+      ideal_point.emplace(ArticleFrontIdealPoint{ideal_front_limits->points, meets_floor});
+    }
     article = ArticleMixedFront(selected.uv_quads, contour, std::move(boxes), additional_pairs,
-                                std::move(pair_screen))
+                                std::move(pair_screen), std::move(ideal_point))
                   .Run();
     result.additional_pair_search = additional_pairs;
     result.additional_pair_error_limit = additional_pair_error_limit;
+    result.ideal_front_limits = ideal_front_limits;
     std::vector<std::array<UvVertex, 3>> audit_triangles;
     for (std::size_t i = article.seed_quads; i < article.faces.size(); ++i) {
       const auto& face = article.faces[i];
@@ -964,6 +992,12 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
         << '"';
   if (candidate.additional_pair_error_limit)
     trace << ",\"additional_pair_error_limit\":" << *candidate.additional_pair_error_limit;
+  if (candidate.ideal_front_limits) {
+    const auto& limits = *candidate.ideal_front_limits;
+    trace << ",\"ideal_front_points\":{\"policy\":\"legacy_unit_leaf_height_v1\",\"limit\":"
+          << limits.points << ",\"min_angle_deg\":" << limits.min_angle
+          << ",\"min_shape\":" << limits.min_shape << '}';
+  }
   trace << ",\"point_rule\":\""
         << (candidate.article_area_centroid ? "polygon_area_centroid_uv_v1" : "vertex_mean_uv_v1")
         << "\",\"clearance\":{"
@@ -1056,6 +1090,8 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
       ids(extra.choice.triangle);
       trace << ",\"side\":" << extra.choice.side << ",\"score\":" << extra.choice.score << '}';
     }
+    if (step.introduced_vertex)
+      trace << ",\"introduced_vertex\":" << *step.introduced_vertex;
     if (candidate.additional_pair_error_limit && step.selected_side < 0) {
       trace << ",\"pair_measurements\":[";
       for (std::size_t j = 0; j < step.pair_measurements.size(); ++j) {
@@ -2315,6 +2351,7 @@ struct FeedbackPlan {
   std::optional<double> additional_pair_error_limit;
   bool certify_boundary_refinement = false;
   std::vector<std::array<double, 4>> group_feedback_parents;
+  std::optional<IdealFrontLimits> ideal_front_limits;
 };
 
 FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
@@ -2410,6 +2447,18 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
                   !feedback.additional_pair_error_limit,
               "Invalid additional-pair relative error limit");
       feedback.additional_pair_error_limit = limit;
+    } else if (kind == "ideal_front_points") {
+      long long limit = 0;
+      IdealFrontLimits floors{};
+      input >> limit >> floors.min_angle >> floors.min_shape;
+      Require(bool(input) && limit > 0 &&
+                  static_cast<unsigned long long>(limit) <=
+                      std::numeric_limits<std::size_t>::max() &&
+                  floors.min_angle > 0 && floors.min_angle <= 60 && floors.min_shape > 0 &&
+                  floors.min_shape <= 1 && !feedback.ideal_front_limits,
+              "Invalid ideal front point limits");
+      floors.points = static_cast<std::size_t>(limit);
+      feedback.ideal_front_limits = floors;
     } else if (kind == "reference") {
       std::string path;
       input >> std::quoted(path);
@@ -2443,6 +2492,8 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
           "Boundary refinement certification requires a bound successor request");
   Require(feedback.group_feedback_parents.empty() || feedback.certify_boundary_refinement,
           "Feedback grouping requires certified predecessor boundary refinement");
+  Require(!feedback.ideal_front_limits || feedback.certify_boundary_refinement,
+          "Ideal front points require certified predecessor boundary refinement");
   return plan;
 }
 
@@ -2672,7 +2723,8 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
           patch, false, [&]() { return std::move(tree); }, &effective_source, false, true, true,
           comparison && comparison->replay_previous_search ? &previous : nullptr,
           guarded ? &guarded_path : nullptr, comparison && comparison->additional_pairs,
-          comparison ? comparison->additional_pair_error_limit : std::nullopt);
+          comparison ? comparison->additional_pair_error_limit : std::nullopt,
+          comparison ? comparison->ideal_front_limits : std::nullopt);
     } catch (const std::runtime_error& error) {
       rejection = error.what();
     } catch (const std::invalid_argument& error) {

@@ -32,6 +32,10 @@ struct ArticleFrontPairScreen {
   double limit;
   std::function<std::optional<double>(const std::array<UvVertex, 4>&)> measure;
 };
+struct ArticleFrontIdealPoint {
+  std::size_t limit;
+  std::function<bool(const std::array<UvVertex, 3>&)> meets_floor;
+};
 struct ArticleFrontPairMeasurement {
   std::array<VertexId, 4> quad;
   double score;
@@ -44,6 +48,7 @@ struct ArticleFrontCommit {
   std::array<VertexId, 3> best{};
   int selected_side = -1;
   std::optional<ArticleFrontAdditionalPair> additional_pair;
+  std::optional<VertexId> introduced_vertex;
   std::vector<ArticleFrontPairMeasurement> pair_measurements;
 };
 struct ArticleFrontResult {
@@ -63,12 +68,16 @@ public:
 
   ArticleMixedFront(const UvMesh& seed, const std::vector<UvVertex>& boundary,
                     std::vector<Box> leaves, bool additional_pairs = false,
-                    std::optional<ArticleFrontPairScreen> pair_screen = std::nullopt)
+                    std::optional<ArticleFrontPairScreen> pair_screen = std::nullopt,
+                    std::optional<ArticleFrontIdealPoint> ideal_point = std::nullopt)
       : leaves_(std::move(leaves)), additional_pairs_(additional_pairs),
-        pair_screen_(std::move(pair_screen)) {
+        pair_screen_(std::move(pair_screen)), ideal_point_(std::move(ideal_point)),
+        boundary_begin_(seed.vertices.size()) {
     Require(!pair_screen_ || (additional_pairs_ && pair_screen_->measure &&
                               std::isfinite(pair_screen_->limit) && pair_screen_->limit >= 0),
             "Invalid additional-pair geometry screen");
+    Require(!ideal_point_ || (ideal_point_->limit > 0 && ideal_point_->meets_floor),
+            "Invalid article ideal-point policy");
     Require(boundary.size() >= 3 && !leaves_.empty(), "Article front needs boundary and leaves");
     result_.vertices = seed.vertices;
     result_.leaves = leaves_;
@@ -88,6 +97,7 @@ public:
       outer.push_back(result_.vertices.size());
       result_.vertices.push_back(p);
     }
+    boundary_end_ = result_.vertices.size();
     for (std::size_t i = 0; i < outer.size(); ++i)
       front_.emplace_back(outer[i], outer[(i + 1) % outer.size()]);
     std::vector<Edge> seed_front;
@@ -154,6 +164,8 @@ public:
           step.polygon.assign(quad.begin(), quad.end());
         }
       }
+      if (ideal_point_ && step.polygon.size() == 3)
+        TryIdealPoint(step, base);
       Require(result_.commits.size() != abort_before_commit, "Injected article precommit failure");
       // Prepare every allocating operation before the contour is committed.
       auto next = front_;
@@ -178,6 +190,77 @@ private:
   bool attempted_ = false;
   bool additional_pairs_ = false;
   std::optional<ArticleFrontPairScreen> pair_screen_;
+  std::optional<ArticleFrontIdealPoint> ideal_point_;
+  std::size_t boundary_begin_;
+  std::size_t boundary_end_ = 0;
+
+  // Use the leaf on the unmeshed side at the base midpoint. The unit left
+  // normal times the square leaf width is the legacy geometry-phase offset.
+  std::optional<UvVertex> IdealPoint(Edge base) const {
+    const auto a = result_.vertices[base.first];
+    const auto b = result_.vertices[base.second];
+    const std::array<double, 2> middle{(a.u + b.u) / 2, (a.v + b.v) / 2};
+    const std::array<double, 2> inward{a.v - b.v, b.u - a.u};
+    const auto in_direction = [&](const Box& box, std::size_t k) {
+      return box[k] <= middle[k] && middle[k] <= box[k + 2] &&
+             (middle[k] != box[k] || inward[k] >= 0) && (middle[k] != box[k + 2] || inward[k] <= 0);
+    };
+    const Box* exterior = nullptr;
+    for (const auto& box : leaves_) {
+      if (!in_direction(box, 0) || !in_direction(box, 1))
+        continue;
+      if (exterior)
+        return std::nullopt;
+      exterior = &box;
+    }
+    if (!exterior)
+      return std::nullopt;
+    const double height = (*exterior)[2] - (*exterior)[0];
+    const double length = std::hypot(inward[0], inward[1]);
+    const UvVertex point{middle[0] + height * inward[0] / length,
+                         middle[1] + height * inward[1] / length};
+    if (!(0 < point.u && point.u < 1 && 0 < point.v && point.v < 1))
+      return std::nullopt;
+    return point;
+  }
+
+  void TryIdealPoint(ArticleFrontCommit& step, Edge base) {
+    const auto id = result_.vertices.size();
+    if (id - boundary_end_ >= ideal_point_->limit)
+      return;
+    const auto on_boundary = [&](VertexId vertex) {
+      return boundary_begin_ <= vertex && vertex < boundary_end_;
+    };
+    if (std::count_if(step.best.begin(), step.best.end(), on_boundary) != 1)
+      return;
+    const auto meets_floor = [&](VertexId apex) {
+      return ideal_point_->meets_floor(
+          {result_.vertices[base.first], result_.vertices[base.second], result_.vertices[apex]});
+    };
+    if (meets_floor(step.best[2]))
+      return;
+    const auto point = IdealPoint(base);
+    if (!point || std::any_of(result_.vertices.begin(), result_.vertices.end(), [&](UvVertex p) {
+          return std::hypot(p.u - point->u, p.v - point->v) <= epsilon_;
+        }))
+      return;
+    for (const auto& edge : front_) {
+      // Every vertex on the closed active front occurs as an edge origin.
+      const auto apex = edge.first;
+      if (Valid({base.first, base.second, apex}, nullptr) && meets_floor(apex))
+        return;
+    }
+    result_.vertices.push_back(*point);
+    const bool touches_front = std::any_of(front_.begin(), front_.end(), [&](Edge edge) {
+      return OnSegment(edge.first, edge.second, id);
+    });
+    if (!touches_front && Valid({base.first, base.second, id}, nullptr) && meets_floor(id)) {
+      step.polygon[2] = id;
+      step.introduced_vertex = id;
+    } else {
+      result_.vertices.pop_back();
+    }
+  }
 
   static void Require(bool ok, const char* message) {
     if (!ok)
