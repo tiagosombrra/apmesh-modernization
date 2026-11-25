@@ -4684,3 +4684,19 @@ projection doubles the UV edge length without removing an active size
 request. PR 277 exact-head hosted jobs pass 4/4. Await alignment on the
 single native grouping trial. [Diagnosis](CURVABEZIER_OP81_TEMPLATE_EDGE_20261125.md).
 No regenerated state or admitted mixed epoch in this checkpoint.
+
+## 2026-11-25 Fortaleza - apply the approved parent grouping in the native trial
+
+Publish the previously local diagnostic and verify it on `quad-templates`
+at 84af5cbb. A temporary branch reference allowed the canonical fast-forward
+after the earlier ref update errors. Implement the opt-in grouping on the
+bound native CurvaBezier Step 3 successor in draft PR 278. Independent
+readback verifies four leaves replaced by their parent, identical
+requests and certificate, and a refused protected request. The original
+operation 81 TRI is absent. The final interior TRI minimum becomes 18.16
+degrees; faces fall from 779 to 754 and geometric RMS by about 1.01 percent.
+The current quality diagnostic still blocks on interior TRI angle and
+shape. [Native comparison](NATIVE_OP81_PARENT_GROUPING_20261125.md).
+The operation 74 seed edge comes from leaf 148, whose parent touches the
+contour. Next assess the contiguous physical transition.
+No accepted mixed epoch.

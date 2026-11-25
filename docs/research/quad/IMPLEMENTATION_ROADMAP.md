@@ -35,8 +35,9 @@ CurvaBezier benefit and tradeoff. [Native boundary certification](CERTIFIED_BOUN
 now verifies preservation of the original curve while inserting requested
 samples. The [operation 81 diagnosis](CURVABEZIER_OP81_TEMPLATE_EDGE_20261125.md)
 projects a single balanced tree grouping at the limiting seed edge and
-checks the fixed-position reconnections. Align the native grouping trial,
-then review and align mixed admission
+checks the fixed-position reconnections. The [native grouping trial](NATIVE_OP81_PARENT_GROUPING_20261125.md)
+improves interior shape and geometric error at lower face count. Trace
+the remaining transition veto, then review and align mixed admission
 before freezing a profile for reserved geometries. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

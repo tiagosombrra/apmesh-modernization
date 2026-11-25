@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align one native grouping at the limiting CurvaBezier seed edge
+## Active: resolve the remaining CurvaBezier transition quality veto
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,26 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - measure one native parent grouping after feedback
+
+[Draft PR 278](https://github.com/tiagosombrra/apmesh-modernization/pull/278)
+at e9320500 stages the approved parent grouping after native refinement.
+The ungrouped control reproduces PR 277. Both arms preserve the exact
+predecessor, requests and certified contour. Four leaves become their
+parent. The old operation 81 TRI disappears. The new final minimum
+interior TRI angle is 18.16 degrees, up from 14.36. The final number of
+elements falls from 779 to 754 and geometric RMS by about 1.01 percent.
+An injected in-box request is refused before publication. The original
+boundary and certification controls pass. The previously local diagnosis
+was also published and read back on `quad-templates` at 84af5cbb.
+[Native result](NATIVE_OP81_PARENT_GROUPING_20261125.md).
+
+**Next:** assess the physical size field across the boundary-adjacent
+transition around native leaf 148, which supplies operation 74's new
+limiting edge. Its parent touches the contour and falls outside the tested
+grouping scope. The grouped output still fails the interior TRI
+angle and shape diagnostics. No mixed epoch accepted.
 
 ### 2026-11-25 - trace the operation 81 closure to a level-4 template edge
 
@@ -25,11 +45,7 @@ two edges rather than four, increasing the relevant length from 0.05985
 to 0.11782 model units. PR 277 exact-head checks complete 4/4.
 [Diagnosis and projection](CURVABEZIER_OP81_TEMPLATE_EDGE_20261125.md).
 
-**Next:** pending alignment, run one opt-in CurvaBezier comparison with
-that single grouping after native requests and before template dispatch.
-Require certificate replay, unchanged numerical controls and whole-mesh
-quality/error comparison. No native regeneration or accepted mixed epoch
-in this diagnostic.
+The aligned native comparison and its remaining blocker appear above.
 
 ### 2026-11-25 - certify native boundary subdivision before mixed staging
 
