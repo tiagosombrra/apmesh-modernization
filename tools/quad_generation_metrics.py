@@ -85,37 +85,44 @@ def geometry_error(xyz, uv, faces, grid=24):
     """
     if not 4 <= grid <= 256:
         raise ValueError("Unsupported reporting grid")
+    sites = (((ix+0.5)/grid, (iy+0.5)/grid)
+             for iy in range(grid) for ix in range(grid))
+    return dict(grid=grid, **geometry_error_at_sites(xyz, uv, faces, sites, golden))
+
+
+def geometry_error_at_sites(xyz, uv, faces, sites, evaluate):
+    """Measure TRI/QUAD interpolation error at shared source sites in UV."""
     boxes = [(min(uv[i][0] for i in f), max(uv[i][0] for i in f),
               min(uv[i][1] for i in f), max(uv[i][1] for i in f)) for f in faces]
     squared = weighted = area = maximum = 0.0
     visits = {"TRI": 0, "QUAD": 0}
-    for iy in range(grid):
-        v = (iy+0.5)/grid
-        for ix in range(grid):
-            u = (ix+0.5)/grid
-            for face, (x0, x1, y0, y1) in zip(faces, boxes):
-                if not x0-1e-13 <= u <= x1+1e-13 or not y0-1e-13 <= v <= y1+1e-13:
-                    continue
-                polygon = [uv[i] for i in face]
-                if all((b[0]-a[0])*(v-a[1])-(b[1]-a[1])*(u-a[0]) >= -1e-12
-                       for a, b in zip(polygon, polygon[1:]+polygon[:1])):
-                    break
-            else:
-                raise ValueError("Uncovered reporting source site")
-            weights = barycentric((u, v), *polygon) if len(face) == 3 else inverse_bilinear(polygon, (u, v))
-            approximate = [sum(w*xyz[i][axis] for w, i in zip(weights, face)) for axis in range(3)]
-            exact, du, dv = golden(u, v)
-            error = sum((a-b)**2 for a, b in zip(exact, approximate))
-            jacobian = norm(cross(du, dv))
-            if not math.isfinite(error) or not math.isfinite(jacobian) or jacobian <= 0:
-                raise ValueError("Invalid source error observation")
-            squared += error
-            weighted += error*jacobian
-            area += jacobian
-            maximum = max(maximum, math.sqrt(error))
-            visits["TRI" if len(face) == 3 else "QUAD"] += 1
-    return dict(grid=grid, sample_count=grid*grid, max_xyz=maximum,
-                rms_uv=math.sqrt(squared/(grid*grid)), rms_source_area=math.sqrt(weighted/area),
+    for u, v in sites:
+        for face, (x0, x1, y0, y1) in zip(faces, boxes):
+            if not x0-1e-13 <= u <= x1+1e-13 or not y0-1e-13 <= v <= y1+1e-13:
+                continue
+            polygon = [uv[i] for i in face]
+            if all((b[0]-a[0])*(v-a[1])-(b[1]-a[1])*(u-a[0]) >= -1e-12
+                   for a, b in zip(polygon, polygon[1:]+polygon[:1])):
+                break
+        else:
+            raise ValueError("Uncovered reporting source site")
+        weights = barycentric((u, v), *polygon) if len(face) == 3 else inverse_bilinear(polygon, (u, v))
+        approximate = [sum(w*xyz[i][axis] for w, i in zip(weights, face)) for axis in range(3)]
+        exact, du, dv = evaluate(u, v)
+        error = sum((a-b)**2 for a, b in zip(exact, approximate))
+        jacobian = norm(cross(du, dv))
+        if not math.isfinite(error) or not math.isfinite(jacobian) or jacobian <= 0:
+            raise ValueError("Invalid source error observation")
+        squared += error
+        weighted += error*jacobian
+        area += jacobian
+        maximum = max(maximum, math.sqrt(error))
+        visits["TRI" if len(face) == 3 else "QUAD"] += 1
+    count = sum(visits.values())
+    if not count:
+        raise ValueError("No reporting source sites")
+    return dict(sample_count=count, max_xyz=maximum,
+                rms_uv=math.sqrt(squared/count), rms_source_area=math.sqrt(weighted/area),
                 tri_sites=visits["TRI"], quad_sites=visits["QUAD"])
 
 
