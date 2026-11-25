@@ -4507,3 +4507,21 @@ curve requests. Retain it as a negative control for the trigger.
 Use one native opt-in entry for both development cases and align a frozen
 policy before reserved cases. Preserve shared-curve and two-epoch gates.
 No new native execution, threshold or mixed scientific acceptance.
+
+## 2026-11-25 Fortaleza - run portable feedback on two native predecessor geometries
+
+Draft PR 271 at e470cbe2 reuses the native original curve and quadtree source
+and the existing mixed sizing pilot on CurvaBezier Step 3 and Ribbed patch
+12 Step 2. Both candidates stage through the same MSVC binary. Preserve
+original accepted TRI, predecessor and tree bytes, and reject an altered
+tree before feedback. Sampled RMS and TRI shape improve while minimum QUAD
+angles deteriorate. Retain each first-pass unguarded rejection and the five
+guarded passes. Compare actual child arcs with requests, and measure the
+dimensionless residual for the next decision without selecting a threshold.
+The new native suite, source contracts, legacy grouping and 30 Python tests
+pass locally. [Report and receipt](PORTABLE_MIXED_FEEDBACK_20261125.md).
+The researcher selects relative geometric residual as the first trigger
+to study, with shape assessed after generation. Qualify the parameterized
+trigger while threshold and growth remain open. Do not count a staged
+successor as an accepted epoch. The shared-curve gate,
+owned native successor reentry and global curvature remain open.

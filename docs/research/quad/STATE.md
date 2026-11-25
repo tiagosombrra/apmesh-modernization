@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: qualify model-independent native TRI/QUAD feedback
+## Active: qualify the relative geometric refinement trigger
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,31 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - run native mixed feedback through one model-independent entry
+
+[Draft PR 271](https://github.com/tiagosombrra/apmesh-modernization/pull/271)
+at e470cbe2 stages CurvaBezier Step 3 and Ribbed Bracket patch 12 Step 2
+with one MSVC image. Each native replay requires byte-identical original
+TRI OBJ, typed mixed predecessor and native tree binding. A forged tree
+is refused before feedback. The original subdivision gives 14 to 21 and
+14 to 22 contour segments. The new meshes reduce sampled geometric RMS
+by 32.3 and 36.8 percent for 8.7 and 18.5 percent more mixed faces.
+The minimum TRI angle improves and the minimum contour-edge QUAD angle
+declines in both. Each unguarded smoothing control rejects at its first
+pass, while both guarded alternatives complete five valid passes.
+See the [portable application and machine evidence](PORTABLE_MIXED_FEEDBACK_20261125.md).
+Native source contracts retain six captures and 54 negatives.
+The existing grouping suite, new two-model suite and 30 Python checks pass.
+
+**Next:** use the aligned relative geometric indicator first, with quality
+measured on the staged candidate. Add one explicit tolerance input for the
+experiment and cover the flat no-action and eligible native requests. The
+read-only audit verifies unit rescaling and exact flat residual. Threshold
+adoption, regional safeguards and growth still require alignment. The two successors give different next
+requests. A subsequent native reentry needs the successor's owned
+curve/tree state and an aligned decision. Shared-curve provenance,
+global mixed curvature and two accepted mixed epochs remain open.
 
 ### 2026-11-25 - require transfer under one frozen executable policy
 

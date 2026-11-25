@@ -13,10 +13,9 @@ entries below retain their original scope; no whole-stage closure follows.
 ## Current execution order - 2026-11-25
 
 Follow the [generalization gate](MIXED_FEEDBACK_GENERALIZATION_20261125.md)
-for the current sequence. First qualify the same native single-patch
-entry with actual source data on both development cases. Then align and
-freeze a common physical size and admission rule before running reserved
-geometries. Measure regional shape and error versus face cost, and keep
+for the current sequence. The [portable single-patch path](PORTABLE_MIXED_FEEDBACK_20261125.md)
+runs the two development cases with the same executable. Align and freeze
+a common physical size and admission rule before running reserved geometries. Measure regional shape and error versus face cost, and keep
 the shared-curve and two-epoch gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
