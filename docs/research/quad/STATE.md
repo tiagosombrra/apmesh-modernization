@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align a native refinement request on the coarse side of the transition
+## Active: specify and review mixed-cycle admission before reserved validation
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,26 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - refine the coarse side of the transition in the native run
+
+The single approved request replaces leaf 154 with four level-4 children.
+Two children supply eight template QUADs. The 16-segment certificate and
+all previous request records match the ungrouped control. The two interior
+TRI are absent in the candidate. The worst interior QUAD angle rises from
+44.57 to 58.40 degrees. The contour-vertex TRI minimum remains 2.27 degrees.
+Faces rise from 779 to 789 and sampled area-weighted geometric RMS falls
+from 0.009079035 to 0.009014565 model units. The candidate has no veto
+under the existing diagnostic quality and growth profile. The interior TRI
+class is absent on both sides of that diagnostic. Native staging succeeded.
+No mixed epoch was admitted. [Measured trial](NATIVE_LEAF154_REFINEMENT_20261125.md).
+
+**Next:** prepare a single prospective admission and stopping contract for
+mixed feedback. Use archived CurvaBezier and Ribbed development results to
+show how it handles regional shape, absent groups, sampled geometric error,
+growth, and rejection. Seek alignment before adopting thresholds or running
+the reserved cases. Keep leaf 154 as evidence of a size-transition mechanism
+and require model-independent sizing for transfer.
 
 ### 2026-11-25 - measure the operation 74 size transition
 
@@ -24,12 +44,8 @@ shows that one refinement of leaf 154 could add two eligible template
 cells with the certified 16-site contour and 2:1 balance. All four exact
 checks pass for PR 278. [Transition evidence](CURVABEZIER_OP74_SIZE_TRANSITION_20261125.md).
 
-**Next:** pending alignment, run a single native refinement request at
-(0.09375, 0.796875) in leaf 154 on the ungrouped screened control. It is
-adjacent to the previously grouped parent, which rejects requests there.
-Keep the prior grouping comparison as a separate control. Reuse the
-certified contour, original requests, screening, smoothing and diagnostic
-floors. No new native run or admitted mixed epoch in this readback.
+The directed request on the ungrouped screened control was aligned and
+measured above. The previous parent grouping remains a separate comparison.
 
 ### 2026-11-25 - measure one native parent grouping after feedback
 

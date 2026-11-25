@@ -39,7 +39,11 @@ checks the fixed-position reconnections. The [native grouping trial](NATIVE_OP81
 improves interior shape and geometric error at lower face count. The
 [remaining transition diagnosis](CURVABEZIER_OP74_SIZE_TRANSITION_20261125.md)
 projects one refinement on the coarser side and compares local alternatives.
-Align the directed native request, then review and align mixed admission
+The [directed native refinement](NATIVE_LEAF154_REFINEMENT_20261125.md)
+removes both interior TRI on CurvaBezier, improves interior QUAD shape and
+reduces sampled geometric RMS with 10 additional faces. The poorest TRI
+at the contour transition remains. Prepare a model-independent admission
+and stopping contract from the two development histories and align it
 before freezing a profile for reserved geometries. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

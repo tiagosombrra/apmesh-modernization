@@ -4711,3 +4711,17 @@ floors. Project one refinement of the adjoining coarse leaf 154 on the
 ungrouped control. Two children satisfy the existing template clearance.
 [Transition evidence](CURVABEZIER_OP74_SIZE_TRANSITION_20261125.md).
 Await alignment on the single native request. No accepted mixed epoch.
+
+## 2026-11-25 Fortaleza - refine CurvaBezier leaf 154 in the native candidate
+
+Run the original ungrouped screened plan with one additional face request.
+The exact PR 278 MSVC image stages the 789-face candidate with the same
+certificate and eight new template QUADs on two of the four children.
+Both interior TRI in the control are absent in the candidate. The contour-
+vertex TRI minimum remains 2.27 degrees. At 2,304 common sites the geometric
+RMS falls by 0.71 percent versus the 779-face control. The candidate has no
+regional diagnostic veto, with the interior TRI group absent in both the
+predecessor and this candidate. [Trial evidence](NATIVE_LEAF154_REFINEMENT_20261125.md).
+Exact PR 278 hosted checks remain 4/4. Prepare a prospective mixed admission
+and stopping contract using both development cases before reserved runs.
+No accepted mixed epoch.
