@@ -2266,6 +2266,76 @@ FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
   return plan;
 }
 
+struct NativeFeedbackPlan {
+  int step = 0;
+  FeedbackPlan feedback;
+  std::optional<std::filesystem::path> reference;
+};
+
+NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
+  std::ifstream input(path);
+  input.imbue(std::locale::classic());
+  std::string schema;
+  NativeFeedbackPlan plan;
+  input >> schema >> plan.step;
+  Require(bool(input) && schema == "apmesh_single_patch_feedback_v1" && plan.step > 0,
+          "Invalid single-patch feedback plan");
+  std::string kind;
+  auto& feedback = plan.feedback;
+  feedback.guarded_smoothing = true;
+  while (input >> kind) {
+    if (kind == "reference") {
+      std::string path;
+      input >> std::quoted(path);
+      Require(bool(input) && !path.empty() && !plan.reference,
+              "Invalid single-patch feedback reference");
+      plan.reference = path;
+    } else if (kind == "curve") {
+      std::size_t interval = 0;
+      input >> interval;
+      Require(bool(input), "Missing single-patch curve interval");
+      feedback.curve_intervals.push_back(interval);
+    } else {
+      GeometricRequest request{};
+      input >> request.face >> request.site.u >> request.site.v >> request.size;
+      Require(bool(input) && kind == "face" && request.site.u >= 0 && request.site.u <= 1 &&
+                  request.site.v >= 0 && request.site.v <= 1 && std::isfinite(request.size) &&
+                  request.size > 0,
+              "Invalid single-patch face request");
+      feedback.recovered.push_back(request);
+    }
+  }
+  Require(input.eof(), "Unexpected data in single-patch feedback plan");
+  const bool have_requests = !feedback.recovered.empty() || !feedback.curve_intervals.empty();
+  Require(have_requests == plan.reference.has_value(),
+          "Single-patch feedback requests and reference must be supplied together");
+  return plan;
+}
+
+std::string NativeFeedbackSourceBinding(const RealBoundarySource& source,
+                                        const OuterAttemptIdentity& attempt) {
+  std::ostringstream out;
+  out.imbue(std::locale::classic());
+  out << std::setprecision(17) << source.source_step << ' ' << attempt.epoch << ' '
+      << attempt.global_retry << ' ' << source.domain_generation << '\n'
+      << source.tree_counter << ' ' << source.tree_factor << ' ' << source.tree_cap << ' '
+      << source.face_quality << ' ' << source.low_quality_h << ' ' << source.template_quality
+      << '\n';
+  for (const auto& cell : source.cells) {
+    out << cell.source_id << ' ' << cell.level << ' ' << cell.subdivided;
+    for (double limit : cell.box)
+      out << ' ' << limit;
+    for (const auto child : cell.children)
+      out << ' ' << child;
+    out << '\n';
+  }
+  out << "leaf_order";
+  for (const auto leaf : source.leaf_order)
+    out << ' ' << leaf;
+  out << '\n';
+  return out.str();
+}
+
 struct GroupingPlan {
   GroupingBoxes boxes{};
   bool verify_rejection = false;
@@ -2522,10 +2592,19 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     grouping_plan = ReadGroupingPlan(plan_path);
   }
   std::optional<FeedbackPlan> feedback;
-  if (const char* plan_path = std::getenv("APMESH_QUAD_FEEDBACK_PLAN")) {
-    Require(*plan_path != '\0' && grouping_plan && !grouping_plan->verify_rejection,
-            "Geometric feedback requires the recovered grouping comparison");
-    feedback = ReadFeedbackPlan(plan_path);
+  std::optional<NativeFeedbackPlan> native_feedback;
+  if (const char* path = std::getenv("APMESH_QUAD_FEEDBACK_PLAN")) {
+    Require(*path != '\0', "Geometric feedback plan path is empty");
+    if (grouping_plan) {
+      Require(!grouping_plan->verify_rejection,
+              "Geometric feedback requires the recovered grouping comparison");
+      feedback = ReadFeedbackPlan(path);
+    } else {
+      Require(!config.quad_verify_rollback &&
+                  config.quad_experimental_case == "curved_bezier_article_front_area_centroid_v1",
+              "Single-patch feedback requires the standalone area-centroid experiment");
+      native_feedback = ReadNativeFeedbackPlan(path);
+    }
   }
   bool grouped_candidate_staged = false;
   const auto output = std::filesystem::path(config.output_prefix + ".obj");
@@ -2671,6 +2750,62 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
           "Original source workflow retained no nonempty patch owner");
   const auto previous = SnapshotOwnerRehearsal(*patch->GetSubMesh());
   Require(std::filesystem::create_directory(staging), "Cannot reserve generation archive");
+  if (native_feedback) {
+    const Capture* captured = nullptr;
+    Stage* tri = nullptr;
+    for (auto& stage : stages) {
+      if (stage.step != native_feedback->step || !stage.accepted)
+        continue;
+      for (const auto& capture : captures) {
+        if (capture.locally_selected && capture.domain_selected &&
+            capture.source.reference_tri_accepted && capture.source.source_step == stage.step &&
+            SameOuterAttempt(capture.attempt.outer, stage.outer)) {
+          Require(captured == nullptr, "Single-patch feedback source is ambiguous");
+          captured = &capture;
+          tri = &stage;
+        }
+      }
+    }
+    Require(captured != nullptr, "No accepted original TRI attempt matches the requested step");
+    const auto& source = captured->source;
+    const auto comparison = staging / "source_smoothing";
+    Require(std::filesystem::create_directory(comparison),
+            "Cannot reserve predecessor smoothing archive");
+    auto predecessor = Generate(
+        *patch, false, [&]() { return ReplayRealSourceTree(*patch, source); }, &source, false, true,
+        true, nullptr, &comparison);
+    CheckTypedIncidence(*predecessor.mesh, predecessor);
+    const auto set_lineage = [&](Candidate& mesh, const char* reason) {
+      mesh.source_witness = &source;
+      mesh.generation_step = tri->step;
+      mesh.reference_accepted = tri->accepted;
+      mesh.stage_reason = reason;
+    };
+    set_lineage(tri->reference, "single_patch_feedback_tri_control");
+    set_lineage(predecessor, "single_patch_feedback_source");
+    Export(tri->reference, staging / "tri.obj");
+    const auto mesh_path = staging / "source.obj";
+    Export(predecessor, mesh_path);
+    const auto binding_path = staging / "source_tree.txt";
+    {
+      std::ofstream out(binding_path, std::ios::binary);
+      out << NativeFeedbackSourceBinding(source, tri->outer);
+      out.close();
+      Require(bool(out), "Cannot complete single-patch source binding");
+    }
+    if (native_feedback->reference) {
+      for (const auto* file : {"tri.obj", "source.obj", "source_tree.txt"})
+        Require(ReadRehearsalOutput(staging / file) ==
+                    ReadRehearsalOutput(*native_feedback->reference / file),
+                "Single-patch feedback did not reproduce its original source binding");
+      const auto& requests = native_feedback->feedback;
+      StageGeometricFeedback(*patch, predecessor, source, requests.recovered, staging / "feedback",
+                             mesh_path, &requests);
+    }
+    RequireOwnerRehearsalUnchanged(*patch, previous);
+    std::filesystem::rename(staging, steps);
+    return 0;
+  }
   std::ofstream manifest(staging / "manifest.csv", std::ios::binary);
   std::ofstream pair_trace(staging / "boundary_pair_candidates.csv", std::ios::binary);
   std::ofstream pair_stages(staging / "boundary_pair_stages.csv", std::ios::binary);

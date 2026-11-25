@@ -117,6 +117,7 @@ jobs:
           python3 tests/quad/test_article_front_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/article-front
           python3 tests/quad/test_grouping_recovery.py
           python3 tests/quad/test_grouping_trial_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/grouping-trial
+          python3 tests/quad/test_portable_feedback_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/portable-feedback
       - name: AddressSanitizer and UBSan controlled typed history (Linux)
         if: runner.os == 'Linux'
         shell: bash
@@ -133,6 +134,7 @@ jobs:
           python3 tests/quad/test_domain_factor_bounds_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/domain-factor-bounds
           python3 tests/quad/test_live_pair_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/live-pairs
           python3 tests/quad/test_article_front_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/article-front
+          python3 tests/quad/test_portable_feedback_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/portable-feedback
       - name: Build controlled application QUAD entry (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
@@ -156,6 +158,8 @@ jobs:
           python tests/quad/test_grouping_recovery.py
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python tests/quad/test_grouping_trial_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/grouping-trial
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python tests/quad/test_portable_feedback_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/portable-feedback
           exit $LASTEXITCODE
       - name: Retain controlled application output
         if: always()

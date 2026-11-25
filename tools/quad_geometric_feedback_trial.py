@@ -11,10 +11,10 @@ from quad_grouping_trial import (
     BASELINE, BASELINE_FRONT, CANDIDATE, CANDIDATE_FRONT, digest,
     original_curve_witness, run_mesh, selected_payload, write_json,
 )
-from quad_transition_comparison import compare
+from quad_transition_comparison import compare, golden
 
 
-def observations(directory, predecessor, curve_splits=0):
+def observations(directory, predecessor, curve_splits=0, evaluate=golden):
     lines = (directory / "result.txt").read_text(encoding="utf-8").splitlines()
     status = lines[0]
     cap, before, after, edits = map(int, lines[1].split())
@@ -40,7 +40,7 @@ def observations(directory, predecessor, curve_splits=0):
             raise ValueError("Staged successor changed the original curve")
         chart = [(0, 0), (1, 0), (1, 1), (0, 1)]
         for grid in (24, 48):
-            report = compare(predecessor, candidate, chart, grid=grid)
+            report = compare(predecessor, candidate, chart, evaluate, grid)
             if not curve_splits and not report["same_ordered_contour_edges"]:
                 raise ValueError("Staged successor changed the directed contour")
             write_json(directory / f"comparison-{grid}.json", report)

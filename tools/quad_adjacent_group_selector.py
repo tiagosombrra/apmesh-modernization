@@ -202,7 +202,7 @@ def use_neighbor(front, target, requests):
                 protected_requests=protected, changed_neighbor_boxes=changed)
 
 
-def geometric_size_requests(path):
+def geometric_size_requests(path, evaluate=golden):
     """Replay the approved residual seeds and three synchronous grading passes."""
     xyz, uv, faces = load_physical_obj(path)
     contour_rows = [line.split() for line in path.read_text(encoding="ascii").splitlines()
@@ -225,7 +225,7 @@ def geometric_size_requests(path):
         for w in weights:
             at = tuple(sum(wj*uv[j][k] for wj,j in zip(w,face)) for k in range(2))
             point = tuple(sum(wj*xyz[j][k] for wj,j in zip(w,face)) for k in range(3))
-            samples.append((dist(golden(*at)[0],point),at))
+            samples.append((dist(evaluate(*at)[0],point),at))
         error, at = max(samples, key=lambda sample: sample[0])
         errors.append(error)
         sites.append(at)
@@ -242,7 +242,7 @@ def geometric_size_requests(path):
         owner, = owners[tuple(sorted((a,b)))]
         connect(count+i,owner)
         connect(count+i,count+(i+1)%len(contour))
-    lengths = arc_lengths(golden)
+    lengths = arc_lengths(evaluate)
     initial += [float(row[12])*lengths[int(row[2])] for row in contour_rows]
     seeds = [max((i for i,f in enumerate(faces) if len(f)==arity),key=errors.__getitem__)
              for arity in (3,4)]

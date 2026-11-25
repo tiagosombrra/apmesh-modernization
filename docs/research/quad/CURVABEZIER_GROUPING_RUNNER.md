@@ -74,3 +74,33 @@ binary split per interval requested by the recorded geometric sizing replay.
 guarded smoothing comparison and writes its control and guarded frames.
 Compare each result against its recorded predecessor. The lookup replay and
 the independent smoothing arms are research observations.
+
+
+## Portable single-patch feedback
+
+The same experimental entry can now reconstruct a predecessor directly from
+an accepted TRI attempt on a single Bezier patch without requiring a grouping
+plan. Pass the original indexed one-patch source and the step to reproduce.
+The built-in Bezier remains available as a second input. This runs the
+existing pilot with guarded predecessor and successor smoothing.
+
+```sh
+python tools/quad_portable_feedback_trial.py --exe <quad-ap_mesh> \
+  --model builtin:curva_bezier --step 3 --out <new-dir>
+python tests/quad/test_portable_feedback_application.py --exe <quad-ap_mesh> \
+  --directory <new-dir>
+```
+
+The driver retains each invocation's plan, input, logs and output. The
+native attempt requires byte-identical `tri.obj`, `source.obj` and
+`source_tree.txt` from the earlier capture before applying requests.
+It retains the selected step, attempt identity, complete cell layout and
+leaf order, along with the original curve samples in the typed OBJ.
+The integration test exercises CurvaBezier Step 3 and the original control
+net of Ribbed Bracket patch 12 at Step 2 through one application image.
+It also supplies a changed tree binding and requires rejection before
+candidate generation.
+
+Results report the native tree edits, capped requests, old/new curve
+partitions, guarded smoothing frames and paired analytic samples.
+A staged successor does not increment mixed adaptive epochs.
