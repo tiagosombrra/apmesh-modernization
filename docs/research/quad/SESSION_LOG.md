@@ -4887,3 +4887,18 @@ and the normal portable entry. Prior rollback qualification remains open.
 [Measured outcomes](TRANSITION_SIZE_FIELD_TRIAL_20261125.md).
 Next align size request priority and budgeted realizability in the
 limiting regions. Zero accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - project and execute one affordable native transition action
+
+Draft PR 286 at 7ec6cc13 uses ranked low-quality TRI and an upper bound
+on native faces. CurvaBezier splits one curve interval. Ribbed groups
+one protected contour-side parent outside the unreachable worst TRI.
+Both local regions improve and both meshes fit the original budget.
+The whole-mesh quality gate still blocks both. Ribbed retains its
+8.06° transition minimum and locally trades RMS for shape. A fresh
+CurvaBezier control fails the Windows final directory rename, with
+eight matching artifacts retained pending. Ribbed control and both
+candidate runs complete; six sizing and ten admission controls pass.
+[Recorded native outcomes](BUDGETED_TRANSITION_ACTION_20261125.md).
+Next align conservative certification of a subdivision on an already
+split interval. Zero accepted mixed epochs.

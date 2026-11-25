@@ -12,6 +12,26 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - choose one native transition action with a verified face bound
+
+[Draft PR 286](https://github.com/tiagosombrra/apmesh-modernization/pull/286)
+at `7ec6cc137f8a1abe32cde69c86b4465c099b7e29` selects one realizable
+action by limiting TRI and forecasts an upper face count. CurvaBezier
+splits one interval, reaches 731 faces and raises the worst transition
+angle from 3.15° to 3.25°. Ribbed hands one protected region to the
+front, reaches 534 faces and raises the selected footprint from 13.58°
+to 15.86° while retaining the 8.06° global transition limit. Both stay
+within budget. Ribbed RMS rises against the control. Shape still blocks
+both. The CurvaBezier control's pending directory fails publication
+despite eight matching artifacts.
+[Native actions, budgets and failure](BUDGETED_TRANSITION_ACTION_20261125.md).
+
+**Next:** align whether to certify a second subdivision on a child
+interval at the remaining Ribbed limit. The current action list cannot
+split that already subdivided span or group its protected parent.
+Keep the frozen criteria. Zero accepted mixed epochs. Native rollback,
+shared curves, reserved cases and global mixed curvature remain open.
+
 ### 2026-11-25 - grade one physical transition size seed before template dispatch
 
 [Draft PR 285](https://github.com/tiagosombrra/apmesh-modernization/pull/285)

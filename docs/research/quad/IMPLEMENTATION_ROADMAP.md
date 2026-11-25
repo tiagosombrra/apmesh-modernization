@@ -70,8 +70,11 @@ has no choice meeting its complete closure quality comparison in the two
 development cases. The [physical transition size-field trial](TRANSITION_SIZE_FIELD_TRIAL_20261125.md)
 realizes more native requests and improves geometric error in both
 models. Shape improvement does not transfer and both exceed the face
-budget. Prioritize the limiting region and budgeted native actions
-before proceeding to reserved validation.
+budget. The [budgeted action trial](BUDGETED_TRANSITION_ACTION_20261125.md)
+improves both selected regions with candidates inside the budget.
+Existing allowable requests cannot reach the worst Ribbed TRI.
+Align whether to certify child-interval subdivision before reserved
+validation.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
