@@ -1,0 +1,1426 @@
+{
+  "evaluation_profiles": {
+    "geometry_invariant_floor_control": {
+      "profile_sha256": "62beb3d36a3252b7df51c969943369bb70e2c89fa092e29e0b76784f15a2a98e",
+      "profile": {
+        "max_face_growth": 0.10420475319926874,
+        "regional_floors": {
+          "contour_edge_TRI": {
+            "min_angle_deg": 0,
+            "min_shape": 0
+          },
+          "contour_edge_QUAD": {
+            "min_angle_deg": 0,
+            "min_shape": 0
+          },
+          "contour_vertex_TRI": {
+            "min_angle_deg": 0,
+            "min_shape": 0
+          },
+          "contour_vertex_QUAD": {
+            "min_angle_deg": 0,
+            "min_shape": 0
+          },
+          "interior_TRI": {
+            "min_angle_deg": 0,
+            "min_shape": 0
+          },
+          "interior_QUAD": {
+            "min_angle_deg": 0,
+            "min_shape": 0
+          }
+        }
+      },
+      "cases": {
+        "curva": {
+          "both": {
+            "guards": {
+              "status": "passes_configured_guards",
+              "blocking_guards": [],
+              "growth": {
+                "predecessor_faces": 732,
+                "candidate_faces": 796,
+                "fraction": 0.08743169398907104,
+                "limit": 0.10420475319926874
+              },
+              "regions": {
+                "contour_edge_TRI": {
+                  "predecessor_count": 8,
+                  "candidate_count": 9,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 10.367272360473434,
+                    "candidate_min": 15.109166839830648,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.30088697922437296,
+                    "candidate_min": 0.42688427810934276,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_edge_QUAD": {
+                  "predecessor_count": 6,
+                  "candidate_count": 12,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 19.438606955832434,
+                    "candidate_min": 18.56844014441192,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.32843100153567506,
+                    "candidate_min": 0.3184045357568484,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_TRI": {
+                  "predecessor_count": 94,
+                  "candidate_count": 83,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 1.4181974567977775,
+                    "candidate_min": 2.4722260945075663,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.04268083753878802,
+                    "candidate_min": 0.07380556874664701,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_QUAD": {
+                  "predecessor_count": 0,
+                  "candidate_count": 1,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 56.59967356303402,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 0.599546817468734,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "interior_TRI": {
+                  "predecessor_count": 0,
+                  "candidate_count": 7,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 8.040471829840511,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 0.22574951811126628,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "interior_QUAD": {
+                  "predecessor_count": 624,
+                  "candidate_count": 684,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 64.40510702872767,
+                    "candidate_min": 27.626069066221486,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.9014446997284595,
+                    "candidate_min": 0.463646826199664,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                }
+              }
+            },
+            "source": {
+              "model": "builtin:curva_bezier"
+            },
+            "pair_sha256": {
+              "baseline": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+              "candidate": "e4cad6e9151acc412087074b11e31da69e5aa40261b824e092bb0daff056aad0"
+            }
+          },
+          "selective": {
+            "guards": {
+              "status": "passes_configured_guards",
+              "blocking_guards": [],
+              "growth": {
+                "predecessor_faces": 732,
+                "candidate_faces": 780,
+                "fraction": 0.06557377049180328,
+                "limit": 0.10420475319926874
+              },
+              "regions": {
+                "contour_edge_TRI": {
+                  "predecessor_count": 8,
+                  "candidate_count": 9,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 10.367272360473434,
+                    "candidate_min": 10.367272360473434,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.30088697922437296,
+                    "candidate_min": 0.30088697922437296,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_edge_QUAD": {
+                  "predecessor_count": 6,
+                  "candidate_count": 7,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 19.438606955832434,
+                    "candidate_min": 19.438606955832434,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.32843100153567506,
+                    "candidate_min": 0.32843100153567506,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_TRI": {
+                  "predecessor_count": 94,
+                  "candidate_count": 92,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 1.4181974567977775,
+                    "candidate_min": 2.272288298004088,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.04268083753878802,
+                    "candidate_min": 0.06802131608967615,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_QUAD": {
+                  "predecessor_count": 0,
+                  "candidate_count": 0,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": null,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "absent"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": null,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "absent"
+                  }
+                },
+                "interior_TRI": {
+                  "predecessor_count": 0,
+                  "candidate_count": 3,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 8.040471829840511,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 0.22574951811126628,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "interior_QUAD": {
+                  "predecessor_count": 624,
+                  "candidate_count": 669,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 64.40510702872767,
+                    "candidate_min": 50.861832780446775,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.9014446997284595,
+                    "candidate_min": 0.7180649371046371,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                }
+              }
+            },
+            "source": {
+              "model": "builtin:curva_bezier"
+            },
+            "pair_sha256": {
+              "baseline": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+              "candidate": "7199325b81903c31e112f224513a8d95129fef071c5d27592eb0f57bc9e32ab0"
+            }
+          }
+        },
+        "ribbed": {
+          "both": {
+            "guards": {
+              "status": "blocked",
+              "blocking_guards": [
+                "face_growth"
+              ],
+              "growth": {
+                "predecessor_faces": 547,
+                "candidate_faces": 648,
+                "fraction": 0.1846435100548446,
+                "limit": 0.10420475319926874
+              },
+              "regions": {
+                "contour_edge_TRI": {
+                  "predecessor_count": 5,
+                  "candidate_count": 7,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 13.898520058107152,
+                    "candidate_min": 25.403182168278605,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.4038422549621266,
+                    "candidate_min": 0.5120430499404189,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_edge_QUAD": {
+                  "predecessor_count": 9,
+                  "candidate_count": 14,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 26.181796056164885,
+                    "candidate_min": 25.335621873573015,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.41805176069673416,
+                    "candidate_min": 0.4205384262090846,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_TRI": {
+                  "predecessor_count": 53,
+                  "candidate_count": 51,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 3.791336324177119,
+                    "candidate_min": 6.3281535843349985,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.11387110070270551,
+                    "candidate_min": 0.18954876728000306,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_QUAD": {
+                  "predecessor_count": 0,
+                  "candidate_count": 3,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 29.656004629816906,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 0.4801824644108338,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "interior_TRI": {
+                  "predecessor_count": 2,
+                  "candidate_count": 16,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 26.57091996655889,
+                    "candidate_min": 18.37051561928486,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.6929450141702036,
+                    "candidate_min": 0.4330453078501855,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "interior_QUAD": {
+                  "predecessor_count": 478,
+                  "candidate_count": 557,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 26.450085727709634,
+                    "candidate_min": 26.70763827932339,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.3248423057881177,
+                    "candidate_min": 0.32332895608451606,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                }
+              }
+            },
+            "source": {
+              "source_bp_sha256": "07cd08d6258f72a140198d4d9f72360888da9486954216a467c87e949c870e10",
+              "patch": 0
+            },
+            "pair_sha256": {
+              "baseline": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+              "candidate": "175542eba23f67e27fc7d573c962ad6f6c49c104bbbd225763b73cc46cde7b65"
+            }
+          },
+          "selective": {
+            "guards": {
+              "status": "passes_configured_guards",
+              "blocking_guards": [],
+              "growth": {
+                "predecessor_faces": 547,
+                "candidate_faces": 604,
+                "fraction": 0.10420475319926874,
+                "limit": 0.10420475319926874
+              },
+              "regions": {
+                "contour_edge_TRI": {
+                  "predecessor_count": 5,
+                  "candidate_count": 6,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 13.898520058107152,
+                    "candidate_min": 15.272553372902465,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.4038422549621266,
+                    "candidate_min": 0.44064959353240957,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_edge_QUAD": {
+                  "predecessor_count": 9,
+                  "candidate_count": 13,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 26.181796056164885,
+                    "candidate_min": 25.335621873573015,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.41805176069673416,
+                    "candidate_min": 0.4205384262090846,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_TRI": {
+                  "predecessor_count": 53,
+                  "candidate_count": 48,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 3.791336324177119,
+                    "candidate_min": 5.851075953627282,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.11387110070270551,
+                    "candidate_min": 0.17532978008416306,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_QUAD": {
+                  "predecessor_count": 0,
+                  "candidate_count": 2,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 36.593641274972036,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 0.4801824644108338,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "interior_TRI": {
+                  "predecessor_count": 2,
+                  "candidate_count": 11,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 26.57091996655889,
+                    "candidate_min": 18.37051561928486,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.6929450141702036,
+                    "candidate_min": 0.4330453078501855,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "interior_QUAD": {
+                  "predecessor_count": 478,
+                  "candidate_count": 524,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": 26.450085727709634,
+                    "candidate_min": 26.450085727709634,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": 0.3248423057881177,
+                    "candidate_min": 0.32332895608451606,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                }
+              }
+            },
+            "source": {
+              "source_bp_sha256": "07cd08d6258f72a140198d4d9f72360888da9486954216a467c87e949c870e10",
+              "patch": 0
+            },
+            "pair_sha256": {
+              "baseline": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+              "candidate": "3f805ba3d2a72a86c0d2252892773aa84498a79c61ae44744c947e62ba9c8f6b"
+            }
+          }
+        }
+      }
+    },
+    "predecessor_floor_control": {
+      "profile_sha256": "790bd838d197661b2bba1d4608f5ac743c91bd0ac08e258d161403ba1485cff0",
+      "profile": {
+        "max_face_growth": 0.10420475319926874,
+        "regional_floors": {
+          "contour_edge_TRI": {
+            "min_angle_deg": 10.367272360473434,
+            "min_shape": 0.30088697922437296
+          },
+          "contour_edge_QUAD": {
+            "min_angle_deg": 19.438606955832434,
+            "min_shape": 0.32843100153567506
+          },
+          "contour_vertex_TRI": {
+            "min_angle_deg": 1.4181974567977775,
+            "min_shape": 0.04268083753878802
+          },
+          "contour_vertex_QUAD": {
+            "min_angle_deg": 0,
+            "min_shape": 0
+          },
+          "interior_TRI": {
+            "min_angle_deg": 26.57091996655889,
+            "min_shape": 0.6929450141702036
+          },
+          "interior_QUAD": {
+            "min_angle_deg": 26.450085727709634,
+            "min_shape": 0.3248423057881177
+          }
+        }
+      },
+      "cases": {
+        "curva": {
+          "both": {
+            "guards": {
+              "status": "blocked",
+              "blocking_guards": [
+                "contour_edge_QUAD.min_angle_deg",
+                "contour_edge_QUAD.min_shape",
+                "interior_TRI.min_angle_deg",
+                "interior_TRI.min_shape"
+              ],
+              "growth": {
+                "predecessor_faces": 732,
+                "candidate_faces": 796,
+                "fraction": 0.08743169398907104,
+                "limit": 0.10420475319926874
+              },
+              "regions": {
+                "contour_edge_TRI": {
+                  "predecessor_count": 8,
+                  "candidate_count": 9,
+                  "min_angle_deg": {
+                    "floor": 10.367272360473434,
+                    "predecessor_min": 10.367272360473434,
+                    "candidate_min": 15.109166839830648,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.30088697922437296,
+                    "predecessor_min": 0.30088697922437296,
+                    "candidate_min": 0.42688427810934276,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_edge_QUAD": {
+                  "predecessor_count": 6,
+                  "candidate_count": 12,
+                  "min_angle_deg": {
+                    "floor": 19.438606955832434,
+                    "predecessor_min": 19.438606955832434,
+                    "candidate_min": 18.56844014441192,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 1,
+                    "status": "blocked"
+                  },
+                  "min_shape": {
+                    "floor": 0.32843100153567506,
+                    "predecessor_min": 0.32843100153567506,
+                    "candidate_min": 0.3184045357568484,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 1,
+                    "status": "blocked"
+                  }
+                },
+                "contour_vertex_TRI": {
+                  "predecessor_count": 94,
+                  "candidate_count": 83,
+                  "min_angle_deg": {
+                    "floor": 1.4181974567977775,
+                    "predecessor_min": 1.4181974567977775,
+                    "candidate_min": 2.4722260945075663,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.04268083753878802,
+                    "predecessor_min": 0.04268083753878802,
+                    "candidate_min": 0.07380556874664701,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_QUAD": {
+                  "predecessor_count": 0,
+                  "candidate_count": 1,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 56.59967356303402,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 0.599546817468734,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "interior_TRI": {
+                  "predecessor_count": 0,
+                  "candidate_count": 7,
+                  "min_angle_deg": {
+                    "floor": 26.57091996655889,
+                    "predecessor_min": null,
+                    "candidate_min": 8.040471829840511,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 3,
+                    "status": "blocked"
+                  },
+                  "min_shape": {
+                    "floor": 0.6929450141702036,
+                    "predecessor_min": null,
+                    "candidate_min": 0.22574951811126628,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 3,
+                    "status": "blocked"
+                  }
+                },
+                "interior_QUAD": {
+                  "predecessor_count": 624,
+                  "candidate_count": 684,
+                  "min_angle_deg": {
+                    "floor": 26.450085727709634,
+                    "predecessor_min": 64.40510702872767,
+                    "candidate_min": 27.626069066221486,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.3248423057881177,
+                    "predecessor_min": 0.9014446997284595,
+                    "candidate_min": 0.463646826199664,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                }
+              }
+            },
+            "source": {
+              "model": "builtin:curva_bezier"
+            },
+            "pair_sha256": {
+              "baseline": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+              "candidate": "e4cad6e9151acc412087074b11e31da69e5aa40261b824e092bb0daff056aad0"
+            }
+          },
+          "selective": {
+            "guards": {
+              "status": "blocked",
+              "blocking_guards": [
+                "interior_TRI.min_angle_deg",
+                "interior_TRI.min_shape"
+              ],
+              "growth": {
+                "predecessor_faces": 732,
+                "candidate_faces": 780,
+                "fraction": 0.06557377049180328,
+                "limit": 0.10420475319926874
+              },
+              "regions": {
+                "contour_edge_TRI": {
+                  "predecessor_count": 8,
+                  "candidate_count": 9,
+                  "min_angle_deg": {
+                    "floor": 10.367272360473434,
+                    "predecessor_min": 10.367272360473434,
+                    "candidate_min": 10.367272360473434,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.30088697922437296,
+                    "predecessor_min": 0.30088697922437296,
+                    "candidate_min": 0.30088697922437296,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_edge_QUAD": {
+                  "predecessor_count": 6,
+                  "candidate_count": 7,
+                  "min_angle_deg": {
+                    "floor": 19.438606955832434,
+                    "predecessor_min": 19.438606955832434,
+                    "candidate_min": 19.438606955832434,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.32843100153567506,
+                    "predecessor_min": 0.32843100153567506,
+                    "candidate_min": 0.32843100153567506,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_TRI": {
+                  "predecessor_count": 94,
+                  "candidate_count": 92,
+                  "min_angle_deg": {
+                    "floor": 1.4181974567977775,
+                    "predecessor_min": 1.4181974567977775,
+                    "candidate_min": 2.272288298004088,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.04268083753878802,
+                    "predecessor_min": 0.04268083753878802,
+                    "candidate_min": 0.06802131608967615,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_QUAD": {
+                  "predecessor_count": 0,
+                  "candidate_count": 0,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": null,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "absent"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": null,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "absent"
+                  }
+                },
+                "interior_TRI": {
+                  "predecessor_count": 0,
+                  "candidate_count": 3,
+                  "min_angle_deg": {
+                    "floor": 26.57091996655889,
+                    "predecessor_min": null,
+                    "candidate_min": 8.040471829840511,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 2,
+                    "status": "blocked"
+                  },
+                  "min_shape": {
+                    "floor": 0.6929450141702036,
+                    "predecessor_min": null,
+                    "candidate_min": 0.22574951811126628,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 2,
+                    "status": "blocked"
+                  }
+                },
+                "interior_QUAD": {
+                  "predecessor_count": 624,
+                  "candidate_count": 669,
+                  "min_angle_deg": {
+                    "floor": 26.450085727709634,
+                    "predecessor_min": 64.40510702872767,
+                    "candidate_min": 50.861832780446775,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.3248423057881177,
+                    "predecessor_min": 0.9014446997284595,
+                    "candidate_min": 0.7180649371046371,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                }
+              }
+            },
+            "source": {
+              "model": "builtin:curva_bezier"
+            },
+            "pair_sha256": {
+              "baseline": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+              "candidate": "7199325b81903c31e112f224513a8d95129fef071c5d27592eb0f57bc9e32ab0"
+            }
+          }
+        },
+        "ribbed": {
+          "both": {
+            "guards": {
+              "status": "blocked",
+              "blocking_guards": [
+                "face_growth",
+                "interior_TRI.min_angle_deg",
+                "interior_TRI.min_shape",
+                "interior_QUAD.min_shape"
+              ],
+              "growth": {
+                "predecessor_faces": 547,
+                "candidate_faces": 648,
+                "fraction": 0.1846435100548446,
+                "limit": 0.10420475319926874
+              },
+              "regions": {
+                "contour_edge_TRI": {
+                  "predecessor_count": 5,
+                  "candidate_count": 7,
+                  "min_angle_deg": {
+                    "floor": 10.367272360473434,
+                    "predecessor_min": 13.898520058107152,
+                    "candidate_min": 25.403182168278605,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.30088697922437296,
+                    "predecessor_min": 0.4038422549621266,
+                    "candidate_min": 0.5120430499404189,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_edge_QUAD": {
+                  "predecessor_count": 9,
+                  "candidate_count": 14,
+                  "min_angle_deg": {
+                    "floor": 19.438606955832434,
+                    "predecessor_min": 26.181796056164885,
+                    "candidate_min": 25.335621873573015,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.32843100153567506,
+                    "predecessor_min": 0.41805176069673416,
+                    "candidate_min": 0.4205384262090846,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_TRI": {
+                  "predecessor_count": 53,
+                  "candidate_count": 51,
+                  "min_angle_deg": {
+                    "floor": 1.4181974567977775,
+                    "predecessor_min": 3.791336324177119,
+                    "candidate_min": 6.3281535843349985,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.04268083753878802,
+                    "predecessor_min": 0.11387110070270551,
+                    "candidate_min": 0.18954876728000306,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_QUAD": {
+                  "predecessor_count": 0,
+                  "candidate_count": 3,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 29.656004629816906,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 0.4801824644108338,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "interior_TRI": {
+                  "predecessor_count": 2,
+                  "candidate_count": 16,
+                  "min_angle_deg": {
+                    "floor": 26.57091996655889,
+                    "predecessor_min": 26.57091996655889,
+                    "candidate_min": 18.37051561928486,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 6,
+                    "status": "blocked"
+                  },
+                  "min_shape": {
+                    "floor": 0.6929450141702036,
+                    "predecessor_min": 0.6929450141702036,
+                    "candidate_min": 0.4330453078501855,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 8,
+                    "status": "blocked"
+                  }
+                },
+                "interior_QUAD": {
+                  "predecessor_count": 478,
+                  "candidate_count": 557,
+                  "min_angle_deg": {
+                    "floor": 26.450085727709634,
+                    "predecessor_min": 26.450085727709634,
+                    "candidate_min": 26.70763827932339,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.3248423057881177,
+                    "predecessor_min": 0.3248423057881177,
+                    "candidate_min": 0.32332895608451606,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 1,
+                    "status": "blocked"
+                  }
+                }
+              }
+            },
+            "source": {
+              "source_bp_sha256": "07cd08d6258f72a140198d4d9f72360888da9486954216a467c87e949c870e10",
+              "patch": 0
+            },
+            "pair_sha256": {
+              "baseline": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+              "candidate": "175542eba23f67e27fc7d573c962ad6f6c49c104bbbd225763b73cc46cde7b65"
+            }
+          },
+          "selective": {
+            "guards": {
+              "status": "blocked",
+              "blocking_guards": [
+                "interior_TRI.min_angle_deg",
+                "interior_TRI.min_shape",
+                "interior_QUAD.min_shape"
+              ],
+              "growth": {
+                "predecessor_faces": 547,
+                "candidate_faces": 604,
+                "fraction": 0.10420475319926874,
+                "limit": 0.10420475319926874
+              },
+              "regions": {
+                "contour_edge_TRI": {
+                  "predecessor_count": 5,
+                  "candidate_count": 6,
+                  "min_angle_deg": {
+                    "floor": 10.367272360473434,
+                    "predecessor_min": 13.898520058107152,
+                    "candidate_min": 15.272553372902465,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.30088697922437296,
+                    "predecessor_min": 0.4038422549621266,
+                    "candidate_min": 0.44064959353240957,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_edge_QUAD": {
+                  "predecessor_count": 9,
+                  "candidate_count": 13,
+                  "min_angle_deg": {
+                    "floor": 19.438606955832434,
+                    "predecessor_min": 26.181796056164885,
+                    "candidate_min": 25.335621873573015,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.32843100153567506,
+                    "predecessor_min": 0.41805176069673416,
+                    "candidate_min": 0.4205384262090846,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_TRI": {
+                  "predecessor_count": 53,
+                  "candidate_count": 48,
+                  "min_angle_deg": {
+                    "floor": 1.4181974567977775,
+                    "predecessor_min": 3.791336324177119,
+                    "candidate_min": 5.851075953627282,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.04268083753878802,
+                    "predecessor_min": 0.11387110070270551,
+                    "candidate_min": 0.17532978008416306,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "contour_vertex_QUAD": {
+                  "predecessor_count": 0,
+                  "candidate_count": 2,
+                  "min_angle_deg": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 36.593641274972036,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0,
+                    "predecessor_min": null,
+                    "candidate_min": 0.4801824644108338,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  }
+                },
+                "interior_TRI": {
+                  "predecessor_count": 2,
+                  "candidate_count": 11,
+                  "min_angle_deg": {
+                    "floor": 26.57091996655889,
+                    "predecessor_min": 26.57091996655889,
+                    "candidate_min": 18.37051561928486,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 3,
+                    "status": "blocked"
+                  },
+                  "min_shape": {
+                    "floor": 0.6929450141702036,
+                    "predecessor_min": 0.6929450141702036,
+                    "candidate_min": 0.4330453078501855,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 4,
+                    "status": "blocked"
+                  }
+                },
+                "interior_QUAD": {
+                  "predecessor_count": 478,
+                  "candidate_count": 524,
+                  "min_angle_deg": {
+                    "floor": 26.450085727709634,
+                    "predecessor_min": 26.450085727709634,
+                    "candidate_min": 26.450085727709634,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 0,
+                    "status": "meets_floor"
+                  },
+                  "min_shape": {
+                    "floor": 0.3248423057881177,
+                    "predecessor_min": 0.3248423057881177,
+                    "candidate_min": 0.32332895608451606,
+                    "predecessor_below_floor": 0,
+                    "candidate_below_floor": 1,
+                    "status": "blocked"
+                  }
+                }
+              }
+            },
+            "source": {
+              "source_bp_sha256": "07cd08d6258f72a140198d4d9f72360888da9486954216a467c87e949c870e10",
+              "patch": 0
+            },
+            "pair_sha256": {
+              "baseline": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+              "candidate": "3f805ba3d2a72a86c0d2252892773aa84498a79c61ae44744c947e62ba9c8f6b"
+            }
+          }
+        }
+      }
+    }
+  },
+  "common_selective_compatibility_ceiling": {
+    "contour_edge_TRI": {
+      "min_angle_deg": 10.367272360473434,
+      "min_shape": 0.30088697922437296
+    },
+    "contour_edge_QUAD": {
+      "min_angle_deg": 19.438606955832434,
+      "min_shape": 0.32843100153567506
+    },
+    "contour_vertex_TRI": {
+      "min_angle_deg": null,
+      "min_shape": null
+    },
+    "contour_vertex_QUAD": {
+      "min_angle_deg": 36.593641274972036,
+      "min_shape": 0.4801824644108338
+    },
+    "interior_TRI": {
+      "min_angle_deg": 8.040471829840511,
+      "min_shape": 0.22574951811126628
+    },
+    "interior_QUAD": {
+      "min_angle_deg": 26.450085727709634,
+      "min_shape": 0.32332895608451606
+    }
+  },
+  "scope": "development controls only",
+  "mixed_adaptive_epochs": 0,
+  "draft_pr": 273,
+  "head": "c06f69feaa8da7eed0b427a32f60b41d3d86b84c",
+  "parent": "7d17c5d368b179e903665ba1658637c2a6c76d42",
+  "previous_analysis": "3d98b1edd37211f9efd88b90a942ce8ad3138806",
+  "limiting_interior_TRI": {
+    "before_sha256": "543eb9ac42e7906bfd5f95380046611e58eedcb2e068f9c198bf635101d5196c",
+    "guarded_sha256": "b226bc0e2891872ec4d192020af95acb6d6efc757efc3c307ce5280fe79fe0b8",
+    "one_based_smoothing_face": 751,
+    "one_based_nodes": [
+      390,
+      97,
+      88
+    ],
+    "uv_at_birth": [
+      [
+        0.125,
+        0.84375
+      ],
+      [
+        0.125,
+        0.875
+      ],
+      [
+        0.0625,
+        0.75
+      ]
+    ],
+    "uv_final": [
+      [
+        0.125,
+        0.84375
+      ],
+      [
+        0.125,
+        0.875
+      ],
+      [
+        0.06966145833333333,
+        0.7681118344503736
+      ]
+    ],
+    "final_angle": 8.040471829840511,
+    "birth_angle": 6.367729919053874,
+    "maximum_displacement": 0.03886558652036154,
+    "physical_edge_lengths": [
+      0.057968431023894595,
+      0.22812356706991974,
+      0.1774846789972178
+    ],
+    "characteristic_size": 0.1774846789972178,
+    "neighbors": [
+      {
+        "one_based_face": 208,
+        "kind": "QUAD",
+        "characteristic_size": 0.05821807803026968
+      },
+      {
+        "one_based_face": 780,
+        "kind": "TRI",
+        "characteristic_size": 0.2953807329529933
+      },
+      {
+        "one_based_face": 749,
+        "kind": "TRI",
+        "characteristic_size": 0.12605698220438077
+      }
+    ],
+    "exact_limiting_triangle_in_both_seed_regimes": true,
+    "both_seed_candidate_sha256": "e4cad6e9151acc412087074b11e31da69e5aa40261b824e092bb0daff056aad0"
+  },
+  "native_new_executions": 0,
+  "hosted": {
+    "id": 45610316100,
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45610316100",
+    "jobs": [
+      {
+        "name": "TRI baseline and tooling controls (Linux)",
+        "status": "in_progress",
+        "conclusion": "",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45610316100/job/139191824914"
+      },
+      {
+        "name": "TRI scientific equivalence against frozen baseline",
+        "status": "in_progress",
+        "conclusion": "",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45610316100/job/139191825471"
+      },
+      {
+        "name": "QUAD native (ubuntu-24.04)",
+        "status": "in_progress",
+        "conclusion": "",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45610316100/job/139191825520"
+      },
+      {
+        "name": "QUAD native (windows-2022)",
+        "status": "in_progress",
+        "conclusion": "",
+        "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/45610316100/job/139191825662"
+      }
+    ]
+  },
+  "runs": {
+    "targeted": {
+      "command": [
+        "python",
+        "-W",
+        "error::ResourceWarning",
+        "build/quad-grouping-runner-source/tests/quad/test_regional_quality_guards.py"
+      ],
+      "exit": 0,
+      "seconds": 0.44531702995300293,
+      "timeout": 60,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1b785f702c70914ddf71df47b1dbb518bc593910cfc9aa7337f73d0aa3e986e2"
+    },
+    "archived": {
+      "command": [
+        "python",
+        "build/quad-regional-admission-20261125/qualify-archives.py"
+      ],
+      "exit": 0,
+      "seconds": 13.849571704864502,
+      "timeout": 90,
+      "stdout_sha256": "c5ffe5fd5ee95892f27f6878954c57c403914d671118b2fd2e18c040e9437607",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "limiting-tri": {
+      "command": [
+        "python",
+        "build/quad-regional-admission-20261125/limiting-tri.py"
+      ],
+      "exit": 0,
+      "seconds": 0.17307829856872559,
+      "timeout": 60,
+      "stdout_sha256": "f751d5230b10a16eca680c3815072545aa28cefcf63cd9aa9fba5793bdd81a55",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "limiting-tri-paired": {
+      "command": [
+        "python",
+        "build/quad-regional-admission-20261125/limiting-tri.py"
+      ],
+      "exit": 0,
+      "seconds": 0.18403840065002441,
+      "timeout": 60,
+      "stdout_sha256": "d25991d32b7f37ad635f00ff8dbf88004d7f0907abe783befec3958e1452b180",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exact-python-regression": {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "build/quad-grouping-runner-source/tests/quad/test_generation_metrics.py",
+        "build/quad-grouping-runner-source/tests/quad/test_grouping_admission.py",
+        "build/quad-grouping-runner-source/tests/quad/test_grouping_recovery.py",
+        "build/quad-grouping-runner-source/tests/quad/test_transition_comparison.py",
+        "build/quad-grouping-runner-source/tests/quad/test_relative_feedback_requests.py",
+        "build/quad-grouping-runner-source/tests/quad/test_regional_quality_guards.py"
+      ],
+      "exit": 0,
+      "seconds": 1.5773258209228516,
+      "timeout": 90,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "01f36d2e214a2e846f8bbb5d976015a3b67a5c2816f99b79a957cec46e5509ef"
+    }
+  }
+}

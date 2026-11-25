@@ -4577,3 +4577,16 @@ The initial read-only matcher fails its tuple-to-array comparison;
 the canonical JSON replay succeeds. [Report and receipt](COMMON_RELATIVE_CALIBRATION_20261125.md).
 Next align regional quality and growth before freezing any common
 tolerance for reserved inputs. No mixed adaptive epochs accepted.
+
+## 2026-11-25 Fortaleza - evaluate regional quality floors and localize the limiting TRI
+
+Draft PR 273 at c06f69fe implements the approved floor study as a read-only
+assessment. Configure each angle and shape floor and the growth limit
+explicitly. Across eight archived evaluations, a zero-floor control
+isolates the budget. Predecessor-derived floors block both selective
+candidates. The identical CurvaBezier interior TRI is present in both
+seed regimes. It measures 6.37 degrees before guarded smoothing and
+8.04 after it. Six directed controls and 39 Python checks pass.
+[Report and receipts](REGIONAL_QUALITY_GUARDS_20261125.md).
+Next trace native creation and the adjacent size change. No new native
+run, adopted quality profile or accepted mixed epoch.

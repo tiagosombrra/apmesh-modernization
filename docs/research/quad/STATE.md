@@ -3,7 +3,7 @@
 Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: align a transferable relative tolerance and mixed admission
+## Active: locate the interior size transition blocking mixed admission
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,28 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-25 - measure explicit regional floors and the common limiting TRI
+
+[Draft PR 273](https://github.com/tiagosombrra/apmesh-modernization/pull/273)
+at c06f69fe evaluates explicitly configured angle and shape floors by
+region and face growth. Eight read-only archive checks reproduce the
+common geometric reports. The zero-floor profile isolates the growth
+decision. The predecessor-derived profile blocks both selective meshes,
+including interior TRI angle and shape on both. No profile is adopted.
+The same CurvaBezier limiting interior TRI occurs in both seed cases.
+Its minimum angle is 6.37 degrees at birth and 8.04 after smoothing.
+The adjacent QUAD's median physical edge is about three times smaller.
+Six directed controls and 39 focused Python checks pass. The
+[report and receipt](REGIONAL_QUALITY_GUARDS_20261125.md) record the exact
+hosted state. No native remesh or published candidate was attempted.
+
+**Next:** trace the native operation and available vertices for this
+limiting interior transition, then align a generic construction repair
+before setting quality floors to qualify reserved meshes. Keep the
+common tolerance, growth and end-to-end acceptance decisions open.
+Shared curve, owned mixed successor reentry and global curvature remain
+open. Zero accepted mixed adaptive epochs.
 
 ### 2026-11-25 - measure all common tolerance regimes on the two development inputs
 
