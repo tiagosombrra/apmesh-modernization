@@ -45,6 +45,15 @@ def main():
             raise ValueError(f"Missing portable native feedback evidence for {name}: {successor}")
         print(name, result["source_sha256"], successor, flush=True)
 
+    quiet = run(exe, directory / "relative-no-action", cases[1][1], cases[1][2],
+                relative_tolerance=1)
+    if (quiet["successor"]["status"] != "no_action" or quiet["face_requests"]
+            or quiet["curve_requests"] or quiet["mixed_adaptive_epochs"] != 0
+            or (directory / "relative-no-action/successor.steps").exists()
+            or quiet["source_sha256"] != result["source_sha256"]):
+        raise ValueError("Relative threshold control did not retain only the original source")
+    print("relative-no-action", quiet["source_sha256"], quiet["successor"], flush=True)
+
 
 if __name__ == "__main__":
     main()

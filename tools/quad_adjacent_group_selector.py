@@ -4,7 +4,7 @@ from collections import Counter, defaultdict, deque
 from fractions import Fraction
 from functools import lru_cache
 from hashlib import sha256
-from math import dist
+from math import dist, isfinite
 from statistics import median
 
 from quad_generation_metrics import cross, element_quality, load_physical_obj, norm
@@ -202,8 +202,10 @@ def use_neighbor(front, target, requests):
                 protected_requests=protected, changed_neighbor_boxes=changed)
 
 
-def geometric_size_requests(path, evaluate=golden):
-    """Replay the approved residual seeds and three synchronous grading passes."""
+def geometric_size_requests(path, evaluate=golden, *, relative_tolerance=None):
+    """Replay geometric sizing with an optional dimensionless trigger."""
+    if relative_tolerance is not None and (not isfinite(relative_tolerance) or relative_tolerance < 0):
+        raise ValueError("Relative residual tolerance must be finite and nonnegative")
     xyz, uv, faces = load_physical_obj(path)
     contour_rows = [line.split() for line in path.read_text(encoding="ascii").splitlines()
                     if line.startswith("# source_site ")]
@@ -227,6 +229,13 @@ def geometric_size_requests(path, evaluate=golden):
             point = tuple(sum(wj*xyz[j][k] for wj,j in zip(w,face)) for k in range(3))
             samples.append((dist(evaluate(*at)[0],point),at))
         error, at = max(samples, key=lambda sample: sample[0])
+        if relative_tolerance is not None:
+            size = initial[-1]
+            if not isfinite(error) or not isfinite(size) or size <= 0:
+                raise ValueError("Relative residual needs finite error and positive physical size")
+            error /= size
+            if not isfinite(error):
+                raise ValueError("Nonfinite relative residual")
         errors.append(error)
         sites.append(at)
 
@@ -246,8 +255,11 @@ def geometric_size_requests(path, evaluate=golden):
     initial += [float(row[12])*lengths[int(row[2])] for row in contour_rows]
     seeds = [max((i for i,f in enumerate(faces) if len(f)==arity),key=errors.__getitem__)
              for arity in (3,4)]
-    distances = dict.fromkeys(seeds,0)
-    queue = deque(seeds)
+    if relative_tolerance is not None:
+        seeds = [i for i in seeds if errors[i] > relative_tolerance]
+    start = seeds or [0]
+    distances = dict.fromkeys(start,0)
+    queue = deque(start)
     target = initial[:]
     for i in seeds:
         target[i] /= 2
@@ -259,6 +271,8 @@ def geometric_size_requests(path, evaluate=golden):
                 queue.append(j)
     if len(distances) != len(graph):
         raise ValueError("Disconnected mixed sizing graph")
+    if not seeds:
+        return [], []
     for _ in range(3):
         updated = target[:]
         for i, adjacent in enumerate(graph):

@@ -48,8 +48,10 @@ jobs:
         run: |
           git rev-parse HEAD
           git status --short
-      - name: Check per-stage reporting controls
-        run: python -W error::ResourceWarning tests/quad/test_generation_metrics.py
+      - name: Check per-stage reporting and relative feedback controls
+        run: |
+          python -W error::ResourceWarning tests/quad/test_generation_metrics.py
+          python -W error::ResourceWarning tests/quad/test_relative_feedback_requests.py
       - name: Configure and build native QUAD (Linux GCC)
         if: runner.os == 'Linux'
         shell: bash

@@ -104,3 +104,14 @@ candidate generation.
 Results report the native tree edits, capped requests, old/new curve
 partitions, guarded smoothing frames and paired analytic samples.
 A staged successor does not increment mixed adaptive epochs.
+
+An explicit `--relative-tolerance` adds the experimental dimensionless
+trigger. Each TRI and QUAD is scored by its existing sampled maximum
+geometric distance divided by the median physical edge length of that
+face. At most one seed of each type is chosen, with existing face order
+breaking equal scores. A seed requires a score strictly greater than the
+configured tolerance. The existing neighbor rule and original curve/tree
+reconstruction apply to active requests. With zero requests the archive
+contains only the reproduced source and a no-action result. There is no
+default tolerance for this option. It measures geometric deviation and
+leaves shape assessment to the independent staged-candidate reports.
