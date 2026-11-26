@@ -5199,3 +5199,18 @@ passing first TRI without a remaining-front closure result.
 Four exact-head PR 297 checks pass. Zero mixed epochs. Align the
 two native straight-side subdivisions before running the candidate.
 [Exact native replay receipts](PERSISTENT_STRAIGHT_SIDE_TRI_20261126.md).
+
+
+## 2026-11-26 Fortaleza - test two native splits on the straight grouped side
+
+Two approved arc splits produce 743 faces and 24 certified samples.
+The six previously corrected QUAD and all seven size measurements
+match. Straight-side angle failures fall from 16 to eight and global
+floor failures from 31 to 23. RMS falls 44.95 percent. The unchanged
+tree gains 32 seed QUAD through the existing clearance rule.
+Two corner QUAD born at 44.95627 and 44.96744 degrees restore the
+contour QUAD regional count block. Exact replay finds no other
+eligible QUAD; both diagonals create a below-floor TRI.
+The full candidate remains blocked. Four exact-head PR 297 jobs
+pass. Next, project a minimal interior placement with the curve fixed.
+[Matched native and replay results](NATIVE_STRAIGHT_SIDE_SPLIT_20261126.md).

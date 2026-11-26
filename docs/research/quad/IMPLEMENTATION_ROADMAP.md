@@ -138,8 +138,14 @@ QUAD count block with 25 fewer faces. The 31 existing safety-floor
 failures and the interior QUAD target remain. The
 [straight-side replay](PERSISTENT_STRAIGHT_SIDE_TRI_20261126.md)
 binds 16 persistent TRI to a template-edge mismatch and a single
-valid existing apex per base. Align the two native arc subdivisions
-on that side while holding the six improved QUAD as controls.
+valid existing apex per base. The
+[native straight-side split](NATIVE_STRAIGHT_SIDE_SPLIT_20261126.md)
+halves the local floor failures and reduces geometric error while
+retaining the six improved QUAD. Two new corner QUAD narrowly
+miss the existing regional target. Their exact replay excludes
+a fixed-site replacement that meets the target without creating
+a TRI floor failure. Project interior placement before another
+change to the curve or selection policy.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

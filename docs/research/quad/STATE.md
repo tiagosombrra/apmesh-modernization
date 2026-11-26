@@ -12,6 +12,29 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - realize two certified splits on the straight side
+
+The approved native trial adds two arc-length samples and keeps
+the 193 leaf boxes and three contour groups. Eight newly included
+leaves add 32 seed QUAD. The full mesh has 743 faces versus 707.
+Straight-side TRI below the angle floor halve from 16 to eight,
+and global below-floor faces fall from 31 to 23. The six earlier
+corrected QUAD angles and all seven size measurements match.
+Sampled RMS falls 44.95 percent and sampled maximum falls
+57.29 percent. Two new corner QUAD miss the 45-degree target at
+44.95627 and 44.96744 degrees, restoring the count block. Both
+are their only article-eligible QUAD in exact replay; either
+diagonal gives a below-floor TRI. Four exact-head PR 297 jobs
+pass. Zero accepted mixed epochs.
+[Native comparison](NATIVE_STRAIGHT_SIDE_SPLIT_20261126.md).
+
+**Next:** project a minimal interior site placement change for
+one of the two marginal corner QUAD, keeping the 24 certified
+sites fixed. Verify incident TRI/QUAD, sizes, topology and geometry
+before any native change. The eight straight-side TRI, interior
+QUAD target, shared curves, owner reentry, reserved cases and
+global mixed curvature remain open.
+
 ### 2026-11-26 - trace the 16 persistent TRI on the straight certified side
 
 The exact native replay covers all 16 failing TRI touching

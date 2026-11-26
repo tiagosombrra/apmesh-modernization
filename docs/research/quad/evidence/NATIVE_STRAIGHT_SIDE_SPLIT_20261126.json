@@ -1,0 +1,4563 @@
+{
+ "schema": "apmesh.quad.native_straight_side_split.v1",
+ "canonical_input": "c9727438fbcf80d2c09654c2bfbe4e35f56e2930",
+ "source_revision": "0ad5b7bdf7af9504b739f0dc85172d832c3ea8f1",
+ "compiler": "MSVC 19.44 x64 C++17 Debug",
+ "context": {
+  "native_source_changed": false,
+  "grouped_control_obj_sha256": "3823c0b428e46fa761a4412894d0e30fad2a4f57253cc78ab1ea03e9f6ee4ccc",
+  "shared_curve_requalification": false,
+  "accepted_mixed_epochs": 0
+ },
+ "intent": {
+  "engine_sha256": "f815b0750b800066976d69ebb57bf58339978721f6c945fd53e5d63d904336a3",
+  "reference_plan_sha256": "085edd89d43fd420ce87acc0df7b6494729e7affb9597146f9ec0852432ca06f",
+  "trial_plan_sha256": "d6bb3ffbb81f445079541c4c808c545ab303f25b4b223f8f0cdbd932fbcea78d",
+  "source_sha256": {
+   "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+   "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+   "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+  },
+  "added_curve_intervals": [
+   10,
+   11
+  ]
+ },
+ "commands": [
+  "python build/quad-persistent-side-tri-20261126/split_trial.py",
+  "python build/quad-persistent-side-tri-20261126/split_audit.py",
+  "python build/quad-persistent-side-tri-20261126/split_regional.py",
+  "python build/quad-persistent-side-tri-20261126/split_clearance.py",
+  "python build/quad-persistent-side-tri-20261126/split_edge_passes.py",
+  "python build/quad-persistent-side-tri-20261126/corner_options.py",
+  "python build/quad-persistent-side-tri-20261126/corner_diagonals.py",
+  "cmake --build build/quad-persistent-side-tri-20261126/msvc --target straight_corner_replay --config Debug --parallel 4"
+ ],
+ "scripts_sha256": {
+  "split_trial.py": "4571a9a7ba342c3dc7bbd7adf228781bea3243dbf27643bf5cb1f35eef4a31ca",
+  "split_audit.py": "ab588cae0f2aedc43c6913a5f93ad614e7d513435a9ce4ee9d0120a7cacfc76a",
+  "split_regional.py": "c75ffd307d783341bd9a1c0a303b9a3cfcb2850742282dd9afb75cd6dac4bc51",
+  "split_clearance.py": "1b623bd63a4fcc560058990fc3d234dc06f628e9eae55b5fbc20610768f9b2c7",
+  "split_edge_passes.py": "671b00bccaca81b024f5e2f832d1c4c2b2be958b326cb67119a8d02ae2fcf3b3",
+  "corners.cpp": "3b21626082f930157ac97300df7b10b45a2984873c0b3a84d3bf9ae242963fab",
+  "corner_options.py": "48a495d2ee8f076257cdc0f824541fb26da17fda07fb351930c14b68b754da32",
+  "corner_diagonals.py": "ac6204e4243e7e0756bb03e0773c2e72e7632a01375fcb1d113b4daf6626897c"
+ },
+ "artifacts_sha256": {
+  "candidate.obj": "8dadef8cb6ba62caa154278e78ebd47bfd14bbaf37a11d071f0798ff505ceba5",
+  "candidate_front/front.json": "5dc618719022548092ab9fe8286b235a85b2f08d3a5634a56aa78450342d65a5",
+  "requests.csv": "faa9e7a827941324e9e571759927349ec2dc0da48c5722b334e98e1b3f10406a",
+  "boundary_refinement.json": "02bbf8aa92c2aea75f73f0774152470f0be9d4e8bbe6e9dddfccc1da61fa6513",
+  "leaves.csv": "eaa18298cb2c7ae4d35227157458b4d51c86fd8b48b26963b71136435385f8f5",
+  "grouped_parents.json": "87ff5a5ea9339c2022ac1ab94bd7cf33bb7afc5e71fce012df97b35144a3b769"
+ },
+ "processes": {
+  "native": {
+   "exit": 0,
+   "seconds": 66.33176374435425,
+   "timeout": 210
+  },
+  "audit": {
+   "exit": 0,
+   "seconds": 1.0095970630645752,
+   "timeout": 75
+  },
+  "regional": {
+   "exit": 0,
+   "seconds": 0.4160799980163574,
+   "timeout": 75
+  },
+  "clearance": {
+   "exit": 0,
+   "seconds": 0.3657710552215576,
+   "timeout": 75
+  },
+  "edge-passes": {
+   "exit": 0,
+   "seconds": 0.3160514831542969,
+   "timeout": 75
+  },
+  "corner-build": {
+   "exit": 0,
+   "seconds": 5.616447448730469,
+   "timeout": 120
+  },
+  "corner-examine": {
+   "exit": 0,
+   "seconds": 0.9763882160186768,
+   "timeout": 75
+  },
+  "corner-diagonals": {
+   "exit": 0,
+   "seconds": 0.2770555019378662,
+   "timeout": 75
+  }
+ },
+ "adapter": {
+  "environment": "required tools unavailable",
+  "iteration_baseline": "missing"
+ },
+ "measurement": {
+  "status": "staged",
+  "inserted_samples": [
+   [
+    2,
+    0.727447509765625,
+    [
+     0.727447509765625,
+     1.0
+    ],
+    800,
+    [
+     -1.0,
+     0.4999904983104386,
+     0.0
+    ]
+   ],
+   [
+    2,
+    0.272552490234375,
+    [
+     0.272552490234375,
+     1.0
+    ],
+    801,
+    [
+     -1.0,
+     -0.4999904983104386,
+     0.0
+    ]
+   ]
+  ],
+  "successor": {
+   "status": "staged",
+   "depth_cap": 4,
+   "leaves_before": 223,
+   "leaves_after": 193,
+   "direct_leaf_edits": 1,
+   "requests": 7,
+   "capped_requests": 3,
+   "segments_before": 14,
+   "segments_after": 24,
+   "candidate_sha256": "8dadef8cb6ba62caa154278e78ebd47bfd14bbaf37a11d071f0798ff505ceba5"
+  },
+  "admission": {
+   "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+   "predecessor_sha256": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+   "native_status": "staged",
+   "mixed_adaptive_epochs": 0,
+   "status": "blocked",
+   "blockers": [
+    "contour_edge_QUAD.min_angle_deg.regional_regression",
+    "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+    "interior_TRI.min_angle_deg.below_safety_floor",
+    "interior_QUAD.min_angle_deg.regional_regression"
+   ],
+   "quality_targets_met": false,
+   "error_targets_met": true,
+   "stop_targets_met": false,
+   "regions": {
+    "contour_edge_TRI": {
+     "predecessor_faces": 8,
+     "candidate_faces": 8,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "below_target_without_regression",
+       "predecessor_min": 10.367272360473434,
+       "candidate_min": 18.831908305542832,
+       "safety_floor": 15,
+       "target": 30,
+       "predecessor_below_target": 8,
+       "candidate_below_target": 8
+      },
+      "min_shape": {
+       "status": "meets_target",
+       "predecessor_min": 0.30088697922437296,
+       "candidate_min": 0.43350935486217335,
+       "safety_floor": 0.125,
+       "target": 0.25,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 0
+      }
+     }
+    },
+    "contour_edge_QUAD": {
+     "predecessor_faces": 6,
+     "candidate_faces": 16,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "regional_regression",
+       "predecessor_min": 19.438606955832434,
+       "candidate_min": 23.383455463276544,
+       "safety_floor": 22.5,
+       "target": 45,
+       "predecessor_below_target": 6,
+       "candidate_below_target": 7
+      },
+      "min_shape": {
+       "status": "below_target_without_regression",
+       "predecessor_min": 0.32843100153567506,
+       "candidate_min": 0.3916627558219357,
+       "safety_floor": 0.25,
+       "target": 0.5,
+       "predecessor_below_target": 6,
+       "candidate_below_target": 1
+      }
+     }
+    },
+    "contour_vertex_TRI": {
+     "predecessor_faces": 94,
+     "candidate_faces": 61,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "below_safety_floor",
+       "predecessor_min": 1.4181974567977775,
+       "candidate_min": 4.606650870718762,
+       "safety_floor": 15,
+       "target": 30,
+       "predecessor_below_target": 82,
+       "candidate_below_target": 39
+      },
+      "min_shape": {
+       "status": "below_target_without_regression",
+       "predecessor_min": 0.04268083753878802,
+       "candidate_min": 0.13462096419592048,
+       "safety_floor": 0.125,
+       "target": 0.25,
+       "predecessor_below_target": 56,
+       "candidate_below_target": 15
+      }
+     }
+    },
+    "contour_vertex_QUAD": {
+     "predecessor_faces": 0,
+     "candidate_faces": 1,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "meets_target",
+       "predecessor_min": null,
+       "candidate_min": 46.95302186240745,
+       "safety_floor": 22.5,
+       "target": 45,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 0
+      },
+      "min_shape": {
+       "status": "meets_target",
+       "predecessor_min": null,
+       "candidate_min": 0.7257254420205377,
+       "safety_floor": 0.25,
+       "target": 0.5,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 0
+      }
+     }
+    },
+    "interior_TRI": {
+     "predecessor_faces": 0,
+     "candidate_faces": 13,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "below_safety_floor",
+       "predecessor_min": null,
+       "candidate_min": 12.074325827530048,
+       "safety_floor": 15,
+       "target": 30,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 8
+      },
+      "min_shape": {
+       "status": "meets_target",
+       "predecessor_min": null,
+       "candidate_min": 0.3232608412413648,
+       "safety_floor": 0.125,
+       "target": 0.25,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 0
+      }
+     }
+    },
+    "interior_QUAD": {
+     "predecessor_faces": 624,
+     "candidate_faces": 644,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "regional_regression",
+       "predecessor_min": 64.40510702872767,
+       "candidate_min": 31.636993088122335,
+       "safety_floor": 22.5,
+       "target": 45,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 8
+      },
+      "min_shape": {
+       "status": "meets_target",
+       "predecessor_min": 0.9014446997284595,
+       "candidate_min": 0.5245088242656641,
+       "safety_floor": 0.25,
+       "target": 0.5,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 0
+      }
+     }
+    }
+   },
+   "geometry": {
+    "24": {
+     "predecessor": {
+      "sample_count": 576,
+      "max_xyz": 0.049100482457393006,
+      "rms_uv": 0.012357098802300836,
+      "rms_source_area": 0.01182092568456974,
+      "tri_sites": 204,
+      "quad_sites": 372
+     },
+     "candidate": {
+      "sample_count": 576,
+      "max_xyz": 0.017156525898877922,
+      "rms_uv": 0.004034451438458155,
+      "rms_source_area": 0.0036264708920402426,
+      "tri_sites": 67,
+      "quad_sites": 509
+     },
+     "relative_rms_gain": 0.6932159977307022
+    },
+    "48": {
+     "predecessor": {
+      "sample_count": 2304,
+      "max_xyz": 0.0499742617604889,
+      "rms_uv": 0.012476199826746128,
+      "rms_source_area": 0.011914927232780577,
+      "tri_sites": 840,
+      "quad_sites": 1464
+     },
+     "candidate": {
+      "sample_count": 2304,
+      "max_xyz": 0.01878954309328887,
+      "rms_uv": 0.00409066652967792,
+      "rms_source_area": 0.0036741924678776825,
+      "tri_sites": 335,
+      "quad_sites": 1969
+     },
+     "relative_rms_gain": 0.6916311450254455
+    }
+   },
+   "face_growth": 0.015027322404371584,
+   "predecessor_faces": 732,
+   "candidate_faces": 743,
+   "candidate_sha256": "8dadef8cb6ba62caa154278e78ebd47bfd14bbaf37a11d071f0798ff505ceba5",
+   "boundary_certificate_sha256": "02bbf8aa92c2aea75f73f0774152470f0be9d4e8bbe6e9dddfccc1da61fa6513",
+   "max_adjacent_physical_size_ratio": {
+    "baseline": 12.238209200218554,
+    "candidate": 4.850910955332152
+   }
+  },
+  "measures": {
+   "control": {
+    "total_faces": 707,
+    "n_quads": 627,
+    "below_floor": [
+     {
+      "face_uv": [
+       [
+        0.061383928571428575,
+        0.3758054460797991
+       ],
+       [
+        0.0625,
+        0.40625
+       ],
+       [
+        0.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 6.790237975503182
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.40625
+       ],
+       [
+        0.0625,
+        0.4375
+       ],
+       [
+        0.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 11.299385992076578
+     },
+     {
+      "face_uv": [
+       [
+        0.8229890046296295,
+        0.8779348544973545
+       ],
+       [
+        0.875,
+        0.875
+       ],
+       [
+        1.0,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 11.449369384056583
+     },
+     {
+      "face_uv": [
+       [
+        0.7593936011904762,
+        0.8982531489158163
+       ],
+       [
+        0.8229890046296295,
+        0.8779348544973545
+       ],
+       [
+        1.0,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 12.474524617209903
+     },
+     {
+      "face_uv": [
+       [
+        0.3519965277777778,
+        0.8767361111111112
+       ],
+       [
+        0.3780201099537037,
+        0.8760127314814815
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.248011894952868
+     },
+     {
+      "face_uv": [
+       [
+        0.3165147569444444,
+        0.8729926215277778
+       ],
+       [
+        0.3519965277777778,
+        0.8767361111111112
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 4.357105212541993
+     },
+     {
+      "face_uv": [
+       [
+        0.28125,
+        0.875
+       ],
+       [
+        0.3165147569444444,
+        0.8729926215277778
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 4.143526535895107
+     },
+     {
+      "face_uv": [
+       [
+        0.24446924905928355,
+        0.8802263774569072
+       ],
+       [
+        0.28125,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 3.7806708513674914
+     },
+     {
+      "face_uv": [
+       [
+        0.9375,
+        0.65625
+       ],
+       [
+        0.9375,
+        0.625
+       ],
+       [
+        1.0,
+        0.727447509765625
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.059091467592893
+     },
+     {
+      "face_uv": [
+       [
+        0.060995372483449536,
+        0.1261093391447651
+       ],
+       [
+        0.0625,
+        0.15625
+       ],
+       [
+        0.0,
+        0.272552490234375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 6.587177021186916
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.15625
+       ],
+       [
+        0.0625,
+        0.1875
+       ],
+       [
+        0.0,
+        0.272552490234375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.890961249178483
+     },
+     {
+      "face_uv": [
+       [
+        0.1875,
+        0.875
+       ],
+       [
+        0.24446924905928355,
+        0.8802263774569072
+       ],
+       [
+        0.0,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 8.247072609305471
+     },
+     {
+      "face_uv": [
+       [
+        0.125,
+        0.875
+       ],
+       [
+        0.1875,
+        0.875
+       ],
+       [
+        0.0,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 12.457843096409603
+     },
+     {
+      "face_uv": [
+       [
+        0.9375,
+        0.40625
+       ],
+       [
+        0.9375,
+        0.375
+       ],
+       [
+        1.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 6.3228403087999245
+     },
+     {
+      "face_uv": [
+       [
+        0.9375,
+        0.4375
+       ],
+       [
+        0.9375,
+        0.40625
+       ],
+       [
+        1.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 11.143862575494344
+     },
+     {
+      "face_uv": [
+       [
+        0.9375,
+        0.59375
+       ],
+       [
+        0.9375,
+        0.5625
+       ],
+       [
+        1.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.221899991940496
+     },
+     {
+      "face_uv": [
+       [
+        0.9375,
+        0.625
+       ],
+       [
+        0.9375,
+        0.59375
+       ],
+       [
+        1.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.415938514743777
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.0625
+       ],
+       [
+        0.0625,
+        0.09375
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.601669962674793
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.09375
+       ],
+       [
+        0.060995372483449536,
+        0.1261093391447651
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 4.606650870718762
+     },
+     {
+      "face_uv": [
+       [
+        0.59375,
+        0.875
+       ],
+       [
+        0.625,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 8.036785339967942
+     },
+     {
+      "face_uv": [
+       [
+        0.5625,
+        0.875
+       ],
+       [
+        0.59375,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 11.271414584974702
+     },
+     {
+      "face_uv": [
+       [
+        0.6875,
+        0.875
+       ],
+       [
+        0.71875,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 3.2528169651680092
+     },
+     {
+      "face_uv": [
+       [
+        0.65625,
+        0.875
+       ],
+       [
+        0.6875,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 4.2835559711252085
+     },
+     {
+      "face_uv": [
+       [
+        0.625,
+        0.875
+       ],
+       [
+        0.65625,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.7944277301987
+     },
+     {
+      "face_uv": [
+       [
+        0.125,
+        0.5580357142857143
+       ],
+       [
+        0.125,
+        0.59375
+       ],
+       [
+        0.0625,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 12.074325827530048
+     },
+     {
+      "face_uv": [
+       [
+        0.4082302517361111,
+        0.8757595486111112
+       ],
+       [
+        0.43884333857783564,
+        0.8756668655960648
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 11.26830203786952
+     },
+     {
+      "face_uv": [
+       [
+        0.3780201099537037,
+        0.8760127314814815
+       ],
+       [
+        0.4082302517361111,
+        0.8757595486111112
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 8.030006846670291
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.3125
+       ],
+       [
+        0.0625,
+        0.34375
+       ],
+       [
+        0.0,
+        0.272552490234375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 12.18613706457717
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.34375
+       ],
+       [
+        0.061383928571428575,
+        0.3758054460797991
+       ],
+       [
+        0.0,
+        0.272552490234375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 7.788626277523766
+     },
+     {
+      "face_uv": [
+       [
+        1.0,
+        0.727447509765625
+       ],
+       [
+        0.8785204475308642,
+        0.8115598419566213
+       ],
+       [
+        0.9375,
+        0.75
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.827843889307672
+     },
+     {
+      "face_uv": [
+       [
+        0.7593936011904762,
+        0.8982531489158163
+       ],
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.71875,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 6.980323533807382
+     }
+    ],
+    "below_floor_on_straight": [
+     {
+      "face_uv": [
+       [
+        0.8229890046296295,
+        0.8779348544973545
+       ],
+       [
+        0.875,
+        0.875
+       ],
+       [
+        1.0,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 11.449369384056583
+     },
+     {
+      "face_uv": [
+       [
+        0.7593936011904762,
+        0.8982531489158163
+       ],
+       [
+        0.8229890046296295,
+        0.8779348544973545
+       ],
+       [
+        1.0,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 12.474524617209903
+     },
+     {
+      "face_uv": [
+       [
+        0.3519965277777778,
+        0.8767361111111112
+       ],
+       [
+        0.3780201099537037,
+        0.8760127314814815
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.248011894952868
+     },
+     {
+      "face_uv": [
+       [
+        0.3165147569444444,
+        0.8729926215277778
+       ],
+       [
+        0.3519965277777778,
+        0.8767361111111112
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 4.357105212541993
+     },
+     {
+      "face_uv": [
+       [
+        0.28125,
+        0.875
+       ],
+       [
+        0.3165147569444444,
+        0.8729926215277778
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 4.143526535895107
+     },
+     {
+      "face_uv": [
+       [
+        0.24446924905928355,
+        0.8802263774569072
+       ],
+       [
+        0.28125,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 3.7806708513674914
+     },
+     {
+      "face_uv": [
+       [
+        0.1875,
+        0.875
+       ],
+       [
+        0.24446924905928355,
+        0.8802263774569072
+       ],
+       [
+        0.0,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 8.247072609305471
+     },
+     {
+      "face_uv": [
+       [
+        0.125,
+        0.875
+       ],
+       [
+        0.1875,
+        0.875
+       ],
+       [
+        0.0,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 12.457843096409603
+     },
+     {
+      "face_uv": [
+       [
+        0.59375,
+        0.875
+       ],
+       [
+        0.625,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 8.036785339967942
+     },
+     {
+      "face_uv": [
+       [
+        0.5625,
+        0.875
+       ],
+       [
+        0.59375,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 11.271414584974702
+     },
+     {
+      "face_uv": [
+       [
+        0.6875,
+        0.875
+       ],
+       [
+        0.71875,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 3.2528169651680092
+     },
+     {
+      "face_uv": [
+       [
+        0.65625,
+        0.875
+       ],
+       [
+        0.6875,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 4.2835559711252085
+     },
+     {
+      "face_uv": [
+       [
+        0.625,
+        0.875
+       ],
+       [
+        0.65625,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.7944277301987
+     },
+     {
+      "face_uv": [
+       [
+        0.4082302517361111,
+        0.8757595486111112
+       ],
+       [
+        0.43884333857783564,
+        0.8756668655960648
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 11.26830203786952
+     },
+     {
+      "face_uv": [
+       [
+        0.3780201099537037,
+        0.8760127314814815
+       ],
+       [
+        0.4082302517361111,
+        0.8757595486111112
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 8.030006846670291
+     },
+     {
+      "face_uv": [
+       [
+        0.7593936011904762,
+        0.8982531489158163
+       ],
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.71875,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 6.980323533807382
+     }
+    ],
+    "six_prior_edges": [
+     {
+      "edge": [
+       [
+        0.378067746758461,
+        0.0
+       ],
+       [
+        0.4391529478452867,
+        0.0
+       ]
+      ],
+      "angle": 63.33821847969561,
+      "kind": "QUAD"
+     },
+     {
+      "edge": [
+       [
+        0.4391529478452867,
+        0.0
+       ],
+       [
+        0.5,
+        0.0
+       ]
+      ],
+      "angle": 56.06118206882863,
+      "kind": "QUAD"
+     },
+     {
+      "edge": [
+       [
+        0.5,
+        0.0
+       ],
+       [
+        0.5608470521547133,
+        0.0
+       ]
+      ],
+      "angle": 55.14285588649097,
+      "kind": "QUAD"
+     },
+     {
+      "edge": [
+       [
+        0.5608470521547133,
+        0.0
+       ],
+       [
+        0.621932253241539,
+        0.0
+       ]
+      ],
+      "angle": 53.39890035417095,
+      "kind": "QUAD"
+     },
+     {
+      "edge": [
+       [
+        0.621932253241539,
+        0.0
+       ],
+       [
+        0.6834059676875768,
+        0.0
+       ]
+      ],
+      "angle": 51.84673301256163,
+      "kind": "QUAD"
+     },
+     {
+      "edge": [
+       [
+        0.6834059676875768,
+        0.0
+       ],
+       [
+        0.74542236328125,
+        0.0
+       ]
+      ],
+      "angle": 48.93040554626586,
+      "kind": "QUAD"
+     }
+    ],
+    "sampled_sizes": {
+     "637": 0.16295236752255057,
+     "646": 0.13677762664290127,
+     "648": 0.13677762664290127,
+     "696": 0.059595044697531366,
+     "729": 0.05829936233157664,
+     "730": 0.05898565586147062,
+     "731": 0.05829936233157664
+    }
+   },
+   "split": {
+    "total_faces": 743,
+    "n_quads": 661,
+    "below_floor": [
+     {
+      "face_uv": [
+       [
+        0.061383928571428575,
+        0.3758054460797991
+       ],
+       [
+        0.0625,
+        0.40625
+       ],
+       [
+        0.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 6.790237975503182
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.40625
+       ],
+       [
+        0.0625,
+        0.4375
+       ],
+       [
+        0.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 11.299385992076578
+     },
+     {
+      "face_uv": [
+       [
+        0.59375,
+        0.9375
+       ],
+       [
+        0.625,
+        0.9375
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.723102482556159
+     },
+     {
+      "face_uv": [
+       [
+        0.5625,
+        0.9375
+       ],
+       [
+        0.59375,
+        0.9375
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.978487556783039
+     },
+     {
+      "face_uv": [
+       [
+        0.40625,
+        0.9375
+       ],
+       [
+        0.4375,
+        0.9375
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.977899026718463
+     },
+     {
+      "face_uv": [
+       [
+        0.375,
+        0.9375
+       ],
+       [
+        0.40625,
+        0.9375
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.722904192273671
+     },
+     {
+      "face_uv": [
+       [
+        0.9375,
+        0.65625
+       ],
+       [
+        0.9375,
+        0.625
+       ],
+       [
+        1.0,
+        0.727447509765625
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.059091467592893
+     },
+     {
+      "face_uv": [
+       [
+        0.625,
+        0.9375
+       ],
+       [
+        0.65625,
+        0.9375
+       ],
+       [
+        0.727447509765625,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 8.889066951849362
+     },
+     {
+      "face_uv": [
+       [
+        0.34375,
+        0.9375
+       ],
+       [
+        0.375,
+        0.9375
+       ],
+       [
+        0.272552490234375,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 8.890633940597596
+     },
+     {
+      "face_uv": [
+       [
+        0.060995372483449536,
+        0.1261093391447651
+       ],
+       [
+        0.0625,
+        0.15625
+       ],
+       [
+        0.0,
+        0.272552490234375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 6.587177021186916
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.15625
+       ],
+       [
+        0.0625,
+        0.1875
+       ],
+       [
+        0.0,
+        0.272552490234375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.890961249178483
+     },
+     {
+      "face_uv": [
+       [
+        0.9375,
+        0.40625
+       ],
+       [
+        0.9375,
+        0.375
+       ],
+       [
+        1.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 6.3228403087999245
+     },
+     {
+      "face_uv": [
+       [
+        0.9375,
+        0.4375
+       ],
+       [
+        0.9375,
+        0.40625
+       ],
+       [
+        1.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 11.143862575494344
+     },
+     {
+      "face_uv": [
+       [
+        0.9375,
+        0.59375
+       ],
+       [
+        0.9375,
+        0.5625
+       ],
+       [
+        1.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.221899991940496
+     },
+     {
+      "face_uv": [
+       [
+        0.9375,
+        0.625
+       ],
+       [
+        0.9375,
+        0.59375
+       ],
+       [
+        1.0,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.415938514743777
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.0625
+       ],
+       [
+        0.0625,
+        0.09375
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.601669962674793
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.09375
+       ],
+       [
+        0.060995372483449536,
+        0.1261093391447651
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 4.606650870718762
+     },
+     {
+      "face_uv": [
+       [
+        0.125,
+        0.5580357142857143
+       ],
+       [
+        0.125,
+        0.59375
+       ],
+       [
+        0.0625,
+        0.5
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 12.074325827530048
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.3125
+       ],
+       [
+        0.0625,
+        0.34375
+       ],
+       [
+        0.0,
+        0.272552490234375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 12.18613706457717
+     },
+     {
+      "face_uv": [
+       [
+        0.0625,
+        0.34375
+       ],
+       [
+        0.061383928571428575,
+        0.3758054460797991
+       ],
+       [
+        0.0,
+        0.272552490234375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 7.788626277523766
+     },
+     {
+      "face_uv": [
+       [
+        1.0,
+        0.727447509765625
+       ],
+       [
+        0.8785204475308642,
+        0.8115598419566213
+       ],
+       [
+        0.9375,
+        0.75
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.827843889307672
+     },
+     {
+      "face_uv": [
+       [
+        0.8115598419566213,
+        0.8785204475308642
+       ],
+       [
+        0.727447509765625,
+        1.0
+       ],
+       [
+        0.75,
+        0.9375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 10.109560690314497
+     },
+     {
+      "face_uv": [
+       [
+        0.272552490234375,
+        1.0
+       ],
+       [
+        0.18812645806206596,
+        0.8793402777777778
+       ],
+       [
+        0.25,
+        0.9375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 10.344361009235717
+     }
+    ],
+    "below_floor_on_straight": [
+     {
+      "face_uv": [
+       [
+        0.59375,
+        0.9375
+       ],
+       [
+        0.625,
+        0.9375
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.723102482556159
+     },
+     {
+      "face_uv": [
+       [
+        0.5625,
+        0.9375
+       ],
+       [
+        0.59375,
+        0.9375
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.978487556783039
+     },
+     {
+      "face_uv": [
+       [
+        0.40625,
+        0.9375
+       ],
+       [
+        0.4375,
+        0.9375
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 9.977899026718463
+     },
+     {
+      "face_uv": [
+       [
+        0.375,
+        0.9375
+       ],
+       [
+        0.40625,
+        0.9375
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 5.722904192273671
+     },
+     {
+      "face_uv": [
+       [
+        0.625,
+        0.9375
+       ],
+       [
+        0.65625,
+        0.9375
+       ],
+       [
+        0.727447509765625,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 8.889066951849362
+     },
+     {
+      "face_uv": [
+       [
+        0.34375,
+        0.9375
+       ],
+       [
+        0.375,
+        0.9375
+       ],
+       [
+        0.272552490234375,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 8.890633940597596
+     },
+     {
+      "face_uv": [
+       [
+        0.8115598419566213,
+        0.8785204475308642
+       ],
+       [
+        0.727447509765625,
+        1.0
+       ],
+       [
+        0.75,
+        0.9375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 10.109560690314497
+     },
+     {
+      "face_uv": [
+       [
+        0.272552490234375,
+        1.0
+       ],
+       [
+        0.18812645806206596,
+        0.8793402777777778
+       ],
+       [
+        0.25,
+        0.9375
+       ]
+      ],
+      "kind": "TRI",
+      "angle": 10.344361009235717
+     }
+    ],
+    "six_prior_edges": [
+     {
+      "edge": [
+       [
+        0.378067746758461,
+        0.0
+       ],
+       [
+        0.4391529478452867,
+        0.0
+       ]
+      ],
+      "angle": 63.33821847969561,
+      "kind": "QUAD"
+     },
+     {
+      "edge": [
+       [
+        0.4391529478452867,
+        0.0
+       ],
+       [
+        0.5,
+        0.0
+       ]
+      ],
+      "angle": 56.06118206882863,
+      "kind": "QUAD"
+     },
+     {
+      "edge": [
+       [
+        0.5,
+        0.0
+       ],
+       [
+        0.5608470521547133,
+        0.0
+       ]
+      ],
+      "angle": 55.14285588649097,
+      "kind": "QUAD"
+     },
+     {
+      "edge": [
+       [
+        0.5608470521547133,
+        0.0
+       ],
+       [
+        0.621932253241539,
+        0.0
+       ]
+      ],
+      "angle": 53.39890035417095,
+      "kind": "QUAD"
+     },
+     {
+      "edge": [
+       [
+        0.621932253241539,
+        0.0
+       ],
+       [
+        0.6834059676875768,
+        0.0
+       ]
+      ],
+      "angle": 51.84673301256163,
+      "kind": "QUAD"
+     },
+     {
+      "edge": [
+       [
+        0.6834059676875768,
+        0.0
+       ],
+       [
+        0.74542236328125,
+        0.0
+       ]
+      ],
+      "angle": 48.93040554626586,
+      "kind": "QUAD"
+     }
+    ],
+    "sampled_sizes": {
+     "637": 0.16295236752255057,
+     "646": 0.13677762664290127,
+     "648": 0.13677762664290127,
+     "696": 0.059595044697531366,
+     "729": 0.05829936233157664,
+     "730": 0.05898565586147062,
+     "731": 0.05829936233157664
+    }
+   }
+  },
+  "geometry": {
+   "baseline": {
+    "sample_count": 2304,
+    "max_xyz": 0.04399111909395774,
+    "rms_uv": 0.007137619466865107,
+    "rms_source_area": 0.006674682572033297,
+    "tri_sites": 494,
+    "quad_sites": 1810
+   },
+   "candidate": {
+    "sample_count": 2304,
+    "max_xyz": 0.01878954309328887,
+    "rms_uv": 0.00409066652967792,
+    "rms_source_area": 0.0036741924678776825,
+    "tri_sites": 335,
+    "quad_sites": 1969
+   }
+  },
+  "new_size_misses": []
+ },
+ "regional_birth_diff": {
+  "status": "staged",
+  "distribution": {
+   "control": {
+    "counts": {
+     "interior_QUAD": 612,
+     "contour_edge_TRI": 8,
+     "contour_edge_QUAD": 14,
+     "contour_vertex_TRI": 63,
+     "interior_TRI": 9,
+     "contour_vertex_QUAD": 1
+    },
+    "below_floor_by_region": {
+     "contour_vertex_TRI": 30,
+     "interior_TRI": 1
+    },
+    "failures_with_straight_side": [
+     {
+      "face_uv": [
+       [
+        0.8125,
+        0.875
+       ],
+       [
+        0.875,
+        0.875
+       ],
+       [
+        1.0,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 12.460560642269478,
+      "final_angle": 11.449369384056583,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        1.0,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 39
+     },
+     {
+      "face_uv": [
+       [
+        0.75,
+        0.875
+       ],
+       [
+        0.8125,
+        0.875
+       ],
+       [
+        1.0,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 7.793816797383957,
+      "final_angle": 12.474524617209903,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        1.0,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 40
+     },
+     {
+      "face_uv": [
+       [
+        0.34375,
+        0.875
+       ],
+       [
+        0.375,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 5.792560110151064,
+      "final_angle": 5.248011894952868,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 43
+     },
+     {
+      "face_uv": [
+       [
+        0.3125,
+        0.875
+       ],
+       [
+        0.34375,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 4.282905837222929,
+      "final_angle": 4.357105212541993,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 44
+     },
+     {
+      "face_uv": [
+       [
+        0.28125,
+        0.875
+       ],
+       [
+        0.3125,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 3.2530930027968985,
+      "final_angle": 4.143526535895107,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 45
+     },
+     {
+      "face_uv": [
+       [
+        0.25,
+        0.875
+       ],
+       [
+        0.28125,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 2.5325085084300167,
+      "final_angle": 3.7806708513674914,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 46
+     },
+     {
+      "face_uv": [
+       [
+        0.0,
+        1.0
+       ],
+       [
+        0.1875,
+        0.875
+       ],
+       [
+        0.25,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 7.793341823644152,
+      "final_angle": 8.247072609305471,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.0,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 57
+     },
+     {
+      "face_uv": [
+       [
+        0.0,
+        1.0
+       ],
+       [
+        0.125,
+        0.875
+       ],
+       [
+        0.1875,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 12.457843096409603,
+      "final_angle": 12.457843096409603,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.0,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 58
+     },
+     {
+      "face_uv": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.59375,
+        0.875
+       ],
+       [
+        0.625,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 8.036785339967942,
+      "final_angle": 8.036785339967942,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 82
+     },
+     {
+      "face_uv": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.5625,
+        0.875
+       ],
+       [
+        0.59375,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 11.271414584974702,
+      "final_angle": 11.271414584974702,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 83
+     },
+     {
+      "face_uv": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.6875,
+        0.875
+       ],
+       [
+        0.71875,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 3.2528169651680092,
+      "final_angle": 3.2528169651680092,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 86
+     },
+     {
+      "face_uv": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.65625,
+        0.875
+       ],
+       [
+        0.6875,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 4.2835559711252085,
+      "final_angle": 4.2835559711252085,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 87
+     },
+     {
+      "face_uv": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.625,
+        0.875
+       ],
+       [
+        0.65625,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 5.7944277301987,
+      "final_angle": 5.7944277301987,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 88
+     },
+     {
+      "face_uv": [
+       [
+        0.40625,
+        0.875
+       ],
+       [
+        0.4375,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 11.266027304078793,
+      "final_angle": 11.26830203786952,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 92
+     },
+     {
+      "face_uv": [
+       [
+        0.375,
+        0.875
+       ],
+       [
+        0.40625,
+        0.875
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 8.033282741681463,
+      "final_angle": 8.030006846670291,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 93
+     },
+     {
+      "face_uv": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.71875,
+        0.875
+       ],
+       [
+        0.75,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 2.5314663267635877,
+      "final_angle": 6.980323533807382,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 99
+     }
+    ],
+    "curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "native_front_sha256": "93e56e39efc442740bf1c77d0f837e144964a6d7d162cdc187aa6fd0fe4635a3"
+   },
+   "split": {
+    "counts": {
+     "interior_QUAD": 644,
+     "contour_edge_TRI": 8,
+     "contour_edge_QUAD": 16,
+     "contour_vertex_TRI": 61,
+     "interior_TRI": 13,
+     "contour_vertex_QUAD": 1
+    },
+    "below_floor_by_region": {
+     "contour_vertex_TRI": 22,
+     "interior_TRI": 1
+    },
+    "failures_with_straight_side": [
+     {
+      "face_uv": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.59375,
+        0.9375
+       ],
+       [
+        0.625,
+        0.9375
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 5.723102482556159,
+      "final_angle": 5.723102482556159,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 44
+     },
+     {
+      "face_uv": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.5625,
+        0.9375
+       ],
+       [
+        0.59375,
+        0.9375
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 9.978487556783039,
+      "final_angle": 9.978487556783039,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 45
+     },
+     {
+      "face_uv": [
+       [
+        0.40625,
+        0.9375
+       ],
+       [
+        0.4375,
+        0.9375
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 9.977899026718463,
+      "final_angle": 9.977899026718463,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 48
+     },
+     {
+      "face_uv": [
+       [
+        0.375,
+        0.9375
+       ],
+       [
+        0.40625,
+        0.9375
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 5.722904192273671,
+      "final_angle": 5.722904192273671,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 49
+     },
+     {
+      "face_uv": [
+       [
+        0.625,
+        0.9375
+       ],
+       [
+        0.65625,
+        0.9375
+       ],
+       [
+        0.727447509765625,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 8.889066951849362,
+      "final_angle": 8.889066951849362,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.727447509765625,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 58
+     },
+     {
+      "face_uv": [
+       [
+        0.272552490234375,
+        1.0
+       ],
+       [
+        0.34375,
+        0.9375
+       ],
+       [
+        0.375,
+        0.9375
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 8.890633940597596,
+      "final_angle": 8.890633940597596,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.272552490234375,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 66
+     },
+     {
+      "face_uv": [
+       [
+        0.727447509765625,
+        1.0
+       ],
+       [
+        0.75,
+        0.9375
+       ],
+       [
+        0.8125,
+        0.875
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 9.398242330590463,
+      "final_angle": 10.109560690314497,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.727447509765625,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 102
+     },
+     {
+      "face_uv": [
+       [
+        0.1875,
+        0.875
+       ],
+       [
+        0.25,
+        0.9375
+       ],
+       [
+        0.272552490234375,
+        1.0
+       ]
+      ],
+      "kind": "TRI",
+      "region": "contour_vertex",
+      "first_angle": 9.39649039116533,
+      "final_angle": 10.344361009235717,
+      "below_floor_at_birth": true,
+      "touches_straight": [
+       [
+        0.272552490234375,
+        1.0
+       ]
+      ],
+      "origin": "advance",
+      "operation": 103
+     }
+    ],
+    "curve_lengths": [
+     0.5000095016895614,
+     0.4999904983104386,
+     0.4999904983104386,
+     0.5000095016895614
+    ],
+    "native_front_sha256": "5dc618719022548092ab9fe8286b235a85b2f08d3a5634a56aa78450342d65a5"
+   }
+  },
+  "persistent": 15,
+  "removed_failures": [
+   {
+    "face_uv": [
+     [
+      0.8125,
+      0.875
+     ],
+     [
+      0.875,
+      0.875
+     ],
+     [
+      1.0,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 12.460560642269478,
+    "final_angle": 11.449369384056583,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      1.0,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 39
+   },
+   {
+    "face_uv": [
+     [
+      0.75,
+      0.875
+     ],
+     [
+      0.8125,
+      0.875
+     ],
+     [
+      1.0,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 7.793816797383957,
+    "final_angle": 12.474524617209903,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      1.0,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 40
+   },
+   {
+    "face_uv": [
+     [
+      0.34375,
+      0.875
+     ],
+     [
+      0.375,
+      0.875
+     ],
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 5.792560110151064,
+    "final_angle": 5.248011894952868,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 43
+   },
+   {
+    "face_uv": [
+     [
+      0.3125,
+      0.875
+     ],
+     [
+      0.34375,
+      0.875
+     ],
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 4.282905837222929,
+    "final_angle": 4.357105212541993,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 44
+   },
+   {
+    "face_uv": [
+     [
+      0.28125,
+      0.875
+     ],
+     [
+      0.3125,
+      0.875
+     ],
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 3.2530930027968985,
+    "final_angle": 4.143526535895107,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 45
+   },
+   {
+    "face_uv": [
+     [
+      0.25,
+      0.875
+     ],
+     [
+      0.28125,
+      0.875
+     ],
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 2.5325085084300167,
+    "final_angle": 3.7806708513674914,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 46
+   },
+   {
+    "face_uv": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.1875,
+      0.875
+     ],
+     [
+      0.25,
+      0.875
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 7.793341823644152,
+    "final_angle": 8.247072609305471,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.0,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 57
+   },
+   {
+    "face_uv": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.125,
+      0.875
+     ],
+     [
+      0.1875,
+      0.875
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 12.457843096409603,
+    "final_angle": 12.457843096409603,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.0,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 58
+   },
+   {
+    "face_uv": [
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.59375,
+      0.875
+     ],
+     [
+      0.625,
+      0.875
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 8.036785339967942,
+    "final_angle": 8.036785339967942,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 82
+   },
+   {
+    "face_uv": [
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.5625,
+      0.875
+     ],
+     [
+      0.59375,
+      0.875
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 11.271414584974702,
+    "final_angle": 11.271414584974702,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 83
+   },
+   {
+    "face_uv": [
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.6875,
+      0.875
+     ],
+     [
+      0.71875,
+      0.875
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 3.2528169651680092,
+    "final_angle": 3.2528169651680092,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 86
+   },
+   {
+    "face_uv": [
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.65625,
+      0.875
+     ],
+     [
+      0.6875,
+      0.875
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 4.2835559711252085,
+    "final_angle": 4.2835559711252085,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 87
+   },
+   {
+    "face_uv": [
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.625,
+      0.875
+     ],
+     [
+      0.65625,
+      0.875
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 5.7944277301987,
+    "final_angle": 5.7944277301987,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 88
+   },
+   {
+    "face_uv": [
+     [
+      0.40625,
+      0.875
+     ],
+     [
+      0.4375,
+      0.875
+     ],
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 11.266027304078793,
+    "final_angle": 11.26830203786952,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 92
+   },
+   {
+    "face_uv": [
+     [
+      0.375,
+      0.875
+     ],
+     [
+      0.40625,
+      0.875
+     ],
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 8.033282741681463,
+    "final_angle": 8.030006846670291,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 93
+   },
+   {
+    "face_uv": [
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.71875,
+      0.875
+     ],
+     [
+      0.75,
+      0.875
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 2.5314663267635877,
+    "final_angle": 6.980323533807382,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 99
+   }
+  ],
+  "new_failures": [
+   {
+    "face_uv": [
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.59375,
+      0.9375
+     ],
+     [
+      0.625,
+      0.9375
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 5.723102482556159,
+    "final_angle": 5.723102482556159,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 44
+   },
+   {
+    "face_uv": [
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.5625,
+      0.9375
+     ],
+     [
+      0.59375,
+      0.9375
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 9.978487556783039,
+    "final_angle": 9.978487556783039,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 45
+   },
+   {
+    "face_uv": [
+     [
+      0.40625,
+      0.9375
+     ],
+     [
+      0.4375,
+      0.9375
+     ],
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 9.977899026718463,
+    "final_angle": 9.977899026718463,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 48
+   },
+   {
+    "face_uv": [
+     [
+      0.375,
+      0.9375
+     ],
+     [
+      0.40625,
+      0.9375
+     ],
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 5.722904192273671,
+    "final_angle": 5.722904192273671,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 49
+   },
+   {
+    "face_uv": [
+     [
+      0.625,
+      0.9375
+     ],
+     [
+      0.65625,
+      0.9375
+     ],
+     [
+      0.727447509765625,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 8.889066951849362,
+    "final_angle": 8.889066951849362,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.727447509765625,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 58
+   },
+   {
+    "face_uv": [
+     [
+      0.272552490234375,
+      1.0
+     ],
+     [
+      0.34375,
+      0.9375
+     ],
+     [
+      0.375,
+      0.9375
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 8.890633940597596,
+    "final_angle": 8.890633940597596,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.272552490234375,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 66
+   },
+   {
+    "face_uv": [
+     [
+      0.727447509765625,
+      1.0
+     ],
+     [
+      0.75,
+      0.9375
+     ],
+     [
+      0.8125,
+      0.875
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 9.398242330590463,
+    "final_angle": 10.109560690314497,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.727447509765625,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 102
+   },
+   {
+    "face_uv": [
+     [
+      0.1875,
+      0.875
+     ],
+     [
+      0.25,
+      0.9375
+     ],
+     [
+      0.272552490234375,
+      1.0
+     ]
+    ],
+    "kind": "TRI",
+    "region": "contour_vertex",
+    "first_angle": 9.39649039116533,
+    "final_angle": 10.344361009235717,
+    "below_floor_at_birth": true,
+    "touches_straight": [
+     [
+      0.272552490234375,
+      1.0
+     ]
+    ],
+    "origin": "advance",
+    "operation": 103
+   }
+  ],
+  "old_sample_ids_retained": false,
+  "cleared_blockers": [
+   "contour_vertex_TRI.min_shape.below_safety_floor"
+  ],
+  "added_blockers": [
+   "contour_edge_QUAD.min_angle_deg.regional_regression"
+  ]
+ },
+ "clearance": {
+  "status": "staged",
+  "common_tree_leaves": 193,
+  "regions": {
+   "control": {
+    "seed_quads": 607,
+    "clearance": {
+     "policy": "minimum_cell_segment_uv_v1",
+     "factor": 0.2,
+     "excluded_cells": 8
+    },
+    "below_angle": [
+     {
+      "edge": [
+       [
+        0.06443863201639033,
+        0.0
+       ],
+       [
+        0.128500796854496,
+        0.0
+       ]
+      ],
+      "points": [
+       [
+        0.06443863201639033,
+        0.0
+       ],
+       [
+        0.128500796854496,
+        0.0
+       ],
+       [
+        0.13734481659935227,
+        0.05859375
+       ],
+       [
+        0.09375,
+        0.0625
+       ]
+      ],
+      "min_angle": 32.690057156102796,
+      "passes_floor": true
+     },
+     {
+      "edge": [
+       [
+        0.25457763671875,
+        0.0
+       ],
+       [
+        0.378067746758461,
+        0.0
+       ]
+      ],
+      "points": [
+       [
+        0.25457763671875,
+        0.0
+       ],
+       [
+        0.378067746758461,
+        0.0
+       ],
+       [
+        0.34375,
+        0.0625
+       ],
+       [
+        0.3125,
+        0.0625
+       ]
+      ],
+      "min_angle": 23.383455463276544,
+      "passes_floor": true
+     },
+     {
+      "edge": [
+       [
+        0.74542236328125,
+        0.0
+       ],
+       [
+        0.871499203145504,
+        0.0
+       ]
+      ],
+      "points": [
+       [
+        0.74542236328125,
+        0.0
+       ],
+       [
+        0.871499203145504,
+        0.0
+       ],
+       [
+        0.8109138076340932,
+        0.11947943239795918
+       ],
+       [
+        0.761823762681276,
+        0.11359126984126984
+       ]
+      ],
+      "min_angle": 33.38179733349347,
+      "passes_floor": true
+     },
+     {
+      "edge": [
+       [
+        1.0,
+        0.0
+       ],
+       [
+        1.0,
+        0.272552490234375
+       ]
+      ],
+      "points": [
+       [
+        1.0,
+        0.0
+       ],
+       [
+        1.0,
+        0.272552490234375
+       ],
+       [
+        0.875,
+        0.1875
+       ],
+       [
+        0.875,
+        0.125
+       ]
+      ],
+      "min_angle": 33.24894540888215,
+      "passes_floor": true
+     },
+     {
+      "edge": [
+       [
+        0.0,
+        0.727447509765625
+       ],
+       [
+        0.0,
+        0.5
+       ]
+      ],
+      "points": [
+       [
+        0.0,
+        0.727447509765625
+       ],
+       [
+        0.0,
+        0.5
+       ],
+       [
+        0.125,
+        0.59375
+       ],
+       [
+        0.125,
+        0.625
+       ]
+      ],
+      "min_angle": 43.95653249417975,
+      "passes_floor": true
+     }
+    ]
+   },
+   "split": {
+    "seed_quads": 639,
+    "clearance": {
+     "policy": "minimum_cell_segment_uv_v1",
+     "factor": 0.2,
+     "excluded_cells": 0
+    },
+    "below_angle": [
+     {
+      "edge": [
+       [
+        0.06443863201639033,
+        0.0
+       ],
+       [
+        0.128500796854496,
+        0.0
+       ]
+      ],
+      "points": [
+       [
+        0.06443863201639033,
+        0.0
+       ],
+       [
+        0.128500796854496,
+        0.0
+       ],
+       [
+        0.13734481659935227,
+        0.05859375
+       ],
+       [
+        0.09375,
+        0.0625
+       ]
+      ],
+      "min_angle": 32.690057156102796,
+      "passes_floor": true
+     },
+     {
+      "edge": [
+       [
+        0.25457763671875,
+        0.0
+       ],
+       [
+        0.378067746758461,
+        0.0
+       ]
+      ],
+      "points": [
+       [
+        0.25457763671875,
+        0.0
+       ],
+       [
+        0.378067746758461,
+        0.0
+       ],
+       [
+        0.34375,
+        0.0625
+       ],
+       [
+        0.3125,
+        0.0625
+       ]
+      ],
+      "min_angle": 23.383455463276544,
+      "passes_floor": true
+     },
+     {
+      "edge": [
+       [
+        0.74542236328125,
+        0.0
+       ],
+       [
+        0.871499203145504,
+        0.0
+       ]
+      ],
+      "points": [
+       [
+        0.74542236328125,
+        0.0
+       ],
+       [
+        0.871499203145504,
+        0.0
+       ],
+       [
+        0.8109138076340932,
+        0.11947943239795918
+       ],
+       [
+        0.761823762681276,
+        0.11359126984126984
+       ]
+      ],
+      "min_angle": 33.38179733349347,
+      "passes_floor": true
+     },
+     {
+      "edge": [
+       [
+        1.0,
+        0.0
+       ],
+       [
+        1.0,
+        0.272552490234375
+       ]
+      ],
+      "points": [
+       [
+        1.0,
+        0.0
+       ],
+       [
+        1.0,
+        0.272552490234375
+       ],
+       [
+        0.875,
+        0.1875
+       ],
+       [
+        0.875,
+        0.125
+       ]
+      ],
+      "min_angle": 33.24894540888215,
+      "passes_floor": true
+     },
+     {
+      "edge": [
+       [
+        1.0,
+        1.0
+       ],
+       [
+        0.727447509765625,
+        1.0
+       ]
+      ],
+      "points": [
+       [
+        1.0,
+        1.0
+       ],
+       [
+        0.727447509765625,
+        1.0
+       ],
+       [
+        0.8115598419566213,
+        0.8785204475308642
+       ],
+       [
+        0.875,
+        0.875
+       ]
+      ],
+      "min_angle": 44.95627341472781,
+      "passes_floor": true
+     },
+     {
+      "edge": [
+       [
+        0.272552490234375,
+        1.0
+       ],
+       [
+        0.0,
+        1.0
+       ]
+      ],
+      "points": [
+       [
+        0.272552490234375,
+        1.0
+       ],
+       [
+        0.0,
+        1.0
+       ],
+       [
+        0.125,
+        0.875
+       ],
+       [
+        0.18812645806206596,
+        0.8793402777777778
+       ]
+      ],
+      "min_angle": 44.96744126687943,
+      "passes_floor": true
+     },
+     {
+      "edge": [
+       [
+        0.0,
+        0.727447509765625
+       ],
+       [
+        0.0,
+        0.5
+       ]
+      ],
+      "points": [
+       [
+        0.0,
+        0.727447509765625
+       ],
+       [
+        0.0,
+        0.5
+       ],
+       [
+        0.125,
+        0.59375
+       ],
+       [
+        0.125,
+        0.625
+       ]
+      ],
+      "min_angle": 43.95653249417975,
+      "passes_floor": true
+     }
+    ]
+   }
+  },
+  "seed_faces_added": 32,
+  "seed_faces_removed": 0,
+  "newly_included_boxes": [
+   [
+    0.25,
+    0.875,
+    0.3125,
+    0.9375
+   ],
+   [
+    0.3125,
+    0.875,
+    0.375,
+    0.9375
+   ],
+   [
+    0.375,
+    0.875,
+    0.4375,
+    0.9375
+   ],
+   [
+    0.4375,
+    0.875,
+    0.5,
+    0.9375
+   ],
+   [
+    0.5,
+    0.875,
+    0.5625,
+    0.9375
+   ],
+   [
+    0.5625,
+    0.875,
+    0.625,
+    0.9375
+   ],
+   [
+    0.625,
+    0.875,
+    0.6875,
+    0.9375
+   ],
+   [
+    0.6875,
+    0.875,
+    0.75,
+    0.9375
+   ]
+  ],
+  "newly_excluded_boxes": [],
+  "newly_below_target_edges": [
+   {
+    "edge": [
+     [
+      1.0,
+      1.0
+     ],
+     [
+      0.727447509765625,
+      1.0
+     ]
+    ],
+    "points": [
+     [
+      1.0,
+      1.0
+     ],
+     [
+      0.727447509765625,
+      1.0
+     ],
+     [
+      0.8115598419566213,
+      0.8785204475308642
+     ],
+     [
+      0.875,
+      0.875
+     ]
+    ],
+    "min_angle": 44.95627341472781,
+    "passes_floor": true
+   },
+   {
+    "edge": [
+     [
+      0.272552490234375,
+      1.0
+     ],
+     [
+      0.0,
+      1.0
+     ]
+    ],
+    "points": [
+     [
+      0.272552490234375,
+      1.0
+     ],
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.125,
+      0.875
+     ],
+     [
+      0.18812645806206596,
+      0.8793402777777778
+     ]
+    ],
+    "min_angle": 44.96744126687943,
+    "passes_floor": true
+   }
+  ],
+  "curve_id_reassignments": [
+   {
+    "side": 3,
+    "parameter": 0.727447509765625,
+    "old": 800,
+    "new": 802
+   },
+   {
+    "side": 3,
+    "parameter": 0.272552490234375,
+    "old": 801,
+    "new": 803
+   }
+  ],
+  "reassigned_source_sample_ids": []
+ },
+ "guarded_passes": {
+  "status": "measured",
+  "affected_edges": [
+   {
+    "contour": [
+     [
+      1.0,
+      1.0
+     ],
+     [
+      0.727447509765625,
+      1.0
+     ]
+    ],
+    "shape_trajectory": [
+     {
+      "frame": "before.obj",
+      "min_angle": 44.95627341472781,
+      "min_scaled_jacobian": 0.7065611899533978,
+      "sha256": "8721c88d8e6b11a6f3ac2ab24d301bb32fa676267508337154f1414a3995e950"
+     },
+     {
+      "frame": "guarded_1.obj",
+      "min_angle": 44.95627341472781,
+      "min_scaled_jacobian": 0.7065611899533978,
+      "sha256": "3ec0b8478e50774f61eba0ecf10d65b5986336404a184d23a78b0b5db49e9f8e"
+     },
+     {
+      "frame": "guarded_2.obj",
+      "min_angle": 44.95627341472781,
+      "min_scaled_jacobian": 0.7065611899533978,
+      "sha256": "df82afff81ffe71500476830a940c97a0ffb865faf1ba2c37b5d51763d9c622b"
+     },
+     {
+      "frame": "guarded_3.obj",
+      "min_angle": 44.95627341472781,
+      "min_scaled_jacobian": 0.7065611899533978,
+      "sha256": "703cb69e06cf0b8a600b313eb5a0d6b7d138a9adc0a13a2e710a4b02ff8fcf8d"
+     },
+     {
+      "frame": "guarded_4.obj",
+      "min_angle": 44.95627341472781,
+      "min_scaled_jacobian": 0.7065611899533978,
+      "sha256": "3412481e7d2f59ccee76404d591a6ac87160c5fa65bdbf2a2678d8572641c6c7"
+     },
+     {
+      "frame": "guarded_5.obj",
+      "min_angle": 44.95627341472781,
+      "min_scaled_jacobian": 0.7065611899533978,
+      "sha256": "b3b24360b118a9eae15c12f536b2628e6e2fb3e69b960022f9505eaedc1be959"
+     },
+     {
+      "frame": "guarded_final.obj",
+      "min_angle": 44.95627341472781,
+      "min_scaled_jacobian": 0.7065611899533978,
+      "sha256": "b3b24360b118a9eae15c12f536b2628e6e2fb3e69b960022f9505eaedc1be959"
+     }
+    ]
+   },
+   {
+    "contour": [
+     [
+      0.272552490234375,
+      1.0
+     ],
+     [
+      0.0,
+      1.0
+     ]
+    ],
+    "shape_trajectory": [
+     {
+      "frame": "before.obj",
+      "min_angle": 44.96744126687943,
+      "min_scaled_jacobian": 0.7064236666475271,
+      "sha256": "8721c88d8e6b11a6f3ac2ab24d301bb32fa676267508337154f1414a3995e950"
+     },
+     {
+      "frame": "guarded_1.obj",
+      "min_angle": 44.96744126687943,
+      "min_scaled_jacobian": 0.7064236666475271,
+      "sha256": "3ec0b8478e50774f61eba0ecf10d65b5986336404a184d23a78b0b5db49e9f8e"
+     },
+     {
+      "frame": "guarded_2.obj",
+      "min_angle": 44.96744126687943,
+      "min_scaled_jacobian": 0.7064236666475271,
+      "sha256": "df82afff81ffe71500476830a940c97a0ffb865faf1ba2c37b5d51763d9c622b"
+     },
+     {
+      "frame": "guarded_3.obj",
+      "min_angle": 44.96744126687943,
+      "min_scaled_jacobian": 0.7064236666475271,
+      "sha256": "703cb69e06cf0b8a600b313eb5a0d6b7d138a9adc0a13a2e710a4b02ff8fcf8d"
+     },
+     {
+      "frame": "guarded_4.obj",
+      "min_angle": 44.96744126687943,
+      "min_scaled_jacobian": 0.7064236666475271,
+      "sha256": "3412481e7d2f59ccee76404d591a6ac87160c5fa65bdbf2a2678d8572641c6c7"
+     },
+     {
+      "frame": "guarded_5.obj",
+      "min_angle": 44.96744126687943,
+      "min_scaled_jacobian": 0.7064236666475271,
+      "sha256": "b3b24360b118a9eae15c12f536b2628e6e2fb3e69b960022f9505eaedc1be959"
+     },
+     {
+      "frame": "guarded_final.obj",
+      "min_angle": 44.96744126687943,
+      "min_scaled_jacobian": 0.7064236666475271,
+      "sha256": "b3b24360b118a9eae15c12f536b2628e6e2fb3e69b960022f9505eaedc1be959"
+     }
+    ]
+   }
+  ]
+ },
+ "native_corner_replay": {
+  "source": "0ad5b7bdf7af9504b739f0dc85172d832c3ea8f1",
+  "executable_sha256": "e560bb7d451ba3f6c6564c32f78071da8e149b1c06bcf69a4fd085410a260f12",
+  "relative_pair_limit": 0.045,
+  "cases": [
+   {
+    "operation": 17,
+    "chosen": {
+     "quad": [
+      707,
+      708,
+      255,
+      35
+     ],
+     "in_native_neighborhood": true,
+     "uv_score": 1.5,
+     "relative_error": 0.02806081093564334,
+     "physical_valid": true,
+     "min_angle": 44.95627341472781,
+     "shape": 0.7065611899533978,
+     "passes_floor": true,
+     "angle_target": false
+    },
+    "uv_passes": [
+     {
+      "quad": [
+       707,
+       708,
+       255,
+       35
+      ],
+      "in_native_neighborhood": true,
+      "uv_score": 1.5,
+      "relative_error": 0.02806081093564334,
+      "physical_valid": true,
+      "min_angle": 44.95627341472781,
+      "shape": 0.7065611899533978,
+      "passes_floor": true,
+      "angle_target": false
+     }
+    ],
+    "checked_pairs": 37,
+    "triangles": [
+     {
+      "apex": 35,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 35.64060380978936,
+      "shape": 0.7764890061381478,
+      "passes_floor": true,
+      "angle_target": true
+     },
+     {
+      "apex": 43,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 6.588794705010246,
+      "shape": 0.1511262024903964,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 44,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 5.561845604519163,
+      "shape": 0.11317048767035283,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 46,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 7.844157259265657,
+      "shape": 0.2052629112263497,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 65,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 3.837945825995785,
+      "shape": 0.08685571377545401,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 66,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 2.823530654659477,
+      "shape": 0.06843152183738355,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 72,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 9.637651377069501,
+      "shape": 0.27793186286544086,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 73,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 12.360623054314317,
+      "shape": 0.3603874527060466,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 74,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 2.1788312847918268,
+      "shape": 0.0553045755283982,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 75,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 1.7459633639329482,
+      "shape": 0.04577285797176404,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 255,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 32.496686750355884,
+      "shape": 0.7621048309913504,
+      "passes_floor": true,
+      "angle_target": true
+     },
+     {
+      "apex": 260,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 6.096007853615399,
+      "shape": 0.1304135661603928,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 265,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 7.16459602565354,
+      "shape": 0.1759055976084012,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 305,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 3.2696126467147995,
+      "shape": 0.07684415392025139,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 309,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 4.5769444732052005,
+      "shape": 0.0988209996985961,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 322,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 8.655553302103167,
+      "shape": 0.23941396818643002,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 326,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 10.845692130327256,
+      "shape": 0.3192793055882473,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 329,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 1.9421678189375569,
+      "shape": 0.05016951931423465,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 332,
+      "in_native_neighborhood": false,
+      "physical_valid": true,
+      "min_angle": 2.4673639678084993,
+      "shape": 0.0613293306400404,
+      "passes_floor": false,
+      "angle_target": false
+     }
+    ],
+    "in_sha256": "09a4b3f862b2ff0d012541e67309c157d27e6a101dfb32c67933e8c57d790b28",
+    "stdout_sha256": "b826fc555ebd3ca5ca89089ee14cca187db30b2ea0fb3d58dd6741a27f9b7add"
+   },
+   {
+    "operation": 20,
+    "chosen": {
+     "quad": [
+      710,
+      711,
+      82,
+      343
+     ],
+     "in_native_neighborhood": true,
+     "uv_score": 1.5,
+     "relative_error": 0.028172093119739637,
+     "physical_valid": true,
+     "min_angle": 44.96744126687943,
+     "shape": 0.7064236666475271,
+     "passes_floor": true,
+     "angle_target": false
+    },
+    "uv_passes": [
+     {
+      "quad": [
+       710,
+       711,
+       82,
+       343
+      ],
+      "in_native_neighborhood": true,
+      "uv_score": 1.5,
+      "relative_error": 0.028172093119739637,
+      "physical_valid": true,
+      "min_angle": 44.96744126687943,
+      "shape": 0.7064236666475271,
+      "passes_floor": true,
+      "angle_target": false
+     }
+    ],
+    "checked_pairs": 12,
+    "triangles": [
+     {
+      "apex": 66,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 7.845622377917549,
+      "shape": 0.20529990561436232,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 74,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 9.63990557977604,
+      "shape": 0.2779938893138494,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 75,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 12.363522792617683,
+      "shape": 0.36046746879189057,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 82,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 35.65118161003784,
+      "shape": 0.776678430022539,
+      "passes_floor": true,
+      "angle_target": true
+     },
+     {
+      "apex": 329,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 10.848298835302558,
+      "shape": 0.3193521508236439,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 332,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 8.657420243547202,
+      "shape": 0.23946352305355786,
+      "passes_floor": false,
+      "angle_target": false
+     },
+     {
+      "apex": 343,
+      "in_native_neighborhood": true,
+      "physical_valid": true,
+      "min_angle": 32.5130665213607,
+      "shape": 0.7624090994130513,
+      "passes_floor": true,
+      "angle_target": true
+     }
+    ],
+    "in_sha256": "86f4d9b7700bc664c8e9c629cc9f6ee1d31677fd5c6c735c7332c062774946b2",
+    "stdout_sha256": "480bd5b0d518bf9facff44f3f6dce077550cd84582b2491a493fd7781d5f51a9"
+   }
+  ]
+ },
+ "corner_diagonal_limits": [
+  {
+   "operation": 17,
+   "splits": [
+    {
+     "faces": [
+      {
+       "face": [
+        707,
+        708,
+        255
+       ],
+       "min_angle": 32.496686750355884,
+       "q": 0.7621048309913504,
+       "passes_floor": true
+      },
+      {
+       "face": [
+        707,
+        255,
+        35
+       ],
+       "min_angle": 12.460560642269478,
+       "q": 0.3401301971219503,
+       "passes_floor": false
+      }
+     ],
+     "all_pass": false
+    },
+    {
+     "faces": [
+      {
+       "face": [
+        707,
+        708,
+        35
+       ],
+       "min_angle": 35.64060380978936,
+       "q": 0.7764890061381478,
+       "passes_floor": true
+      },
+      {
+       "face": [
+        708,
+        255,
+        35
+       ],
+       "min_angle": 14.745187849981251,
+       "q": 0.3965482424068532,
+       "passes_floor": false
+      }
+     ],
+     "all_pass": false
+    }
+   ]
+  },
+  {
+   "operation": 20,
+   "splits": [
+    {
+     "faces": [
+      {
+       "face": [
+        710,
+        711,
+        82
+       ],
+       "min_angle": 35.65118161003784,
+       "q": 0.776678430022539,
+       "passes_floor": true
+      },
+      {
+       "face": [
+        710,
+        82,
+        343
+       ],
+       "min_angle": 14.754859322236612,
+       "q": 0.3968361785392943,
+       "passes_floor": false
+      }
+     ],
+     "all_pass": false
+    },
+    {
+     "faces": [
+      {
+       "face": [
+        710,
+        711,
+        343
+       ],
+       "min_angle": 32.5130665213607,
+       "q": 0.7624090994130513,
+       "passes_floor": true
+      },
+      {
+       "face": [
+        711,
+        82,
+        343
+       ],
+       "min_angle": 12.457843096409603,
+       "q": 0.34006249829010615,
+       "passes_floor": false
+      }
+     ],
+     "all_pass": false
+    }
+   ]
+  }
+ ],
+ "hosted": {
+  "run": 45806459734,
+  "jobs": [
+   {
+    "name": "TRI baseline and tooling controls (Linux)",
+    "id": 139862942095,
+    "conclusion": "success"
+   },
+   {
+    "name": "TRI scientific equivalence against frozen baseline",
+    "id": 139862942626,
+    "conclusion": "success"
+   },
+   {
+    "name": "QUAD native (windows-2022)",
+    "id": 139862942642,
+    "conclusion": "success"
+   },
+   {
+    "name": "QUAD native (ubuntu-24.04)",
+    "id": 139862942669,
+    "conclusion": "success"
+   }
+  ]
+ }
+}
