@@ -4964,3 +4964,17 @@ shape criteria before alignment on a new rule.
 [Native measurements and limits](MEASURED_SIZE_GROUP_TRIAL_20261125.md).
 Zero accepted mixed epochs. Hosted run 45739394878 has no final result
 at this checkpoint.
+
+
+## 2026-11-25 Fortaleza - replay active front choices at the size failure
+
+The CurvaBezier and Ribbed archive replays reproduce the recorded
+choices and find zero currently feasible size-and-shape alternatives.
+They consider 115 and 46 other directed bases with the original
+neighborhoods and scan all 62 recorded states of the Ribbed base.
+The best earlier Ribbed face is still 0.64853 against the 0.38298
+request. The two-case replay and input/metric verification pass.
+The proposed next comparisons use the unsplit CurvaBezier curve
+interval 0 and the available level-4 Ribbed leaf split. Scientific
+alignment was requested. No new native run or accepted mixed epoch.
+[Bounded replay and handoff](FRONT_SIZE_OPTIONS_REPLAY_20261125.md).

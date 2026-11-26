@@ -1,0 +1,6391 @@
+{
+  "schema": "apmesh.quad.archived_front_size_options.v1",
+  "canonical_input": "6c0581a2369f9fcfbc56994aea1fb1c535ca59b0",
+  "measured_group_revision": "3f2946a5a0176730c7855b05c0eca99295e1ff54",
+  "control_archives": {
+    "curva": {
+      "case": "budget-curva",
+      "delivery_revision": "7ec6cc137f8a1abe32cde69c86b4465c099b7e29",
+      "engine_sha256": "e58b188eb771d1c91ac46a31fce3600abf1dca268591ccc310426dd7a74810a7",
+      "archive_receipt_sha256": "df42ae6cc87eba9af7efe651aa493b363d7b5fffb50d272c7c8810333ef908f7"
+    },
+    "ribbed": {
+      "case": "control",
+      "delivery_revision": "3f2946a5a0176730c7855b05c0eca99295e1ff54",
+      "engine_sha256": "824bfb8bbdd62bf136305b138adbc4c612a301d6bc26679e1a99482dcc076834",
+      "archive_receipt_sha256": "f36e82727d47e929a9c9486be8d459e879919ef5e566740f65a346912170934e"
+    }
+  },
+  "commands": [
+    "python build/quad-front-size-options-20261125/compare.py",
+    "python build/quad-front-size-options-20261125/verify.py"
+  ],
+  "file_sha256": {
+    "compare.py": "41773f002b45f7235a7a1d7b1ecba4aa37a7e3e138f7b941e10ce309f7418488",
+    "verify.py": "357c151040105bfe6a76e7b9db77e2e4cdd2fc496d3491a8ea85e6b22d312cf3",
+    "comparison.json": "05f8525dd608a734564bbb994872ab5154d19a023a3253afc9f8780c09b10794",
+    "control.json": "d6a642cb10b1192da83bda7c6009e60f7e2ec6bb3a028c4ce86f66aad725842c"
+  },
+  "control": {
+    "curva": {
+      "bound_sources": 3,
+      "bound_artifacts": 3,
+      "reproduced_target_birth_values": 2,
+      "scanned_prior_states": 1
+    },
+    "ribbed": {
+      "bound_sources": 3,
+      "bound_artifacts": 3,
+      "reproduced_target_birth_values": 1,
+      "scanned_prior_states": 62
+    }
+  },
+  "results": {
+    "profile": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+    "cases": {
+      "curva": {
+        "operation": 1,
+        "active_vertices": 116,
+        "active_edges": 116,
+        "target_sites": [
+          [
+            646,
+            [
+              0.05,
+              0.03125
+            ],
+            0.07103903607281982
+          ],
+          [
+            648,
+            [
+              0.05,
+              0.043750000000000004
+            ],
+            0.07243495030860424
+          ]
+        ],
+        "native_choice": {
+          "polygon": [
+            681,
+            682,
+            348,
+            84
+          ],
+          "h": 0.1368147635203934,
+          "minimum_angle": 22.332489205112605,
+          "quality": 0.37379874305405125,
+          "requests": [
+            646,
+            648
+          ],
+          "targets": [
+            646,
+            648
+          ],
+          "size_ok": false,
+          "shape_ok": false,
+          "physical_ok": true,
+          "geometry_ok": true,
+          "error": null,
+          "S": 1.5
+        },
+        "base_chord": 0.2731564187143696,
+        "base": [
+          681,
+          682
+        ],
+        "actual_leaf_neighborhood": {
+          "geometric": 8,
+          "valid": 5,
+          "target": 3,
+          "valid_avoiding_target": 2,
+          "size": 0,
+          "shape": 2,
+          "joint": 0,
+          "joint_rows": [],
+          "by_target": {
+            "646": 0,
+            "648": 0
+          },
+          "smallest": {
+            "polygon": [
+              681,
+              682,
+              348,
+              84
+            ],
+            "h": 0.1368147635203934,
+            "minimum_angle": 22.332489205112605,
+            "quality": 0.37379874305405125,
+            "requests": [
+              646,
+              648
+            ],
+            "targets": [
+              646,
+              648
+            ],
+            "size_ok": false,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": 1.5
+          }
+        },
+        "all_active_vertices_same_base": {
+          "geometric": 22,
+          "valid": 5,
+          "target": 3,
+          "valid_avoiding_target": 2,
+          "size": 0,
+          "shape": 2,
+          "joint": 0,
+          "joint_rows": [],
+          "by_target": {
+            "646": 0,
+            "648": 0
+          },
+          "smallest": {
+            "polygon": [
+              681,
+              682,
+              348,
+              84
+            ],
+            "h": 0.1368147635203934,
+            "minimum_angle": 22.332489205112605,
+            "quality": 0.37379874305405125,
+            "requests": [
+              646,
+              648
+            ],
+            "targets": [
+              646,
+              648
+            ],
+            "size_ok": false,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": 1.5
+          }
+        },
+        "native_rows": [
+          {
+            "polygon": [
+              681,
+              682,
+              13
+            ],
+            "h": 0.42012795840622913,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              15
+            ],
+            "h": 0.29040046792939894,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              84
+            ],
+            "h": 0.19891675311810983,
+            "minimum_angle": 22.332489205112605,
+            "quality": 0.5594381490943431,
+            "requests": [
+              646,
+              648
+            ],
+            "targets": [
+              646,
+              648
+            ],
+            "size_ok": false,
+            "shape_ok": true,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              348,
+              84
+            ],
+            "h": 0.1368147635203934,
+            "minimum_angle": 22.332489205112605,
+            "quality": 0.37379874305405125,
+            "requests": [
+              646,
+              648
+            ],
+            "targets": [
+              646,
+              648
+            ],
+            "size_ok": false,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": 1.5
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              85
+            ],
+            "h": 0.2731564187143696,
+            "minimum_angle": 11.200406038345701,
+            "quality": 0.3236743545835734,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              208
+            ],
+            "h": 0.3547843537707051,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              210
+            ],
+            "h": 0.3108923733748101,
+            "minimum_angle": 4.260722627761872,
+            "quality": 0.09129949904822314,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              348
+            ],
+            "h": 0.25599835355160805,
+            "minimum_angle": 15.80540041472929,
+            "quality": 0.4527373109937203,
+            "requests": [
+              646
+            ],
+            "targets": [
+              646
+            ],
+            "size_ok": false,
+            "shape_ok": true,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          }
+        ],
+        "wide_rows": [
+          {
+            "polygon": [
+              681,
+              682,
+              7
+            ],
+            "h": 0.6867847576147911,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              8
+            ],
+            "h": 0.8211786060145704,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              11
+            ],
+            "h": 0.5527318541742299,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              13
+            ],
+            "h": 0.42012795840622913,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              15
+            ],
+            "h": 0.29040046792939894,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              23
+            ],
+            "h": 1.2160501401618526,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              24
+            ],
+            "h": 1.3414824566043693,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              26
+            ],
+            "h": 1.0868398673387842,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              28
+            ],
+            "h": 0.9548733599139425,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              84
+            ],
+            "h": 0.19891675311810983,
+            "minimum_angle": 22.332489205112605,
+            "quality": 0.5594381490943431,
+            "requests": [
+              646,
+              648
+            ],
+            "targets": [
+              646,
+              648
+            ],
+            "size_ok": false,
+            "shape_ok": true,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              348,
+              84
+            ],
+            "h": 0.1368147635203934,
+            "minimum_angle": 22.332489205112605,
+            "quality": 0.37379874305405125,
+            "requests": [
+              646,
+              648
+            ],
+            "targets": [
+              646,
+              648
+            ],
+            "size_ok": false,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": 1.5
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              85
+            ],
+            "h": 0.2731564187143696,
+            "minimum_angle": 11.200406038345701,
+            "quality": 0.3236743545835734,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              195
+            ],
+            "h": 0.7540046167999842,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              200
+            ],
+            "h": 0.6196493323787131,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              204
+            ],
+            "h": 0.48617289556055193,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              208
+            ],
+            "h": 0.3547843537707051,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              210
+            ],
+            "h": 0.3108923733748101,
+            "minimum_angle": 4.260722627761872,
+            "quality": 0.09129949904822314,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              221
+            ],
+            "h": 1.2793018808615568,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              226
+            ],
+            "h": 1.1518536470589327,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              230
+            ],
+            "h": 1.0211369409943536,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              234
+            ],
+            "h": 0.8881777229031896,
+            "minimum_angle": null,
+            "quality": null,
+            "requests": [],
+            "targets": [],
+            "size_ok": true,
+            "shape_ok": false,
+            "physical_ok": false,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          },
+          {
+            "polygon": [
+              681,
+              682,
+              348
+            ],
+            "h": 0.25599835355160805,
+            "minimum_angle": 15.80540041472929,
+            "quality": 0.4527373109937203,
+            "requests": [
+              646
+            ],
+            "targets": [
+              646
+            ],
+            "size_ok": false,
+            "shape_ok": true,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          }
+        ],
+        "alternative_bases": [
+          {
+            "base": [
+              682,
+              683
+            ],
+            "geometric": 25,
+            "valid": 25,
+            "target": 0,
+            "valid_avoiding_target": 25,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              683,
+              684
+            ],
+            "geometric": 12,
+            "valid": 12,
+            "target": 0,
+            "valid_avoiding_target": 12,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              684,
+              685
+            ],
+            "geometric": 13,
+            "valid": 12,
+            "target": 0,
+            "valid_avoiding_target": 12,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              685,
+              686
+            ],
+            "geometric": 13,
+            "valid": 13,
+            "target": 0,
+            "valid_avoiding_target": 13,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              686,
+              687
+            ],
+            "geometric": 10,
+            "valid": 9,
+            "target": 0,
+            "valid_avoiding_target": 9,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              687,
+              688
+            ],
+            "geometric": 9,
+            "valid": 8,
+            "target": 0,
+            "valid_avoiding_target": 8,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              688,
+              689
+            ],
+            "geometric": 8,
+            "valid": 5,
+            "target": 0,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              689,
+              690
+            ],
+            "geometric": 13,
+            "valid": 13,
+            "target": 0,
+            "valid_avoiding_target": 13,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              690,
+              691
+            ],
+            "geometric": 11,
+            "valid": 11,
+            "target": 0,
+            "valid_avoiding_target": 11,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              691,
+              692
+            ],
+            "geometric": 13,
+            "valid": 13,
+            "target": 0,
+            "valid_avoiding_target": 13,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              692,
+              693
+            ],
+            "geometric": 8,
+            "valid": 8,
+            "target": 0,
+            "valid_avoiding_target": 8,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              693,
+              694
+            ],
+            "geometric": 12,
+            "valid": 12,
+            "target": 0,
+            "valid_avoiding_target": 12,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              694,
+              695
+            ],
+            "geometric": 12,
+            "valid": 12,
+            "target": 0,
+            "valid_avoiding_target": 12,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              695,
+              696
+            ],
+            "geometric": 12,
+            "valid": 12,
+            "target": 0,
+            "valid_avoiding_target": 12,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              696,
+              697
+            ],
+            "geometric": 18,
+            "valid": 18,
+            "target": 0,
+            "valid_avoiding_target": 18,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              697,
+              698
+            ],
+            "geometric": 12,
+            "valid": 12,
+            "target": 0,
+            "valid_avoiding_target": 12,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              698,
+              681
+            ],
+            "geometric": 10,
+            "valid": 10,
+            "target": 0,
+            "valid_avoiding_target": 10,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              183,
+              0
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              1,
+              183
+            ],
+            "geometric": 8,
+            "valid": 7,
+            "target": 0,
+            "valid_avoiding_target": 7,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              192,
+              1
+            ],
+            "geometric": 5,
+            "valid": 5,
+            "target": 0,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              6,
+              192
+            ],
+            "geometric": 4,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              195,
+              7
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              8,
+              195
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              200,
+              11
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              7,
+              200
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              204,
+              13
+            ],
+            "geometric": 4,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              11,
+              204
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              208,
+              15
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              15,
+              210
+            ],
+            "geometric": 17,
+            "valid": 9,
+            "target": 0,
+            "valid_avoiding_target": 9,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              13,
+              208
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              210,
+              16
+            ],
+            "geometric": 7,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              17,
+              215
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              215,
+              20
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              20,
+              219
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              218,
+              21
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              219,
+              22
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              22,
+              218
+            ],
+            "geometric": 11,
+            "valid": 8,
+            "target": 0,
+            "valid_avoiding_target": 8,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              221,
+              23
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              222,
+              24
+            ],
+            "geometric": 5,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              24,
+              221
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              0,
+              222
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              226,
+              26
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              23,
+              226
+            ],
+            "geometric": 4,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              230,
+              28
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              26,
+              230
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              234,
+              8
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              28,
+              234
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              267,
+              45
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              46,
+              267
+            ],
+            "geometric": 5,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              276,
+              46
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              51,
+              276
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              288,
+              53
+            ],
+            "geometric": 5,
+            "valid": 5,
+            "target": 0,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              58,
+              288
+            ],
+            "geometric": 5,
+            "valid": 5,
+            "target": 0,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              305,
+              65
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              66,
+              305
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              312,
+              66
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              68,
+              312
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              316,
+              69
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              70,
+              316
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              320,
+              70
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              321,
+              72
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              72,
+              320
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              45,
+              321
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              73,
+              327
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              327,
+              76
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              76,
+              331
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              331,
+              78
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              53,
+              334
+            ],
+            "geometric": 5,
+            "valid": 5,
+            "target": 0,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              333,
+              68
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              334,
+              79
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 0,
+            "valid_avoiding_target": 3,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              79,
+              333
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              336,
+              34
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              337,
+              80
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              80,
+              336
+            ],
+            "geometric": 11,
+            "valid": 8,
+            "target": 0,
+            "valid_avoiding_target": 8,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              81,
+              337
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              340,
+              81
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              82,
+              340
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              343,
+              82
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              83,
+              343
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              346,
+              83
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              69,
+              346
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              348,
+              84
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 2,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": {
+              "polygon": [
+                348,
+                84,
+                681,
+                682
+              ],
+              "h": 0.1368147635203934,
+              "minimum_angle": 22.332489205112605,
+              "quality": 0.37379874305405125,
+              "requests": [
+                646,
+                648
+              ],
+              "targets": [
+                646,
+                648
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": 1.5
+            }
+          },
+          {
+            "base": [
+              84,
+              350
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              349,
+              85
+            ],
+            "geometric": 16,
+            "valid": 10,
+            "target": 0,
+            "valid_avoiding_target": 10,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              85,
+              348
+            ],
+            "geometric": 3,
+            "valid": 3,
+            "target": 1,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": {
+              "polygon": [
+                85,
+                348,
+                681
+              ],
+              "h": 0.25599835355160805,
+              "minimum_angle": 4.870970863137532,
+              "quality": 0.1404930706228958,
+              "requests": [
+                646
+              ],
+              "targets": [
+                646
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "base": [
+              74,
+              349
+            ],
+            "geometric": 7,
+            "valid": 5,
+            "target": 0,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              350,
+              73
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              352,
+              74
+            ],
+            "geometric": 6,
+            "valid": 5,
+            "target": 0,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              86,
+              352
+            ],
+            "geometric": 10,
+            "valid": 8,
+            "target": 0,
+            "valid_avoiding_target": 8,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              356,
+              86
+            ],
+            "geometric": 10,
+            "valid": 8,
+            "target": 0,
+            "valid_avoiding_target": 8,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              16,
+              356
+            ],
+            "geometric": 4,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              490,
+              6
+            ],
+            "geometric": 4,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              132,
+              490
+            ],
+            "geometric": 4,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              493,
+              132
+            ],
+            "geometric": 4,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              34,
+              493
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              608,
+              166
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              167,
+              608
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              611,
+              167
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              168,
+              611
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              619,
+              51
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              170,
+              619
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              622,
+              170
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              166,
+              622
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              21,
+              626
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              626,
+              172
+            ],
+            "geometric": 5,
+            "valid": 5,
+            "target": 0,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              172,
+              634
+            ],
+            "geometric": 4,
+            "valid": 4,
+            "target": 0,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              634,
+              58
+            ],
+            "geometric": 5,
+            "valid": 5,
+            "target": 0,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              671,
+              168
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              181,
+              671
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              674,
+              181
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              65,
+              674
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              78,
+              677
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              677,
+              182
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              182,
+              679
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              679,
+              17
+            ],
+            "geometric": 2,
+            "valid": 2,
+            "target": 0,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": null
+          }
+        ],
+        "earlier_active_states": [
+          {
+            "operation": 1,
+            "active": 116,
+            "geometric": 8,
+            "valid": 5,
+            "target": 3,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 2,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "646": 0,
+              "648": 0
+            },
+            "smallest": {
+              "polygon": [
+                681,
+                682,
+                348,
+                84
+              ],
+              "h": 0.1368147635203934,
+              "minimum_angle": 22.332489205112605,
+              "quality": 0.37379874305405125,
+              "requests": [
+                646,
+                648
+              ],
+              "targets": [
+                646,
+                648
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": 1.5
+            }
+          }
+        ],
+        "front_sha256": "8a9a89263a7d6dcc05bef1a2039aa2cb33ac7949ab81007b33f8a4d6fbba0037",
+        "source_sha256": {
+          "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+          "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+          "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+        },
+        "input_sha256": {
+          "requests.csv": "faa9e7a827941324e9e571759927349ec2dc0da48c5722b334e98e1b3f10406a",
+          "candidate_front/front.json": "8a9a89263a7d6dcc05bef1a2039aa2cb33ac7949ab81007b33f8a4d6fbba0037",
+          "smoothing_comparison/before.obj": "1df4a8642b098018af4a406a0348c70d74416237d307642640e7da6b2fa2b90b"
+        }
+      },
+      "ribbed": {
+        "operation": 62,
+        "active_vertices": 40,
+        "active_edges": 47,
+        "target_sites": [
+          [
+            478,
+            [
+              0.843784328084439,
+              0.09375
+            ],
+            0.38298137195051996
+          ]
+        ],
+        "native_choice": {
+          "polygon": [
+            114,
+            446,
+            500
+          ],
+          "h": 1.0403811384776636,
+          "minimum_angle": 13.543368474520799,
+          "quality": 0.39437597915583095,
+          "requests": [
+            478
+          ],
+          "targets": [
+            478
+          ],
+          "size_ok": false,
+          "shape_ok": false,
+          "physical_ok": true,
+          "geometry_ok": true,
+          "error": null,
+          "S": null
+        },
+        "base_chord": 0.2501231649046539,
+        "base": [
+          114,
+          446
+        ],
+        "actual_leaf_neighborhood": {
+          "geometric": 1,
+          "valid": 1,
+          "target": 1,
+          "valid_avoiding_target": 0,
+          "size": 0,
+          "shape": 0,
+          "joint": 0,
+          "joint_rows": [],
+          "by_target": {
+            "478": 0
+          },
+          "smallest": {
+            "polygon": [
+              114,
+              446,
+              500
+            ],
+            "h": 1.0403811384776636,
+            "minimum_angle": 13.543368474520799,
+            "quality": 0.39437597915583095,
+            "requests": [
+              478
+            ],
+            "targets": [
+              478
+            ],
+            "size_ok": false,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          }
+        },
+        "all_active_vertices_same_base": {
+          "geometric": 1,
+          "valid": 1,
+          "target": 1,
+          "valid_avoiding_target": 0,
+          "size": 0,
+          "shape": 0,
+          "joint": 0,
+          "joint_rows": [],
+          "by_target": {
+            "478": 0
+          },
+          "smallest": {
+            "polygon": [
+              114,
+              446,
+              500
+            ],
+            "h": 1.0403811384776636,
+            "minimum_angle": 13.543368474520799,
+            "quality": 0.39437597915583095,
+            "requests": [
+              478
+            ],
+            "targets": [
+              478
+            ],
+            "size_ok": false,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          }
+        },
+        "native_rows": [
+          {
+            "polygon": [
+              114,
+              446,
+              500
+            ],
+            "h": 1.0403811384776636,
+            "minimum_angle": 13.543368474520799,
+            "quality": 0.39437597915583095,
+            "requests": [
+              478
+            ],
+            "targets": [
+              478
+            ],
+            "size_ok": false,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          }
+        ],
+        "wide_rows": [
+          {
+            "polygon": [
+              114,
+              446,
+              500
+            ],
+            "h": 1.0403811384776636,
+            "minimum_angle": 13.543368474520799,
+            "quality": 0.39437597915583095,
+            "requests": [
+              478
+            ],
+            "targets": [
+              478
+            ],
+            "size_ok": false,
+            "shape_ok": false,
+            "physical_ok": true,
+            "geometry_ok": true,
+            "error": null,
+            "S": null
+          }
+        ],
+        "alternative_bases": [
+          {
+            "base": [
+              449,
+              114
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              115,
+              449
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              452,
+              116
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              453,
+              117
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              456,
+              118
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              118,
+              457
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              469,
+              115
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              470,
+              121
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              121,
+              469
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              122,
+              470
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              473,
+              122
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              123,
+              473
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              477,
+              124
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              125,
+              477
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              480,
+              125
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              126,
+              480
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              483,
+              126
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              127,
+              483
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              128,
+              486
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              489,
+              128
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              130,
+              490
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              118,
+              497
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              116,
+              498
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              497,
+              456
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              498,
+              452
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              446,
+              500
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                446,
+                500,
+                114
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "base": [
+              117,
+              446
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              114,
+              502
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              500,
+              114
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                500,
+                114,
+                446
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.3943759791558309,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "base": [
+              121,
+              503
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              449,
+              121
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              502,
+              449
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              122,
+              504
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              503,
+              122
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              504,
+              123
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              124,
+              506
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              125,
+              507
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              506,
+              125
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              486,
+              508
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              507,
+              127
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              508,
+              489
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              490,
+              510
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              510,
+              130
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              176,
+              118
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              457,
+              176
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          },
+          {
+            "base": [
+              446,
+              453
+            ],
+            "geometric": 1,
+            "valid": 1,
+            "target": 0,
+            "valid_avoiding_target": 1,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": null
+          }
+        ],
+        "earlier_active_states": [
+          {
+            "operation": 1,
+            "active": 108,
+            "geometric": 12,
+            "valid": 8,
+            "target": 3,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 1,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                117,
+                500
+              ],
+              "h": 0.6485291788110571,
+              "minimum_angle": 43.551052768517714,
+              "quality": 0.6806035720641377,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": true,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": 1.5000000000000004
+            }
+          },
+          {
+            "operation": 2,
+            "active": 108,
+            "geometric": 12,
+            "valid": 8,
+            "target": 3,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 1,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                117,
+                500
+              ],
+              "h": 0.6485291788110571,
+              "minimum_angle": 43.551052768517714,
+              "quality": 0.6806035720641377,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": true,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": 1.5000000000000004
+            }
+          },
+          {
+            "operation": 3,
+            "active": 108,
+            "geometric": 12,
+            "valid": 8,
+            "target": 3,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 1,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                117,
+                500
+              ],
+              "h": 0.6485291788110571,
+              "minimum_angle": 43.551052768517714,
+              "quality": 0.6806035720641377,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": true,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": 1.5000000000000004
+            }
+          },
+          {
+            "operation": 4,
+            "active": 108,
+            "geometric": 12,
+            "valid": 8,
+            "target": 3,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 1,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                117,
+                500
+              ],
+              "h": 0.6485291788110571,
+              "minimum_angle": 43.551052768517714,
+              "quality": 0.6806035720641377,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": true,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": 1.5000000000000004
+            }
+          },
+          {
+            "operation": 5,
+            "active": 108,
+            "geometric": 12,
+            "valid": 8,
+            "target": 3,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 1,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                117,
+                500
+              ],
+              "h": 0.6485291788110571,
+              "minimum_angle": 43.551052768517714,
+              "quality": 0.6806035720641377,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": true,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": 1.5000000000000004
+            }
+          },
+          {
+            "operation": 6,
+            "active": 108,
+            "geometric": 12,
+            "valid": 8,
+            "target": 3,
+            "valid_avoiding_target": 5,
+            "size": 0,
+            "shape": 1,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                117,
+                500
+              ],
+              "h": 0.6485291788110571,
+              "minimum_angle": 43.551052768517714,
+              "quality": 0.6806035720641377,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": true,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": 1.5000000000000004
+            }
+          },
+          {
+            "operation": 7,
+            "active": 108,
+            "geometric": 10,
+            "valid": 7,
+            "target": 3,
+            "valid_avoiding_target": 4,
+            "size": 0,
+            "shape": 1,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                117,
+                500
+              ],
+              "h": 0.6485291788110571,
+              "minimum_angle": 43.551052768517714,
+              "quality": 0.6806035720641377,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": true,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": 1.5000000000000004
+            }
+          },
+          {
+            "operation": 8,
+            "active": 107,
+            "geometric": 4,
+            "valid": 3,
+            "target": 1,
+            "valid_avoiding_target": 2,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 9,
+            "active": 106,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 10,
+            "active": 106,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 11,
+            "active": 106,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 12,
+            "active": 106,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 13,
+            "active": 106,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 14,
+            "active": 106,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 15,
+            "active": 106,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 16,
+            "active": 106,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 17,
+            "active": 104,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 18,
+            "active": 104,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 19,
+            "active": 104,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 20,
+            "active": 104,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 21,
+            "active": 104,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 22,
+            "active": 104,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 23,
+            "active": 103,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 24,
+            "active": 103,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 25,
+            "active": 103,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 26,
+            "active": 102,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 27,
+            "active": 99,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 28,
+            "active": 98,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 29,
+            "active": 96,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 30,
+            "active": 93,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 31,
+            "active": 90,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 32,
+            "active": 89,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 33,
+            "active": 88,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 34,
+            "active": 86,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 35,
+            "active": 85,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 36,
+            "active": 84,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 37,
+            "active": 82,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 38,
+            "active": 81,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 39,
+            "active": 80,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 40,
+            "active": 79,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 41,
+            "active": 77,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 42,
+            "active": 76,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 43,
+            "active": 73,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 44,
+            "active": 72,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 45,
+            "active": 72,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 46,
+            "active": 71,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 47,
+            "active": 69,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 48,
+            "active": 66,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 49,
+            "active": 65,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 50,
+            "active": 62,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 51,
+            "active": 61,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 52,
+            "active": 58,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 53,
+            "active": 55,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 54,
+            "active": 53,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 55,
+            "active": 50,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 56,
+            "active": 50,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 57,
+            "active": 50,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 58,
+            "active": 48,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 59,
+            "active": 45,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 60,
+            "active": 44,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 61,
+            "active": 41,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          },
+          {
+            "operation": 62,
+            "active": 40,
+            "geometric": 1,
+            "valid": 1,
+            "target": 1,
+            "valid_avoiding_target": 0,
+            "size": 0,
+            "shape": 0,
+            "joint": 0,
+            "joint_rows": [],
+            "by_target": {
+              "478": 0
+            },
+            "smallest": {
+              "polygon": [
+                114,
+                446,
+                500
+              ],
+              "h": 1.0403811384776636,
+              "minimum_angle": 13.543368474520799,
+              "quality": 0.39437597915583095,
+              "requests": [
+                478
+              ],
+              "targets": [
+                478
+              ],
+              "size_ok": false,
+              "shape_ok": false,
+              "physical_ok": true,
+              "geometry_ok": true,
+              "error": null,
+              "S": null
+            }
+          }
+        ],
+        "front_sha256": "b6068903760748f03192839d73efd3ebfdf7371c7cf3e6724d2b24d32c04bef7",
+        "source_sha256": {
+          "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+          "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+          "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+        },
+        "input_sha256": {
+          "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b",
+          "candidate_front/front.json": "b6068903760748f03192839d73efd3ebfdf7371c7cf3e6724d2b24d32c04bef7",
+          "smoothing_comparison/before.obj": "034dafa1682aa0fca16575583251cd3d130aa85ccaf58a1f27565465d96b5b90"
+        }
+      }
+    }
+  },
+  "native_generation": false,
+  "mixed_adaptive_epochs": 0
+}

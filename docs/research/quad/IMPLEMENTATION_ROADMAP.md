@@ -83,8 +83,10 @@ then rejects the contour-parent group because the rebuilt front exceeds
 a protected size request. Its archived frames separate the size failure
 at birth from the persistent angle failure in the read-only edge split.
 The cross-model archive replay also finds oversized front-created
-faces before smoothing in both models. Check achievable size and shape
-using the recorded active boundaries before selecting another native rule.
+faces before smoothing in both models. The [existing front-choice
+replay](FRONT_SIZE_OPTIONS_REPLAY_20261125.md) finds zero simultaneous size and shape matches at
+the selected states. Align matched native subdivisions that change
+the vertices entering the transition, retaining the fixed profile.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

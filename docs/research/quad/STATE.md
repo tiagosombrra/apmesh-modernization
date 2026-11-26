@@ -12,6 +12,26 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - replay existing front choices at oversized requests
+
+The [two-case replay](FRONT_SIZE_OPTIONS_REPLAY_20261125.md) finds zero size-and-shape
+matches with the existing vertices at CurvaBezier operation 1 and
+Ribbed operation 62. Considering every other current base or scanning
+all 62 recorded states of the Ribbed base does not recover a match.
+CurvaBezier's two requests are capped in the same leaf next to the
+unsplit first contour interval. Ribbed's request still has one
+available native leaf level after its realized level-2 to level-3 edit.
+The read-only replay and independent input/metric verification pass.
+There is no new native run or admitted mixed epoch.
+
+**Next after scientific alignment:** compare the two matched native
+arms using one original arc-length split at CurvaBezier interval 0 and
+one additional leaf split to level 4 at Ribbed request 478. Preserve
+the source proof, physical size checks, 2:1 balance and frozen
+shape, error and growth limits. Check the actual before-smoothing
+and final physical faces. Shared curves, owner reentry, reserved
+cases and the global mixed curvature norm remain open.
+
 ### 2026-11-25 - measure protected sizes after contour-side grouping
 
 [Draft PR 290](https://github.com/tiagosombrra/apmesh-modernization/pull/290)
