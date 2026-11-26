@@ -5128,3 +5128,18 @@ pass and no mixed adaptive epoch is accepted. Hosted and
 independent qualification remain open. Seek alignment for
 testing existing physical shape floors at the front choice.
 [Measured comparison and exact inputs](RETAIN_QUADS_REPAIR_TRIAL_20261126.md).
+
+
+## 2026-11-26 Fortaleza - test physical floors at front creation
+
+Draft PR 297 at 0ad5b7bd tests the initial TRI when the selected
+eligible QUAD misses the physical floors. CurvaBezier replaces four
+contour QUAD and keeps 727 other birth faces unchanged. Its final
+below-floor count falls from 35 to 31. A stricter regional count
+block appears on the new contour TRI. Both local diagonals miss the
+30-degree regional target. Ribbed has zero switches and exact mesh
+and trace replay. Both opt-out controls, native contract and rollback
+checks, two malformed-plan controls and 31 Python checks pass.
+Inspect the available native vertices on the four contour bases
+next. No new full-profile acceptance or mixed adaptive epoch.
+[Exact measurements and limits](FRONT_BIRTH_SHAPE_TRIAL_20261126.md).

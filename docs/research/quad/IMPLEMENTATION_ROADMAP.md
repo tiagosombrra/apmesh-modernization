@@ -118,8 +118,12 @@ The first witnesses generally remove QUAD and often overlap.
 The [QUAD retention comparison](RETAIN_QUADS_REPAIR_TRIAL_20261126.md)
 improves the matched Ribbed repair and reproduces the CurvaBezier
 plan at the search bound. Both whole-mesh admissions remain blocked.
-Use the birth-face evidence to align a physical shape choice during
-front generation before increasing the number of local repairs.
+The [front birth trial](FRONT_BIRTH_SHAPE_TRIAL_20261126.md)
+removes four below-floor contour QUAD in CurvaBezier and confirms
+a new regional count block on contour TRI below the target.
+Ribbed reproduces its control. Neither fixed-site diagonal in the
+four footprints reaches the contour TRI target. Inspect available
+front sites and transition geometry before aligning a further rule.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

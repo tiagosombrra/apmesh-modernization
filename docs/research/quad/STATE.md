@@ -12,6 +12,28 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - test physical shape at front creation
+
+[Draft PR 297](https://github.com/tiagosombrra/apmesh-modernization/pull/297)
+at `0ad5b7bdf7af9504b739f0dc85172d832c3ea8f1` compares the initial TRI
+when an eligible QUAD misses the existing physical floors. CurvaBezier
+replaces four bad contour-edge QUAD, reducing final below-floor faces
+from 35 to 31 and retaining the other 727 birth faces exactly.
+The four added contour TRI pass the floor but miss the 30-degree
+regional target. Both fixed-site diagonals miss that target.
+Ribbed Bracket has zero switches and reproduces its control exactly.
+The MSVC native trial, real-boundary and rollback contracts,
+standalone front contracts and 31 Python checks pass.
+Zero accepted mixed epochs. Hosted and independent checks remain open.
+[Native decision and downstream evidence](FRONT_BIRTH_SHAPE_TRIAL_20261126.md).
+
+**Next:** replay the four CurvaBezier contour births and determine
+which already-active vertices can meet the existing 30-degree
+regional target under native front validity. Trace the local sizing
+or neighborhood constraint wherever the available vertices cannot
+reach it. Shared curves, owner reentry, reserved cases and global
+mixed curvature remain open.
+
 ### 2026-11-26 - rank one eligible repair by QUAD retention
 
 [Draft PR 296](https://github.com/tiagosombrra/apmesh-modernization/pull/296)
