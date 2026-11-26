@@ -12,6 +12,27 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - rank one eligible repair by QUAD retention
+
+[Draft PR 296](https://github.com/tiagosombrra/apmesh-modernization/pull/296)
+at `7f131022b6f6d9b7c3c184241a0bf7ec742e5b7c` adds opt-in ranking
+for the same first-feasible target. CurvaBezier reaches the retained
+search bound and reproduces its native plan byte for byte. Ribbed
+uses the same cavity, keeps two more QUAD, and improves its local
+minimum angle from 16.44 to 24.69 degrees with two fewer total
+faces. Its maximum sampled deviation and whole-profile blockers
+are unchanged. The ranked Ribbed replay, exact archive checks,
+and 31 Python controls pass. PR 296 hosted checks and independent
+review remain pending. Zero accepted mixed epochs.
+[QUAD retention evidence](RETAIN_QUADS_REPAIR_TRIAL_20261126.md).
+
+**Next after scientific alignment:** test the existing initial TRI
+at front creation when the chosen eligible QUAD misses the existing
+physical floors and the TRI meets them. Compare the complete front
+and final mesh on both development models with the existing profile,
+and bind the downstream effects to the native trace. Shared curves,
+owner reentry, reserved cases and global mixed curvature remain open.
+
 ### 2026-11-26 - measure residual transition repair coverage
 
 All 31 CurvaBezier and 11 Ribbed Bracket residual violations

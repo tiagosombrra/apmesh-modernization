@@ -115,8 +115,11 @@ The [residual coverage audit](RESIDUAL_SEED_LAYER_COVERAGE_20261126.md)
 maps all 42 remaining violations to the advancing front at birth.
 Individual targets often have a feasible one-layer witness.
 The first witnesses generally remove QUAD and often overlap.
-Align retention-aware selection before a batch trial, retaining
-the birth evidence for the advancing-front work.
+The [QUAD retention comparison](RETAIN_QUADS_REPAIR_TRIAL_20261126.md)
+improves the matched Ribbed repair and reproduces the CurvaBezier
+plan at the search bound. Both whole-mesh admissions remain blocked.
+Use the birth-face evidence to align a physical shape choice during
+front generation before increasing the number of local repairs.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

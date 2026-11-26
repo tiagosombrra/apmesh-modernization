@@ -1,0 +1,912 @@
+{
+ "schema": "apmesh.quad.retain_quads_repair_trial.v1",
+ "revision": "7f131022b6f6d9b7c3c184241a0bf7ec742e5b7c",
+ "tree": "b1d0c9950017789ec28d64b2b58efeac6f91fe87",
+ "canonical_input": "8de98e02e81b279f6f2c1c4918357bf004918735",
+ "parent": "442644df44dfede19318f49832ab8fbbd65c370b",
+ "model_profile": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+ "engine_sha256": "c652d9ae39144c73adaad28c21ab619b1ac6380eb164286116d3943b6ae8367f",
+ "compiler": "MSVC 19.44 x64 C++17 Debug",
+ "selector_sha256": "4f7de3d398f8a5dc5300fcb6fa8009ddb1c6743b7b3972c1ce30bdfb8c90a6b3",
+ "verifier_sha256": "7c12003d5a4b29ae0d1b9fb8a4fea18a7d584fc91b20cc702acd7a4d04f1ff74",
+ "commands": {
+  "first": "python tools/quad_auto_seed_layer.py --archive <control> --profile <profile> --output <new-directory>",
+  "ranked": "python tools/quad_auto_seed_layer.py --archive <control> --profile <profile> --output <new-directory> --retain-quads",
+  "native": "ap_mesh.exe --config successor.conf with the emitted plan and exact source archive",
+  "selector_tests": "python -W error::ResourceWarning tests/quad/test_auto_seed_layer.py",
+  "progressive_tests": "python -W error::ResourceWarning tests/quad/test_progressive_admission.py",
+  "sizing_tests": "python -W error::ResourceWarning tests/quad/test_relative_feedback_requests.py"
+ },
+ "processes": {
+  "plan-curva-control": {
+   "exit": 0,
+   "seconds": 7.1539154052734375,
+   "timeout": 180
+  },
+  "plan-ribbed-trial": {
+   "exit": 0,
+   "seconds": 8.446479797363281,
+   "timeout": 180
+  },
+  "native-ribbed-trial": {
+   "exit": 0,
+   "seconds": 47.74868631362915,
+   "timeout": 210
+  }
+ },
+ "local_checks": {
+  "selection": 10,
+  "progressive": 15,
+  "sizing": 6,
+  "default_plan_matches": 2,
+  "ranked_reproducible_plan_matches": 2,
+  "native_code_diff_count": 0,
+  "adapter_environment": "required tools unavailable",
+  "adapter_plan": "baseline absent"
+ },
+ "hosted": {
+  "run": 45804722207,
+  "checkpoints": [
+   {
+    "name": "QUAD native (ubuntu-24.04)",
+    "status": "IN_PROGRESS",
+    "conclusion": ""
+   },
+   {
+    "name": "QUAD native (windows-2022)",
+    "status": "IN_PROGRESS",
+    "conclusion": ""
+   },
+   {
+    "name": "TRI baseline and tooling controls (Linux)",
+    "status": "IN_PROGRESS",
+    "conclusion": ""
+   },
+   {
+    "name": "TRI scientific equivalence against frozen baseline",
+    "status": "IN_PROGRESS",
+    "conclusion": ""
+   }
+  ]
+ },
+ "plans": {
+  "curva-control": {
+   "schema": "apmesh.quad.auto_seed_layer_selection.v1",
+   "selection": {
+    "target": 715,
+    "rank": 1,
+    "relative_quality": 0.21685446434453395,
+    "replaced": [
+     521,
+     538,
+     541,
+     542,
+     711,
+     715,
+     716,
+     717
+    ],
+    "replacement": [
+     [
+      607,
+      623,
+      608
+     ],
+     [
+      607,
+      608,
+      610
+     ],
+     [
+      608,
+      623,
+      619
+     ],
+     [
+      608,
+      619,
+      695
+     ],
+     [
+      619,
+      623,
+      620
+     ],
+     [
+      619,
+      620,
+      621
+     ]
+    ],
+    "retired": [
+     166,
+     170,
+     622
+    ]
+   },
+   "status": "planned",
+   "search": {
+    "layouts": 53,
+    "states": 109,
+    "ranked_faces": 35,
+    "retention_trials": 94
+   },
+   "face_cap": 805,
+   "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+   "inputs": {
+    "candidate.obj": "427a62d0c9034f0af00106b2f821766f83884f25acb947939b8eb10e0c85fc85",
+    "successor.plan": "1b2bf5e30acaf1b61676f0ad7189582567d793ff952527bc54749d6aeb3edf57",
+    "front.json": "36eea828e8b213b2a03262b32fd29c64aabe9d3401d8b3a57695dd2d3d766548",
+    "before.obj": "c367553c03454588c6685c781aa0ea4bce09fe62583f93a3d7897332b0d5c2b1",
+    "guarded_final.obj": "4405846a1551a94950b67def7e243cbf56c339b76cf5b53992ceaec747b7cf6c",
+    "requests.csv": "faa9e7a827941324e9e571759927349ec2dc0da48c5722b334e98e1b3f10406a"
+   },
+   "quad_retention": {
+    "first_selection": {
+     "target": 715,
+     "rank": 1,
+     "relative_quality": 0.21685446434453395,
+     "replaced": [
+      521,
+      538,
+      541,
+      542,
+      711,
+      715,
+      716,
+      717
+     ],
+     "replacement": [
+      [
+       607,
+       623,
+       608
+      ],
+      [
+       607,
+       608,
+       610
+      ],
+      [
+       608,
+       623,
+       619
+      ],
+      [
+       608,
+       619,
+       695
+      ],
+      [
+       619,
+       623,
+       620
+      ],
+      [
+       619,
+       620,
+       621
+      ]
+     ],
+     "retired": [
+      166,
+      170,
+      622
+     ]
+    },
+    "search": {
+     "layouts": 422,
+     "states": 1201,
+     "ranked_faces": 35,
+     "feasible_witnesses": 3,
+     "retention_trials": 1024,
+     "site_limit": 19,
+     "bound": true,
+     "first_rank": [
+      4,
+      6,
+      -1.137946300322903
+     ],
+     "chosen_rank": [
+      4,
+      6,
+      -1.137946300322903
+     ]
+    },
+    "changed": false
+   },
+   "plan_sha256": "30146e23d0adde3f811798eb2fe40d8a213ea0a62efc49e2b24112ad77fb6554"
+  },
+  "ribbed-trial": {
+   "schema": "apmesh.quad.auto_seed_layer_selection.v1",
+   "selection": {
+    "target": 540,
+    "rank": 1,
+    "relative_quality": 0.7942733759626486,
+    "replaced": [
+     448,
+     453,
+     462,
+     540
+    ],
+    "replacement": [
+     [
+      495,
+      498,
+      497
+     ],
+     [
+      493,
+      496,
+      495,
+      497
+     ],
+     [
+      493,
+      497,
+      505,
+      506
+     ]
+    ],
+    "retired": [
+     131
+    ]
+   },
+   "status": "planned",
+   "search": {
+    "layouts": 4,
+    "states": 11,
+    "ranked_faces": 12,
+    "retention_trials": 5
+   },
+   "face_cap": 601,
+   "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+   "inputs": {
+    "candidate.obj": "0b4745e1fab01559390be8deb95f5c16109008b85d390706ded0698a586eca13",
+    "successor.plan": "42c6474b3d409567c876d79212b95e209e90b1de69ef113b1c4712e59e4a10db",
+    "front.json": "28f573ea3424d9244c82afc8010b96de737aea8a6838d99e026bd6439800cbae",
+    "before.obj": "f264ada6da741805a7999976da26ef169e93c4f244ee184b5f3e2d63d2674bab",
+    "guarded_final.obj": "f1a5ad3867c46e9b3a48405d204198cbb4844b646efbc839e40da7f468056ca0",
+    "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b"
+   },
+   "quad_retention": {
+    "first_selection": {
+     "target": 540,
+     "rank": 1,
+     "relative_quality": 0.7942733759626486,
+     "replaced": [
+      448,
+      453,
+      462,
+      540
+     ],
+     "replacement": [
+      [
+       493,
+       495,
+       498
+      ],
+      [
+       493,
+       498,
+       497
+      ],
+      [
+       493,
+       496,
+       495
+      ],
+      [
+       493,
+       497,
+       505
+      ],
+      [
+       493,
+       505,
+       506
+      ]
+     ],
+     "retired": [
+      131
+     ]
+    },
+    "search": {
+     "layouts": 745,
+     "states": 19901,
+     "ranked_faces": 12,
+     "feasible_witnesses": 9553,
+     "retention_trials": 742,
+     "site_limit": 350,
+     "not_a_disk": 2,
+     "bound": false,
+     "first_rank": [
+      3,
+      5,
+      -1.0959873168384442
+     ],
+     "chosen_rank": [
+      1,
+      3,
+      -1.646253531219892
+     ]
+    },
+    "changed": true
+   },
+   "plan_sha256": "84c3b656cf95871af4cc6b48e58a23ab3a57cea147ae699ecf4ce699908cba91"
+  }
+ },
+ "byte_comparison": {
+  "curva-control": {
+   "first_sha256": "30146e23d0adde3f811798eb2fe40d8a213ea0a62efc49e2b24112ad77fb6554",
+   "ranked_sha256": "30146e23d0adde3f811798eb2fe40d8a213ea0a62efc49e2b24112ad77fb6554",
+   "identical": true
+  },
+  "ribbed-trial": {
+   "first_sha256": "36366574374c48ad43d8e47083227f354b683859fe09a9e891421a7f35c248ed",
+   "ranked_sha256": "84c3b656cf95871af4cc6b48e58a23ab3a57cea147ae699ecf4ce699908cba91",
+   "identical": false
+  }
+ },
+ "reused_curva_native": {
+  "evidence_sha256": "f5b0daf73a458b65efff82d80654d169dfc24e3c007643b124f227182a0e3dd1",
+  "candidate_sha256": "33fac5be7136f708e674acbe7e16bcad81bad2cb7ca03ae5bce2cb9e24ead3b4",
+  "local_shape": [
+   [
+    8,
+    3.2528169651680092,
+    {
+     "TRI": 4
+    }
+   ],
+   [
+    6,
+    17.069194504843544,
+    {}
+   ]
+  ],
+  "whole_shape": [
+   [
+    731,
+    3.2528169651680092,
+    {
+     "QUAD": 4,
+     "TRI": 31
+    }
+   ],
+   [
+    729,
+    3.7806708513674914,
+    {
+     "QUAD": 4,
+     "TRI": 27
+    }
+   ]
+  ],
+  "blocked_by": [
+   "contour_edge_QUAD.min_angle_deg.below_safety_floor",
+   "contour_edge_QUAD.min_shape.regional_regression",
+   "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+   "contour_vertex_TRI.min_shape.below_safety_floor",
+   "interior_TRI.min_angle_deg.below_safety_floor",
+   "interior_QUAD.min_angle_deg.regional_regression"
+  ]
+ },
+ "ribbed_native": {
+  "selection": {
+   "schema": "apmesh.quad.auto_seed_layer_selection.v1",
+   "selection": {
+    "target": 540,
+    "rank": 1,
+    "relative_quality": 0.7942733759626486,
+    "replaced": [
+     448,
+     453,
+     462,
+     540
+    ],
+    "replacement": [
+     [
+      495,
+      498,
+      497
+     ],
+     [
+      493,
+      496,
+      495,
+      497
+     ],
+     [
+      493,
+      497,
+      505,
+      506
+     ]
+    ],
+    "retired": [
+     131
+    ]
+   },
+   "status": "planned",
+   "search": {
+    "layouts": 4,
+    "states": 11,
+    "ranked_faces": 12,
+    "retention_trials": 5
+   },
+   "face_cap": 601,
+   "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+   "inputs": {
+    "candidate.obj": "0b4745e1fab01559390be8deb95f5c16109008b85d390706ded0698a586eca13",
+    "successor.plan": "42c6474b3d409567c876d79212b95e209e90b1de69ef113b1c4712e59e4a10db",
+    "front.json": "28f573ea3424d9244c82afc8010b96de737aea8a6838d99e026bd6439800cbae",
+    "before.obj": "f264ada6da741805a7999976da26ef169e93c4f244ee184b5f3e2d63d2674bab",
+    "guarded_final.obj": "f1a5ad3867c46e9b3a48405d204198cbb4844b646efbc839e40da7f468056ca0",
+    "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b"
+   },
+   "quad_retention": {
+    "first_selection": {
+     "target": 540,
+     "rank": 1,
+     "relative_quality": 0.7942733759626486,
+     "replaced": [
+      448,
+      453,
+      462,
+      540
+     ],
+     "replacement": [
+      [
+       493,
+       495,
+       498
+      ],
+      [
+       493,
+       498,
+       497
+      ],
+      [
+       493,
+       496,
+       495
+      ],
+      [
+       493,
+       497,
+       505
+      ],
+      [
+       493,
+       505,
+       506
+      ]
+     ],
+     "retired": [
+      131
+     ]
+    },
+    "search": {
+     "layouts": 745,
+     "states": 19901,
+     "ranked_faces": 12,
+     "feasible_witnesses": 9553,
+     "retention_trials": 742,
+     "site_limit": 350,
+     "not_a_disk": 2,
+     "bound": false,
+     "first_rank": [
+      3,
+      5,
+      -1.0959873168384442
+     ],
+     "chosen_rank": [
+      1,
+      3,
+      -1.646253531219892
+     ]
+    },
+    "changed": true
+   },
+   "plan_sha256": "84c3b656cf95871af4cc6b48e58a23ab3a57cea147ae699ecf4ce699908cba91"
+  },
+  "successor": {
+   "status": "staged",
+   "depth_cap": 4,
+   "leaves_before": 112,
+   "leaves_after": 112,
+   "direct_leaf_edits": 7,
+   "requests": 17,
+   "capped_requests": 1,
+   "segments_before": 14,
+   "segments_after": 26,
+   "candidate_sha256": "d241e46c5f19fee59063849d3752de94aaba6befb316378848581572069581ea"
+  },
+  "admission": {
+   "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+   "predecessor_sha256": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+   "native_status": "staged",
+   "mixed_adaptive_epochs": 0,
+   "status": "blocked",
+   "blockers": [
+    "contour_edge_TRI.min_angle_deg.regional_regression",
+    "contour_edge_QUAD.min_angle_deg.regional_regression",
+    "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+    "contour_vertex_QUAD.min_angle_deg.regional_regression",
+    "contour_vertex_QUAD.min_shape.regional_regression",
+    "interior_TRI.min_angle_deg.below_safety_floor",
+    "interior_QUAD.min_angle_deg.regional_regression",
+    "interior_QUAD.min_shape.regional_regression"
+   ],
+   "quality_targets_met": false,
+   "error_targets_met": false,
+   "stop_targets_met": false,
+   "regions": {
+    "contour_edge_TRI": {
+     "predecessor_faces": 5,
+     "candidate_faces": 6,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "regional_regression",
+       "predecessor_min": 13.898520058107152,
+       "candidate_min": 17.942810055402088,
+       "safety_floor": 15,
+       "target": 30,
+       "predecessor_below_target": 2,
+       "candidate_below_target": 3
+      },
+      "min_shape": {
+       "status": "meets_target",
+       "predecessor_min": 0.4038422549621266,
+       "candidate_min": 0.5046060809078451,
+       "safety_floor": 0.125,
+       "target": 0.25,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 0
+      }
+     }
+    },
+    "contour_edge_QUAD": {
+     "predecessor_faces": 9,
+     "candidate_faces": 19,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "regional_regression",
+       "predecessor_min": 26.181796056164885,
+       "candidate_min": 25.53551802560636,
+       "safety_floor": 22.5,
+       "target": 45,
+       "predecessor_below_target": 7,
+       "candidate_below_target": 9
+      },
+      "min_shape": {
+       "status": "below_target_without_regression",
+       "predecessor_min": 0.41805176069673416,
+       "candidate_min": 0.4236259505476368,
+       "safety_floor": 0.25,
+       "target": 0.5,
+       "predecessor_below_target": 6,
+       "candidate_below_target": 6
+      }
+     }
+    },
+    "contour_vertex_TRI": {
+     "predecessor_faces": 53,
+     "candidate_faces": 37,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "below_safety_floor",
+       "predecessor_min": 3.791336324177119,
+       "candidate_min": 11.967772407811895,
+       "safety_floor": 15,
+       "target": 30,
+       "predecessor_below_target": 47,
+       "candidate_below_target": 22
+      },
+      "min_shape": {
+       "status": "meets_target",
+       "predecessor_min": 0.11387110070270551,
+       "candidate_min": 0.3497158082809553,
+       "safety_floor": 0.125,
+       "target": 0.25,
+       "predecessor_below_target": 27,
+       "candidate_below_target": 0
+      }
+     }
+    },
+    "contour_vertex_QUAD": {
+     "predecessor_faces": 0,
+     "candidate_faces": 3,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "regional_regression",
+       "predecessor_min": null,
+       "candidate_min": 27.199278445383456,
+       "safety_floor": 22.5,
+       "target": 45,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 3
+      },
+      "min_shape": {
+       "status": "regional_regression",
+       "predecessor_min": null,
+       "candidate_min": 0.4558874522239167,
+       "safety_floor": 0.25,
+       "target": 0.5,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 2
+      }
+     }
+    },
+    "interior_TRI": {
+     "predecessor_faces": 2,
+     "candidate_faces": 15,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "below_safety_floor",
+       "predecessor_min": 26.57091996655889,
+       "candidate_min": 14.529681898586437,
+       "safety_floor": 15,
+       "target": 30,
+       "predecessor_below_target": 2,
+       "candidate_below_target": 10
+      },
+      "min_shape": {
+       "status": "meets_target",
+       "predecessor_min": 0.6929450141702036,
+       "candidate_min": 0.4200606004687047,
+       "safety_floor": 0.125,
+       "target": 0.25,
+       "predecessor_below_target": 0,
+       "candidate_below_target": 0
+      }
+     }
+    },
+    "interior_QUAD": {
+     "predecessor_faces": 478,
+     "candidate_faces": 460,
+     "metrics": {
+      "min_angle_deg": {
+       "status": "regional_regression",
+       "predecessor_min": 26.450085727709634,
+       "candidate_min": 26.289863992652087,
+       "safety_floor": 22.5,
+       "target": 45,
+       "predecessor_below_target": 33,
+       "candidate_below_target": 36
+      },
+      "min_shape": {
+       "status": "regional_regression",
+       "predecessor_min": 0.3248423057881177,
+       "candidate_min": 0.3187473918768228,
+       "safety_floor": 0.25,
+       "target": 0.5,
+       "predecessor_below_target": 22,
+       "candidate_below_target": 13
+      }
+     }
+    }
+   },
+   "geometry": {
+    "24": {
+     "predecessor": {
+      "sample_count": 576,
+      "max_xyz": 0.12330781811253737,
+      "rms_uv": 0.027355917150157002,
+      "rms_source_area": 0.027384233947918835,
+      "tri_sites": 139,
+      "quad_sites": 437
+     },
+     "candidate": {
+      "sample_count": 576,
+      "max_xyz": 0.10278111763359259,
+      "rms_uv": 0.020055209204233034,
+      "rms_source_area": 0.020069907242534143,
+      "tri_sites": 72,
+      "quad_sites": 504
+     },
+     "relative_rms_gain": 0.2670999203153014
+    },
+    "48": {
+     "predecessor": {
+      "sample_count": 2304,
+      "max_xyz": 0.1256181753351185,
+      "rms_uv": 0.0274623867600248,
+      "rms_source_area": 0.027488072891660026,
+      "tri_sites": 561,
+      "quad_sites": 1743
+     },
+     "candidate": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.02009094196055635,
+      "rms_source_area": 0.020102544911181287,
+      "tri_sites": 338,
+      "quad_sites": 1966
+     },
+     "relative_rms_gain": 0.26868118436631233
+    }
+   },
+   "face_growth": -0.012797074954296161,
+   "predecessor_faces": 547,
+   "candidate_faces": 540,
+   "candidate_sha256": "d241e46c5f19fee59063849d3752de94aaba6befb316378848581572069581ea",
+   "boundary_certificate_sha256": "e8fbec581f412c7cb45dcf63d73067a99e113ffd659c0a7c8f7ab10194a6e32e",
+   "max_adjacent_physical_size_ratio": {
+    "baseline": 6.186777869509267,
+    "candidate": 4.837826816471032
+   }
+  },
+  "local_shape": [
+   [
+    4,
+    11.914100639439729,
+    {
+     "TRI": 1
+    }
+   ],
+   [
+    3,
+    24.69380296829838,
+    {}
+   ]
+  ],
+  "whole_shape": [
+   [
+    541,
+    11.914100639439729,
+    {
+     "TRI": 12
+    }
+   ],
+   [
+    540,
+    11.967772407811895,
+    {
+     "TRI": 11
+    }
+   ]
+  ],
+  "geometry": {
+   "24": {
+    "baseline": {
+     "sample_count": 576,
+     "max_xyz": 0.10278111763359259,
+     "rms_uv": 0.02005524756946302,
+     "rms_source_area": 0.020069947725799904,
+     "tri_sites": 73,
+     "quad_sites": 503
+    },
+    "candidate": {
+     "sample_count": 576,
+     "max_xyz": 0.10278111763359259,
+     "rms_uv": 0.020055209204233034,
+     "rms_source_area": 0.020069907242534143,
+     "tri_sites": 72,
+     "quad_sites": 504
+    }
+   },
+   "48": {
+    "baseline": {
+     "sample_count": 2304,
+     "max_xyz": 0.10748410563240578,
+     "rms_uv": 0.020091033587346017,
+     "rms_source_area": 0.020102639527836173,
+     "tri_sites": 341,
+     "quad_sites": 1963
+    },
+    "candidate": {
+     "sample_count": 2304,
+     "max_xyz": 0.10748410563240578,
+     "rms_uv": 0.02009094196055635,
+     "rms_source_area": 0.020102544911181287,
+     "tri_sites": 338,
+     "quad_sites": 1966
+    }
+   }
+  },
+  "fixed_outside_faces": 537,
+  "retained_node_ids": 525,
+  "retired_sites": [
+   131
+  ],
+  "exact_smoothing": {
+   "before.obj": "f264ada6da741805a7999976da26ef169e93c4f244ee184b5f3e2d63d2674bab",
+   "guarded_final.obj": "f1a5ad3867c46e9b3a48405d204198cbb4844b646efbc839e40da7f468056ca0",
+   "passes.csv": "0726e4fd1987059481b201d1c295f708bb9be4af93d6430de4762628cac46fdb",
+   "guarded_1.obj": "7b17cd38406a324490bd959ee4b5a2dc7c46bb2a76959053e8165cb837614564",
+   "guarded_2.obj": "dcb4e7b037f1b1e8f3ea1d995a68ee34f19296638df728cb0f7155609e8447ff",
+   "guarded_3.obj": "747b1e2f13c770403d3cade60112818376c24f5354afd1e5fb1fe44e3cb59a06",
+   "guarded_4.obj": "0db4356863916ef530942a1e2ffabc670bb841ced7aaa6011724b932236409b1",
+   "guarded_5.obj": "f1a5ad3867c46e9b3a48405d204198cbb4844b646efbc839e40da7f468056ca0"
+  },
+  "fixed_inputs": {
+   "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b",
+   "leaves.csv": "c3f136884b047db12072a43cc5abe5c4eb7bd259ec1d14bb16383e6e038db69e",
+   "grouped_parents.json": "e9d05246dc6bd39b9cc7f117c71eb5d7e35d548a55d194198e12535f7d14f2bf",
+   "boundary_refinement.json": "e8fbec581f412c7cb45dcf63d73067a99e113ffd659c0a7c8f7ab10194a6e32e"
+  },
+  "engine": "c652d9ae39144c73adaad28c21ab619b1ac6380eb164286116d3943b6ae8367f",
+  "ordered_curve_sites": 26,
+  "preserved_size_requests": 17,
+  "size_requests_previously_met": 11,
+  "first_vs_ranked_geometry": {
+   "baseline": {
+    "sample_count": 2304,
+    "max_xyz": 0.10748410563240578,
+    "rms_uv": 0.020090852702514497,
+    "rms_source_area": 0.02010245129440321,
+    "tri_sites": 357,
+    "quad_sites": 1947
+   },
+   "candidate": {
+    "sample_count": 2304,
+    "max_xyz": 0.10748410563240578,
+    "rms_uv": 0.02009094196055635,
+    "rms_source_area": 0.020102544911181287,
+    "tri_sites": 338,
+    "quad_sites": 1966
+   }
+  },
+  "face_types": {
+   "original": {
+    "3": 58,
+    "4": 483
+   },
+   "first": {
+    "3": 62,
+    "4": 480
+   },
+   "ranked": {
+    "3": 58,
+    "4": 482
+   }
+  },
+  "first_admission": [
+   "contour_edge_TRI.min_angle_deg.regional_regression",
+   "contour_edge_QUAD.min_angle_deg.regional_regression",
+   "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+   "contour_vertex_QUAD.min_angle_deg.regional_regression",
+   "contour_vertex_QUAD.min_shape.regional_regression",
+   "interior_TRI.min_angle_deg.below_safety_floor",
+   "interior_QUAD.min_angle_deg.regional_regression",
+   "interior_QUAD.min_shape.regional_regression"
+  ],
+  "first_local": [
+   [
+    4,
+    11.914100639439729,
+    {
+     "TRI": 1
+    }
+   ],
+   [
+    5,
+    16.439809752576664,
+    {}
+   ]
+  ],
+  "first_whole": [
+   [
+    541,
+    11.914100639439729,
+    {
+     "TRI": 12
+    }
+   ],
+   [
+    542,
+    11.967772407811895,
+    {
+     "TRI": 11
+    }
+   ]
+  ]
+ },
+ "ribbed_native_logs": {
+  "successor.stdout": "2bbcf7b6aeabfbea69ab63e5b6068bf62f076830f0a6b9b3b04ff01e08930497",
+  "successor.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+ },
+ "mixed_adaptive_epochs": 0
+}

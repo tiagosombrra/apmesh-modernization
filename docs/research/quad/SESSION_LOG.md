@@ -5114,3 +5114,17 @@ The four exact-head hosted PR 295 jobs pass. No new native meshes or
 mixed admissions. Seek alignment to compare ranking by retained QUAD
 before any batch or front-policy change.
 [Results and exact per-face witnesses](RESIDUAL_SEED_LAYER_COVERAGE_20261126.md).
+
+
+## 2026-11-26 Fortaleza - rank a one-layer repair by QUAD retention
+
+Draft PR 296 at 7f131022 adds the opt-in fixed-target ranking.
+The bounded CurvaBezier search reproduces the earlier native plan.
+The Ribbed Bracket replay keeps two extra QUAD and reaches 24.69
+degrees on the same four-face region, with two fewer total faces.
+Contour, source, size witnesses and retained nodes match. The
+global rejection reasons do not change. Thirty-one Python checks
+pass and no mixed adaptive epoch is accepted. Hosted and
+independent qualification remain open. Seek alignment for
+testing existing physical shape floors at the front choice.
+[Measured comparison and exact inputs](RETAIN_QUADS_REPAIR_TRIAL_20261126.md).
