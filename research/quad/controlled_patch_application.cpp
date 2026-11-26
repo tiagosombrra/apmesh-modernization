@@ -209,6 +209,7 @@ struct IdealFrontLimits {
 
 struct SeedLayerPlan {
   std::size_t face_budget = 0;
+  bool after_smoothing = false;
   std::array<double, 4> floors{};
   std::map<VertexId, UvVertex> sites;
   std::map<std::size_t, std::vector<VertexId>> replaced;
@@ -743,7 +744,7 @@ void CheckSeedLayerMeasurements(PatchBezier& patch, const ArticleFrontResult& ar
 }
 
 AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
-                                const SeedLayerPlan& plan,
+                                const SeedLayerPlan& plan, const std::vector<UvVertex>& birth,
                                 const std::vector<GeometricRequest>& requests,
                                 const PhysicalLift& physical,
                                 const std::filesystem::path& directory) {
@@ -764,9 +765,8 @@ AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
   Require(expected_sites.size() == plan.sites.size(), "Incomplete seed layer site binding");
   for (const auto v : expected_sites) {
     const auto found = plan.sites.find(v);
-    Require(found != plan.sites.end() && v < article.vertices.size() &&
-                found->second.u == article.vertices[v].u &&
-                found->second.v == article.vertices[v].v,
+    Require(found != plan.sites.end() && v < birth.size() && found->second.u == birth[v].u &&
+                found->second.v == birth[v].v,
             "Seed layer reference site differs from the generated front");
   }
   const auto front = ClosureBoundary(front_faces);
@@ -807,7 +807,8 @@ AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
   AppliedSeedLayer result;
   for (const auto& request : requests)
     if (std::any_of(control.begin(), control.end(), [&](const auto& face) {
-          return ContainsRequestSite(article.vertices, face, request.site);
+          return ContainsRequestSite(article.vertices, face, request.site) ||
+                 (plan.after_smoothing && ContainsRequestSite(birth, face, request.site));
         }))
       result.requests.push_back(request);
   ArticleFrontFaces faces;
@@ -829,7 +830,7 @@ AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
   std::vector<UvVertex> vertices;
   for (VertexId i = 0; i < article.vertices.size(); ++i) {
     if (!outside.count(i) && !used_replacement.count(i)) {
-      const auto p = article.vertices[i];
+      const auto p = birth[i];
       Require(expected_sites.count(i) && p.u > 0 && p.u < 1 && p.v > 0 && p.v < 1 &&
                   std::none_of(
                       article.commits.begin(), article.commits.end(),
@@ -1114,8 +1115,9 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
         xyz.push_back(physical_point(p));
       SaveMixedSmoothingFrame(*guarded_smoothing / "before_seed_layer.obj", article.faces,
                               article.vertices, xyz);
-      layer = ApplySeedLayer(patch, article, *seed_layer, *seed_layer_requests, physical_point,
-                             *guarded_smoothing);
+      if (!seed_layer->after_smoothing)
+        layer = ApplySeedLayer(patch, article, *seed_layer, article.vertices, *seed_layer_requests,
+                               physical_point, *guarded_smoothing);
     }
     result.article_uv_before_smoothing = article.vertices;
     for (const auto uv : article.vertices)
@@ -1125,9 +1127,18 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
       result.guarded_smoothing_comparison = true;
       article.vertices =
           CompareMixedSmoothing(patch, article, physical_point, *source, *guarded_smoothing);
-      if (layer)
+      if (seed_layer && seed_layer->after_smoothing) {
+        layer = ApplySeedLayer(patch, article, *seed_layer, result.article_uv_before_smoothing,
+                               *seed_layer_requests, physical_point, *guarded_smoothing);
+        std::vector<Xyz> xyz;
+        for (const auto p : article.vertices)
+          xyz.push_back(physical_point(p));
+        SaveMixedSmoothingFrame(*guarded_smoothing / "after_seed_layer.obj", article.faces,
+                                article.vertices, xyz);
+      } else if (layer) {
         CheckSeedLayerMeasurements(patch, article, layer->replacement_start, *seed_layer,
                                    layer->requests, physical_point);
+      }
     } else {
       result.article_smoothing = SmoothMixedUv(
           article.vertices, article.faces,
@@ -2947,9 +2958,10 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
   auto& feedback = plan.feedback;
   feedback.guarded_smoothing = true;
   while (input >> kind) {
-    if (kind == "replace_seed_layer") {
+    if (kind == "replace_seed_layer" || kind == "replace_seed_layer_after_smoothing") {
       Require(!feedback.seed_layer, "Repeated seed layer replacement");
       feedback.seed_layer = ReadSeedLayer(input);
+      feedback.seed_layer->after_smoothing = kind == "replace_seed_layer_after_smoothing";
     } else if (kind == "group_feedback_parent" || kind == "group_feedback_contour_parent" ||
                kind == "group_feedback_contour_parent_preserve_sizes") {
       std::array<double, 4> box{};
