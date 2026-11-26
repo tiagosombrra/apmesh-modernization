@@ -1,0 +1,2627 @@
+{
+ "schema": "apmesh.quad.native_seed_layer_trial.v1",
+ "canonical_input": "4f9054118ac319857c48466d56f5842dab1a36dc",
+ "revision": "d0fd3bf1f0f39bf8b7b257814f8511ebde4b1e8b",
+ "tree": "3ec9fbc97bd71aa6692af0c453cb864d7b7d8351",
+ "parent": "4f29dd06b087f4fb0fb299924d39f825ae2ccb96",
+ "compiler": "MSVC 19.44 x64 C++17 Debug",
+ "executable_sha256": "c8fa99c6bf84806bf525e1b99dd6e27b511c2c6d2b2f7d0a730c2aa0bae99198",
+ "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+ "runs": {
+  "curva-trial": {
+   "exit": 0,
+   "seconds": 62.08881211280823,
+   "timeout": 210
+  },
+  "ribbed-trial": {
+   "exit": 0,
+   "seconds": 43.327895402908325,
+   "timeout": 210
+  },
+  "curva-control": {
+   "exit": 0,
+   "seconds": 65.83553528785706,
+   "timeout": 210
+  },
+  "ribbed-control": {
+   "exit": 0,
+   "seconds": 45.83499765396118,
+   "timeout": 210
+  },
+  "foreign-site": {
+   "exit": 0,
+   "seconds": 35.770591497421265,
+   "timeout": 210
+  },
+  "changed-boundary": {
+   "exit": 0,
+   "seconds": 22.37680411338806,
+   "timeout": 210
+  },
+  "face-budget": {
+   "exit": 0,
+   "seconds": 30.60484266281128,
+   "timeout": 210
+  },
+  "bad-arity": {
+   "exit": 0,
+   "seconds": 0.2779052257537842,
+   "timeout": 210
+  },
+  "build": {
+   "exit": 0,
+   "seconds": 16.238600730895996,
+   "timeout": 300
+  },
+  "source-contracts": {
+   "exit": 0,
+   "seconds": 3.9396703243255615,
+   "timeout": 180
+  },
+  "article": {
+   "exit": 0,
+   "seconds": 59.35708475112915,
+   "timeout": 240
+  },
+  "progressive": {
+   "exit": 0,
+   "seconds": 0.22426104545593262,
+   "timeout": 60
+  },
+  "sizing": {
+   "exit": 0,
+   "seconds": 0.3504455089569092,
+   "timeout": 60
+  }
+ },
+ "commands": {
+  "curva-trial": [
+   "python",
+   "build/quad-native-seed-layer-20261126/run.py",
+   "curva-trial"
+  ],
+  "ribbed-trial": [
+   "python",
+   "build/quad-native-seed-layer-20261126/run.py",
+   "ribbed-trial"
+  ],
+  "curva-control": [
+   "python",
+   "build/quad-native-seed-layer-20261126/run.py",
+   "curva-control"
+  ],
+  "ribbed-control": [
+   "python",
+   "build/quad-native-seed-layer-20261126/run.py",
+   "ribbed-control"
+  ],
+  "foreign-site": [
+   "python",
+   "build/quad-native-seed-layer-20261126/run.py",
+   "foreign-site"
+  ],
+  "changed-boundary": [
+   "python",
+   "build/quad-native-seed-layer-20261126/run.py",
+   "changed-boundary"
+  ],
+  "face-budget": [
+   "python",
+   "build/quad-native-seed-layer-20261126/run.py",
+   "face-budget"
+  ],
+  "bad-arity": [
+   "python",
+   "build/quad-native-seed-layer-20261126/run.py",
+   "bad-arity"
+  ],
+  "build": [
+   "cmake",
+   "--build",
+   "build/quad-grouping-runner-results/msvc",
+   "--target",
+   "ap_mesh",
+   "quad_real_boundary_source_contracts",
+   "--config",
+   "Debug",
+   "--parallel",
+   "4"
+  ],
+  "progressive": [
+   "python",
+   "tests/quad/test_progressive_admission.py"
+  ],
+  "sizing": [
+   "python",
+   "tests/quad/test_relative_feedback_requests.py"
+  ]
+ },
+ "local_templates": {
+  "article": "python tests/quad/test_article_front_application.py --exe <trial exe> --directory <trial output>",
+  "source_contracts": "quad_real_boundary_source_contracts.exe configs/quad/curved_patch_original_curves.conf",
+  "independent": [
+   "python build/quad-native-seed-layer-20261126/audit.py",
+   "python build/quad-native-seed-layer-20261126/diagnose.py"
+  ]
+ },
+ "scripts": {
+  "run.py": "a40f842ae504a69480f1863fd25f3024b1daf9acc6b6ab8f0fa619f9d70156d9",
+  "audit.py": "86be4c13d6cd9dc49a29e94c0c724ee4bb9689695daf1551d6938d8fe6e3be03",
+  "diagnose.py": "f572821e9ff63d1b87d5c89c76b56a87df9d111bd5d7d170b5691eaed4d00fae"
+ },
+ "plans": {
+  "curva-trial": "e14836758a3da63ed42e31cbcfebf4801e6235c7de5c0c6b2ea6768a7d08d25a",
+  "ribbed-trial": "e08d631af2645a19391a4548be40474ebbe56bf92b2f06439766857b6ac92119",
+  "curva-control": "1b2bf5e30acaf1b61676f0ad7189582567d793ff952527bc54749d6aeb3edf57",
+  "ribbed-control": "42c6474b3d409567c876d79212b95e209e90b1de69ef113b1c4712e59e4a10db",
+  "foreign-site": "cecafa79ab7e335f4f8bf18083d624514b0a0dd897d5869b158cf615755240c9",
+  "changed-boundary": "9bd8d91b7cf57ccd1bd60e47056f5fd1a40a58da3dd92ed60e0ae2d2191b857f",
+  "face-budget": "fe93cd56cc5133c308ddf308c97fb0d5a1d8b3b996419a75a9c87c6181c7ca8c",
+  "bad-arity": "65c28d8b431198f9b545d4e61013550707d9a0a146954b630607f1ef3c9cde50"
+ },
+ "exact_controls": {
+  "curva-control": {
+   "candidate.obj": "427a62d0c9034f0af00106b2f821766f83884f25acb947939b8eb10e0c85fc85",
+   "requests.csv": "faa9e7a827941324e9e571759927349ec2dc0da48c5722b334e98e1b3f10406a",
+   "leaves.csv": "e934dd330a3ac2f301521347260f9a9eeb529017d257e8561a0678dd474c8c92",
+   "grouped_parents.json": "ff0cc6685d1ef836c753b93a2f7b41a45add5d39521e1c96512addc197e72dff",
+   "boundary_refinement.json": "96a49fb732105f0813707a5589f8383b3b94595276cce4183732052f46d778b5",
+   "result.txt": "0a08aa5a511ee041b5a73ec8eb7d9b264a5885b7628470d389693fd8ed42e744",
+   "candidate_front/front.json": "36eea828e8b213b2a03262b32fd29c64aabe9d3401d8b3a57695dd2d3d766548",
+   "smoothing_comparison/before.obj": "c367553c03454588c6685c781aa0ea4bce09fe62583f93a3d7897332b0d5c2b1"
+  },
+  "ribbed-control": {
+   "candidate.obj": "0b4745e1fab01559390be8deb95f5c16109008b85d390706ded0698a586eca13",
+   "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b",
+   "leaves.csv": "c3f136884b047db12072a43cc5abe5c4eb7bd259ec1d14bb16383e6e038db69e",
+   "grouped_parents.json": "e9d05246dc6bd39b9cc7f117c71eb5d7e35d548a55d194198e12535f7d14f2bf",
+   "boundary_refinement.json": "e8fbec581f412c7cb45dcf63d73067a99e113ffd659c0a7c8f7ab10194a6e32e",
+   "result.txt": "23147665c4e076692f279925b174f5a53342d6f3ad4749ad7549a3f381253d26",
+   "candidate_front/front.json": "28f573ea3424d9244c82afc8010b96de737aea8a6838d99e026bd6439800cbae",
+   "smoothing_comparison/before.obj": "f264ada6da741805a7999976da26ef169e93c4f244ee184b5f3e2d63d2674bab"
+  }
+ },
+ "native_refusals": {
+  "foreign-site": {
+   "status": "rejected",
+   "depth_cap": 4,
+   "leaves_before": 223,
+   "leaves_after": 202,
+   "direct_leaf_edits": 1,
+   "requests": 7,
+   "capped_requests": 3,
+   "segments_before": 14,
+   "segments_after": 19,
+   "reason": "Seed layer reference site differs from the generated front"
+  },
+  "changed-boundary": {
+   "status": "rejected",
+   "depth_cap": 4,
+   "leaves_before": 112,
+   "leaves_after": 112,
+   "direct_leaf_edits": 7,
+   "requests": 17,
+   "capped_requests": 1,
+   "segments_before": 14,
+   "segments_after": 26,
+   "reason": "Seed layer replacement changes the directed patch boundary"
+  },
+  "face-budget": {
+   "status": "rejected",
+   "depth_cap": 4,
+   "leaves_before": 223,
+   "leaves_after": 202,
+   "direct_leaf_edits": 1,
+   "requests": 7,
+   "capped_requests": 3,
+   "segments_before": 14,
+   "segments_after": 19,
+   "reason": "Seed layer replacement exceeds the face budget"
+  },
+  "bad-arity": {
+   "code": 4294967295,
+   "stderr": "a7bec8b696310e6068a1bef7fd32debfb6ad18f6e7463ad30f9a60d8c76e50ca",
+   "plan": "65c28d8b431198f9b545d4e61013550707d9a0a146954b630607f1ef3c9cde50",
+   "reason": "Invalid seed layer face arity"
+  }
+ },
+ "curve_contracts": {
+  "captures": 6,
+  "reversed": 3,
+  "source_refusals": 54,
+  "certificate_refusals": 24
+ },
+ "python_checks": {
+  "progressive": 15,
+  "sizing": 6
+ },
+ "native_article": {
+  "schema": "apmesh.quad.article_application.v1",
+  "stages": [
+   {
+    "step": 1,
+    "nodes": 33,
+    "quads": 24,
+    "triangles": 8,
+    "boundary": 8,
+    "source_step": 1,
+    "native_leaves": 16,
+    "domain_generation": 1,
+    "nonuniform_sides": 0,
+    "reversed_sides": 0,
+    "reference_tri_accepted": true,
+    "mixed_adaptive_epochs": 0,
+    "clearance_excluded_cells": 0,
+    "commits": 16,
+    "selected_quads": 8,
+    "retained_triangles": 8,
+    "rejected_unions": 8,
+    "competing_alternatives": 0,
+    "source_polygons": 4,
+    "centers_different_from_vertex_mean": 0
+   },
+   {
+    "step": 2,
+    "nodes": 281,
+    "quads": 249,
+    "triangles": 52,
+    "boundary": 10,
+    "source_step": 2,
+    "native_leaves": 67,
+    "domain_generation": 1,
+    "nonuniform_sides": 1,
+    "reversed_sides": 0,
+    "reference_tri_accepted": true,
+    "mixed_adaptive_epochs": 0,
+    "clearance_excluded_cells": 0,
+    "commits": 59,
+    "selected_quads": 7,
+    "retained_triangles": 52,
+    "rejected_unions": 53,
+    "competing_alternatives": 1,
+    "source_polygons": 62,
+    "centers_different_from_vertex_mean": 18
+   },
+   {
+    "step": 3,
+    "nodes": 689,
+    "quads": 630,
+    "triangles": 102,
+    "boundary": 14,
+    "source_step": 3,
+    "native_leaves": 223,
+    "domain_generation": 1,
+    "nonuniform_sides": 1,
+    "reversed_sides": 0,
+    "reference_tri_accepted": true,
+    "mixed_adaptive_epochs": 0,
+    "clearance_excluded_cells": 25,
+    "commits": 108,
+    "selected_quads": 6,
+    "retained_triangles": 102,
+    "rejected_unions": 100,
+    "competing_alternatives": 2,
+    "source_polygons": 156,
+    "centers_different_from_vertex_mean": 0
+   }
+  ],
+  "rejected_forgeries": 11,
+  "rollback_verified": true,
+  "rejected_smoothing_forgeries": 5,
+  "smoothing_passes_per_stage": 5,
+  "rejected_point_forgeries": 3,
+  "mixed_adaptive_epochs": 0
+ },
+ "first_runner_calibration": {
+  "reason": "Expanded an integer face ordinal as an iterable before starting the engine",
+  "process": {
+   "exit": 1,
+   "seconds": 0.27959394454956055,
+   "timeout": 210
+  },
+  "diagnostic_sha256": "cabf91d39106e2b36d8d17678a3a6048db1fb024c34164446693fbae24f40ea4"
+ },
+ "adapter": {
+  "environment": "required tools unavailable",
+  "iteration_plan": "baseline manifest unavailable"
+ },
+ "independent": {
+  "curva": {
+   "status": {
+    "status": "staged",
+    "depth_cap": 4,
+    "leaves_before": 223,
+    "leaves_after": 202,
+    "direct_leaf_edits": 1,
+    "requests": 7,
+    "capped_requests": 3,
+    "segments_before": 14,
+    "segments_after": 19,
+    "candidate_sha256": "52fab434c454ccbe877a4185e708a1f9f4d93d2bde9d6aed945fb1f5bcad9fa0"
+   },
+   "source": {
+    "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+    "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+    "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+   },
+   "original_birth": "c367553c03454588c6685c781aa0ea4bce09fe62583f93a3d7897332b0d5c2b1",
+   "progressive": {
+    "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+    "predecessor_sha256": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+    "native_status": "staged",
+    "mixed_adaptive_epochs": 0,
+    "status": "blocked",
+    "blockers": [
+     "contour_edge_QUAD.min_angle_deg.below_safety_floor",
+     "contour_edge_QUAD.min_shape.regional_regression",
+     "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+     "contour_vertex_TRI.min_shape.below_safety_floor",
+     "interior_TRI.min_angle_deg.below_safety_floor",
+     "interior_QUAD.min_angle_deg.regional_regression"
+    ],
+    "quality_targets_met": false,
+    "error_targets_met": false,
+    "stop_targets_met": false,
+    "regions": {
+     "contour_edge_TRI": {
+      "predecessor_faces": 8,
+      "candidate_faces": 7,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "below_target_without_regression",
+        "predecessor_min": 10.367272360473434,
+        "candidate_min": 18.831908305542832,
+        "safety_floor": 15,
+        "target": 30,
+        "predecessor_below_target": 8,
+        "candidate_below_target": 7
+       },
+       "min_shape": {
+        "status": "meets_target",
+        "predecessor_min": 0.30088697922437296,
+        "candidate_min": 0.43350935486217335,
+        "safety_floor": 0.125,
+        "target": 0.25,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 0
+       }
+      }
+     },
+     "contour_edge_QUAD": {
+      "predecessor_faces": 6,
+      "candidate_faces": 12,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "below_safety_floor",
+        "predecessor_min": 19.438606955832434,
+        "candidate_min": 18.960539550039286,
+        "safety_floor": 22.5,
+        "target": 45,
+        "predecessor_below_target": 6,
+        "candidate_below_target": 8
+       },
+       "min_shape": {
+        "status": "regional_regression",
+        "predecessor_min": 0.32843100153567506,
+        "candidate_min": 0.3176651145494205,
+        "safety_floor": 0.25,
+        "target": 0.5,
+        "predecessor_below_target": 6,
+        "candidate_below_target": 5
+       }
+      }
+     },
+     "contour_vertex_TRI": {
+      "predecessor_faces": 94,
+      "candidate_faces": 63,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "below_safety_floor",
+        "predecessor_min": 1.4181974567977775,
+        "candidate_min": 3.7806708513674914,
+        "safety_floor": 15,
+        "target": 30,
+        "predecessor_below_target": 82,
+        "candidate_below_target": 47
+       },
+       "min_shape": {
+        "status": "below_safety_floor",
+        "predecessor_min": 0.04268083753878802,
+        "candidate_min": 0.11230430810576808,
+        "safety_floor": 0.125,
+        "target": 0.25,
+        "predecessor_below_target": 56,
+        "candidate_below_target": 17
+       }
+      }
+     },
+     "contour_vertex_QUAD": {
+      "predecessor_faces": 0,
+      "candidate_faces": 1,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "meets_target",
+        "predecessor_min": null,
+        "candidate_min": 46.95302186240745,
+        "safety_floor": 22.5,
+        "target": 45,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 0
+       },
+       "min_shape": {
+        "status": "meets_target",
+        "predecessor_min": null,
+        "candidate_min": 0.7257254420205377,
+        "safety_floor": 0.25,
+        "target": 0.5,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 0
+       }
+      }
+     },
+     "interior_TRI": {
+      "predecessor_faces": 0,
+      "candidate_faces": 15,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "below_safety_floor",
+        "predecessor_min": null,
+        "candidate_min": 12.074325827530048,
+        "safety_floor": 15,
+        "target": 30,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 9
+       },
+       "min_shape": {
+        "status": "meets_target",
+        "predecessor_min": null,
+        "candidate_min": 0.3232608412413648,
+        "safety_floor": 0.125,
+        "target": 0.25,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 0
+       }
+      }
+     },
+     "interior_QUAD": {
+      "predecessor_faces": 624,
+      "candidate_faces": 631,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "regional_regression",
+        "predecessor_min": 64.40510702872767,
+        "candidate_min": 40.08792745265373,
+        "safety_floor": 22.5,
+        "target": 45,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 6
+       },
+       "min_shape": {
+        "status": "meets_target",
+        "predecessor_min": 0.9014446997284595,
+        "candidate_min": 0.5675352976543959,
+        "safety_floor": 0.25,
+        "target": 0.5,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 0
+       }
+      }
+     }
+    },
+    "geometry": {
+     "24": {
+      "predecessor": {
+       "sample_count": 576,
+       "max_xyz": 0.049100482457393006,
+       "rms_uv": 0.012357098802300836,
+       "rms_source_area": 0.01182092568456974,
+       "tri_sites": 204,
+       "quad_sites": 372
+      },
+      "candidate": {
+       "sample_count": 576,
+       "max_xyz": 0.04013334254804927,
+       "rms_uv": 0.007219185577375708,
+       "rms_source_area": 0.006820237586989913,
+       "tri_sites": 110,
+       "quad_sites": 466
+      },
+      "relative_rms_gain": 0.4230369288343803
+     },
+     "48": {
+      "predecessor": {
+       "sample_count": 2304,
+       "max_xyz": 0.0499742617604889,
+       "rms_uv": 0.012476199826746128,
+       "rms_source_area": 0.011914927232780577,
+       "tri_sites": 840,
+       "quad_sites": 1464
+      },
+      "candidate": {
+       "sample_count": 2304,
+       "max_xyz": 0.04418786782332599,
+       "rms_uv": 0.007336620991465294,
+       "rms_source_area": 0.00691570122564729,
+       "tri_sites": 492,
+       "quad_sites": 1812
+      },
+      "relative_rms_gain": 0.4195767132659711
+     }
+    },
+    "face_growth": -0.004098360655737705,
+    "predecessor_faces": 732,
+    "candidate_faces": 729,
+    "candidate_sha256": "52fab434c454ccbe877a4185e708a1f9f4d93d2bde9d6aed945fb1f5bcad9fa0",
+    "boundary_certificate_sha256": "96a49fb732105f0813707a5589f8383b3b94595276cce4183732052f46d778b5",
+    "max_adjacent_physical_size_ratio": {
+     "baseline": 12.238209200218554,
+     "candidate": 7.303227643680275
+    }
+   },
+   "retired": [
+    170,
+    619,
+    622
+   ],
+   "external_faces": 723,
+   "external_vertices": 697,
+   "external_vertices_changed": 13,
+   "largest_external_xyz_difference": 0.04589952146193355,
+   "frames": {
+    "before": "48f19151b383ff3b743798b0b9cf0f63a66e42c3839cf8ba5d7421b18bf53a3c",
+    "smoothed": "52fab434c454ccbe877a4185e708a1f9f4d93d2bde9d6aed945fb1f5bcad9fa0"
+   },
+   "size_requests": {
+    "637": {
+     "h": 0.09778718291661573,
+     "control": 0.16295236752255057,
+     "trial": 0.16295236752255057,
+     "met": false
+    },
+    "646": {
+     "h": 0.07103903607281982,
+     "control": 0.13140121732250687,
+     "trial": 0.13140121732250687,
+     "met": false
+    },
+    "648": {
+     "h": 0.07243495030860424,
+     "control": 0.13140121732250687,
+     "trial": 0.13140121732250687,
+     "met": false
+    },
+    "696": {
+     "h": 0.10345663744811938,
+     "control": 0.059595044697531366,
+     "trial": 0.059595044697531366,
+     "met": true
+    },
+    "729": {
+     "h": 0.07385580935338733,
+     "control": 0.05829936233157664,
+     "trial": 0.05829936233157664,
+     "met": true
+    },
+    "730": {
+     "h": 0.0766345462578662,
+     "control": 0.05898565586147062,
+     "trial": 0.05898565586147062,
+     "met": true
+    },
+    "731": {
+     "h": 0.07526530880906478,
+     "control": 0.05829936233157664,
+     "trial": 0.05829936233157664,
+     "met": true
+    }
+   },
+   "lost_size_requests": [],
+   "patch": {
+    "birth": {
+     "control": [
+      {
+       "face": 537,
+       "kind": "QUAD",
+       "angle": 89.94692465588501,
+       "shape": 0.9999977225075948,
+       "meets_floor": true
+      },
+      {
+       "face": 538,
+       "kind": "QUAD",
+       "angle": 89.96265717499877,
+       "shape": 0.9999968877180911,
+       "meets_floor": true
+      },
+      {
+       "face": 541,
+       "kind": "QUAD",
+       "angle": 89.9776081020059,
+       "shape": 0.9999958612252526,
+       "meets_floor": true
+      },
+      {
+       "face": 542,
+       "kind": "QUAD",
+       "angle": 89.9916201914212,
+       "shape": 0.9999946658560166,
+       "meets_floor": true
+      },
+      {
+       "face": 715,
+       "kind": "TRI",
+       "angle": 3.2528169651680092,
+       "shape": 0.09668554390091698,
+       "meets_floor": false
+      },
+      {
+       "face": 716,
+       "kind": "TRI",
+       "angle": 4.2835559711252085,
+       "shape": 0.12665791484452182,
+       "meets_floor": false
+      },
+      {
+       "face": 717,
+       "kind": "TRI",
+       "angle": 5.7944277301987,
+       "shape": 0.17009394619327886,
+       "meets_floor": false
+      },
+      {
+       "face": 729,
+       "kind": "TRI",
+       "angle": 2.5314663267635877,
+       "shape": 0.07553111652860231,
+       "meets_floor": false
+      }
+     ],
+     "replacement": [
+      {
+       "face": 723,
+       "kind": "TRI",
+       "angle": 15.86226671222983,
+       "shape": 0.3605509261441997,
+       "meets_floor": true
+      },
+      {
+       "face": 724,
+       "kind": "TRI",
+       "angle": 22.96188952684869,
+       "shape": 0.46830852293938596,
+       "meets_floor": true
+      },
+      {
+       "face": 725,
+       "kind": "TRI",
+       "angle": 17.11913291097099,
+       "shape": 0.3919225131679087,
+       "meets_floor": true
+      },
+      {
+       "face": 726,
+       "kind": "TRI",
+       "angle": 40.07931595273783,
+       "shape": 0.8532615164295932,
+       "meets_floor": true
+      },
+      {
+       "face": 727,
+       "kind": "TRI",
+       "angle": 17.859350332997327,
+       "shape": 0.4070108741369176,
+       "meets_floor": true
+      },
+      {
+       "face": 728,
+       "kind": "TRI",
+       "angle": 41.54393392319282,
+       "shape": 0.8600409411127463,
+       "meets_floor": true
+      }
+     ]
+    },
+    "final": {
+     "control": [
+      {
+       "face": 537,
+       "kind": "QUAD",
+       "angle": 63.3564648236699,
+       "shape": 0.8938071852690627,
+       "meets_floor": true
+      },
+      {
+       "face": 538,
+       "kind": "QUAD",
+       "angle": 89.96265717499877,
+       "shape": 0.9999968877180911,
+       "meets_floor": true
+      },
+      {
+       "face": 541,
+       "kind": "QUAD",
+       "angle": 89.9776081020059,
+       "shape": 0.9999958612252526,
+       "meets_floor": true
+      },
+      {
+       "face": 542,
+       "kind": "QUAD",
+       "angle": 89.9916201914212,
+       "shape": 0.9999946658560166,
+       "meets_floor": true
+      },
+      {
+       "face": 715,
+       "kind": "TRI",
+       "angle": 3.2528169651680092,
+       "shape": 0.09668554390091698,
+       "meets_floor": false
+      },
+      {
+       "face": 716,
+       "kind": "TRI",
+       "angle": 4.2835559711252085,
+       "shape": 0.12665791484452182,
+       "meets_floor": false
+      },
+      {
+       "face": 717,
+       "kind": "TRI",
+       "angle": 5.7944277301987,
+       "shape": 0.17009394619327886,
+       "meets_floor": false
+      },
+      {
+       "face": 729,
+       "kind": "TRI",
+       "angle": 6.980323533807382,
+       "shape": 0.20612250152618736,
+       "meets_floor": false
+      }
+     ],
+     "replacement": [
+      {
+       "face": 723,
+       "kind": "TRI",
+       "angle": 15.86226671222983,
+       "shape": 0.3605509261441997,
+       "meets_floor": true
+      },
+      {
+       "face": 724,
+       "kind": "TRI",
+       "angle": 22.96188952684869,
+       "shape": 0.46830852293938596,
+       "meets_floor": true
+      },
+      {
+       "face": 725,
+       "kind": "TRI",
+       "angle": 17.11913291097099,
+       "shape": 0.3919225131679087,
+       "meets_floor": true
+      },
+      {
+       "face": 726,
+       "kind": "TRI",
+       "angle": 40.07931595273783,
+       "shape": 0.8532615164295932,
+       "meets_floor": true
+      },
+      {
+       "face": 727,
+       "kind": "TRI",
+       "angle": 17.859350332997327,
+       "shape": 0.4070108741369176,
+       "meets_floor": true
+      },
+      {
+       "face": 728,
+       "kind": "TRI",
+       "angle": 41.54393392319282,
+       "shape": 0.8600409411127463,
+       "meets_floor": true
+      }
+     ]
+    }
+   },
+   "geometry": {
+    "control": {
+     "24": {
+      "sha256": "427a62d0c9034f0af00106b2f821766f83884f25acb947939b8eb10e0c85fc85",
+      "nodes": 700,
+      "faces": 731,
+      "boundary_segments": 19,
+      "shape": {
+       "minimum_angle": 3.2528169651680092,
+       "by_kind": {
+        "TRI": {
+         "count": 83,
+         "minimum_angle": 3.2528169651680092,
+         "minimum_shape": 0.09668554390091698
+        },
+        "QUAD": {
+         "count": 648,
+         "minimum_angle": 18.960539550039286,
+         "minimum_shape": 0.3176651145494205
+        }
+       }
+      },
+      "regional_shape": {
+       "minimum_angle": 3.2528169651680092,
+       "by_kind": {
+        "TRI": {
+         "count": 83,
+         "minimum_angle": 3.2528169651680092,
+         "minimum_shape": 0.09668554390091698,
+         "uv_area_fraction": 0.21299183261858876
+        },
+        "QUAD": {
+         "count": 648,
+         "minimum_angle": 18.960539550039286,
+         "minimum_shape": 0.3176651145494205,
+         "uv_area_fraction": 0.7870081673814112
+        }
+       }
+      },
+      "global_error": {
+       "sample_count": 576,
+       "max_xyz": 0.039742105155318994,
+       "rms_uv": 0.006907818661524245,
+       "rms_source_area": 0.006511661302467861,
+       "tri_sites": 107,
+       "quad_sites": 469
+      },
+      "regional_error": {
+       "sample_count": 576,
+       "max_xyz": 0.039742105155318994,
+       "rms_uv": 0.006907818661524245,
+       "rms_source_area": 0.006511661302467861,
+       "tri_sites": 107,
+       "quad_sites": 469
+      },
+      "max_adjacent_size_ratio": 7.488156299309311,
+      "max_regional_adjacent_size_ratio": 7.488156299309311
+     },
+     "48": {
+      "sha256": "427a62d0c9034f0af00106b2f821766f83884f25acb947939b8eb10e0c85fc85",
+      "nodes": 700,
+      "faces": 731,
+      "boundary_segments": 19,
+      "shape": {
+       "minimum_angle": 3.2528169651680092,
+       "by_kind": {
+        "TRI": {
+         "count": 83,
+         "minimum_angle": 3.2528169651680092,
+         "minimum_shape": 0.09668554390091698
+        },
+        "QUAD": {
+         "count": 648,
+         "minimum_angle": 18.960539550039286,
+         "minimum_shape": 0.3176651145494205
+        }
+       }
+      },
+      "regional_shape": {
+       "minimum_angle": 3.2528169651680092,
+       "by_kind": {
+        "TRI": {
+         "count": 83,
+         "minimum_angle": 3.2528169651680092,
+         "minimum_shape": 0.09668554390091698,
+         "uv_area_fraction": 0.21299183261858876
+        },
+        "QUAD": {
+         "count": 648,
+         "minimum_angle": 18.960539550039286,
+         "minimum_shape": 0.3176651145494205,
+         "uv_area_fraction": 0.7870081673814112
+        }
+       }
+      },
+      "global_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.04399111909395774,
+       "rms_uv": 0.007041680140142861,
+       "rms_source_area": 0.0066217582946432735,
+       "tri_sites": 483,
+       "quad_sites": 1821
+      },
+      "regional_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.04399111909395774,
+       "rms_uv": 0.007041680140142861,
+       "rms_source_area": 0.0066217582946432735,
+       "tri_sites": 483,
+       "quad_sites": 1821
+      },
+      "max_adjacent_size_ratio": 7.488156299309311,
+      "max_regional_adjacent_size_ratio": 7.488156299309311
+     }
+    },
+    "trial": {
+     "24": {
+      "sha256": "52fab434c454ccbe877a4185e708a1f9f4d93d2bde9d6aed945fb1f5bcad9fa0",
+      "nodes": 697,
+      "faces": 729,
+      "boundary_segments": 19,
+      "shape": {
+       "minimum_angle": 3.7806708513674914,
+       "by_kind": {
+        "TRI": {
+         "count": 85,
+         "minimum_angle": 3.7806708513674914,
+         "minimum_shape": 0.11230430810576808
+        },
+        "QUAD": {
+         "count": 644,
+         "minimum_angle": 18.960539550039286,
+         "minimum_shape": 0.3176651145494205
+        }
+       }
+      },
+      "regional_shape": {
+       "minimum_angle": 3.7806708513674914,
+       "by_kind": {
+        "TRI": {
+         "count": 85,
+         "minimum_angle": 3.7806708513674914,
+         "minimum_shape": 0.11230430810576808,
+         "uv_area_fraction": 0.21827966914706792
+        },
+        "QUAD": {
+         "count": 644,
+         "minimum_angle": 18.960539550039286,
+         "minimum_shape": 0.3176651145494205,
+         "uv_area_fraction": 0.7817203308529321
+        }
+       }
+      },
+      "global_error": {
+       "sample_count": 576,
+       "max_xyz": 0.04013334254804927,
+       "rms_uv": 0.007219185577375708,
+       "rms_source_area": 0.006820237586989913,
+       "tri_sites": 110,
+       "quad_sites": 466
+      },
+      "regional_error": {
+       "sample_count": 576,
+       "max_xyz": 0.04013334254804927,
+       "rms_uv": 0.007219185577375708,
+       "rms_source_area": 0.006820237586989913,
+       "tri_sites": 110,
+       "quad_sites": 466
+      },
+      "max_adjacent_size_ratio": 7.303227643680275,
+      "max_regional_adjacent_size_ratio": 7.303227643680275
+     },
+     "48": {
+      "sha256": "52fab434c454ccbe877a4185e708a1f9f4d93d2bde9d6aed945fb1f5bcad9fa0",
+      "nodes": 697,
+      "faces": 729,
+      "boundary_segments": 19,
+      "shape": {
+       "minimum_angle": 3.7806708513674914,
+       "by_kind": {
+        "TRI": {
+         "count": 85,
+         "minimum_angle": 3.7806708513674914,
+         "minimum_shape": 0.11230430810576808
+        },
+        "QUAD": {
+         "count": 644,
+         "minimum_angle": 18.960539550039286,
+         "minimum_shape": 0.3176651145494205
+        }
+       }
+      },
+      "regional_shape": {
+       "minimum_angle": 3.7806708513674914,
+       "by_kind": {
+        "TRI": {
+         "count": 85,
+         "minimum_angle": 3.7806708513674914,
+         "minimum_shape": 0.11230430810576808,
+         "uv_area_fraction": 0.21827966914706792
+        },
+        "QUAD": {
+         "count": 644,
+         "minimum_angle": 18.960539550039286,
+         "minimum_shape": 0.3176651145494205,
+         "uv_area_fraction": 0.7817203308529321
+        }
+       }
+      },
+      "global_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.04418786782332599,
+       "rms_uv": 0.007336620991465294,
+       "rms_source_area": 0.00691570122564729,
+       "tri_sites": 492,
+       "quad_sites": 1812
+      },
+      "regional_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.04418786782332599,
+       "rms_uv": 0.007336620991465294,
+       "rms_source_area": 0.00691570122564729,
+       "tri_sites": 492,
+       "quad_sites": 1812
+      },
+      "max_adjacent_size_ratio": 7.303227643680275,
+      "max_regional_adjacent_size_ratio": 7.303227643680275
+     }
+    }
+   },
+   "stable_node_ids_checked": true,
+   "retired_uv": [
+    [
+     0.6875,
+     0.875
+    ],
+    [
+     0.71875,
+     0.875
+    ],
+    [
+     0.65625,
+     0.875
+    ]
+   ]
+  },
+  "ribbed": {
+   "status": {
+    "status": "staged",
+    "depth_cap": 4,
+    "leaves_before": 112,
+    "leaves_after": 112,
+    "direct_leaf_edits": 7,
+    "requests": 17,
+    "capped_requests": 1,
+    "segments_before": 14,
+    "segments_after": 26,
+    "candidate_sha256": "bcab6c2551e83b04f1c7a14f643e36a2ae20a71c482e1c16bccf8f4df562e7d6"
+   },
+   "source": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "original_birth": "f264ada6da741805a7999976da26ef169e93c4f244ee184b5f3e2d63d2674bab",
+   "progressive": {
+    "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+    "predecessor_sha256": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "native_status": "staged",
+    "mixed_adaptive_epochs": 0,
+    "status": "blocked",
+    "blockers": [
+     "contour_edge_TRI.min_angle_deg.regional_regression",
+     "contour_edge_QUAD.min_angle_deg.regional_regression",
+     "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+     "contour_vertex_QUAD.min_angle_deg.regional_regression",
+     "contour_vertex_QUAD.min_shape.regional_regression",
+     "interior_TRI.min_angle_deg.below_safety_floor",
+     "interior_QUAD.min_angle_deg.regional_regression",
+     "interior_QUAD.min_shape.regional_regression"
+    ],
+    "quality_targets_met": false,
+    "error_targets_met": false,
+    "stop_targets_met": false,
+    "regions": {
+     "contour_edge_TRI": {
+      "predecessor_faces": 5,
+      "candidate_faces": 6,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "regional_regression",
+        "predecessor_min": 13.898520058107152,
+        "candidate_min": 17.942810055402088,
+        "safety_floor": 15,
+        "target": 30,
+        "predecessor_below_target": 2,
+        "candidate_below_target": 3
+       },
+       "min_shape": {
+        "status": "meets_target",
+        "predecessor_min": 0.4038422549621266,
+        "candidate_min": 0.5046060809078451,
+        "safety_floor": 0.125,
+        "target": 0.25,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 0
+       }
+      }
+     },
+     "contour_edge_QUAD": {
+      "predecessor_faces": 9,
+      "candidate_faces": 19,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "regional_regression",
+        "predecessor_min": 26.181796056164885,
+        "candidate_min": 25.53551802560636,
+        "safety_floor": 22.5,
+        "target": 45,
+        "predecessor_below_target": 7,
+        "candidate_below_target": 9
+       },
+       "min_shape": {
+        "status": "below_target_without_regression",
+        "predecessor_min": 0.41805176069673416,
+        "candidate_min": 0.4236259505476368,
+        "safety_floor": 0.25,
+        "target": 0.5,
+        "predecessor_below_target": 6,
+        "candidate_below_target": 6
+       }
+      }
+     },
+     "contour_vertex_TRI": {
+      "predecessor_faces": 53,
+      "candidate_faces": 37,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "below_safety_floor",
+        "predecessor_min": 3.791336324177119,
+        "candidate_min": 11.967772407811895,
+        "safety_floor": 15,
+        "target": 30,
+        "predecessor_below_target": 47,
+        "candidate_below_target": 22
+       },
+       "min_shape": {
+        "status": "meets_target",
+        "predecessor_min": 0.11387110070270551,
+        "candidate_min": 0.3497158082809553,
+        "safety_floor": 0.125,
+        "target": 0.25,
+        "predecessor_below_target": 27,
+        "candidate_below_target": 0
+       }
+      }
+     },
+     "contour_vertex_QUAD": {
+      "predecessor_faces": 0,
+      "candidate_faces": 3,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "regional_regression",
+        "predecessor_min": null,
+        "candidate_min": 30.022180494505147,
+        "safety_floor": 22.5,
+        "target": 45,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 3
+       },
+       "min_shape": {
+        "status": "regional_regression",
+        "predecessor_min": null,
+        "candidate_min": 0.4992054101576319,
+        "safety_floor": 0.25,
+        "target": 0.5,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 1
+       }
+      }
+     },
+     "interior_TRI": {
+      "predecessor_faces": 2,
+      "candidate_faces": 15,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "below_safety_floor",
+        "predecessor_min": 26.57091996655889,
+        "candidate_min": 14.529681898586437,
+        "safety_floor": 15,
+        "target": 30,
+        "predecessor_below_target": 2,
+        "candidate_below_target": 10
+       },
+       "min_shape": {
+        "status": "meets_target",
+        "predecessor_min": 0.6929450141702036,
+        "candidate_min": 0.4200606004687047,
+        "safety_floor": 0.125,
+        "target": 0.25,
+        "predecessor_below_target": 0,
+        "candidate_below_target": 0
+       }
+      }
+     },
+     "interior_QUAD": {
+      "predecessor_faces": 478,
+      "candidate_faces": 460,
+      "metrics": {
+       "min_angle_deg": {
+        "status": "regional_regression",
+        "predecessor_min": 26.450085727709634,
+        "candidate_min": 26.289863992652087,
+        "safety_floor": 22.5,
+        "target": 45,
+        "predecessor_below_target": 33,
+        "candidate_below_target": 36
+       },
+       "min_shape": {
+        "status": "regional_regression",
+        "predecessor_min": 0.3248423057881177,
+        "candidate_min": 0.3187473918768228,
+        "safety_floor": 0.25,
+        "target": 0.5,
+        "predecessor_below_target": 22,
+        "candidate_below_target": 13
+       }
+      }
+     }
+    },
+    "geometry": {
+     "24": {
+      "predecessor": {
+       "sample_count": 576,
+       "max_xyz": 0.12330781811253737,
+       "rms_uv": 0.027355917150157002,
+       "rms_source_area": 0.027384233947918835,
+       "tri_sites": 139,
+       "quad_sites": 437
+      },
+      "candidate": {
+       "sample_count": 576,
+       "max_xyz": 0.10278111763359259,
+       "rms_uv": 0.02005539567134704,
+       "rms_source_area": 0.020070095230997467,
+       "tri_sites": 73,
+       "quad_sites": 503
+      },
+      "relative_rms_gain": 0.2670930554724257
+     },
+     "48": {
+      "predecessor": {
+       "sample_count": 2304,
+       "max_xyz": 0.1256181753351185,
+       "rms_uv": 0.0274623867600248,
+       "rms_source_area": 0.027488072891660026,
+       "tri_sites": 561,
+       "quad_sites": 1743
+      },
+      "candidate": {
+       "sample_count": 2304,
+       "max_xyz": 0.10748410563240578,
+       "rms_uv": 0.020090650748019023,
+       "rms_source_area": 0.020102241108279847,
+       "tri_sites": 337,
+       "quad_sites": 1967
+      },
+      "relative_rms_gain": 0.2686922365380174
+     }
+    },
+    "face_growth": -0.012797074954296161,
+    "predecessor_faces": 547,
+    "candidate_faces": 540,
+    "candidate_sha256": "bcab6c2551e83b04f1c7a14f643e36a2ae20a71c482e1c16bccf8f4df562e7d6",
+    "boundary_certificate_sha256": "e8fbec581f412c7cb45dcf63d73067a99e113ffd659c0a7c8f7ab10194a6e32e",
+    "max_adjacent_physical_size_ratio": {
+     "baseline": 6.186777869509267,
+     "candidate": 4.837826816471032
+    }
+   },
+   "retired": [
+    497
+   ],
+   "external_faces": 537,
+   "external_vertices": 525,
+   "external_vertices_changed": 11,
+   "largest_external_xyz_difference": 0.02841443780446759,
+   "frames": {
+    "before": "d8c037af67c74f8bffe6a7aa7455f8f7a81d6a40b2a63bf9f3b9e53c14019fcf",
+    "smoothed": "bcab6c2551e83b04f1c7a14f643e36a2ae20a71c482e1c16bccf8f4df562e7d6"
+   },
+   "size_requests": {
+    "92": {
+     "h": 0.2434613268192175,
+     "control": 0.19179702922039088,
+     "trial": 0.19179702922039088,
+     "met": true
+    },
+    "477": {
+     "h": 0.45102559192493713,
+     "control": 0.530226542962608,
+     "trial": 0.530226542962608,
+     "met": false
+    },
+    "478": {
+     "h": 0.38298137195051996,
+     "control": 0.19436835286450815,
+     "trial": 0.19177290710343808,
+     "met": true
+    },
+    "479": {
+     "h": 0.5922022021959923,
+     "control": 0.5668833151078528,
+     "trial": 0.5668833151078528,
+     "met": true
+    },
+    "480": {
+     "h": 0.4641953630457234,
+     "control": 0.4615253591227658,
+     "trial": 0.4615253591227658,
+     "met": true
+    },
+    "486": {
+     "h": 0.28368990514853326,
+     "control": 0.2703550829749216,
+     "trial": 0.26692914749163993,
+     "met": true
+    },
+    "488": {
+     "h": 0.443708268128024,
+     "control": 0.6172273228594566,
+     "trial": 0.6172273228594566,
+     "met": false
+    },
+    "489": {
+     "h": 0.47115354518404984,
+     "control": 0.5695086176430285,
+     "trial": 0.5695086176430285,
+     "met": false
+    },
+    "490": {
+     "h": 0.6618247159138458,
+     "control": 0.500010651558838,
+     "trial": 0.500010651558838,
+     "met": true
+    },
+    "503": {
+     "h": 0.33409303105550897,
+     "control": 0.1892323759633202,
+     "trial": 0.19453709170677017,
+     "met": true
+    },
+    "504": {
+     "h": 0.38298137195051996,
+     "control": 0.27736912301278416,
+     "trial": 0.27736912301278416,
+     "met": true
+    },
+    "509": {
+     "h": 0.32867279120594367,
+     "control": 0.18911976443168665,
+     "trial": 0.18911976443168665,
+     "met": true
+    },
+    "510": {
+     "h": 0.3490026260622591,
+     "control": 0.35807285865188077,
+     "trial": 0.35807285865188077,
+     "met": false
+    },
+    "515": {
+     "h": 0.43866829792295725,
+     "control": 0.22523445475638243,
+     "trial": 0.22523445475638243,
+     "met": true
+    },
+    "541": {
+     "h": 0.49138779207920813,
+     "control": 0.1953065109088145,
+     "trial": 0.1953065109088145,
+     "met": true
+    },
+    "542": {
+     "h": 0.4902404843570106,
+     "control": 0.5238243846299162,
+     "trial": 0.5238243846299162,
+     "met": false
+    },
+    "543": {
+     "h": 0.49024053030655246,
+     "control": 0.5238243846299162,
+     "trial": 0.5238243846299162,
+     "met": false
+    }
+   },
+   "lost_size_requests": [],
+   "patch": {
+    "birth": {
+     "control": [
+      {
+       "face": 452,
+       "kind": "QUAD",
+       "angle": 89.70006390978138,
+       "shape": 0.9994401928207499,
+       "meets_floor": true
+      },
+      {
+       "face": 453,
+       "kind": "QUAD",
+       "angle": 89.64689606053823,
+       "shape": 0.9994305205707276,
+       "meets_floor": true
+      },
+      {
+       "face": 539,
+       "kind": "QUAD",
+       "angle": 38.17374267739597,
+       "shape": 0.6164195077507416,
+       "meets_floor": true
+      },
+      {
+       "face": 540,
+       "kind": "TRI",
+       "angle": 11.914100639439729,
+       "shape": 0.34814583697917206,
+       "meets_floor": false
+      }
+     ],
+     "replacement": [
+      {
+       "face": 537,
+       "kind": "QUAD",
+       "angle": 50.07206418999964,
+       "shape": 0.7655167272279714,
+       "meets_floor": true
+      },
+      {
+       "face": 538,
+       "kind": "QUAD",
+       "angle": 64.3560603995029,
+       "shape": 0.9009321909798755,
+       "meets_floor": true
+      },
+      {
+       "face": 539,
+       "kind": "TRI",
+       "angle": 25.961434853212587,
+       "shape": 0.6821050842213469,
+       "meets_floor": true
+      }
+     ]
+    },
+    "final": {
+     "control": [
+      {
+       "face": 452,
+       "kind": "QUAD",
+       "angle": 84.78310449566342,
+       "shape": 0.9951896347161419,
+       "meets_floor": true
+      },
+      {
+       "face": 453,
+       "kind": "QUAD",
+       "angle": 83.38795996583505,
+       "shape": 0.992669569500255,
+       "meets_floor": true
+      },
+      {
+       "face": 482,
+       "kind": "QUAD",
+       "angle": 27.199278445383456,
+       "shape": 0.4558874522239167,
+       "meets_floor": true
+      },
+      {
+       "face": 540,
+       "kind": "TRI",
+       "angle": 11.914100639439729,
+       "shape": 0.34814583697917206,
+       "meets_floor": false
+      }
+     ],
+     "replacement": [
+      {
+       "face": 480,
+       "kind": "QUAD",
+       "angle": 35.80247383151963,
+       "shape": 0.5167440473685325,
+       "meets_floor": true
+      },
+      {
+       "face": 481,
+       "kind": "QUAD",
+       "angle": 61.563555990591844,
+       "shape": 0.8787919246381929,
+       "meets_floor": true
+      },
+      {
+       "face": 539,
+       "kind": "TRI",
+       "angle": 25.961434853212587,
+       "shape": 0.6821050842213469,
+       "meets_floor": true
+      }
+     ]
+    }
+   },
+   "geometry": {
+    "control": {
+     "24": {
+      "sha256": "0b4745e1fab01559390be8deb95f5c16109008b85d390706ded0698a586eca13",
+      "nodes": 526,
+      "faces": 541,
+      "boundary_segments": 26,
+      "shape": {
+       "minimum_angle": 11.914100639439729,
+       "by_kind": {
+        "TRI": {
+         "count": 58,
+         "minimum_angle": 11.914100639439729,
+         "minimum_shape": 0.34814583697917206
+        },
+        "QUAD": {
+         "count": 483,
+         "minimum_angle": 25.53551802560636,
+         "minimum_shape": 0.3187473918768228
+        }
+       }
+      },
+      "regional_shape": {
+       "minimum_angle": 11.914100639439729,
+       "by_kind": {
+        "TRI": {
+         "count": 58,
+         "minimum_angle": 11.914100639439729,
+         "minimum_shape": 0.34814583697917206,
+         "uv_area_fraction": 0.15288597208182886
+        },
+        "QUAD": {
+         "count": 483,
+         "minimum_angle": 25.53551802560636,
+         "minimum_shape": 0.3187473918768228,
+         "uv_area_fraction": 0.8471140279181711
+        }
+       }
+      },
+      "global_error": {
+       "sample_count": 576,
+       "max_xyz": 0.10278111763359259,
+       "rms_uv": 0.02005524756946302,
+       "rms_source_area": 0.020069947725799904,
+       "tri_sites": 73,
+       "quad_sites": 503
+      },
+      "regional_error": {
+       "sample_count": 576,
+       "max_xyz": 0.10278111763359259,
+       "rms_uv": 0.02005524756946302,
+       "rms_source_area": 0.020069947725799904,
+       "tri_sites": 73,
+       "quad_sites": 503
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "max_regional_adjacent_size_ratio": 4.837826816471032
+     },
+     "48": {
+      "sha256": "0b4745e1fab01559390be8deb95f5c16109008b85d390706ded0698a586eca13",
+      "nodes": 526,
+      "faces": 541,
+      "boundary_segments": 26,
+      "shape": {
+       "minimum_angle": 11.914100639439729,
+       "by_kind": {
+        "TRI": {
+         "count": 58,
+         "minimum_angle": 11.914100639439729,
+         "minimum_shape": 0.34814583697917206
+        },
+        "QUAD": {
+         "count": 483,
+         "minimum_angle": 25.53551802560636,
+         "minimum_shape": 0.3187473918768228
+        }
+       }
+      },
+      "regional_shape": {
+       "minimum_angle": 11.914100639439729,
+       "by_kind": {
+        "TRI": {
+         "count": 58,
+         "minimum_angle": 11.914100639439729,
+         "minimum_shape": 0.34814583697917206,
+         "uv_area_fraction": 0.15288597208182886
+        },
+        "QUAD": {
+         "count": 483,
+         "minimum_angle": 25.53551802560636,
+         "minimum_shape": 0.3187473918768228,
+         "uv_area_fraction": 0.8471140279181711
+        }
+       }
+      },
+      "global_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.10748410563240578,
+       "rms_uv": 0.020091033587346017,
+       "rms_source_area": 0.020102639527836173,
+       "tri_sites": 341,
+       "quad_sites": 1963
+      },
+      "regional_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.10748410563240578,
+       "rms_uv": 0.020091033587346017,
+       "rms_source_area": 0.020102639527836173,
+       "tri_sites": 341,
+       "quad_sites": 1963
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "max_regional_adjacent_size_ratio": 4.837826816471032
+     }
+    },
+    "trial": {
+     "24": {
+      "sha256": "bcab6c2551e83b04f1c7a14f643e36a2ae20a71c482e1c16bccf8f4df562e7d6",
+      "nodes": 525,
+      "faces": 540,
+      "boundary_segments": 26,
+      "shape": {
+       "minimum_angle": 11.967772407811895,
+       "by_kind": {
+        "TRI": {
+         "count": 58,
+         "minimum_angle": 11.967772407811895,
+         "minimum_shape": 0.3497158082809553
+        },
+        "QUAD": {
+         "count": 482,
+         "minimum_angle": 25.53551802560636,
+         "minimum_shape": 0.3187473918768228
+        }
+       }
+      },
+      "regional_shape": {
+       "minimum_angle": 11.967772407811895,
+       "by_kind": {
+        "TRI": {
+         "count": 58,
+         "minimum_angle": 11.967772407811895,
+         "minimum_shape": 0.3497158082809553,
+         "uv_area_fraction": 0.1524327841025869
+        },
+        "QUAD": {
+         "count": 482,
+         "minimum_angle": 25.53551802560636,
+         "minimum_shape": 0.3187473918768228,
+         "uv_area_fraction": 0.8475672158974131
+        }
+       }
+      },
+      "global_error": {
+       "sample_count": 576,
+       "max_xyz": 0.10278111763359259,
+       "rms_uv": 0.02005539567134704,
+       "rms_source_area": 0.020070095230997467,
+       "tri_sites": 73,
+       "quad_sites": 503
+      },
+      "regional_error": {
+       "sample_count": 576,
+       "max_xyz": 0.10278111763359259,
+       "rms_uv": 0.02005539567134704,
+       "rms_source_area": 0.020070095230997467,
+       "tri_sites": 73,
+       "quad_sites": 503
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "max_regional_adjacent_size_ratio": 4.837826816471032
+     },
+     "48": {
+      "sha256": "bcab6c2551e83b04f1c7a14f643e36a2ae20a71c482e1c16bccf8f4df562e7d6",
+      "nodes": 525,
+      "faces": 540,
+      "boundary_segments": 26,
+      "shape": {
+       "minimum_angle": 11.967772407811895,
+       "by_kind": {
+        "TRI": {
+         "count": 58,
+         "minimum_angle": 11.967772407811895,
+         "minimum_shape": 0.3497158082809553
+        },
+        "QUAD": {
+         "count": 482,
+         "minimum_angle": 25.53551802560636,
+         "minimum_shape": 0.3187473918768228
+        }
+       }
+      },
+      "regional_shape": {
+       "minimum_angle": 11.967772407811895,
+       "by_kind": {
+        "TRI": {
+         "count": 58,
+         "minimum_angle": 11.967772407811895,
+         "minimum_shape": 0.3497158082809553,
+         "uv_area_fraction": 0.1524327841025869
+        },
+        "QUAD": {
+         "count": 482,
+         "minimum_angle": 25.53551802560636,
+         "minimum_shape": 0.3187473918768228,
+         "uv_area_fraction": 0.8475672158974131
+        }
+       }
+      },
+      "global_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.10748410563240578,
+       "rms_uv": 0.020090650748019023,
+       "rms_source_area": 0.020102241108279847,
+       "tri_sites": 337,
+       "quad_sites": 1967
+      },
+      "regional_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.10748410563240578,
+       "rms_uv": 0.020090650748019023,
+       "rms_source_area": 0.020102241108279847,
+       "tri_sites": 337,
+       "quad_sites": 1967
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "max_regional_adjacent_size_ratio": 4.837826816471032
+     }
+    }
+   },
+   "stable_node_ids_checked": true,
+   "retired_uv": [
+    [
+     0.78125,
+     0.0625
+    ]
+   ]
+  }
+ },
+ "smoothing_attribution": {
+  "curva": {
+   "passes": {
+    "control": {
+     "0": {
+      "sample_count": 2304,
+      "max_xyz": 0.04419218491628824,
+      "rms_uv": 0.007428811387940593,
+      "rms_source_area": 0.007000364546997375,
+      "tri_sites": 492,
+      "quad_sites": 1812
+     },
+     "1": {
+      "sample_count": 2304,
+      "max_xyz": 0.04419218491628824,
+      "rms_uv": 0.007266265326253437,
+      "rms_source_area": 0.0068451384780377,
+      "tri_sites": 492,
+      "quad_sites": 1812
+     },
+     "2": {
+      "sample_count": 2304,
+      "max_xyz": 0.04419218491628824,
+      "rms_uv": 0.007229645283371066,
+      "rms_source_area": 0.006808755013261968,
+      "tri_sites": 491,
+      "quad_sites": 1813
+     },
+     "3": {
+      "sample_count": 2304,
+      "max_xyz": 0.04401592177288681,
+      "rms_uv": 0.007052119714544885,
+      "rms_source_area": 0.0066320393654416155,
+      "tri_sites": 489,
+      "quad_sites": 1815
+     },
+     "4": {
+      "sample_count": 2304,
+      "max_xyz": 0.04399111909395774,
+      "rms_uv": 0.007041695621420393,
+      "rms_source_area": 0.006621776778558742,
+      "tri_sites": 489,
+      "quad_sites": 1815
+     },
+     "5": {
+      "sample_count": 2304,
+      "max_xyz": 0.04399111909395774,
+      "rms_uv": 0.007041680140142863,
+      "rms_source_area": 0.006621758294643276,
+      "tri_sites": 489,
+      "quad_sites": 1815
+     }
+    },
+    "trial": {
+     "0": {
+      "sample_count": 2304,
+      "max_xyz": 0.04419218491628824,
+      "rms_uv": 0.00743145976099908,
+      "rms_source_area": 0.00700340212032639,
+      "tri_sites": 498,
+      "quad_sites": 1806
+     },
+     "1": {
+      "sample_count": 2304,
+      "max_xyz": 0.04419218491628824,
+      "rms_uv": 0.0074094042022670725,
+      "rms_source_area": 0.006988527899129415,
+      "tri_sites": 498,
+      "quad_sites": 1806
+     },
+     "2": {
+      "sample_count": 2304,
+      "max_xyz": 0.04419218491628824,
+      "rms_uv": 0.007409163477807167,
+      "rms_source_area": 0.006988246888381627,
+      "tri_sites": 498,
+      "quad_sites": 1806
+     },
+     "3": {
+      "sample_count": 2304,
+      "max_xyz": 0.04418786782332599,
+      "rms_uv": 0.007346633260846922,
+      "rms_source_area": 0.006925537059508653,
+      "tri_sites": 498,
+      "quad_sites": 1806
+     },
+     "4": {
+      "sample_count": 2304,
+      "max_xyz": 0.04418786782332599,
+      "rms_uv": 0.00733663337749716,
+      "rms_source_area": 0.00691571623986586,
+      "tri_sites": 498,
+      "quad_sites": 1806
+     },
+     "5": {
+      "sample_count": 2304,
+      "max_xyz": 0.04418786782332599,
+      "rms_uv": 0.007336620991465294,
+      "rms_source_area": 0.006915701225647293,
+      "tri_sites": 498,
+      "quad_sites": 1806
+     }
+    }
+   },
+   "weighted_change": {
+    "True": {
+     "sites": 33,
+     "weighted_squared_change": 0.00042746647272522164
+    },
+    "False": {
+     "sites": 2271,
+     "weighted_squared_change": 0.03180144623397567
+    }
+   },
+   "largest_error_increases": [
+    {
+     "uv": [
+      0.78125,
+      0.9479166666666666
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.02404687459970612,
+     "trial": 0.028950296514388536,
+     "weighted_change": 0.000860970290120454
+    },
+    {
+     "uv": [
+      0.7604166666666666,
+      0.9479166666666666
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.023430544755736374,
+     "trial": 0.028336310881390384,
+     "weighted_change": 0.0008554809462014148
+    },
+    {
+     "uv": [
+      0.8020833333333334,
+      0.9479166666666666
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.023938435962405413,
+     "trial": 0.028842620051151038,
+     "weighted_change": 0.0008421219540273582
+    },
+    {
+     "uv": [
+      0.78125,
+      0.9270833333333334
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.014360111309520845,
+     "trial": 0.02127019219761208,
+     "weighted_change": 0.0008418569275383313
+    },
+    {
+     "uv": [
+      0.7604166666666666,
+      0.9270833333333334
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.013747278938591293,
+     "trial": 0.020661284653404784,
+     "weighted_change": 0.0008270281296778168
+    },
+    {
+     "uv": [
+      0.7395833333333334,
+      0.9479166666666666
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.022144271588724382,
+     "trial": 0.027055426830088228,
+     "weighted_change": 0.0008263324637742541
+    },
+    {
+     "uv": [
+      0.8020833333333334,
+      0.9270833333333334
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.014255197885863354,
+     "trial": 0.021166468137145473,
+     "weighted_change": 0.0008220289172847104
+    },
+    {
+     "uv": [
+      0.8229166666666666,
+      0.9479166666666666
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.023051857377375588,
+     "trial": 0.02796019023293814,
+     "weighted_change": 0.0007985529187047745
+    },
+    {
+     "uv": [
+      0.7395833333333334,
+      0.9270833333333334
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.012473638166688113,
+     "trial": 0.019395822372975734,
+     "weighted_change": 0.0007785299469081272
+    },
+    {
+     "uv": [
+      0.71875,
+      0.9479166666666666
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.020244518737446152,
+     "trial": 0.02516416879225087,
+     "weighted_change": 0.0007744768102676342
+    }
+   ],
+   "journal": {
+    "control": [
+     {
+      "arm": "both",
+      "pass": "0",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "1",
+      "status": "rejected",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": "Mixed smoothing inverted or collapsed a UV quad at face 125"
+     },
+     {
+      "arm": "guarded",
+      "pass": "1",
+      "status": "valid",
+      "full": "15",
+      "half": "8",
+      "quarter": "7",
+      "eighth": "4",
+      "skipped": "107",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "2",
+      "status": "valid",
+      "full": "20",
+      "half": "2",
+      "quarter": "4",
+      "eighth": "5",
+      "skipped": "143",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "3",
+      "status": "valid",
+      "full": "30",
+      "half": "5",
+      "quarter": "3",
+      "eighth": "3",
+      "skipped": "158",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "4",
+      "status": "valid",
+      "full": "38",
+      "half": "8",
+      "quarter": "4",
+      "eighth": "1",
+      "skipped": "181",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "5",
+      "status": "valid",
+      "full": "59",
+      "half": "2",
+      "quarter": "2",
+      "eighth": "3",
+      "skipped": "198",
+      "reason": ""
+     }
+    ],
+    "trial": [
+     {
+      "arm": "both",
+      "pass": "0",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "1",
+      "status": "rejected",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": "Mixed smoothing inverted or collapsed a UV quad at face 125"
+     },
+     {
+      "arm": "guarded",
+      "pass": "1",
+      "status": "valid",
+      "full": "15",
+      "half": "6",
+      "quarter": "6",
+      "eighth": "4",
+      "skipped": "111",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "2",
+      "status": "valid",
+      "full": "21",
+      "half": "3",
+      "quarter": "2",
+      "eighth": "3",
+      "skipped": "145",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "3",
+      "status": "valid",
+      "full": "26",
+      "half": "6",
+      "quarter": "3",
+      "eighth": "3",
+      "skipped": "160",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "4",
+      "status": "valid",
+      "full": "34",
+      "half": "7",
+      "quarter": "4",
+      "eighth": "1",
+      "skipped": "182",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "5",
+      "status": "valid",
+      "full": "55",
+      "half": "1",
+      "quarter": "2",
+      "eighth": "4",
+      "skipped": "194",
+      "reason": ""
+     }
+    ]
+   }
+  },
+  "ribbed": {
+   "passes": {
+    "control": {
+     "0": {
+      "sample_count": 2304,
+      "max_xyz": 0.11059373065824306,
+      "rms_uv": 0.022338215932515806,
+      "rms_source_area": 0.0223341212099538,
+      "tri_sites": 311,
+      "quad_sites": 1993
+     },
+     "1": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.02014565065487713,
+      "rms_source_area": 0.020156972072719288,
+      "tri_sites": 344,
+      "quad_sites": 1960
+     },
+     "2": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.020106441029016212,
+      "rms_source_area": 0.020118090298564803,
+      "tri_sites": 342,
+      "quad_sites": 1962
+     },
+     "3": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.020096127818848043,
+      "rms_source_area": 0.02010775121981252,
+      "tri_sites": 345,
+      "quad_sites": 1959
+     },
+     "4": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.020091963938649895,
+      "rms_source_area": 0.020103573484853,
+      "tri_sites": 345,
+      "quad_sites": 1959
+     },
+     "5": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.02009103358734601,
+      "rms_source_area": 0.020102639527836193,
+      "tri_sites": 344,
+      "quad_sites": 1960
+     }
+    },
+    "trial": {
+     "0": {
+      "sample_count": 2304,
+      "max_xyz": 0.11059373065824306,
+      "rms_uv": 0.022337765175512437,
+      "rms_source_area": 0.02233365317445136,
+      "tri_sites": 307,
+      "quad_sites": 1997
+     },
+     "1": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.020145185470771838,
+      "rms_source_area": 0.020156489680249634,
+      "tri_sites": 340,
+      "quad_sites": 1964
+     },
+     "2": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.020106022440118023,
+      "rms_source_area": 0.020117655476097566,
+      "tri_sites": 338,
+      "quad_sites": 1966
+     },
+     "3": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.020095732406557286,
+      "rms_source_area": 0.020107340182156076,
+      "tri_sites": 341,
+      "quad_sites": 1963
+     },
+     "4": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.020091519513620957,
+      "rms_source_area": 0.02010311457622331,
+      "tri_sites": 341,
+      "quad_sites": 1963
+     },
+     "5": {
+      "sample_count": 2304,
+      "max_xyz": 0.10748410563240578,
+      "rms_uv": 0.02009065074801902,
+      "rms_source_area": 0.020102241108279868,
+      "tri_sites": 340,
+      "quad_sites": 1964
+     }
+    }
+   },
+   "weighted_change": {
+    "True": {
+     "sites": 13,
+     "weighted_squared_change": -0.0017229820093660243
+    },
+    "False": {
+     "sites": 2291,
+     "weighted_squared_change": 0.0005209481661005088
+    }
+   },
+   "largest_error_increases": [
+    {
+     "uv": [
+      0.71875,
+      0.03125
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.002860423697424054,
+     "trial": 0.0037599101681151438,
+     "weighted_change": 0.00020230836444784221
+    },
+    {
+     "uv": [
+      0.78125,
+      0.11458333333333333
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.0029022252930194833,
+     "trial": 0.003642190251607204,
+     "weighted_change": 0.00015722068990355916
+    },
+    {
+     "uv": [
+      0.7604166666666666,
+      0.11458333333333333
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.002986609172400655,
+     "trial": 0.0034397152030506885,
+     "weighted_change": 9.45285178786224e-05
+    },
+    {
+     "uv": [
+      0.8020833333333334,
+      0.11458333333333333
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.003033957029959883,
+     "trial": 0.0034477105153647406,
+     "weighted_change": 8.707254462803638e-05
+    },
+    {
+     "uv": [
+      0.6979166666666666,
+      0.010416666666666666
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.0030248179696497875,
+     "trial": 0.003204148821106465,
+     "weighted_change": 3.8605702153392396e-05
+    },
+    {
+     "uv": [
+      0.71875,
+      0.052083333333333336
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.001981247946308893,
+     "trial": 0.0021802595503487023,
+     "weighted_change": 2.771854296070307e-05
+    },
+    {
+     "uv": [
+      0.8229166666666666,
+      0.11458333333333333
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.003061044465966934,
+     "trial": 0.003196048441361059,
+     "weighted_change": 2.74280568764525e-05
+    },
+    {
+     "uv": [
+      0.6979166666666666,
+      0.03125
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.0067014865094897815,
+     "trial": 0.006755777021328789,
+     "weighted_change": 2.4813983273700696e-05
+    },
+    {
+     "uv": [
+      0.7395833333333334,
+      0.11458333333333333
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.0027913269287979893,
+     "trial": 0.002889861655707398,
+     "weighted_change": 1.8171858678751614e-05
+    },
+    {
+     "uv": [
+      0.71875,
+      0.07291666666666667
+     ],
+     "inside_birth_cavity": false,
+     "control": 0.0019338326781436442,
+     "trial": 0.0020694797564423115,
+     "weighted_change": 1.7949050322599146e-05
+    }
+   ],
+   "journal": {
+    "control": [
+     {
+      "arm": "both",
+      "pass": "0",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "1",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "2",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "3",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "4",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "5",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "1",
+      "status": "valid",
+      "full": "87",
+      "half": "29",
+      "quarter": "6",
+      "eighth": "3",
+      "skipped": "143",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "2",
+      "status": "valid",
+      "full": "92",
+      "half": "24",
+      "quarter": "9",
+      "eighth": "8",
+      "skipped": "233",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "3",
+      "status": "valid",
+      "full": "77",
+      "half": "26",
+      "quarter": "17",
+      "eighth": "7",
+      "skipped": "285",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "4",
+      "status": "valid",
+      "full": "67",
+      "half": "23",
+      "quarter": "8",
+      "eighth": "10",
+      "skipped": "332",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "5",
+      "status": "valid",
+      "full": "67",
+      "half": "15",
+      "quarter": "16",
+      "eighth": "6",
+      "skipped": "356",
+      "reason": ""
+     }
+    ],
+    "trial": [
+     {
+      "arm": "both",
+      "pass": "0",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "1",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "2",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "3",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "4",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "control",
+      "pass": "5",
+      "status": "valid",
+      "full": "0",
+      "half": "0",
+      "quarter": "0",
+      "eighth": "0",
+      "skipped": "0",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "1",
+      "status": "valid",
+      "full": "87",
+      "half": "29",
+      "quarter": "6",
+      "eighth": "3",
+      "skipped": "145",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "2",
+      "status": "valid",
+      "full": "91",
+      "half": "25",
+      "quarter": "9",
+      "eighth": "8",
+      "skipped": "232",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "3",
+      "status": "valid",
+      "full": "78",
+      "half": "26",
+      "quarter": "17",
+      "eighth": "8",
+      "skipped": "284",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "4",
+      "status": "valid",
+      "full": "68",
+      "half": "24",
+      "quarter": "8",
+      "eighth": "10",
+      "skipped": "331",
+      "reason": ""
+     },
+     {
+      "arm": "guarded",
+      "pass": "5",
+      "status": "valid",
+      "full": "67",
+      "half": "15",
+      "quarter": "15",
+      "eighth": "6",
+      "skipped": "358",
+      "reason": ""
+     }
+    ]
+   }
+  }
+ },
+ "hosted_parent": {
+  "run": 45790071630,
+  "outcome": "success"
+ },
+ "hosted_feature": {
+  "run": 45795875797,
+  "final_result_available": false
+ },
+ "mixed_adaptive_epochs": 0
+}

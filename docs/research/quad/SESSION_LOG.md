@@ -5054,3 +5054,18 @@ outside, original curve and retained interior site. PR 292
 exact hosted checks pass.
 [Evidence and next action](SEED_LAYER_TRANSITION_PROJECTION_20261126.md).
 Zero accepted mixed adaptive epochs.
+
+
+## 2026-11-26 Fortaleza - stage native one-layer cavity replacements
+
+Draft PR 293 at d0fd3bf1 stages both locally improved meshes.
+CurvaBezier reaches 15.86 degrees at 729 faces and Ribbed 25.96
+degrees at 540 faces. The retained node IDs, exterior topology,
+curve certificates and previously met sizes pass. Whole shape
+is blocked. CurvaBezier RMS is 4.4 percent higher after native
+smoothing, with the net increase predominantly outside the birth
+cavity. Both exact controls, four native refusals, 21 Python checks,
+curve contracts and article rollback pass. Request alignment to
+apply the same local replacement after native smoothing.
+[Native experiment and evidence](NATIVE_SEED_LAYER_TRIAL_20261126.md).
+No accepted mixed adaptive epoch.

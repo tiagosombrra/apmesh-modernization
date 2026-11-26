@@ -12,6 +12,25 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - run guarded native replacements across one template layer
+
+[Draft PR 293](https://github.com/tiagosombrra/apmesh-modernization/pull/293)
+at `d0fd3bf1f0f39bf8b7b257814f8511ebde4b1e8b` stages 729 CurvaBezier and 540 Ribbed faces with
+unchanged exterior connectivity, retained node IDs and protected
+size requests. Both local cavities pass after native smoothing.
+CurvaBezier final local minimum is 15.86°, Ribbed 25.96°. The
+CurvaBezier final RMS rises 4.4 percent compared with the control,
+with 98.7 percent of the net weighted squared increase outside the
+UV birth cavity. Both whole meshes remain shape-blocked. Exact
+controls, four refusals, native boundary and article rollback, and
+21 Python checks pass. [Native results](NATIVE_SEED_LAYER_TRIAL_20261126.md).
+
+**Next after scientific alignment:** compare applying the same
+replacement after native smoothing, holding exterior geometry
+fixed and rechecking shape, size, error, budget and rollback.
+No accepted mixed epochs. Shared curves, owner reentry, reserved
+cases, full closure and global mixed curvature remain open.
+
 ### 2026-11-26 - project a transition cavity with one template layer
 
 The [two-model projection](SEED_LAYER_TRANSITION_PROJECTION_20261126.md) finds admissible local

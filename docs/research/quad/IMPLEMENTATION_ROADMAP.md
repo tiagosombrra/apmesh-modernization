@@ -99,8 +99,11 @@ in both regenerated front suffixes. The tested earlier placements
 and front-only expansions provide no joint closure. The
 [one-layer template projection](SEED_LAYER_TRANSITION_PROJECTION_20261126.md) finds local solutions
 in both models within the frozen budget by retiring only fully
-enclosed interface sites. The whole projected meshes remain
-blocked. Alignment is pending on a guarded native replacement.
+enclosed interface sites. The [guarded native trial](NATIVE_SEED_LAYER_TRIAL_20261126.md)
+passes both local replacements after smoothing and retains the
+full-mesh shape blocks. CurvaBezier RMS worsens relative to its
+control; the increase is mostly outside the original cavity.
+Align the replacement order comparison before another native change.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
