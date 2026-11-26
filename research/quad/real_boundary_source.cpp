@@ -6,6 +6,7 @@
 #include "data/curve/curve_adaptive_parametric.h"
 #include "data/node_adaptive.h"
 #include "data/patch/patch_bezier.h"
+#include "data/tree/bin_tree.h"
 #include <algorithm>
 #include <cmath>
 #include <limits>
@@ -206,6 +207,13 @@ RealBoundarySource CaptureRealBoundary(PatchBezier& patch, Quadtree& tree) {
             "Original parametric midpoint changed before tree replay");
     site.normalized_length = edge->getLen();
   }
+  CaptureRealSourceTree(tree, result);
+  ValidateRealBoundary(patch, result);
+  return result;
+}
+
+void CaptureRealSourceTree(Quadtree& tree, RealBoundarySource& result) {
+  Require(tree.getRoot() != nullptr, "Missing native source tree root");
   result.tree_factor = tree.getFactor();
   result.tree_cap = tree.getMaxLevelCap();
   result.face_quality = tree.FaceQualityThreshold();
@@ -213,11 +221,11 @@ RealBoundarySource CaptureRealBoundary(PatchBezier& patch, Quadtree& tree) {
   result.template_quality = tree.TemplatePoorScoreThreshold();
   result.source_leaves = tree.GetLeafCount();
   result.tree_counter = tree.getId();
+  result.leaf_order.clear();
+  result.cells.clear();
   for (auto* leaf : tree.getLeaves())
     result.leaf_order.push_back(leaf->getId());
   CaptureCell(*tree.getRoot(), result.cells);
-  ValidateRealBoundary(patch, result);
-  return result;
 }
 
 void ValidateRealBoundary(PatchBezier& patch, const RealBoundarySource& source) {
@@ -310,5 +318,93 @@ std::unique_ptr<Quadtree> ReplayRealSourceTree(PatchBezier& patch,
   high.release();
   ReplayCells(*tree, source);
   return tree;
+}
+RealBoundarySource SplitFeedbackIntervals(PatchBezier& patch, const RealBoundarySource& source,
+                                          const std::vector<bool>& split, unsigned long next_id) {
+  Require(split.size() == source.sites.size(), "Incomplete feedback interval requests");
+  auto result = source;
+  result.sites.clear();
+  for (std::size_t i = 0; i < source.sites.size(); ++i) {
+    const auto& site = source.sites[i];
+    result.sites.push_back(site);
+    if (!split[i])
+      continue;
+    const auto& end = source.sites[(i + 1) % source.sites.size()];
+    auto* curve = static_cast<CurveAdaptiveParametric*>(patch.GetCurve(site.side));
+    const double uv_end = site.side % 2 == 0 ? end.uv.u : end.uv.v;
+    const double t_end = source.reversed_curves[site.side] ? 1 - uv_end : uv_end;
+    BinTree interval(std::min(site.parameter, t_end), std::max(site.parameter, t_end));
+    interval.Subdivide(curve);
+    const double t = interval.bt_left_child_->final_param_coord_;
+    Require(t > interval.initial_param_coord_ && t < interval.final_param_coord_ &&
+                next_id < std::numeric_limits<unsigned long>::max(),
+            "Native feedback split produced an invalid midpoint or ID");
+    RealBoundarySite new_site;
+    new_site.uv = Uv(site.side, source.reversed_curves[site.side] ? 1 - t : t);
+    new_site.xyz = Xyz(curve->FindPointByParameter(t));
+    new_site.source_id = ++next_id;
+    new_site.side = site.side;
+    new_site.parameter = t;
+    result.sites.push_back(new_site);
+    result.original_curves[site.side].push_back({t, new_site.xyz, new_site.source_id});
+  }
+  result.nonuniform_sides = 0;
+  for (auto& partition : result.original_curves) {
+    std::sort(partition.begin(), partition.end(),
+              [](const auto& a, const auto& b) { return a.parameter < b.parameter; });
+    const double first_gap = partition[1].parameter - partition[0].parameter;
+    for (std::size_t i = 2; i < partition.size(); ++i)
+      if (std::abs(partition[i].parameter - partition[i - 1].parameter - first_gap) > 1e-12) {
+        ++result.nonuniform_sides;
+        break;
+      }
+  }
+  const auto boundary = SourceBoundary(patch, result.sites);
+  std::size_t i = 0;
+  for (auto* edge : boundary->getEdges()) {
+    auto& site = result.sites.at(i++);
+    site.edge_mid = {edge->getMid()->getX(), edge->getMid()->getY()};
+    site.normalized_length = edge->getLen();
+    site.refined_length = -1;
+  }
+  ValidateRealBoundary(patch, result);
+  return result;
+}
+
+std::vector<CertifiedBoundarySplit> CertifyBoundaryRefinement(PatchBezier& patch,
+                                                              const RealBoundarySource& parent,
+                                                              const RealBoundarySource& candidate,
+                                                              const std::vector<bool>& requested,
+                                                              unsigned long last_parent_node_id) {
+  ValidateRealBoundary(patch, parent);
+  ValidateRealBoundary(patch, candidate);
+  Require(parent.source_step == candidate.source_step &&
+              parent.domain_generation == candidate.domain_generation &&
+              parent.reference_tri_accepted == candidate.reference_tri_accepted &&
+              requested.size() == parent.sites.size(),
+          "Boundary refinement changed the source attempt or interval count");
+  const auto count = static_cast<std::size_t>(std::count(requested.begin(), requested.end(), true));
+  Require(candidate.sites.size() == parent.sites.size() + count,
+          "Boundary refinement did not realize the requested split count");
+  std::vector<CertifiedBoundarySplit> splits;
+  splits.reserve(count);
+  std::size_t next = 0;
+  for (std::size_t i = 0; i < parent.sites.size(); ++i) {
+    const auto& a = parent.sites[i];
+    const auto& kept = candidate.sites[next++];
+    Require(a.uv.u == kept.uv.u && a.uv.v == kept.uv.v && a.xyz == kept.xyz &&
+                a.source_id == kept.source_id && a.side == kept.side &&
+                a.parameter == kept.parameter,
+            "Boundary refinement moved, replaced or reordered a previous site");
+    if (!requested[i])
+      continue;
+    const auto& end = parent.sites[(i + 1) % parent.sites.size()];
+    const auto& added = candidate.sites[next];
+    Require(added.source_id > last_parent_node_id && Side(a.uv, added.uv) == a.side &&
+                Side(added.uv, end.uv) == a.side,
+            "Boundary refinement reused an owner ID or left its parent interval");
+    splits.push_back({i, next++});
+  }
+  return splits;
 }
 } // namespace apmesh::quad
