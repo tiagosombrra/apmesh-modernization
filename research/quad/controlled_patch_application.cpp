@@ -326,6 +326,9 @@ void RequireMixedGeometry(bool condition, const char* message) {
 using PhysicalLift = std::function<Xyz(UvVertex)>;
 using TrialFaces = std::vector<std::vector<VertexId>>;
 using TrialScores = std::array<double, 5>;
+struct FrontShapeFloors {
+  double tri_angle, tri_shape, quad_angle, quad_shape;
+};
 
 void CheckMixedSmoothingFace(PatchBezier& patch, const std::vector<VertexId>& face,
                              const std::vector<UvVertex>& positions,
@@ -876,7 +879,8 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    std::optional<IdealFrontLimits> ideal_front_limits = std::nullopt,
                    const std::vector<GeometricRequest>* size_point_input = nullptr,
                    const SeedLayerPlan* seed_layer = nullptr,
-                   const std::vector<GeometricRequest>* seed_layer_requests = nullptr) {
+                   const std::vector<GeometricRequest>* seed_layer_requests = nullptr,
+                   const FrontShapeFloors* front_shape_floors = nullptr) {
   ValidateSourceCurves(patch);
   Require(!article_front || !pair_during_front, "Article and TRI-observer modes are exclusive");
   Require(!article_area_centroid || article_front, "Area centroid requires the article mode");
@@ -1087,9 +1091,37 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
         }
       }
     }
+    ArticleFrontShapeFallback shape_fallback;
+    if (front_shape_floors) {
+      shape_fallback = [&, floors = *front_shape_floors](const auto& vertices, const auto& quad,
+                                                         const auto& triangle) {
+        const auto meets_floor = [&](const auto& ids, std::size_t shape_index, double shape,
+                                     double angle) {
+          std::vector<VertexId> face;
+          std::vector<UvVertex> uv;
+          std::vector<Xyz> xyz;
+          for (const auto id : ids) {
+            face.push_back(uv.size());
+            uv.push_back(vertices[id]);
+            xyz.push_back(physical_point(uv.back()));
+          }
+          TrialScores scores;
+          scores.fill(std::numeric_limits<double>::infinity());
+          try {
+            CheckMixedSmoothingFace(patch, face, uv, xyz, nullptr, &scores);
+          } catch (const MixedGeometryRejection&) {
+            return false;
+          }
+          return std::isfinite(scores[shape_index]) && scores[shape_index] >= shape &&
+                 std::isfinite(scores[shape_index + 1]) && scores[shape_index + 1] >= angle;
+        };
+        return !meets_floor(quad, 2, floors.quad_shape, floors.quad_angle) &&
+               meets_floor(triangle, 0, floors.tri_shape, floors.tri_angle);
+      };
+    }
     article = ArticleMixedFront(selected.uv_quads, contour, std::move(boxes), additional_pairs,
                                 std::move(pair_screen), std::move(ideal_point),
-                                std::move(alternate_order))
+                                std::move(alternate_order), std::move(shape_fallback))
                   .Run();
     if (ideal_front_limits && ideal_front_limits->size_face_budget)
       SaveSizePointTrials(*guarded_smoothing, article, size_checks);
@@ -1521,6 +1553,10 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     ids(step.best);
     trace << ",\"selected_side\":" << step.selected_side << ",\"polygon\":";
     ids(step.polygon);
+    if (step.quad_replaced_by_initial_triangle) {
+      trace << ",\"quad_replaced_by_initial_triangle\":";
+      ids(*step.quad_replaced_by_initial_triangle);
+    }
     trace << ",\"alternatives\":[";
     for (std::size_t j = 0; j < step.alternatives.size(); ++j) {
       const auto& choice = step.alternatives[j];
@@ -2850,6 +2886,7 @@ struct FeedbackPlan {
   std::optional<std::size_t> refine_feedback_leaf_again;
   std::optional<IdealFrontLimits> ideal_front_limits;
   std::optional<SeedLayerPlan> seed_layer;
+  std::optional<FrontShapeFloors> front_shape_floors;
 };
 
 FeedbackPlan ReadFeedbackPlan(const std::filesystem::path& path) {
@@ -2958,7 +2995,16 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
   auto& feedback = plan.feedback;
   feedback.guarded_smoothing = true;
   while (input >> kind) {
-    if (kind == "replace_seed_layer" || kind == "replace_seed_layer_after_smoothing") {
+    if (kind == "trial_front_shape_floors") {
+      Require(!feedback.front_shape_floors, "Repeated front shape floors");
+      FrontShapeFloors floors{};
+      input >> floors.tri_angle >> floors.tri_shape >> floors.quad_angle >> floors.quad_shape;
+      Require(bool(input) && floors.tri_angle > 0 && floors.tri_angle <= 60 &&
+                  floors.tri_shape > 0 && floors.tri_shape <= 1 && floors.quad_angle > 0 &&
+                  floors.quad_angle <= 90 && floors.quad_shape > 0 && floors.quad_shape <= 1,
+              "Invalid front shape floors");
+      feedback.front_shape_floors = floors;
+    } else if (kind == "replace_seed_layer" || kind == "replace_seed_layer_after_smoothing") {
       Require(!feedback.seed_layer, "Repeated seed layer replacement");
       feedback.seed_layer = ReadSeedLayer(input);
       feedback.seed_layer->after_smoothing = kind == "replace_seed_layer_after_smoothing";
@@ -3088,6 +3134,8 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
           "Size-driven point requires a certified geometric face request");
   Require(!feedback.seed_layer || (have_requests && feedback.certify_boundary_refinement),
           "Seed layer replacement requires a certified successor");
+  Require(!feedback.front_shape_floors || (have_requests && feedback.certify_boundary_refinement),
+          "Front shape floors require a certified successor");
   if (feedback.refine_feedback_leaf_again) {
     const auto face = *feedback.refine_feedback_leaf_again;
     Require(feedback.certify_boundary_refinement &&
@@ -3484,6 +3532,8 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   const bool size_point = comparison && comparison->ideal_front_limits &&
                           comparison->ideal_front_limits->size_face_budget;
   const auto* layer = comparison && comparison->seed_layer ? &*comparison->seed_layer : nullptr;
+  const auto* shape =
+      comparison && comparison->front_shape_floors ? &*comparison->front_shape_floors : nullptr;
   if (guarded)
     Require(std::filesystem::create_directory(guarded_path), "Cannot reserve smoothing comparison");
   if (after > before || split_source || group_parent || layer) {
@@ -3494,7 +3544,7 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
           guarded ? &guarded_path : nullptr, comparison && comparison->additional_pairs,
           comparison ? comparison->additional_pair_error_limit : std::nullopt,
           comparison ? comparison->ideal_front_limits : std::nullopt,
-          size_point ? &requests : nullptr, layer, layer ? &requests : nullptr);
+          size_point ? &requests : nullptr, layer, layer ? &requests : nullptr, shape);
     } catch (const std::runtime_error& error) {
       rejection = error.what();
     } catch (const std::invalid_argument& error) {

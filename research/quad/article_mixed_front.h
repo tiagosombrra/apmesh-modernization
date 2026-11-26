@@ -36,6 +36,8 @@ using ArticleFrontFaces = std::vector<std::vector<VertexId>>;
 using ArticleClosureGuard = std::function<bool(const std::vector<UvVertex>&,
                                                const ArticleFrontFaces&, const ArticleFrontFaces&)>;
 using ArticleTriangleFloor = std::function<bool(const std::array<UvVertex, 3>&)>;
+using ArticleFrontShapeFallback = std::function<bool(
+    const std::vector<UvVertex>&, const std::vector<VertexId>&, const std::array<VertexId, 3>&)>;
 
 struct ArticleFrontIdealPoint {
   std::size_t limit;
@@ -80,6 +82,7 @@ struct ArticleFrontCommit {
   std::optional<std::array<VertexId, 3>> original_order_triangle;
   std::vector<ArticleOrderTrial> order_trials;
   std::vector<ArticleFrontPairMeasurement> pair_measurements;
+  std::optional<std::array<VertexId, 4>> quad_replaced_by_initial_triangle;
 };
 struct ArticleFrontResult {
   std::vector<UvVertex> vertices;
@@ -100,10 +103,12 @@ public:
                     std::vector<Box> leaves, bool additional_pairs = false,
                     std::optional<ArticleFrontPairScreen> pair_screen = std::nullopt,
                     std::optional<ArticleFrontIdealPoint> ideal_point = std::nullopt,
-                    std::optional<ArticleFrontOrder> alternate_order = std::nullopt)
+                    std::optional<ArticleFrontOrder> alternate_order = std::nullopt,
+                    ArticleFrontShapeFallback shape_fallback = {})
       : leaves_(std::move(leaves)), additional_pairs_(additional_pairs),
         pair_screen_(std::move(pair_screen)), ideal_point_(std::move(ideal_point)),
-        alternate_order_(std::move(alternate_order)), boundary_begin_(seed.vertices.size()) {
+        alternate_order_(std::move(alternate_order)), shape_fallback_(std::move(shape_fallback)),
+        boundary_begin_(seed.vertices.size()) {
     Require(!pair_screen_ || (additional_pairs_ && pair_screen_->measure &&
                               std::isfinite(pair_screen_->limit) && pair_screen_->limit >= 0),
             "Invalid additional-pair geometry screen");
@@ -189,6 +194,7 @@ private:
   std::optional<ArticleFrontPairScreen> pair_screen_;
   std::optional<ArticleFrontIdealPoint> ideal_point_;
   std::optional<ArticleFrontOrder> alternate_order_;
+  ArticleFrontShapeFallback shape_fallback_;
   std::size_t boundary_begin_;
   std::size_t boundary_end_ = 0;
 
@@ -232,6 +238,15 @@ private:
         const auto& quad = step.additional_pair->choice.quad;
         step.polygon.assign(quad.begin(), quad.end());
       }
+    }
+    if (shape_fallback_ && step.polygon.size() == 4 &&
+        shape_fallback_(result_.vertices, step.polygon, step.best)) {
+      step.quad_replaced_by_initial_triangle.emplace();
+      std::copy(step.polygon.begin(), step.polygon.end(),
+                step.quad_replaced_by_initial_triangle->begin());
+      step.polygon.assign(step.best.begin(), step.best.end());
+      step.selected_side = -1;
+      step.additional_pair.reset();
     }
     return step;
   }
@@ -281,8 +296,7 @@ private:
 
   std::optional<ArticleFrontFaces> PreviewClosure(std::vector<VertexId> first,
                                                   std::size_t vertex_count) const {
-    // A preview has its own ordered front and vertices. Further experiments
-    // are disabled so it measures exactly the consequences of this choice.
+    // A preview keeps the local face choice, but disables recursive previews.
     auto preview = *this;
     preview.ideal_point_.reset();
     preview.alternate_order_.reset();
