@@ -16,14 +16,24 @@ from quad_generation_metrics import cross, element_quality, load_physical_obj
 from quad_grouping_trial import digest, original_curve_witness, write_json
 from quad_portable_feedback_trial import source_hashes
 from quad_progressive_admission import (
-    CHILD_CERTIFICATE_SCHEMA, boundary_certificate, load_profile, ordered_sites, source_evaluator,
+    CHILD_BATCH_CERTIFICATE_SCHEMA, CHILD_CERTIFICATE_SCHEMA, MAX_CERTIFIED_CHILD_REQUESTS,
+    boundary_certificate, load_profile, ordered_sites, source_evaluator,
 )
 
 
-def interval_lineage(original, final, certificate):
+def child_edits(certificate):
+    if certificate["schema"] == CHILD_CERTIFICATE_SCHEMA:
+        return [dict(request=certificate["child_request"], split=certificate["child_split"])]
+    if certificate["schema"] == CHILD_BATCH_CERTIFICATE_SCHEMA:
+        return certificate["child_splits"]
+    raise ValueError("Expected a certified child or child batch contour")
+
+
+def interval_lineage(original, final, certificate, edits):
     sites = {row[3]: row[2] for row in final}
     parents = {row["parent_interval"]: row for row in certificate["splits"]}
-    split = certificate["child_split"]
+    split = {(row["request"]["interval"], row["request"]["child"]): row["split"]
+             for row in edits}
     names = {}
     for i, (a, b) in enumerate(zip(original, original[1:] + original[:1])):
         a, b = a[2], b[2]
@@ -32,11 +42,10 @@ def interval_lineage(original, final, certificate):
             continue
         mid = sites[parents[i]["inserted_id"]]
         for child, edge in enumerate(((a, mid), (mid, b))):
-            if (i, child) != (certificate["child_request"]["interval"],
-                               certificate["child_request"]["child"]):
+            if (i, child) not in split:
                 names[edge] = ("curve_child", i, child)
                 continue
-            p = sites[split["inserted_id"]]
+            p = sites[split[i, child]["inserted_id"]]
             names[edge[0], p] = ("deeper_interval", i, child, 0)
             names[p, edge[1]] = ("deeper_interval", i, child, 1)
     return names
@@ -75,12 +84,12 @@ def map_interfaces(root, ungrouped, profile_path):
     boundary_certificate(original, candidate, f, receipt)
     certificate = read(f / "boundary_refinement.json")
     front = read(f / "candidate_front/front.json")
-    if (certificate["schema"] != CHILD_CERTIFICATE_SCHEMA
-            or front["clearance"]["policy"] != "minimum_cell_segment_uv_v1"
+    edits = child_edits(certificate)
+    if (front["clearance"]["policy"] != "minimum_cell_segment_uv_v1"
             or any("introduced_vertex" in step for step in front["commits"])):
-        raise ValueError("Expected a fixed-vertex mixed archive with one certified child split")
+        raise ValueError("Expected a fixed-vertex mixed archive with certified child splits")
     final = ordered_sites(candidate)
-    names = interval_lineage(ordered_sites(original), final, certificate)
+    names = interval_lineage(ordered_sites(original), final, certificate, edits)
     contour = [p[2] for p in final]
     curve_edges = list(zip(contour, contour[1:] + contour[:1]))
     if set(names) != set(curve_edges):
@@ -201,11 +210,15 @@ def map_interfaces(root, ungrouped, profile_path):
             optimistic = projected_seed(tree, retained_edges, clearance)
             upper = face_upper_bound(optimistic, len(contour) + count, seed_quads)
             improve_ops = {r["operation"] for a in batch for r in actions[a] if r["improves_birth"]}
+            # New first-pass IDs would renumber the retained child sites.
+            representable = (all(a[0] == "curve_child" for a in batch)
+                             and len(edits) + count <= MAX_CERTIFIED_CHILD_REQUESTS)
             batches.append(dict(actions=batch, face_upper_bound=upper, fits_budget=upper <= maximum,
-                                representable=all(a[0] == "curve" for a in batch),
+                                representable=representable,
                                 projected_gain_operations=sorted(improve_ops)))
     return dict(source_sha256=receipt["source_sha256"], candidate_sha256=digest(candidate),
                 profile_sha256=fingerprint, face_budget=maximum, current_faces=len(faces),
+                retained_child_splits=len(edits),
                 transition_triangles=trace, group_parents_examined=len(options),
                 eligible_group_projections=groups, curve_batches=batches)
 

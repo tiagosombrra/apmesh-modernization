@@ -8,7 +8,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from quad_progressive_admission import (
-    CHILD_CERTIFICATE_SCHEMA, GRIDS, load_profile, measure_progress, regional_metric,
+    CHILD_BATCH_CERTIFICATE_SCHEMA, CHILD_CERTIFICATE_SCHEMA, GRIDS, load_profile, measure_progress, regional_metric,
     subdivision_certificate,
 )
 from quad_regional_quality_guards import GROUPS
@@ -76,6 +76,33 @@ class ChildSubdivisionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "no unique new node"):
             subdivision_certificate(self.old, self.old + [duplicate, self.middle], [3],
                                     {"interval": 3, "child": 0})
+
+    def test_child_batch_uses_request_order_and_preserves_the_first_child(self):
+        bottom = contour_site(0, .5, (.5, 0), 9)
+        left_second = contour_site(3, .25, (0, .25), 12)
+        bottom_second = contour_site(0, .75, (.75, 0), 13)
+        requests = [dict(interval=3, child=0), dict(interval=3, child=1), dict(interval=0, child=1)]
+        before = [self.old[0], bottom, *self.old[1:], self.child, self.middle]
+        after = [self.old[0], bottom, bottom_second, *self.old[1:],
+                 self.child, self.middle, left_second]
+        original_proof, _ = subdivision_certificate(self.old, before, [0, 3], requests[0])
+        certificate, _ = subdivision_certificate(self.old, after, [0, 3], child_requests=requests)
+        self.assertEqual(certificate["schema"], CHILD_BATCH_CERTIFICATE_SCHEMA)
+        self.assertEqual(certificate["child_splits"][0]["split"], original_proof["child_split"])
+        self.assertEqual([p["request"] for p in certificate["child_splits"]], requests)
+        self.assertEqual([p["split"]["inserted_id"] for p in certificate["child_splits"]], [11, 12, 13])
+        with self.assertRaisesRegex(ValueError, "different child interval"):
+            subdivision_certificate(self.old, after, [0, 3], child_requests=requests[::-1])
+
+    def test_invalid_child_batches_are_refused(self):
+        request = dict(interval=3, child=0)
+        for requests in ([request], [request] * 4):
+            with self.subTest(count=len(requests)), self.assertRaisesRegex(ValueError, "Invalid certified"):
+                subdivision_certificate(self.old, self.old, [3], child_requests=requests)
+        with self.assertRaisesRegex(ValueError, "Repeated certified child interval"):
+            subdivision_certificate(self.old, self.old, [3], child_requests=[request, request])
+        with self.assertRaisesRegex(ValueError, "Invalid certified child request batch"):
+            subdivision_certificate(self.old, self.old, [3], request, child_requests=[request, request])
 
 
 class ProgressiveAdmissionTests(unittest.TestCase):

@@ -17,6 +17,8 @@ SOURCE_FILES = ("tri.obj", "source.obj", "source_tree.txt")
 GRIDS = (24, 48)
 CERTIFICATE_SCHEMA = "apmesh.quad.boundary_refinement.v1"
 CHILD_CERTIFICATE_SCHEMA = "apmesh.quad.boundary_refinement.v2"
+CHILD_BATCH_CERTIFICATE_SCHEMA = "apmesh.quad.boundary_refinement.v3"
+MAX_CERTIFIED_CHILD_REQUESTS = 3
 
 
 def load_profile(path):
@@ -193,36 +195,64 @@ def _subdivision_steps(old, new):
     return expected, inserts
 
 
-def subdivision_certificate(old, new, requested, child_request=None):
+def subdivision_certificate(old, new, requested, child_request=None, *, child_requests=None):
+    if child_requests is not None:
+        if (child_request is not None or not isinstance(child_requests, (tuple, list))
+                or not 2 <= len(child_requests) <= MAX_CERTIFIED_CHILD_REQUESTS):
+            raise ValueError("Invalid certified child request batch")
+    else:
+        child_requests = () if child_request is None else (child_request,)
+    requested_children = set()
     intermediate = new
-    if child_request is not None:
-        if (not isinstance(child_request, dict) or set(child_request) != {"interval", "child"}
-                or type(child_request["interval"]) is not int
-                or type(child_request["child"]) is not int
-                or child_request["child"] not in (0, 1)
-                or requested.count(child_request["interval"]) != 1):
+    for request in child_requests:
+        if (not isinstance(request, dict) or set(request) != {"interval", "child"}
+                or type(request["interval"]) is not int
+                or type(request["child"]) is not int
+                or request["child"] not in (0, 1)
+                or requested.count(request["interval"]) != 1):
             raise ValueError("Child subdivision needs one recorded original interval")
-        # The second native pass assigns its single new node after every
-        # original and first-pass node ID.
-        last_id = max(row[3] for row in new)
-        intermediate = [row for row in new if row[3] != last_id]
-        if len(intermediate) + 1 != len(new):
+        key = request["interval"], request["child"]
+        if key in requested_children:
+            raise ValueError("Repeated certified child interval")
+        requested_children.add(key)
+    child_ids = []
+    if child_requests:
+        # Child IDs are assigned after all first-pass IDs, in plan order.
+        ids = {row[3] for row in new}
+        if len(ids) != len(new):
             raise ValueError("Child subdivision has no unique new node")
+        child_ids = sorted(ids)[-len(child_requests):]
+        intermediate = [row for row in new if row[3] < child_ids[0]]
     expected, inserts = _subdivision_steps(old, intermediate)
     if [row["parent_interval"] for row in expected] != sorted(requested):
         raise ValueError("Candidate contour does not realize the recorded curve requests")
     certificate = dict(schema=CERTIFICATE_SCHEMA, parent_sites=len(old),
                        candidate_sites=len(new), splits=expected)
-    if child_request is not None:
-        parent, = [row for row in expected if row["parent_interval"] == child_request["interval"]]
-        split_at, = [i for i, row in enumerate(intermediate) if row[3] == parent["inserted_id"]]
-        child = split_at - 1 + child_request["child"]
-        steps, extra = _subdivision_steps(intermediate, new)
-        if len(steps) != 1 or steps[0]["parent_interval"] != child:
+    current = intermediate
+    proofs = []
+    first_ids = [row[3] for row in intermediate]
+    parents = {row["parent_interval"]: row for row in expected}
+    for request, new_id in zip(child_requests, child_ids):
+        root = parents[request["interval"]]
+        child = first_ids.index(root["inserted_id"]) - 1 + request["child"]
+        start_id, end_id = first_ids[child], first_ids[(child + 1) % len(first_ids)]
+        current_ids = [row[3] for row in current]
+        interval = current_ids.index(start_id)
+        if current_ids[(interval + 1) % len(current_ids)] != end_id:
+            raise ValueError("Certified child endpoints are no longer adjacent")
+        refined = [row for row in new if row[3] <= new_id]
+        steps, extra = _subdivision_steps(current, refined)
+        if len(steps) != 1 or steps[0]["parent_interval"] != interval:
             raise ValueError("Candidate contour split a different child interval")
-        certificate.update(schema=CHILD_CERTIFICATE_SCHEMA, intermediate_sites=len(intermediate),
-                           child_request=child_request, child_split=steps[0])
+        proofs.append(dict(request=request, split=steps[0]))
         inserts.extend(extra)
+        current = refined
+    if child_request is not None:
+        certificate.update(schema=CHILD_CERTIFICATE_SCHEMA, intermediate_sites=len(intermediate),
+                           child_request=child_request, child_split=proofs[0]["split"])
+    elif child_requests:
+        certificate.update(schema=CHILD_BATCH_CERTIFICATE_SCHEMA, intermediate_sites=len(intermediate),
+                           child_splits=proofs)
     return certificate, inserts
 
 
@@ -230,7 +260,7 @@ def boundary_certificate(parent, candidate, feedback, receipt):
     old, new = ordered_sites(parent), ordered_sites(candidate)
     certificate, inserts = subdivision_certificate(
         old, new, [row["interval"] for row in receipt["curve_requests"]],
-        receipt.get("child_curve_request"))
+        receipt.get("child_curve_request"), child_requests=receipt.get("child_curve_requests"))
     expected_hash = receipt.get("boundary_refinement_sha256")
     if expected_hash is None:
         if inserts or original_curve_witness(parent) != original_curve_witness(candidate):
