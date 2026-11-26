@@ -90,9 +90,11 @@ realizes the Ribbed request within budget, at the cost of additional
 sub-floor TRI already at birth. The CurvaBezier arc edit fails to
 realize its requests. The [coupled projection](COUPLED_TRANSITION_PROJECTION_20261125.md)
 retains the request veto on nearby grouping and finds no joint
-size and shape closure after the bounded arc edits. Alignment is
-pending on the use of existing ideal interior points for a size
-request during the mixed advance.
+size and shape closure after the bounded arc edits. The
+[size-driven ideal point](SIZE_DRIVEN_IDEAL_POINT_20261126.md) meets one Ribbed request
+and passes the local closure guard. CurvaBezier refuses the point
+and the Ribbed candidate remains blocked on whole-mesh shape.
+Diagnose the full closure at the remaining worst transition TRI.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

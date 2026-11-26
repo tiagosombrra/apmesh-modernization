@@ -1,6 +1,6 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-25 Fortaleza. Canonical branch: `quad-templates`.
+Updated 2026-11-26 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89`, unchanged by this research integration.
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 ## Active: realize graded transition sizes within the mixed face budget
@@ -11,6 +11,25 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-26 - try an ideal point at an unmet physical size
+
+[Draft PR 292](https://github.com/tiagosombrra/apmesh-modernization/pull/292)
+at `4f29dd06b087f4fb0fb299924d39f825ae2ccb96` adds one opt-in size-driven ideal point. The Ribbed
+candidate meets request 503, 0.391 to 0.189 against 0.334,
+with one new face and two fewer below-floor transition TRI.
+The whole mesh remains shape-blocked. CurvaBezier has three
+complete previews and refuses them on physical size, preserving
+the archived control. Both exact controls, two plan refusals,
+21 Python checks, native curve contracts and article rollback pass.
+[Native result and audit](SIZE_DRIVEN_IDEAL_POINT_20261126.md).
+
+**Next:** replay the rejected legacy closures at the two worst
+transition TRI, identify the first regional shape loss and verify
+what the existing mixed front can do before aligning a selection
+change. Both worst TRI lack a size request and the first new TRI
+can meet its shape floor. Zero mixed epochs accepted. Shared curves,
+owner reentry, reserved cases and global mixed curvature remain open.
 
 ### 2026-11-25 - project coupled contour and seed grading
 

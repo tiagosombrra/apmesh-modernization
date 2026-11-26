@@ -5007,3 +5007,19 @@ Alignment requested for an opt-in size-driven ideal-point trial using
 one interior point per attempt and the same whole-candidate checks.
 [Projection and validation](COUPLED_TRANSITION_PROJECTION_20261125.md).
 No new native run or accepted mixed epoch.
+
+
+## 2026-11-26 Fortaleza - test one size-driven ideal interior point
+
+Draft PR 292 at 4f29dd06 matches both low-level controls. CurvaBezier
+try sites produce three closures that exceed requested sizes and are
+refused. Ribbed meets request 503 at 0.18923 versus 0.33409 with
+one added point and one added face, and reduces 13 below-floor
+transition TRI to 11. Both models remain admission-blocked.
+Earlier and final trace-labeled geometries match. Native curve
+contracts, proper rollback, two input refusals and 21 Python tests
+pass. Worst TRI have no size request. Their initial replacement TRI
+can meet the floor, but the legacy complete closure guard refuses.
+Replay those two shape refusals next before any new policy.
+[Native results](SIZE_DRIVEN_IDEAL_POINT_20261126.md).
+No accepted mixed adaptive epoch.
