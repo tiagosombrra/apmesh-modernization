@@ -12,6 +12,31 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - stage disjoint short-base repairs natively
+
+Draft PR 298 at acdcc66a stages four CurvaBezier and seven
+Ribbed repairs after guarded smoothing as one atomic candidate.
+Two disabled controls and the original one-region plan reproduce
+archived output. Four refusal controls preserve the predecessor
+and publish no candidate. CurvaBezier moves from 23 to 17 floor
+failures with 743 faces. Ribbed moves from 12 to four with 546
+faces instead of 541. QUAD counts fall by eight and 19. The
+maximum geometric deviation, curve sites, and protected size
+inputs match. Both meshes retain their profile blockers.
+The original CurvaBezier Windows rename failure is retained;
+one absolute-path execution completes. Four PR 298 jobs pass.
+Zero accepted mixed epochs.
+[Native comparison](NATIVE_SHORT_BASE_REPAIR_BATCH_20261126.md).
+
+**Next:** compare each persistent below-floor region against
+the native batch records to distinguish an incompatible local
+placement from competition between otherwise valid regions.
+Use the already implemented QUAD-retention ranking only for
+eligible replacement choices, without changing angle or request
+limits. Keep the full profile, shared curves, owner reentry,
+reserved cases and global mixed curvature open. Independent
+review and exact closure gates remain required before merging.
+
 ### 2026-11-26 - find a shared short-base transition repair
 
 Six CurvaBezier and 13 Ribbed TRI fail at birth on template
@@ -29,15 +54,7 @@ their controls. Admission blockers persist in both projections.
 No new native result and zero accepted mixed epochs.
 [Matched comparison](CROSS_MODEL_SHORT_BASE_TRANSITION_20261126.md).
 
-**Next after scientific alignment:** extend the existing opt-in
-post-smoothing repair to stage one disjoint batch atomically.
-Replay the above two archives on one source revision. Check
-exact feature-off restoration and refusal of overlapping,
-invalid and over-budget batches, then compare physical floors,
-regional targets, size requests, QUAD retention, and fixed-grid
-geometry before any adoption. Retain corner connectivity,
-shared curves, owner reentry, reserved cases, and global mixed
-curvature in the open stage inventory.
+The approved native batch comparison is recorded above.
 
 ### 2026-11-26 - prove the fixed-contour corner obstruction
 

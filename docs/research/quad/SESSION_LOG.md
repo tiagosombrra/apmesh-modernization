@@ -5247,3 +5247,19 @@ and certified contour match in each comparison. The full admission
 blockers persist. No new native generation and zero accepted mixed
 epochs. Align one opt-in atomic batch trial on the two controls.
 [Cross-model evidence](CROSS_MODEL_SHORT_BASE_TRANSITION_20261126.md).
+
+
+## 2026-11-26 Fortaleza - stage and refuse atomic short-base repair batches
+
+The approved opt-in branch stages both matched controls on the
+MSVC C++17 image for draft PR 298. Four CurvaBezier and seven
+Ribbed regions reduce floor failures from 23 to 17 and 12 to four.
+Maximum sampled deviation and ordered contour sites match.
+QUAD counts drop by eight and 19. Two disabled controls, one
+legacy single-region reproduction, and four atomic refusals complete.
+Retain the temporary CurvaBezier stage from a denied Windows rename;
+one absolute-path execution publishes the same candidate. The
+original profile blocks both meshes and zero mixed epochs are
+accepted. Four exact-head hosted checks pass. Next, isolate the
+remaining floor mechanisms and compare local QUAD-retaining choices
+before another batch proposal. [Native trial](NATIVE_SHORT_BASE_REPAIR_BATCH_20261126.md).

@@ -153,8 +153,10 @@ replacement meeting both regional contour targets. The
 identifies one shared hard-floor mechanism and projects disjoint
 one-layer replacements on both development controls. The combined
 projections reduce hard floor failures within budget and retain the
-existing admission blocks. Align atomic native staging of the batch
-before implementing it. Retain the shared-curve and two-epoch
+existing admission blocks. The [native batch trial](NATIVE_SHORT_BASE_REPAIR_BATCH_20261126.md)
+reproduces both sets of repairs and confirms atomic refusal in four
+controls. It preserves the same profile blockers while measuring
+the loss of quadrilaterals. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
