@@ -84,7 +84,12 @@ def quality(xyz, uv, face, normal, floors):
 
 
 def find_layout(ring, inner, uv, xyz, normal, floors, claims, budget, states):
-    """Tile the directed ring with convex faces at the given existing sites."""
+    """Return the first directed tiling, preserving the default search order."""
+    return next(find_layouts(ring, inner, uv, xyz, normal, floors, claims, budget, states), None)
+
+
+def find_layouts(ring, inner, uv, xyz, normal, floors, claims, budget, states):
+    """Enumerate directed tilings within the shared state budget."""
     sites = ring + inner
     required = set(sites)
     perimeter = frozenset(edges(ring))
@@ -135,9 +140,11 @@ def find_layout(ring, inner, uv, xyz, normal, floors, claims, budget, states):
 
     def search(open_edges, patch, covered):
         if not open_edges:
-            return patch if covered == required else None
+            if covered == required:
+                yield patch
+            return
         if len(patch) >= budget or states["states"] >= MAX_STATES:
-            return None
+            return
         states["states"] += 1
         edge = min(open_edges, key=lambda item: (len(by_edge[item]), item))
         for face in by_edge[edge]:
@@ -147,10 +154,7 @@ def find_layout(ring, inner, uv, xyz, normal, floors, claims, budget, states):
                     or any(overlap(*sorted((face, other))) for other in patch)):
                 continue
             remaining = (open_edges - sides) | {(b, a) for a, b in sides - open_edges}
-            found = search(remaining, (*patch, face), covered.union(face))
-            if found:
-                return found
-        return None
+            yield from search(remaining, (*patch, face), covered.union(face))
 
     return search(perimeter, (), set())
 
@@ -178,7 +182,13 @@ def patches(target, adjacency, seed_count):
         active = following
 
 
-def select(faces, seed_count, birth_uv, uv, xyz, normal, floors, requests, protected, cap):
+def quad_rank(original, replacement, minimum_margin):
+    quad_loss = sum(len(face) == 4 for face in original) - sum(len(face) == 4 for face in replacement)
+    return quad_loss, len(replacement), -minimum_margin
+
+
+def select(faces, seed_count, birth_uv, uv, xyz, normal, floors, requests, protected, cap,
+           *, retain_quads_from=None):
     incidence = defaultdict(set)
     vertex_faces = defaultdict(set)
     for i, face in enumerate(faces):
@@ -198,17 +208,39 @@ def select(faces, seed_count, birth_uv, uv, xyz, normal, floors, requests, prote
          {i for i, poly in enumerate(current) if contains(poly, site)})
         for site, size in requests
     ]
-    ranked = sorted((quality(xyz, uv, face, normal, floors)[0], i)
-                    for i, face in enumerate(faces))
+    @lru_cache(None)
+    def margin_of(face):
+        return quality(xyz, uv, face, normal, floors)[0]
+
+    def rank_of(candidate):
+        replacement = candidate["replacement"]
+        return quad_rank((faces[i] for i in candidate["replaced"]), replacement,
+                         min(margin_of(face) for face in replacement))
+
+    ranked = sorted((margin_of(tuple(face)), i) for i, face in enumerate(faces))
     ranked = [(margin, i) for margin, i in ranked if margin < 1]
     counts = Counter(layouts=0, states=0, ranked_faces=len(ranked))
+    best = retain_quads_from
+    best_rank = rank_of(best) if best is not None else None
+    if best is not None:
+        counts["feasible_witnesses"] = 0
+
+    def finish(bound):
+        evidence = dict(counts, bound=bound)
+        if retain_quads_from is not None:
+            evidence["first_rank"] = rank_of(retain_quads_from)
+            evidence["chosen_rank"] = best_rank
+        return best, evidence
+
     examined = set()
     for rank, (margin, target) in enumerate(ranked, 1):
+        if retain_quads_from is not None and target != retain_quads_from["target"]:
+            continue
         for patch in patches(target, adjacency, seed_count):
             if patch in examined:
                 continue
             if counts["layouts"] >= MAX_LAYOUTS or counts["states"] >= MAX_STATES:
-                return None, dict(counts, bound=True)
+                return finish(True)
             examined.add(patch)
             counts["layouts"] += 1
             chosen = set(patch)
@@ -240,24 +272,30 @@ def select(faces, seed_count, birth_uv, uv, xyz, normal, floors, requests, prote
                 for n in range(len(free) + 1):
                     for retired in combinations(free, n):
                         if counts["retention_trials"] >= MAX_RETENTION_TRIALS:
-                            return None, dict(counts, bound=True)
+                            return finish(True)
                         counts["retention_trials"] += 1
                         kept = tuple(sorted(inner - set(retired)))
-                        witness = find_layout(ring, kept, uv, xyz, normal, floors, claims,
-                                              cap - len(faces) + len(patch), counts)
-                        if witness:
+                        tilings = find_layouts(ring, kept, uv, xyz, normal, floors, claims,
+                                               cap - len(faces) + len(patch), counts)
+                        for witness in tilings:
                             polys = [[uv[i] for i in face] for face in witness]
                             if any(not any(contains(poly, site) for poly in polys)
                                    for site, _ in claims):
                                 raise ValueError("Replacement does not cover its local requests")
-                            return dict(target=target, rank=rank, relative_quality=margin,
-                                        replaced=patch, replacement=witness, retired=retired), dict(counts)
+                            candidate = dict(target=target, rank=rank, relative_quality=margin,
+                                             replaced=patch, replacement=witness, retired=retired)
+                            if retain_quads_from is None:
+                                return candidate, dict(counts)
+                            counts["feasible_witnesses"] += 1
+                            candidate_rank = rank_of(candidate)
+                            if candidate_rank < best_rank:
+                                best, best_rank = candidate, candidate_rank
                         if counts["states"] >= MAX_STATES:
-                            return None, dict(counts, bound=True)
-    return None, dict(counts, bound=False)
+                            return finish(True)
+    return finish(False)
 
 
-def plan_action(root, profile_path):
+def plan_action(root, profile_path, *, retain_quads=False):
     receipt = json.loads((root / "result.json").read_bytes())
     profile, fingerprint = load_profile(profile_path)
     source = root / "source.steps"
@@ -324,14 +362,25 @@ def plan_action(root, profile_path):
         return cross(du, dv)
 
     floors = profile["safety_floors"]
+    request_sites = [(point, size) for _, point, size in requests]
     selection, counts = select(faces, seed_count, birth_uv, uv, xyz, normal, floors,
-                               [(point, size) for _, point, size in requests], protected, cap)
+                               request_sites, protected, cap)
+    retention = None
+    if retain_quads and selection is not None:
+        first_selection = selection
+        selection, retention_search = select(
+            faces, seed_count, birth_uv, uv, xyz, normal, floors, request_sites, protected, cap,
+            retain_quads_from=first_selection)
+        retention = dict(first_selection=first_selection, search=retention_search,
+                         changed=selection != first_selection)
     status = "planned" if selection else "no_action" if not counts["ranked_faces"] else "bounded_refusal"
     evidence = dict(schema="apmesh.quad.auto_seed_layer_selection.v1", selection=selection,
                     status=status,
                     search=counts, face_cap=cap, profile_sha256=fingerprint,
                     inputs={path.name: digest(path) for path in
                             (candidate, plan, trace_path, birth_path, smooth_path, request_path)})
+    if retain_quads:
+        evidence["quad_retention"] = retention
     if not selection:
         return None, evidence
 
@@ -352,8 +401,10 @@ def main():
     parser.add_argument("--archive", type=Path, required=True)
     parser.add_argument("--profile", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--retain-quads", action="store_true",
+                        help="Rank eligible repairs for the same target by QUAD loss, local face count and quality")
     args = parser.parse_args()
-    plan, evidence = plan_action(args.archive, args.profile)
+    plan, evidence = plan_action(args.archive, args.profile, retain_quads=args.retain_quads)
     args.output.mkdir()
     if plan is not None:
         artifact = args.output / "successor.plan"
