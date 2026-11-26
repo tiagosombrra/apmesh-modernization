@@ -12,6 +12,32 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - prove the fixed-contour corner obstruction
+
+Bound 2,709 one-site probes to the 743-face native archive and
+its 24 certified contour sites. The two projected 45-degree
+placements exceed the existing article UV limit on the adjacent
+QUAD and worsen at least one guarded neighborhood score. The
+two QUAD sharing each right-angle UV corner force their common
+edge onto the UV bisector. The CurvaBezier control net gives a
+physical angle strictly below 45 degrees along that bisector.
+The result covers moves of other interior sites that keep this
+corner connectivity. Screening 4,183 floor-valid layouts across
+396 local patches with the existing sites found none that meets
+both contour targets. Each measured projection keeps all seven
+size measurements and 23 floor failures. Zero accepted mixed
+epochs. [Corner analysis](FIXED_CONTOUR_CORNER_OBSTRUCTION_20261126.md).
+
+**Next:** use the retained native birth trace of the eight
+straight-side TRI below the floor and the existing Ribbed Bracket
+transition trace to compare physical template-edge lengths, curve
+interval lengths and admissible TRI heights. Project a common
+transition-interface correction only where the observed cause
+matches. Keep the 24-site CurvaBezier archive as the control
+and prioritize these hard floors before another marginal corner
+trial. Corner connectivity, interior QUAD target, shared curves,
+owner reentry, reserved cases and global mixed curvature remain open.
+
 ### 2026-11-26 - realize two certified splits on the straight side
 
 The approved native trial adds two arc-length samples and keeps
@@ -28,12 +54,10 @@ diagonal gives a below-floor TRI. Four exact-head PR 297 jobs
 pass. Zero accepted mixed epochs.
 [Native comparison](NATIVE_STRAIGHT_SIDE_SPLIT_20261126.md).
 
-**Next:** project a minimal interior site placement change for
-one of the two marginal corner QUAD, keeping the 24 certified
-sites fixed. Verify incident TRI/QUAD, sizes, topology and geometry
-before any native change. The eight straight-side TRI, interior
-QUAD target, shared curves, owner reentry, reserved cases and
-global mixed curvature remain open.
+The subsequent fixed-contour projection and layout screen are
+recorded in the current entry above. The eight straight-side TRI,
+interior QUAD target, shared curves, owner reentry, reserved cases
+and global mixed curvature remain open.
 
 ### 2026-11-26 - trace the 16 persistent TRI on the straight certified side
 

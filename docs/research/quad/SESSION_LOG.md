@@ -5214,3 +5214,20 @@ eligible QUAD; both diagonals create a below-floor TRI.
 The full candidate remains blocked. Four exact-head PR 297 jobs
 pass. Next, project a minimal interior placement with the curve fixed.
 [Matched native and replay results](NATIVE_STRAIGHT_SIDE_SPLIT_20261126.md).
+
+
+## 2026-11-26 Fortaleza - prove the fixed-contour corner obstruction
+
+The two 45-degree projections with 24 certified sites fixed
+each move one interior site and keep the seven size measurements
+and 743 faces. Each violates the article UV limit on the
+neighboring QUAD and worsens a guarded score. The two-QUAD
+corner topology requires a bisector whose analytic lift keeps
+the straight-side physical angle below 45 degrees. A bounded
+layout search checks 4,183 floor-valid placements in 396 patches
+with existing sites and finds no match for both contour targets.
+The 23 below-floor faces persist and zero mixed epochs are
+accepted. No native execution or source changes in this session.
+Next, compare the remaining hard TRI floor mechanism on both
+development surfaces using the retained birth and size traces.
+[Exact corner analysis](FIXED_CONTOUR_CORNER_OBSTRUCTION_20261126.md).

@@ -144,9 +144,13 @@ halves the local floor failures and reduces geometric error while
 retaining the six improved QUAD. Two new corner QUAD narrowly
 miss the existing regional target. Their exact replay excludes
 a fixed-site replacement that meets the target without creating
-a TRI floor failure. Project interior placement before another
-change to the curve or selection policy.
-Retain the shared-curve and two-epoch
+a TRI floor failure. The
+[fixed-contour corner proof](FIXED_CONTOUR_CORNER_OBSTRUCTION_20261126.md)
+excludes interior placement with the same two-QUAD corner
+connectivity. The bounded use of existing sites yields no
+replacement meeting both regional contour targets. Address the
+remaining hard TRI floors with a common physical transition test
+on the two development surfaces. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
