@@ -25,13 +25,17 @@ rollback pass. A read-only single-edge split meets size in 57 sampled
 positions; none of those meets the 15° floor in its local footprint.
 [Results and atomicity evidence](MEASURED_SIZE_GROUP_TRIAL_20261125.md).
 
-**Next:** compare the failed size-to-front handoff on both development
-geometries using archived requests, pre-smoothing faces and active
-vertices. Check what changing local front construction could realize
-under the identical size, angle, error and growth criteria before
-aligning a new native rule. Zero accepted mixed epochs. Full closure,
-shared curves, mixed owner reentry, reserved cases and global mixed
-curvature remain open.
+The cross-model archive replay finds 3 of 7 CurvaBezier requests and
+8 of 17 Ribbed requests oversized on front-created faces at birth.
+At least one QUAD per model has a good minimum angle and still exceeds
+the requested size. The remaining Ribbed birth failure is seeded.
+
+**Next:** replay the recorded active boundaries for CurvaBezier
+requests 646 and 648 and Ribbed request 478. Check whether valid
+existing front choices can meet both physical size and shape under the
+same criteria. Use that evidence before aligning a new native rule.
+Zero accepted mixed epochs. Full closure, shared curves, mixed owner
+reentry, reserved cases and global mixed curvature remain open.
 
 ### 2026-11-25 - execute the two additional certified contour splits
 

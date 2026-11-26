@@ -4956,8 +4956,11 @@ withheld from staging. The byte-matched control, strict refusal,
 ordinary veto, duplicate refusal, original-curve contracts, 15
 progressive tests, six sizing checks and direct article rollback pass.
 A read-only conforming split meets size but stays below 15° at all 57
-size-feasible sampled positions. Compare the pre-smoothing handoff
-between both development cases before proposing a new front rule.
+size-feasible sampled positions. An archive replay finds oversized
+front-created faces at birth at 3 of 7 CurvaBezier request sites and
+8 of 17 Ribbed sites. Next replay the actual front at CurvaBezier
+requests 646/648 and Ribbed request 478 against the same size and
+shape criteria before alignment on a new rule.
 [Native measurements and limits](MEASURED_SIZE_GROUP_TRIAL_20261125.md).
 Zero accepted mixed epochs. Hosted run 45739394878 has no final result
 at this checkpoint.

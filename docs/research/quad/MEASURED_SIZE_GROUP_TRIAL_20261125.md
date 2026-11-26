@@ -51,13 +51,40 @@ children meet the request; the best sampled worst angle is 13.923°.
 The scan offers an observed bound for that sample set. Only a static
 two-face footprint was evaluated, without rerunning generation.
 
-Next map requests to the pre-smoothing faces and available front
-vertices on both development geometries. Separate an oversized span
-with acceptable shape potential from a closure whose limiting angle is
-fixed by the surrounding vertices. Check feasible local front
-construction with the same physical size, shape and growth criteria
-before changing the native generator. Reserved surfaces, shared curves,
-mixed owner reentry and global mixed-curvature error remain open.
+## Cross-model size handoff
+
+Replay the native request sites against every containing face on the
+archived CurvaBezier budget trial and the Ribbed child-batch control.
+Match each born polygon to its trace operation by vertex identity,
+retain the active front cardinality and measure the physical edges.
+
+| Request-site count | CurvaBezier | Ribbed Bracket |
+| --- | ---: | ---: |
+| Requests in the plan | 7 | 17 |
+| Oversized before smoothing | 3 | 9 |
+| Of those, oversized on a face created by the front | 3 | 8 |
+| Oversized after smoothing | 3 | 9 |
+
+The two CurvaBezier sites from requests 646 and 648 belong to the
+same QUAD created at operation 1. Its birth angle is 22.33°, while
+the median edge is 0.13681 against requested sizes 0.07104 and
+0.07243. The Ribbed request 488 is on a QUAD created at operation 8,
+with an 88.14° birth angle and size 0.75904 against target 0.44371.
+The Ribbed request 478 instead couples a poor angle of 13.54° with
+a size of 1.04038 against target 0.38298. A request can therefore
+fail even when the front creates a well-shaped face. The remaining
+Ribbed failure at birth occurs in a seeded face. These are geometric
+request realization counts, not a new rejection policy for the archived
+controls. The check adds no native generation.
+
+Next replay the recorded advancing-front states for requests 646/648
+and 478 using their actual active boundaries. Establish whether their
+existing valid alternatives can satisfy both the same physical size
+and shape checks. Use that comparison to align any change in how the
+size request reaches the front. Preserve the profile, growth limit,
+source certificates and default TRI behavior. Reserved surfaces,
+shared curves, mixed owner reentry and global mixed-curvature error
+remain open.
 
 ## Validation and closure
 
