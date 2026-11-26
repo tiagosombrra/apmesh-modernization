@@ -12,6 +12,28 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - select and apply one transition repair automatically
+
+[Draft PR 295](https://github.com/tiagosombrra/apmesh-modernization/pull/295)
+at `442644df44dfede19318f49832ab8fbbd65c370b` selects the highest-ranked
+shape failure and stages one repair in each native development model.
+Local minimum angles improve from 3.25° to 17.07° in CurvaBezier and
+11.91° to 16.44° in Ribbed. Retained node coordinates, exterior
+connectivity, certified curves and previously achieved sizes match.
+Both repairs replace some QUAD with TRI, and the same full-profile
+blockers remain. Zero accepted mixed epochs. The 29 Python controls
+and native curve contracts pass. A direct article rerun stops on
+Windows staging rename before rollback. Exact-head hosted checks
+and independent qualification remain open.
+[Selection and native evidence](AUTO_SEED_LAYER_TRIAL_20261126.md).
+
+**Next:** inventory the remaining shape violations by generation
+origin and region, and measure how many have a feasible one-layer
+neighborhood. Use that coverage and the change in QUAD count to
+scope any scientific proposal for ranking or multiple repairs.
+Shared curves, owner reentry, reserved cases and global mixed
+curvature remain open.
+
 ### 2026-11-26 - compare guarded replacement after native smoothing
 
 [Draft PR 294](https://github.com/tiagosombrra/apmesh-modernization/pull/294)

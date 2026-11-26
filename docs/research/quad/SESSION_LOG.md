@@ -5084,3 +5084,18 @@ The next alignment concerns automatic selection from the
 existing physical safety floors and the first template layer.
 [Results and exact witnesses](POST_SMOOTH_SEED_LAYER_TRIAL_20261126.md).
 Zero accepted mixed adaptive epochs.
+
+
+## 2026-11-26 Fortaleza - select one native transition repair automatically
+
+Draft PR 295 at 442644df adds an opt-in shape-ranked search over
+one adjacent template layer. It stages the first ranked region in
+each development model. Local minimum angles improve to 17.07 and
+16.44 degrees. No exterior position, certified curve or previously
+met size request changes. Four and three QUAD are removed. Compare
+the 29 passing Python controls and native curve contracts with the
+separate Windows staging rename failure before article rollback.
+Both frozen full-shape profiles keep their control blockers. Zero
+mixed adaptive epochs accepted. Next, map residual violations by
+generation origin and region and measure eligible one-layer coverage.
+[Exact evidence and scope](AUTO_SEED_LAYER_TRIAL_20261126.md).

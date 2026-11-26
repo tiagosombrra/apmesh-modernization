@@ -106,7 +106,13 @@ control; the increase is mostly outside the original cavity.
 The [post-smoothing trial](POST_SMOOTH_SEED_LAYER_TRIAL_20261126.md) preserves retained coordinates,
 meets the local shape checks and removes that RMS penalty in the
 matched CurvaBezier comparison. Both full meshes remain blocked.
-Align automatic cavity selection before a generalization trial.
+The [automatic one-layer selection](AUTO_SEED_LAYER_TRIAL_20261126.md)
+reaches native staging on both development models with no supplied
+face identity. It improves local angles and preserves the original
+curves, exterior and protected sizes. Both replacements use TRI
+throughout the edited region. The frozen whole-mesh blockers persist.
+Measure the remaining violations by generation origin and region
+before proposing a broader repair.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
