@@ -54,6 +54,7 @@ jobs:
           python -W error::ResourceWarning tests/quad/test_relative_feedback_requests.py
           python -W error::ResourceWarning tests/quad/test_regional_quality_guards.py
           python -W error::ResourceWarning tests/quad/test_progressive_admission.py
+          python -W error::ResourceWarning tests/quad/test_auto_seed_layer.py
       - name: Configure and build native QUAD (Linux GCC)
         if: runner.os == 'Linux'
         shell: bash
