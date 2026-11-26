@@ -1,0 +1,1715 @@
+{
+ "schema": "apmesh.quad.persistent_straight_side_tri.v1",
+ "canonical_input": "0fcb0f5cfdf8b2ddf1df2778ee0c4f5828f76288",
+ "source_revision": "0ad5b7bdf7af9504b739f0dc85172d832c3ea8f1",
+ "research_candidate_sha256": "3823c0b428e46fa761a4412894d0e30fad2a4f57253cc78ab1ea03e9f6ee4ccc",
+ "original_front_sha256": "93e56e39efc442740bf1c77d0f837e144964a6d7d162cdc187aa6fd0fe4635a3",
+ "compiler": "MSVC 19.44 x64 C++17 /W4 /WX",
+ "script_sha256": {
+  "CMakeLists.txt": "aa402dc85abe75c15d38b980cb1bb1804621f9731657784fcec9b5fca4c785bd",
+  "replay.cpp": "abd568144295d2068d586a943087976d355e09d3cd5139a8161ef359ba2e47b1",
+  "study.py": "f77ee0b1dab9eddb1c966a64a267b3785821cd1667f97c5e113e78747369f9f3"
+ },
+ "commands": {
+  "prepare": "python build/quad-persistent-side-tri-20261126/study.py prepare",
+  "build": "cmake --build build/quad-persistent-side-tri-20261126/msvc --config Debug --parallel 4",
+  "replay": "python build/quad-persistent-side-tri-20261126/study.py study"
+ },
+ "processes": {
+  "configure": {
+   "exit": 0,
+   "seconds": 6.588573932647705,
+   "timeout": 120
+  },
+  "build": {
+   "exit": 0,
+   "seconds": 4.324390411376953,
+   "timeout": 120
+  },
+  "replay": {
+   "exit": 0,
+   "seconds": 1.1275036334991455,
+   "timeout": 100
+  }
+ },
+ "adapter": {
+  "environment": "required tools unavailable",
+  "iteration_baseline": "missing"
+ },
+ "hosted": {
+  "run": 45806459734,
+  "jobs": [
+   {
+    "name": "TRI baseline and tooling controls (Linux)",
+    "id": 139862942095,
+    "conclusion": "success"
+   },
+   {
+    "name": "TRI scientific equivalence against frozen baseline",
+    "id": 139862942626,
+    "conclusion": "success"
+   },
+   {
+    "name": "QUAD native (windows-2022)",
+    "id": 139862942642,
+    "conclusion": "success"
+   },
+   {
+    "name": "QUAD native (ubuntu-24.04)",
+    "id": 139862942669,
+    "conclusion": "success"
+   }
+  ]
+ },
+ "measurement": {
+  "source": "0ad5b7bdf7af9504b739f0dc85172d832c3ea8f1",
+  "header_sha256": "1c40edd3ce5cd2e049f253ba56a528f4522d505ddf1fbe57c6824c4edbf6bd5c",
+  "instrumented_header_sha256": "421dd5e70b4cced4449f9df2f2f0f1a5b5f5b422c36c789882a45983e7be74f6",
+  "executable_sha256": "3b981e1de3de4463042bb0af429fb7c4bb6d6b2deadca7d35378259ffaa62530",
+  "archived_birth_sha256": "89c16bb623e584a7b7ba09e6a4bd5c4a2617f6b2abc3f285d3ed8b7cb3d50615",
+  "reversed_base_exit": 5,
+  "straight_side_intervals": [
+   [
+    [
+     1.0,
+     1.0
+    ],
+    [
+     0.5,
+     1.0
+    ],
+    1.0
+   ],
+   [
+    [
+     0.5,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    1.0
+   ]
+  ],
+  "native_measurements": [
+   {
+    "operation": 39,
+    "basis": [
+     246,
+     35
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     246,
+     35,
+     673
+    ],
+    "contour_vertex": [
+     1.0,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.8125,
+      0.875
+     ],
+     [
+      0.875,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.118411814929204,
+    "incident_curve_lengths": [
+     1.0
+    ],
+    "contour_to_seed_ratio": 8.445103223845353,
+    "birth_angle": 12.460560642269478,
+    "birth_margin": 0.8307040428179652,
+    "final_angle": 11.449369384056583,
+    "final_quality": 0.3217186738574528,
+    "active_count": 91,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 673,
+     "uv": [
+      1.0,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 12.460560642269478,
+     "face_shape": 0.3401301971219503,
+     "passes_floor": false,
+     "margin": 0.8307040428179652
+    },
+    "valid_other_apices": [],
+    "pair_count": 1,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "unavailable",
+      "point": []
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.84375,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "valid",
+      "point": [
+       0.84375,
+       0.90625
+      ],
+      "valid_physical": true,
+      "min_angle": 42.839042678170834,
+      "face_shape": 0.8394688404362858,
+      "passes_floor": true,
+      "margin": 2.8559361785447224
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.84375,
+       0.890625
+      ],
+      "valid_physical": true,
+      "min_angle": 25.077460131595004,
+      "face_shape": 0.5107175596486266,
+      "passes_floor": true,
+      "margin": 1.671830675439667
+     }
+    ],
+    "input_sha256": "78477166923062c05e2717617640ef26fdec3380d8b8261f8395bd7123ca1086",
+    "stdout_sha256": "79bd28a4e519400f4f413759ac158fdf0c856e5cfeb0cd82ffee9bdcacfcdcdb"
+   },
+   {
+    "operation": 40,
+    "basis": [
+     40,
+     246
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     40,
+     246,
+     673
+    ],
+    "contour_vertex": [
+     1.0,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.75,
+      0.875
+     ],
+     [
+      0.8125,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.12573751064719066,
+    "incident_curve_lengths": [
+     1.0
+    ],
+    "contour_to_seed_ratio": 7.953076173155038,
+    "birth_angle": 7.793816797383957,
+    "birth_margin": 0.5195877864922638,
+    "final_angle": 12.474524617209903,
+    "final_quality": 0.3470033476376555,
+    "active_count": 90,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 673,
+     "uv": [
+      1.0,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 7.793816797383957,
+     "face_shape": 0.2190194467805051,
+     "passes_floor": false,
+     "margin": 0.5195877864922638
+    },
+    "valid_other_apices": [],
+    "pair_count": 0,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "unavailable",
+      "point": []
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.78125,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "uv_refused",
+      "point": [
+       0.78125,
+       0.90625
+      ]
+     },
+     {
+      "fraction": 0.125,
+      "status": "touches_front_side",
+      "point": [
+       0.78125,
+       0.890625
+      ]
+     }
+    ],
+    "input_sha256": "5b795c185a5364d62dd3033dc377220e5e291200593f8135207f4ddd684c5132",
+    "stdout_sha256": "a45e0bafcb36532872e4c0b7f9face43d948115b27a64221a7495a8b7bba4d2a"
+   },
+   {
+    "operation": 43,
+    "basis": [
+     275,
+     54
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     275,
+     54,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.34375,
+      0.875
+     ],
+     [
+      0.375,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06845099955232085,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 14.608990468220192,
+    "birth_angle": 5.792560110151064,
+    "birth_margin": 0.38617067401007094,
+    "final_angle": 5.248011894952868,
+    "final_quality": 0.1552621193987835,
+    "active_count": 86,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 5.792560110151064,
+     "face_shape": 0.1700414070429607,
+     "passes_floor": false,
+     "margin": 0.38617067401007094
+    },
+    "valid_other_apices": [],
+    "pair_count": 2,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.359375,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "valid",
+      "point": [
+       0.359375,
+       0.90625
+      ],
+      "valid_physical": true,
+      "min_angle": 58.39122939199102,
+      "face_shape": 0.9981044247496486,
+      "passes_floor": true,
+      "margin": 3.8927486261327346
+     },
+     {
+      "fraction": 0.25,
+      "status": "valid",
+      "point": [
+       0.359375,
+       0.890625
+      ],
+      "valid_physical": true,
+      "min_angle": 39.34781905386233,
+      "face_shape": 0.7747016461055312,
+      "passes_floor": true,
+      "margin": 2.6231879369241553
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.359375,
+       0.8828125
+      ],
+      "valid_physical": true,
+      "min_angle": 22.378755104149338,
+      "face_shape": 0.45113196693224356,
+      "passes_floor": true,
+      "margin": 1.4919170069432892
+     }
+    ],
+    "input_sha256": "a35376e10a9f3e3807166a1e3e9dcb7c897b9a3c5f8ab9ba172566d3c9f40880",
+    "stdout_sha256": "dc56a526b9cabcdc9b821073c2eb38ae191a8ed6e37c3c97500454c8f60a9f09"
+   },
+   {
+    "operation": 44,
+    "basis": [
+     55,
+     275
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     55,
+     275,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.3125,
+      0.875
+     ],
+     [
+      0.34375,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06753541088131884,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 14.807046954335075,
+    "birth_angle": 4.282905837222929,
+    "birth_margin": 0.28552705581486193,
+    "final_angle": 4.357105212541993,
+    "final_quality": 0.12768661460366382,
+    "active_count": 86,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 4.282905837222929,
+     "face_shape": 0.12663989667254139,
+     "passes_floor": false,
+     "margin": 0.28552705581486193
+    },
+    "valid_other_apices": [],
+    "pair_count": 1,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.328125,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "valid",
+      "point": [
+       0.328125,
+       0.90625
+      ],
+      "valid_physical": true,
+      "min_angle": 58.72352312682457,
+      "face_shape": 0.9988558516067637,
+      "passes_floor": true,
+      "margin": 3.9149015417883044
+     },
+     {
+      "fraction": 0.25,
+      "status": "valid",
+      "point": [
+       0.328125,
+       0.890625
+      ],
+      "valid_physical": true,
+      "min_angle": 39.71579257180092,
+      "face_shape": 0.7814548564785738,
+      "passes_floor": true,
+      "margin": 2.647719504786728
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.328125,
+       0.8828125
+      ],
+      "valid_physical": true,
+      "min_angle": 22.64442959011999,
+      "face_shape": 0.45672795899398255,
+      "passes_floor": true,
+      "margin": 1.5096286393413327
+     }
+    ],
+    "input_sha256": "7e5be4da58b0fdd5e35df347ab0f0ba91d9ed21f9dc609168abfdd8baeafcd37",
+    "stdout_sha256": "a257bc4ef24489a36b82ec59ccba5df6b1604cc5c1989aa196f5b5c4d4636251"
+   },
+   {
+    "operation": 45,
+    "basis": [
+     282,
+     55
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     282,
+     55,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.28125,
+      0.875
+     ],
+     [
+      0.3125,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06643694356471062,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 15.051866421669208,
+    "birth_angle": 3.2530930027968985,
+    "birth_margin": 0.21687286685312657,
+    "final_angle": 4.143526535895107,
+    "final_quality": 0.12259520334946936,
+    "active_count": 85,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 3.2530930027968985,
+     "face_shape": 0.09669438606924055,
+     "passes_floor": false,
+     "margin": 0.21687286685312657
+    },
+    "valid_other_apices": [],
+    "pair_count": 1,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.296875,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.296875,
+       0.90625
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "valid",
+      "point": [
+       0.296875,
+       0.890625
+      ],
+      "valid_physical": true,
+      "min_angle": 40.1663047727477,
+      "face_shape": 0.7895960681959977,
+      "passes_floor": true,
+      "margin": 2.6777536515165132
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.296875,
+       0.8828125
+      ],
+      "valid_physical": true,
+      "min_angle": 22.972166296125454,
+      "face_shape": 0.46357848481187974,
+      "passes_floor": true,
+      "margin": 1.5314777530750303
+     }
+    ],
+    "input_sha256": "34a231e31361318d797d42d565d55d52c3e4aa9cd0fd0cfc3135b3dc3302646c",
+    "stdout_sha256": "352daad938c18f8cd4743bfcc52c7a6158f65e8ed225b8ce08eea056ee0e89bb"
+   },
+   {
+    "operation": 46,
+    "basis": [
+     57,
+     282
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     57,
+     282,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.25,
+      0.875
+     ],
+     [
+      0.28125,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06515567669317456,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 15.34785686762357,
+    "birth_angle": 2.5325085084300167,
+    "birth_margin": 0.16883390056200112,
+    "final_angle": 3.7806708513674914,
+    "final_quality": 0.11230430810576808,
+    "active_count": 84,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 2.5325085084300167,
+     "face_shape": 0.07556254992063537,
+     "passes_floor": false,
+     "margin": 0.16883390056200112
+    },
+    "valid_other_apices": [],
+    "pair_count": 0,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.265625,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.265625,
+       0.90625
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "uv_refused",
+      "point": [
+       0.265625,
+       0.890625
+      ]
+     },
+     {
+      "fraction": 0.125,
+      "status": "touches_front_side",
+      "point": [
+       0.265625,
+       0.8828125
+      ]
+     }
+    ],
+    "input_sha256": "d3982216cac621286b392f01d7556749db371e2fd40254416c3a676a872a0dc2",
+    "stdout_sha256": "42e57824efede2841c88d3abbee757dffc9b1c0a7a1d0997718099d21b3c82b4"
+   },
+   {
+    "operation": 57,
+    "basis": [
+     303,
+     57
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     303,
+     57,
+     675
+    ],
+    "contour_vertex": [
+     0.0,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.1875,
+      0.875
+     ],
+     [
+      0.25,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.1257367355047479,
+    "incident_curve_lengths": [
+     1.0
+    ],
+    "contour_to_seed_ratio": 7.953125202317977,
+    "birth_angle": 7.793341823644152,
+    "birth_margin": 0.5195561215762768,
+    "final_angle": 8.247072609305471,
+    "final_quality": 0.23446338800823532,
+    "active_count": 73,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 675,
+     "uv": [
+      0.0,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 7.793341823644152,
+     "face_shape": 0.21901142433962642,
+     "passes_floor": false,
+     "margin": 0.5195561215762768
+    },
+    "valid_other_apices": [],
+    "pair_count": 1,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "unavailable",
+      "point": []
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.21875,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "uv_refused",
+      "point": [
+       0.21875,
+       0.90625
+      ]
+     },
+     {
+      "fraction": 0.125,
+      "status": "touches_front_side",
+      "point": [
+       0.21875,
+       0.890625
+      ]
+     }
+    ],
+    "input_sha256": "adcbb5995a4d69e6cb8b295911a56b4ce8595ca8c0532ef3441ae13163d6ce2f",
+    "stdout_sha256": "fa7682f1edbb9ee3b9721d07e218a45bda0591b4849ef6441d779adc3054f734"
+   },
+   {
+    "operation": 58,
+    "basis": [
+     68,
+     303
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     68,
+     303,
+     675
+    ],
+    "contour_vertex": [
+     0.0,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.125,
+      0.875
+     ],
+     [
+      0.1875,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.1184208686288191,
+    "incident_curve_lengths": [
+     1.0
+    ],
+    "contour_to_seed_ratio": 8.444457565451756,
+    "birth_angle": 12.457843096409603,
+    "birth_margin": 0.8305228730939735,
+    "final_angle": 12.457843096409603,
+    "final_quality": 0.34006249829010615,
+    "active_count": 72,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 675,
+     "uv": [
+      0.0,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 12.457843096409603,
+     "face_shape": 0.34006249829010615,
+     "passes_floor": false,
+     "margin": 0.8305228730939735
+    },
+    "valid_other_apices": [],
+    "pair_count": 0,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "unavailable",
+      "point": []
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.15625,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "uv_refused",
+      "point": [
+       0.15625,
+       0.90625
+      ]
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.15625,
+       0.890625
+      ],
+      "valid_physical": true,
+      "min_angle": 25.095177339997193,
+      "face_shape": 0.5112019072394446,
+      "passes_floor": true,
+      "margin": 1.6730118226664794
+     }
+    ],
+    "input_sha256": "bc41153f14ef36b5c61ddc8230620a2603ef930611029802537ad0aa333e8a43",
+    "stdout_sha256": "acba8dbb2a5f086fc358345cee142c438b0798e28ac889fe9a70a1a4fab3ed27"
+   },
+   {
+    "operation": 82,
+    "basis": [
+     584,
+     160
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     584,
+     160,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.59375,
+      0.875
+     ],
+     [
+      0.625,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06918614374657937,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 14.453761199104855,
+    "birth_angle": 8.036785339967942,
+    "birth_margin": 0.5357856893311961,
+    "final_angle": 8.036785339967942,
+    "final_quality": 0.23360592509571979,
+    "active_count": 25,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 8.036785339967942,
+     "face_shape": 0.23360592509571979,
+     "passes_floor": false,
+     "margin": 0.5357856893311961
+    },
+    "valid_other_apices": [],
+    "pair_count": 2,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "valid",
+      "point": [
+       0.609375,
+       0.9375
+      ],
+      "valid_physical": true,
+      "min_angle": 35.18823365532814,
+      "face_shape": 0.8439064856731474,
+      "passes_floor": true,
+      "margin": 2.3458822436885427
+     },
+     {
+      "fraction": 0.5,
+      "status": "valid",
+      "point": [
+       0.609375,
+       0.90625
+      ],
+      "valid_physical": true,
+      "min_angle": 58.0700236162397,
+      "face_shape": 0.9972740963973894,
+      "passes_floor": true,
+      "margin": 3.8713349077493135
+     },
+     {
+      "fraction": 0.25,
+      "status": "valid",
+      "point": [
+       0.609375,
+       0.890625
+      ],
+      "valid_physical": true,
+      "min_angle": 39.004392897029405,
+      "face_shape": 0.7685909494031384,
+      "passes_floor": true,
+      "margin": 2.6002928598019603
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.609375,
+       0.8828125
+      ],
+      "valid_physical": true,
+      "min_angle": 22.136568579345983,
+      "face_shape": 0.4461186344222456,
+      "passes_floor": true,
+      "margin": 1.4757712386230655
+     }
+    ],
+    "input_sha256": "1c5f5bbe16bc36ef221d81edf279e7c25b71b3f3b948ef64aacc1ea2c287305b",
+    "stdout_sha256": "263547c6ad8d57ba4ad5923747c40e08e78fb6d8db0ba80248e913390b82a93e"
+   },
+   {
+    "operation": 83,
+    "basis": [
+     161,
+     584
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     161,
+     584,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.5625,
+      0.875
+     ],
+     [
+      0.59375,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06973520743577724,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 14.339958777937984,
+    "birth_angle": 11.271414584974702,
+    "birth_margin": 0.7514276389983134,
+    "final_angle": 11.271414584974702,
+    "final_quality": 0.323615374099825,
+    "active_count": 25,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 11.271414584974702,
+     "face_shape": 0.323615374099825,
+     "passes_floor": false,
+     "margin": 0.7514276389983134
+    },
+    "valid_other_apices": [],
+    "pair_count": 1,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.578125,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.578125,
+       0.90625
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "valid",
+      "point": [
+       0.578125,
+       0.890625
+      ],
+      "valid_physical": true,
+      "min_angle": 38.80018991350122,
+      "face_shape": 0.7647114705782642,
+      "passes_floor": true,
+      "margin": 2.586679327566748
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.578125,
+       0.8828125
+      ],
+      "valid_physical": true,
+      "min_angle": 21.99182212927554,
+      "face_shape": 0.44297793315387035,
+      "passes_floor": true,
+      "margin": 1.466121475285036
+     }
+    ],
+    "input_sha256": "7909ac040dee36918c546e0bc34e25256ab5b7e7b4a0a14127ddc78f0c6b0d25",
+    "stdout_sha256": "a168386bd79d37806dff4c9962fd629e4b64e1e44cf687c6a66300057d416266"
+   },
+   {
+    "operation": 86,
+    "basis": [
+     164,
+     595
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     164,
+     595,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.6875,
+      0.875
+     ],
+     [
+      0.71875,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06643979094454953,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 15.05122135069024,
+    "birth_angle": 3.2528169651680092,
+    "birth_margin": 0.21685446434453395,
+    "final_angle": 3.2528169651680092,
+    "final_quality": 0.09668554390091698,
+    "active_count": 22,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 3.2528169651680092,
+     "face_shape": 0.09668554390091698,
+     "passes_floor": false,
+     "margin": 0.21685446434453395
+    },
+    "valid_other_apices": [],
+    "pair_count": 2,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.703125,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.703125,
+       0.90625
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "valid",
+      "point": [
+       0.703125,
+       0.890625
+      ],
+      "valid_physical": true,
+      "min_angle": 40.10500937057703,
+      "face_shape": 0.788596026437705,
+      "passes_floor": true,
+      "margin": 2.673667291371802
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.703125,
+       0.8828125
+      ],
+      "valid_physical": true,
+      "min_angle": 22.92763293943672,
+      "face_shape": 0.46271286246478094,
+      "passes_floor": true,
+      "margin": 1.5285088626291146
+     }
+    ],
+    "input_sha256": "853c6fe7e43e104de9285442965432cb85c9021e6273f790802045c87177a0ec",
+    "stdout_sha256": "3318814755cd802b35ff15f67d3dde819eb6eb909a8de026aee33d17e217e16e"
+   },
+   {
+    "operation": 87,
+    "basis": [
+     598,
+     164
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     598,
+     164,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.65625,
+      0.875
+     ],
+     [
+      0.6875,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06753844244454063,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 14.80638231805764,
+    "birth_angle": 4.2835559711252085,
+    "birth_margin": 0.2855703980750139,
+    "final_angle": 4.2835559711252085,
+    "final_quality": 0.12665791484452182,
+    "active_count": 22,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 4.2835559711252085,
+     "face_shape": 0.12665791484452182,
+     "passes_floor": false,
+     "margin": 0.2855703980750139
+    },
+    "valid_other_apices": [],
+    "pair_count": 1,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.671875,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.671875,
+       0.90625
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "uv_refused",
+      "point": [
+       0.671875,
+       0.890625
+      ]
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.671875,
+       0.8828125
+      ],
+      "valid_physical": true,
+      "min_angle": 22.60103099701114,
+      "face_shape": 0.45591504121211557,
+      "passes_floor": true,
+      "margin": 1.5067353998007427
+     }
+    ],
+    "input_sha256": "9db365bdcb339dc20049a060dad0e61bc4e0e94881308a6aede39ab5f6c5ef2a",
+    "stdout_sha256": "2b197a8514879933c7d03393003b71be254c8179ee6df80923e36db558f7daa1"
+   },
+   {
+    "operation": 88,
+    "basis": [
+     160,
+     598
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     160,
+     598,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.625,
+      0.875
+     ],
+     [
+      0.65625,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06845389169321223,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 14.60837324606277,
+    "birth_angle": 5.7944277301987,
+    "birth_margin": 0.3862951820132467,
+    "final_angle": 5.7944277301987,
+    "final_quality": 0.17009394619327886,
+    "active_count": 21,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 5.7944277301987,
+     "face_shape": 0.17009394619327886,
+     "passes_floor": false,
+     "margin": 0.3862951820132467
+    },
+    "valid_other_apices": [],
+    "pair_count": 0,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.640625,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.640625,
+       0.90625
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "uv_refused",
+      "point": [
+       0.640625,
+       0.890625
+      ]
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.640625,
+       0.8828125
+      ],
+      "valid_physical": true,
+      "min_angle": 22.338642174360146,
+      "face_shape": 0.45041029117069187,
+      "passes_floor": true,
+      "margin": 1.4892428116240097
+     }
+    ],
+    "input_sha256": "d32b3fc85b02f8a4ace18cc1dd58980e82d5d2e4bf1edcace1d23ad954cd36f4",
+    "stdout_sha256": "c7bbf92ea81eec569013f4f11ea672582921e3a8a4136d6fbfd2b3ae55d07688"
+   },
+   {
+    "operation": 92,
+    "basis": [
+     650,
+     175
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     650,
+     175,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.40625,
+      0.875
+     ],
+     [
+      0.4375,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.0697332905178615,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 14.340352973073312,
+    "birth_angle": 11.266027304078793,
+    "birth_margin": 0.7510684869385862,
+    "final_angle": 11.26830203786952,
+    "final_quality": 0.3238526554850539,
+    "active_count": 16,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 11.266027304078793,
+     "face_shape": 0.3234674832247074,
+     "passes_floor": false,
+     "margin": 0.7510684869385862
+    },
+    "valid_other_apices": [],
+    "pair_count": 1,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.421875,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "valid",
+      "point": [
+       0.421875,
+       0.90625
+      ],
+      "valid_physical": true,
+      "min_angle": 57.934086201786904,
+      "face_shape": 0.9967463329741355,
+      "passes_floor": true,
+      "margin": 3.86227241345246
+     },
+     {
+      "fraction": 0.25,
+      "status": "valid",
+      "point": [
+       0.421875,
+       0.890625
+      ],
+      "valid_physical": true,
+      "min_angle": 38.8467891662077,
+      "face_shape": 0.7652510003593705,
+      "passes_floor": true,
+      "margin": 2.5897859444138467
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.421875,
+       0.8828125
+      ],
+      "valid_physical": true,
+      "min_angle": 22.019983033888714,
+      "face_shape": 0.4434242493317397,
+      "passes_floor": true,
+      "margin": 1.4679988689259142
+     }
+    ],
+    "input_sha256": "541a2764a7a44d988fedfbf58808c0d084413faa0015875cdfed870287a2c596",
+    "stdout_sha256": "b84ff23de5518907313880ee9a0f7f38e1c25609e36994799c8e50b4dd7d9e01"
+   },
+   {
+    "operation": 93,
+    "basis": [
+     54,
+     650
+    ],
+    "base_is_template_edge": true,
+    "selected": [
+     54,
+     650,
+     674
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.375,
+      0.875
+     ],
+     [
+      0.40625,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06918364419461932,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 14.45428340240241,
+    "birth_angle": 8.033282741681463,
+    "birth_margin": 0.5355521827787642,
+    "final_angle": 8.030006846670291,
+    "final_quality": 0.23375799200584016,
+    "active_count": 15,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 674,
+     "uv": [
+      0.5,
+      1.0
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 8.033282741681463,
+     "face_shape": 0.23350831520739804,
+     "passes_floor": false,
+     "margin": 0.5355521827787642
+    },
+    "valid_other_apices": [],
+    "pair_count": 0,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.390625,
+       0.9375
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.390625,
+       0.90625
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "touches_front_side",
+      "point": [
+       0.390625,
+       0.890625
+      ]
+     },
+     {
+      "fraction": 0.125,
+      "status": "valid",
+      "point": [
+       0.390625,
+       0.8828125
+      ],
+      "valid_physical": true,
+      "min_angle": 22.171499200559104,
+      "face_shape": 0.44671597185748707,
+      "passes_floor": true,
+      "margin": 1.4780999467039402
+     }
+    ],
+    "input_sha256": "ecf5e4186f0d245ac75aa8d1b34bac4503e83d28909e0183a3603fbb3f7f4fc9",
+    "stdout_sha256": "d3d2ae1dfc372a321310aa45c4de48630451e9a03683440edd6daa50b8d1b7da"
+   },
+   {
+    "operation": 99,
+    "basis": [
+     40,
+     674
+    ],
+    "base_is_template_edge": false,
+    "selected": [
+     40,
+     674,
+     595
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "seed_edge": [
+     [
+      0.71875,
+      0.875
+     ],
+     [
+      0.75,
+      0.875
+     ]
+    ],
+    "seed_edge_length": 0.06515793603538585,
+    "incident_curve_lengths": [
+     1.0,
+     1.0
+    ],
+    "contour_to_seed_ratio": 15.347324682858615,
+    "birth_angle": 2.5314663267635877,
+    "birth_margin": 0.16876442178423917,
+    "final_angle": 6.980323533807382,
+    "final_quality": 0.20612250152618736,
+    "active_count": 4,
+    "valid_uv": 1,
+    "native_shortlist": 1,
+    "best_valid": {
+     "vertex": 595,
+     "uv": [
+      0.71875,
+      0.875
+     ],
+     "in_shortlist": true,
+     "valid_uv": true,
+     "valid_physical": true,
+     "min_angle": 2.5314663267635877,
+     "face_shape": 0.07553111652860231,
+     "passes_floor": false,
+     "margin": 0.16876442178423917
+    },
+    "valid_other_apices": [],
+    "pair_count": 0,
+    "valid_uv_pair_count": 0,
+    "valid_candidate_quads": [],
+    "ideal_points": [
+     {
+      "fraction": 1.0,
+      "status": "uv_refused",
+      "point": [
+       0.5970491502812526,
+       0.8815983005625052
+      ]
+     },
+     {
+      "fraction": 0.5,
+      "status": "uv_refused",
+      "point": [
+       0.6110245751406264,
+       0.9095491502812526
+      ]
+     },
+     {
+      "fraction": 0.25,
+      "status": "uv_refused",
+      "point": [
+       0.6180122875703131,
+       0.9235245751406264
+      ]
+     },
+     {
+      "fraction": 0.125,
+      "status": "uv_refused",
+      "point": [
+       0.6215061437851566,
+       0.9305122875703131
+      ]
+     }
+    ],
+    "input_sha256": "7c9686ad03e2e96b56c35d18e8d0b4f08ccd6876e0a1504c2cbfbcb58703a9d7",
+    "stdout_sha256": "2b8294d9059f0c8c8a63242da4a45df6ad2687d83679476a7694049b4642c4b0"
+   }
+  ]
+ },
+ "split_experiment": null,
+ "native_application_source_changed": false,
+ "whole_front_candidate_generated": false,
+ "mixed_adaptive_epochs": 0
+}

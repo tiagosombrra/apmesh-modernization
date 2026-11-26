@@ -12,6 +12,26 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - trace the 16 persistent TRI on the straight certified side
+
+The exact native replay covers all 16 failing TRI touching
+`v = 1`. Each already fails at birth, attaches to an exposed
+template edge and has one valid apex among the active sites.
+All 13 alternate QUAD constructions fail the article UV shape
+rule. The two straight contour segments measure 1.0 each.
+Template edges in the failing faces measure 0.06516 to 0.12574.
+Twelve TRI share the middle curve sample. Native ideal offsets
+produce a passing initial TRI in 12 states, with the remaining
+front closure unmeasured. The 707-face candidate remains blocked.
+Zero accepted mixed epochs. [Straight-side replay](PERSISTENT_STRAIGHT_SIDE_TRI_20261126.md).
+
+**Next after scientific alignment:** split the two original
+straight-side intervals once using the native arc-length method.
+Hold the other sides, the three contour groups and the admission
+profile fixed. Compare the six improved QUAD, remaining TRI floor
+defects, size requests, geometry and total face count. Retain the
+interior QUAD target and general validation in the remaining work.
+
 ### 2026-11-26 - realize the grouped contour QUAD on a fixed certified curve
 
 The approved native three-parent comparison reproduces the

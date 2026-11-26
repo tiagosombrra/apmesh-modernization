@@ -135,8 +135,11 @@ with the certified contour and 2:1 intact. The
 [native grouping comparison](NATIVE_SPLIT_CONTOUR_GROUPING_20261126.md)
 meets the angle target on all six bases and clears the contour
 QUAD count block with 25 fewer faces. The 31 existing safety-floor
-failures and the interior QUAD target remain. Diagnose the persistent
-TRI on the other contour sections using this fixed-contour control.
+failures and the interior QUAD target remain. The
+[straight-side replay](PERSISTENT_STRAIGHT_SIDE_TRI_20261126.md)
+binds 16 persistent TRI to a template-edge mismatch and a single
+valid existing apex per base. Align the two native arc subdivisions
+on that side while holding the six improved QUAD as controls.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

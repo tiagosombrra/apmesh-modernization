@@ -5185,3 +5185,17 @@ with the same maximum. The regional and five-pass trace audits
 complete. Four exact-head PR 297 jobs pass. Zero mixed epochs.
 Next, trace the 16 persistent TRI incident to v = 1 at birth.
 [Matched native result](NATIVE_SPLIT_CONTOUR_GROUPING_20261126.md).
+
+
+## 2026-11-26 Fortaleza - replay persistent TRI from the straight side
+
+Bound all 16 v = 1 TRI failures to their native birth faces in the
+707-face grouped control. All already fail at birth. Each had one
+native-valid apex across 817 site checks. Thirteen candidate QUAD
+constructions fail the article UV rule. Exposed template edges are
+0.06516 to 0.12574 against unit-length curve segments. Twelve TRI
+share the central curve point. Twelve ideal-offset cases yield a
+passing first TRI without a remaining-front closure result.
+Four exact-head PR 297 checks pass. Zero mixed epochs. Align the
+two native straight-side subdivisions before running the candidate.
+[Exact native replay receipts](PERSISTENT_STRAIGHT_SIDE_TRI_20261126.md).
