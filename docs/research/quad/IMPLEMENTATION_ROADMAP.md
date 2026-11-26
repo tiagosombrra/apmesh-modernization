@@ -103,7 +103,10 @@ enclosed interface sites. The [guarded native trial](NATIVE_SEED_LAYER_TRIAL_202
 passes both local replacements after smoothing and retains the
 full-mesh shape blocks. CurvaBezier RMS worsens relative to its
 control; the increase is mostly outside the original cavity.
-Align the replacement order comparison before another native change.
+The [post-smoothing trial](POST_SMOOTH_SEED_LAYER_TRIAL_20261126.md) preserves retained coordinates,
+meets the local shape checks and removes that RMS penalty in the
+matched CurvaBezier comparison. Both full meshes remain blocked.
+Align automatic cavity selection before a generalization trial.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

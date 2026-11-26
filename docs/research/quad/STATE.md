@@ -12,6 +12,25 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - compare guarded replacement after native smoothing
+
+[Draft PR 294](https://github.com/tiagosombrra/apmesh-modernization/pull/294)
+at `b78c6c6d62f1c63a255e65b7818d3032b3a74b00` retains the local improvements at 16.28° in
+CurvaBezier and 23.64° in Ribbed. All retained coordinates and
+node IDs equal the smoothed controls. CurvaBezier's RMS changes
+by 0.0043 percent compared with the control, against 4.4 percent
+with earlier application. Both candidates remain globally
+shape-blocked. Exact early controls, four refusals, native curve
+and article rollback, and 21 Python checks pass.
+[Matched order experiment](POST_SMOOTH_SEED_LAYER_TRIAL_20261126.md).
+
+**Next after scientific alignment:** replace the hand-selected
+cavity with a bounded search ranked by the existing shape floor
+violations. Test a single viable post-smoothing repair per model
+with the same fixed exterior, protected sizes and whole-mesh
+admission. Zero accepted mixed epochs. Shared curves, owner
+reentry, reserved cases and global mixed curvature remain open.
+
 ### 2026-11-26 - run guarded native replacements across one template layer
 
 [Draft PR 293](https://github.com/tiagosombrra/apmesh-modernization/pull/293)

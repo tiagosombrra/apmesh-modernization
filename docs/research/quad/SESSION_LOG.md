@@ -5069,3 +5069,18 @@ curve contracts and article rollback pass. Request alignment to
 apply the same local replacement after native smoothing.
 [Native experiment and evidence](NATIVE_SEED_LAYER_TRIAL_20261126.md).
 No accepted mixed adaptive epoch.
+
+
+## 2026-11-26 Fortaleza - compare the native replacement after smoothing
+
+Draft PR 294 at b78c6c6d stages both late-arm meshes. The local
+minimum angles are 16.28 and 23.64 degrees and the face counts
+remain 729 and 540. Every retained coordinate and node ID matches
+the smoothed control. CurvaBezier's RMS stays within 0.0043
+percent of that control. The two early controls, four input
+refusals, native curve contracts, article rollback and 21
+Python cases pass. Both meshes remain globally shape-blocked.
+The next alignment concerns automatic selection from the
+existing physical safety floors and the first template layer.
+[Results and exact witnesses](POST_SMOOTH_SEED_LAYER_TRIAL_20261126.md).
+Zero accepted mixed adaptive epochs.
