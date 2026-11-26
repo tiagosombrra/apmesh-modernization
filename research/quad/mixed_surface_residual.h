@@ -33,11 +33,61 @@ struct MixedSurfaceResidual {
   std::vector<double> face_maximum;
 };
 
-inline MixedSurfaceResidual MeasureMixedSurfaceResidual(
-    const std::vector<ResidualUv>& uv,
-    const std::vector<ResidualPoint3>& xyz,
-    const std::vector<ResidualFace>& faces,
-    const ResidualSurface& source) {
+namespace detail {
+
+template <typename Sample> void ForEachQuadResidualSample(Sample&& sample) {
+  constexpr std::array<std::array<double, 2>, 5> positions{
+      {{{0.5, 0.5}}, {{0.25, 0.25}}, {{0.75, 0.25}}, {{0.75, 0.75}}, {{0.25, 0.75}}}};
+  for (const auto& position : positions) {
+    const double s = position[0], t = position[1];
+    sample(std::array<double, 4>{{(1 - s) * (1 - t), s * (1 - t), s * t, (1 - s) * t}});
+  }
+}
+
+template <typename Uvs, typename Points, typename Face>
+double SurfaceResidualSquare(const Uvs& uv, const Points& xyz, const Face& face,
+                             const std::array<double, 4>& weights, const ResidualSurface& source,
+                             ResidualUv& site) {
+  site = {0.0, 0.0};
+  ResidualPoint3 interpolated{0.0, 0.0, 0.0};
+  for (std::size_t corner = 0; corner < face.size(); ++corner) {
+    for (std::size_t axis = 0; axis < 2; ++axis)
+      site[axis] += weights[corner] * uv[face[corner]][axis];
+    for (std::size_t axis = 0; axis < 3; ++axis)
+      interpolated[axis] += weights[corner] * xyz[face[corner]][axis];
+  }
+  const auto exact = source(site);
+  double square = 0.0;
+  for (std::size_t axis = 0; axis < 3; ++axis) {
+    if (!std::isfinite(exact[axis]))
+      throw std::invalid_argument("Nonfinite source surface oracle");
+    const double delta = exact[axis] - interpolated[axis];
+    square += delta * delta;
+  }
+  if (!std::isfinite(square))
+    throw std::invalid_argument("Overflow in mixed surface residual");
+  return square;
+}
+
+} // namespace detail
+
+inline double MeasureQuadSurfaceMaximum(const std::array<ResidualUv, 4>& uv,
+                                        const std::array<ResidualPoint3, 4>& xyz,
+                                        const ResidualSurface& source) {
+  constexpr std::array<std::size_t, 4> face{{0, 1, 2, 3}};
+  double maximum = 0.0;
+  detail::ForEachQuadResidualSample([&](const std::array<double, 4>& weights) {
+    ResidualUv site;
+    const double square = detail::SurfaceResidualSquare(uv, xyz, face, weights, source, site);
+    maximum = std::max(maximum, std::sqrt(square));
+  });
+  return maximum;
+}
+
+inline MixedSurfaceResidual MeasureMixedSurfaceResidual(const std::vector<ResidualUv>& uv,
+                                                        const std::vector<ResidualPoint3>& xyz,
+                                                        const std::vector<ResidualFace>& faces,
+                                                        const ResidualSurface& source) {
   auto require = [](bool ok, const char* message) {
     if (!ok)
       throw std::invalid_argument(message);
@@ -45,23 +95,16 @@ inline MixedSurfaceResidual MeasureMixedSurfaceResidual(
   require(source && !faces.empty() && !uv.empty() && uv.size() == xyz.size(),
           "Incomplete mixed surface residual input");
   for (std::size_t i = 0; i < uv.size(); ++i) {
-    require(std::isfinite(uv[i][0]) && std::isfinite(uv[i][1]) &&
-                uv[i][0] >= 0.0 && uv[i][0] <= 1.0 &&
-                uv[i][1] >= 0.0 && uv[i][1] <= 1.0,
+    require(std::isfinite(uv[i][0]) && std::isfinite(uv[i][1]) && uv[i][0] >= 0.0 &&
+                uv[i][0] <= 1.0 && uv[i][1] >= 0.0 && uv[i][1] <= 1.0,
             "Invalid mixed residual UV coordinate");
     for (const double value : xyz[i])
       require(std::isfinite(value), "Nonfinite mixed residual physical coordinate");
   }
-  constexpr std::array<std::array<double, 3>, 4> tri_weights{{
-      {{1.0/3.0, 1.0/3.0, 1.0/3.0}},
-      {{0.6, 0.2, 0.2}},
-      {{0.2, 0.6, 0.2}},
-      {{0.2, 0.2, 0.6}}
-  }};
-  constexpr std::array<std::array<double, 2>, 5> quad_samples{{
-      {{0.5, 0.5}}, {{0.25, 0.25}}, {{0.75, 0.25}},
-      {{0.75, 0.75}}, {{0.25, 0.75}}
-  }};
+  constexpr std::array<std::array<double, 3>, 4> tri_weights{{{{1.0 / 3.0, 1.0 / 3.0, 1.0 / 3.0}},
+                                                              {{0.6, 0.2, 0.2}},
+                                                              {{0.2, 0.6, 0.2}},
+                                                              {{0.2, 0.2, 0.6}}}};
   MixedSurfaceResidual result;
   result.face_maximum.reserve(faces.size());
   double sum_square = 0.0;
@@ -79,22 +122,8 @@ inline MixedSurfaceResidual MeasureMixedSurfaceResidual(
     ResidualUv face_max_uv{0.0, 0.0};
     bool sampled_face = false;
     const auto sample = [&](const std::array<double, 4>& weights) {
-      ResidualUv p{0.0, 0.0};
-      ResidualPoint3 interpolated{0.0, 0.0, 0.0};
-      for (std::size_t corner = 0; corner < face.size(); ++corner) {
-        for (std::size_t axis = 0; axis < 2; ++axis)
-          p[axis] += weights[corner] * uv[face[corner]][axis];
-        for (std::size_t axis = 0; axis < 3; ++axis)
-          interpolated[axis] += weights[corner] * xyz[face[corner]][axis];
-      }
-      const auto exact = source(p);
-      double square = 0.0;
-      for (std::size_t axis = 0; axis < 3; ++axis) {
-        require(std::isfinite(exact[axis]), "Nonfinite source surface oracle");
-        const double delta = exact[axis] - interpolated[axis];
-        square += delta * delta;
-      }
-      require(std::isfinite(square), "Overflow in mixed surface residual");
+      ResidualUv p;
+      const double square = detail::SurfaceResidualSquare(uv, xyz, face, weights, source, p);
       const double error = std::sqrt(square);
       if (!sampled_face || error > face_maximum) {
         face_maximum = error;
@@ -108,10 +137,7 @@ inline MixedSurfaceResidual MeasureMixedSurfaceResidual(
     };
     if (face.size() == 4) {
       // Actual bilinear QUAD: four physical corners, five parametric samples.
-      for (const auto& position : quad_samples) {
-        const double s = position[0], t = position[1];
-        sample({{(1-s)*(1-t), s*(1-t), s*t, (1-s)*t}});
-      }
+      detail::ForEachQuadResidualSample(sample);
       if (!seen_quad || face_maximum > result.quad_maximum) {
         result.worst_quad_face = index;
         result.worst_quad_sample_uv = face_max_uv;
@@ -141,5 +167,5 @@ inline MixedSurfaceResidual MeasureMixedSurfaceResidual(
   return result;
 }
 
-}  // namespace apmesh::quad::research
-#endif  // APMESH_QUAD_RESEARCH_MIXED_SURFACE_RESIDUAL_H
+} // namespace apmesh::quad::research
+#endif // APMESH_QUAD_RESEARCH_MIXED_SURFACE_RESIDUAL_H
