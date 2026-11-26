@@ -12,6 +12,33 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - find a shared short-base transition repair
+
+Six CurvaBezier and 13 Ribbed TRI fail at birth on template
+bases too short for the physical height and foot offset.
+Each has one valid apex in its observed front. Two other
+CurvaBezier TRI have empty fixed-center width intervals and
+need a different treatment. The existing immediate grouping
+screen refuses all 19 common cases. One-layer closures in
+four and seven disjoint regions reduce whole-mesh floor
+failures from 23 to 17 and from 12 to four under the strict
+incident size-request guard. Their QUAD counts fall from 661
+to 653 and from 483 to 464. Total faces are 743 and 546.
+Both maximum deviations and ordered certified curves match
+their controls. Admission blockers persist in both projections.
+No new native result and zero accepted mixed epochs.
+[Matched comparison](CROSS_MODEL_SHORT_BASE_TRANSITION_20261126.md).
+
+**Next after scientific alignment:** extend the existing opt-in
+post-smoothing repair to stage one disjoint batch atomically.
+Replay the above two archives on one source revision. Check
+exact feature-off restoration and refusal of overlapping,
+invalid and over-budget batches, then compare physical floors,
+regional targets, size requests, QUAD retention, and fixed-grid
+geometry before any adoption. Retain corner connectivity,
+shared curves, owner reentry, reserved cases, and global mixed
+curvature in the open stage inventory.
+
 ### 2026-11-26 - prove the fixed-contour corner obstruction
 
 Bound 2,709 one-site probes to the 743-face native archive and
@@ -28,15 +55,8 @@ both contour targets. Each measured projection keeps all seven
 size measurements and 23 floor failures. Zero accepted mixed
 epochs. [Corner analysis](FIXED_CONTOUR_CORNER_OBSTRUCTION_20261126.md).
 
-**Next:** use the retained native birth trace of the eight
-straight-side TRI below the floor and the existing Ribbed Bracket
-transition trace to compare physical template-edge lengths, curve
-interval lengths and admissible TRI heights. Project a common
-transition-interface correction only where the observed cause
-matches. Keep the 24-site CurvaBezier archive as the control
-and prioritize these hard floors before another marginal corner
-trial. Corner connectivity, interior QUAD target, shared curves,
-owner reentry, reserved cases and global mixed curvature remain open.
+The subsequent cross-model transition comparison above uses
+the 24-site archive as its CurvaBezier control.
 
 ### 2026-11-26 - realize two certified splits on the straight side
 

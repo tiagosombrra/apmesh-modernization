@@ -5231,3 +5231,19 @@ accepted. No native execution or source changes in this session.
 Next, compare the remaining hard TRI floor mechanism on both
 development surfaces using the retained birth and size traces.
 [Exact corner analysis](FIXED_CONTOUR_CORNER_OBSTRUCTION_20261126.md).
+
+
+## 2026-11-26 Fortaleza - project a shared short-base transition repair
+
+Bound the two native development traces and the historical Ribbed
+replay. Six CurvaBezier and 13 current Ribbed TRI are too narrow at
+their template bases and have one valid archived apex. The other two
+straight-side CurvaBezier TRI have a separate empty fixed-center
+width interval. A common disjoint one-layer projection with the
+native birth-or-final request guard reduces whole-mesh floor failures
+from 23 to 17 and from 12 to four. Face counts are 743 and 546;
+QUAD counts fall to 653 and 464. The maximum geometry deviation
+and certified contour match in each comparison. The full admission
+blockers persist. No new native generation and zero accepted mixed
+epochs. Align one opt-in atomic batch trial on the two controls.
+[Cross-model evidence](CROSS_MODEL_SHORT_BASE_TRANSITION_20261126.md).

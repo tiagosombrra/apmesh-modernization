@@ -148,9 +148,13 @@ a TRI floor failure. The
 [fixed-contour corner proof](FIXED_CONTOUR_CORNER_OBSTRUCTION_20261126.md)
 excludes interior placement with the same two-QUAD corner
 connectivity. The bounded use of existing sites yields no
-replacement meeting both regional contour targets. Address the
-remaining hard TRI floors with a common physical transition test
-on the two development surfaces. Retain the shared-curve and two-epoch
+replacement meeting both regional contour targets. The
+[cross-model short-base transition comparison](CROSS_MODEL_SHORT_BASE_TRANSITION_20261126.md)
+identifies one shared hard-floor mechanism and projects disjoint
+one-layer replacements on both development controls. The combined
+projections reduce hard floor failures within budget and retain the
+existing admission blocks. Align atomic native staging of the batch
+before implementing it. Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
 The [reversible native candidate](REVERSIBLE_TRANSITION_TRIAL_20261124.md)
