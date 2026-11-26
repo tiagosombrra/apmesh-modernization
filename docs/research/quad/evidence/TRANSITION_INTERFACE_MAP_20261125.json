@@ -1,0 +1,1301 @@
+{
+ "schema": "apmesh.quad.transition_interface_map.v1",
+ "revision": "49bd07ac2a53cf430ce28a6999bc4ad65dd08602",
+ "tree": "c92d106d6913b049b1a5922de24ae0535fd4eeb0",
+ "original_trial_revision": "ab7b2e60aef01f48323bd38892fdbedc7071dcb3",
+ "projection_sha256": "1dd28055c2b6326a10ffd54648bd277f5871e3665367af5924f0e0fe647cad6e",
+ "commands": {
+  "projection": [
+   "python",
+   "tools/quad_transition_interface_map.py",
+   "--control",
+   "child",
+   "--ungrouped",
+   "native-ribbed",
+   "--profile",
+   "progressive_admission_development_v1.json",
+   "--out",
+   "map.json"
+  ],
+  "admission": [
+   "python",
+   "-W",
+   "error::ResourceWarning",
+   "tests/quad/test_progressive_admission.py"
+  ],
+  "sizing": [
+   "python",
+   "-W",
+   "error::ResourceWarning",
+   "tests/quad/test_relative_feedback_requests.py"
+  ]
+ },
+ "controls": {
+  "same_projection": "byte_identical",
+  "foreign_archive": "refused",
+  "single_pass_v1_archive": "refused",
+  "tests": [
+   13,
+   6
+  ]
+ },
+ "projection": {
+  "source_sha256": {
+   "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+   "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+   "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+  },
+  "candidate_sha256": "5b76c4978f83673f56decc44b475827a3b225cf8a52baf90c85ed5085d133e75",
+  "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+  "face_budget": 601,
+  "current_faces": 533,
+  "transition_triangles": [
+   {
+    "operation": 53,
+    "angle": 8.06261087394466,
+    "birth_angle": 8.06261087394466,
+    "base": [
+     [
+      0.625,
+      0.9375
+     ],
+     [
+      0.65625,
+      0.9375
+     ]
+    ],
+    "contour_vertex": [
+     0.75,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       0,
+       1
+      ],
+      "operation": 53,
+      "angle": 5.066855582451952,
+      "shape": 0.15043942256848067,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.875,
+        1.0
+       ],
+       [
+        0.75,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.8125,
+       1.0
+      ],
+      "arc_to_base": 3.9999141147002417
+     },
+     {
+      "action": [
+       "curve_child",
+       8,
+       1
+      ],
+      "operation": 53,
+      "angle": 13.247771036558781,
+      "shape": 0.3863477748095495,
+      "improves_birth": true,
+      "edge": [
+       [
+        0.75,
+        1.0
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.625,
+       1.0
+      ],
+      "arc_to_base": 7.999829166880375
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.875,
+      0.75,
+      1.0
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      490
+     ]
+    }
+   },
+   {
+    "operation": 51,
+    "angle": 10.030865307043848,
+    "birth_angle": 10.030865307043848,
+    "base": [
+     [
+      0.65625,
+      0.9375
+     ],
+     [
+      0.6875,
+      0.9375
+     ]
+    ],
+    "contour_vertex": [
+     0.75,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       0,
+       1
+      ],
+      "operation": 51,
+      "angle": 6.38607385517399,
+      "shape": 0.18889015096915723,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.875,
+        1.0
+       ],
+       [
+        0.75,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.8125,
+       1.0
+      ],
+      "arc_to_base": 3.999914188339602
+     },
+     {
+      "action": [
+       "curve_child",
+       8,
+       1
+      ],
+      "operation": 51,
+      "angle": 11.95450264516689,
+      "shape": 0.34930104039165427,
+      "improves_birth": true,
+      "edge": [
+       [
+        0.75,
+        1.0
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.625,
+       1.0
+      ],
+      "arc_to_base": 7.999829314159113
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.875,
+      0.75,
+      1.0
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      490
+     ]
+    }
+   },
+   {
+    "operation": 68,
+    "angle": 11.96166576168765,
+    "birth_angle": 11.96166576168765,
+    "base": [
+     [
+      0.65625,
+      0.0625
+     ],
+     [
+      0.6875,
+      0.0625
+     ]
+    ],
+    "contour_vertex": [
+     0.6251144325360656,
+     0.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "curve_child",
+       2,
+       0
+      ],
+      "operation": 68,
+      "angle": 8.032623071624656,
+      "shape": 0.23654206001766964,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.500091552734375,
+        0.0
+       ],
+       [
+        0.6251144325360656,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.5626029926352203,
+       0.0
+      ],
+      "arc_to_base": 4.000561082287513
+     },
+     {
+      "action": [
+       "curve_child",
+       2,
+       1
+      ],
+      "operation": 68,
+      "angle": 13.261518044909302,
+      "shape": 0.3867423526191486,
+      "improves_birth": true,
+      "edge": [
+       [
+        0.6251144325360656,
+        0.0
+       ],
+       [
+        0.7501373123377562,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.6876258724369109,
+       0.0
+      ],
+      "arc_to_base": 4.000645838386622
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.0,
+      0.75,
+      0.125
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      477,
+      478,
+      503
+     ]
+    }
+   },
+   {
+    "operation": 57,
+    "angle": 11.967772407811895,
+    "birth_angle": 11.967772407811895,
+    "base": [
+     [
+      0.6875,
+      0.9375
+     ],
+     [
+      0.71875,
+      0.9375
+     ]
+    ],
+    "contour_vertex": [
+     0.75,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       0,
+       1
+      ],
+      "operation": 57,
+      "angle": 8.06104735081647,
+      "shape": 0.2374106759856893,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.875,
+        1.0
+       ],
+       [
+        0.75,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.8125,
+       1.0
+      ],
+      "arc_to_base": 3.9999142755087793
+     },
+     {
+      "action": [
+       "curve_child",
+       8,
+       1
+      ],
+      "operation": 57,
+      "angle": 10.002822476091078,
+      "shape": 0.293309482780602,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.75,
+        1.0
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.625,
+       1.0
+      ],
+      "arc_to_base": 7.999829488497488
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.875,
+      0.75,
+      1.0
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      490
+     ]
+    }
+   },
+   {
+    "operation": 46,
+    "angle": 12.786895426989378,
+    "birth_angle": 13.547763119491673,
+    "base": [
+     [
+      0.4375,
+      0.875
+     ],
+     [
+      0.5,
+      0.875
+     ]
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "curve_child",
+       8,
+       1
+      ],
+      "operation": 46,
+      "angle": 10.147655965376524,
+      "shape": 0.2972193032871003,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.75,
+        1.0
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.625,
+       1.0
+      ],
+      "arc_to_base": 3.99978058265415
+     },
+     {
+      "action": [
+       "curve_child",
+       9,
+       0
+      ],
+      "operation": 46,
+      "angle": 12.167705899900206,
+      "shape": 0.35500405441008814,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.25,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.375,
+       1.0
+      ],
+      "arc_to_base": 3.9997805826541493
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.25,
+      0.75,
+      0.5,
+      1.0
+     ],
+     "status": "not_four_original_leaf_children",
+     "protected_requests": []
+    }
+   },
+   {
+    "operation": 47,
+    "angle": 12.961598234838917,
+    "birth_angle": 12.197858218656553,
+    "base": [
+     [
+      0.375,
+      0.875
+     ],
+     [
+      0.4375,
+      0.875
+     ]
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "curve_child",
+       8,
+       1
+      ],
+      "operation": 47,
+      "angle": 8.10253716487212,
+      "shape": 0.2384232106494409,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.75,
+        1.0
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.625,
+       1.0
+      ],
+      "arc_to_base": 3.99978061744333
+     },
+     {
+      "action": [
+       "curve_child",
+       9,
+       0
+      ],
+      "operation": 47,
+      "angle": 13.547764897584045,
+      "shape": 0.3944387005924736,
+      "improves_birth": true,
+      "edge": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.25,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.375,
+       1.0
+      ],
+      "arc_to_base": 3.9997806174433292
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.25,
+      0.75,
+      0.5,
+      1.0
+     ],
+     "status": "not_four_original_leaf_children",
+     "protected_requests": []
+    }
+   },
+   {
+    "operation": 82,
+    "angle": 13.194223012422462,
+    "birth_angle": 13.194223012422462,
+    "base": [
+     [
+      0.875,
+      0.9375
+     ],
+     [
+      0.90625,
+      0.9375
+     ]
+    ],
+    "contour_vertex": [
+     0.875,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       0,
+       0
+      ],
+      "operation": 82,
+      "angle": 11.93861729640539,
+      "shape": 0.34893245401660977,
+      "improves_birth": false,
+      "edge": [
+       [
+        1.0,
+        1.0
+       ],
+       [
+        0.875,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.9375,
+       1.0
+      ],
+      "arc_to_base": 3.9999145201282054
+     },
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       0,
+       1
+      ],
+      "operation": 82,
+      "angle": 9.987042609125853,
+      "shape": 0.29289248990788563,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.875,
+        1.0
+       ],
+       [
+        0.75,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.8125,
+       1.0
+      ],
+      "arc_to_base": 3.999915082616277
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.875,
+      0.875,
+      1.0,
+      1.0
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      480,
+      490,
+      542,
+      543
+     ]
+    }
+   },
+   {
+    "operation": 55,
+    "angle": 13.234498177721493,
+    "birth_angle": 13.234498177721493,
+    "base": [
+     [
+      0.71875,
+      0.9375
+     ],
+     [
+      0.75,
+      0.9375
+     ]
+    ],
+    "contour_vertex": [
+     0.75,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       0,
+       1
+      ],
+      "operation": 55,
+      "angle": 10.025824102665608,
+      "shape": 0.2940070781212379,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.875,
+        1.0
+       ],
+       [
+        0.75,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.8125,
+       1.0
+      ],
+      "arc_to_base": 3.9999143762072404
+     },
+     {
+      "action": [
+       "curve_child",
+       8,
+       1
+      ],
+      "operation": 55,
+      "angle": 8.031241022426732,
+      "shape": 0.23652597451406926,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.75,
+        1.0
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.625,
+       1.0
+      ],
+      "arc_to_base": 7.999829689894433
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.875,
+      0.75,
+      1.0
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      490
+     ]
+    }
+   },
+   {
+    "operation": 65,
+    "angle": 13.25963107536915,
+    "birth_angle": 13.25963107536915,
+    "base": [
+     [
+      0.71875,
+      0.0625
+     ],
+     [
+      0.75,
+      0.0625
+     ]
+    ],
+    "contour_vertex": [
+     0.7501373123377562,
+     0.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "curve_child",
+       2,
+       1
+      ],
+      "operation": 65,
+      "angle": 11.938539023976247,
+      "shape": 0.34883811609161935,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.6251144325360656,
+        0.0
+       ],
+       [
+        0.7501373123377562,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.6876258724369109,
+       0.0
+      ],
+      "arc_to_base": 4.00028496904757
+     },
+     {
+      "action": [
+       "curve_child",
+       3,
+       0
+      ],
+      "operation": 65,
+      "angle": 10.061711710364714,
+      "shape": 0.2950038957258414,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.7501373123377562,
+        0.0
+       ],
+       [
+        0.8751296578016081,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.8126334850696821,
+       0.0
+      ],
+      "arc_to_base": 4.00057470882737
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.0,
+      0.75,
+      0.125
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      477,
+      478,
+      503
+     ]
+    }
+   },
+   {
+    "operation": 66,
+    "angle": 13.260358509497227,
+    "birth_angle": 13.260358509497227,
+    "base": [
+     [
+      0.625,
+      0.0625
+     ],
+     [
+      0.65625,
+      0.0625
+     ]
+    ],
+    "contour_vertex": [
+     0.6251144325360656,
+     0.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "curve_child",
+       2,
+       0
+      ],
+      "operation": 66,
+      "angle": 10.018552788545353,
+      "shape": 0.2937324182820669,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.500091552734375,
+        0.0
+       ],
+       [
+        0.6251144325360656,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.5626029926352203,
+       0.0
+      ],
+      "arc_to_base": 4.000659564866707
+     },
+     {
+      "action": [
+       "curve_child",
+       2,
+       1
+      ],
+      "operation": 66,
+      "angle": 11.98424676088265,
+      "shape": 0.35015094795328466,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.6251144325360656,
+        0.0
+       ],
+       [
+        0.7501373123377562,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.6876258724369109,
+       0.0
+      ],
+      "arc_to_base": 4.000744323052273
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.0,
+      0.75,
+      0.125
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      477,
+      478,
+      503
+     ]
+    }
+   },
+   {
+    "operation": 24,
+    "angle": 13.567747506655751,
+    "birth_angle": 13.567747506655751,
+    "base": [
+     [
+      0.375,
+      0.125
+     ],
+     [
+      0.4375,
+      0.125
+     ]
+    ],
+    "contour_vertex": [
+     0.375053402967751,
+     0.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "curve_child",
+       1,
+       0
+      ],
+      "operation": 24,
+      "angle": 12.197145703518643,
+      "shape": 0.35581338361274933,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.25001525320112705,
+        0.0
+       ],
+       [
+        0.375053402967751,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.31253432808443904,
+       0.0
+      ],
+      "arc_to_base": 2.0006091053467077
+     },
+     {
+      "action": [
+       "curve_child",
+       1,
+       1
+      ],
+      "operation": 24,
+      "angle": 13.563646802529291,
+      "shape": 0.3948860896093487,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.375053402967751,
+        0.0
+       ],
+       [
+        0.500091552734375,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.437572477851063,
+       0.0
+      ],
+      "arc_to_base": 2.0006513783096764
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.25,
+      0.0,
+      0.5,
+      0.25
+     ],
+     "status": "not_four_original_leaf_children",
+     "protected_requests": []
+    }
+   }
+  ],
+  "group_parents_examined": 33,
+  "eligible_group_projections": [
+   {
+    "parents": [
+     [
+      0.25,
+      0.25,
+      0.375,
+      0.375
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 533
+   },
+   {
+    "parents": [
+     [
+      0.25,
+      0.5,
+      0.375,
+      0.625
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 533
+   },
+   {
+    "parents": [
+     [
+      0.375,
+      0.375,
+      0.5,
+      0.5
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 529
+   },
+   {
+    "parents": [
+     [
+      0.375,
+      0.625,
+      0.5,
+      0.75
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 533
+   },
+   {
+    "parents": [
+     [
+      0.5,
+      0.25,
+      0.625,
+      0.375
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 535
+   },
+   {
+    "parents": [
+     [
+      0.5,
+      0.5,
+      0.625,
+      0.625
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 527
+   },
+   {
+    "parents": [
+     [
+      0.625,
+      0.375,
+      0.75,
+      0.5
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 539
+   },
+   {
+    "parents": [
+     [
+      0.625,
+      0.625,
+      0.75,
+      0.75
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 545
+   },
+   {
+    "parents": [
+     [
+      0.75,
+      0.375,
+      0.875,
+      0.5
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 550
+   },
+   {
+    "parents": [
+     [
+      0.75,
+      0.5,
+      0.875,
+      0.625
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 542
+   },
+   {
+    "parents": [
+     [
+      0.625,
+      0.375,
+      0.75,
+      0.5
+     ],
+     [
+      0.75,
+      0.375,
+      0.875,
+      0.5
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 522
+   },
+   {
+    "parents": [
+     [
+      0.75,
+      0.375,
+      0.875,
+      0.5
+     ],
+     [
+      0.75,
+      0.5,
+      0.875,
+      0.625
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 529
+   }
+  ],
+  "curve_batches": [
+   {
+    "actions": [
+     [
+      "curve_child",
+      2,
+      1
+     ]
+    ],
+    "face_upper_bound": 558,
+    "fits_budget": true,
+    "representable": false,
+    "projected_gain_operations": [
+     68
+    ]
+   },
+   {
+    "actions": [
+     [
+      "curve_child",
+      8,
+      1
+     ]
+    ],
+    "face_upper_bound": 558,
+    "fits_budget": true,
+    "representable": false,
+    "projected_gain_operations": [
+     51,
+     53
+    ]
+   },
+   {
+    "actions": [
+     [
+      "curve_child",
+      9,
+      0
+     ]
+    ],
+    "face_upper_bound": 558,
+    "fits_budget": true,
+    "representable": false,
+    "projected_gain_operations": [
+     47
+    ]
+   },
+   {
+    "actions": [
+     [
+      "curve_child",
+      2,
+      1
+     ],
+     [
+      "curve_child",
+      8,
+      1
+     ]
+    ],
+    "face_upper_bound": 559,
+    "fits_budget": true,
+    "representable": false,
+    "projected_gain_operations": [
+     51,
+     53,
+     68
+    ]
+   },
+   {
+    "actions": [
+     [
+      "curve_child",
+      2,
+      1
+     ],
+     [
+      "curve_child",
+      9,
+      0
+     ]
+    ],
+    "face_upper_bound": 559,
+    "fits_budget": true,
+    "representable": false,
+    "projected_gain_operations": [
+     47,
+     68
+    ]
+   },
+   {
+    "actions": [
+     [
+      "curve_child",
+      8,
+      1
+     ],
+     [
+      "curve_child",
+      9,
+      0
+     ]
+    ],
+    "face_upper_bound": 559,
+    "fits_budget": true,
+    "representable": false,
+    "projected_gain_operations": [
+     47,
+     51,
+     53
+    ]
+   },
+   {
+    "actions": [
+     [
+      "curve_child",
+      2,
+      1
+     ],
+     [
+      "curve_child",
+      8,
+      1
+     ],
+     [
+      "curve_child",
+      9,
+      0
+     ]
+    ],
+    "face_upper_bound": 560,
+    "fits_budget": true,
+    "representable": false,
+    "projected_gain_operations": [
+     47,
+     51,
+     53,
+     68
+    ]
+   }
+  ]
+ },
+ "new_native_runs": 0,
+ "mixed_adaptive_epochs": 0
+}

@@ -4916,3 +4916,17 @@ direct article rollback pass. The PR 286 hosted run passes and the
 PR 287 run is pending. The remaining 11 sub-floor TRI share a seed
 edge; map feasible coupled actions against the budget next.
 [Evidence](CERTIFIED_CHILD_CURVE_TRIAL_20261125.md). Zero accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - map the remaining certified transition interfaces
+
+Draft PR 288 at 49bd07ac maps 11 sub-floor transition TRI. Twelve
+admissible protected group projections retain all short seed edges.
+Three projected contour child splits show gains on some fixed bases.
+A top and bottom pair fits the prospective 559-of-601 face bound.
+The existing child request consumes the only native slot. The next
+proposed comparison needs alignment on adding two directed child
+requests while retaining the 24 contour points and IDs.
+Both read-only replays match; two input refusals, thirteen admission
+tests and six sizing tests pass. PR 287 hosted checks pass.
+[Projection evidence](TRANSITION_INTERFACE_MAP_20261125.md).
+No new native run and zero accepted mixed epochs.

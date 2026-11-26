@@ -12,6 +12,23 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - map affordable actions for the remaining Ribbed transition TRI
+
+[Draft PR 288](https://github.com/tiagosombrra/apmesh-modernization/pull/288)
+at `49bd07ac2a53cf430ce28a6999bc4ad65dd08602` maps all 11 sub-floor
+TRI. Ten legal individual groups and two adjacent pairs retain every
+mapped short edge. Three child spans improve some fixed-base birth
+scores. The selected top and bottom pair has an upper face bound
+of 559 against 601. Other affected TRI can regress and the predicted
+gain remains below the safety floor. [Map](TRANSITION_INTERFACE_MAP_20261125.md).
+
+**Next:** align whether to allow the two directed child requests
+alongside the existing certified child split. Preserve the current
+24 contour sites including IDs, then build and compare once on Ribbed
+with the frozen profile. The current parser has one occupied child
+slot. No new native run or accepted epoch. Shared curves, reserved
+cases and global mixed curvature remain open.
+
 ### 2026-11-25 - certify a second native subdivision on a child contour segment
 
 [Draft PR 287](https://github.com/tiagosombrra/apmesh-modernization/pull/287)

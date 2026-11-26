@@ -74,9 +74,11 @@ budget. The [budgeted action trial](BUDGETED_TRANSITION_ACTION_20261125.md)
 improves both selected regions with candidates inside the budget.
 The [certified child trial](CERTIFIED_CHILD_CURVE_TRIAL_20261125.md)
 reaches the previous worst Ribbed TRI and preserves the budget and
-contour. Eleven transition TRI still fail a safety floor. Map the
-remaining seed interfaces to combined affordable actions before
-reserved validation.
+contour. The [transition interface map](TRANSITION_INTERFACE_MAP_20261125.md)
+finds no direct seed-edge removal in the checked protected groups.
+A projected two-child batch fits the face budget. Align support
+for the extra certified requests before a combined native trial
+and reserved validation.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
