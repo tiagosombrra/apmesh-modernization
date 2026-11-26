@@ -2507,6 +2507,7 @@ struct FeedbackPlan {
   std::optional<double> additional_pair_error_limit;
   bool certify_boundary_refinement = false;
   std::vector<std::array<double, 4>> group_feedback_parents;
+  std::optional<std::array<double, 4>> measured_contour_parent;
   std::optional<IdealFrontLimits> ideal_front_limits;
 };
 
@@ -2573,12 +2574,13 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
   auto& feedback = plan.feedback;
   feedback.guarded_smoothing = true;
   while (input >> kind) {
-    if (kind == "group_feedback_parent" || kind == "group_feedback_contour_parent") {
+    if (kind == "group_feedback_parent" || kind == "group_feedback_contour_parent" ||
+        kind == "group_feedback_contour_parent_preserve_sizes") {
       std::array<double, 4> box{};
       for (double& coordinate : box)
         input >> coordinate;
       const bool on_contour = box[0] == 0 || box[1] == 0 || box[2] == 1 || box[3] == 1;
-      const bool contour_plan = kind == "group_feedback_contour_parent";
+      const bool contour_plan = kind != "group_feedback_parent";
       // Contour parents are handed to the advancing front by the existing template dispatcher.
       Require(bool(input) && 0 <= box[0] && 0 <= box[1] && box[0] < box[2] && box[1] < box[3] &&
                   box[2] <= 1 && box[3] <= 1 && box[2] - box[0] == box[3] - box[1] &&
@@ -2589,6 +2591,10 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
         Require(std::max(prior[0], box[0]) >= std::min(prior[2], box[2]) ||
                     std::max(prior[1], box[1]) >= std::min(prior[3], box[3]),
                 "Feedback grouping parents must have disjoint interiors");
+      if (kind == "group_feedback_contour_parent_preserve_sizes") {
+        Require(!feedback.measured_contour_parent, "Only one measured contour parent is allowed");
+        feedback.measured_contour_parent = box;
+      }
       feedback.group_feedback_parents.push_back(box);
     } else if (kind == "certify_boundary_refinement") {
       Require(!feedback.certify_boundary_refinement, "Duplicate boundary refinement certification");
@@ -2791,6 +2797,66 @@ SubdivideCertifiedChild(PatchBezier& patch, const RealBoundarySource& first_pass
   return {std::move(refined), witness};
 }
 
+bool ContainsRequestSite(const Candidate& candidate, const std::vector<VertexId>& face,
+                         UvVertex site) {
+  // Use the closed convex UV face. The reporting tolerance includes both
+  // incident faces when a request is on their common edge.
+  for (std::size_t i = 0; i < face.size(); ++i) {
+    const auto a = candidate.uv[face[i]];
+    const auto b = candidate.uv[face[(i + 1) % face.size()]];
+    if ((b.u - a.u) * (site.v - a.v) - (b.v - a.v) * (site.u - a.u) < -2e-13)
+      return false;
+  }
+  return true;
+}
+
+double MedianPhysicalEdge(const SubMesh& mesh, const std::vector<VertexId>& face) {
+  std::array<double, 4> edges{};
+  for (std::size_t i = 0; i < face.size(); ++i) {
+    const auto* a = mesh.GetNoh(static_cast<unsigned>(face[i]));
+    const auto* b = mesh.GetNoh(static_cast<unsigned>(face[(i + 1) % face.size()]));
+    edges[i] = Norm(Difference(Values(*a), Values(*b)));
+    Require(std::isfinite(edges[i]) && edges[i] > 0, "Invalid physical sizing edge");
+  }
+  std::sort(edges.begin(), edges.begin() + face.size());
+  return face.size() == 3 ? edges[1] : (edges[1] + edges[2]) / 2;
+}
+
+bool CheckProtectedPhysicalSizes(const Candidate& candidate,
+                                 const std::vector<GeometricRequest>& requests,
+                                 const std::filesystem::path& directory) {
+  std::ofstream evidence(directory / "protected_size_measurements.json", std::ios::binary);
+  evidence.imbue(std::locale::classic());
+  evidence << std::setprecision(17)
+           << "{\"schema\":\"apmesh.quad.protected_size_measurements.v1\",\"requests\":[";
+  bool passed = true;
+  for (std::size_t r = 0; r < requests.size(); ++r) {
+    const auto& request = requests[r];
+    if (r)
+      evidence << ',';
+    evidence << "{\"face\":" << request.face << ",\"uv\":[" << request.site.u << ','
+             << request.site.v << "],\"requested_size\":" << request.size << ",\"incident\":[";
+    bool measured = false;
+    for (std::size_t i = 0; i < candidate.faces.size(); ++i) {
+      const auto& face = candidate.faces[i];
+      if (!ContainsRequestSite(candidate, face, request.site))
+        continue;
+      const double h = MedianPhysicalEdge(*candidate.mesh, face);
+      if (measured)
+        evidence << ',';
+      evidence << "{\"face\":" << i << ",\"median_edge\":" << h << '}';
+      measured = true;
+      passed &= h <= request.size;
+    }
+    passed &= measured;
+    evidence << "]}";
+  }
+  evidence << "],\"passed\":" << (passed ? "true" : "false") << "}\n";
+  evidence.close();
+  Require(bool(evidence), "Cannot retain protected size measurements");
+  return passed;
+}
+
 void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
                             const RealBoundarySource& source,
                             const std::vector<GeometricRequest>& requests,
@@ -2931,6 +2997,7 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
             "Geometric feedback could not balance the native tree");
   const auto refined = tree->GetLeafCount();
   const bool group_parent = comparison && !comparison->group_feedback_parents.empty();
+  std::vector<GeometricRequest> protected_sizes;
   if (group_parent) {
     const auto& parents = comparison->group_feedback_parents;
     auto captured = effective_source;
@@ -2939,14 +3006,23 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
       return box[0] <= site.u && site.u <= box[2] && box[1] <= site.v && site.v <= box[3];
     };
     for (const auto& parent_box : parents) {
+      const bool measured = comparison->measured_contour_parent == parent_box;
       for (const auto& request : requests) {
-        Require(!contains(parent_box, request.site), "Grouping would remove a refinement request");
-        for (const auto& cell : captured.cells)
-          Require(cell.subdivided || !ShareTreeSide(cell.box, parent_box) ||
-                      !contains(cell.box, request.site),
-                  "Grouping would alter a neighbor with a refinement request");
+        const bool in_parent = contains(parent_box, request.site);
+        Require(measured || !in_parent, "Grouping would remove a refinement request");
+        const bool in_neighbor =
+            std::any_of(captured.cells.begin(), captured.cells.end(), [&](const auto& cell) {
+              return !cell.subdivided && ShareTreeSide(cell.box, parent_box) &&
+                     contains(cell.box, request.site);
+            });
+        Require(measured || !in_neighbor,
+                "Grouping would alter a neighbor with a refinement request");
+        if (measured && (in_parent || in_neighbor))
+          protected_sizes.push_back(request);
       }
     }
+    Require(!comparison->measured_contour_parent || !protected_sizes.empty(),
+            "Measured contour parent affects no protected size request");
     const auto grouped = GroupTemplateBlocks(captured, parents);
     CheckGroupedBalance(grouped);
     tree = ReplayRealSourceTree(patch, grouped);
@@ -3005,6 +3081,14 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   }
   if (staged) {
     CheckTypedIncidence(*staged->mesh, *staged);
+    if (!protected_sizes.empty() &&
+        !CheckProtectedPhysicalSizes(*staged, protected_sizes, directory)) {
+      staged.reset();
+      outcome = "rejected";
+      rejection = "Grouped candidate exceeds one or more protected physical size requests";
+    }
+  }
+  if (staged) {
     staged->source_witness = &effective_source;
     staged->generation_step = source.source_step;
     staged->reference_accepted = source.reference_tri_accepted;
