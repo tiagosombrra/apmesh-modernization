@@ -5037,3 +5037,20 @@ diverges and is excluded. Request alignment for a read-only layer
 of neighboring template QUAD with all physical requests retained.
 [Closure evidence](MIXED_CLOSURE_REFUSAL_REPLAY_20261126.md).
 No full native successor or accepted mixed epoch.
+
+
+## 2026-11-26 Fortaleza - project one template layer in the transition
+
+The exact PR 292 CurvaBezier and Ribbed controls yield two locally
+feasible one-layer replacement witnesses. With archived smoothed
+coordinates, the local minima rise to 16.28 and 23.64 degrees.
+The four stitched projections preserve directed contour,
+unaffected faces and measured physical size. The selected
+witnesses remove three and one enclosed old interface sites.
+No full fixed-site preservation witness passes. Both full
+projections remain shape-blocked, and no native stage runs.
+Request explicit alignment for a native trial protecting the
+outside, original curve and retained interior site. PR 292
+exact hosted checks pass.
+[Evidence and next action](SEED_LAYER_TRANSITION_PROJECTION_20261126.md).
+Zero accepted mixed adaptive epochs.

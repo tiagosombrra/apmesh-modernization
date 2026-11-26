@@ -12,6 +12,26 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - project a transition cavity with one template layer
+
+The [two-model projection](SEED_LAYER_TRANSITION_PROJECTION_20261126.md) finds admissible local
+closures in CurvaBezier and Ribbed with one layer of seed QUAD.
+At archived smoothed positions, the minimum local angles rise
+from 3.25° to 16.28° and 11.91° to 23.64°. Faces fall from 731 to 729
+and 541 to 540. The original curves and measured size requests
+are preserved. The stitched whole meshes still fail global shape.
+No tested feasible layout retains every enclosed interface vertex;
+three CurvaBezier and one Ribbed seed sites are retired, with
+no outside references. Three solver controls and four stitched
+geometry checks pass. No native candidate or accepted mixed epoch.
+
+**Next after scientific alignment:** run one guarded native
+replacement in each bound model. Only retire fully enclosed
+interface vertices, retain all curve and protected sites, and
+recheck the native smooth and whole-mesh admission. Shared
+curves, owner reentry, reserved cases and global mixed curvature
+remain open.
+
 ### 2026-11-26 - reproduce the rejected shape-driven closures
 
 The bound [closure replay](MIXED_CLOSURE_REFUSAL_REPLAY_20261126.md) reproduces all three late

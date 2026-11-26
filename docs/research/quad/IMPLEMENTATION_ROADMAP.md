@@ -96,8 +96,11 @@ and passes the local closure guard. CurvaBezier refuses the point
 and the Ribbed candidate remains blocked on whole-mesh shape.
 The [closure replay](MIXED_CLOSURE_REFUSAL_REPLAY_20261126.md) identifies new thin neighbors
 in both regenerated front suffixes. The tested earlier placements
-and front-only expansions provide no joint closure. Alignment is
-pending on a projection that includes adjacent template QUAD.
+and front-only expansions provide no joint closure. The
+[one-layer template projection](SEED_LAYER_TRANSITION_PROJECTION_20261126.md) finds local solutions
+in both models within the frozen budget by retiring only fully
+enclosed interface sites. The whole projected meshes remain
+blocked. Alignment is pending on a guarded native replacement.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
