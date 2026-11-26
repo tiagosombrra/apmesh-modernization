@@ -131,8 +131,12 @@ TRI count block. The QUAD regional target still blocks admission.
 The [six-base replay](SPLIT_CONTOUR_PAIR_REPLAY_20261126.md) finds
 no 45-degree QUAD among the 18 physically valid article pairs.
 A three-parent projection yields compatible local QUAD footprints
-with the certified contour and 2:1 intact. Align the single native
-grouping comparison before changing transition placement.
+with the certified contour and 2:1 intact. The
+[native grouping comparison](NATIVE_SPLIT_CONTOUR_GROUPING_20261126.md)
+meets the angle target on all six bases and clears the contour
+QUAD count block with 25 fewer faces. The 31 existing safety-floor
+failures and the interior QUAD target remain. Diagnose the persistent
+TRI on the other contour sections using this fixed-contour control.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

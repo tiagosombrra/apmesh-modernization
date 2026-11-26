@@ -12,6 +12,26 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - realize the grouped contour QUAD on a fixed certified curve
+
+The approved native three-parent comparison reproduces the
+projected 193 leaves and 607 seed QUAD. All 22 curve samples,
+coordinates and IDs and all seven physical size measurements match
+the control. The six targeted QUAD finish between 48.93 and 63.34
+degrees, clearing the contour-edge QUAD regional angle block.
+Faces fall from 732 to 707. RMS rises about 0.83 percent and the
+maximum sampled deviation is unchanged. The identical 31
+below-floor birth footprints survive. The interior QUAD angle
+block persists, and no mixed epoch is accepted. PR 297 exact-head
+checks pass. [Native comparison](NATIVE_SPLIT_CONTOUR_GROUPING_20261126.md).
+
+**Next:** keep this contour and grouping as a control. Trace the
+16 persistent TRI incident to `v = 1` at birth and test whether
+their base-to-interface physical size ratio or native choices
+account for the safety-floor failure before a new intervention.
+Retain the interior QUAD target, shared curves, owner reentry,
+reserved cases and global mixed curvature in the remaining work.
+
 ### 2026-11-26 - replay split-base QUAD pairs and project template placement
 
 The native replay reproduces all six CurvaBezier split-base choices

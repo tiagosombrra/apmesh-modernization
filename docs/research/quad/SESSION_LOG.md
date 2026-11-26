@@ -5171,3 +5171,17 @@ inputs. It finds compatible 56.38 to 66.83 degree local faces on
 all six bases. The native full-front comparison awaits alignment.
 All four exact-head PR 297 jobs pass. Zero accepted mixed epochs.
 [Reproducible receipts](SPLIT_CONTOUR_PAIR_REPLAY_20261126.md).
+
+
+## 2026-11-26 Fortaleza - run three native groups on the fixed split contour
+
+The approved native trial realizes 193 leaves and 607 seed QUAD.
+The 22 ordered curve samples and seven physical size measurements
+match. All six affected contour QUAD reach 48.93 to 63.34 degrees.
+The mesh drops from 732 to 707 faces. The contour QUAD block
+clears. The same 31 TRI miss a physical floor, and an existing
+interior QUAD target block persists. Sampled RMS rises 0.83 percent
+with the same maximum. The regional and five-pass trace audits
+complete. Four exact-head PR 297 jobs pass. Zero mixed epochs.
+Next, trace the 16 persistent TRI incident to v = 1 at birth.
+[Matched native result](NATIVE_SPLIT_CONTOUR_GROUPING_20261126.md).
