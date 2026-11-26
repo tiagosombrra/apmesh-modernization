@@ -5143,3 +5143,18 @@ checks, two malformed-plan controls and 31 Python checks pass.
 Inspect the available native vertices on the four contour bases
 next. No new full-profile acceptance or mixed adaptive epoch.
 [Exact measurements and limits](FRONT_BIRTH_SHAPE_TRIAL_20261126.md).
+
+
+## 2026-11-26 Fortaleza - replay contour births and test original curve splits
+
+The native replay binds four CurvaBezier states and finds zero
+30-degree apex choices among 457 active candidates. Three bases
+are physically too long for their measured native seed interface.
+An aligned once-per-interval native arc split adds three curve
+samples with identical tree leaves and seed faces. The six new
+QUAD at those edges reach 33.13 to 37.14 degrees. The full mesh
+loses three total faces and retains six additional QUAD. The
+TRI target count clears, while the 45-degree QUAD target count
+blocks. Zero accepted mixed epochs. All four PR 297 checks pass.
+Next, inspect the native pair choices at the six split bases.
+[Exact probe and split receipts](CONTOUR_BIRTH_REPLAY_AND_SPLIT_20261126.md).

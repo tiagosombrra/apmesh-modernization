@@ -12,6 +12,29 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - replay contour births and subdivide three long bases
+
+The native probe examines 457 active candidates at the four
+CurvaBezier contour operations. Their best valid angles range
+from 18.96 to 20.90 degrees, below the 30-degree TRI target.
+At three long bases, one leaf of inward depth reaches exposed
+templates with only 0.048 to 0.052 physical height. The approved
+native subdivision adds three certified curve sites with the
+same 202 leaves and seed faces. Six new contour QUAD reach
+33.13 to 37.14 degrees. The mesh changes from 735 to 732 faces
+and from 644 to 650 QUAD. The contour TRI block clears; the
+45-degree contour QUAD count block applies. Thirty-one
+below-floor faces and zero accepted mixed epochs remain.
+All four exact-head PR 297 CI jobs pass.
+[Native replay and subdivision evidence](CONTOUR_BIRTH_REPLAY_AND_SPLIT_20261126.md).
+
+**Next:** replay the six new contour QUAD choices and check
+whether another article-eligible pair of existing sites reaches
+the 45-degree regional target without changing the contour.
+Use that result to trace remaining limits to choice or placement.
+Shared curves, owner reentry, reserved cases and global mixed
+curvature remain open.
+
 ### 2026-11-26 - test physical shape at front creation
 
 [Draft PR 297](https://github.com/tiagosombrra/apmesh-modernization/pull/297)

@@ -122,8 +122,13 @@ The [front birth trial](FRONT_BIRTH_SHAPE_TRIAL_20261126.md)
 removes four below-floor contour QUAD in CurvaBezier and confirms
 a new regional count block on contour TRI below the target.
 Ribbed reproduces its control. Neither fixed-site diagonal in the
-four footprints reaches the contour TRI target. Inspect available
-front sites and transition geometry before aligning a further rule.
+four footprints reaches the contour TRI target. The
+[contour replay and certified split](CONTOUR_BIRTH_REPLAY_AND_SPLIT_20261126.md)
+find no active-site TRI meeting the angle target and confirm a
+transition depth mismatch at three bases. The native arc splits
+recover six contour QUAD with fewer total faces and clear the
+TRI count block. The QUAD regional target still blocks admission.
+Inspect the eligible pairs at those six births next.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
