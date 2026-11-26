@@ -72,9 +72,11 @@ realizes more native requests and improves geometric error in both
 models. Shape improvement does not transfer and both exceed the face
 budget. The [budgeted action trial](BUDGETED_TRANSITION_ACTION_20261125.md)
 improves both selected regions with candidates inside the budget.
-Existing allowable requests cannot reach the worst Ribbed TRI.
-Align whether to certify child-interval subdivision before reserved
-validation.
+The [certified child trial](CERTIFIED_CHILD_CURVE_TRIAL_20261125.md)
+reaches the previous worst Ribbed TRI and preserves the budget and
+contour. Eleven transition TRI still fail a safety floor. Map the
+remaining seed interfaces to combined affordable actions before
+reserved validation.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

@@ -12,6 +12,25 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - certify a second native subdivision on a child contour segment
+
+[Draft PR 287](https://github.com/tiagosombrra/apmesh-modernization/pull/287)
+at `ab7b2e60aef01f48323bd38892fdbedc7071dcb3` adds one certified child
+request. Ribbed retains its 23 contour samples, adds one, and uses
+533 instead of 534 faces. The original 8.056° TRI is removed, and its
+footprint reaches 13.194°. A pre-existing 8.063° TRI limits the whole
+transition. The sampled geometric error is essentially unchanged.
+The 11 remaining sub-floor transition TRI all meet seed edges. The
+v1 control, four native refusals, native boundary contracts, Python
+checks and direct article rollback pass.
+[Native certificate and quality](CERTIFIED_CHILD_CURVE_TRIAL_20261125.md).
+
+**Next:** map the remaining short template edges to eligible certified
+curve or protected template actions and estimate their combined budget
+before planning another native trial. Full stage validation, owner
+reentry, shared curves, reserved cases and global mixed curvature
+remain open. Zero accepted mixed epochs.
+
 ### 2026-11-25 - choose one native transition action with a verified face bound
 
 [Draft PR 286](https://github.com/tiagosombrra/apmesh-modernization/pull/286)

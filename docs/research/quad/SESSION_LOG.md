@@ -4902,3 +4902,17 @@ candidate runs complete; six sizing and ten admission controls pass.
 [Recorded native outcomes](BUDGETED_TRANSITION_ACTION_20261125.md).
 Next align conservative certification of a subdivision on an already
 split interval. Zero accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - certify one further native split on the Ribbed contour
+
+Draft PR 287 at ab7b2e60 retains the original and first-pass contour
+sites and emits the two-stage certificate. The 23-to-24 native
+comparison removes the 8.056° TRI and gives 13.194° inside its original
+footprint. The global transition minimum moves to a different 8.063°
+TRI. The face count is 533, the geometric RMS stays nearly identical,
+and the candidate remains shape-blocked. Same-scope v1 compatibility,
+the native refusals, original-curve contracts, Python controls and
+direct article rollback pass. The PR 286 hosted run passes and the
+PR 287 run is pending. The remaining 11 sub-floor TRI share a seed
+edge; map feasible coupled actions against the budget next.
+[Evidence](CERTIFIED_CHILD_CURVE_TRIAL_20261125.md). Zero accepted mixed epochs.

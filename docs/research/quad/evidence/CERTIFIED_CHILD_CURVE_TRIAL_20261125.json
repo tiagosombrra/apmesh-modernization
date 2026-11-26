@@ -1,0 +1,828 @@
+{
+ "schema": "apmesh.quad.certified_child_curve_trial.v1",
+ "revision": "ab7b2e60aef01f48323bd38892fdbedc7071dcb3",
+ "tree": "f6985811ca54b0468c2c84e75f56f739bd66e795",
+ "base_revision": "7ec6cc137f8a1abe32cde69c86b4465c099b7e29",
+ "executable_sha256": "7cdc62fe3cc830dec38fc6bf1b0898b83102f914e66672187927f0781e5e4ecb",
+ "compiler": "MSVC 19.44 x64 C++17 Debug",
+ "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+ "processes": {
+  "build": {
+   "exit": 0,
+   "seconds": 10.920966625213623,
+   "timeout": 300
+  },
+  "trial": {
+   "exit": 0,
+   "seconds": 32.8144850730896,
+   "timeout": 240
+  },
+  "control": {
+   "exit": 0,
+   "seconds": 28.489922523498535,
+   "timeout": 240
+  },
+  "invalid-child": {
+   "exit": 0,
+   "seconds": 0.314281702041626,
+   "timeout": 240
+  },
+  "duplicate": {
+   "exit": 0,
+   "seconds": 0.32355666160583496,
+   "timeout": 240
+  },
+  "missing-parent": {
+   "exit": 0,
+   "seconds": 0.2930285930633545,
+   "timeout": 240
+  },
+  "missing-proof": {
+   "exit": 0,
+   "seconds": 0.3399190902709961,
+   "timeout": 240
+  },
+  "article-rollback": {
+   "exit": 0,
+   "seconds": 43.013033628463745,
+   "timeout": 240
+  }
+ },
+ "control": {
+  "grouped_parents.json": "3baddf812273f1ac4a771318c333b1a7c33ff7628409e4599d4597d09fa69520",
+  "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b",
+  "leaves.csv": "4bef4a7cca03c39bbd61408fe4adc939a2cc310bd8170094a935ada672a182ba",
+  "candidate.obj": "9d75819814aea5d9ffb06851f69f01e788507261ba998cf6e8624d39b3d43358",
+  "boundary_refinement.json": "7d5e7778f95659441d1110d3472dd333e9f921d042efe5d8eba2466e67d30c32",
+  "candidate_front/front.json": "7d960b38aa98123b63e75369c970fade3b563bc258adc9085e028430464759c9",
+  "smoothing_comparison/before.obj": "6a5ce9eb953fe4e08d9cd47d0044b06c15d7262268b563772c1e4a60223d8d07",
+  "result.txt": "da65c91fb2b8c8be6a9968ec14896aee77508c84d4767bc13dd0c477be388092"
+ },
+ "refusals": {
+  "invalid-child": {
+   "code": 4294967295,
+   "reason": "Invalid or repeated single-patch child curve request",
+   "plan_sha256": "a26cbdb26cb778edc0e608393b1369cbc863bf4591b460c255f8410fdfe5b0d3",
+   "source_sha256": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "stderr_sha256": "11508e1d066ef34421d2f251340e3803ddde05a548d5c4e100ff79b29cdaa87f"
+  },
+  "duplicate": {
+   "code": 4294967295,
+   "reason": "Invalid or repeated single-patch child curve request",
+   "plan_sha256": "b5f9ffda5bd67162381e2310cfa1f014377333270b447d5585b1ef71c297a01c",
+   "source_sha256": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "stderr_sha256": "11508e1d066ef34421d2f251340e3803ddde05a548d5c4e100ff79b29cdaa87f"
+  },
+  "missing-parent": {
+   "code": 4294967295,
+   "reason": "Child curve requests require one certified parent split",
+   "plan_sha256": "b6020379b3dec01586b2534aff3d7e2b6092ca64429a785a05d42df7c6ffbc6d",
+   "source_sha256": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "stderr_sha256": "3e5ebe922eb5b09e0d50f74dd41f57f33743379363e5885d85e2a48ae2aac814"
+  },
+  "missing-proof": {
+   "code": 4294967295,
+   "reason": "Child curve requests require one certified parent split",
+   "plan_sha256": "7899f4a5682cf498bb9da64c2b67ad1acac87450e7c143aad6fd1ac7f41e2c21",
+   "source_sha256": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "stderr_sha256": "3e5ebe922eb5b09e0d50f74dd41f57f33743379363e5885d85e2a48ae2aac814"
+  }
+ },
+ "boundary_certificate": {
+  "schema": "apmesh.quad.boundary_refinement.v2",
+  "parent_sites": 14,
+  "candidate_sites": 24,
+  "splits": [
+   {
+    "parent_interval": 1,
+    "start_id": 26,
+    "end_id": 27,
+    "inserted_id": 551,
+    "side": 0,
+    "parameter": 0.375053402967751
+   },
+   {
+    "parent_interval": 2,
+    "start_id": 27,
+    "end_id": 28,
+    "inserted_id": 552,
+    "side": 0,
+    "parameter": 0.6251144325360656
+   },
+   {
+    "parent_interval": 3,
+    "start_id": 28,
+    "end_id": 24,
+    "inserted_id": 553,
+    "side": 0,
+    "parameter": 0.8751296578016081
+   },
+   {
+    "parent_interval": 4,
+    "start_id": 24,
+    "end_id": 31,
+    "inserted_id": 554,
+    "side": 1,
+    "parameter": 0.1222207817090748
+   },
+   {
+    "parent_interval": 5,
+    "start_id": 31,
+    "end_id": 32,
+    "inserted_id": 555,
+    "side": 1,
+    "parameter": 0.3757121461353563
+   },
+   {
+    "parent_interval": 6,
+    "start_id": 32,
+    "end_id": 33,
+    "inserted_id": 556,
+    "side": 1,
+    "parameter": 0.6248056355254903
+   },
+   {
+    "parent_interval": 7,
+    "start_id": 33,
+    "end_id": 29,
+    "inserted_id": 557,
+    "side": 1,
+    "parameter": 0.8783512883289859
+   },
+   {
+    "parent_interval": 8,
+    "start_id": 29,
+    "end_id": 35,
+    "inserted_id": 558,
+    "side": 2,
+    "parameter": 0.75
+   },
+   {
+    "parent_interval": 9,
+    "start_id": 35,
+    "end_id": 34,
+    "inserted_id": 559,
+    "side": 2,
+    "parameter": 0.25
+   }
+  ],
+  "intermediate_sites": 23,
+  "child_request": {
+   "interval": 8,
+   "child": 0
+  },
+  "child_split": {
+   "parent_interval": 15,
+   "start_id": 29,
+   "end_id": 558,
+   "inserted_id": 560,
+   "side": 2,
+   "parameter": 0.875
+  }
+ },
+ "boundary_certificate_sha256": "f4c5a5272d1f25b3bde8f6060ac8ec479e374edae152799baf7a4d7472d9f5c6",
+ "article_rollback": {
+  "schema": "apmesh.quad.article_application.v1",
+  "rejected_forgeries": 11,
+  "rollback_verified": true,
+  "rejected_smoothing_forgeries": 5,
+  "smoothing_passes_per_stage": 5,
+  "rejected_point_forgeries": 3,
+  "mixed_adaptive_epochs": 0
+ },
+ "comparison": {
+  "child_realization": {
+   "uv": [
+    0.875,
+    1.0
+   ],
+   "previous_arc": 0.9999999062499999,
+   "children": [
+    0.49999991796875004,
+    0.4999999882812499
+   ],
+   "new_id": 560
+  },
+  "old_limiting_uv": [
+   [
+    0.875,
+    0.9375
+   ],
+   [
+    0.90625,
+    0.9375
+   ],
+   [
+    1.0,
+    1.0
+   ]
+  ],
+  "old_limiting_triangle_still_born": false,
+  "comparison": {
+   "control": {
+    "subregion": {
+     "TRI": {
+      "count": 1,
+      "min_angle": 8.056232366391924,
+      "min_shape": 0.2372959082137662
+     }
+    },
+    "quality": {
+     "birth": {
+      "interior_QUAD": {
+       "count": 456,
+       "minimum_angle": 26.062329924849276,
+       "minimum_shape": 0.3187473918768228,
+       "below_safety": 0
+      },
+      "contour_edge_TRI": {
+       "count": 7,
+       "minimum_angle": 13.886453205357858,
+       "minimum_shape": 0.40344472657445646,
+       "below_safety": 1
+      },
+      "contour_edge_QUAD": {
+       "count": 15,
+       "minimum_angle": 25.335621873573015,
+       "minimum_shape": 0.4205384262090846,
+       "below_safety": 0
+      },
+      "contour_vertex_TRI": {
+       "count": 39,
+       "minimum_angle": 8.056232366391924,
+       "minimum_shape": 0.2372959082137662,
+       "below_safety": 15
+      },
+      "interior_TRI": {
+       "count": 15,
+       "minimum_angle": 12.53672132968701,
+       "minimum_shape": 0.3648603604889334,
+       "below_safety": 2
+      },
+      "contour_vertex_QUAD": {
+       "count": 2,
+       "minimum_angle": 43.44077822153558,
+       "minimum_shape": 0.6799611085434666,
+       "below_safety": 0
+      }
+     },
+     "final": {
+      "interior_QUAD": {
+       "count": 456,
+       "minimum_angle": 26.289863992652087,
+       "minimum_shape": 0.3187473918768228,
+       "below_safety": 0
+      },
+      "contour_edge_QUAD": {
+       "count": 15,
+       "minimum_angle": 25.335621873573015,
+       "minimum_shape": 0.4205384262090846,
+       "below_safety": 0
+      },
+      "contour_vertex_QUAD": {
+       "count": 2,
+       "minimum_angle": 43.44077822153558,
+       "minimum_shape": 0.6636177057726924,
+       "below_safety": 0
+      },
+      "contour_edge_TRI": {
+       "count": 7,
+       "minimum_angle": 17.942810055402088,
+       "minimum_shape": 0.5046060809078451,
+       "below_safety": 0
+      },
+      "contour_vertex_TRI": {
+       "count": 39,
+       "minimum_angle": 8.056232366391924,
+       "minimum_shape": 0.2372959082137662,
+       "below_safety": 12
+      },
+      "interior_TRI": {
+       "count": 15,
+       "minimum_angle": 18.564257167560097,
+       "minimum_shape": 0.4373188570045186,
+       "below_safety": 0
+      }
+     }
+    },
+    "grids": {
+     "24": {
+      "faces": 534,
+      "global_error": {
+       "sample_count": 576,
+       "max_xyz": 0.10278111763359259,
+       "rms_uv": 0.02024640365290185,
+       "rms_source_area": 0.020265263482826517,
+       "tri_sites": 85,
+       "quad_sites": 491
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "boundary_segments": 23
+     },
+     "48": {
+      "faces": 534,
+      "global_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.10748410563240578,
+       "rms_uv": 0.020285405684669973,
+       "rms_source_area": 0.020301269395960383,
+       "tri_sites": 383,
+       "quad_sites": 1921
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "boundary_segments": 23
+     }
+    },
+    "admission": {
+     "status": "blocked",
+     "blockers": [
+      "contour_edge_TRI.min_angle_deg.regional_regression",
+      "contour_edge_QUAD.min_angle_deg.regional_regression",
+      "contour_edge_QUAD.min_shape.regional_regression",
+      "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+      "contour_vertex_QUAD.min_angle_deg.regional_regression",
+      "interior_TRI.min_angle_deg.regional_regression",
+      "interior_QUAD.min_angle_deg.regional_regression",
+      "interior_QUAD.min_shape.regional_regression"
+     ],
+     "face_growth": -0.02376599634369287
+    },
+    "plan_sha256": "527398cf640f51fffc509f0427df0dbd56bf814e35fe9faee4c67a5cb22f55d4",
+    "candidate_sha256": "9d75819814aea5d9ffb06851f69f01e788507261ba998cf6e8624d39b3d43358"
+   },
+   "child": {
+    "subregion": {
+     "QUAD": {
+      "count": 1,
+      "min_angle": 64.69378803785199,
+      "min_shape": 0.885806263830395
+     },
+     "TRI": {
+      "count": 1,
+      "min_angle": 13.194223012422462,
+      "min_shape": 0.3848982009125406
+     }
+    },
+    "quality": {
+     "birth": {
+      "interior_QUAD": {
+       "count": 456,
+       "minimum_angle": 26.062329924849276,
+       "minimum_shape": 0.3187473918768228,
+       "below_safety": 0
+      },
+      "contour_edge_TRI": {
+       "count": 6,
+       "minimum_angle": 13.886453205357858,
+       "minimum_shape": 0.40344472657445646,
+       "below_safety": 1
+      },
+      "contour_edge_QUAD": {
+       "count": 17,
+       "minimum_angle": 25.335621873573015,
+       "minimum_shape": 0.4205384262090846,
+       "below_safety": 0
+      },
+      "contour_vertex_TRI": {
+       "count": 37,
+       "minimum_angle": 8.06261087394466,
+       "minimum_shape": 0.23744780952567035,
+       "below_safety": 14
+      },
+      "interior_TRI": {
+       "count": 15,
+       "minimum_angle": 12.53672132968701,
+       "minimum_shape": 0.3648603604889334,
+       "below_safety": 2
+      },
+      "contour_vertex_QUAD": {
+       "count": 2,
+       "minimum_angle": 43.44077822153558,
+       "minimum_shape": 0.6799611085434666,
+       "below_safety": 0
+      }
+     },
+     "final": {
+      "interior_QUAD": {
+       "count": 456,
+       "minimum_angle": 26.289863992652087,
+       "minimum_shape": 0.3187473918768228,
+       "below_safety": 0
+      },
+      "contour_edge_QUAD": {
+       "count": 17,
+       "minimum_angle": 25.53551802560636,
+       "minimum_shape": 0.4236259505476368,
+       "below_safety": 0
+      },
+      "contour_vertex_QUAD": {
+       "count": 2,
+       "minimum_angle": 43.44077822153558,
+       "minimum_shape": 0.6636177057726924,
+       "below_safety": 0
+      },
+      "contour_edge_TRI": {
+       "count": 6,
+       "minimum_angle": 17.942810055402088,
+       "minimum_shape": 0.5046060809078451,
+       "below_safety": 0
+      },
+      "contour_vertex_TRI": {
+       "count": 37,
+       "minimum_angle": 8.06261087394466,
+       "minimum_shape": 0.23744780952567035,
+       "below_safety": 11
+      },
+      "interior_TRI": {
+       "count": 15,
+       "minimum_angle": 18.564257167560097,
+       "minimum_shape": 0.4373188570045186,
+       "below_safety": 0
+      }
+     }
+    },
+    "grids": {
+     "24": {
+      "faces": 533,
+      "global_error": {
+       "sample_count": 576,
+       "max_xyz": 0.10278111763359259,
+       "rms_uv": 0.02024656481204522,
+       "rms_source_area": 0.020265431989546185,
+       "tri_sites": 77,
+       "quad_sites": 499
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "boundary_segments": 24
+     },
+     "48": {
+      "faces": 533,
+      "global_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.10748410563240578,
+       "rms_uv": 0.020285501388316734,
+       "rms_source_area": 0.020301367856610197,
+       "tri_sites": 355,
+       "quad_sites": 1949
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "boundary_segments": 24
+     }
+    },
+    "admission": {
+     "status": "blocked",
+     "blockers": [
+      "contour_edge_TRI.min_angle_deg.regional_regression",
+      "contour_edge_QUAD.min_angle_deg.regional_regression",
+      "contour_edge_QUAD.min_shape.regional_regression",
+      "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+      "contour_vertex_QUAD.min_angle_deg.regional_regression",
+      "interior_TRI.min_angle_deg.regional_regression",
+      "interior_QUAD.min_angle_deg.regional_regression",
+      "interior_QUAD.min_shape.regional_regression"
+     ],
+     "face_growth": -0.025594149908592323
+    },
+    "plan_sha256": "6e2cf19010779a5a213b86ad1aa64ce0080e0c86c3dd1285a472c97b633f7451",
+    "candidate_sha256": "5b76c4978f83673f56decc44b475827a3b225cf8a52baf90c85ed5085d133e75"
+   }
+  },
+  "source_sha256": {
+   "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+   "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+   "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+  }
+ },
+ "remaining_transition": {
+  "remaining": 11,
+  "already_born_in_control": 10,
+  "remaining_on_seed_edge": 11,
+  "worst": {
+   "minimum_angle": 8.06261087394466,
+   "shape": 0.23744780952567035,
+   "sites": [
+    [
+     0.625,
+     0.9375
+    ],
+    [
+     0.65625,
+     0.9375
+    ],
+    [
+     0.75,
+     1.0
+    ]
+   ],
+   "seed_edge": true,
+   "birth_operation": 53
+  },
+  "faces": [
+   {
+    "minimum_angle": 8.06261087394466,
+    "shape": 0.23744780952567035,
+    "sites": [
+     [
+      0.625,
+      0.9375
+     ],
+     [
+      0.65625,
+      0.9375
+     ],
+     [
+      0.75,
+      1.0
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 53
+   },
+   {
+    "minimum_angle": 10.030865307043848,
+    "shape": 0.29413964165591555,
+    "sites": [
+     [
+      0.65625,
+      0.9375
+     ],
+     [
+      0.6875,
+      0.9375
+     ],
+     [
+      0.75,
+      1.0
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 51
+   },
+   {
+    "minimum_angle": 11.96166576168765,
+    "shape": 0.34948784363925917,
+    "sites": [
+     [
+      0.6251144325360656,
+      0.0
+     ],
+     [
+      0.65625,
+      0.0625
+     ],
+     [
+      0.6875,
+      0.0625
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 68
+   },
+   {
+    "minimum_angle": 11.967772407811895,
+    "shape": 0.3497158082809553,
+    "sites": [
+     [
+      0.6875,
+      0.9375
+     ],
+     [
+      0.71875,
+      0.9375
+     ],
+     [
+      0.75,
+      1.0
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 57
+   },
+   {
+    "minimum_angle": 12.786895426989378,
+    "shape": 0.37406728556575114,
+    "sites": [
+     [
+      0.4375,
+      0.875
+     ],
+     [
+      0.5,
+      0.875
+     ],
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 46
+   },
+   {
+    "minimum_angle": 12.961598234838917,
+    "shape": 0.37473927001730356,
+    "sites": [
+     [
+      0.375,
+      0.875
+     ],
+     [
+      0.4375,
+      0.875
+     ],
+     [
+      0.5,
+      1.0
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 47
+   },
+   {
+    "minimum_angle": 13.194223012422462,
+    "shape": 0.3848982009125406,
+    "sites": [
+     [
+      0.875,
+      0.9375
+     ],
+     [
+      0.875,
+      1.0
+     ],
+     [
+      0.90625,
+      0.9375
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 82
+   },
+   {
+    "minimum_angle": 13.234498177721493,
+    "shape": 0.3860096812141762,
+    "sites": [
+     [
+      0.71875,
+      0.9375
+     ],
+     [
+      0.75,
+      0.9375
+     ],
+     [
+      0.75,
+      1.0
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 55
+   },
+   {
+    "minimum_angle": 13.25963107536915,
+    "shape": 0.38670127259327414,
+    "sites": [
+     [
+      0.71875,
+      0.0625
+     ],
+     [
+      0.75,
+      0.0625
+     ],
+     [
+      0.7501373123377562,
+      0.0
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 65
+   },
+   {
+    "minimum_angle": 13.260358509497227,
+    "shape": 0.38669054939061126,
+    "sites": [
+     [
+      0.625,
+      0.0625
+     ],
+     [
+      0.6251144325360656,
+      0.0
+     ],
+     [
+      0.65625,
+      0.0625
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 66
+   },
+   {
+    "minimum_angle": 13.567747506655751,
+    "shape": 0.3949852040201736,
+    "sites": [
+     [
+      0.375,
+      0.125
+     ],
+     [
+      0.375053402967751,
+      0.0
+     ],
+     [
+      0.4375,
+      0.125
+     ]
+    ],
+    "seed_edge": true,
+    "birth_operation": 24
+   }
+  ]
+ },
+ "mixed_adaptive_epochs": 0,
+ "commands": {
+  "build": [
+   "cmake",
+   "--build",
+   "build/quad-grouping-runner-results/msvc",
+   "--target",
+   "ap_mesh",
+   "quad_real_boundary_source_contracts",
+   "--config",
+   "Debug",
+   "--parallel",
+   "4"
+  ],
+  "trial": [
+   "python",
+   "build/quad-child-curve-certificate-20261125/run.py",
+   "child"
+  ],
+  "control": [
+   "python",
+   "build/quad-child-curve-certificate-20261125/run.py",
+   "control"
+  ],
+  "invalid-child": [
+   "python",
+   "build/quad-child-curve-certificate-20261125/run.py",
+   "invalid-child"
+  ],
+  "duplicate": [
+   "python",
+   "build/quad-child-curve-certificate-20261125/run.py",
+   "duplicate"
+  ],
+  "missing-parent": [
+   "python",
+   "build/quad-child-curve-certificate-20261125/run.py",
+   "missing-parent"
+  ],
+  "missing-proof": [
+   "python",
+   "build/quad-child-curve-certificate-20261125/run.py",
+   "missing-proof"
+  ],
+  "article-rollback": [
+   "python",
+   "tests/quad/test_article_front_application.py",
+   "--exe",
+   "../quad-child-curve-certificate-20261125/ap_mesh.exe",
+   "--directory",
+   "../quad-child-curve-certificate-20261125/article-contract"
+  ],
+  "native-contract": [
+   "../quad-grouping-runner-results/msvc/bin/Debug/quad_real_boundary_source_contracts.exe",
+   "configs/quad/curved_patch_original_curves.conf"
+  ],
+  "progressive": [
+   "python",
+   "-W",
+   "error::ResourceWarning",
+   "tests/quad/test_progressive_admission.py"
+  ],
+  "sizing": [
+   "python",
+   "-W",
+   "error::ResourceWarning",
+   "tests/quad/test_relative_feedback_requests.py"
+  ]
+ }
+}
