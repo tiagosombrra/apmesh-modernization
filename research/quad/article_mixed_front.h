@@ -41,12 +41,19 @@ struct ArticleFrontIdealPoint {
   std::size_t limit;
   ArticleTriangleFloor meets_floor;
   ArticleClosureGuard preserves_closure;
+  std::function<bool(const std::vector<UvVertex>&, const std::vector<VertexId>&)> needs_size;
 };
 struct ArticleFrontOrder {
   ArticleTriangleFloor meets_floor;
   ArticleClosureGuard improves_closure;
 };
-enum class ArticleClosureOutcome { incomplete, shape_regression, accepted };
+enum class ArticleClosureOutcome {
+  incomplete,
+  shape_regression,
+  accepted,
+  unavailable,
+  invalid_first_triangle
+};
 struct ArticleClosureTrial {
   double fraction;
   ArticleClosureOutcome outcome;
@@ -69,6 +76,7 @@ struct ArticleFrontCommit {
   std::optional<ArticleFrontAdditionalPair> additional_pair;
   std::optional<VertexId> introduced_vertex;
   std::vector<ArticleClosureTrial> closure_trials;
+  std::size_t size_trigger_polygon = 0;
   std::optional<std::array<VertexId, 3>> original_order_triangle;
   std::vector<ArticleOrderTrial> order_trials;
   std::vector<ArticleFrontPairMeasurement> pair_measurements;
@@ -158,9 +166,9 @@ public:
         continue;
       }
       skipped = 0;
+      if (ideal_point_ && (step->polygon.size() == 3 || ideal_point_->needs_size))
+        TryIdealPoint(*step, base);
       if (step->polygon.size() == 3) {
-        if (ideal_point_)
-          TryIdealPoint(*step, base);
         if (alternate_order_)
           TryAlternateOrder(*step, base);
       }
@@ -286,7 +294,8 @@ private:
     try {
       preview.Commit(std::move(step));
       auto finished = preview.Run();
-      finished.faces.erase(finished.faces.begin(), finished.faces.begin() + completed);
+      if (!ideal_point_ || !ideal_point_->needs_size)
+        finished.faces.erase(finished.faces.begin(), finished.faces.begin() + completed);
       return std::move(finished.faces);
     } catch (const std::runtime_error&) {
       return std::nullopt;
@@ -332,30 +341,39 @@ private:
     const auto id = result_.vertices.size();
     if (id - boundary_end_ >= ideal_point_->limit)
       return;
-    if (!TouchesOneContourVertex(step.best))
-      return;
+    const bool sized = static_cast<bool>(ideal_point_->needs_size);
     const auto meets_floor = [&](VertexId apex) {
       return ideal_point_->meets_floor(
           {result_.vertices[base.first], result_.vertices[base.second], result_.vertices[apex]});
     };
-    if (meets_floor(step.best[2]))
-      return;
-    for (const auto& edge : front_) {
-      // Every vertex on the closed active front occurs as an edge origin.
-      const auto apex = edge.first;
-      if (Valid({base.first, base.second, apex}, nullptr) && meets_floor(apex))
+    if (sized) {
+      if (!ideal_point_->needs_size(result_.vertices, step.polygon))
         return;
+      step.size_trigger_polygon = step.polygon.size();
+    } else {
+      if (!TouchesOneContourVertex(step.best) || meets_floor(step.best[2]))
+        return;
+      for (const auto& edge : front_) {
+        // Every vertex on the closed active front occurs as an edge origin.
+        const auto apex = edge.first;
+        if (Valid({base.first, base.second, apex}, nullptr) && meets_floor(apex))
+          return;
+      }
     }
     const auto& guard = ideal_point_->preserves_closure;
     const std::array<double, 4> fractions{1.0, 0.5, 0.25, 0.125};
     std::optional<ArticleFrontFaces> reference;
+    bool reference_checked = false;
     for (std::size_t i = 0; i < (guard ? fractions.size() : 1); ++i) {
       const auto fraction = fractions[i];
       const auto point = IdealPoint(base, fraction);
       if (!point || std::any_of(result_.vertices.begin(), result_.vertices.end(), [&](UvVertex p) {
             return std::hypot(p.u - point->u, p.v - point->v) <= epsilon_;
-          }))
+          })) {
+        if (sized)
+          step.closure_trials.push_back({fraction, ArticleClosureOutcome::unavailable});
         continue;
+      }
       result_.vertices.push_back(*point);
       const bool touches_front = std::any_of(front_.begin(), front_.end(), [&](Edge edge) {
         return OnSegment(edge.first, edge.second, id);
@@ -363,8 +381,10 @@ private:
       if (!touches_front && Valid({base.first, base.second, id}, nullptr) && meets_floor(id)) {
         auto outcome = ArticleClosureOutcome::accepted;
         if (guard) {
-          if (!reference && step.closure_trials.empty())
+          if (!reference_checked) {
             reference = PreviewClosure(step.polygon, id);
+            reference_checked = true;
+          }
           const auto trial =
               reference ? PreviewClosure({base.first, base.second, id}, id + 1) : std::nullopt;
           if (!trial)
@@ -374,11 +394,15 @@ private:
           step.closure_trials.push_back({fraction, outcome});
         }
         if (outcome == ArticleClosureOutcome::accepted) {
-          step.polygon[2] = id;
+          if (sized)
+            step.polygon = {base.first, base.second, id};
+          else
+            step.polygon[2] = id;
           step.introduced_vertex = id;
           return;
         }
-      }
+      } else if (sized)
+        step.closure_trials.push_back({fraction, ArticleClosureOutcome::invalid_first_triangle});
       result_.vertices.pop_back();
     }
   }

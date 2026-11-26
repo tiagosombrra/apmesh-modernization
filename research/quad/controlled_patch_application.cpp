@@ -191,6 +191,12 @@ void CheckFacet(PatchBezier& patch, const FaceUv& face, double& smallest_alignme
   smallest_alignment = std::min(smallest_alignment, alignment);
 }
 
+struct GeometricRequest {
+  std::size_t face;
+  UvVertex site;
+  double size;
+};
+
 struct IdealFrontLimits {
   std::size_t points;
   double min_angle;
@@ -198,6 +204,7 @@ struct IdealFrontLimits {
   // Shape and angle, in the same order as the scoring routine.
   std::optional<std::array<double, 2>> quad_floors;
   bool order_only = false;
+  std::optional<std::size_t> size_face_budget;
 };
 
 struct Candidate {
@@ -216,6 +223,7 @@ struct Candidate {
   bool additional_pair_search = false;
   std::optional<double> additional_pair_error_limit;
   std::optional<IdealFrontLimits> ideal_front_limits;
+  std::vector<GeometricRequest> size_point_requests;
   MixedUvSmoothingTrace article_smoothing;
   std::vector<std::vector<Xyz>> article_smoothing_xyz;
   std::size_t clearance_excluded_cells = 0;
@@ -445,7 +453,9 @@ bool PreservesClosureQuality(PatchBezier& patch, const PhysicalLift& lift,
         if (!std::isfinite(after[region][metric]))
           continue;
         const bool comparable = std::isfinite(before[region][metric]);
-        const auto reference = comparable ? before[region][metric] : floors[metric];
+        auto reference = comparable ? before[region][metric] : floors[metric];
+        if (limits.size_face_budget)
+          reference = std::max(reference, floors[metric]);
         const auto tolerance = 1e-12 * std::max(1.0, std::abs(reference));
         if (after[region][metric] < reference - tolerance)
           return false;
@@ -623,6 +633,71 @@ std::vector<UvVertex> CompareMixedSmoothing(PatchBezier& patch, const ArticleFro
 
 using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
 
+bool ContainsRequestSite(const std::vector<UvVertex>& uv, const std::vector<VertexId>& face,
+                         UvVertex site) {
+  // Closed convex faces include both incident faces at a common edge.
+  for (std::size_t i = 0; i < face.size(); ++i) {
+    const auto a = uv[face[i]];
+    const auto b = uv[face[(i + 1) % face.size()]];
+    if ((b.u - a.u) * (site.v - a.v) - (b.v - a.v) * (site.u - a.u) < -2e-13)
+      return false;
+  }
+  return true;
+}
+
+template <class PointAt>
+double MedianPhysicalEdge(const std::vector<VertexId>& face, PointAt point) {
+  std::array<double, 4> edges{};
+  for (std::size_t i = 0; i < face.size(); ++i) {
+    edges[i] = Norm(Difference(point(face[i]), point(face[(i + 1) % face.size()])));
+    Require(std::isfinite(edges[i]) && edges[i] > 0, "Invalid physical sizing edge");
+  }
+  std::sort(edges.begin(), edges.begin() + face.size());
+  return face.size() == 3 ? edges[1] : (edges[1] + edges[2]) / 2;
+}
+
+struct SizePointChecks {
+  std::size_t budget_refusals = 0;
+  std::size_t size_refusals = 0;
+  std::size_t shape_refusals = 0;
+};
+
+const char* ClosureOutcomeName(ArticleClosureOutcome outcome) {
+  switch (outcome) {
+  case ArticleClosureOutcome::incomplete:
+    return "incomplete";
+  case ArticleClosureOutcome::shape_regression:
+    return "guard_rejected";
+  case ArticleClosureOutcome::accepted:
+    return "accepted";
+  case ArticleClosureOutcome::unavailable:
+    return "unavailable";
+  case ArticleClosureOutcome::invalid_first_triangle:
+    return "invalid_first_triangle";
+  }
+  throw std::logic_error("Unknown article closure outcome");
+}
+
+void SaveSizePointTrials(const std::filesystem::path& directory, const ArticleFrontResult& article,
+                         const SizePointChecks& checks) {
+  std::ofstream out(directory / "size_driven_trials.csv", std::ios::binary);
+  out.imbue(std::locale::classic());
+  out << "operation,polygon_arity,fraction,status\n";
+  for (std::size_t i = 0; i < article.commits.size(); ++i)
+    for (const auto& trial : article.commits[i].closure_trials)
+      out << i + 1 << ',' << article.commits[i].size_trigger_polygon << ',' << trial.fraction << ','
+          << ClosureOutcomeName(trial.outcome) << '\n';
+  out.close();
+  Require(bool(out), "Cannot retain size-driven point trials");
+  std::ofstream summary(directory / "size_driven_refusals.csv", std::ios::binary);
+  summary.imbue(std::locale::classic());
+  summary << "budget,size,shape\n"
+          << checks.budget_refusals << ',' << checks.size_refusals << ',' << checks.shape_refusals
+          << '\n';
+  summary.close();
+  Require(bool(summary), "Cannot retain size-driven point refusals");
+}
+
 Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    const ResearchSourceTreeFactory& source_tree_factory = {},
                    const RealBoundarySource* source = nullptr, bool pair_during_front = false,
@@ -631,7 +706,8 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    const std::filesystem::path* guarded_smoothing = nullptr,
                    bool additional_pairs = false,
                    std::optional<double> additional_pair_error_limit = std::nullopt,
-                   std::optional<IdealFrontLimits> ideal_front_limits = std::nullopt) {
+                   std::optional<IdealFrontLimits> ideal_front_limits = std::nullopt,
+                   const std::vector<GeometricRequest>* size_point_input = nullptr) {
   ValidateSourceCurves(patch);
   Require(!article_front || !pair_during_front, "Article and TRI-observer modes are exclusive");
   Require(!article_area_centroid || article_front, "Area centroid requires the article mode");
@@ -756,6 +832,8 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
     }
     std::optional<ArticleFrontIdealPoint> ideal_point;
     std::optional<ArticleFrontOrder> alternate_order;
+    SizePointChecks size_checks;
+    std::vector<GeometricRequest> triggers;
     if (ideal_front_limits) {
       const auto meets_floor =
           [&, limits = *ideal_front_limits](const std::array<UvVertex, 3>& corners) {
@@ -781,15 +859,70 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
       if (ideal_front_limits->order_only) {
         alternate_order.emplace(ArticleFrontOrder{meets_floor, check_closure});
       } else {
-        ideal_point.emplace(ArticleFrontIdealPoint{ideal_front_limits->points, meets_floor, {}});
+        ideal_point.emplace(
+            ArticleFrontIdealPoint{ideal_front_limits->points, meets_floor, {}, {}});
         if (ideal_front_limits->quad_floors)
           ideal_point->preserves_closure = check_closure;
+        if (const auto budget = ideal_front_limits->size_face_budget) {
+          Require(size_point_input && !size_point_input->empty() && guarded_smoothing,
+                  "Size-driven point needs bound size requests and diagnostics");
+          ideal_point->needs_size = [&](const auto& uv, const auto& face) {
+            triggers.clear();
+            const auto point = [&](VertexId id) { return physical_point(uv[id]); };
+            const auto h = MedianPhysicalEdge(face, point);
+            for (const auto& request : *size_point_input)
+              if (h > request.size && ContainsRequestSite(uv, face, request.site))
+                triggers.push_back(request);
+            return !triggers.empty();
+          };
+          ideal_point->preserves_closure = [&, budget](const auto& uv, const auto& control,
+                                                       const auto& trial) {
+            if (trial.size() > *budget) {
+              ++size_checks.budget_refusals;
+              return false;
+            }
+            const auto replaced = ChangedClosureFaces(control, trial);
+            const auto point = [&](VertexId id) { return physical_point(uv[id]); };
+            auto affected = triggers;
+            for (const auto& request : *size_point_input)
+              if (std::none_of(triggers.begin(), triggers.end(),
+                               [&](const auto& trigger) { return trigger.face == request.face; }) &&
+                  std::any_of(replaced.begin(), replaced.end(), [&](const auto& face) {
+                    return ContainsRequestSite(uv, face, request.site);
+                  }))
+                affected.push_back(request);
+            for (const auto& request : affected) {
+              bool covered = false;
+              for (const auto& face : trial) {
+                if (!ContainsRequestSite(uv, face, request.site))
+                  continue;
+                covered = true;
+                if (MedianPhysicalEdge(face, point) > request.size) {
+                  ++size_checks.size_refusals;
+                  return false;
+                }
+              }
+              if (!covered) {
+                ++size_checks.size_refusals;
+                return false;
+              }
+            }
+            if (!check_closure(uv, control, trial)) {
+              ++size_checks.shape_refusals;
+              return false;
+            }
+            result.size_point_requests = std::move(affected);
+            return true;
+          };
+        }
       }
     }
     article = ArticleMixedFront(selected.uv_quads, contour, std::move(boxes), additional_pairs,
                                 std::move(pair_screen), std::move(ideal_point),
                                 std::move(alternate_order))
                   .Run();
+    if (ideal_front_limits && ideal_front_limits->size_face_budget)
+      SaveSizePointTrials(*guarded_smoothing, article, size_checks);
     result.additional_pair_search = additional_pairs;
     result.additional_pair_error_limit = additional_pair_error_limit;
     result.ideal_front_limits = ideal_front_limits;
@@ -1104,13 +1237,16 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
   } else if (candidate.ideal_front_limits) {
     const auto& limits = *candidate.ideal_front_limits;
     trace << ",\"ideal_front_points\":{\"policy\":\""
-          << (limits.quad_floors ? "legacy_leaf_height_guarded_closure_v1"
-                                 : "legacy_unit_leaf_height_v1")
+          << (limits.size_face_budget ? "physical_size_guarded_leaf_height_v1"
+              : limits.quad_floors    ? "legacy_leaf_height_guarded_closure_v1"
+                                      : "legacy_unit_leaf_height_v1")
           << "\",\"limit\":" << limits.points << ",\"min_angle_deg\":" << limits.min_angle
           << ",\"min_shape\":" << limits.min_shape;
     if (limits.quad_floors)
       trace << ",\"quad_min_angle_deg\":" << (*limits.quad_floors)[1]
             << ",\"quad_min_shape\":" << (*limits.quad_floors)[0];
+    if (limits.size_face_budget)
+      trace << ",\"face_budget\":" << *limits.size_face_budget;
     trace << '}';
   }
   trace << ",\"point_rule\":\""
@@ -1207,6 +1343,8 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
     }
     if (step.introduced_vertex)
       trace << ",\"introduced_vertex\":" << *step.introduced_vertex;
+    if (step.size_trigger_polygon)
+      trace << ",\"size_trigger_polygon_arity\":" << step.size_trigger_polygon;
     if (!step.closure_trials.empty()) {
       trace << ",\"closure_trials\":[";
       for (std::size_t j = 0; j < step.closure_trials.size(); ++j) {
@@ -1214,7 +1352,9 @@ void ExportArticleSteps(const Candidate& candidate, const std::filesystem::path&
         if (j)
           trace << ',';
         const char* status = "incomplete";
-        if (trial.outcome == ArticleClosureOutcome::shape_regression)
+        if (step.size_trigger_polygon)
+          status = ClosureOutcomeName(trial.outcome);
+        else if (trial.outcome == ArticleClosureOutcome::shape_regression)
           status = "shape_regression";
         else if (trial.outcome == ArticleClosureOutcome::accepted)
           status = "accepted";
@@ -2485,12 +2625,6 @@ Candidate SnapshotTriStage(const SubMesh& mesh, PatchBezier& patch) {
 
 using GroupingBoxes = std::array<std::array<double, 4>, 2>;
 
-struct GeometricRequest {
-  std::size_t face;
-  UvVertex site;
-  double size;
-};
-
 struct ChildCurveRequest {
   std::size_t interval;
   int child;
@@ -2611,7 +2745,7 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
               "Invalid additional-pair relative error limit");
       feedback.additional_pair_error_limit = limit;
     } else if (kind == "ideal_front_points" || kind == "guarded_ideal_closure" ||
-               kind == "guarded_front_order") {
+               kind == "guarded_front_order" || kind == "size_driven_ideal_point") {
       long long limit = 0;
       IdealFrontLimits floors{};
       floors.order_only = kind == "guarded_front_order";
@@ -2625,6 +2759,10 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
                   floors.min_shape <= 1 && !feedback.ideal_front_limits,
               "Invalid guarded front policy limits");
       floors.points = static_cast<std::size_t>(limit);
+      if (kind == "size_driven_ideal_point") {
+        floors.size_face_budget = floors.points;
+        floors.points = 1;
+      }
       if (kind != "ideal_front_points") {
         std::array<double, 2> quad{};
         input >> quad[1] >> quad[0];
@@ -2692,6 +2830,9 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
           "Feedback grouping requires certified predecessor boundary refinement");
   Require(!feedback.ideal_front_limits || feedback.certify_boundary_refinement,
           "Ideal front points require certified predecessor boundary refinement");
+  Require(!feedback.ideal_front_limits || !feedback.ideal_front_limits->size_face_budget ||
+              !feedback.recovered.empty(),
+          "Size-driven point requires a certified geometric face request");
   if (feedback.refine_feedback_leaf_again) {
     const auto face = *feedback.refine_feedback_leaf_again;
     Require(feedback.certify_boundary_refinement &&
@@ -2811,35 +2952,10 @@ SubdivideCertifiedChild(PatchBezier& patch, const RealBoundarySource& first_pass
   return {std::move(refined), witness};
 }
 
-bool ContainsRequestSite(const Candidate& candidate, const std::vector<VertexId>& face,
-                         UvVertex site) {
-  // Use the closed convex UV face. The reporting tolerance includes both
-  // incident faces when a request is on their common edge.
-  for (std::size_t i = 0; i < face.size(); ++i) {
-    const auto a = candidate.uv[face[i]];
-    const auto b = candidate.uv[face[(i + 1) % face.size()]];
-    if ((b.u - a.u) * (site.v - a.v) - (b.v - a.v) * (site.u - a.u) < -2e-13)
-      return false;
-  }
-  return true;
-}
-
-double MedianPhysicalEdge(const SubMesh& mesh, const std::vector<VertexId>& face) {
-  std::array<double, 4> edges{};
-  for (std::size_t i = 0; i < face.size(); ++i) {
-    const auto* a = mesh.GetNoh(static_cast<unsigned>(face[i]));
-    const auto* b = mesh.GetNoh(static_cast<unsigned>(face[(i + 1) % face.size()]));
-    edges[i] = Norm(Difference(Values(*a), Values(*b)));
-    Require(std::isfinite(edges[i]) && edges[i] > 0, "Invalid physical sizing edge");
-  }
-  std::sort(edges.begin(), edges.begin() + face.size());
-  return face.size() == 3 ? edges[1] : (edges[1] + edges[2]) / 2;
-}
-
 bool CheckProtectedPhysicalSizes(const Candidate& candidate,
                                  const std::vector<GeometricRequest>& requests,
-                                 const std::filesystem::path& directory) {
-  std::ofstream evidence(directory / "protected_size_measurements.json", std::ios::binary);
+                                 const std::filesystem::path& path) {
+  std::ofstream evidence(path, std::ios::binary);
   evidence.imbue(std::locale::classic());
   evidence << std::setprecision(17)
            << "{\"schema\":\"apmesh.quad.protected_size_measurements.v1\",\"requests\":[";
@@ -2853,9 +2969,11 @@ bool CheckProtectedPhysicalSizes(const Candidate& candidate,
     bool measured = false;
     for (std::size_t i = 0; i < candidate.faces.size(); ++i) {
       const auto& face = candidate.faces[i];
-      if (!ContainsRequestSite(candidate, face, request.site))
+      if (!ContainsRequestSite(candidate.uv, face, request.site))
         continue;
-      const double h = MedianPhysicalEdge(*candidate.mesh, face);
+      const double h = MedianPhysicalEdge(face, [&](VertexId id) {
+        return Values(*candidate.mesh->GetNoh(static_cast<unsigned>(id)));
+      });
       if (measured)
         evidence << ',';
       evidence << "{\"face\":" << i << ",\"median_edge\":" << h << '}';
@@ -3108,6 +3226,8 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   std::string rejection;
   const auto guarded_path = directory / "smoothing_comparison";
   const bool guarded = comparison && comparison->guarded_smoothing;
+  const bool size_point = comparison && comparison->ideal_front_limits &&
+                          comparison->ideal_front_limits->size_face_budget;
   if (guarded)
     Require(std::filesystem::create_directory(guarded_path), "Cannot reserve smoothing comparison");
   if (after > before || split_source || group_parent) {
@@ -3117,7 +3237,8 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
           comparison && comparison->replay_previous_search ? &previous : nullptr,
           guarded ? &guarded_path : nullptr, comparison && comparison->additional_pairs,
           comparison ? comparison->additional_pair_error_limit : std::nullopt,
-          comparison ? comparison->ideal_front_limits : std::nullopt);
+          comparison ? comparison->ideal_front_limits : std::nullopt,
+          size_point ? &requests : nullptr);
     } catch (const std::runtime_error& error) {
       rejection = error.what();
     } catch (const std::invalid_argument& error) {
@@ -3128,11 +3249,22 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   if (staged) {
     CheckTypedIncidence(*staged->mesh, *staged);
     if (!protected_sizes.empty() &&
-        !CheckProtectedPhysicalSizes(*staged, protected_sizes, directory)) {
+        !CheckProtectedPhysicalSizes(*staged, protected_sizes,
+                                     directory / "protected_size_measurements.json")) {
       staged.reset();
       outcome = "rejected";
       rejection = "Grouped candidate exceeds one or more protected physical size requests";
     }
+  }
+  if (staged && size_point &&
+      (staged->size_point_requests.empty() ||
+       !CheckProtectedPhysicalSizes(*staged, staged->size_point_requests,
+                                    directory / "size_driven_final.json"))) {
+    rejection = staged->size_point_requests.empty()
+                    ? "No size-driven ideal point passed the closure checks"
+                    : "Smoothed size-driven candidate exceeds a protected physical size request";
+    staged.reset();
+    outcome = "rejected";
   }
   if (staged) {
     staged->source_witness = &effective_source;
