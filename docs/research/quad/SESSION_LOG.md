@@ -5023,3 +5023,17 @@ can meet the floor, but the legacy complete closure guard refuses.
 Replay those two shape refusals next before any new policy.
 [Native results](SIZE_DRIVEN_IDEAL_POINT_20261126.md).
 No accepted mixed adaptive epoch.
+
+
+## 2026-11-26 Fortaleza - replay native shape refusals at the worst transition faces
+
+Three archived reference suffixes reproduce exactly in the standalone
+MSVC selector replay. The quarter-width points create first TRI
+above 40 degrees, but the first new inferior neighbors are 6.14
+degrees on CurvaBezier and 0.84 on Ribbed. The late and earlier
+base swaps, neighboring point positions and 115 widened front-only
+layouts yield no eligible solution. One early legacy Ribbed replay
+diverges and is excluded. Request alignment for a read-only layer
+of neighboring template QUAD with all physical requests retained.
+[Closure evidence](MIXED_CLOSURE_REFUSAL_REPLAY_20261126.md).
+No full native successor or accepted mixed epoch.

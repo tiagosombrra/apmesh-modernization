@@ -94,7 +94,10 @@ size and shape closure after the bounded arc edits. The
 [size-driven ideal point](SIZE_DRIVEN_IDEAL_POINT_20261126.md) meets one Ribbed request
 and passes the local closure guard. CurvaBezier refuses the point
 and the Ribbed candidate remains blocked on whole-mesh shape.
-Diagnose the full closure at the remaining worst transition TRI.
+The [closure replay](MIXED_CLOSURE_REFUSAL_REPLAY_20261126.md) identifies new thin neighbors
+in both regenerated front suffixes. The tested earlier placements
+and front-only expansions provide no joint closure. Alignment is
+pending on a projection that includes adjacent template QUAD.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

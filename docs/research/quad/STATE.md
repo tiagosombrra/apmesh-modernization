@@ -12,6 +12,25 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - reproduce the rejected shape-driven closures
+
+The bound [closure replay](MIXED_CLOSURE_REFUSAL_REPLAY_20261126.md) reproduces all three late
+reference suffixes. The CurvaBezier quarter-width preview creates
+a 6.14° interior TRI at operation 87. The Ribbed counterpart replaces
+the last TRI with three and creates a 0.84° neighbor. All 67 late
+alternate bases still fail. Eighty-seven earlier base steps keep
+the same geometry, and 28 early point placements on adjacent bases
+provide no local shape pass. The wider fixed-site patches include
+115 layouts and no joint size/shape match. The unsupported early
+Ribbed replay is explicitly excluded.
+
+**Next after scientific alignment:** project a one-layer expansion
+into adjacent template QUAD with the same outer boundary and
+physical requests. Check both models under the frozen face budget
+before any native path change. No new full native generation or
+accepted mixed epoch. Shared curves, owner reentry, reserved cases
+and global mixed curvature remain open.
+
 ### 2026-11-26 - try an ideal point at an unmet physical size
 
 [Draft PR 292](https://github.com/tiagosombrra/apmesh-modernization/pull/292)

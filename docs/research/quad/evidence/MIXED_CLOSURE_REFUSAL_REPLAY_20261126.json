@@ -1,0 +1,9340 @@
+{
+ "schema": "apmesh.quad.closure_refusal_replay.v1",
+ "canonical_input": "c24fbff9d3c9bd89e2067c1047061f883756ed74",
+ "reference_revision": "4f29dd06b087f4fb0fb299924d39f825ae2ccb96",
+ "replay_compiler": "MSVC 19.44.35229 x64 C++17 Debug",
+ "compiler_control": "GCC 16.1.0 C++17 Debug",
+ "standalone_executable_sha256": "21bcf64b5466c5ca614f8892d8685c09a7406a4ae3db77ef9b6db7bb886da41a",
+ "source_header": "e8ca387be05f035bacd0786a8a580591e90fbe61556464d2a7c78b90582a6acb",
+ "instrumented_header": "412c1182dc73fa73735f4a558bf6828cb5fde33e4799e3bd0605a5a4f3b2b929",
+ "diagnostic_sources": {
+  "replay.cpp": "7bfb618914582f6e9812c22339ef81fb2af97b1f44c5f17e7ffad363768a822a",
+  "CMakeLists.txt": "ad81acc8657a0fe0ac75b488f6192e1524f16401d6546b6055d1f27cc1674738",
+  "prepare.py": "af9133726f95a5887c648bc8385919a6faa4921d6fdf76c24eae5e638355787a",
+  "audit.py": "58bb5eac489cdfe326c67590a2722bb94b8f7bc52d84c6f3319d8d6ce6ee0dd8",
+  "upstream.py": "71fb54869cd218f710c6d8913a25fe8c1821170f6b7e28a031b14b3287335227",
+  "earlier_bound.py": "3d88af81eff131db6c0b1bd68f11cfdee9183c2948f1fb1c9451c8f26c66ea9c",
+  "cycles.py": "7f2d25b4a635a05acfd0093544de395ed39c147c6eec75cfe24939bc6fabd4c2",
+  "early_points.py": "c528d02e4f86f1be5409656869d15ef365b21eedc3ad431828a618b79fc762bf",
+  "early_alternative_points.py": "35d734c0f0eaef9d164f22045e29e700a7063b5faa0af2d2f37ac8391a171dce",
+  "widened.py": "94a723cdcfececfb5b83c394d697d0b809b60b555ce8efe1061b1b89a2406049"
+ },
+ "commands": {
+  "configure": "cmake -S <diagnostic> -B <diagnostic>/msvc -G Visual Studio 17 2022 -A x64",
+  "build": "cmake --build <diagnostic>/msvc --config Debug --parallel 2",
+  "run": [
+   "python prepare.py",
+   "python audit.py",
+   "python upstream.py",
+   "python earlier_bound.py",
+   "python cycles.py",
+   "python early_points.py",
+   "python early_alternative_points.py",
+   "python widened.py"
+  ]
+ },
+ "adapter": {
+  "environment": "required tools unavailable",
+  "iteration_plan": "baseline manifest unavailable"
+ },
+ "diagnostic_calibration": {
+  "initial_msvc_compile": "missing explicit standard string include in harness",
+  "unsupported_early_replay": "Ribbed legacy operation 7 diverges at operation 55",
+  "late_msvc_reference_matches": 3
+ },
+ "hosted_exact_source": {
+  "run": 45790071630,
+  "windows_status": "in_progress",
+  "successful": [
+   "TRI frozen science",
+   "QUAD native Linux",
+   "TRI baseline and tooling"
+  ]
+ },
+ "observations": {
+  "closure_audit": {
+   "profile": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+   "models": {
+    "curva": {
+     "reference_faces": 16,
+     "bound": {
+      "operation": 85,
+      "model": "curva",
+      "control": "quad-size-driven-point-final-20261126\\curva-control",
+      "root": "quad-size-driven-point-final-20261126\\curva-legacy",
+      "original": [
+       170,
+       619,
+       695
+      ],
+      "expected": [
+       [
+        170,
+        619,
+        695
+       ],
+       [
+        622,
+        170,
+        695
+       ],
+       [
+        166,
+        622,
+        695
+       ],
+       [
+        172,
+        634,
+        22
+       ],
+       [
+        671,
+        168,
+        695
+       ],
+       [
+        181,
+        671,
+        695
+       ],
+       [
+        674,
+        181,
+        695
+       ],
+       [
+        65,
+        674,
+        695
+       ],
+       [
+        78,
+        677,
+        699
+       ],
+       [
+        677,
+        182,
+        699
+       ],
+       [
+        182,
+        679,
+        699
+       ],
+       [
+        679,
+        17,
+        699
+       ],
+       [
+        688,
+        183,
+        24
+       ],
+       [
+        693,
+        267,
+        72
+       ],
+       [
+        51,
+        695,
+        619
+       ],
+       [
+        634,
+        698,
+        22
+       ]
+      ],
+      "expected_fronts": [
+       [
+        [
+         170,
+         619
+        ],
+        [
+         622,
+         170
+        ],
+        [
+         166,
+         622
+        ],
+        [
+         172,
+         634
+        ],
+        [
+         671,
+         168
+        ],
+        [
+         181,
+         671
+        ],
+        [
+         674,
+         181
+        ],
+        [
+         65,
+         674
+        ],
+        [
+         78,
+         677
+        ],
+        [
+         677,
+         182
+        ],
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         22,
+         172
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         695,
+         65
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         699,
+         78
+        ],
+        [
+         695,
+         166
+        ],
+        [
+         168,
+         695
+        ],
+        [
+         619,
+         51
+        ]
+       ],
+       [
+        [
+         622,
+         170
+        ],
+        [
+         166,
+         622
+        ],
+        [
+         172,
+         634
+        ],
+        [
+         671,
+         168
+        ],
+        [
+         181,
+         671
+        ],
+        [
+         674,
+         181
+        ],
+        [
+         65,
+         674
+        ],
+        [
+         78,
+         677
+        ],
+        [
+         677,
+         182
+        ],
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         22,
+         172
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         695,
+         65
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         699,
+         78
+        ],
+        [
+         695,
+         166
+        ],
+        [
+         168,
+         695
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         170,
+         695
+        ]
+       ],
+       [
+        [
+         166,
+         622
+        ],
+        [
+         172,
+         634
+        ],
+        [
+         671,
+         168
+        ],
+        [
+         181,
+         671
+        ],
+        [
+         674,
+         181
+        ],
+        [
+         65,
+         674
+        ],
+        [
+         78,
+         677
+        ],
+        [
+         677,
+         182
+        ],
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         22,
+         172
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         695,
+         65
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         699,
+         78
+        ],
+        [
+         695,
+         166
+        ],
+        [
+         168,
+         695
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         622,
+         695
+        ]
+       ],
+       [
+        [
+         172,
+         634
+        ],
+        [
+         671,
+         168
+        ],
+        [
+         181,
+         671
+        ],
+        [
+         674,
+         181
+        ],
+        [
+         65,
+         674
+        ],
+        [
+         78,
+         677
+        ],
+        [
+         677,
+         182
+        ],
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         22,
+         172
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         695,
+         65
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         699,
+         78
+        ],
+        [
+         168,
+         695
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ]
+       ],
+       [
+        [
+         671,
+         168
+        ],
+        [
+         181,
+         671
+        ],
+        [
+         674,
+         181
+        ],
+        [
+         65,
+         674
+        ],
+        [
+         78,
+         677
+        ],
+        [
+         677,
+         182
+        ],
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         695,
+         65
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         699,
+         78
+        ],
+        [
+         168,
+         695
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ]
+       ],
+       [
+        [
+         181,
+         671
+        ],
+        [
+         674,
+         181
+        ],
+        [
+         65,
+         674
+        ],
+        [
+         78,
+         677
+        ],
+        [
+         677,
+         182
+        ],
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         695,
+         65
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         699,
+         78
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ],
+        [
+         671,
+         695
+        ]
+       ],
+       [
+        [
+         674,
+         181
+        ],
+        [
+         65,
+         674
+        ],
+        [
+         78,
+         677
+        ],
+        [
+         677,
+         182
+        ],
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         695,
+         65
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         699,
+         78
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ],
+        [
+         181,
+         695
+        ]
+       ],
+       [
+        [
+         65,
+         674
+        ],
+        [
+         78,
+         677
+        ],
+        [
+         677,
+         182
+        ],
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         695,
+         65
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         699,
+         78
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ],
+        [
+         674,
+         695
+        ]
+       ],
+       [
+        [
+         78,
+         677
+        ],
+        [
+         677,
+         182
+        ],
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         699,
+         78
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ]
+       ],
+       [
+        [
+         677,
+         182
+        ],
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ],
+        [
+         699,
+         677
+        ]
+       ],
+       [
+        [
+         182,
+         679
+        ],
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ],
+        [
+         699,
+         182
+        ]
+       ],
+       [
+        [
+         679,
+         17
+        ],
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         17,
+         699
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ],
+        [
+         699,
+         679
+        ]
+       ],
+       [
+        [
+         688,
+         183
+        ],
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         183,
+         24
+        ],
+        [
+         24,
+         688
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ]
+       ],
+       [
+        [
+         693,
+         267
+        ],
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         267,
+         72
+        ],
+        [
+         72,
+         693
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ]
+       ],
+       [
+        [
+         51,
+         695
+        ],
+        [
+         634,
+         698
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         619,
+         51
+        ],
+        [
+         695,
+         619
+        ],
+        [
+         22,
+         634
+        ]
+       ],
+       [
+        [
+         634,
+         698
+        ],
+        [
+         698,
+         22
+        ],
+        [
+         22,
+         634
+        ]
+       ]
+      ],
+      "legacy_rejections": [
+       {
+        "fraction": 0.25,
+        "status": "shape_regression"
+       },
+       {
+        "fraction": 0.125,
+        "status": "shape_regression"
+       }
+      ],
+      "input": "861b74c2d6d1489dfbc2e4c8c497fa32bc9636e139dda61cbbbc83b51397f1e6",
+      "source": {
+       "tri.obj": "298383328b77f3dab7abbde8727a85229ed750413119b92f3ade1ca82119966f",
+       "source.obj": "d3c94094e7de59006e59a8d3534f41df4b4328a6a28e6338eaec13625890367a",
+       "source_tree.txt": "6718fd8d01cc31f2f746fdb27e702d41a9271d3b1435cb782b8bd1dc920050c3"
+      },
+      "candidate": "51e885e9b3c137bce6f91f976ec042fd9538f5361d7e8ae2aaccbcee2012c323",
+      "archived_trace": "9d8629d48b7176f46ddc64f744354a653fae5870a7aa8b50814bccabf78ab73d",
+      "arc_certificate": "96a49fb732105f0813707a5589f8383b3b94595276cce4183732052f46d778b5"
+     },
+     "placements": [
+      {
+       "fraction": 0.25,
+       "point": [
+        0.703125,
+        0.890625
+       ],
+       "continuation_faces": 18,
+       "first_bad_operation": 87,
+       "first_bad_front_size": 28,
+       "refusals": [
+        {
+         "index": 3,
+         "region": "interior",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 6.1380377752350865,
+         "required": 15,
+         "prior_same_group": false
+        },
+        {
+         "index": 15,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "shape",
+         "actual": 0.030065637537534096,
+         "required": 0.07553111652860231,
+         "prior_same_group": true
+        },
+        {
+         "index": 15,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 1.0311503371393156,
+         "required": 2.5314663267635877,
+         "prior_same_group": true
+        }
+       ],
+       "reference_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 3.2528169651680092,
+         "shape": 0.09668554390091698,
+         "uv": [
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.5,
+           1
+          ]
+         ],
+         "face": [
+          170,
+          619,
+          695
+         ]
+        },
+        {
+         "index": 2,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 4.2835559711252085,
+         "shape": 0.12665791484452182,
+         "uv": [
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.5,
+           1
+          ]
+         ],
+         "face": [
+          622,
+          170,
+          695
+         ]
+        },
+        {
+         "index": 3,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 5.7944277301987,
+         "shape": 0.17009394619327886,
+         "uv": [
+          [
+           0.625,
+           0.875
+          ],
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.5,
+           1
+          ]
+         ],
+         "face": [
+          166,
+          622,
+          695
+         ]
+        },
+        {
+         "index": 15,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 2.5314663267635877,
+         "shape": 0.07553111652860231,
+         "uv": [
+          [
+           0.75,
+           0.875
+          ],
+          [
+           0.5,
+           1
+          ],
+          [
+           0.71875,
+           0.875
+          ]
+         ],
+         "face": [
+          51,
+          695,
+          619
+         ]
+        }
+       ],
+       "trial_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 40.10500937057703,
+         "shape": 0.788596026437705,
+         "uv": [
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.703125,
+           0.890625
+          ]
+         ],
+         "face": [
+          170,
+          619,
+          700
+         ]
+        },
+        {
+         "index": 2,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 15.558954899419833,
+         "shape": 0.37701237595156656,
+         "uv": [
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.703125,
+           0.890625
+          ]
+         ],
+         "face": [
+          622,
+          170,
+          700
+         ]
+        },
+        {
+         "index": 3,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 6.1380377752350865,
+         "shape": 0.14758307596418355,
+         "uv": [
+          [
+           0.625,
+           0.875
+          ],
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.703125,
+           0.890625
+          ]
+         ],
+         "face": [
+          166,
+          622,
+          700
+         ]
+        },
+        {
+         "index": 15,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 1.0311503371393156,
+         "shape": 0.030065637537534096,
+         "uv": [
+          [
+           0.75,
+           0.875
+          ],
+          [
+           0.5,
+           1
+          ],
+          [
+           0.703125,
+           0.890625
+          ]
+         ],
+         "face": [
+          51,
+          695,
+          700
+         ]
+        },
+        {
+         "index": 17,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 14.831556796132967,
+         "shape": 0.3883752238110465,
+         "uv": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.625,
+           0.875
+          ],
+          [
+           0.703125,
+           0.890625
+          ]
+         ],
+         "face": [
+          695,
+          166,
+          700
+         ]
+        },
+        {
+         "index": 18,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 15.959252522353935,
+         "shape": 0.3827044878230831,
+         "uv": [
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.75,
+           0.875
+          ],
+          [
+           0.703125,
+           0.890625
+          ]
+         ],
+         "face": [
+          619,
+          51,
+          700
+         ]
+        }
+       ],
+       "alternatives": [
+        {
+         "edge": [
+          172,
+          634
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          671,
+          168
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          181,
+          671
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          674,
+          181
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          65,
+          674
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          78,
+          677
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          677,
+          182
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          182,
+          679
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          679,
+          17
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          688,
+          183
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          693,
+          267
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          51,
+          695
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.030065637537534096,
+          "required": 0.07553111652860231,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          634,
+          698
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          17,
+          699
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          698,
+          22
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          22,
+          172
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          183,
+          24
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          24,
+          688
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          695,
+          65
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          267,
+          72
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          72,
+          693
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          699,
+          78
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          695,
+          166
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          168,
+          695
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          619,
+          51
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          700,
+          619
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 4,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          622,
+          700
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 6.1380377752350865,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": true
+        }
+       ]
+      },
+      {
+       "fraction": 0.125,
+       "point": [
+        0.703125,
+        0.8828125
+       ],
+       "continuation_faces": 18,
+       "first_bad_operation": 86,
+       "first_bad_front_size": 29,
+       "refusals": [
+        {
+         "index": 2,
+         "region": "interior",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 7.960206839911022,
+         "required": 15,
+         "prior_same_group": false
+        },
+        {
+         "index": 15,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "shape",
+         "actual": 0.074613193888569,
+         "required": 0.07553111652860231,
+         "prior_same_group": true
+        },
+        {
+         "index": 17,
+         "region": "interior",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 8.173545792500253,
+         "required": 15,
+         "prior_same_group": false
+        }
+       ],
+       "reference_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 3.2528169651680092,
+         "shape": 0.09668554390091698,
+         "uv": [
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.5,
+           1
+          ]
+         ],
+         "face": [
+          170,
+          619,
+          695
+         ]
+        },
+        {
+         "index": 2,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 4.2835559711252085,
+         "shape": 0.12665791484452182,
+         "uv": [
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.5,
+           1
+          ]
+         ],
+         "face": [
+          622,
+          170,
+          695
+         ]
+        },
+        {
+         "index": 15,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 2.5314663267635877,
+         "shape": 0.07553111652860231,
+         "uv": [
+          [
+           0.75,
+           0.875
+          ],
+          [
+           0.5,
+           1
+          ],
+          [
+           0.71875,
+           0.875
+          ]
+         ],
+         "face": [
+          51,
+          695,
+          619
+         ]
+        }
+       ],
+       "trial_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 22.92763293943672,
+         "shape": 0.46271286246478094,
+         "uv": [
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.703125,
+           0.8828125
+          ]
+         ],
+         "face": [
+          170,
+          619,
+          700
+         ]
+        },
+        {
+         "index": 2,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 7.960206839911022,
+         "shape": 0.20308764357079048,
+         "uv": [
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.703125,
+           0.8828125
+          ]
+         ],
+         "face": [
+          622,
+          170,
+          700
+         ]
+        },
+        {
+         "index": 15,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 2.551536355130057,
+         "shape": 0.074613193888569,
+         "uv": [
+          [
+           0.75,
+           0.875
+          ],
+          [
+           0.5,
+           1
+          ],
+          [
+           0.703125,
+           0.8828125
+          ]
+         ],
+         "face": [
+          51,
+          695,
+          700
+         ]
+        },
+        {
+         "index": 17,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 8.173545792500253,
+         "shape": 0.20696383386754694,
+         "uv": [
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.75,
+           0.875
+          ],
+          [
+           0.703125,
+           0.8828125
+          ]
+         ],
+         "face": [
+          619,
+          51,
+          700
+         ]
+        },
+        {
+         "index": 18,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 7.516348797779453,
+         "shape": 0.21706461086720386,
+         "uv": [
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.703125,
+           0.8828125
+          ],
+          [
+           0.5,
+           1
+          ]
+         ],
+         "face": [
+          622,
+          700,
+          695
+         ]
+        }
+       ],
+       "alternatives": [
+        {
+         "edge": [
+          166,
+          622
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          172,
+          634
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          671,
+          168
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          181,
+          671
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          674,
+          181
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          65,
+          674
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          78,
+          677
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          677,
+          182
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          182,
+          679
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          679,
+          17
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          688,
+          183
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          693,
+          267
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          51,
+          695
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.074613193888569,
+          "required": 0.07553111652860231,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          634,
+          698
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          17,
+          699
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          698,
+          22
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          22,
+          172
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          183,
+          24
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          24,
+          688
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          695,
+          65
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          267,
+          72
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          72,
+          693
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          699,
+          78
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          695,
+          166
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          168,
+          695
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 3,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          619,
+          51
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 2,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 8.173545792500253,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          700,
+          619
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 2,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 8.173545792500253,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          170,
+          700
+         ],
+         "total_continuation_faces": 18,
+         "first_refusal": {
+          "index": 2,
+          "region": "interior",
+          "kind": "TRI",
+          "metric": "angle",
+          "actual": 7.960206839911022,
+          "required": 15,
+          "prior_same_group": false
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": true
+        }
+       ]
+      }
+     ]
+    },
+    "ribbed": {
+     "reference_faces": 1,
+     "bound": {
+      "operation": 84,
+      "model": "ribbed",
+      "control": "quad-size-driven-point-final-20261126\\ribbed-control",
+      "root": "quad-size-driven-point-final-20261126\\ribbed-legacy",
+      "original": [
+       131,
+       497,
+       505
+      ],
+      "expected": [
+       [
+        131,
+        497,
+        505
+       ]
+      ],
+      "expected_fronts": [
+       [
+        [
+         131,
+         497
+        ],
+        [
+         505,
+         131
+        ],
+        [
+         497,
+         505
+        ]
+       ]
+      ],
+      "legacy_rejections": [
+       {
+        "fraction": 0.25,
+        "status": "shape_regression"
+       },
+       {
+        "fraction": 0.125,
+        "status": "shape_regression"
+       }
+      ],
+      "input": "1cc792cc2faa5fab9048483cbf3a316a0ba7c27b9d803f79aa6eeb0c023e5038",
+      "source": {
+       "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+       "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+       "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+      },
+      "candidate": "b149d384301b7efe62d520c12bfc3d2de8fecac62b9412e2570f400e59df4d97",
+      "archived_trace": "ac99421778d2923e8060c585f509de96e962b335cfe8836da3d3614f9e7ef368",
+      "arc_certificate": "e8fbec581f412c7cb45dcf63d73067a99e113ffd659c0a7c8f7ab10194a6e32e"
+     },
+     "placements": [
+      {
+       "fraction": 0.25,
+       "point": [
+        0.796875,
+        0.046875
+       ],
+       "continuation_faces": 3,
+       "first_bad_operation": 85,
+       "first_bad_front_size": 4,
+       "refusals": [
+        {
+         "index": 2,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "shape",
+         "actual": 0.023596599716049518,
+         "required": 0.34814583697917106,
+         "prior_same_group": true
+        },
+        {
+         "index": 2,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 0.8435449196490631,
+         "required": 11.914100639439692,
+         "prior_same_group": true
+        },
+        {
+         "index": 3,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "shape",
+         "actual": 0.33315923719245943,
+         "required": 0.34814583697917106,
+         "prior_same_group": true
+        },
+        {
+         "index": 3,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 11.818662545358311,
+         "required": 11.914100639439692,
+         "prior_same_group": true
+        }
+       ],
+       "reference_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "uv": [
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7501373123377562,
+           0
+          ]
+         ],
+         "face": [
+          131,
+          497,
+          505
+         ]
+        }
+       ],
+       "trial_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 51.165481704201305,
+         "shape": 0.9826942889593747,
+         "uv": [
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.796875,
+           0.046875
+          ]
+         ],
+         "face": [
+          131,
+          497,
+          525
+         ]
+        },
+        {
+         "index": 2,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 0.8435449196490631,
+         "shape": 0.023596599716049518,
+         "uv": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.796875,
+           0.046875
+          ]
+         ],
+         "face": [
+          505,
+          131,
+          525
+         ]
+        },
+        {
+         "index": 3,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 11.818662545358311,
+         "shape": 0.33315923719245943,
+         "uv": [
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.796875,
+           0.046875
+          ]
+         ],
+         "face": [
+          497,
+          505,
+          525
+         ]
+        }
+       ],
+       "alternatives": [
+        {
+         "edge": [
+          497,
+          505
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.33315923719245943,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          525,
+          497
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.33315923719245943,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          131,
+          525
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.023596599716049514,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": true
+        }
+       ]
+      },
+      {
+       "fraction": 0.125,
+       "point": [
+        0.796875,
+        0.0546875
+       ],
+       "continuation_faces": 3,
+       "first_bad_operation": 85,
+       "first_bad_front_size": 4,
+       "refusals": [
+        {
+         "index": 2,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "shape",
+         "actual": 0.09718222366990291,
+         "required": 0.34814583697917106,
+         "prior_same_group": true
+        },
+        {
+         "index": 2,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 3.300303675428042,
+         "required": 11.914100639439692,
+         "prior_same_group": true
+        },
+        {
+         "index": 3,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "shape",
+         "actual": 0.2559312777560895,
+         "required": 0.34814583697917106,
+         "prior_same_group": true
+        },
+        {
+         "index": 3,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 8.651716374803192,
+         "required": 11.914100639439692,
+         "prior_same_group": true
+        }
+       ],
+       "reference_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "uv": [
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7501373123377562,
+           0
+          ]
+         ],
+         "face": [
+          131,
+          497,
+          505
+         ]
+        }
+       ],
+       "trial_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 45.96416821110419,
+         "shape": 0.8833910306792643,
+         "uv": [
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.796875,
+           0.0546875
+          ]
+         ],
+         "face": [
+          131,
+          497,
+          525
+         ]
+        },
+        {
+         "index": 2,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 3.300303675428042,
+         "shape": 0.09718222366990291,
+         "uv": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.796875,
+           0.0546875
+          ]
+         ],
+         "face": [
+          505,
+          131,
+          525
+         ]
+        },
+        {
+         "index": 3,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 8.651716374803192,
+         "shape": 0.2559312777560895,
+         "uv": [
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.796875,
+           0.0546875
+          ]
+         ],
+         "face": [
+          497,
+          505,
+          525
+         ]
+        }
+       ],
+       "alternatives": [
+        {
+         "edge": [
+          497,
+          505
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.2559312777560895,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          525,
+          497
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.2559312777560895,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          131,
+          525
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.09718222366990291,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": true
+        }
+       ]
+      }
+     ]
+    },
+    "ribbed-sized": {
+     "reference_faces": 1,
+     "bound": {
+      "operation": 85,
+      "model": "ribbed",
+      "control": "quad-size-driven-point-final-20261126\\ribbed-trial",
+      "root": "quad-size-driven-point-final-20261126\\ribbed-trial",
+      "original": [
+       131,
+       497,
+       505
+      ],
+      "expected": [
+       [
+        131,
+        497,
+        505
+       ]
+      ],
+      "expected_fronts": [
+       [
+        [
+         131,
+         497
+        ],
+        [
+         505,
+         131
+        ],
+        [
+         497,
+         505
+        ]
+       ]
+      ],
+      "legacy_rejections": null,
+      "input": "837817c7be948a1af09e05ce0a038bb998039433b137b6f140dc5beee905eed1",
+      "source": {
+       "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+       "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+       "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+      },
+      "candidate": "0b4745e1fab01559390be8deb95f5c16109008b85d390706ded0698a586eca13",
+      "archived_trace": "28f573ea3424d9244c82afc8010b96de737aea8a6838d99e026bd6439800cbae",
+      "arc_certificate": "e8fbec581f412c7cb45dcf63d73067a99e113ffd659c0a7c8f7ab10194a6e32e"
+     },
+     "placements": [
+      {
+       "fraction": 0.25,
+       "point": [
+        0.796875,
+        0.046875
+       ],
+       "continuation_faces": 3,
+       "first_bad_operation": 86,
+       "first_bad_front_size": 4,
+       "refusals": [
+        {
+         "index": 2,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "shape",
+         "actual": 0.023596599716049518,
+         "required": 0.34814583697917106,
+         "prior_same_group": true
+        },
+        {
+         "index": 2,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 0.8435449196490631,
+         "required": 11.914100639439692,
+         "prior_same_group": true
+        },
+        {
+         "index": 3,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "shape",
+         "actual": 0.33315923719245943,
+         "required": 0.34814583697917106,
+         "prior_same_group": true
+        },
+        {
+         "index": 3,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 11.818662545358311,
+         "required": 11.914100639439692,
+         "prior_same_group": true
+        }
+       ],
+       "reference_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "uv": [
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7501373123377562,
+           0
+          ]
+         ],
+         "face": [
+          131,
+          497,
+          505
+         ]
+        }
+       ],
+       "trial_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 51.165481704201305,
+         "shape": 0.9826942889593747,
+         "uv": [
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.796875,
+           0.046875
+          ]
+         ],
+         "face": [
+          131,
+          497,
+          526
+         ]
+        },
+        {
+         "index": 2,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 0.8435449196490631,
+         "shape": 0.023596599716049518,
+         "uv": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.796875,
+           0.046875
+          ]
+         ],
+         "face": [
+          505,
+          131,
+          526
+         ]
+        },
+        {
+         "index": 3,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 11.818662545358311,
+         "shape": 0.33315923719245943,
+         "uv": [
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.796875,
+           0.046875
+          ]
+         ],
+         "face": [
+          497,
+          505,
+          526
+         ]
+        }
+       ],
+       "alternatives": [
+        {
+         "edge": [
+          497,
+          505
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.33315923719245943,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          526,
+          497
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.33315923719245943,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          131,
+          526
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.023596599716049514,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": true
+        }
+       ]
+      },
+      {
+       "fraction": 0.125,
+       "point": [
+        0.796875,
+        0.0546875
+       ],
+       "continuation_faces": 3,
+       "first_bad_operation": 86,
+       "first_bad_front_size": 4,
+       "refusals": [
+        {
+         "index": 2,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "shape",
+         "actual": 0.09718222366990291,
+         "required": 0.34814583697917106,
+         "prior_same_group": true
+        },
+        {
+         "index": 2,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 3.300303675428042,
+         "required": 11.914100639439692,
+         "prior_same_group": true
+        },
+        {
+         "index": 3,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "shape",
+         "actual": 0.2559312777560895,
+         "required": 0.34814583697917106,
+         "prior_same_group": true
+        },
+        {
+         "index": 3,
+         "region": "contour_vertex",
+         "kind": "TRI",
+         "metric": "angle",
+         "actual": 8.651716374803192,
+         "required": 11.914100639439692,
+         "prior_same_group": true
+        }
+       ],
+       "reference_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "uv": [
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7501373123377562,
+           0
+          ]
+         ],
+         "face": [
+          131,
+          497,
+          505
+         ]
+        }
+       ],
+       "trial_changed": [
+        {
+         "index": 1,
+         "kind": "TRI",
+         "region": "interior",
+         "angle": 45.96416821110419,
+         "shape": 0.8833910306792643,
+         "uv": [
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.796875,
+           0.0546875
+          ]
+         ],
+         "face": [
+          131,
+          497,
+          526
+         ]
+        },
+        {
+         "index": 2,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 3.300303675428042,
+         "shape": 0.09718222366990291,
+         "uv": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.796875,
+           0.0546875
+          ]
+         ],
+         "face": [
+          505,
+          131,
+          526
+         ]
+        },
+        {
+         "index": 3,
+         "kind": "TRI",
+         "region": "contour_vertex",
+         "angle": 8.651716374803192,
+         "shape": 0.2559312777560895,
+         "uv": [
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.796875,
+           0.0546875
+          ]
+         ],
+         "face": [
+          497,
+          505,
+          526
+         ]
+        }
+       ],
+       "alternatives": [
+        {
+         "edge": [
+          497,
+          505
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.2559312777560895,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          526,
+          497
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.2559312777560895,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": false
+        },
+        {
+         "edge": [
+          131,
+          526
+         ],
+         "total_continuation_faces": 3,
+         "first_refusal": {
+          "index": 2,
+          "region": "contour_vertex",
+          "kind": "TRI",
+          "metric": "shape",
+          "actual": 0.09718222366990291,
+          "required": 0.34814583697917106,
+          "prior_same_group": true
+         },
+         "passes_full_local_guard": false,
+         "original_first_refusal_removed": true
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "upstream": {
+   "curva": [
+    {
+     "operation": 84,
+     "front_input_sha256": "48e84e85c26861725dacc57ff3a7f890613ff33ec5e9d64852d7d605314872a1",
+     "count": 28,
+     "results": [
+      {
+       "base": [
+        619,
+        51
+       ],
+       "exit": 10
+      },
+      {
+       "base": [
+        170,
+        619
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        622,
+        170
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        166,
+        622
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        172,
+        634
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        671,
+        168
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        181,
+        671
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        674,
+        181
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        65,
+        674
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        78,
+        677
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        677,
+        182
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        182,
+        679
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        679,
+        17
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        688,
+        183
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        693,
+        267
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        51,
+        695
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        634,
+        698
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        17,
+        699
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        698,
+        22
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        22,
+        172
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        183,
+        24
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        24,
+        688
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        695,
+        65
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        267,
+        72
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        72,
+        693
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        699,
+        78
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        695,
+        166
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        611,
+        695
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      }
+     ]
+    },
+    {
+     "operation": 85,
+     "front_input_sha256": "861b74c2d6d1489dfbc2e4c8c497fa32bc9636e139dda61cbbbc83b51397f1e6",
+     "count": 27,
+     "results": [
+      {
+       "base": [
+        622,
+        170
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        166,
+        622
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        172,
+        634
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        671,
+        168
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        181,
+        671
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        674,
+        181
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        65,
+        674
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        78,
+        677
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        677,
+        182
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        182,
+        679
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        679,
+        17
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        688,
+        183
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        693,
+        267
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        51,
+        695
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        634,
+        698
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        17,
+        699
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        698,
+        22
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        22,
+        172
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        183,
+        24
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        24,
+        688
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        695,
+        65
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        267,
+        72
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        72,
+        693
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        699,
+        78
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        695,
+        166
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        168,
+        695
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        619,
+        51
+       ],
+       "exit": 10
+      }
+     ]
+    }
+   ],
+   "ribbed-sized": [
+    {
+     "operation": 82,
+     "front_input_sha256": "18b635ae9ae652271f3d95740eeae2b0439b208e9aebaa4e8b8cd2eb0ffbbbb5",
+     "count": 10,
+     "results": [
+      {
+       "base": [
+        112,
+        494
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        497,
+        117
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        131,
+        497
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        525,
+        505
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        493,
+        506
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        505,
+        131
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        506,
+        132
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        508,
+        112
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        117,
+        525
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        494,
+        508
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      }
+     ]
+    },
+    {
+     "operation": 83,
+     "front_input_sha256": "b1bf3f47b9716e78d599a78ab4b3bbdc8c2d91cd58d93a504450e24f3c067dc7",
+     "count": 7,
+     "results": [
+      {
+       "base": [
+        497,
+        117
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        131,
+        497
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        525,
+        505
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        505,
+        131
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        508,
+        112
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        117,
+        525
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        494,
+        508
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      }
+     ]
+    },
+    {
+     "operation": 84,
+     "front_input_sha256": "92e989e5bb59056018c4655a1b9300c2587a0958c3575951c81253ea49700983",
+     "count": 4,
+     "results": [
+      {
+       "base": [
+        131,
+        497
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        525,
+        505
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        505,
+        131
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        117,
+        525
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      }
+     ]
+    }
+   ]
+  },
+  "earlier": {
+   "curva": [
+    {
+     "operation": 48,
+     "front_input_sha256": "20fff72298c2724634d82e05a73a085bc172c1592d46abcbf3634fd1e4c97066",
+     "count": 4,
+     "results": [
+      {
+       "base": [
+        66,
+        305
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        65,
+        674
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        51,
+        695
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        695,
+        68
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      }
+     ]
+    },
+    {
+     "operation": 81,
+     "front_input_sha256": "467510416efda81f21eb7fdf80edb3394903e02cdd3f53d3b84bdf2f51d6db2e",
+     "count": 4,
+     "results": [
+      {
+       "base": [
+        167,
+        608
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        166,
+        622
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        51,
+        695
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        695,
+        65
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      }
+     ]
+    }
+   ],
+   "ribbed-sized": [
+    {
+     "operation": 64,
+     "front_input_sha256": "08634e0199ae29a8b6537156890676c9aef33bd5ad873e1ea955b4333d415169",
+     "count": 3,
+     "results": [
+      {
+       "base": [
+        497,
+        117
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        525,
+        505
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      },
+      {
+       "base": [
+        452,
+        525
+       ],
+       "changed_faces": false,
+       "keeps_worst": true
+      }
+     ]
+    }
+   ]
+  },
+  "cycles": {
+   "curva": [
+    {
+     "formed_at": 82,
+     "viewed_at": 84,
+     "ring": [
+      [
+       0.6875,
+       0.875
+      ],
+      [
+       0.71875,
+       0.875
+      ],
+      [
+       0.75,
+       0.875
+      ],
+      [
+       0.5,
+       1
+      ],
+      [
+       0.625,
+       0.875
+      ],
+      [
+       0.65625,
+       0.875
+      ]
+     ],
+     "closing_operation": 81,
+     "closing_face": [
+      [
+       0.59375,
+       0.875
+      ],
+      [
+       0.625,
+       0.875
+      ],
+      [
+       0.5,
+       1
+      ]
+     ],
+     "claims": [],
+     "closures": 1,
+     "shape_ok": 0,
+     "size_ok": 1,
+     "joint": 0,
+     "best_shape": {
+      "count": 4,
+      "shape": 0.16876442178423917,
+      "size": 0,
+      "requests": {},
+      "faces": [
+       {
+        "points": [
+         [
+          0.6875,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ],
+         [
+          0.65625,
+          0.875
+         ]
+        ],
+        "margin": 0.2855703980750139,
+        "h": 0.40540099537051955,
+        "angle": 4.2835559711252085,
+        "shape": 0.12665791484452182,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.6875,
+          0.875
+         ],
+         [
+          0.71875,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "margin": 0.21685446434453395,
+        "h": 0.46463855397376425,
+        "angle": 3.2528169651680092,
+        "shape": 0.09668554390091698,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.71875,
+          0.875
+         ],
+         [
+          0.75,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "margin": 0.16876442178423917,
+        "h": 0.5248748904532593,
+        "angle": 2.5314663267635877,
+        "shape": 0.07553111652860231,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.5,
+          1
+         ],
+         [
+          0.625,
+          0.875
+         ],
+         [
+          0.65625,
+          0.875
+         ]
+        ],
+        "margin": 0.3862951820132467,
+        "h": 0.3484593631265832,
+        "angle": 5.7944277301987,
+        "shape": 0.17009394619327886,
+        "requests": {}
+       }
+      ]
+     },
+     "best_size": {
+      "count": 4,
+      "shape": 0.16876442178423917,
+      "size": 0,
+      "requests": {},
+      "faces": [
+       {
+        "points": [
+         [
+          0.6875,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ],
+         [
+          0.65625,
+          0.875
+         ]
+        ],
+        "margin": 0.2855703980750139,
+        "h": 0.40540099537051955,
+        "angle": 4.2835559711252085,
+        "shape": 0.12665791484452182,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.6875,
+          0.875
+         ],
+         [
+          0.71875,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "margin": 0.21685446434453395,
+        "h": 0.46463855397376425,
+        "angle": 3.2528169651680092,
+        "shape": 0.09668554390091698,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.71875,
+          0.875
+         ],
+         [
+          0.75,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "margin": 0.16876442178423917,
+        "h": 0.5248748904532593,
+        "angle": 2.5314663267635877,
+        "shape": 0.07553111652860231,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.5,
+          1
+         ],
+         [
+          0.625,
+          0.875
+         ],
+         [
+          0.65625,
+          0.875
+         ]
+        ],
+        "margin": 0.3862951820132467,
+        "h": 0.3484593631265832,
+        "angle": 5.7944277301987,
+        "shape": 0.17009394619327886,
+        "requests": {}
+       }
+      ]
+     },
+     "best_joint": null
+    },
+    {
+     "formed_at": 82,
+     "viewed_at": 85,
+     "ring": [
+      [
+       0.6875,
+       0.875
+      ],
+      [
+       0.71875,
+       0.875
+      ],
+      [
+       0.75,
+       0.875
+      ],
+      [
+       0.5,
+       1
+      ],
+      [
+       0.625,
+       0.875
+      ],
+      [
+       0.65625,
+       0.875
+      ]
+     ],
+     "closing_operation": 81,
+     "closing_face": [
+      [
+       0.59375,
+       0.875
+      ],
+      [
+       0.625,
+       0.875
+      ],
+      [
+       0.5,
+       1
+      ]
+     ],
+     "claims": [],
+     "closures": 1,
+     "shape_ok": 0,
+     "size_ok": 1,
+     "joint": 0,
+     "best_shape": {
+      "count": 4,
+      "shape": 0.16876442178423917,
+      "size": 0,
+      "requests": {},
+      "faces": [
+       {
+        "points": [
+         [
+          0.6875,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ],
+         [
+          0.65625,
+          0.875
+         ]
+        ],
+        "margin": 0.2855703980750139,
+        "h": 0.40540099537051955,
+        "angle": 4.2835559711252085,
+        "shape": 0.12665791484452182,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.6875,
+          0.875
+         ],
+         [
+          0.71875,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "margin": 0.21685446434453395,
+        "h": 0.46463855397376425,
+        "angle": 3.2528169651680092,
+        "shape": 0.09668554390091698,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.71875,
+          0.875
+         ],
+         [
+          0.75,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "margin": 0.16876442178423917,
+        "h": 0.5248748904532593,
+        "angle": 2.5314663267635877,
+        "shape": 0.07553111652860231,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.5,
+          1
+         ],
+         [
+          0.625,
+          0.875
+         ],
+         [
+          0.65625,
+          0.875
+         ]
+        ],
+        "margin": 0.3862951820132467,
+        "h": 0.3484593631265832,
+        "angle": 5.7944277301987,
+        "shape": 0.17009394619327886,
+        "requests": {}
+       }
+      ]
+     },
+     "best_size": {
+      "count": 4,
+      "shape": 0.16876442178423917,
+      "size": 0,
+      "requests": {},
+      "faces": [
+       {
+        "points": [
+         [
+          0.6875,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ],
+         [
+          0.65625,
+          0.875
+         ]
+        ],
+        "margin": 0.2855703980750139,
+        "h": 0.40540099537051955,
+        "angle": 4.2835559711252085,
+        "shape": 0.12665791484452182,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.6875,
+          0.875
+         ],
+         [
+          0.71875,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "margin": 0.21685446434453395,
+        "h": 0.46463855397376425,
+        "angle": 3.2528169651680092,
+        "shape": 0.09668554390091698,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.71875,
+          0.875
+         ],
+         [
+          0.75,
+          0.875
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "margin": 0.16876442178423917,
+        "h": 0.5248748904532593,
+        "angle": 2.5314663267635877,
+        "shape": 0.07553111652860231,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.5,
+          1
+         ],
+         [
+          0.625,
+          0.875
+         ],
+         [
+          0.65625,
+          0.875
+         ]
+        ],
+        "margin": 0.3862951820132467,
+        "h": 0.3484593631265832,
+        "angle": 5.7944277301987,
+        "shape": 0.17009394619327886,
+        "requests": {}
+       }
+      ]
+     },
+     "best_joint": null
+    }
+   ],
+   "ribbed": [
+    {
+     "formed_at": 8,
+     "viewed_at": 83,
+     "ring": [
+      [
+       0.8125,
+       0.0625
+      ],
+      [
+       0.78125,
+       0.0625
+      ],
+      [
+       0.75,
+       0.0625
+      ],
+      [
+       0.7501373123377562,
+       0
+      ]
+     ],
+     "closing_operation": 7,
+     "closing_face": [
+      [
+       0.7501373123377562,
+       0
+      ],
+      [
+       0.8751296578016081,
+       0
+      ],
+      [
+       0.84375,
+       0.0625
+      ],
+      [
+       0.8125,
+       0.0625
+      ]
+     ],
+     "claims": [],
+     "closures": 1,
+     "shape_ok": 0,
+     "size_ok": 1,
+     "joint": 0,
+     "best_shape": {
+      "count": 2,
+      "shape": 0.7942733759626461,
+      "size": 0,
+      "requests": {},
+      "faces": [
+       {
+        "points": [
+         [
+          0.8125,
+          0.0625
+         ],
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 0.7942733759626461,
+        "h": 0.5463645668462057,
+        "angle": 11.914100639439692,
+        "shape": 0.34814583697917106,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.75,
+          0.0625
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 0.8818829070063194,
+        "h": 0.5311159957457936,
+        "angle": 13.228243605094791,
+        "shape": 0.38580062187409275,
+        "requests": {}
+       }
+      ]
+     },
+     "best_size": {
+      "count": 2,
+      "shape": 0.7942733759626461,
+      "size": 0,
+      "requests": {},
+      "faces": [
+       {
+        "points": [
+         [
+          0.8125,
+          0.0625
+         ],
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 0.7942733759626461,
+        "h": 0.5463645668462057,
+        "angle": 11.914100639439692,
+        "shape": 0.34814583697917106,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.75,
+          0.0625
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 0.8818829070063194,
+        "h": 0.5311159957457936,
+        "angle": 13.228243605094791,
+        "shape": 0.38580062187409275,
+        "requests": {}
+       }
+      ]
+     },
+     "best_joint": null
+    },
+    {
+     "formed_at": 84,
+     "viewed_at": 84,
+     "ring": [
+      [
+       0.8125,
+       0.0625
+      ],
+      [
+       0.78125,
+       0.0625
+      ],
+      [
+       0.7501373123377562,
+       0
+      ]
+     ],
+     "closing_operation": 83,
+     "closing_face": [
+      [
+       0.78125,
+       0.0625
+      ],
+      [
+       0.75,
+       0.0625
+      ],
+      [
+       0.7501373123377562,
+       0
+      ]
+     ],
+     "claims": [],
+     "closures": 1,
+     "shape_ok": 0,
+     "size_ok": 1,
+     "joint": 0,
+     "best_shape": {
+      "count": 1,
+      "shape": 0.7942733759626461,
+      "size": 0,
+      "requests": {},
+      "faces": [
+       {
+        "points": [
+         [
+          0.8125,
+          0.0625
+         ],
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 0.7942733759626461,
+        "h": 0.5463645668462057,
+        "angle": 11.914100639439692,
+        "shape": 0.34814583697917106,
+        "requests": {}
+       }
+      ]
+     },
+     "best_size": {
+      "count": 1,
+      "shape": 0.7942733759626461,
+      "size": 0,
+      "requests": {},
+      "faces": [
+       {
+        "points": [
+         [
+          0.8125,
+          0.0625
+         ],
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 0.7942733759626461,
+        "h": 0.5463645668462057,
+        "angle": 11.914100639439692,
+        "shape": 0.34814583697917106,
+        "requests": {}
+       }
+      ]
+     },
+     "best_joint": null
+    }
+   ],
+   "ribbed-sized": [
+    {
+     "formed_at": 65,
+     "viewed_at": 84,
+     "ring": [
+      [
+       0.8125,
+       0.0625
+      ],
+      [
+       0.78125,
+       0.0625
+      ],
+      [
+       0.75,
+       0.0625
+      ],
+      [
+       0.7188815923873335,
+       0.03125
+      ],
+      [
+       0.7501373123377562,
+       0
+      ]
+     ],
+     "closing_operation": 64,
+     "closing_face": [
+      [
+       0.75,
+       0.0625
+      ],
+      [
+       0.71875,
+       0.0625
+      ],
+      [
+       0.7188815923873335,
+       0.03125
+      ]
+     ],
+     "claims": [
+      [
+       "503",
+       [
+        0.7375823874026537,
+        0.05
+       ],
+       0.33409303105550897
+      ]
+     ],
+     "closures": 4,
+     "shape_ok": 0,
+     "size_ok": 4,
+     "joint": 0,
+     "best_shape": {
+      "count": 3,
+      "shape": 0.7942733759626461,
+      "size": 0.8710234807372609,
+      "requests": {
+       "503": 0.8710234807372609
+      },
+      "faces": [
+       {
+        "points": [
+         [
+          0.8125,
+          0.0625
+         ],
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 0.7942733759626461,
+        "h": 0.5463645668462057,
+        "angle": 11.914100639439692,
+        "shape": 0.34814583697917106,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.7188815923873335,
+          0.03125
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 2.0166321982001447,
+        "h": 0.363125415153808,
+        "angle": 30.249482973002173,
+        "shape": 0.6684159082276387,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.75,
+          0.0625
+         ],
+         [
+          0.7188815923873335,
+          0.03125
+         ]
+        ],
+        "margin": 1.2050425667266027,
+        "h": 0.29100287480003123,
+        "angle": 18.07563850089904,
+        "shape": 0.4891846894734283,
+        "requests": {
+         "503": 0.8710234807372609
+        }
+       }
+      ]
+     },
+     "best_size": {
+      "count": 3,
+      "shape": 0.7942733759626461,
+      "size": 0.8710234807372609,
+      "requests": {
+       "503": 0.8710234807372609
+      },
+      "faces": [
+       {
+        "points": [
+         [
+          0.8125,
+          0.0625
+         ],
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 0.7942733759626461,
+        "h": 0.5463645668462057,
+        "angle": 11.914100639439692,
+        "shape": 0.34814583697917106,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.7188815923873335,
+          0.03125
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 2.0166321982001447,
+        "h": 0.363125415153808,
+        "angle": 30.249482973002173,
+        "shape": 0.6684159082276387,
+        "requests": {}
+       },
+       {
+        "points": [
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.75,
+          0.0625
+         ],
+         [
+          0.7188815923873335,
+          0.03125
+         ]
+        ],
+        "margin": 1.2050425667266027,
+        "h": 0.29100287480003123,
+        "angle": 18.07563850089904,
+        "shape": 0.4891846894734283,
+        "requests": {
+         "503": 0.8710234807372609
+        }
+       }
+      ]
+     },
+     "best_joint": null
+    },
+    {
+     "formed_at": 85,
+     "viewed_at": 85,
+     "ring": [
+      [
+       0.8125,
+       0.0625
+      ],
+      [
+       0.78125,
+       0.0625
+      ],
+      [
+       0.7501373123377562,
+       0
+      ]
+     ],
+     "closing_operation": 84,
+     "closing_face": [
+      [
+       0.78125,
+       0.0625
+      ],
+      [
+       0.75,
+       0.0625
+      ],
+      [
+       0.7188815923873335,
+       0.03125
+      ],
+      [
+       0.7501373123377562,
+       0
+      ]
+     ],
+     "claims": [],
+     "closures": 1,
+     "shape_ok": 0,
+     "size_ok": 1,
+     "joint": 0,
+     "best_shape": {
+      "count": 1,
+      "shape": 0.7942733759626461,
+      "size": 0,
+      "requests": {},
+      "faces": [
+       {
+        "points": [
+         [
+          0.8125,
+          0.0625
+         ],
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 0.7942733759626461,
+        "h": 0.5463645668462057,
+        "angle": 11.914100639439692,
+        "shape": 0.34814583697917106,
+        "requests": {}
+       }
+      ]
+     },
+     "best_size": {
+      "count": 1,
+      "shape": 0.7942733759626461,
+      "size": 0,
+      "requests": {},
+      "faces": [
+       {
+        "points": [
+         [
+          0.8125,
+          0.0625
+         ],
+         [
+          0.78125,
+          0.0625
+         ],
+         [
+          0.7501373123377562,
+          0
+         ]
+        ],
+        "margin": 0.7942733759626461,
+        "h": 0.5463645668462057,
+        "angle": 11.914100639439692,
+        "shape": 0.34814583697917106,
+        "requests": {}
+       }
+      ]
+     },
+     "best_joint": null
+    }
+   ]
+  },
+  "early_points": {
+   "curva": {
+    "operation": 81,
+    "input_sha256": "467510416efda81f21eb7fdf80edb3394903e02cdd3f53d3b84bdf2f51d6db2e",
+    "points": [
+     {
+      "fraction": 1,
+      "point": [
+       0.609375,
+       0.9375
+      ],
+      "first_angle": 35.18823365532814,
+      "first_shape": 0.8439064856731474,
+      "local_refusals": [
+       {
+        "index": 5,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 4.864052904520183,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 6,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 7.887515944778385,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 7,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 14.041019169123945,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 20,
+        "region": "contour_vertex",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.021999652064459793,
+        "required": 0.07553111652860231,
+        "prior_same_group": true
+       },
+       {
+        "index": 20,
+        "region": "contour_vertex",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 0.9978072198858703,
+        "required": 2.5314663267635877,
+        "prior_same_group": true
+       }
+      ],
+      "guard_pass": false
+     },
+     {
+      "fraction": 0.5,
+      "point": [
+       0.609375,
+       0.90625
+      ],
+      "first_angle": 58.0700236162397,
+      "first_shape": 0.9972740963973894,
+      "local_refusals": [
+       {
+        "index": 5,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.0794990380840735,
+        "required": 0.125,
+        "prior_same_group": false
+       },
+       {
+        "index": 5,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 2.7771335868593345,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 6,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 4.856116937207129,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 7,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 10.311855580250056,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "guard_pass": false
+     },
+     {
+      "fraction": 0.25,
+      "point": [
+       0.609375,
+       0.890625
+      ],
+      "first_angle": 39.004392897029405,
+      "first_shape": 0.7685909494031384,
+      "local_refusals": [
+       {
+        "index": 5,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.04129383154537446,
+        "required": 0.125,
+        "prior_same_group": false
+       },
+       {
+        "index": 5,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 1.445815763540728,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 6,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.07080308323122786,
+        "required": 0.125,
+        "prior_same_group": false
+       },
+       {
+        "index": 6,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 2.591386791554973,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 7,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 5.900962568386598,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "guard_pass": false
+     },
+     {
+      "fraction": 0.125,
+      "point": [
+       0.609375,
+       0.8828125
+      ],
+      "first_angle": 22.136568579345983,
+      "first_shape": 0.4461186344222456,
+      "local_refusals": [
+       {
+        "index": 2,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 7.692820198787644,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 5,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.020863495071167547,
+        "required": 0.125,
+        "prior_same_group": false
+       },
+       {
+        "index": 5,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 0.7309392694227258,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 6,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.035993790459622296,
+        "required": 0.125,
+        "prior_same_group": false
+       },
+       {
+        "index": 6,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 1.3198889884506524,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 7,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.07388340991286729,
+        "required": 0.125,
+        "prior_same_group": false
+       },
+       {
+        "index": 7,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 3.0689983316291376,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 8,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 7.799292918478666,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "guard_pass": false
+     }
+    ]
+   },
+   "ribbed-sized": {
+    "operation": 64,
+    "input_sha256": "08634e0199ae29a8b6537156890676c9aef33bd5ad873e1ea955b4333d415169",
+    "points": [
+     {
+      "fraction": 1,
+      "not_available_or_invalid": 6
+     },
+     {
+      "fraction": 0.5,
+      "point": [
+       0.734375,
+       0.03125
+      ],
+      "first_angle": 26.7943240380534,
+      "first_shape": 0.7050815397545573,
+      "local_refusals": [
+       {
+        "index": 21,
+        "region": "contour_vertex",
+        "kind": "QUAD",
+        "metric": "shape",
+        "actual": 0.4432791186066941,
+        "required": 0.6164195077507417,
+        "prior_same_group": true
+       },
+       {
+        "index": 21,
+        "region": "contour_vertex",
+        "kind": "QUAD",
+        "metric": "angle",
+        "actual": 26.416828435910098,
+        "required": 38.17374267739597,
+        "prior_same_group": true
+       },
+       {
+        "index": 23,
+        "region": "contour_vertex",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 11.777436634601653,
+        "required": 15,
+        "prior_same_group": false
+       },
+       {
+        "index": 24,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.38771678982669283,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       },
+       {
+        "index": 24,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 13.297595306921043,
+        "required": 25.442759473690415,
+        "prior_same_group": true
+       }
+      ],
+      "guard_pass": false
+     },
+     {
+      "fraction": 0.25,
+      "point": [
+       0.734375,
+       0.046875
+      ],
+      "first_angle": 51.175298244272994,
+      "first_shape": 0.9827467922630282,
+      "local_refusals": [
+       {
+        "index": 21,
+        "region": "contour_vertex",
+        "kind": "QUAD",
+        "metric": "shape",
+        "actual": 0.3756566556716564,
+        "required": 0.6164195077507417,
+        "prior_same_group": true
+       },
+       {
+        "index": 21,
+        "region": "contour_vertex",
+        "kind": "QUAD",
+        "metric": "angle",
+        "actual": 22.121177047156277,
+        "required": 38.17374267739597,
+        "prior_same_group": true
+       },
+       {
+        "index": 24,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.5101147225581106,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       },
+       {
+        "index": 24,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 25.26153656322542,
+        "required": 25.442759473690415,
+        "prior_same_group": true
+       }
+      ],
+      "guard_pass": false
+     },
+     {
+      "fraction": 0.125,
+      "point": [
+       0.734375,
+       0.0546875
+      ],
+      "first_angle": 46.026956360261714,
+      "first_shape": 0.8833167681145803,
+      "local_refusals": [
+       {
+        "index": 23,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.4734043831808213,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       },
+       {
+        "index": 23,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 17.541168857448167,
+        "required": 25.442759473690415,
+        "prior_same_group": true
+       },
+       {
+        "index": 24,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.21186636979969653,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       },
+       {
+        "index": 24,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 7.918727751271988,
+        "required": 25.442759473690415,
+        "prior_same_group": true
+       }
+      ],
+      "guard_pass": false
+     }
+    ]
+   }
+  },
+  "early_alternative_points": {
+   "curva": {
+    "operation": 81,
+    "base_count": 4,
+    "trials": [
+     {
+      "base": [
+       167,
+       608
+      ],
+      "fraction": 1,
+      "point": [
+       0.578125,
+       0.9375
+      ],
+      "first_angle": 35.44917222476584,
+      "first_shape": 0.8474618740376857,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 5,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.0946294239246427,
+        "required": 0.125,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       167,
+       608
+      ],
+      "fraction": 0.5,
+      "point": [
+       0.578125,
+       0.90625
+      ],
+      "first_angle": 57.88020791039752,
+      "first_shape": 0.9966643566770915,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 5,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.05174432128909414,
+        "required": 0.125,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       167,
+       608
+      ],
+      "fraction": 0.25,
+      "point": [
+       0.578125,
+       0.890625
+      ],
+      "first_angle": 38.80018991350122,
+      "first_shape": 0.7647114705782642,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 3,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 14.96939296685268,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       167,
+       608
+      ],
+      "fraction": 0.125,
+      "point": [
+       0.578125,
+       0.8828125
+      ],
+      "first_angle": 21.99182212927554,
+      "first_shape": 0.44297793315387035,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 2,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 7.723444235349746,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       166,
+       622
+      ],
+      "fraction": 1,
+      "exit": 7
+     },
+     {
+      "base": [
+       166,
+       622
+      ],
+      "fraction": 0.5,
+      "point": [
+       0.640625,
+       0.90625
+      ],
+      "first_angle": 58.33133751428123,
+      "first_shape": 0.9980034914973701,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 3,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 10.452852666640203,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       166,
+       622
+      ],
+      "fraction": 0.25,
+      "point": [
+       0.640625,
+       0.890625
+      ],
+      "first_angle": 39.287868552403246,
+      "first_shape": 0.7738438535831785,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 6,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.07156184180947954,
+        "required": 0.125,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       166,
+       622
+      ],
+      "fraction": 0.125,
+      "point": [
+       0.640625,
+       0.8828125
+      ],
+      "first_angle": 22.338642174360146,
+      "first_shape": 0.45041029117069187,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 2,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 7.758809743033913,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       51,
+       695
+      ],
+      "fraction": 1,
+      "point": [
+       0.5970491502812526,
+       0.8815983005625052
+      ],
+      "first_angle": 18.780254570211174,
+      "first_shape": 0.40062805274545926,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 2,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 10.909598644628272,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       51,
+       695
+      ],
+      "fraction": 0.5,
+      "point": [
+       0.6110245751406264,
+       0.9095491502812526
+      ],
+      "first_angle": 9.226991396717159,
+      "first_shape": 0.19097053511925582,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 6,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.08917136669564914,
+        "required": 0.125,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       51,
+       695
+      ],
+      "fraction": 0.25,
+      "point": [
+       0.6180122875703131,
+       0.9235245751406264
+      ],
+      "first_angle": 4.045145457738471,
+      "first_shape": 0.08215339812049567,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 6,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 4.61498139545024,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       51,
+       695
+      ],
+      "fraction": 0.125,
+      "point": [
+       0.6215061437851566,
+       0.9305122875703131
+      ],
+      "first_angle": 1.371341435070101,
+      "first_shape": 0.02770339277445514,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 1,
+        "region": "contour_vertex",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.02770339277445514,
+        "required": 0.07553111652860231,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       695,
+       65
+      ],
+      "fraction": 1,
+      "point": [
+       0.48169417382415924,
+       0.8933058261758408
+      ],
+      "first_angle": 28.864252677101238,
+      "first_shape": 0.6615842101287072,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 12,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 7.319841249388475,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       695,
+       65
+      ],
+      "fraction": 0.5,
+      "point": [
+       0.4595970869120796,
+       0.9154029130879204
+      ],
+      "first_angle": 15.934034254724821,
+      "first_shape": 0.3533924699716601,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 5,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 14.288798164138809,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       695,
+       65
+      ],
+      "fraction": 0.25,
+      "point": [
+       0.4485485434560398,
+       0.9264514565439602
+      ],
+      "first_angle": 7.804027670709022,
+      "first_shape": 0.16690460224320888,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 1,
+        "region": "contour_vertex",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.16690460224320888,
+        "required": 0.23350831520739804,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       695,
+       65
+      ],
+      "fraction": 0.125,
+      "point": [
+       0.4430242717280199,
+       0.93197572827198
+      ],
+      "first_angle": 3.355786866788483,
+      "first_shape": 0.07020672086772335,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 1,
+        "region": "contour_vertex",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.07020672086772335,
+        "required": 0.23350831520739804,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     }
+    ]
+   },
+   "ribbed-sized": {
+    "operation": 64,
+    "base_count": 3,
+    "trials": [
+     {
+      "base": [
+       497,
+       117
+      ],
+      "fraction": 1,
+      "exit": 6
+     },
+     {
+      "base": [
+       497,
+       117
+      ],
+      "fraction": 0.5,
+      "point": [
+       0.765625,
+       0.03125
+      ],
+      "first_angle": 26.789735562831343,
+      "first_shape": 0.7049909318568216,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 22,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.5875474849376983,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       497,
+       117
+      ],
+      "fraction": 0.25,
+      "point": [
+       0.765625,
+       0.046875
+      ],
+      "first_angle": 51.16860784587032,
+      "first_shape": 0.9827141905522911,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 22,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.6332928217490812,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       497,
+       117
+      ],
+      "fraction": 0.125,
+      "point": [
+       0.765625,
+       0.0546875
+      ],
+      "first_angle": 45.998325382461914,
+      "first_shape": 0.8833711885539964,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 23,
+        "region": "contour_vertex",
+        "kind": "QUAD",
+        "metric": "shape",
+        "actual": 0.5369881090166716,
+        "required": 0.6164195077507417,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       525,
+       505
+      ],
+      "fraction": 1,
+      "point": [
+       0.7786995817560691,
+       0.0598232178847019
+      ],
+      "first_angle": 32.1145038555167,
+      "first_shape": 0.6870091556315705,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 22,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 10.992719297884351,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       525,
+       505
+      ],
+      "fraction": 0.5,
+      "point": [
+       0.756604517059307,
+       0.03772410894235095
+      ],
+      "first_angle": 29.551742372837296,
+      "first_shape": 0.7501146967231453,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 23,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.5531223469706668,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       525,
+       505
+      ],
+      "fraction": 0.25,
+      "point": [
+       0.7455569847109259,
+       0.026674554471175477
+      ],
+      "first_angle": 20.43867581315995,
+      "first_shape": 0.5374289079544574,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 22,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.5970783467993428,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       525,
+       505
+      ],
+      "fraction": 0.125,
+      "point": [
+       0.7400332185367353,
+       0.02114977723558774
+      ],
+      "first_angle": 12.53087200364937,
+      "first_shape": 0.3034907514858055,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 1,
+        "region": "contour_vertex",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.3034907514858055,
+        "required": 0.34814583697917106,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       452,
+       525
+      ],
+      "fraction": 1,
+      "point": [
+       0.7813152420712312,
+       0.04713818244128161
+      ],
+      "first_angle": 55.35231135289526,
+      "first_shape": 0.9952972481500546,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 2,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.43933574201058095,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       452,
+       525
+      ],
+      "fraction": 0.5,
+      "point": [
+       0.7500655191324489,
+       0.047006591220640805
+      ],
+      "first_angle": 43.16152669443128,
+      "first_shape": 0.84481350829684,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 25,
+        "region": "contour_vertex",
+        "kind": "TRI",
+        "metric": "angle",
+        "actual": 13.225156331174263,
+        "required": 15,
+        "prior_same_group": false
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       452,
+       525
+      ],
+      "fraction": 0.25,
+      "point": [
+       0.7344406576630579,
+       0.046940795610320406
+      ],
+      "first_angle": 25.262441171174483,
+      "first_shape": 0.5119573474261221,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 1,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.5119573474261221,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     },
+     {
+      "base": [
+       452,
+       525
+      ],
+      "fraction": 0.125,
+      "point": [
+       0.7266282269283623,
+       0.0469078978051602
+      ],
+      "first_angle": 13.341649987129006,
+      "first_shape": 0.27089221898989474,
+      "full_local_guard": false,
+      "refusal": [
+       {
+        "index": 1,
+        "region": "interior",
+        "kind": "TRI",
+        "metric": "shape",
+        "actual": 0.27089221898989474,
+        "required": 0.671749730667195,
+        "prior_same_group": true
+       }
+      ],
+      "passes": false
+     }
+    ]
+   }
+  },
+  "widened": {
+   "curva": {
+    "inside": [
+     85,
+     86,
+     87,
+     99
+    ],
+    "neighbors": [
+     14,
+     81
+    ],
+    "variants": [
+     {
+      "extra": [
+       14
+      ],
+      "status": "checked",
+      "ring": [
+       [
+        0.5,
+        1
+       ],
+       [
+        0.625,
+        0.875
+       ],
+       [
+        0.65625,
+        0.875
+       ],
+       [
+        0.6875,
+        0.875
+       ],
+       [
+        0.71875,
+        0.875
+       ],
+       [
+        0.75,
+        0.875
+       ],
+       [
+        1,
+        1
+       ]
+      ],
+      "baseline_count": 5,
+      "requests": [],
+      "closures": 5,
+      "shape_ok": 0,
+      "size_ok": 5,
+      "joint": 0,
+      "best_shape": {
+       "count": 5,
+       "shape": 0.1865323955303727,
+       "size": 0,
+       "requests": {},
+       "faces": [
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           1,
+           1
+          ]
+         ],
+         "margin": 1.4604711399458725,
+         "h": 0.5586176771478603,
+         "angle": 21.907067099188087,
+         "shape": 0.4547853267239617,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.71875,
+           0.875
+          ]
+         ],
+         "margin": 0.21685446434453395,
+         "h": 0.46463855397376425,
+         "angle": 3.2528169651680092,
+         "shape": 0.09668554390091698,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.6875,
+           0.875
+          ]
+         ],
+         "margin": 0.2855703980750139,
+         "h": 0.40540099537051955,
+         "angle": 4.2835559711252085,
+         "shape": 0.12665791484452182,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.625,
+           0.875
+          ],
+          [
+           0.65625,
+           0.875
+          ]
+         ],
+         "margin": 0.3862951820132467,
+         "h": 0.3484593631265832,
+         "angle": 5.7944277301987,
+         "shape": 0.17009394619327886,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.75,
+           0.875
+          ],
+          [
+           1,
+           1
+          ]
+         ],
+         "margin": 0.1865323955303727,
+         "h": 0.4987742537655707,
+         "angle": 2.7979859329555907,
+         "shape": 0.08337838522092753,
+         "requests": {}
+        }
+       ]
+      },
+      "best_size": {
+       "count": 5,
+       "shape": 0.1865323955303727,
+       "size": 0,
+       "requests": {},
+       "faces": [
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           1,
+           1
+          ]
+         ],
+         "margin": 1.4604711399458725,
+         "h": 0.5586176771478603,
+         "angle": 21.907067099188087,
+         "shape": 0.4547853267239617,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.71875,
+           0.875
+          ]
+         ],
+         "margin": 0.21685446434453395,
+         "h": 0.46463855397376425,
+         "angle": 3.2528169651680092,
+         "shape": 0.09668554390091698,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.6875,
+           0.875
+          ]
+         ],
+         "margin": 0.2855703980750139,
+         "h": 0.40540099537051955,
+         "angle": 4.2835559711252085,
+         "shape": 0.12665791484452182,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.625,
+           0.875
+          ],
+          [
+           0.65625,
+           0.875
+          ]
+         ],
+         "margin": 0.3862951820132467,
+         "h": 0.3484593631265832,
+         "angle": 5.7944277301987,
+         "shape": 0.17009394619327886,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.75,
+           0.875
+          ],
+          [
+           1,
+           1
+          ]
+         ],
+         "margin": 0.1865323955303727,
+         "h": 0.4987742537655707,
+         "angle": 2.7979859329555907,
+         "shape": 0.08337838522092753,
+         "requests": {}
+        }
+       ]
+      },
+      "best_joint": null
+     },
+     {
+      "extra": [
+       81
+      ],
+      "status": "checked",
+      "ring": [
+       [
+        0.5,
+        1
+       ],
+       [
+        0.59375,
+        0.875
+       ],
+       [
+        0.625,
+        0.875
+       ],
+       [
+        0.65625,
+        0.875
+       ],
+       [
+        0.6875,
+        0.875
+       ],
+       [
+        0.71875,
+        0.875
+       ],
+       [
+        0.75,
+        0.875
+       ]
+      ],
+      "baseline_count": 5,
+      "requests": [],
+      "closures": 1,
+      "shape_ok": 0,
+      "size_ok": 1,
+      "joint": 0,
+      "best_shape": {
+       "count": 5,
+       "shape": 0.16876442178423917,
+       "size": 0,
+       "requests": {},
+       "faces": [
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.75,
+           0.875
+          ]
+         ],
+         "margin": 0.16876442178423917,
+         "h": 0.5248748904532593,
+         "angle": 2.5314663267635877,
+         "shape": 0.07553111652860231,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.71875,
+           0.875
+          ]
+         ],
+         "margin": 0.21685446434453395,
+         "h": 0.46463855397376425,
+         "angle": 3.2528169651680092,
+         "shape": 0.09668554390091698,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.6875,
+           0.875
+          ]
+         ],
+         "margin": 0.2855703980750139,
+         "h": 0.40540099537051955,
+         "angle": 4.2835559711252085,
+         "shape": 0.12665791484452182,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.625,
+           0.875
+          ],
+          [
+           0.65625,
+           0.875
+          ]
+         ],
+         "margin": 0.3862951820132467,
+         "h": 0.3484593631265832,
+         "angle": 5.7944277301987,
+         "shape": 0.17009394619327886,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.59375,
+           0.875
+          ],
+          [
+           0.625,
+           0.875
+          ]
+         ],
+         "margin": 0.5357856893311961,
+         "h": 0.2959115430065651,
+         "angle": 8.036785339967942,
+         "shape": 0.23360592509571979,
+         "requests": {}
+        }
+       ]
+      },
+      "best_size": {
+       "count": 5,
+       "shape": 0.16876442178423917,
+       "size": 0,
+       "requests": {},
+       "faces": [
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.75,
+           0.875
+          ]
+         ],
+         "margin": 0.16876442178423917,
+         "h": 0.5248748904532593,
+         "angle": 2.5314663267635877,
+         "shape": 0.07553111652860231,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.71875,
+           0.875
+          ]
+         ],
+         "margin": 0.21685446434453395,
+         "h": 0.46463855397376425,
+         "angle": 3.2528169651680092,
+         "shape": 0.09668554390091698,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.6875,
+           0.875
+          ]
+         ],
+         "margin": 0.2855703980750139,
+         "h": 0.40540099537051955,
+         "angle": 4.2835559711252085,
+         "shape": 0.12665791484452182,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.625,
+           0.875
+          ],
+          [
+           0.65625,
+           0.875
+          ]
+         ],
+         "margin": 0.3862951820132467,
+         "h": 0.3484593631265832,
+         "angle": 5.7944277301987,
+         "shape": 0.17009394619327886,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.59375,
+           0.875
+          ],
+          [
+           0.625,
+           0.875
+          ]
+         ],
+         "margin": 0.5357856893311961,
+         "h": 0.2959115430065651,
+         "angle": 8.036785339967942,
+         "shape": 0.23360592509571979,
+         "requests": {}
+        }
+       ]
+      },
+      "best_joint": null
+     },
+     {
+      "extra": [
+       14,
+       81
+      ],
+      "status": "checked",
+      "ring": [
+       [
+        0.5,
+        1
+       ],
+       [
+        0.59375,
+        0.875
+       ],
+       [
+        0.625,
+        0.875
+       ],
+       [
+        0.65625,
+        0.875
+       ],
+       [
+        0.6875,
+        0.875
+       ],
+       [
+        0.71875,
+        0.875
+       ],
+       [
+        0.75,
+        0.875
+       ],
+       [
+        1,
+        1
+       ]
+      ],
+      "baseline_count": 6,
+      "requests": [],
+      "closures": 6,
+      "shape_ok": 0,
+      "size_ok": 6,
+      "joint": 0,
+      "best_shape": {
+       "count": 6,
+       "shape": 0.1865323955303727,
+       "size": 0,
+       "requests": {},
+       "faces": [
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           1,
+           1
+          ]
+         ],
+         "margin": 1.4604711399458725,
+         "h": 0.5586176771478603,
+         "angle": 21.907067099188087,
+         "shape": 0.4547853267239617,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.71875,
+           0.875
+          ]
+         ],
+         "margin": 0.21685446434453395,
+         "h": 0.46463855397376425,
+         "angle": 3.2528169651680092,
+         "shape": 0.09668554390091698,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.6875,
+           0.875
+          ]
+         ],
+         "margin": 0.2855703980750139,
+         "h": 0.40540099537051955,
+         "angle": 4.2835559711252085,
+         "shape": 0.12665791484452182,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.625,
+           0.875
+          ],
+          [
+           0.65625,
+           0.875
+          ]
+         ],
+         "margin": 0.3862951820132467,
+         "h": 0.3484593631265832,
+         "angle": 5.7944277301987,
+         "shape": 0.17009394619327886,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.59375,
+           0.875
+          ],
+          [
+           0.625,
+           0.875
+          ]
+         ],
+         "margin": 0.5357856893311961,
+         "h": 0.2959115430065651,
+         "angle": 8.036785339967942,
+         "shape": 0.23360592509571979,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.75,
+           0.875
+          ],
+          [
+           1,
+           1
+          ]
+         ],
+         "margin": 0.1865323955303727,
+         "h": 0.4987742537655707,
+         "angle": 2.7979859329555907,
+         "shape": 0.08337838522092753,
+         "requests": {}
+        }
+       ]
+      },
+      "best_size": {
+       "count": 6,
+       "shape": 0.1865323955303727,
+       "size": 0,
+       "requests": {},
+       "faces": [
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           1,
+           1
+          ]
+         ],
+         "margin": 1.4604711399458725,
+         "h": 0.5586176771478603,
+         "angle": 21.907067099188087,
+         "shape": 0.4547853267239617,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.6875,
+           0.875
+          ],
+          [
+           0.71875,
+           0.875
+          ]
+         ],
+         "margin": 0.21685446434453395,
+         "h": 0.46463855397376425,
+         "angle": 3.2528169651680092,
+         "shape": 0.09668554390091698,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.65625,
+           0.875
+          ],
+          [
+           0.6875,
+           0.875
+          ]
+         ],
+         "margin": 0.2855703980750139,
+         "h": 0.40540099537051955,
+         "angle": 4.2835559711252085,
+         "shape": 0.12665791484452182,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.625,
+           0.875
+          ],
+          [
+           0.65625,
+           0.875
+          ]
+         ],
+         "margin": 0.3862951820132467,
+         "h": 0.3484593631265832,
+         "angle": 5.7944277301987,
+         "shape": 0.17009394619327886,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.5,
+           1
+          ],
+          [
+           0.59375,
+           0.875
+          ],
+          [
+           0.625,
+           0.875
+          ]
+         ],
+         "margin": 0.5357856893311961,
+         "h": 0.2959115430065651,
+         "angle": 8.036785339967942,
+         "shape": 0.23360592509571979,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.71875,
+           0.875
+          ],
+          [
+           0.75,
+           0.875
+          ],
+          [
+           1,
+           1
+          ]
+         ],
+         "margin": 0.1865323955303727,
+         "h": 0.4987742537655707,
+         "angle": 2.7979859329555907,
+         "shape": 0.08337838522092753,
+         "requests": {}
+        }
+       ]
+      },
+      "best_joint": null
+     }
+    ]
+   },
+   "ribbed-sized": {
+    "inside": [
+     84,
+     85
+    ],
+    "neighbors": [
+     6,
+     7,
+     64
+    ],
+    "variants": [
+     {
+      "extra": [
+       6
+      ],
+      "status": "checked",
+      "ring": [
+       [
+        0.6876258724369109,
+        0
+       ],
+       [
+        0.7501373123377562,
+        0
+       ],
+       [
+        0.8125,
+        0.0625
+       ],
+       [
+        0.78125,
+        0.0625
+       ],
+       [
+        0.75,
+        0.0625
+       ],
+       [
+        0.7188815923873335,
+        0.03125
+       ]
+      ],
+      "baseline_count": 3,
+      "requests": [
+       [
+        "503",
+        [
+         0.7375823874026537,
+         0.05
+        ],
+        0.33409303105550897
+       ]
+      ],
+      "closures": 7,
+      "shape_ok": 0,
+      "size_ok": 7,
+      "joint": 0,
+      "best_shape": {
+       "count": 4,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.6876258724369109,
+           0
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 3.3263771059346836,
+         "h": 0.2959806480518396,
+         "angle": 49.895656589020255,
+         "shape": 0.9771142219187264,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276387,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        }
+       ]
+      },
+      "best_size": {
+       "count": 4,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.6876258724369109,
+           0
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 3.3263771059346836,
+         "h": 0.2959806480518396,
+         "angle": 49.895656589020255,
+         "shape": 0.9771142219187264,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276387,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        }
+       ]
+      },
+      "best_joint": null
+     },
+     {
+      "extra": [
+       7
+      ],
+      "status": "checked",
+      "ring": [
+       [
+        0.7188815923873335,
+        0.03125
+       ],
+       [
+        0.7501373123377562,
+        0
+       ],
+       [
+        0.8751296578016081,
+        0
+       ],
+       [
+        0.84375,
+        0.0625
+       ],
+       [
+        0.8125,
+        0.0625
+       ],
+       [
+        0.78125,
+        0.0625
+       ],
+       [
+        0.75,
+        0.0625
+       ]
+      ],
+      "baseline_count": 3,
+      "requests": [
+       [
+        "503",
+        [
+         0.7375823874026537,
+         0.05
+        ],
+        0.33409303105550897
+       ]
+      ],
+      "closures": 21,
+      "shape_ok": 0,
+      "size_ok": 20,
+      "joint": 0,
+      "best_shape": {
+       "count": 4,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        },
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276386,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8751296578016081,
+           0
+          ],
+          [
+           0.84375,
+           0.0625
+          ],
+          [
+           0.8125,
+           0.0625
+          ]
+         ],
+         "margin": 2.8631807109881,
+         "h": 0.5223951841408401,
+         "angle": 64.42156599723225,
+         "shape": 0.8995098798545801,
+         "requests": {}
+        }
+       ]
+      },
+      "best_size": {
+       "count": 4,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        },
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276386,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8751296578016081,
+           0
+          ],
+          [
+           0.84375,
+           0.0625
+          ],
+          [
+           0.8125,
+           0.0625
+          ]
+         ],
+         "margin": 2.8631807109881,
+         "h": 0.5223951841408401,
+         "angle": 64.42156599723225,
+         "shape": 0.8995098798545801,
+         "requests": {}
+        }
+       ]
+      },
+      "best_joint": null
+     },
+     {
+      "extra": [
+       64
+      ],
+      "status": "checked",
+      "ring": [
+       [
+        0.71875,
+        0.0625
+       ],
+       [
+        0.7188815923873335,
+        0.03125
+       ],
+       [
+        0.7501373123377562,
+        0
+       ],
+       [
+        0.8125,
+        0.0625
+       ],
+       [
+        0.78125,
+        0.0625
+       ],
+       [
+        0.75,
+        0.0625
+       ]
+      ],
+      "baseline_count": 3,
+      "requests": [
+       [
+        "503",
+        [
+         0.7375823874026537,
+         0.05
+        ],
+        0.33409303105550897
+       ]
+      ],
+      "closures": 5,
+      "shape_ok": 0,
+      "size_ok": 4,
+      "joint": 0,
+      "best_shape": {
+       "count": 4,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.71875,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.75,
+           0.0625
+          ]
+         ],
+         "margin": 1.6961839649126944,
+         "h": 0.26238447146642135,
+         "angle": 25.442759473690415,
+         "shape": 0.671749730667195,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        },
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276386,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        }
+       ]
+      },
+      "best_size": {
+       "count": 4,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.71875,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.75,
+           0.0625
+          ]
+         ],
+         "margin": 1.6961839649126944,
+         "h": 0.26238447146642135,
+         "angle": 25.442759473690415,
+         "shape": 0.671749730667195,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        },
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276386,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        }
+       ]
+      },
+      "best_joint": null
+     },
+     {
+      "extra": [
+       6,
+       7
+      ],
+      "status": "checked",
+      "ring": [
+       [
+        0.6876258724369109,
+        0
+       ],
+       [
+        0.7501373123377562,
+        0
+       ],
+       [
+        0.8751296578016081,
+        0
+       ],
+       [
+        0.84375,
+        0.0625
+       ],
+       [
+        0.8125,
+        0.0625
+       ],
+       [
+        0.78125,
+        0.0625
+       ],
+       [
+        0.75,
+        0.0625
+       ],
+       [
+        0.7188815923873335,
+        0.03125
+       ]
+      ],
+      "baseline_count": 4,
+      "requests": [
+       [
+        "503",
+        [
+         0.7375823874026537,
+         0.05
+        ],
+        0.33409303105550897
+       ]
+      ],
+      "closures": 34,
+      "shape_ok": 0,
+      "size_ok": 33,
+      "joint": 0,
+      "best_shape": {
+       "count": 5,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.6876258724369109,
+           0
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 3.3263771059346836,
+         "h": 0.2959806480518396,
+         "angle": 49.895656589020255,
+         "shape": 0.9771142219187264,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276387,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8751296578016081,
+           0
+          ],
+          [
+           0.84375,
+           0.0625
+          ],
+          [
+           0.8125,
+           0.0625
+          ]
+         ],
+         "margin": 2.8631807109881,
+         "h": 0.5223951841408401,
+         "angle": 64.42156599723225,
+         "shape": 0.8995098798545801,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        }
+       ]
+      },
+      "best_size": {
+       "count": 5,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.6876258724369109,
+           0
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 3.3263771059346836,
+         "h": 0.2959806480518396,
+         "angle": 49.895656589020255,
+         "shape": 0.9771142219187264,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276387,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8751296578016081,
+           0
+          ],
+          [
+           0.84375,
+           0.0625
+          ],
+          [
+           0.8125,
+           0.0625
+          ]
+         ],
+         "margin": 2.8631807109881,
+         "h": 0.5223951841408401,
+         "angle": 64.42156599723225,
+         "shape": 0.8995098798545801,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        }
+       ]
+      },
+      "best_joint": null
+     },
+     {
+      "extra": [
+       6,
+       64
+      ],
+      "status": "checked",
+      "ring": [
+       [
+        0.6876258724369109,
+        0
+       ],
+       [
+        0.7501373123377562,
+        0
+       ],
+       [
+        0.8125,
+        0.0625
+       ],
+       [
+        0.78125,
+        0.0625
+       ],
+       [
+        0.75,
+        0.0625
+       ],
+       [
+        0.71875,
+        0.0625
+       ],
+       [
+        0.7188815923873335,
+        0.03125
+       ]
+      ],
+      "baseline_count": 4,
+      "requests": [
+       [
+        "503",
+        [
+         0.7375823874026537,
+         0.05
+        ],
+        0.33409303105550897
+       ]
+      ],
+      "closures": 8,
+      "shape_ok": 0,
+      "size_ok": 7,
+      "joint": 0,
+      "best_shape": {
+       "count": 5,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.6876258724369109,
+           0
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 3.3263771059346836,
+         "h": 0.2959806480518396,
+         "angle": 49.895656589020255,
+         "shape": 0.9771142219187264,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276387,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        },
+        {
+         "points": [
+          [
+           0.75,
+           0.0625
+          ],
+          [
+           0.71875,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 1.6961839649126944,
+         "h": 0.26238447146642135,
+         "angle": 25.442759473690415,
+         "shape": 0.671749730667195,
+         "requests": {}
+        }
+       ]
+      },
+      "best_size": {
+       "count": 5,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.6876258724369109,
+           0
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 3.3263771059346836,
+         "h": 0.2959806480518396,
+         "angle": 49.895656589020255,
+         "shape": 0.9771142219187264,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276387,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        },
+        {
+         "points": [
+          [
+           0.75,
+           0.0625
+          ],
+          [
+           0.71875,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ]
+         ],
+         "margin": 1.6961839649126944,
+         "h": 0.26238447146642135,
+         "angle": 25.442759473690415,
+         "shape": 0.671749730667195,
+         "requests": {}
+        }
+       ]
+      },
+      "best_joint": null
+     },
+     {
+      "extra": [
+       7,
+       64
+      ],
+      "status": "checked",
+      "ring": [
+       [
+        0.71875,
+        0.0625
+       ],
+       [
+        0.7188815923873335,
+        0.03125
+       ],
+       [
+        0.7501373123377562,
+        0
+       ],
+       [
+        0.8751296578016081,
+        0
+       ],
+       [
+        0.84375,
+        0.0625
+       ],
+       [
+        0.8125,
+        0.0625
+       ],
+       [
+        0.78125,
+        0.0625
+       ],
+       [
+        0.75,
+        0.0625
+       ]
+      ],
+      "baseline_count": 4,
+      "requests": [
+       [
+        "503",
+        [
+         0.7375823874026537,
+         0.05
+        ],
+        0.33409303105550897
+       ]
+      ],
+      "closures": 28,
+      "shape_ok": 0,
+      "size_ok": 20,
+      "joint": 0,
+      "best_shape": {
+       "count": 5,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.71875,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.75,
+           0.0625
+          ]
+         ],
+         "margin": 1.6961839649126944,
+         "h": 0.26238447146642135,
+         "angle": 25.442759473690415,
+         "shape": 0.671749730667195,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        },
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276386,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8751296578016081,
+           0
+          ],
+          [
+           0.84375,
+           0.0625
+          ],
+          [
+           0.8125,
+           0.0625
+          ]
+         ],
+         "margin": 2.8631807109881,
+         "h": 0.5223951841408401,
+         "angle": 64.42156599723225,
+         "shape": 0.8995098798545801,
+         "requests": {}
+        }
+       ]
+      },
+      "best_size": {
+       "count": 5,
+       "shape": 0.7942733759626461,
+       "size": 0.8710234807372609,
+       "requests": {
+        "503": 0.8710234807372609
+       },
+       "faces": [
+        {
+         "points": [
+          [
+           0.71875,
+           0.0625
+          ],
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.75,
+           0.0625
+          ]
+         ],
+         "margin": 1.6961839649126944,
+         "h": 0.26238447146642135,
+         "angle": 25.442759473690415,
+         "shape": 0.671749730667195,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.78125,
+           0.0625
+          ],
+          [
+           0.75,
+           0.0625
+          ]
+         ],
+         "margin": 1.2050425667266027,
+         "h": 0.29100287480003123,
+         "angle": 18.07563850089904,
+         "shape": 0.4891846894734283,
+         "requests": {
+          "503": 0.8710234807372609
+         }
+        },
+        {
+         "points": [
+          [
+           0.7188815923873335,
+           0.03125
+          ],
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 2.0166321982001447,
+         "h": 0.363125415153808,
+         "angle": 30.249482973002173,
+         "shape": 0.6684159082276386,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8125,
+           0.0625
+          ],
+          [
+           0.78125,
+           0.0625
+          ]
+         ],
+         "margin": 0.7942733759626461,
+         "h": 0.5463645668462057,
+         "angle": 11.914100639439692,
+         "shape": 0.34814583697917106,
+         "requests": {}
+        },
+        {
+         "points": [
+          [
+           0.7501373123377562,
+           0
+          ],
+          [
+           0.8751296578016081,
+           0
+          ],
+          [
+           0.84375,
+           0.0625
+          ],
+          [
+           0.8125,
+           0.0625
+          ]
+         ],
+         "margin": 2.8631807109881,
+         "h": 0.5223951841408401,
+         "angle": 64.42156599723225,
+         "shape": 0.8995098798545801,
+         "requests": {}
+        }
+       ]
+      },
+      "best_joint": null
+     }
+    ]
+   }
+  },
+  "verification": {
+   "late_alternatives": 67,
+   "earlier_alternatives": 87,
+   "alternate_point_placements": 28,
+   "expanded_fixed_layouts": {
+    "curva": 12,
+    "ribbed-sized": 103
+   },
+   "excluded_early_ribbed": {
+    "start_operation": 7,
+    "first_mismatch": 55,
+    "replay": [
+     268,
+     46,
+     435
+    ],
+    "archive": [
+     268,
+     46,
+     491,
+     130
+    ],
+    "same_active": true
+   }
+  }
+ },
+ "full_native_candidate_generation": false,
+ "mixed_adaptive_epochs": 0
+}
