@@ -4978,3 +4978,18 @@ The proposed next comparisons use the unsplit CurvaBezier curve
 interval 0 and the available level-4 Ribbed leaf split. Scientific
 alignment was requested. No new native run or accepted mixed epoch.
 [Bounded replay and handoff](FRONT_SIZE_OPTIONS_REPLAY_20261125.md).
+
+
+## 2026-11-25 Fortaleza - compare native arc and follow-up leaf subdivisions
+
+Draft PR 291 at 4d6db5f2 realizes the additional Ribbed leaf split
+and meets request 478 with a QUAD, at seven extra faces and 1.20
+percent lower geometric RMS. Three new transition TRI and one
+interior TRI miss the shape floor at birth. The CurvaBezier arc
+split retains 731 faces and fails both target sizes, with a worse
+target QUAD angle. Both exact matched controls, four native
+refusals, curve contracts, 21 Python tests and direct article
+rollback pass. Both candidates remain blocked and zero mixed
+epochs are admitted. Inspect a coupled contour/seed action using
+physical arc and edge lengths before the next scientific change.
+[Native results and evidence](NATIVE_REQUEST_REFINEMENT_TRIAL_20261125.md).

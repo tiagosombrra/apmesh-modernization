@@ -85,8 +85,11 @@ at birth from the persistent angle failure in the read-only edge split.
 The cross-model archive replay also finds oversized front-created
 faces before smoothing in both models. The [existing front-choice
 replay](FRONT_SIZE_OPTIONS_REPLAY_20261125.md) finds zero simultaneous size and shape matches at
-the selected states. Align matched native subdivisions that change
-the vertices entering the transition, retaining the fixed profile.
+the selected states. The [matched native subdivision trial](NATIVE_REQUEST_REFINEMENT_TRIAL_20261125.md)
+realizes the Ribbed request within budget, at the cost of additional
+sub-floor TRI already at birth. The CurvaBezier arc edit fails to
+realize its requests. Project coupled contour and seed sizing before
+selecting another native action under the fixed profile.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

@@ -12,6 +12,25 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - run the two native subdivisions at oversized requests
+
+[Draft PR 291](https://github.com/tiagosombrra/apmesh-modernization/pull/291)
+at `4d6db5f2a6459fafa3d2322199cb1670d03b88dc` allows one follow-up native size-request leaf split
+under the existing cap. Ribbed request 478 is met (0.951 to 0.194,
+target 0.383) at 540 faces. Geometry RMS improves 1.20 percent.
+Three more transition TRI and one interior TRI fall below the angle
+floor at birth. The CurvaBezier arc split keeps 731 faces but leaves
+both size requests oversized and worsens their local QUAD angle.
+Both admitted-candidate checks remain blocked. The two exact controls,
+four refusals, original curves, 21 Python checks and native article
+rollback pass. [Matched native results and limits](NATIVE_REQUEST_REFINEMENT_TRIAL_20261125.md).
+
+**Next:** model a coordinated native contour/seed action with the
+existing physical grading and face budget. Bind it to the new Ribbed
+strip and the CurvaBezier corner before aligning a native rule.
+Zero accepted mixed epochs. Shared curves, owner reentry, reserved
+cases, global mixed curvature and full closure remain open.
+
 ### 2026-11-25 - replay existing front choices at oversized requests
 
 The [two-case replay](FRONT_SIZE_OPTIONS_REPLAY_20261125.md) finds zero size-and-shape
