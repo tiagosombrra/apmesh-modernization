@@ -12,6 +12,24 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - execute the two additional certified contour splits
+
+[Draft PR 289](https://github.com/tiagosombrra/apmesh-modernization/pull/289)
+at `e0380de2e6517be03eda18743b8caf158670e90c` retains all 24 Ribbed samples
+and adds two native points. The batch has 533 faces and raises the
+minimum transition angle from 8.063° to 11.968°. Two targeted footprints
+are covered by QUAD. Ten transition TRI remain below a floor and RMS
+rises 0.25 percent. Both native controls and five refusal cases pass.
+The direct article rollback check stops at a Windows output rename
+before its intended rejection. [Batch evidence](CERTIFIED_CHILD_CURVE_BATCH_20261125.md).
+
+**Next:** align a protected group trial at the limiting edge. Its one
+blocking capped request is currently met on both incident faces.
+Verify all affected requested sizes after reconstruction and retain
+the frozen budget, geometry and shape gates. Zero accepted mixed
+epochs. Shared curves, owner reentry, reserved cases and global
+mixed curvature remain open.
+
 ### 2026-11-25 - map affordable actions for the remaining Ribbed transition TRI
 
 [Draft PR 288](https://github.com/tiagosombrra/apmesh-modernization/pull/288)

@@ -76,9 +76,11 @@ The [certified child trial](CERTIFIED_CHILD_CURVE_TRIAL_20261125.md)
 reaches the previous worst Ribbed TRI and preserves the budget and
 contour. The [transition interface map](TRANSITION_INTERFACE_MAP_20261125.md)
 finds no direct seed-edge removal in the checked protected groups.
-A projected two-child batch fits the face budget. Align support
-for the extra certified requests before a combined native trial
-and reserved validation.
+The [native child batch](CERTIFIED_CHILD_CURVE_BATCH_20261125.md) preserves
+24 samples and the face budget while raising the worst transition
+angle to 11.968°. The remaining limit is adjacent to a protected
+size request. Align a measured size-preservation check before
+a group trial and reserved validation.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

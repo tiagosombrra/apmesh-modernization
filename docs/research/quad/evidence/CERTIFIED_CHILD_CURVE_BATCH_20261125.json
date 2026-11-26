@@ -1,0 +1,1948 @@
+{
+ "schema": "apmesh.quad.certified_child_batch_trial.v1",
+ "revision": "e0380de2e6517be03eda18743b8caf158670e90c",
+ "tree": "9a4b5faa8a8dd2c2bf2e94295c0ceddc3fdbc3e5",
+ "base_revision": "49bd07ac2a53cf430ce28a6999bc4ad65dd08602",
+ "executable_sha256": "1c21316406c737d7037b826a3c9c6742c873a84eafabc0aac33ae190c0cdc5ea",
+ "compiler": "MSVC 19.44 x64 C++17 Debug",
+ "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+ "processes": {
+  "build": {
+   "exit": 0,
+   "seconds": 16.247496366500854,
+   "timeout": 300
+  },
+  "batch": {
+   "exit": 0,
+   "seconds": 37.3087739944458,
+   "timeout": 240
+  },
+  "v2-control": {
+   "exit": 0,
+   "seconds": 36.944857597351074,
+   "timeout": 240
+  },
+  "v1-control": {
+   "exit": 0,
+   "seconds": 31.892483711242676,
+   "timeout": 240
+  },
+  "invalid-child": {
+   "exit": 0,
+   "seconds": 0.2906970977783203,
+   "timeout": 240
+  },
+  "duplicate": {
+   "exit": 0,
+   "seconds": 0.29282450675964355,
+   "timeout": 240
+  },
+  "over-cap": {
+   "exit": 0,
+   "seconds": 0.3136098384857178,
+   "timeout": 240
+  },
+  "missing-parent": {
+   "exit": 0,
+   "seconds": 0.29526782035827637,
+   "timeout": 240
+  },
+  "missing-proof": {
+   "exit": 0,
+   "seconds": 0.38819003105163574,
+   "timeout": 240
+  },
+  "article-rollback": {
+   "exit": 1,
+   "seconds": 36.8682279586792,
+   "timeout": 240
+  }
+ },
+ "commands": {
+  "build": [
+   "cmake",
+   "--build",
+   "build/quad-grouping-runner-results/msvc",
+   "--target",
+   "ap_mesh",
+   "quad_real_boundary_source_contracts",
+   "--config",
+   "Debug",
+   "--parallel",
+   "4"
+  ],
+  "batch": [
+   "python",
+   "build/quad-child-curve-batch-20261125/run.py",
+   "batch"
+  ],
+  "v2-control": [
+   "python",
+   "build/quad-child-curve-batch-20261125/run.py",
+   "v2-control"
+  ],
+  "v1-control": [
+   "python",
+   "build/quad-child-curve-batch-20261125/run.py",
+   "v1-control"
+  ],
+  "invalid-child": [
+   "python",
+   "build/quad-child-curve-batch-20261125/run.py",
+   "invalid-child"
+  ],
+  "duplicate": [
+   "python",
+   "build/quad-child-curve-batch-20261125/run.py",
+   "duplicate"
+  ],
+  "over-cap": [
+   "python",
+   "build/quad-child-curve-batch-20261125/run.py",
+   "over-cap"
+  ],
+  "missing-parent": [
+   "python",
+   "build/quad-child-curve-batch-20261125/run.py",
+   "missing-parent"
+  ],
+  "missing-proof": [
+   "python",
+   "build/quad-child-curve-batch-20261125/run.py",
+   "missing-proof"
+  ],
+  "article-rollback": [
+   "python",
+   "tests/quad/test_article_front_application.py",
+   "--exe",
+   "../quad-child-curve-batch-20261125/ap_mesh.exe",
+   "--directory",
+   "../quad-child-curve-batch-20261125/article-contract"
+  ]
+ },
+ "controls": {
+  "v2-control": {
+   "grouped_parents.json": "3baddf812273f1ac4a771318c333b1a7c33ff7628409e4599d4597d09fa69520",
+   "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b",
+   "leaves.csv": "4bef4a7cca03c39bbd61408fe4adc939a2cc310bd8170094a935ada672a182ba",
+   "candidate.obj": "5b76c4978f83673f56decc44b475827a3b225cf8a52baf90c85ed5085d133e75",
+   "boundary_refinement.json": "f4c5a5272d1f25b3bde8f6060ac8ec479e374edae152799baf7a4d7472d9f5c6",
+   "candidate_front/front.json": "963a53817468b606ab69290ebc66e463223c2678a0412fe7030ac411f0f56424",
+   "smoothing_comparison/before.obj": "43822b4faa9210b2e568fa795ccf15a5d400e0125519113990e76e73a55d1c02",
+   "result.txt": "8613860b798ab2aeea4a20eca0284dacf783c3c22b49db4beb7193d3c0c8f373"
+  },
+  "v1-control": {
+   "grouped_parents.json": "3baddf812273f1ac4a771318c333b1a7c33ff7628409e4599d4597d09fa69520",
+   "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b",
+   "leaves.csv": "4bef4a7cca03c39bbd61408fe4adc939a2cc310bd8170094a935ada672a182ba",
+   "candidate.obj": "9d75819814aea5d9ffb06851f69f01e788507261ba998cf6e8624d39b3d43358",
+   "boundary_refinement.json": "7d5e7778f95659441d1110d3472dd333e9f921d042efe5d8eba2466e67d30c32",
+   "candidate_front/front.json": "7d960b38aa98123b63e75369c970fade3b563bc258adc9085e028430464759c9",
+   "smoothing_comparison/before.obj": "6a5ce9eb953fe4e08d9cd47d0044b06c15d7262268b563772c1e4a60223d8d07",
+   "result.txt": "da65c91fb2b8c8be6a9968ec14896aee77508c84d4767bc13dd0c477be388092"
+  }
+ },
+ "refusals": {
+  "invalid-child": {
+   "code": 4294967295,
+   "reason": "Invalid or repeated single-patch child curve request",
+   "plan_sha256": "dff1e0cfd1a8fe05d2b1070d426e64982f88fe8c6743263b870ab6fa4a6fb5ba",
+   "source_sha256": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "stderr_sha256": "11508e1d066ef34421d2f251340e3803ddde05a548d5c4e100ff79b29cdaa87f"
+  },
+  "duplicate": {
+   "code": 4294967295,
+   "reason": "Invalid or repeated single-patch child curve request",
+   "plan_sha256": "de19928d6313467b21c8f5d3cea7f92c3bf81fb20ec4498cc7a928ebdf9808f1",
+   "source_sha256": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "stderr_sha256": "11508e1d066ef34421d2f251340e3803ddde05a548d5c4e100ff79b29cdaa87f"
+  },
+  "over-cap": {
+   "code": 4294967295,
+   "reason": "Single-patch child curve request limit exceeded",
+   "plan_sha256": "570bed660aeafc371d439681d3b9f29fc0a9f1e678a71ccb2dd1d4f6a8b3d44a",
+   "source_sha256": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "stderr_sha256": "5932157a5a333fedc06385f59efd97c7bd2444a328fc501b8025947dfd1e56fb"
+  },
+  "missing-parent": {
+   "code": 4294967295,
+   "reason": "Child curve requests require one certified parent split",
+   "plan_sha256": "57790a6a2dba480f5c0ae9d65d5f22da7a3523d828e83b258364e4a82686974d",
+   "source_sha256": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "stderr_sha256": "3e5ebe922eb5b09e0d50f74dd41f57f33743379363e5885d85e2a48ae2aac814"
+  },
+  "missing-proof": {
+   "code": 4294967295,
+   "reason": "Child curve requests require one certified parent split",
+   "plan_sha256": "f3362cd13a149e2f7a0c26879e8bf791d10204290304c2569f4e300a7bb6ea01",
+   "source_sha256": {
+    "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+    "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+    "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+   },
+   "stderr_sha256": "3e5ebe922eb5b09e0d50f74dd41f57f33743379363e5885d85e2a48ae2aac814"
+  }
+ },
+ "failed_rollback": {
+  "reason": "Windows denied final pending-baseline-directory rename",
+  "expected_marker_present": false,
+  "stderr_sha256": "a9fb91a9f5f95983f4a3719456822368312c299cab00cfce615068c01a8faab9",
+  "stdout_sha256": "1a00fa3b4855540a6d500c5f4be588180e9492fbb155a6e98271b3726c1e05d7"
+ },
+ "certificate": {
+  "schema": "apmesh.quad.boundary_refinement.v3",
+  "parent_sites": 14,
+  "candidate_sites": 26,
+  "splits": [
+   {
+    "parent_interval": 1,
+    "start_id": 26,
+    "end_id": 27,
+    "inserted_id": 551,
+    "side": 0,
+    "parameter": 0.375053402967751
+   },
+   {
+    "parent_interval": 2,
+    "start_id": 27,
+    "end_id": 28,
+    "inserted_id": 552,
+    "side": 0,
+    "parameter": 0.6251144325360656
+   },
+   {
+    "parent_interval": 3,
+    "start_id": 28,
+    "end_id": 24,
+    "inserted_id": 553,
+    "side": 0,
+    "parameter": 0.8751296578016081
+   },
+   {
+    "parent_interval": 4,
+    "start_id": 24,
+    "end_id": 31,
+    "inserted_id": 554,
+    "side": 1,
+    "parameter": 0.1222207817090748
+   },
+   {
+    "parent_interval": 5,
+    "start_id": 31,
+    "end_id": 32,
+    "inserted_id": 555,
+    "side": 1,
+    "parameter": 0.3757121461353563
+   },
+   {
+    "parent_interval": 6,
+    "start_id": 32,
+    "end_id": 33,
+    "inserted_id": 556,
+    "side": 1,
+    "parameter": 0.6248056355254903
+   },
+   {
+    "parent_interval": 7,
+    "start_id": 33,
+    "end_id": 29,
+    "inserted_id": 557,
+    "side": 1,
+    "parameter": 0.8783512883289859
+   },
+   {
+    "parent_interval": 8,
+    "start_id": 29,
+    "end_id": 35,
+    "inserted_id": 558,
+    "side": 2,
+    "parameter": 0.75
+   },
+   {
+    "parent_interval": 9,
+    "start_id": 35,
+    "end_id": 34,
+    "inserted_id": 559,
+    "side": 2,
+    "parameter": 0.25
+   }
+  ],
+  "intermediate_sites": 23,
+  "child_splits": [
+   {
+    "request": {
+     "interval": 8,
+     "child": 0
+    },
+    "split": {
+     "parent_interval": 15,
+     "start_id": 29,
+     "end_id": 558,
+     "inserted_id": 560,
+     "side": 2,
+     "parameter": 0.875
+    }
+   },
+   {
+    "request": {
+     "interval": 8,
+     "child": 1
+    },
+    "split": {
+     "parent_interval": 17,
+     "start_id": 558,
+     "end_id": 35,
+     "inserted_id": 561,
+     "side": 2,
+     "parameter": 0.625
+    }
+   },
+   {
+    "request": {
+     "interval": 2,
+     "child": 1
+    },
+    "split": {
+     "parent_interval": 4,
+     "start_id": 552,
+     "end_id": 28,
+     "inserted_id": 562,
+     "side": 0,
+     "parameter": 0.6876258724369109
+    }
+   }
+  ]
+ },
+ "certificate_sha256": "e8fbec581f412c7cb45dcf63d73067a99e113ffd659c0a7c8f7ab10194a6e32e",
+ "comparison": {
+  "source_sha256": {
+   "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+   "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+   "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+  },
+  "comparison": {
+   "control": {
+    "grids": {
+     "24": {
+      "faces": 533,
+      "global_error": {
+       "sample_count": 576,
+       "max_xyz": 0.10278111763359259,
+       "rms_uv": 0.02024656481204522,
+       "rms_source_area": 0.020265431989546185,
+       "tri_sites": 77,
+       "quad_sites": 499
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "boundary_segments": 24
+     },
+     "48": {
+      "faces": 533,
+      "global_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.10748410563240578,
+       "rms_uv": 0.020285501388316734,
+       "rms_source_area": 0.020301367856610197,
+       "tri_sites": 355,
+       "quad_sites": 1949
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "boundary_segments": 24
+     }
+    },
+    "quality": {
+     "birth": {
+      "interior_QUAD": {
+       "count": 456,
+       "minimum_angle": 26.062329924849276,
+       "minimum_shape": 0.3187473918768228,
+       "below_safety": 0
+      },
+      "contour_edge_TRI": {
+       "count": 6,
+       "minimum_angle": 13.886453205357858,
+       "minimum_shape": 0.40344472657445646,
+       "below_safety": 1
+      },
+      "contour_edge_QUAD": {
+       "count": 17,
+       "minimum_angle": 25.335621873573015,
+       "minimum_shape": 0.4205384262090846,
+       "below_safety": 0
+      },
+      "contour_vertex_TRI": {
+       "count": 37,
+       "minimum_angle": 8.06261087394466,
+       "minimum_shape": 0.23744780952567035,
+       "below_safety": 14
+      },
+      "interior_TRI": {
+       "count": 15,
+       "minimum_angle": 12.53672132968701,
+       "minimum_shape": 0.3648603604889334,
+       "below_safety": 2
+      },
+      "contour_vertex_QUAD": {
+       "count": 2,
+       "minimum_angle": 43.44077822153558,
+       "minimum_shape": 0.6799611085434666,
+       "below_safety": 0
+      }
+     },
+     "final": {
+      "interior_QUAD": {
+       "count": 456,
+       "minimum_angle": 26.289863992652087,
+       "minimum_shape": 0.3187473918768228,
+       "below_safety": 0
+      },
+      "contour_edge_QUAD": {
+       "count": 17,
+       "minimum_angle": 25.53551802560636,
+       "minimum_shape": 0.4236259505476368,
+       "below_safety": 0
+      },
+      "contour_vertex_QUAD": {
+       "count": 2,
+       "minimum_angle": 43.44077822153558,
+       "minimum_shape": 0.6636177057726924,
+       "below_safety": 0
+      },
+      "contour_edge_TRI": {
+       "count": 6,
+       "minimum_angle": 17.942810055402088,
+       "minimum_shape": 0.5046060809078451,
+       "below_safety": 0
+      },
+      "contour_vertex_TRI": {
+       "count": 37,
+       "minimum_angle": 8.06261087394466,
+       "minimum_shape": 0.23744780952567035,
+       "below_safety": 11
+      },
+      "interior_TRI": {
+       "count": 15,
+       "minimum_angle": 18.564257167560097,
+       "minimum_shape": 0.4373188570045186,
+       "below_safety": 0
+      }
+     }
+    },
+    "admission": {
+     "status": "blocked",
+     "blockers": [
+      "contour_edge_TRI.min_angle_deg.regional_regression",
+      "contour_edge_QUAD.min_angle_deg.regional_regression",
+      "contour_edge_QUAD.min_shape.regional_regression",
+      "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+      "contour_vertex_QUAD.min_angle_deg.regional_regression",
+      "interior_TRI.min_angle_deg.regional_regression",
+      "interior_QUAD.min_angle_deg.regional_regression",
+      "interior_QUAD.min_shape.regional_regression"
+     ],
+     "face_growth": -0.025594149908592323
+    },
+    "plan_sha256": "6e2cf19010779a5a213b86ad1aa64ce0080e0c86c3dd1285a472c97b633f7451",
+    "mesh_sha256": "5b76c4978f83673f56decc44b475827a3b225cf8a52baf90c85ed5085d133e75"
+   },
+   "batch": {
+    "grids": {
+     "24": {
+      "faces": 533,
+      "global_error": {
+       "sample_count": 576,
+       "max_xyz": 0.10278111763359259,
+       "rms_uv": 0.020299226899758153,
+       "rms_source_area": 0.02031953911163063,
+       "tri_sites": 73,
+       "quad_sites": 503
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "boundary_segments": 26
+     },
+     "48": {
+      "faces": 533,
+      "global_error": {
+       "sample_count": 2304,
+       "max_xyz": 0.10748410563240578,
+       "rms_uv": 0.020335270935827387,
+       "rms_source_area": 0.0203524772220713,
+       "tri_sites": 341,
+       "quad_sites": 1963
+      },
+      "max_adjacent_size_ratio": 4.837826816471032,
+      "boundary_segments": 26
+     }
+    },
+    "quality": {
+     "birth": {
+      "interior_QUAD": {
+       "count": 456,
+       "minimum_angle": 26.062329924849276,
+       "minimum_shape": 0.3187473918768228,
+       "below_safety": 0
+      },
+      "contour_edge_TRI": {
+       "count": 5,
+       "minimum_angle": 13.886453205357858,
+       "minimum_shape": 0.40344472657445646,
+       "below_safety": 1
+      },
+      "contour_edge_QUAD": {
+       "count": 20,
+       "minimum_angle": 25.335621873573015,
+       "minimum_shape": 0.4205384262090846,
+       "below_safety": 0
+      },
+      "contour_vertex_TRI": {
+       "count": 36,
+       "minimum_angle": 11.967772407811895,
+       "minimum_shape": 0.3497158082809553,
+       "below_safety": 13
+      },
+      "interior_TRI": {
+       "count": 15,
+       "minimum_angle": 12.53672132968701,
+       "minimum_shape": 0.3648603604889334,
+       "below_safety": 2
+      },
+      "contour_vertex_QUAD": {
+       "count": 1,
+       "minimum_angle": 43.490064287363616,
+       "minimum_shape": 0.6804197460981606,
+       "below_safety": 0
+      }
+     },
+     "final": {
+      "interior_QUAD": {
+       "count": 456,
+       "minimum_angle": 26.289863992652087,
+       "minimum_shape": 0.3187473918768228,
+       "below_safety": 0
+      },
+      "contour_edge_QUAD": {
+       "count": 20,
+       "minimum_angle": 25.53551802560636,
+       "minimum_shape": 0.4236259505476368,
+       "below_safety": 0
+      },
+      "contour_vertex_QUAD": {
+       "count": 1,
+       "minimum_angle": 43.490064287363616,
+       "minimum_shape": 0.6636177057726924,
+       "below_safety": 0
+      },
+      "contour_edge_TRI": {
+       "count": 5,
+       "minimum_angle": 17.942810055402088,
+       "minimum_shape": 0.5046060809078451,
+       "below_safety": 0
+      },
+      "contour_vertex_TRI": {
+       "count": 36,
+       "minimum_angle": 11.967772407811895,
+       "minimum_shape": 0.3497158082809553,
+       "below_safety": 10
+      },
+      "interior_TRI": {
+       "count": 15,
+       "minimum_angle": 18.564257167560097,
+       "minimum_shape": 0.4373188570045186,
+       "below_safety": 0
+      }
+     }
+    },
+    "admission": {
+     "status": "blocked",
+     "blockers": [
+      "contour_edge_TRI.min_angle_deg.regional_regression",
+      "contour_edge_QUAD.min_angle_deg.regional_regression",
+      "contour_edge_QUAD.min_shape.regional_regression",
+      "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+      "contour_vertex_QUAD.min_angle_deg.regional_regression",
+      "interior_TRI.min_angle_deg.regional_regression",
+      "interior_QUAD.min_angle_deg.regional_regression",
+      "interior_QUAD.min_shape.regional_regression"
+     ],
+     "face_growth": -0.025594149908592323
+    },
+    "plan_sha256": "6e82dd3d5f30e9c83c68bf9a987f44e6510abc4b620dc8847d402dd2f6b06b45",
+    "mesh_sha256": "5a5647b595c73a4b8d23818a202bbba73fbe2bc51c6d317908147143c94753e3"
+   }
+  },
+  "realized_children": [
+   {
+    "request": {
+     "interval": 8,
+     "child": 1
+    },
+    "id": 561,
+    "uv": [
+     0.625,
+     1.0
+    ],
+    "previous_arc": 1.0000000937499998,
+    "new_arcs": [
+     0.5000000351562499,
+     0.50000005859375
+    ]
+   },
+   {
+    "request": {
+     "interval": 2,
+     "child": 1
+    },
+    "id": 562,
+    "uv": [
+     0.6876258724369109,
+     0.0
+    ],
+    "previous_arc": 0.5001081391043714,
+    "new_arcs": [
+     0.25004746234371267,
+     0.2500606767606571
+    ]
+   }
+  ],
+  "footprint_comparison": [
+   {
+    "operation": 24,
+    "original_angle": 13.567747506655751,
+    "still_born": true,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 13.567747506655751,
+       "shape": 0.3949852040201736
+      }
+     },
+     "batch": {
+      "TRI": {
+       "count": 1,
+       "angle": 13.567747506655751,
+       "shape": 0.3949852040201736
+      }
+     }
+    }
+   },
+   {
+    "operation": 46,
+    "original_angle": 12.786895426989378,
+    "still_born": true,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 12.786895426989378,
+       "shape": 0.37406728556575114
+      }
+     },
+     "batch": {
+      "TRI": {
+       "count": 1,
+       "angle": 12.786895426989378,
+       "shape": 0.37406728556575114
+      }
+     }
+    }
+   },
+   {
+    "operation": 47,
+    "original_angle": 12.961598234838917,
+    "still_born": true,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 12.961598234838917,
+       "shape": 0.37473927001730356
+      }
+     },
+     "batch": {
+      "TRI": {
+       "count": 1,
+       "angle": 12.961598234838917,
+       "shape": 0.37473927001730356
+      }
+     }
+    }
+   },
+   {
+    "operation": 51,
+    "original_angle": 10.030865307043848,
+    "still_born": false,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 10.030865307043848,
+       "shape": 0.29413964165591555
+      }
+     },
+     "batch": {
+      "QUAD": {
+       "count": 1,
+       "angle": 64.7982381492048,
+       "shape": 0.9025220127245311
+      }
+     }
+    }
+   },
+   {
+    "operation": 53,
+    "original_angle": 8.06261087394466,
+    "still_born": false,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 8.06261087394466,
+       "shape": 0.23744780952567035
+      }
+     },
+     "batch": {
+      "QUAD": {
+       "count": 1,
+       "angle": 64.7982381492048,
+       "shape": 0.9025220127245311
+      },
+      "TRI": {
+       "count": 1,
+       "angle": 13.24777103655883,
+       "shape": 0.3863477748095508
+      }
+     }
+    }
+   },
+   {
+    "operation": 55,
+    "original_angle": 13.234498177721493,
+    "still_born": true,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 13.234498177721493,
+       "shape": 0.3860096812141762
+      }
+     },
+     "batch": {
+      "TRI": {
+       "count": 1,
+       "angle": 13.234498177721493,
+       "shape": 0.3860096812141762
+      }
+     }
+    }
+   },
+   {
+    "operation": 57,
+    "original_angle": 11.967772407811895,
+    "still_born": true,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 11.967772407811895,
+       "shape": 0.3497158082809553
+      }
+     },
+     "batch": {
+      "TRI": {
+       "count": 1,
+       "angle": 11.967772407811895,
+       "shape": 0.3497158082809553
+      }
+     }
+    }
+   },
+   {
+    "operation": 65,
+    "original_angle": 13.25963107536915,
+    "still_born": false,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 13.25963107536915,
+       "shape": 0.38670127259327414
+      }
+     },
+     "batch": {
+      "QUAD": {
+       "count": 1,
+       "angle": 76.60652644878836,
+       "shape": 0.970157458306796
+      }
+     }
+    }
+   },
+   {
+    "operation": 66,
+    "original_angle": 13.260358509497227,
+    "still_born": true,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 13.260358509497227,
+       "shape": 0.38669054939061126
+      }
+     },
+     "batch": {
+      "TRI": {
+       "count": 1,
+       "angle": 13.260358509497227,
+       "shape": 0.38669054939061126
+      }
+     }
+    }
+   },
+   {
+    "operation": 68,
+    "original_angle": 11.96166576168765,
+    "still_born": false,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 11.96166576168765,
+       "shape": 0.34948784363925917
+      }
+     },
+     "batch": {
+      "QUAD": {
+       "count": 1,
+       "angle": 76.72940090691053,
+       "shape": 0.9706249651867651
+      }
+     }
+    }
+   },
+   {
+    "operation": 82,
+    "original_angle": 13.194223012422462,
+    "still_born": true,
+    "footprint": {
+     "control": {
+      "TRI": {
+       "count": 1,
+       "angle": 13.194223012422462,
+       "shape": 0.3848982009125406
+      }
+     },
+     "batch": {
+      "TRI": {
+       "count": 1,
+       "angle": 13.194223012422462,
+       "shape": 0.3848982009125406
+      }
+     }
+    }
+   }
+  ]
+ },
+ "remaining_size_witness": {
+  "operation": 58,
+  "protected": [
+   {
+    "face": 490,
+    "site": [
+     0.75,
+     0.925
+    ],
+    "native_disposition": "capped",
+    "requested_size": 0.6618247159138458,
+    "realized": {
+     "faces": [
+      143,
+      507
+     ],
+     "min_h": 0.19134370695774627,
+     "max_h": 0.500010651558838
+    }
+   }
+  ],
+  "parent": [
+   0.625,
+   0.875,
+   0.75,
+   1.0
+  ],
+  "projected_seed_quads": 446,
+  "would_remove_edge": true,
+  "upper_bound": 548,
+  "native_permission": "blocked_by_protected_requests"
+ },
+ "remaining_projection": {
+  "source_sha256": {
+   "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+   "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+   "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+  },
+  "candidate_sha256": "5a5647b595c73a4b8d23818a202bbba73fbe2bc51c6d317908147143c94753e3",
+  "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+  "face_budget": 601,
+  "current_faces": 533,
+  "retained_child_splits": 3,
+  "transition_triangles": [
+   {
+    "operation": 58,
+    "angle": 11.967772407811895,
+    "birth_angle": 11.967772407811895,
+    "base": [
+     [
+      0.6875,
+      0.9375
+     ],
+     [
+      0.71875,
+      0.9375
+     ]
+    ],
+    "contour_vertex": [
+     0.75,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       0,
+       1
+      ],
+      "operation": 58,
+      "angle": 8.06104735081647,
+      "shape": 0.2374106759856893,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.875,
+        1.0
+       ],
+       [
+        0.75,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.8125,
+       1.0
+      ],
+      "arc_to_base": 3.9999142755087793
+     },
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       1,
+       0
+      ],
+      "operation": 58,
+      "angle": 13.234499025804267,
+      "shape": 0.3859886172704255,
+      "improves_birth": true,
+      "edge": [
+       [
+        0.75,
+        1.0
+       ],
+       [
+        0.625,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.6875,
+       1.0
+      ],
+      "arc_to_base": 3.99991465050075
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.875,
+      0.75,
+      1.0
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      490
+     ]
+    }
+   },
+   {
+    "operation": 48,
+    "angle": 12.786895426989378,
+    "birth_angle": 13.547763119491673,
+    "base": [
+     [
+      0.4375,
+      0.875
+     ],
+     [
+      0.5,
+      0.875
+     ]
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       1,
+       1
+      ],
+      "operation": 48,
+      "angle": 12.191650320116377,
+      "shape": 0.3557241749539669,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.625,
+        1.0
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.5625,
+       1.0
+      ],
+      "arc_to_base": 1.9998903381994992
+     },
+     {
+      "action": [
+       "curve_child",
+       9,
+       0
+      ],
+      "operation": 48,
+      "angle": 12.167705899900206,
+      "shape": 0.35500405441008814,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.25,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.375,
+       1.0
+      ],
+      "arc_to_base": 3.9997805826541493
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.25,
+      0.75,
+      0.5,
+      1.0
+     ],
+     "status": "not_four_original_leaf_children",
+     "protected_requests": []
+    }
+   },
+   {
+    "operation": 49,
+    "angle": 12.961598234838917,
+    "birth_angle": 12.197858218656553,
+    "base": [
+     [
+      0.375,
+      0.875
+     ],
+     [
+      0.4375,
+      0.875
+     ]
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       1,
+       1
+      ],
+      "operation": 49,
+      "angle": 10.15075388509006,
+      "shape": 0.29729971657018195,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.625,
+        1.0
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.5625,
+       1.0
+      ],
+      "arc_to_base": 1.9998903555940895
+     },
+     {
+      "action": [
+       "curve_child",
+       9,
+       0
+      ],
+      "operation": 49,
+      "angle": 13.547764897584045,
+      "shape": 0.3944387005924736,
+      "improves_birth": true,
+      "edge": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.25,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.375,
+       1.0
+      ],
+      "arc_to_base": 3.9997806174433292
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.25,
+      0.75,
+      0.5,
+      1.0
+     ],
+     "status": "not_four_original_leaf_children",
+     "protected_requests": []
+    }
+   },
+   {
+    "operation": 82,
+    "angle": 13.194223012422462,
+    "birth_angle": 13.194223012422462,
+    "base": [
+     [
+      0.875,
+      0.9375
+     ],
+     [
+      0.90625,
+      0.9375
+     ]
+    ],
+    "contour_vertex": [
+     0.875,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       0,
+       0
+      ],
+      "operation": 82,
+      "angle": 11.93861729640539,
+      "shape": 0.34893245401660977,
+      "improves_birth": false,
+      "edge": [
+       [
+        1.0,
+        1.0
+       ],
+       [
+        0.875,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.9375,
+       1.0
+      ],
+      "arc_to_base": 3.9999145201282054
+     },
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       0,
+       1
+      ],
+      "operation": 82,
+      "angle": 9.987042609125853,
+      "shape": 0.29289248990788563,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.875,
+        1.0
+       ],
+       [
+        0.75,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.8125,
+       1.0
+      ],
+      "arc_to_base": 3.999915082616277
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.875,
+      0.875,
+      1.0,
+      1.0
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      480,
+      490,
+      542,
+      543
+     ]
+    }
+   },
+   {
+    "operation": 56,
+    "angle": 13.234498177721493,
+    "birth_angle": 13.234498177721493,
+    "base": [
+     [
+      0.71875,
+      0.9375
+     ],
+     [
+      0.75,
+      0.9375
+     ]
+    ],
+    "contour_vertex": [
+     0.75,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       0,
+       1
+      ],
+      "operation": 56,
+      "angle": 10.025824102665608,
+      "shape": 0.2940070781212379,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.875,
+        1.0
+       ],
+       [
+        0.75,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.8125,
+       1.0
+      ],
+      "arc_to_base": 3.9999143762072404
+     },
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       1,
+       0
+      ],
+      "operation": 56,
+      "angle": 11.944769496584005,
+      "shape": 0.3490392731543654,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.75,
+        1.0
+       ],
+       [
+        0.625,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.6875,
+       1.0
+      ],
+      "arc_to_base": 3.9999147511992206
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.875,
+      0.75,
+      1.0
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      490
+     ]
+    }
+   },
+   {
+    "operation": 65,
+    "angle": 13.24341954882101,
+    "birth_angle": 13.24341954882101,
+    "base": [
+     [
+      0.6875,
+      0.0625
+     ],
+     [
+      0.71875,
+      0.0625
+     ]
+    ],
+    "contour_vertex": [
+     0.6876258724369109,
+     0.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       2,
+       1,
+       0
+      ],
+      "operation": 65,
+      "angle": 11.950318577223454,
+      "shape": 0.3491697031315891,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.6251144325360656,
+        0.0
+       ],
+       [
+        0.6876258724369109,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.6563701524864882,
+       0.0
+      ],
+      "arc_to_base": 2.00019589146385
+     },
+     {
+      "action": [
+       "deeper_interval",
+       2,
+       1,
+       1
+      ],
+      "operation": 65,
+      "angle": 13.259908949745865,
+      "shape": 0.3867035205769845,
+      "improves_birth": true,
+      "edge": [
+       [
+        0.6876258724369109,
+        0.0
+       ],
+       [
+        0.7501373123377562,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.7188815923873335,
+       0.0
+      ],
+      "arc_to_base": 2.0003015970856244
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.0,
+      0.75,
+      0.125
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      477,
+      478,
+      503
+     ]
+    }
+   },
+   {
+    "operation": 54,
+    "angle": 13.24777103655883,
+    "birth_angle": 13.24777103655883,
+    "base": [
+     [
+      0.625,
+      0.9375
+     ],
+     [
+      0.65625,
+      0.9375
+     ]
+    ],
+    "contour_vertex": [
+     0.625,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       1,
+       0
+      ],
+      "operation": 54,
+      "angle": 11.977364105259113,
+      "shape": 0.3499733779286994,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.75,
+        1.0
+       ],
+       [
+        0.625,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.6875,
+       1.0
+      ],
+      "arc_to_base": 3.9999144896921974
+     },
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       1,
+       1
+      ],
+      "operation": 54,
+      "angle": 10.00800507446796,
+      "shape": 0.2934463484978113,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.625,
+        1.0
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.5625,
+       1.0
+      ],
+      "arc_to_base": 3.9999146771881766
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.875,
+      0.75,
+      1.0
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      490
+     ]
+    }
+   },
+   {
+    "operation": 67,
+    "angle": 13.260358509497227,
+    "birth_angle": 13.260358509497227,
+    "base": [
+     [
+      0.625,
+      0.0625
+     ],
+     [
+      0.65625,
+      0.0625
+     ]
+    ],
+    "contour_vertex": [
+     0.6251144325360656,
+     0.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "curve_child",
+       2,
+       0
+      ],
+      "operation": 67,
+      "angle": 10.018552788545353,
+      "shape": 0.2937324182820669,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.500091552734375,
+        0.0
+       ],
+       [
+        0.6251144325360656,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.5626029926352203,
+       0.0
+      ],
+      "arc_to_base": 4.000659564866707
+     },
+     {
+      "action": [
+       "deeper_interval",
+       2,
+       1,
+       0
+      ],
+      "operation": 67,
+      "angle": 13.26432944926239,
+      "shape": 0.38681429335216355,
+      "improves_birth": true,
+      "edge": [
+       [
+        0.6251144325360656,
+        0.0
+       ],
+       [
+        0.6876258724369109,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.6563701524864882,
+       0.0
+      ],
+      "arc_to_base": 2.0003193054541812
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.625,
+      0.0,
+      0.75,
+      0.125
+     ],
+     "status": "protected_requests",
+     "protected_requests": [
+      477,
+      478,
+      503
+     ]
+    }
+   },
+   {
+    "operation": 26,
+    "angle": 13.567747506655751,
+    "birth_angle": 13.567747506655751,
+    "base": [
+     [
+      0.375,
+      0.125
+     ],
+     [
+      0.4375,
+      0.125
+     ]
+    ],
+    "contour_vertex": [
+     0.375053402967751,
+     0.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "curve_child",
+       1,
+       0
+      ],
+      "operation": 26,
+      "angle": 12.197145703518643,
+      "shape": 0.35581338361274933,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.25001525320112705,
+        0.0
+       ],
+       [
+        0.375053402967751,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.31253432808443904,
+       0.0
+      ],
+      "arc_to_base": 2.0006091053467077
+     },
+     {
+      "action": [
+       "curve_child",
+       1,
+       1
+      ],
+      "operation": 26,
+      "angle": 13.563646802529291,
+      "shape": 0.3948860896093487,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.375053402967751,
+        0.0
+       ],
+       [
+        0.500091552734375,
+        0.0
+       ]
+      ],
+      "midpoint": [
+       0.437572477851063,
+       0.0
+      ],
+      "arc_to_base": 2.0006513783096764
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.25,
+      0.0,
+      0.5,
+      0.25
+     ],
+     "status": "not_four_original_leaf_children",
+     "protected_requests": []
+    }
+   },
+   {
+    "operation": 44,
+    "angle": 14.679039599637186,
+    "birth_angle": 13.53007556280803,
+    "base": [
+     [
+      0.5,
+      0.875
+     ],
+     [
+      0.5625,
+      0.875
+     ]
+    ],
+    "contour_vertex": [
+     0.5,
+     1.0
+    ],
+    "curve_actions": [
+     {
+      "action": [
+       "deeper_interval",
+       8,
+       1,
+       1
+      ],
+      "operation": 44,
+      "angle": 13.538949367639065,
+      "shape": 0.39423064072306185,
+      "improves_birth": true,
+      "edge": [
+       [
+        0.625,
+        1.0
+       ],
+       [
+        0.5,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.5625,
+       1.0
+      ],
+      "arc_to_base": 1.9998904148714032
+     },
+     {
+      "action": [
+       "curve_child",
+       9,
+       0
+      ],
+      "operation": 44,
+      "angle": 10.110769359285584,
+      "shape": 0.29612840448156275,
+      "improves_birth": false,
+      "edge": [
+       [
+        0.5,
+        1.0
+       ],
+       [
+        0.25,
+        1.0
+       ]
+      ],
+      "midpoint": [
+       0.375,
+       1.0
+      ],
+      "arc_to_base": 3.9997807359979536
+     }
+    ],
+    "direct_group": {
+     "parent": [
+      0.5,
+      0.75,
+      0.75,
+      1.0
+     ],
+     "status": "not_four_original_leaf_children",
+     "protected_requests": []
+    }
+   }
+  ],
+  "group_parents_examined": 33,
+  "eligible_group_projections": [
+   {
+    "parents": [
+     [
+      0.25,
+      0.25,
+      0.375,
+      0.375
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 535
+   },
+   {
+    "parents": [
+     [
+      0.25,
+      0.5,
+      0.375,
+      0.625
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 535
+   },
+   {
+    "parents": [
+     [
+      0.375,
+      0.375,
+      0.5,
+      0.5
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 531
+   },
+   {
+    "parents": [
+     [
+      0.375,
+      0.625,
+      0.5,
+      0.75
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 535
+   },
+   {
+    "parents": [
+     [
+      0.5,
+      0.25,
+      0.625,
+      0.375
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 537
+   },
+   {
+    "parents": [
+     [
+      0.5,
+      0.5,
+      0.625,
+      0.625
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 529
+   },
+   {
+    "parents": [
+     [
+      0.625,
+      0.375,
+      0.75,
+      0.5
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 541
+   },
+   {
+    "parents": [
+     [
+      0.625,
+      0.625,
+      0.75,
+      0.75
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 547
+   },
+   {
+    "parents": [
+     [
+      0.75,
+      0.375,
+      0.875,
+      0.5
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 552
+   },
+   {
+    "parents": [
+     [
+      0.75,
+      0.5,
+      0.875,
+      0.625
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 544
+   },
+   {
+    "parents": [
+     [
+      0.625,
+      0.375,
+      0.75,
+      0.5
+     ],
+     [
+      0.75,
+      0.375,
+      0.875,
+      0.5
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 524
+   },
+   {
+    "parents": [
+     [
+      0.75,
+      0.375,
+      0.875,
+      0.5
+     ],
+     [
+      0.75,
+      0.5,
+      0.875,
+      0.625
+     ]
+    ],
+    "removes_seed_edges_at": [],
+    "face_upper_bound": 531
+   }
+  ],
+  "curve_batches": [
+   {
+    "actions": [
+     [
+      "curve_child",
+      9,
+      0
+     ]
+    ],
+    "face_upper_bound": 560,
+    "fits_budget": true,
+    "representable": false,
+    "projected_gain_operations": [
+     49
+    ]
+   }
+  ]
+ },
+ "mixed_adaptive_epochs": 0
+}

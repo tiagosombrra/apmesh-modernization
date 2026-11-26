@@ -4930,3 +4930,17 @@ Both read-only replays match; two input refusals, thirteen admission
 tests and six sizing tests pass. PR 287 hosted checks pass.
 [Projection evidence](TRANSITION_INTERFACE_MAP_20261125.md).
 No new native run and zero accepted mixed epochs.
+
+## 2026-11-25 Fortaleza - execute a certified top and bottom child split
+
+Draft PR 289 at e0380de2 replays the existing child split and adds
+two ordered edits. The Ribbed candidate keeps 533 faces and all
+24 control samples, with two additional samples. The transition
+minimum rises from 8.063° to 11.968° and ten TRI remain below a floor.
+RMS rises 0.25 percent; shape still blocks. Native v1/v2 controls,
+five request refusals, original-curve contracts, fifteen progressive
+controls and six sizing tests pass. The direct article rollback case
+records the first Windows pending-directory rename failure.
+[Batch results](CERTIFIED_CHILD_CURVE_BATCH_20261125.md).
+Next align a trial that checks realized sizes for any request affected
+by grouping at the remaining short edge. Zero accepted mixed epochs.
