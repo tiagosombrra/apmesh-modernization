@@ -128,7 +128,11 @@ find no active-site TRI meeting the angle target and confirm a
 transition depth mismatch at three bases. The native arc splits
 recover six contour QUAD with fewer total faces and clear the
 TRI count block. The QUAD regional target still blocks admission.
-Inspect the eligible pairs at those six births next.
+The [six-base replay](SPLIT_CONTOUR_PAIR_REPLAY_20261126.md) finds
+no 45-degree QUAD among the 18 physically valid article pairs.
+A three-parent projection yields compatible local QUAD footprints
+with the certified contour and 2:1 intact. Align the single native
+grouping comparison before changing transition placement.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

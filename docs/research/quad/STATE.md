@@ -12,6 +12,25 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - replay split-base QUAD pairs and project template placement
+
+The native replay reproduces all six CurvaBezier split-base choices
+and their direct alternatives. Eighteen of 102 pairs pass native
+UV and physical validity, and none reaches the 45-degree target.
+All eligible pairs use a template edge about half the base length.
+The three-parent projection preserves 2:1 and the existing size
+inputs. It yields compatible footprints at all six bases with
+angles of 56.38 to 66.83 degrees. This is a placement projection
+without a complete new native candidate. All exact-head PR 297
+checks pass. Zero accepted mixed epochs.
+[Replay and projection](SPLIT_CONTOUR_PAIR_REPLAY_20261126.md).
+
+**Next after scientific alignment:** run one native comparison with
+the three projected contour parent groups and the same 22 curve
+sites and profile. Check native choices on the six bases, transition
+quality, counts, sizes and sampled error. Shared curves, owner
+reentry, reserved cases and global mixed curvature remain open.
+
 ### 2026-11-26 - replay contour births and subdivide three long bases
 
 The native probe examines 457 active candidates at the four

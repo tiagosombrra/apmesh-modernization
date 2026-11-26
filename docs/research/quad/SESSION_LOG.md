@@ -5158,3 +5158,16 @@ TRI target count clears, while the 45-degree QUAD target count
 blocks. Zero accepted mixed epochs. All four PR 297 checks pass.
 Next, inspect the native pair choices at the six split bases.
 [Exact probe and split receipts](CONTOUR_BIRTH_REPLAY_AND_SPLIT_20261126.md).
+
+
+## 2026-11-26 Fortaleza - replay pairs on six certified split bases
+
+An exact MSVC replay reproduces the six CurvaBezier native decisions.
+Eighteen of 102 active-site pairs pass UV and physical validity.
+None reaches 45 degrees. Each uses an exposed template side about
+half the physical contour length. The aligned-curve projection of
+three existing template parent groups preserves 2:1 and sizing
+inputs. It finds compatible 56.38 to 66.83 degree local faces on
+all six bases. The native full-front comparison awaits alignment.
+All four exact-head PR 297 jobs pass. Zero accepted mixed epochs.
+[Reproducible receipts](SPLIT_CONTOUR_PAIR_REPLAY_20261126.md).
