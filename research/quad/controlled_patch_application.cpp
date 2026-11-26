@@ -2508,6 +2508,7 @@ struct FeedbackPlan {
   bool certify_boundary_refinement = false;
   std::vector<std::array<double, 4>> group_feedback_parents;
   std::optional<std::array<double, 4>> measured_contour_parent;
+  std::optional<std::size_t> refine_feedback_leaf_again;
   std::optional<IdealFrontLimits> ideal_front_limits;
 };
 
@@ -2656,6 +2657,12 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
       Require(feedback.child_curves.size() < MaxCertifiedChildRequests,
               "Single-patch child curve request limit exceeded");
       feedback.child_curves.push_back(request);
+    } else if (kind == "refine_feedback_leaf_again") {
+      std::size_t face = 0;
+      input >> face;
+      Require(bool(input) && !feedback.refine_feedback_leaf_again,
+              "Invalid or duplicate follow-up leaf request");
+      feedback.refine_feedback_leaf_again = face;
     } else {
       GeometricRequest request{};
       input >> request.face >> request.site.u >> request.site.v >> request.size;
@@ -2685,6 +2692,13 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
           "Feedback grouping requires certified predecessor boundary refinement");
   Require(!feedback.ideal_front_limits || feedback.certify_boundary_refinement,
           "Ideal front points require certified predecessor boundary refinement");
+  if (feedback.refine_feedback_leaf_again) {
+    const auto face = *feedback.refine_feedback_leaf_again;
+    Require(feedback.certify_boundary_refinement &&
+                std::count_if(feedback.recovered.begin(), feedback.recovered.end(),
+                              [&](const auto& request) { return request.face == face; }) == 1,
+            "Follow-up leaf refinement requires one certified face request");
+  }
   return plan;
 }
 
@@ -2915,6 +2929,18 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   const auto leaves = tree->getLeaves();
   const auto cap = tree->getMaxLevelCap();
   std::set<long> requested;
+  const GeometricRequest* follow_up = nullptr;
+  int follow_up_initial_level = -1;
+  const auto containing_leaf = [](const auto& leaves, UvVertex site) {
+    QuadtreeCell* chosen = nullptr;
+    for (auto* leaf : leaves) {
+      if (site.u >= leaf->getMin()->getX() && site.u <= leaf->getMax()->getX() &&
+          site.v >= leaf->getMin()->getY() && site.v <= leaf->getMax()->getY() &&
+          (!chosen || leaf->getLevel() > chosen->getLevel()))
+        chosen = leaf;
+    }
+    return chosen;
+  };
   Require(std::filesystem::create_directory(directory),
           "Cannot reserve geometric feedback evidence");
   if (certify_boundary) {
@@ -2966,18 +2992,17 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   for (const auto& request : requests) {
     Require(request.face < previous.faces.size(),
             "Geometric feedback face is outside the predecessor");
-    QuadtreeCell* chosen = nullptr;
-    for (auto* leaf : leaves) {
-      if (request.site.u >= leaf->getMin()->getX() && request.site.u <= leaf->getMax()->getX() &&
-          request.site.v >= leaf->getMin()->getY() && request.site.v <= leaf->getMax()->getY() &&
-          (!chosen || leaf->getLevel() > chosen->getLevel()))
-        chosen = leaf;
-    }
+    auto* chosen = containing_leaf(leaves, request.site);
     Require(chosen != nullptr, "Geometric feedback site is outside the native tree");
     const auto level = chosen->getLevel();
     const bool capped = cap >= 0 && level >= cap;
     if (!capped)
       requested.insert(chosen->getId());
+    if (comparison && comparison->refine_feedback_leaf_again == request.face) {
+      Require(cap >= 0 && level < cap, "Follow-up leaf requires an initial split below the cap");
+      follow_up = &request;
+      follow_up_initial_level = level;
+    }
     trace << request.face << ',' << request.site.u << ',' << request.site.v << ',' << request.size
           << ',' << chosen->getId() << ',' << level << ',' << cap << ','
           << (capped ? "capped" : "actionable") << '\n';
@@ -2995,6 +3020,27 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
     Require(tree->refineAccordingToNeighbors() ==
                 Par2DJMesh::AFT::QUAD_REFINE_ACCORDING_TO_NEIGHBORS_DONE,
             "Geometric feedback could not balance the native tree");
+  if (follow_up) {
+    auto* leaf = containing_leaf(tree->getLeaves(), follow_up->site);
+    Require(leaf && leaf->getLevel() == follow_up_initial_level + 1 && leaf->getLevel() < cap,
+            "Follow-up leaf has no available level after the initial split");
+    const auto id = leaf->getId();
+    const auto level = leaf->getLevel();
+    const auto before_follow_up = tree->GetLeafCount();
+    leaf->subdivideToLevel(level + 1);
+    Require(tree->GetLeafCount() == before_follow_up + 3,
+            "Native tree did not split the follow-up leaf once");
+    Require(tree->refineAccordingToNeighbors() ==
+                Par2DJMesh::AFT::QUAD_REFINE_ACCORDING_TO_NEIGHBORS_DONE,
+            "Native tree could not balance the follow-up leaf split");
+    std::ofstream proof(directory / "follow_up_leaf.csv", std::ios::binary);
+    proof.imbue(std::locale::classic());
+    proof << "face,leaf_id,level_before,level_after,leaves_before,leaves_after_balance\n"
+          << follow_up->face << ',' << id << ',' << level << ',' << level + 1 << ','
+          << before_follow_up << ',' << tree->GetLeafCount() << '\n';
+    proof.close();
+    Require(bool(proof), "Cannot retain follow-up leaf evidence");
+  }
   const auto refined = tree->GetLeafCount();
   const bool group_parent = comparison && !comparison->group_feedback_parents.empty();
   std::vector<GeometricRequest> protected_sizes;
