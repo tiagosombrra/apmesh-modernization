@@ -78,9 +78,12 @@ contour. The [transition interface map](TRANSITION_INTERFACE_MAP_20261125.md)
 finds no direct seed-edge removal in the checked protected groups.
 The [native child batch](CERTIFIED_CHILD_CURVE_BATCH_20261125.md) preserves
 24 samples and the face budget while raising the worst transition
-angle to 11.968°. The remaining limit is adjacent to a protected
-size request. Align a measured size-preservation check before
-a group trial and reserved validation.
+angle to 11.968°. The [measured grouping trial](MEASURED_SIZE_GROUP_TRIAL_20261125.md)
+then rejects the contour-parent group because the rebuilt front exceeds
+a protected size request. Its archived frames separate the size failure
+at birth from the persistent angle failure in the read-only edge split.
+Compare achievable physical size and shape at the front handoff across
+the two development models before selecting another native rule.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.

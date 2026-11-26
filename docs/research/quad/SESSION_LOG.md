@@ -4944,3 +4944,20 @@ records the first Windows pending-directory rename failure.
 [Batch results](CERTIFIED_CHILD_CURVE_BATCH_20261125.md).
 Next align a trial that checks realized sizes for any request affected
 by grouping at the remaining short edge. Zero accepted mixed epochs.
+
+
+## 2026-11-25 Fortaleza - measure protected sizes after grouping
+
+Draft PR 290 at 3f2946a5 retains one scoped native rejection. The grouped
+front produces an oversized face at request 490: 1.07002 versus 0.66182
+model units. The isolated final frame reaches a 12.787° minimum and
+retains an increase of 2.86 percent in sampled geometric RMS. It is
+withheld from staging. The byte-matched control, strict refusal,
+ordinary veto, duplicate refusal, original-curve contracts, 15
+progressive tests, six sizing checks and direct article rollback pass.
+A read-only conforming split meets size but stays below 15° at all 57
+size-feasible sampled positions. Compare the pre-smoothing handoff
+between both development cases before proposing a new front rule.
+[Native measurements and limits](MEASURED_SIZE_GROUP_TRIAL_20261125.md).
+Zero accepted mixed epochs. Hosted run 45739394878 has no final result
+at this checkpoint.

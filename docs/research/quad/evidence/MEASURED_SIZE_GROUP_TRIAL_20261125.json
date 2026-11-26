@@ -1,0 +1,782 @@
+{
+  "schema": "apmesh.quad.measured_size_group_trial.v1",
+  "revision": "3f2946a5a0176730c7855b05c0eca99295e1ff54",
+  "tree": "b430016f2d836ff4edad7d2ece0b316e09179542",
+  "base_revision": "e0380de2e6517be03eda18743b8caf158670e90c",
+  "executable_sha256": "824bfb8bbdd62bf136305b138adbc4c612a301d6bc26679e1a99482dcc076834",
+  "compiler": "MSVC 19.44 x64 C++17 Debug",
+  "mixed_adaptive_epochs": 0,
+  "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+  "processes": {
+    "build": {
+      "exit": 0,
+      "seconds": 10.654838562011719,
+      "timeout": 300
+    },
+    "trial": {
+      "exit": 0,
+      "seconds": 31.465454578399658,
+      "timeout": 240
+    },
+    "control": {
+      "exit": 0,
+      "seconds": 34.46429753303528,
+      "timeout": 240
+    },
+    "strict-size": {
+      "exit": 0,
+      "seconds": 31.47865104675293,
+      "timeout": 240
+    },
+    "plain-veto": {
+      "exit": 0,
+      "seconds": 15.618318319320679,
+      "timeout": 240
+    },
+    "duplicate-mode": {
+      "exit": 0,
+      "seconds": 0.27542710304260254,
+      "timeout": 240
+    },
+    "article-rollback": {
+      "exit": 0,
+      "seconds": 45.085095167160034,
+      "timeout": 240
+    }
+  },
+  "commands": {
+    "build": [
+      "cmake",
+      "--build",
+      "build/quad-grouping-runner-results/msvc",
+      "--target",
+      "ap_mesh",
+      "quad_real_boundary_source_contracts",
+      "--config",
+      "Debug",
+      "--parallel",
+      "4"
+    ],
+    "trial": [
+      "python",
+      "build/quad-measured-size-group-20261125/run.py",
+      "trial"
+    ],
+    "control": [
+      "python",
+      "build/quad-measured-size-group-20261125/run.py",
+      "control"
+    ],
+    "strict-size": [
+      "python",
+      "build/quad-measured-size-group-20261125/run.py",
+      "strict-size"
+    ],
+    "plain-veto": [
+      "python",
+      "build/quad-measured-size-group-20261125/run.py",
+      "plain-veto"
+    ],
+    "duplicate-mode": [
+      "python",
+      "build/quad-measured-size-group-20261125/run.py",
+      "duplicate-mode"
+    ],
+    "article-rollback": [
+      "python",
+      "tests/quad/test_article_front_application.py",
+      "--exe",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-measured-size-group-20261125/ap_mesh.exe",
+      "--directory",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-measured-size-group-20261125/article-contract"
+    ]
+  },
+  "refusals": {
+    "plain-veto": {
+      "code": 4294967295,
+      "reason": "Grouping would remove a refinement request",
+      "plan_sha256": "211202333b35e7a5f9804fc85a5b01394e50bc9a5148264d8d6e40209c76cfed",
+      "source_sha256": {
+        "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+        "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+        "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+      },
+      "stderr_sha256": "c4aa0e5d35114439b588c822d1595c95089dce1f1ed5419a34e0e7ab9ec5960e"
+    },
+    "duplicate-mode": {
+      "code": 4294967295,
+      "reason": "Only one measured contour parent is allowed",
+      "plan_sha256": "be6dfccf6e06c4a0f85d92bfb43bfa052dbb92762d18e464a5f6933953f3a05c",
+      "source_sha256": {
+        "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+        "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+        "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+      },
+      "stderr_sha256": "80c22d206e700921222a335ea48d65a80daa4ecaa8b130782e0f054383ad7cf0"
+    }
+  },
+  "exact_control": {
+    "candidate.obj": "5a5647b595c73a4b8d23818a202bbba73fbe2bc51c6d317908147143c94753e3",
+    "boundary_refinement.json": "e8fbec581f412c7cb45dcf63d73067a99e113ffd659c0a7c8f7ab10194a6e32e",
+    "grouped_parents.json": "3baddf812273f1ac4a771318c333b1a7c33ff7628409e4599d4597d09fa69520",
+    "requests.csv": "ef08f2e4c99703c00baecb5bacb6e4e85315f7984af784597891605d5983549b",
+    "leaves.csv": "4bef4a7cca03c39bbd61408fe4adc939a2cc310bd8170094a935ada672a182ba",
+    "candidate_front/front.json": "b6068903760748f03192839d73efd3ebfdf7371c7cf3e6724d2b24d32c04bef7",
+    "smoothing_comparison/before.obj": "034dafa1682aa0fca16575583251cd3d130aa85ccaf58a1f27565465d96b5b90",
+    "result.txt": "9b32568ade46857256bc0db4580bdbdaae627820f924076e6f2f44a93c9d7072"
+  },
+  "isolated_frames": {
+    "before": "5d8c44433255575291c86f7c30d7acfac8d1f036d6e7257f821eb7f0cd0de790",
+    "guarded_final": "bef241b6783d897b4903f1fe612729dd32be7cf7bb2769932fbc18c433a66817"
+  },
+  "article": {
+    "schema": "apmesh.quad.article_application.v1",
+    "stages": [
+      {
+        "step": 1,
+        "nodes": 33,
+        "quads": 24,
+        "triangles": 8,
+        "boundary": 8,
+        "source_step": 1,
+        "native_leaves": 16,
+        "domain_generation": 1,
+        "nonuniform_sides": 0,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "clearance_excluded_cells": 0,
+        "commits": 16,
+        "selected_quads": 8,
+        "retained_triangles": 8,
+        "rejected_unions": 8,
+        "competing_alternatives": 0,
+        "source_polygons": 4,
+        "centers_different_from_vertex_mean": 0
+      },
+      {
+        "step": 2,
+        "nodes": 281,
+        "quads": 249,
+        "triangles": 52,
+        "boundary": 10,
+        "source_step": 2,
+        "native_leaves": 67,
+        "domain_generation": 1,
+        "nonuniform_sides": 1,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "clearance_excluded_cells": 0,
+        "commits": 59,
+        "selected_quads": 7,
+        "retained_triangles": 52,
+        "rejected_unions": 53,
+        "competing_alternatives": 1,
+        "source_polygons": 62,
+        "centers_different_from_vertex_mean": 18
+      },
+      {
+        "step": 3,
+        "nodes": 689,
+        "quads": 630,
+        "triangles": 102,
+        "boundary": 14,
+        "source_step": 3,
+        "native_leaves": 223,
+        "domain_generation": 1,
+        "nonuniform_sides": 1,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "clearance_excluded_cells": 25,
+        "commits": 108,
+        "selected_quads": 6,
+        "retained_triangles": 102,
+        "rejected_unions": 100,
+        "competing_alternatives": 2,
+        "source_polygons": 156,
+        "centers_different_from_vertex_mean": 0
+      }
+    ],
+    "rejected_forgeries": 11,
+    "rollback_verified": true,
+    "rejected_smoothing_forgeries": 5,
+    "smoothing_passes_per_stage": 5,
+    "rejected_point_forgeries": 3,
+    "mixed_adaptive_epochs": 0
+  },
+  "local_checks": {
+    "progressive": 15,
+    "sizing": 6,
+    "boundary_captures": 6,
+    "reversed_boundary_captures": 3,
+    "source_refusals": 54,
+    "certified_splits": 6,
+    "unchanged_cases": 6,
+    "certificate_refusals": 24,
+    "precommit_files": 1
+  },
+  "comparison": {
+    "unpublished_provisional": {
+      "faces": 523,
+      "quality": {
+        "interior_QUAD": {
+          "count": 450,
+          "minimum_angle": 26.289863992652087,
+          "minimum_shape": 0.3187473918768228,
+          "below_safety": 0
+        },
+        "contour_edge_TRI": {
+          "count": 5,
+          "minimum_angle": 17.942810055402088,
+          "minimum_shape": 0.5046060809078451,
+          "below_safety": 0
+        },
+        "contour_edge_QUAD": {
+          "count": 20,
+          "minimum_angle": 25.53551802560636,
+          "minimum_shape": 0.4236259505476368,
+          "below_safety": 0
+        },
+        "contour_vertex_TRI": {
+          "count": 35,
+          "minimum_angle": 12.786895426989378,
+          "minimum_shape": 0.37406728556575114,
+          "below_safety": 8
+        },
+        "interior_TRI": {
+          "count": 12,
+          "minimum_angle": 19.813546459443515,
+          "minimum_shape": 0.494066896515989,
+          "below_safety": 0
+        },
+        "contour_vertex_QUAD": {
+          "count": 1,
+          "minimum_angle": 43.490064287363616,
+          "minimum_shape": 0.6636177057726924,
+          "below_safety": 0
+        }
+      },
+      "footprint": {
+        "QUAD": {
+          "count": 1,
+          "angle": 76.48854831802561,
+          "shape": 0.9633195596790772
+        }
+      },
+      "request_faces": [
+        {
+          "face": 489,
+          "uv": [
+            [
+              0.6875,
+              0.875
+            ],
+            [
+              0.7518842291184413,
+              0.8550127990942435
+            ],
+            [
+              0.75,
+              1.0
+            ]
+          ],
+          "size": 1.0700236578139428
+        }
+      ],
+      "measured_geometry": {
+        "24": {
+          "sample_count": 576,
+          "max_xyz": 0.10278111763359259,
+          "rms_uv": 0.020872315939316988,
+          "rms_source_area": 0.02090427904211781,
+          "tri_sites": 76,
+          "quad_sites": 500
+        },
+        "48": {
+          "sample_count": 2304,
+          "max_xyz": 0.10748410563240578,
+          "rms_uv": 0.020905840215271664,
+          "rms_source_area": 0.020934666385239005,
+          "tri_sites": 352,
+          "quad_sites": 1952
+        }
+      }
+    },
+    "source_sha256": {
+      "tri.obj": "2c6a53a838d58bb59e3fea73dabc0bd560571895321643c074f198db4a47fdcd",
+      "source.obj": "170bb99466dbb2666d093ae647455fcca3c5ace2a9d6634d46ba39d42cc7a09d",
+      "source_tree.txt": "ceadadb89752d1af659624bf4a228eeafb4d0792d3674ac63b5c1c4e898aca61"
+    },
+    "measurements": {
+      "trial": {
+        "passed": false,
+        "details": [
+          {
+            "face": 490,
+            "requested": 0.6618247159138458,
+            "h": [
+              1.0700236578139428
+            ],
+            "independently_measured": {
+              "faces": [
+                489
+              ],
+              "min_h": 1.0700236578139428,
+              "max_h": 1.0700236578139428
+            }
+          }
+        ],
+        "artifact_sha256": "f3ea638f6fff4a80870d4add4a01b3a855a2abda63f71cd4b2200e66ae736f4f"
+      },
+      "strict-size": {
+        "passed": false,
+        "details": [
+          {
+            "face": 490,
+            "requested": 0.01,
+            "h": [
+              1.0700236578139428
+            ],
+            "independently_measured": {
+              "faces": [
+                489
+              ],
+              "min_h": 1.0700236578139428,
+              "max_h": 1.0700236578139428
+            }
+          }
+        ],
+        "artifact_sha256": "6084614ca2eff42c50410afd6ff0bcbd663258856968f8dd6c47016458b4796e"
+      }
+    },
+    "comparison": {
+      "control": {
+        "native": {
+          "status": "staged",
+          "depth_cap": 4,
+          "leaves_before": 112,
+          "leaves_after": 109,
+          "direct_leaf_edits": 7,
+          "requests": 17,
+          "capped_requests": 1,
+          "segments_before": 14,
+          "segments_after": 26,
+          "candidate_sha256": "5a5647b595c73a4b8d23818a202bbba73fbe2bc51c6d317908147143c94753e3"
+        },
+        "admission": {
+          "status": "blocked",
+          "blockers": [
+            "contour_edge_TRI.min_angle_deg.regional_regression",
+            "contour_edge_QUAD.min_angle_deg.regional_regression",
+            "contour_edge_QUAD.min_shape.regional_regression",
+            "contour_vertex_TRI.min_angle_deg.below_safety_floor",
+            "contour_vertex_QUAD.min_angle_deg.regional_regression",
+            "interior_TRI.min_angle_deg.regional_regression",
+            "interior_QUAD.min_angle_deg.regional_regression",
+            "interior_QUAD.min_shape.regional_regression"
+          ],
+          "face_growth": -0.025594149908592323
+        },
+        "grids": {
+          "24": {
+            "faces": 533,
+            "global_error": {
+              "sample_count": 576,
+              "max_xyz": 0.10278111763359259,
+              "rms_uv": 0.020299226899758153,
+              "rms_source_area": 0.02031953911163063,
+              "tri_sites": 73,
+              "quad_sites": 503
+            },
+            "max_adjacent_size_ratio": 4.837826816471032,
+            "boundary_segments": 26
+          },
+          "48": {
+            "faces": 533,
+            "global_error": {
+              "sample_count": 2304,
+              "max_xyz": 0.10748410563240578,
+              "rms_uv": 0.020335270935827387,
+              "rms_source_area": 0.0203524772220713,
+              "tri_sites": 341,
+              "quad_sites": 1963
+            },
+            "max_adjacent_size_ratio": 4.837826816471032,
+            "boundary_segments": 26
+          }
+        },
+        "shape": {
+          "birth": {
+            "interior_QUAD": {
+              "count": 456,
+              "minimum_angle": 26.062329924849276,
+              "minimum_shape": 0.3187473918768228,
+              "below_safety": 0
+            },
+            "contour_edge_TRI": {
+              "count": 5,
+              "minimum_angle": 13.886453205357858,
+              "minimum_shape": 0.40344472657445646,
+              "below_safety": 1
+            },
+            "contour_edge_QUAD": {
+              "count": 20,
+              "minimum_angle": 25.335621873573015,
+              "minimum_shape": 0.4205384262090846,
+              "below_safety": 0
+            },
+            "contour_vertex_TRI": {
+              "count": 36,
+              "minimum_angle": 11.967772407811895,
+              "minimum_shape": 0.3497158082809553,
+              "below_safety": 13
+            },
+            "interior_TRI": {
+              "count": 15,
+              "minimum_angle": 12.53672132968701,
+              "minimum_shape": 0.3648603604889334,
+              "below_safety": 2
+            },
+            "contour_vertex_QUAD": {
+              "count": 1,
+              "minimum_angle": 43.490064287363616,
+              "minimum_shape": 0.6804197460981606,
+              "below_safety": 0
+            }
+          },
+          "final": {
+            "interior_QUAD": {
+              "count": 456,
+              "minimum_angle": 26.289863992652087,
+              "minimum_shape": 0.3187473918768228,
+              "below_safety": 0
+            },
+            "contour_edge_QUAD": {
+              "count": 20,
+              "minimum_angle": 25.53551802560636,
+              "minimum_shape": 0.4236259505476368,
+              "below_safety": 0
+            },
+            "contour_vertex_QUAD": {
+              "count": 1,
+              "minimum_angle": 43.490064287363616,
+              "minimum_shape": 0.6636177057726924,
+              "below_safety": 0
+            },
+            "contour_edge_TRI": {
+              "count": 5,
+              "minimum_angle": 17.942810055402088,
+              "minimum_shape": 0.5046060809078451,
+              "below_safety": 0
+            },
+            "contour_vertex_TRI": {
+              "count": 36,
+              "minimum_angle": 11.967772407811895,
+              "minimum_shape": 0.3497158082809553,
+              "below_safety": 10
+            },
+            "interior_TRI": {
+              "count": 15,
+              "minimum_angle": 18.564257167560097,
+              "minimum_shape": 0.4373188570045186,
+              "below_safety": 0
+            }
+          }
+        },
+        "footprint": {
+          "TRI": {
+            "count": 1,
+            "angle": 11.967772407811895,
+            "shape": 0.3497158082809553
+          }
+        }
+      },
+      "trial": {
+        "native": {
+          "status": "rejected",
+          "depth_cap": 4,
+          "leaves_before": 112,
+          "leaves_after": 106,
+          "direct_leaf_edits": 7,
+          "requests": 17,
+          "capped_requests": 1,
+          "segments_before": 14,
+          "segments_after": 26,
+          "reason": "Grouped candidate exceeds one or more protected physical size requests"
+        },
+        "admission": {
+          "status": "blocked",
+          "blockers": [
+            "Grouped candidate exceeds one or more protected physical size requests"
+          ]
+        }
+      },
+      "strict-size": {
+        "native": {
+          "status": "rejected",
+          "depth_cap": 4,
+          "leaves_before": 112,
+          "leaves_after": 106,
+          "direct_leaf_edits": 7,
+          "requests": 17,
+          "capped_requests": 1,
+          "segments_before": 14,
+          "segments_after": 26,
+          "reason": "Grouped candidate exceeds one or more protected physical size requests"
+        },
+        "admission": {
+          "status": "blocked",
+          "blockers": [
+            "Grouped candidate exceeds one or more protected physical size requests"
+          ]
+        }
+      }
+    },
+    "selected_operation": 58
+  },
+  "read_only_conforming_split": {
+    "positions": 255,
+    "feasible_count": 57,
+    "best": {
+      "uv": [
+        0.75,
+        0.93505859375
+      ],
+      "max_size": 0.552039925267067,
+      "min_angle": 13.922938083231584
+    },
+    "at_request": {
+      "site": [
+        0.75,
+        0.925
+      ],
+      "requested_size": 0.6618247159138458,
+      "birth": [
+        {
+          "uv": [
+            [
+              0.6875,
+              0.875
+            ],
+            [
+              0.75,
+              0.875
+            ],
+            [
+              0.75,
+              1.0
+            ]
+          ],
+          "xyz": [
+            [
+              6.99999991796875,
+              -0.28714187717437767,
+              2.7500000805664064
+            ],
+            [
+              6.99999991796875,
+              -0.28975111083984395,
+              3.00000009375
+            ],
+            [
+              8.0,
+              0.0,
+              3.00000009375
+            ]
+          ],
+          "angle": 13.512143437590751,
+          "shape": 0.39350915800901876,
+          "size": 1.0411320138654034
+        },
+        {
+          "uv": [
+            [
+              0.75,
+              0.875
+            ],
+            [
+              0.8125,
+              0.875
+            ],
+            [
+              0.75,
+              1.0
+            ]
+          ],
+          "xyz": [
+            [
+              6.99999991796875,
+              -0.28975111083984395,
+              3.00000009375
+            ],
+            [
+              6.99999991796875,
+              -0.29235605525970476,
+              3.2500000952148436
+            ],
+            [
+              8.0,
+              0.0,
+              3.00000009375
+            ]
+          ],
+          "angle": 13.494009314065837,
+          "shape": 0.3929908573667064,
+          "size": 1.0411320138654034
+        }
+      ],
+      "children": [
+        {
+          "uv": [
+            [
+              0.75,
+              0.875
+            ],
+            [
+              0.75,
+              0.925
+            ],
+            [
+              0.6875,
+              0.875
+            ]
+          ],
+          "xyz": [
+            [
+              6.99999991796875,
+              -0.28975111083984395,
+              3.00000009375
+            ],
+            [
+              7.39999994103125,
+              -0.20830070478515617,
+              3.0000000937499998
+            ],
+            [
+              6.99999991796875,
+              -0.28714187717437767,
+              2.7500000805664064
+            ]
+          ],
+          "angle": 31.51855352975621,
+          "shape": 0.7721569792157039,
+          "size": 0.4082085093386392
+        },
+        {
+          "uv": [
+            [
+              0.75,
+              0.925
+            ],
+            [
+              0.75,
+              1.0
+            ],
+            [
+              0.6875,
+              0.875
+            ]
+          ],
+          "xyz": [
+            [
+              7.39999994103125,
+              -0.20830070478515617,
+              3.0000000937499998
+            ],
+            [
+              8.0,
+              0.0,
+              3.00000009375
+            ],
+            [
+              6.99999991796875,
+              -0.28714187717437767,
+              2.7500000805664064
+            ]
+          ],
+          "angle": 13.861433403283705,
+          "shape": 0.31738458954989984,
+          "size": 0.6351293209862828
+        },
+        {
+          "uv": [
+            [
+              0.75,
+              1.0
+            ],
+            [
+              0.75,
+              0.925
+            ],
+            [
+              0.8125,
+              0.875
+            ]
+          ],
+          "xyz": [
+            [
+              8.0,
+              0.0,
+              3.00000009375
+            ],
+            [
+              7.39999994103125,
+              -0.20830070478515617,
+              3.0000000937499998
+            ],
+            [
+              6.99999991796875,
+              -0.29235605525970476,
+              3.2500000952148436
+            ]
+          ],
+          "angle": 13.785300279173859,
+          "shape": 0.3154044593178195,
+          "size": 0.6351293209862828
+        },
+        {
+          "uv": [
+            [
+              0.75,
+              0.925
+            ],
+            [
+              0.75,
+              0.875
+            ],
+            [
+              0.8125,
+              0.875
+            ]
+          ],
+          "xyz": [
+            [
+              7.39999994103125,
+              -0.20830070478515617,
+              3.0000000937499998
+            ],
+            [
+              6.99999991796875,
+              -0.28975111083984395,
+              3.00000009375
+            ],
+            [
+              6.99999991796875,
+              -0.29235605525970476,
+              3.2500000952148436
+            ]
+          ],
+          "angle": 31.453507863859066,
+          "shape": 0.7707270901866776,
+          "size": 0.4082085093386392
+        }
+      ]
+    }
+  },
+  "hosted_run_at_checkpoint": {
+    "id": 45739394878,
+    "final_result_available": false
+  }
+}

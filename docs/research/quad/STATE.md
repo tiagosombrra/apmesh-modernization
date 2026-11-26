@@ -12,6 +12,27 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - measure protected sizes after contour-side grouping
+
+[Draft PR 290](https://github.com/tiagosombrra/apmesh-modernization/pull/290)
+at `3f2946a5a0176730c7855b05c0eca99295e1ff54` reconstructs one protected group.
+The 0.66182 size request is exceeded by a 1.07002 face. The native
+check rejects the candidate, retains the preceding mesh and exports
+no staged candidate. Provisional geometry improves the minimum angle
+from 11.968° to 12.787° while RMS rises 2.86 percent. The matching
+control, refusal cases, original-curve contracts and direct article
+rollback pass. A read-only single-edge split meets size in 57 sampled
+positions; none of those meets the 15° floor in its local footprint.
+[Results and atomicity evidence](MEASURED_SIZE_GROUP_TRIAL_20261125.md).
+
+**Next:** compare the failed size-to-front handoff on both development
+geometries using archived requests, pre-smoothing faces and active
+vertices. Check what changing local front construction could realize
+under the identical size, angle, error and growth criteria before
+aligning a new native rule. Zero accepted mixed epochs. Full closure,
+shared curves, mixed owner reentry, reserved cases and global mixed
+curvature remain open.
+
 ### 2026-11-25 - execute the two additional certified contour splits
 
 [Draft PR 289](https://github.com/tiagosombrra/apmesh-modernization/pull/289)
