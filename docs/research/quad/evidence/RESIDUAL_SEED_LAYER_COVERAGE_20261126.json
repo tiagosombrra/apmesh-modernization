@@ -1,0 +1,3330 @@
+{
+ "schema": "apmesh.quad.residual_seed_layer_coverage.v1",
+ "selector_commit": "442644df44dfede19318f49832ab8fbbd65c370b",
+ "selector_tree": "146f6c7563058a5df4ed1980bedec18c8e18bea6",
+ "canonical_input": "89e13ddc455e56b03be3aa040f4868fb706cef40",
+ "selector_sha256": "5a7dc59b2f5b0fc6e84745eb37ba51b237460d169abc46264ade535fcfce7d77",
+ "prior_native_receipt_sha256": "e3ca5e8e1394c28c153ebf469a74b406dd526179e716c58b2ae234392ac15c3e",
+ "audit_scripts": {
+  "inventory.py": "0516357c97157796e6657d98fd58d833bb062364f0e146a6ce4eed8a337d8606",
+  "front_choices.py": "ab7dfdfd566cf6fe83d47b1393050fd578249fa3847b54e6d09484f67369bed4"
+ },
+ "commands": [
+  "python build/quad-residual-seed-layer-20261126/inventory.py curva-control",
+  "python build/quad-residual-seed-layer-20261126/inventory.py ribbed-trial",
+  "python build/quad-residual-seed-layer-20261126/front_choices.py"
+ ],
+ "method": {
+  "targets": "each residual below-floor face independently",
+  "prior_repair": "fixed exterior",
+  "per_target": {
+   "front_faces": 6,
+   "directly_adjacent_template_faces": 6,
+   "sites": 14,
+   "patches": 1024,
+   "retention_trials": 1024,
+   "states": 25000
+  },
+  "combined": "severity-ordered first witnesses with disjoint vertex sets, arithmetic only"
+ },
+ "local_processes": {
+  "curva-control": {
+   "exit": 0,
+   "seconds": 30.456478118896484,
+   "timeout": 300
+  },
+  "ribbed-trial": {
+   "exit": 0,
+   "seconds": 2.058262586593628,
+   "timeout": 300
+  }
+ },
+ "front_trace_inspection": {
+  "curva-control": {
+   "archived_relative_pair_error_limit": 0.045,
+   "summary": {
+    "first_triangle_passes_locally": 4
+   },
+   "faces": [
+    {
+     "original_ordinal": 681,
+     "operation": 51,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 680,
+     "operation": 50,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 679,
+     "operation": 49,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 707,
+     "operation": 77,
+     "kind": "TRI",
+     "residual_repair_status": "no_joint_witness",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 678,
+     "operation": 48,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 703,
+     "operation": 73,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 704,
+     "operation": 74,
+     "kind": "TRI",
+     "residual_repair_status": "no_joint_witness",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 695,
+     "operation": 65,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 687,
+     "operation": 57,
+     "kind": "TRI",
+     "residual_repair_status": "no_joint_witness",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 660,
+     "operation": 30,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 729,
+     "operation": 99,
+     "kind": "TRI",
+     "residual_repair_status": "no_joint_witness",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 726,
+     "operation": 96,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 722,
+     "operation": 92,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 692,
+     "operation": 62,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 682,
+     "operation": 52,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 702,
+     "operation": 72,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 728,
+     "operation": 98,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 688,
+     "operation": 58,
+     "kind": "TRI",
+     "residual_repair_status": "search_limit",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 697,
+     "operation": 67,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 721,
+     "operation": 91,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 712,
+     "operation": 82,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 661,
+     "operation": 31,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 674,
+     "operation": 44,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 718,
+     "operation": 88,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 725,
+     "operation": 95,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 693,
+     "operation": 63,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 675,
+     "operation": 45,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 631,
+     "operation": 1,
+     "kind": "QUAD",
+     "residual_repair_status": "no_joint_witness",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": [
+      681,
+      682,
+      84
+     ],
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 636,
+     "operation": 6,
+     "kind": "QUAD",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": [
+      686,
+      687,
+      28
+     ],
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 637,
+     "operation": 7,
+     "kind": "QUAD",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": [
+      687,
+      688,
+      23
+     ],
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 635,
+     "operation": 5,
+     "kind": "QUAD",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": [
+      685,
+      686,
+      7
+     ],
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    }
+   ]
+  },
+  "ribbed-trial": {
+   "archived_relative_pair_error_limit": 0.045,
+   "summary": {},
+   "faces": [
+    {
+     "original_ordinal": 513,
+     "operation": 58,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 503,
+     "operation": 48,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 504,
+     "operation": 49,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 535,
+     "operation": 80,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 511,
+     "operation": 56,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 509,
+     "operation": 54,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 520,
+     "operation": 65,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 537,
+     "operation": 82,
+     "kind": "TRI",
+     "residual_repair_status": "no_joint_witness",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 481,
+     "operation": 26,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 517,
+     "operation": 62,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    },
+    {
+     "original_ordinal": 499,
+     "operation": 44,
+     "kind": "TRI",
+     "residual_repair_status": "feasible",
+     "alternate_direct_quad_passes": [],
+     "first_triangle_passes_locally": null,
+     "measured_additional_pairs": 0,
+     "physical_pass_but_error_refused": []
+    }
+   ]
+  }
+ },
+ "results": {
+  "curva-control": {
+   "candidate_sha256": "33fac5be7136f708e674acbe7e16bcad81bad2cb7ca03ae5bce2cb9e24ead3b4",
+   "before_birth_sha256": "c367553c03454588c6685c781aa0ea4bce09fe62583f93a3d7897332b0d5c2b1",
+   "trace_sha256": "36eea828e8b213b2a03262b32fd29c64aabe9d3401d8b3a57695dd2d3d766548",
+   "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+   "original_face_count": 729,
+   "face_cap": 805,
+   "failures": 31,
+   "direct_feasible": 25,
+   "covered_by_any": [
+    631,
+    632,
+    633,
+    656,
+    657,
+    670,
+    671,
+    674,
+    675,
+    676,
+    677,
+    678,
+    688,
+    689,
+    691,
+    693,
+    698,
+    699,
+    707,
+    710,
+    713,
+    714,
+    717,
+    718,
+    720
+   ],
+   "locations": [
+    {
+     "region": "contour_edge",
+     "kind": "QUAD",
+     "origin": "front",
+     "below_at_birth": true,
+     "status": "feasible",
+     "count": 3
+    },
+    {
+     "region": "contour_edge",
+     "kind": "QUAD",
+     "origin": "front",
+     "below_at_birth": true,
+     "status": "no_joint_witness",
+     "count": 1
+    },
+    {
+     "region": "contour_vertex",
+     "kind": "TRI",
+     "origin": "front",
+     "below_at_birth": true,
+     "status": "feasible",
+     "count": 21
+    },
+    {
+     "region": "contour_vertex",
+     "kind": "TRI",
+     "origin": "front",
+     "below_at_birth": true,
+     "status": "no_joint_witness",
+     "count": 4
+    },
+    {
+     "region": "contour_vertex",
+     "kind": "TRI",
+     "origin": "front",
+     "below_at_birth": true,
+     "status": "search_limit",
+     "count": 1
+    },
+    {
+     "region": "interior",
+     "kind": "TRI",
+     "origin": "front",
+     "below_at_birth": true,
+     "status": "feasible",
+     "count": 1
+    }
+   ],
+   "compatible_first_witnesses": {
+    "targets": [
+     677,
+     699,
+     656,
+     720,
+     670,
+     710,
+     717,
+     632
+    ],
+    "failure_count": 13,
+    "delta_faces": 0,
+    "delta_quads": -18
+   },
+   "faces": [
+    {
+     "index": 677,
+     "original_ordinal": 681,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 2.5325085084300167,
+     "final_min_angle": 3.7806708513674914,
+     "birth_relative_quality": 0.16883390056200112,
+     "final_relative_quality": 0.2520447234244994,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 39,
+      "layouts": 39,
+      "states": 74,
+      "ranked_faces": 31,
+      "retention_trials": 56
+     },
+     "witness": {
+      "retired": [
+       68,
+       331
+      ],
+      "delta_faces": -1,
+      "delta_quads": -3,
+      "covered": [
+       677,
+       688,
+       689
+      ],
+      "sites": [
+       68,
+       79,
+       310,
+       311,
+       312,
+       331,
+       332,
+       333,
+       692,
+       693
+      ],
+      "old": [
+       132,
+       153,
+       154,
+       641,
+       677,
+       688,
+       689
+      ],
+      "replacement": [
+       [
+        310,
+        692,
+        693
+       ],
+       [
+        310,
+        311,
+        312
+       ],
+       [
+        79,
+        332,
+        333
+       ],
+       [
+        79,
+        310,
+        693
+       ],
+       [
+        79,
+        311,
+        310
+       ],
+       [
+        79,
+        333,
+        311
+       ]
+      ],
+      "min_angle": 17.444158507049746
+     }
+    },
+    {
+     "index": 676,
+     "original_ordinal": 680,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 3.2530930027968985,
+     "final_min_angle": 4.143526535895107,
+     "birth_relative_quality": 0.21687286685312657,
+     "final_relative_quality": 0.27623510239300714,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 113,
+      "layouts": 113,
+      "states": 222,
+      "ranked_faces": 31,
+      "retention_trials": 182
+     },
+     "witness": {
+      "retired": [
+       68,
+       310,
+       331
+      ],
+      "delta_faces": -2,
+      "delta_quads": -4,
+      "covered": [
+       676,
+       677,
+       688,
+       689
+      ],
+      "sites": [
+       66,
+       68,
+       79,
+       307,
+       310,
+       311,
+       312,
+       331,
+       332,
+       333,
+       692,
+       693
+      ],
+      "old": [
+       131,
+       132,
+       153,
+       154,
+       641,
+       676,
+       677,
+       688,
+       689
+      ],
+      "replacement": [
+       [
+        66,
+        692,
+        693
+       ],
+       [
+        66,
+        311,
+        312
+       ],
+       [
+        66,
+        312,
+        307
+       ],
+       [
+        79,
+        332,
+        333
+       ],
+       [
+        79,
+        333,
+        311
+       ],
+       [
+        66,
+        79,
+        311
+       ],
+       [
+        66,
+        693,
+        79
+       ]
+      ],
+      "min_angle": 17.444158507049746
+     }
+    },
+    {
+     "index": 675,
+     "original_ordinal": 679,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 4.282905837222929,
+     "final_min_angle": 4.357105212541993,
+     "birth_relative_quality": 0.28552705581486193,
+     "final_relative_quality": 0.29047368083613284,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 21,
+      "layouts": 21,
+      "states": 33,
+      "ranked_faces": 31,
+      "retention_trials": 29
+     },
+     "witness": {
+      "retired": [
+       65,
+       303
+      ],
+      "delta_faces": -1,
+      "delta_quads": -3,
+      "covered": [
+       674,
+       675,
+       714
+      ],
+      "sites": [
+       65,
+       66,
+       303,
+       304,
+       305,
+       306,
+       671,
+       672,
+       692
+      ],
+      "old": [
+       124,
+       125,
+       618,
+       674,
+       675,
+       714
+      ],
+      "replacement": [
+       [
+        66,
+        304,
+        306
+       ],
+       [
+        66,
+        306,
+        671
+       ],
+       [
+        66,
+        671,
+        692
+       ],
+       [
+        305,
+        672,
+        671
+       ],
+       [
+        305,
+        671,
+        306
+       ]
+      ],
+      "min_angle": 16.007423711189485
+     }
+    },
+    {
+     "index": 703,
+     "original_ordinal": 707,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 4.1027797646110065,
+     "final_min_angle": 4.606650870718762,
+     "birth_relative_quality": 0.2735186509740671,
+     "final_relative_quality": 0.30711005804791747,
+     "status": "no_joint_witness",
+     "search": {
+      "topological_patches": 210,
+      "layouts": 210,
+      "states": 637,
+      "ranked_faces": 31,
+      "retention_trials": 558,
+      "not_a_disk": 9,
+      "site_limit": 5,
+      "bound": false
+     }
+    },
+    {
+     "index": 674,
+     "original_ordinal": 678,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 5.792560110151064,
+     "final_min_angle": 5.248011894952868,
+     "birth_relative_quality": 0.38617067401007094,
+     "final_relative_quality": 0.34986745966352456,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 21,
+      "layouts": 21,
+      "states": 34,
+      "ranked_faces": 31,
+      "retention_trials": 30
+     },
+     "witness": {
+      "retired": [
+       65,
+       303
+      ],
+      "delta_faces": -1,
+      "delta_quads": -3,
+      "covered": [
+       674,
+       675,
+       714
+      ],
+      "sites": [
+       65,
+       66,
+       303,
+       304,
+       305,
+       306,
+       671,
+       672,
+       692
+      ],
+      "old": [
+       124,
+       125,
+       618,
+       674,
+       675,
+       714
+      ],
+      "replacement": [
+       [
+        66,
+        304,
+        306
+       ],
+       [
+        66,
+        306,
+        671
+       ],
+       [
+        66,
+        671,
+        692
+       ],
+       [
+        305,
+        672,
+        671
+       ],
+       [
+        305,
+        671,
+        306
+       ]
+      ],
+      "min_angle": 16.007423711189485
+     }
+    },
+    {
+     "index": 699,
+     "original_ordinal": 703,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 5.415938514743777,
+     "final_min_angle": 5.415938514743777,
+     "birth_relative_quality": 0.36106256764958516,
+     "final_relative_quality": 0.36106256764958516,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 18,
+      "layouts": 18,
+      "states": 35,
+      "ranked_faces": 31,
+      "retention_trials": 26
+     },
+     "witness": {
+      "retired": [
+       83,
+       344
+      ],
+      "delta_faces": -1,
+      "delta_quads": -3,
+      "covered": [
+       698,
+       699
+      ],
+      "sites": [
+       69,
+       83,
+       313,
+       341,
+       342,
+       343,
+       344,
+       345,
+       689
+      ],
+      "old": [
+       165,
+       168,
+       169,
+       697,
+       698,
+       699
+      ],
+      "replacement": [
+       [
+        69,
+        313,
+        345
+       ],
+       [
+        69,
+        341,
+        689
+       ],
+       [
+        341,
+        342,
+        343
+       ],
+       [
+        69,
+        345,
+        341
+       ],
+       [
+        341,
+        345,
+        342
+       ]
+      ],
+      "min_angle": 15.744129892037284
+     }
+    },
+    {
+     "index": 700,
+     "original_ordinal": 704,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 5.601669962674793,
+     "final_min_angle": 5.601669962674793,
+     "birth_relative_quality": 0.3734446641783195,
+     "final_relative_quality": 0.3734446641783195,
+     "status": "no_joint_witness",
+     "search": {
+      "topological_patches": 214,
+      "layouts": 214,
+      "states": 537,
+      "ranked_faces": 31,
+      "retention_trials": 516,
+      "not_a_disk": 9,
+      "site_limit": 30,
+      "bound": false
+     }
+    },
+    {
+     "index": 691,
+     "original_ordinal": 695,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 6.3228403087999245,
+     "final_min_angle": 6.3228403087999245,
+     "birth_relative_quality": 0.4215226872533283,
+     "final_relative_quality": 0.4215226872533283,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 5,
+      "layouts": 5,
+      "states": 10,
+      "ranked_faces": 31,
+      "retention_trials": 6
+     },
+     "witness": {
+      "retired": [
+       335
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       691,
+       693
+      ],
+      "sites": [
+       80,
+       81,
+       334,
+       335,
+       336,
+       337,
+       689
+      ],
+      "old": [
+       156,
+       157,
+       691,
+       693
+      ],
+      "replacement": [
+       [
+        80,
+        689,
+        81
+       ],
+       [
+        81,
+        336,
+        337
+       ],
+       [
+        80,
+        81,
+        337
+       ],
+       [
+        80,
+        337,
+        334
+       ]
+      ],
+      "min_angle": 17.466701606860497
+     }
+    },
+    {
+     "index": 683,
+     "original_ordinal": 687,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 6.120140296838185,
+     "final_min_angle": 6.587177021186916,
+     "birth_relative_quality": 0.40800935312254566,
+     "final_relative_quality": 0.43914513474579436,
+     "status": "no_joint_witness",
+     "search": {
+      "topological_patches": 323,
+      "layouts": 323,
+      "states": 1021,
+      "ranked_faces": 31,
+      "retention_trials": 836,
+      "not_a_disk": 2,
+      "site_limit": 8,
+      "bound": false
+     }
+    },
+    {
+     "index": 656,
+     "original_ordinal": 660,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 6.520439759122581,
+     "final_min_angle": 6.790237975503182,
+     "birth_relative_quality": 0.43469598394150544,
+     "final_relative_quality": 0.4526825317002121,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 5,
+      "layouts": 5,
+      "states": 11,
+      "ranked_faces": 31,
+      "retention_trials": 6
+     },
+     "witness": {
+      "retired": [
+       213
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       656,
+       657
+      ],
+      "sites": [
+       17,
+       20,
+       210,
+       212,
+       213,
+       214,
+       695
+      ],
+      "old": [
+       28,
+       31,
+       656,
+       657
+      ],
+      "replacement": [
+       [
+        17,
+        20,
+        695
+       ],
+       [
+        17,
+        210,
+        214
+       ],
+       [
+        17,
+        214,
+        212
+       ],
+       [
+        17,
+        212,
+        20
+       ]
+      ],
+      "min_angle": 15.817794477486157
+     }
+    },
+    {
+     "index": 721,
+     "original_ordinal": 729,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 2.5314663267635877,
+     "final_min_angle": 6.980323533807382,
+     "birth_relative_quality": 0.16876442178423917,
+     "final_relative_quality": 0.4653549022538254,
+     "status": "no_joint_witness",
+     "search": {
+      "topological_patches": 474,
+      "touches_prior_repair": 432,
+      "layouts": 42,
+      "states": 90,
+      "ranked_faces": 31,
+      "retention_trials": 84,
+      "bound": false
+     }
+    },
+    {
+     "index": 718,
+     "original_ordinal": 726,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 7.285740897031633,
+     "final_min_angle": 7.788626277523766,
+     "birth_relative_quality": 0.48571605980210886,
+     "final_relative_quality": 0.5192417518349177,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 5,
+      "layouts": 5,
+      "states": 11,
+      "ranked_faces": 31,
+      "retention_trials": 6
+     },
+     "witness": {
+      "retired": [
+       676
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       717,
+       718
+      ],
+      "sites": [
+       17,
+       180,
+       210,
+       673,
+       676,
+       677,
+       696
+      ],
+      "old": [
+       623,
+       626,
+       717,
+       718
+      ],
+      "replacement": [
+       [
+        17,
+        696,
+        180
+       ],
+       [
+        180,
+        673,
+        677
+       ],
+       [
+        17,
+        180,
+        677
+       ],
+       [
+        17,
+        677,
+        210
+       ]
+      ],
+      "min_angle": 19.974544829085712
+     }
+    },
+    {
+     "index": 714,
+     "original_ordinal": 722,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 8.033282741681463,
+     "final_min_angle": 8.030006846670291,
+     "birth_relative_quality": 0.5355521827787642,
+     "final_relative_quality": 0.5353337897780194,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 7,
+      "layouts": 7,
+      "states": 13,
+      "ranked_faces": 31,
+      "retention_trials": 9
+     },
+     "witness": {
+      "retired": [
+       671
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       713,
+       714
+      ],
+      "sites": [
+       65,
+       179,
+       305,
+       669,
+       671,
+       672,
+       692
+      ],
+      "old": [
+       617,
+       618,
+       713,
+       714
+      ],
+      "replacement": [
+       [
+        65,
+        179,
+        692
+       ],
+       [
+        65,
+        305,
+        672
+       ],
+       [
+        65,
+        672,
+        669
+       ],
+       [
+        65,
+        669,
+        179
+       ]
+      ],
+      "min_angle": 16.090296316722917
+     }
+    },
+    {
+     "index": 688,
+     "original_ordinal": 692,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 7.793341823644152,
+     "final_min_angle": 8.247072609305471,
+     "birth_relative_quality": 0.5195561215762768,
+     "final_relative_quality": 0.5498048406203647,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 5,
+      "layouts": 5,
+      "states": 11,
+      "ranked_faces": 31,
+      "retention_trials": 6
+     },
+     "witness": {
+      "retired": [
+       331
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       688,
+       689
+      ],
+      "sites": [
+       68,
+       79,
+       311,
+       331,
+       332,
+       333,
+       693
+      ],
+      "old": [
+       153,
+       154,
+       688,
+       689
+      ],
+      "replacement": [
+       [
+        68,
+        693,
+        79
+       ],
+       [
+        68,
+        79,
+        332
+       ],
+       [
+        68,
+        332,
+        333
+       ],
+       [
+        68,
+        333,
+        311
+       ]
+      ],
+      "min_angle": 17.081511125714748
+     }
+    },
+    {
+     "index": 678,
+     "original_ordinal": 682,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 9.059091467592893,
+     "final_min_angle": 9.059091467592893,
+     "birth_relative_quality": 0.6039394311728595,
+     "final_relative_quality": 0.6039394311728595,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 5,
+      "layouts": 5,
+      "states": 10,
+      "ranked_faces": 31,
+      "retention_trials": 6
+     },
+     "witness": {
+      "retired": [
+       314
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       678
+      ],
+      "sites": [
+       69,
+       70,
+       313,
+       314,
+       315,
+       317,
+       690
+      ],
+      "old": [
+       136,
+       137,
+       678,
+       679
+      ],
+      "replacement": [
+       [
+        69,
+        690,
+        70
+       ],
+       [
+        69,
+        70,
+        315
+       ],
+       [
+        69,
+        315,
+        317
+       ],
+       [
+        69,
+        317,
+        313
+       ]
+      ],
+      "min_angle": 16.233000078299348
+     }
+    },
+    {
+     "index": 698,
+     "original_ordinal": 702,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 9.221899991940496,
+     "final_min_angle": 9.221899991940496,
+     "birth_relative_quality": 0.6147933327960331,
+     "final_relative_quality": 0.6147933327960331,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 4,
+      "layouts": 4,
+      "states": 8,
+      "ranked_faces": 31,
+      "retention_trials": 5
+     },
+     "witness": {
+      "retired": [
+       83
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       698
+      ],
+      "sites": [
+       83,
+       341,
+       342,
+       343,
+       344,
+       345,
+       689
+      ],
+      "old": [
+       165,
+       168,
+       697,
+       698
+      ],
+      "replacement": [
+       [
+        341,
+        689,
+        344
+       ],
+       [
+        341,
+        342,
+        343
+       ],
+       [
+        341,
+        344,
+        342
+       ],
+       [
+        342,
+        344,
+        345
+       ]
+      ],
+      "min_angle": 24.708231589021487
+     }
+    },
+    {
+     "index": 720,
+     "original_ordinal": 728,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 9.118718944112869,
+     "final_min_angle": 9.827843889307672,
+     "birth_relative_quality": 0.6079145962741913,
+     "final_relative_quality": 0.6551895926205115,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 23,
+      "layouts": 23,
+      "states": 37,
+      "ranked_faces": 31,
+      "retention_trials": 28
+     },
+     "witness": {
+      "retired": [
+       72
+      ],
+      "delta_faces": -1,
+      "delta_quads": -1,
+      "covered": [
+       720
+      ],
+      "sites": [
+       72,
+       265,
+       318,
+       319,
+       321,
+       690
+      ],
+      "old": [
+       141,
+       681,
+       682,
+       720
+      ],
+      "replacement": [
+       [
+        265,
+        319,
+        690
+       ],
+       [
+        318,
+        319,
+        321
+       ],
+       [
+        318,
+        690,
+        319
+       ]
+      ],
+      "min_angle": 22.59286481361829
+     }
+    },
+    {
+     "index": 684,
+     "original_ordinal": 688,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 9.890961249178483,
+     "final_min_angle": 9.890961249178483,
+     "birth_relative_quality": 0.6593974166118989,
+     "final_relative_quality": 0.6593974166118989,
+     "status": "search_limit",
+     "search": {
+      "topological_patches": 403,
+      "layouts": 403,
+      "states": 1201,
+      "ranked_faces": 31,
+      "retention_trials": 1024,
+      "site_limit": 11,
+      "bound": true
+     }
+    },
+    {
+     "index": 693,
+     "original_ordinal": 697,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 11.143862575494344,
+     "final_min_angle": 11.143862575494344,
+     "birth_relative_quality": 0.742924171699623,
+     "final_relative_quality": 0.742924171699623,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 4,
+      "layouts": 4,
+      "states": 8,
+      "ranked_faces": 31,
+      "retention_trials": 5
+     },
+     "witness": {
+      "retired": [
+       335
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       691,
+       693
+      ],
+      "sites": [
+       80,
+       81,
+       334,
+       335,
+       336,
+       337,
+       689
+      ],
+      "old": [
+       156,
+       157,
+       691,
+       693
+      ],
+      "replacement": [
+       [
+        80,
+        689,
+        81
+       ],
+       [
+        81,
+        336,
+        337
+       ],
+       [
+        80,
+        81,
+        337
+       ],
+       [
+        80,
+        337,
+        334
+       ]
+      ],
+      "min_angle": 17.466701606860497
+     }
+    },
+    {
+     "index": 713,
+     "original_ordinal": 721,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 11.266027304078793,
+     "final_min_angle": 11.26830203786952,
+     "birth_relative_quality": 0.7510684869385862,
+     "final_relative_quality": 0.751220135857968,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 4,
+      "layouts": 4,
+      "states": 10,
+      "ranked_faces": 31,
+      "retention_trials": 5
+     },
+     "witness": {
+      "retired": [
+       179
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       713
+      ],
+      "sites": [
+       179,
+       668,
+       669,
+       670,
+       671,
+       672,
+       692
+      ],
+      "old": [
+       614,
+       617,
+       712,
+       713
+      ],
+      "replacement": [
+       [
+        668,
+        692,
+        671
+       ],
+       [
+        668,
+        672,
+        669
+       ],
+       [
+        668,
+        669,
+        670
+       ],
+       [
+        668,
+        671,
+        672
+       ]
+      ],
+      "min_angle": 17.972908342504834
+     }
+    },
+    {
+     "index": 707,
+     "original_ordinal": 712,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 11.271414584974702,
+     "final_min_angle": 11.271414584974702,
+     "birth_relative_quality": 0.7514276389983134,
+     "final_relative_quality": 0.7514276389983134,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 4,
+      "layouts": 4,
+      "states": 8,
+      "ranked_faces": 31,
+      "retention_trials": 5
+     },
+     "witness": {
+      "retired": [
+       166
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       707
+      ],
+      "sites": [
+       166,
+       606,
+       607,
+       608,
+       609,
+       611,
+       692
+      ],
+      "old": [
+       521,
+       524,
+       707,
+       708
+      ],
+      "replacement": [
+       [
+        606,
+        692,
+        609
+       ],
+       [
+        606,
+        607,
+        608
+       ],
+       [
+        606,
+        609,
+        611
+       ],
+       [
+        606,
+        611,
+        607
+       ]
+      ],
+      "min_angle": 17.161996537097117
+     }
+    },
+    {
+     "index": 657,
+     "original_ordinal": 661,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 11.299385992076578,
+     "final_min_angle": 11.299385992076578,
+     "birth_relative_quality": 0.7532923994717718,
+     "final_relative_quality": 0.7532923994717718,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 4,
+      "layouts": 4,
+      "states": 9,
+      "ranked_faces": 31,
+      "retention_trials": 5
+     },
+     "witness": {
+      "retired": [
+       213
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       656,
+       657
+      ],
+      "sites": [
+       17,
+       20,
+       210,
+       212,
+       213,
+       214,
+       695
+      ],
+      "old": [
+       28,
+       31,
+       656,
+       657
+      ],
+      "replacement": [
+       [
+        17,
+        20,
+        695
+       ],
+       [
+        17,
+        210,
+        214
+       ],
+       [
+        17,
+        214,
+        212
+       ],
+       [
+        17,
+        212,
+        20
+       ]
+      ],
+      "min_angle": 15.817794477486157
+     }
+    },
+    {
+     "index": 670,
+     "original_ordinal": 674,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 12.460560642269478,
+     "final_min_angle": 11.449369384056583,
+     "birth_relative_quality": 0.8307040428179652,
+     "final_relative_quality": 0.7632912922704389,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 7,
+      "layouts": 7,
+      "states": 15,
+      "ranked_faces": 31,
+      "retention_trials": 9
+     },
+     "witness": {
+      "retired": [
+       274
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       670,
+       671
+      ],
+      "sites": [
+       46,
+       51,
+       266,
+       274,
+       275,
+       276,
+       691
+      ],
+      "old": [
+       93,
+       94,
+       670,
+       671
+      ],
+      "replacement": [
+       [
+        46,
+        691,
+        51
+       ],
+       [
+        51,
+        275,
+        276
+       ],
+       [
+        46,
+        276,
+        266
+       ],
+       [
+        46,
+        51,
+        276
+       ]
+      ],
+      "min_angle": 22.420244678745537
+     }
+    },
+    {
+     "index": 710,
+     "original_ordinal": 718,
+     "kind": "TRI",
+     "region": "interior",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 10.110511600887017,
+     "final_min_angle": 12.074325827530048,
+     "birth_relative_quality": 0.6740341067258011,
+     "final_relative_quality": 0.8049550551686698,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 7,
+      "layouts": 7,
+      "states": 13,
+      "ranked_faces": 31,
+      "retention_trials": 8
+     },
+     "witness": {
+      "retired": [
+       170
+      ],
+      "delta_faces": 1,
+      "delta_quads": -3,
+      "covered": [
+       710
+      ],
+      "sites": [
+       22,
+       170,
+       216,
+       622,
+       623,
+       624,
+       631,
+       632
+      ],
+      "old": [
+       542,
+       551,
+       661,
+       710
+      ],
+      "replacement": [
+       [
+        22,
+        216,
+        623
+       ],
+       [
+        22,
+        623,
+        631
+       ],
+       [
+        622,
+        623,
+        624
+       ],
+       [
+        622,
+        632,
+        623
+       ],
+       [
+        623,
+        632,
+        631
+       ]
+      ],
+      "min_angle": 17.359480982767938
+     }
+    },
+    {
+     "index": 717,
+     "original_ordinal": 725,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 12.18613706457717,
+     "final_min_angle": 12.18613706457717,
+     "birth_relative_quality": 0.812409137638478,
+     "final_relative_quality": 0.812409137638478,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 4,
+      "layouts": 4,
+      "states": 8,
+      "ranked_faces": 31,
+      "retention_trials": 5
+     },
+     "witness": {
+      "retired": [
+       180
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       717
+      ],
+      "sites": [
+       180,
+       673,
+       674,
+       675,
+       676,
+       677,
+       696
+      ],
+      "old": [
+       622,
+       623,
+       716,
+       717
+      ],
+      "replacement": [
+       [
+        673,
+        677,
+        676
+       ],
+       [
+        674,
+        676,
+        696
+       ],
+       [
+        673,
+        674,
+        675
+       ],
+       [
+        673,
+        676,
+        674
+       ]
+      ],
+      "min_angle": 30.772724115255148
+     }
+    },
+    {
+     "index": 689,
+     "original_ordinal": 693,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 12.457843096409603,
+     "final_min_angle": 12.457843096409603,
+     "birth_relative_quality": 0.8305228730939735,
+     "final_relative_quality": 0.8305228730939735,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 2,
+      "layouts": 2,
+      "states": 5,
+      "ranked_faces": 31,
+      "retention_trials": 3
+     },
+     "witness": {
+      "retired": [
+       79
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       689
+      ],
+      "sites": [
+       79,
+       331,
+       332,
+       333,
+       693,
+       694
+      ],
+      "old": [
+       154,
+       642,
+       689
+      ],
+      "replacement": [
+       [
+        331,
+        332,
+        333
+       ],
+       [
+        331,
+        693,
+        332
+       ],
+       [
+        332,
+        693,
+        694
+       ]
+      ],
+      "min_angle": 24.868117752042263
+     }
+    },
+    {
+     "index": 671,
+     "original_ordinal": 675,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 7.793816797383957,
+     "final_min_angle": 12.474524617209903,
+     "birth_relative_quality": 0.5195877864922638,
+     "final_relative_quality": 0.8316349744806603,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 5,
+      "layouts": 5,
+      "states": 11,
+      "ranked_faces": 31,
+      "retention_trials": 6
+     },
+     "witness": {
+      "retired": [
+       274
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       670,
+       671
+      ],
+      "sites": [
+       46,
+       51,
+       266,
+       274,
+       275,
+       276,
+       691
+      ],
+      "old": [
+       93,
+       94,
+       670,
+       671
+      ],
+      "replacement": [
+       [
+        46,
+        691,
+        51
+       ],
+       [
+        51,
+        275,
+        276
+       ],
+       [
+        46,
+        276,
+        266
+       ],
+       [
+        46,
+        51,
+        276
+       ]
+      ],
+      "min_angle": 22.420244678745537
+     }
+    },
+    {
+     "index": 627,
+     "original_ordinal": 631,
+     "kind": "QUAD",
+     "region": "contour_edge",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 18.960539550039286,
+     "final_min_angle": 18.960539550039286,
+     "birth_relative_quality": 0.8426906466684128,
+     "final_relative_quality": 0.8426906466684128,
+     "status": "no_joint_witness",
+     "search": {
+      "topological_patches": 416,
+      "layouts": 416,
+      "states": 485,
+      "ranked_faces": 31,
+      "retention_trials": 485,
+      "not_a_disk": 13,
+      "site_limit": 220,
+      "bound": false
+     }
+    },
+    {
+     "index": 632,
+     "original_ordinal": 636,
+     "kind": "QUAD",
+     "region": "contour_edge",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 19.438606955832434,
+     "final_min_angle": 19.438606955832434,
+     "birth_relative_quality": 0.8639380869258859,
+     "final_relative_quality": 0.8639380869258859,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 1,
+      "layouts": 1,
+      "states": 4,
+      "ranked_faces": 31,
+      "retention_trials": 1
+     },
+     "witness": {
+      "retired": [],
+      "delta_faces": 2,
+      "delta_quads": -2,
+      "covered": [
+       632
+      ],
+      "sites": [
+       28,
+       230,
+       232,
+       234,
+       683,
+       684
+      ],
+      "old": [
+       49,
+       632
+      ],
+      "replacement": [
+       [
+        28,
+        232,
+        683
+       ],
+       [
+        28,
+        683,
+        684
+       ],
+       [
+        28,
+        230,
+        234
+       ],
+       [
+        28,
+        234,
+        232
+       ]
+      ],
+      "min_angle": 16.050620056673864
+     }
+    },
+    {
+     "index": 633,
+     "original_ordinal": 637,
+     "kind": "QUAD",
+     "region": "contour_edge",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 19.941790223443547,
+     "final_min_angle": 19.941790223443547,
+     "birth_relative_quality": 0.8863017877086021,
+     "final_relative_quality": 0.8863017877086021,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 1,
+      "layouts": 1,
+      "states": 4,
+      "ranked_faces": 31,
+      "retention_trials": 1
+     },
+     "witness": {
+      "retired": [],
+      "delta_faces": 2,
+      "delta_quads": -2,
+      "covered": [
+       633
+      ],
+      "sites": [
+       23,
+       222,
+       224,
+       227,
+       684,
+       685
+      ],
+      "old": [
+       41,
+       633
+      ],
+      "replacement": [
+       [
+        23,
+        224,
+        684
+       ],
+       [
+        23,
+        684,
+        685
+       ],
+       [
+        23,
+        222,
+        227
+       ],
+       [
+        23,
+        227,
+        224
+       ]
+      ],
+      "min_angle": 15.28348065236584
+     }
+    },
+    {
+     "index": 631,
+     "original_ordinal": 635,
+     "kind": "QUAD",
+     "region": "contour_edge",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 21.14613410502037,
+     "final_min_angle": 21.14613410502037,
+     "birth_relative_quality": 0.9398281824453497,
+     "final_relative_quality": 0.9398281824453497,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 1,
+      "layouts": 1,
+      "states": 4,
+      "ranked_faces": 31,
+      "retention_trials": 1
+     },
+     "witness": {
+      "retired": [],
+      "delta_faces": 2,
+      "delta_quads": -2,
+      "covered": [
+       631
+      ],
+      "sites": [
+       7,
+       193,
+       196,
+       197,
+       682,
+       683
+      ],
+      "old": [
+       12,
+       631
+      ],
+      "replacement": [
+       [
+        7,
+        682,
+        683
+       ],
+       [
+        7,
+        683,
+        193
+       ],
+       [
+        7,
+        193,
+        197
+       ],
+       [
+        7,
+        197,
+        196
+       ]
+      ],
+      "min_angle": 15.63519929878302
+     }
+    }
+   ]
+  },
+  "ribbed-trial": {
+   "candidate_sha256": "221c26fd086b773d2acc742458203d2ddec9f36d1e602e80ea38584c5a570fee",
+   "before_birth_sha256": "f264ada6da741805a7999976da26ef169e93c4f244ee184b5f3e2d63d2674bab",
+   "trace_sha256": "28f573ea3424d9244c82afc8010b96de737aea8a6838d99e026bd6439800cbae",
+   "profile_sha256": "57dd50497f14d187b8310af38ba4f263798dbf503378943d8c118cc4d14912e7",
+   "original_face_count": 542,
+   "face_cap": 601,
+   "failures": 11,
+   "direct_feasible": 10,
+   "covered_by_any": [
+    478,
+    496,
+    500,
+    501,
+    506,
+    508,
+    510,
+    514,
+    517,
+    532
+   ],
+   "locations": [
+    {
+     "region": "contour_vertex",
+     "kind": "TRI",
+     "origin": "front",
+     "below_at_birth": true,
+     "status": "feasible",
+     "count": 9
+    },
+    {
+     "region": "contour_vertex",
+     "kind": "TRI",
+     "origin": "front",
+     "below_at_birth": true,
+     "status": "no_joint_witness",
+     "count": 1
+    },
+    {
+     "region": "interior",
+     "kind": "TRI",
+     "origin": "front",
+     "below_at_birth": true,
+     "status": "feasible",
+     "count": 1
+    }
+   ],
+   "compatible_first_witnesses": {
+    "targets": [
+     510,
+     500,
+     517,
+     478,
+     514
+    ],
+    "failure_count": 6,
+    "delta_faces": 4,
+    "delta_quads": -10
+   },
+   "faces": [
+    {
+     "index": 510,
+     "original_ordinal": 513,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 11.967772407811895,
+     "final_min_angle": 11.967772407811895,
+     "birth_relative_quality": 0.7978514938541263,
+     "final_relative_quality": 0.7978514938541263,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 4,
+      "layouts": 4,
+      "states": 13,
+      "ranked_faces": 11,
+      "retention_trials": 5
+     },
+     "witness": {
+      "retired": [
+       60
+      ],
+      "delta_faces": 1,
+      "delta_quads": -3,
+      "covered": [
+       510
+      ],
+      "sites": [
+       60,
+       263,
+       264,
+       266,
+       268,
+       269,
+       516,
+       517
+      ],
+      "old": [
+       139,
+       144,
+       470,
+       510
+      ],
+      "replacement": [
+       [
+        263,
+        269,
+        268
+       ],
+       [
+        263,
+        268,
+        266
+       ],
+       [
+        264,
+        266,
+        268
+       ],
+       [
+        264,
+        268,
+        516
+       ],
+       [
+        264,
+        516,
+        517
+       ]
+      ],
+      "min_angle": 18.25116671366702
+     }
+    },
+    {
+     "index": 500,
+     "original_ordinal": 503,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 13.547763119491673,
+     "final_min_angle": 12.786895426989378,
+     "birth_relative_quality": 0.9031842079661115,
+     "final_relative_quality": 0.8524596951326252,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 7,
+      "layouts": 7,
+      "states": 12,
+      "ranked_faces": 11,
+      "retention_trials": 8
+     },
+     "witness": {
+      "retired": [
+       244
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       500,
+       501
+      ],
+      "sites": [
+       45,
+       51,
+       240,
+       244,
+       245,
+       246,
+       518
+      ],
+      "old": [
+       115,
+       116,
+       500,
+       501
+      ],
+      "replacement": [
+       [
+        45,
+        518,
+        51
+       ],
+       [
+        45,
+        51,
+        246
+       ],
+       [
+        45,
+        246,
+        240
+       ],
+       [
+        51,
+        245,
+        246
+       ]
+      ],
+      "min_angle": 25.745621338147956
+     }
+    },
+    {
+     "index": 501,
+     "original_ordinal": 504,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 12.197858218656553,
+     "final_min_angle": 12.961598234838917,
+     "birth_relative_quality": 0.8131905479104369,
+     "final_relative_quality": 0.8641065489892611,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 7,
+      "layouts": 7,
+      "states": 16,
+      "ranked_faces": 11,
+      "retention_trials": 8
+     },
+     "witness": {
+      "retired": [
+       244
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       500,
+       501
+      ],
+      "sites": [
+       45,
+       51,
+       240,
+       244,
+       245,
+       246,
+       518
+      ],
+      "old": [
+       115,
+       116,
+       500,
+       501
+      ],
+      "replacement": [
+       [
+        45,
+        518,
+        51
+       ],
+       [
+        45,
+        51,
+        246
+       ],
+       [
+        45,
+        246,
+        240
+       ],
+       [
+        51,
+        245,
+        246
+       ]
+      ],
+      "min_angle": 25.745621338147956
+     }
+    },
+    {
+     "index": 532,
+     "original_ordinal": 535,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 13.194223012422462,
+     "final_min_angle": 13.194223012422462,
+     "birth_relative_quality": 0.8796148674948309,
+     "final_relative_quality": 0.8796148674948309,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 44,
+      "layouts": 44,
+      "states": 94,
+      "ranked_faces": 11,
+      "retention_trials": 72,
+      "not_a_disk": 1
+     },
+     "witness": {
+      "retired": [
+       130
+      ],
+      "delta_faces": 1,
+      "delta_quads": -3,
+      "covered": [
+       532
+      ],
+      "sites": [
+       46,
+       62,
+       130,
+       267,
+       489,
+       490,
+       491,
+       515,
+       516
+      ],
+      "old": [
+       447,
+       469,
+       507,
+       509,
+       532
+      ],
+      "replacement": [
+       [
+        489,
+        490,
+        491
+       ],
+       [
+        46,
+        490,
+        267
+       ],
+       [
+        267,
+        490,
+        489
+       ],
+       [
+        62,
+        267,
+        489
+       ],
+       [
+        62,
+        489,
+        515
+       ],
+       [
+        62,
+        515,
+        516
+       ]
+      ],
+      "min_angle": 22.424125711676993
+     }
+    },
+    {
+     "index": 508,
+     "original_ordinal": 511,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 13.234498177721493,
+     "final_min_angle": 13.234498177721493,
+     "birth_relative_quality": 0.8822998785147662,
+     "final_relative_quality": 0.8822998785147662,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 5,
+      "layouts": 5,
+      "states": 10,
+      "ranked_faces": 11,
+      "retention_trials": 6
+     },
+     "witness": {
+      "retired": [
+       268
+      ],
+      "delta_faces": 0,
+      "delta_quads": -2,
+      "covered": [
+       508,
+       510
+      ],
+      "sites": [
+       60,
+       62,
+       263,
+       267,
+       268,
+       269,
+       516
+      ],
+      "old": [
+       143,
+       144,
+       508,
+       510
+      ],
+      "replacement": [
+       [
+        60,
+        263,
+        269
+       ],
+       [
+        60,
+        62,
+        516
+       ],
+       [
+        60,
+        267,
+        62
+       ],
+       [
+        60,
+        269,
+        267
+       ]
+      ],
+      "min_angle": 18.237764245670565
+     }
+    },
+    {
+     "index": 506,
+     "original_ordinal": 509,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 13.24777103655883,
+     "final_min_angle": 13.24777103655883,
+     "birth_relative_quality": 0.8831847357705888,
+     "final_relative_quality": 0.8831847357705888,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 4,
+      "layouts": 4,
+      "states": 11,
+      "ranked_faces": 11,
+      "retention_trials": 5
+     },
+     "witness": {
+      "retired": [
+       264
+      ],
+      "delta_faces": 1,
+      "delta_quads": -3,
+      "covered": [
+       506
+      ],
+      "sites": [
+       60,
+       61,
+       263,
+       264,
+       265,
+       266,
+       516,
+       517
+      ],
+      "old": [
+       139,
+       140,
+       470,
+       506
+      ],
+      "replacement": [
+       [
+        60,
+        516,
+        517
+       ],
+       [
+        60,
+        517,
+        61
+       ],
+       [
+        60,
+        265,
+        266
+       ],
+       [
+        60,
+        266,
+        263
+       ],
+       [
+        60,
+        61,
+        265
+       ]
+      ],
+      "min_angle": 18.439539117784342
+     }
+    },
+    {
+     "index": 517,
+     "original_ordinal": 520,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 13.260358509497227,
+     "final_min_angle": 13.260358509497227,
+     "birth_relative_quality": 0.8840239006331484,
+     "final_relative_quality": 0.8840239006331484,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 3,
+      "layouts": 3,
+      "states": 8,
+      "ranked_faces": 11,
+      "retention_trials": 3
+     },
+     "witness": {
+      "retired": [],
+      "delta_faces": 2,
+      "delta_quads": -2,
+      "covered": [
+       517
+      ],
+      "sites": [
+       116,
+       118,
+       455,
+       456,
+       457,
+       502,
+       503
+      ],
+      "old": [
+       400,
+       458,
+       517
+      ],
+      "replacement": [
+       [
+        116,
+        455,
+        118
+       ],
+       [
+        116,
+        118,
+        502
+       ],
+       [
+        116,
+        502,
+        503
+       ],
+       [
+        118,
+        455,
+        457
+       ],
+       [
+        118,
+        457,
+        456
+       ]
+      ],
+      "min_angle": 15.212836209436892
+     }
+    },
+    {
+     "index": 534,
+     "original_ordinal": 537,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 13.275165087640687,
+     "final_min_angle": 13.275165087640687,
+     "birth_relative_quality": 0.8850110058427124,
+     "final_relative_quality": 0.8850110058427124,
+     "status": "no_joint_witness",
+     "search": {
+      "topological_patches": 158,
+      "touches_prior_repair": 138,
+      "layouts": 20,
+      "states": 123,
+      "ranked_faces": 11,
+      "retention_trials": 51,
+      "bound": false
+     }
+    },
+    {
+     "index": 478,
+     "original_ordinal": 481,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 13.567747506655751,
+     "final_min_angle": 13.567747506655751,
+     "birth_relative_quality": 0.9045165004437167,
+     "final_relative_quality": 0.9045165004437167,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 7,
+      "layouts": 7,
+      "states": 21,
+      "ranked_faces": 11,
+      "retention_trials": 8
+     },
+     "witness": {
+      "retired": [
+       132
+      ],
+      "delta_faces": 1,
+      "delta_quads": -3,
+      "covered": [
+       478
+      ],
+      "sites": [
+       0,
+       1,
+       132,
+       133,
+       135,
+       136,
+       500,
+       501
+      ],
+      "old": [
+       0,
+       1,
+       456,
+       478
+      ],
+      "replacement": [
+       [
+        1,
+        133,
+        136
+       ],
+       [
+        0,
+        136,
+        135
+       ],
+       [
+        0,
+        1,
+        136
+       ],
+       [
+        0,
+        500,
+        1
+       ],
+       [
+        1,
+        500,
+        501
+       ]
+      ],
+      "min_angle": 20.586218301394197
+     }
+    },
+    {
+     "index": 514,
+     "original_ordinal": 517,
+     "kind": "TRI",
+     "region": "interior",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 14.041827192273507,
+     "final_min_angle": 14.529681898586437,
+     "birth_relative_quality": 0.9361218128182338,
+     "final_relative_quality": 0.9686454599057625,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 4,
+      "layouts": 4,
+      "states": 8,
+      "ranked_faces": 11,
+      "retention_trials": 4
+     },
+     "witness": {
+      "retired": [],
+      "delta_faces": 0,
+      "delta_quads": 0,
+      "covered": [
+       514
+      ],
+      "sites": [
+       113,
+       121,
+       443,
+       444,
+       447,
+       468
+      ],
+      "old": [
+       389,
+       514,
+       520
+      ],
+      "replacement": [
+       [
+        113,
+        444,
+        447,
+        443
+       ],
+       [
+        113,
+        443,
+        121
+       ],
+       [
+        113,
+        121,
+        468
+       ]
+      ],
+      "min_angle": 16.543459230449848
+     }
+    },
+    {
+     "index": 496,
+     "original_ordinal": 499,
+     "kind": "TRI",
+     "region": "contour_vertex",
+     "origin": "front",
+     "below_floor_at_birth": true,
+     "birth_min_angle": 13.53007556280803,
+     "final_min_angle": 14.679039599637186,
+     "birth_relative_quality": 0.9020050375205353,
+     "final_relative_quality": 0.9786026399758124,
+     "status": "feasible",
+     "search": {
+      "topological_patches": 2,
+      "layouts": 2,
+      "states": 6,
+      "ranked_faces": 11,
+      "retention_trials": 2
+     },
+     "witness": {
+      "retired": [],
+      "delta_faces": 2,
+      "delta_quads": -2,
+      "covered": [
+       496
+      ],
+      "sites": [
+       45,
+       61,
+       224,
+       225,
+       226,
+       517,
+       518
+      ],
+      "old": [
+       98,
+       471,
+       496
+      ],
+      "replacement": [
+       [
+        45,
+        225,
+        226
+       ],
+       [
+        45,
+        226,
+        224
+       ],
+       [
+        45,
+        224,
+        61
+       ],
+       [
+        45,
+        61,
+        517
+       ],
+       [
+        45,
+        517,
+        518
+       ]
+      ],
+      "min_angle": 18.145099514911998
+     }
+    }
+   ]
+  }
+ },
+ "hosted": {
+  "run": 45799331940,
+  "head_sha": "442644df44dfede19318f49832ab8fbbd65c370b",
+  "jobs": [
+   {
+    "name": "TRI baseline and tooling controls (Linux)",
+    "id": 139838122589,
+    "conclusion": "success"
+   },
+   {
+    "name": "QUAD native (windows-2022)",
+    "id": 139838123044,
+    "conclusion": "success"
+   },
+   {
+    "name": "TRI scientific equivalence against frozen baseline",
+    "id": 139838123071,
+    "conclusion": "success"
+   },
+   {
+    "name": "QUAD native (ubuntu-24.04)",
+    "id": 139838123186,
+    "conclusion": "success"
+   }
+  ]
+ },
+ "native_candidates_generated": 0,
+ "mixed_adaptive_epochs": 0
+}

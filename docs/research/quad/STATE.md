@@ -12,6 +12,28 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-26 - measure residual transition repair coverage
+
+All 31 CurvaBezier and 11 Ribbed Bracket residual violations
+are born below a safety floor in the advancing front. An exact
+archive search finds individually feasible one-layer witnesses
+for 25 and 10 targets, respectively. One CurvaBezier target
+hits a search limit. Thirty-four of the 35 first witnesses
+remove QUAD. A vertex-disjoint subset covers only 13 and six
+failures and costs 18 and 10 QUAD. These are projected witnesses
+with no new native stage or accepted mixed epoch.
+All four exact-head PR 295 hosted jobs pass. The earlier local
+Windows rollback invocation remains recorded as failed.
+[Residual coverage](RESIDUAL_SEED_LAYER_COVERAGE_20261126.md).
+
+**Next after scientific alignment:** compare first feasible against
+minimum QUAD loss for the same repair target and existing search
+limits, with at most one native repair per model. Preserve the
+profile and measure faces, shape, geometry and curve binding.
+If no better eligible witness is found, return to the recorded
+advancing-front birth choices. Shared curves, owner reentry,
+reserved cases and global mixed curvature remain open.
+
 ### 2026-11-26 - select and apply one transition repair automatically
 
 [Draft PR 295](https://github.com/tiagosombrra/apmesh-modernization/pull/295)

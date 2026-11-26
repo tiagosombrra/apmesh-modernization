@@ -5099,3 +5099,18 @@ Both frozen full-shape profiles keep their control blockers. Zero
 mixed adaptive epochs accepted. Next, map residual violations by
 generation origin and region and measure eligible one-layer coverage.
 [Exact evidence and scope](AUTO_SEED_LAYER_TRIAL_20261126.md).
+
+
+## 2026-11-26 Fortaleza - measure residual one-layer coverage
+
+Bound 42 remaining shape violations to unchanged native birth faces.
+All already miss a floor in the advancing front. Individually feasible
+witnesses cover 25 of 31 CurvaBezier and 10 of 11 Ribbed Bracket targets.
+One search hits the retention cap. A disjoint first-witness estimate
+covers 13 and six targets and removes 18 and 10 QUAD, respectively.
+One directly recorded initial TRI passes independently for each of
+the four bad CurvaBezier QUAD, with no completed alternate front trace.
+The four exact-head hosted PR 295 jobs pass. No new native meshes or
+mixed admissions. Seek alignment to compare ranking by retained QUAD
+before any batch or front-policy change.
+[Results and exact per-face witnesses](RESIDUAL_SEED_LAYER_COVERAGE_20261126.md).

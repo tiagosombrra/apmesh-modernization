@@ -111,8 +111,12 @@ reaches native staging on both development models with no supplied
 face identity. It improves local angles and preserves the original
 curves, exterior and protected sizes. Both replacements use TRI
 throughout the edited region. The frozen whole-mesh blockers persist.
-Measure the remaining violations by generation origin and region
-before proposing a broader repair.
+The [residual coverage audit](RESIDUAL_SEED_LAYER_COVERAGE_20261126.md)
+maps all 42 remaining violations to the advancing front at birth.
+Individual targets often have a feasible one-layer witness.
+The first witnesses generally remove QUAD and often overlap.
+Align retention-aware selection before a batch trial, retaining
+the birth evidence for the advancing-front work.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
