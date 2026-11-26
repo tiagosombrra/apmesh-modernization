@@ -12,6 +12,24 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-25 - project coupled contour and seed grading
+
+The [two-model projection](COUPLED_TRANSITION_PROJECTION_20261125.md) binds the exact PR 291
+native geometry and reports zero admissible nearby groups under the
+size-request protection and tree contracts. One or two arc splits fit
+the face envelope. The tested fixed-interface cavities have no joint
+size and shape solution across 93,830 CurvaBezier and 13,442 Ribbed
+layouts. The existing seed layouts and the 44 retained topology
+witnesses were independently reconstructed. Five read-only controls
+pass. No new native generation or admitted mixed epoch.
+
+**Next after scientific alignment:** try the existing ideal interior
+point when the front cannot realize a protected physical size on
+the chosen TRI or QUAD. Limit the experiment to one new point per
+attempt and retain the full shape, geometry, size, growth and rollback
+checks in both models. Shared curves, owner reentry, reserved cases
+and global mixed curvature remain open.
+
 ### 2026-11-25 - run the two native subdivisions at oversized requests
 
 [Draft PR 291](https://github.com/tiagosombrra/apmesh-modernization/pull/291)

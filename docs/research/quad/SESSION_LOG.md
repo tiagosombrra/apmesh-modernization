@@ -4993,3 +4993,17 @@ rollback pass. Both candidates remain blocked and zero mixed
 epochs are admitted. Inspect a coupled contour/seed action using
 physical arc and edge lengths before the next scientific change.
 [Native results and evidence](NATIVE_REQUEST_REFINEMENT_TRIAL_20261125.md).
+
+
+## 2026-11-25 Fortaleza - project coordinated curve and seed grading
+
+The PR 291 native archives reproduce their full seed geometry under
+independent projection. Zero nearby groups pass the request and tree
+contracts. The projected arc edits fit the fixed face caps, but
+neither local cavity achieves size and shape together. Examined
+93,830 CurvaBezier and 13,442 Ribbed layouts, checked incidence and
+area for 44 best witnesses and passed five read-only controls.
+Alignment requested for an opt-in size-driven ideal-point trial using
+one interior point per attempt and the same whole-candidate checks.
+[Projection and validation](COUPLED_TRANSITION_PROJECTION_20261125.md).
+No new native run or accepted mixed epoch.

@@ -88,8 +88,11 @@ replay](FRONT_SIZE_OPTIONS_REPLAY_20261125.md) finds zero simultaneous size and 
 the selected states. The [matched native subdivision trial](NATIVE_REQUEST_REFINEMENT_TRIAL_20261125.md)
 realizes the Ribbed request within budget, at the cost of additional
 sub-floor TRI already at birth. The CurvaBezier arc edit fails to
-realize its requests. Project coupled contour and seed sizing before
-selecting another native action under the fixed profile.
+realize its requests. The [coupled projection](COUPLED_TRANSITION_PROJECTION_20261125.md)
+retains the request veto on nearby grouping and finds no joint
+size and shape closure after the bounded arc edits. Alignment is
+pending on the use of existing ideal interior points for a size
+request during the mixed advance.
 Retain the shared-curve and two-epoch
 gates. The [previous four deliverables](CURRENT_PLAN_OVERVIEW_20261118.md#execution-order-and-decisions)
 retain the historical trial evidence.
