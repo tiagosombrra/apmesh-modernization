@@ -207,13 +207,17 @@ struct IdealFrontLimits {
   std::optional<std::size_t> size_face_budget;
 };
 
+struct SeedLayerRegion {
+  std::map<VertexId, UvVertex> sites;
+  std::map<std::size_t, std::vector<VertexId>> replaced;
+  ArticleFrontFaces replacement;
+};
+
 struct SeedLayerPlan {
   std::size_t face_budget = 0;
   bool after_smoothing = false;
   std::array<double, 4> floors{};
-  std::map<VertexId, UvVertex> sites;
-  std::map<std::size_t, std::vector<VertexId>> replaced;
-  ArticleFrontFaces replacement;
+  std::vector<SeedLayerRegion> regions;
 };
 
 struct Candidate {
@@ -746,16 +750,13 @@ void CheckSeedLayerMeasurements(PatchBezier& patch, const ArticleFrontResult& ar
   }
 }
 
-AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
-                                const SeedLayerPlan& plan, const std::vector<UvVertex>& birth,
-                                const std::vector<GeometricRequest>& requests,
-                                const PhysicalLift& physical,
-                                const std::filesystem::path& directory) {
-  Require(!plan.replaced.empty() && !plan.replacement.empty(),
+void CheckSeedLayerRegion(const ArticleFrontResult& article, const SeedLayerRegion& region,
+                          const std::vector<UvVertex>& birth) {
+  Require(!region.replaced.empty() && !region.replacement.empty(),
           "Seed layer replacement requires two nonempty layouts");
   std::set<VertexId> expected_sites;
   ArticleFrontFaces control, front_faces;
-  for (const auto& [id, face] : plan.replaced) {
+  for (const auto& [id, face] : region.replaced) {
     Require(id < article.faces.size() && article.faces[id] == face,
             "Seed layer reference face differs from the generated front");
     expected_sites.insert(face.begin(), face.end());
@@ -765,15 +766,15 @@ AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
   }
   Require(!front_faces.empty() && control.size() > front_faces.size(),
           "Seed layer must include both front and template faces");
-  Require(expected_sites.size() == plan.sites.size(), "Incomplete seed layer site binding");
+  Require(expected_sites.size() == region.sites.size(), "Incomplete seed layer site binding");
   for (const auto v : expected_sites) {
-    const auto found = plan.sites.find(v);
-    Require(found != plan.sites.end() && v < birth.size() && found->second.u == birth[v].u &&
+    const auto found = region.sites.find(v);
+    Require(found != region.sites.end() && v < birth.size() && found->second.u == birth[v].u &&
                 found->second.v == birth[v].v,
             "Seed layer reference site differs from the generated front");
   }
   const auto front = ClosureBoundary(front_faces);
-  for (const auto& [id, face] : plan.replaced) {
+  for (const auto& [id, face] : region.replaced) {
     if (id >= article.seed_quads)
       continue;
     bool touches_front = false;
@@ -784,12 +785,9 @@ AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
     }
     Require(touches_front, "Seed layer is wider than one adjacent template layer");
   }
-  std::set<VertexId> used_replacement;
-  for (const auto& face : plan.replacement) {
-    for (const auto v : face) {
+  for (const auto& face : region.replacement) {
+    for (const auto v : face)
       Require(expected_sites.count(v) != 0, "Seed layer replacement introduces a foreign site");
-      used_replacement.insert(v);
-    }
     if (face.size() == 4) {
       for (std::size_t i = 0; i < 4; ++i) {
         const auto a = article.vertices[face[i]], b = article.vertices[face[(i + 1) % 4]],
@@ -802,38 +800,63 @@ AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
       }
     }
   }
-  Require(ClosureBoundary(control) == ClosureBoundary(plan.replacement),
+  Require(ClosureBoundary(control) == ClosureBoundary(region.replacement),
           "Seed layer replacement changes the directed patch boundary");
-  const auto face_count = article.faces.size() - control.size() + plan.replacement.size();
-  Require(face_count <= plan.face_budget, "Seed layer replacement exceeds the face budget");
+}
+
+AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
+                                const SeedLayerPlan& plan, const std::vector<UvVertex>& birth,
+                                const std::vector<GeometricRequest>& requests,
+                                const PhysicalLift& physical,
+                                const std::filesystem::path& directory) {
+  std::set<std::size_t> replaced;
+  std::set<VertexId> expected_sites, shared_sites, used_replacement;
+  std::size_t replacement_count = 0;
+  for (const auto& region : plan.regions) {
+    CheckSeedLayerRegion(article, region, birth);
+    for (const auto& entry : region.replaced)
+      Require(replaced.insert(entry.first).second, "Seed layer batch has overlapping regions");
+    for (const auto& entry : region.sites)
+      if (!expected_sites.insert(entry.first).second)
+        shared_sites.insert(entry.first);
+    Require(region.replacement.size() <= plan.face_budget - replacement_count,
+            "Seed layer replacement exceeds the face budget");
+    replacement_count += region.replacement.size();
+    for (const auto& face : region.replacement)
+      used_replacement.insert(face.begin(), face.end());
+  }
+  Require(article.faces.size() - replaced.size() <= plan.face_budget - replacement_count,
+          "Seed layer replacement exceeds the face budget");
 
   AppliedSeedLayer result;
   for (const auto& request : requests)
-    if (std::any_of(control.begin(), control.end(), [&](const auto& face) {
+    if (std::any_of(replaced.begin(), replaced.end(), [&](const auto id) {
+          const auto& face = article.faces[id];
           return ContainsRequestSite(article.vertices, face, request.site) ||
                  (plan.after_smoothing && ContainsRequestSite(birth, face, request.site));
         }))
       result.requests.push_back(request);
-  ArticleFrontFaces faces;
+  ArticleFrontResult staged;
   std::set<VertexId> outside;
   for (std::size_t i = 0; i < article.faces.size(); ++i) {
-    if (plan.replaced.count(i))
+    if (replaced.count(i))
       continue;
     const auto& face = article.faces[i];
     outside.insert(face.begin(), face.end());
-    faces.push_back(face);
+    staged.faces.push_back(face);
     if (i < article.seed_quads)
       result.retained_seed_faces.push_back(i);
   }
-  result.replacement_start = faces.size();
-  faces.insert(faces.end(), plan.replacement.begin(), plan.replacement.end());
+  result.replacement_start = staged.faces.size();
+  for (const auto& region : plan.regions)
+    staged.faces.insert(staged.faces.end(), region.replacement.begin(), region.replacement.end());
 
   std::vector<VertexId> retired;
   std::vector<VertexId> compact(article.vertices.size());
-  std::vector<UvVertex> vertices;
   for (VertexId i = 0; i < article.vertices.size(); ++i) {
     if (!outside.count(i) && !used_replacement.count(i)) {
       const auto p = birth[i];
+      Require(shared_sites.count(i) == 0, "Seed layer batch attempts to retire a shared vertex");
       Require(expected_sites.count(i) && p.u > 0 && p.u < 1 && p.v > 0 && p.v < 1 &&
                   std::none_of(
                       article.commits.begin(), article.commits.end(),
@@ -842,18 +865,15 @@ AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
       retired.push_back(i);
       continue;
     }
-    compact[i] = vertices.size();
-    vertices.push_back(article.vertices[i]);
+    compact[i] = staged.vertices.size();
+    staged.vertices.push_back(article.vertices[i]);
     result.retained_vertices.push_back(i);
   }
-  for (auto& face : faces)
+  for (auto& face : staged.faces)
     for (auto& v : face)
       v = compact[v];
-  article.vertices = std::move(vertices);
-  article.faces = std::move(faces);
-  article.seed_quads = result.retained_seed_faces.size();
-  (void)ValidateMixedSmoothing(patch, article.faces, article.vertices, physical);
-  CheckSeedLayerMeasurements(patch, article, result.replacement_start, plan, result.requests,
+  (void)ValidateMixedSmoothing(patch, staged.faces, staged.vertices, physical);
+  CheckSeedLayerMeasurements(patch, staged, result.replacement_start, plan, result.requests,
                              physical);
 
   std::ofstream out(directory / "seed_layer_vertices.csv", std::ios::binary);
@@ -865,6 +885,9 @@ AppliedSeedLayer ApplySeedLayer(PatchBezier& patch, ArticleFrontResult& article,
     out << v << ",retired\n";
   out.close();
   Require(bool(out), "Cannot retain seed layer vertex binding");
+  article.vertices = std::move(staged.vertices);
+  article.faces = std::move(staged.faces);
+  article.seed_quads = result.retained_seed_faces.size();
   return result;
 }
 
@@ -2940,23 +2963,19 @@ struct NativeFeedbackPlan {
   std::optional<std::filesystem::path> reference;
 };
 
-SeedLayerPlan ReadSeedLayer(std::istream& input) {
-  SeedLayerPlan layer;
+SeedLayerRegion ReadSeedLayerRegion(std::istream& input, std::size_t face_budget) {
+  SeedLayerRegion region;
   std::size_t sites = 0, old_faces = 0, new_faces = 0;
-  input >> layer.face_budget >> layer.floors[1] >> layer.floors[0] >> layer.floors[3] >>
-      layer.floors[2] >> sites >> old_faces >> new_faces;
-  Require(bool(input) && layer.face_budget > 0 && sites > 0 && old_faces > 0 && new_faces > 0 &&
-              old_faces <= layer.face_budget && new_faces <= layer.face_budget &&
-              layer.floors[0] > 0 && layer.floors[0] <= 1 && layer.floors[1] > 0 &&
-              layer.floors[1] <= 60 && layer.floors[2] > 0 && layer.floors[2] <= 1 &&
-              layer.floors[3] > 0 && layer.floors[3] <= 90,
+  input >> sites >> old_faces >> new_faces;
+  Require(bool(input) && sites > 0 && old_faces > 0 && new_faces > 0 && old_faces <= face_budget &&
+              new_faces <= face_budget,
           "Invalid seed layer limits");
   for (std::size_t i = 0; i < sites; ++i) {
     VertexId id = 0;
     UvVertex p{};
     input >> id >> p.u >> p.v;
     Require(bool(input) && p.u >= 0 && p.u <= 1 && p.v >= 0 && p.v <= 1 &&
-                layer.sites.emplace(id, p).second,
+                region.sites.emplace(id, p).second,
             "Invalid or repeated seed layer site");
   }
   const auto read_face = [&]() {
@@ -2975,11 +2994,31 @@ SeedLayerPlan ReadSeedLayer(std::istream& input) {
     input >> ordinal;
     Require(bool(input), "Missing seed layer original face index");
     auto face = read_face();
-    Require(layer.replaced.emplace(ordinal, std::move(face)).second,
+    Require(region.replaced.emplace(ordinal, std::move(face)).second,
             "Repeated seed layer original face index");
   }
   for (std::size_t i = 0; i < new_faces; ++i)
-    layer.replacement.push_back(read_face());
+    region.replacement.push_back(read_face());
+  return region;
+}
+
+SeedLayerPlan ReadSeedLayer(std::istream& input, bool batch, bool after_smoothing) {
+  SeedLayerPlan layer;
+  layer.after_smoothing = after_smoothing;
+  input >> layer.face_budget >> layer.floors[1] >> layer.floors[0] >> layer.floors[3] >>
+      layer.floors[2];
+  Require(bool(input) && layer.face_budget > 0 && layer.floors[0] > 0 && layer.floors[0] <= 1 &&
+              layer.floors[1] > 0 && layer.floors[1] <= 60 && layer.floors[2] > 0 &&
+              layer.floors[2] <= 1 && layer.floors[3] > 0 && layer.floors[3] <= 90,
+          "Invalid seed layer limits");
+  std::size_t regions = 1;
+  if (batch) {
+    input >> regions;
+    Require(bool(input) && regions > 1 && regions <= layer.face_budget,
+            "Invalid seed layer batch region count");
+  }
+  for (std::size_t i = 0; i < regions; ++i)
+    layer.regions.push_back(ReadSeedLayerRegion(input, layer.face_budget));
   return layer;
 }
 
@@ -3004,10 +3043,11 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
                   floors.quad_angle <= 90 && floors.quad_shape > 0 && floors.quad_shape <= 1,
               "Invalid front shape floors");
       feedback.front_shape_floors = floors;
-    } else if (kind == "replace_seed_layer" || kind == "replace_seed_layer_after_smoothing") {
+    } else if (kind == "replace_seed_layer" || kind == "replace_seed_layer_after_smoothing" ||
+               kind == "replace_seed_layers_after_smoothing") {
       Require(!feedback.seed_layer, "Repeated seed layer replacement");
-      feedback.seed_layer = ReadSeedLayer(input);
-      feedback.seed_layer->after_smoothing = kind == "replace_seed_layer_after_smoothing";
+      feedback.seed_layer = ReadSeedLayer(input, kind == "replace_seed_layers_after_smoothing",
+                                          kind != "replace_seed_layer");
     } else if (kind == "group_feedback_parent" || kind == "group_feedback_contour_parent" ||
                kind == "group_feedback_contour_parent_preserve_sizes") {
       std::array<double, 4> box{};
