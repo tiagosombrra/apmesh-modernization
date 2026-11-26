@@ -16,6 +16,7 @@ from quad_transition_comparison import bernstein, compare, golden, parse_bp
 SOURCE_FILES = ("tri.obj", "source.obj", "source_tree.txt")
 GRIDS = (24, 48)
 CERTIFICATE_SCHEMA = "apmesh.quad.boundary_refinement.v1"
+CHILD_CERTIFICATE_SCHEMA = "apmesh.quad.boundary_refinement.v2"
 
 
 def load_profile(path):
@@ -161,8 +162,7 @@ def verify_curve_rows(parent, candidate, inserts):
         raise ValueError("Inserted contour sites differ from original curve samples")
 
 
-def boundary_certificate(parent, candidate, feedback, receipt):
-    old, new = ordered_sites(parent), ordered_sites(candidate)
+def _subdivision_steps(old, new):
     index, expected, inserts = 0, [], []
     previous_ids = {row[3] for row in old}
     for j, start in enumerate(old):
@@ -190,16 +190,53 @@ def boundary_certificate(parent, candidate, feedback, receipt):
         index += 1
     if index != len(new):
         raise ValueError("Candidate contour has unbound sites")
-    if [row["parent_interval"] for row in expected] != sorted(row["interval"] for row in receipt["curve_requests"]):
+    return expected, inserts
+
+
+def subdivision_certificate(old, new, requested, child_request=None):
+    intermediate = new
+    if child_request is not None:
+        if (not isinstance(child_request, dict) or set(child_request) != {"interval", "child"}
+                or type(child_request["interval"]) is not int
+                or type(child_request["child"]) is not int
+                or child_request["child"] not in (0, 1)
+                or requested.count(child_request["interval"]) != 1):
+            raise ValueError("Child subdivision needs one recorded original interval")
+        # The second native pass assigns its single new node after every
+        # original and first-pass node ID.
+        last_id = max(row[3] for row in new)
+        intermediate = [row for row in new if row[3] != last_id]
+        if len(intermediate) + 1 != len(new):
+            raise ValueError("Child subdivision has no unique new node")
+    expected, inserts = _subdivision_steps(old, intermediate)
+    if [row["parent_interval"] for row in expected] != sorted(requested):
         raise ValueError("Candidate contour does not realize the recorded curve requests")
+    certificate = dict(schema=CERTIFICATE_SCHEMA, parent_sites=len(old),
+                       candidate_sites=len(new), splits=expected)
+    if child_request is not None:
+        parent, = [row for row in expected if row["parent_interval"] == child_request["interval"]]
+        split_at, = [i for i, row in enumerate(intermediate) if row[3] == parent["inserted_id"]]
+        child = split_at - 1 + child_request["child"]
+        steps, extra = _subdivision_steps(intermediate, new)
+        if len(steps) != 1 or steps[0]["parent_interval"] != child:
+            raise ValueError("Candidate contour split a different child interval")
+        certificate.update(schema=CHILD_CERTIFICATE_SCHEMA, intermediate_sites=len(intermediate),
+                           child_request=child_request, child_split=steps[0])
+        inserts.extend(extra)
+    return certificate, inserts
+
+
+def boundary_certificate(parent, candidate, feedback, receipt):
+    old, new = ordered_sites(parent), ordered_sites(candidate)
+    certificate, inserts = subdivision_certificate(
+        old, new, [row["interval"] for row in receipt["curve_requests"]],
+        receipt.get("child_curve_request"))
     expected_hash = receipt.get("boundary_refinement_sha256")
     if expected_hash is None:
-        if expected or original_curve_witness(parent) != original_curve_witness(candidate):
+        if inserts or original_curve_witness(parent) != original_curve_witness(candidate):
             raise ValueError("Changed original curve requires a native certificate")
         return None
     raw = (feedback / "boundary_refinement.json").read_bytes()
-    certificate = dict(schema=CERTIFICATE_SCHEMA, parent_sites=len(old),
-                       candidate_sites=len(new), splits=expected)
     if sha256(raw).hexdigest() != expected_hash or json.loads(raw) != certificate:
         raise ValueError("Native certificate does not match the bound curve subdivision")
     verify_curve_rows(parent, candidate, inserts)

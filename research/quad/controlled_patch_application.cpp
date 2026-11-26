@@ -2491,9 +2491,15 @@ struct GeometricRequest {
   double size;
 };
 
+struct ChildCurveRequest {
+  std::size_t interval;
+  int child;
+};
+
 struct FeedbackPlan {
   std::vector<GeometricRequest> predecessor, recovered;
   std::vector<std::size_t> curve_intervals;
+  std::optional<ChildCurveRequest> child_curve;
   bool replay_previous_search = false;
   bool guarded_smoothing = false;
   bool additional_pairs = false;
@@ -2630,6 +2636,12 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
       input >> interval;
       Require(bool(input), "Missing single-patch curve interval");
       feedback.curve_intervals.push_back(interval);
+    } else if (kind == "curve_child") {
+      ChildCurveRequest request{};
+      input >> request.interval >> request.child;
+      Require(bool(input) && !feedback.child_curve && (request.child == 0 || request.child == 1),
+              "Invalid or repeated single-patch child curve request");
+      feedback.child_curve = request;
     } else {
       GeometricRequest request{};
       input >> request.face >> request.site.u >> request.site.v >> request.size;
@@ -2650,6 +2662,11 @@ NativeFeedbackPlan ReadNativeFeedbackPlan(const std::filesystem::path& path) {
           "An additional-pair error limit requires additional local pairs");
   Require(!feedback.certify_boundary_refinement || have_requests,
           "Boundary refinement certification requires a bound successor request");
+  Require(!feedback.child_curve ||
+              (feedback.certify_boundary_refinement &&
+               std::count(feedback.curve_intervals.begin(), feedback.curve_intervals.end(),
+                          feedback.child_curve->interval) == 1),
+          "Child curve requests require one certified parent split");
   Require(feedback.group_feedback_parents.empty() || feedback.certify_boundary_refinement,
           "Feedback grouping requires certified predecessor boundary refinement");
   Require(!feedback.ideal_front_limits || feedback.certify_boundary_refinement,
@@ -2720,6 +2737,17 @@ GroupingPlan ReadGroupingPlan(const std::filesystem::path& path) {
   return plan;
 }
 
+void WriteCertifiedSplit(std::ostream& out, const RealBoundarySource& parent,
+                         const RealBoundarySource& refined, const CertifiedBoundarySplit& split) {
+  const auto& start = parent.sites[split.parent_interval];
+  const auto& end = parent.sites[(split.parent_interval + 1) % parent.sites.size()];
+  const auto& added = refined.sites[split.inserted_site];
+  out << "{\"parent_interval\":" << split.parent_interval << ",\"start_id\":" << start.source_id
+      << ",\"end_id\":" << end.source_id << ",\"inserted_id\":" << added.source_id
+      << ",\"side\":" << added.side << ",\"parameter\":" << std::setprecision(17) << added.parameter
+      << '}';
+}
+
 void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
                             const RealBoundarySource& source,
                             const std::vector<GeometricRequest>& requests,
@@ -2749,12 +2777,34 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
     const auto last_id = *std::max_element(previous.node_ids.begin(), previous.node_ids.end());
     split_source = SplitFeedbackIntervals(patch, source, split, last_id);
   }
-  const auto& effective_source = split_source ? *split_source : source;
+  const auto& intermediate = split_source ? *split_source : source;
   std::vector<CertifiedBoundarySplit> certificate;
+  std::optional<RealBoundarySource> child_source;
+  std::optional<CertifiedBoundarySplit> child_certificate;
   if (certify_boundary) {
     const auto last_id = *std::max_element(previous.node_ids.begin(), previous.node_ids.end());
-    certificate = CertifyBoundaryRefinement(patch, source, effective_source, split, last_id);
+    certificate = CertifyBoundaryRefinement(patch, source, intermediate, split, last_id);
+    if (comparison->child_curve) {
+      const auto request = *comparison->child_curve;
+      const auto parent = std::find_if(certificate.begin(), certificate.end(), [&](const auto& s) {
+        return s.parent_interval == request.interval;
+      });
+      Require(parent != certificate.end(), "Missing certified root interval for the child split");
+      const auto child = parent->inserted_site - 1 + static_cast<std::size_t>(request.child);
+      std::vector<bool> child_flags(intermediate.sites.size(), false);
+      child_flags.at(child) = true;
+      auto intermediate_last_id = last_id;
+      for (const auto& site : intermediate.sites)
+        intermediate_last_id = std::max(intermediate_last_id, site.source_id);
+      child_source = SplitFeedbackIntervals(patch, intermediate, child_flags, intermediate_last_id);
+      const auto children = CertifyBoundaryRefinement(patch, intermediate, *child_source,
+                                                      child_flags, intermediate_last_id);
+      Require(children.size() == 1 && children.front().parent_interval == child,
+              "Incorrect child subdivision certificate");
+      child_certificate = children.front();
+    }
   }
+  const auto& effective_source = child_source ? *child_source : intermediate;
   auto tree = ReplayRealSourceTree(patch, effective_source);
   const auto leaves = tree->getLeaves();
   const auto cap = tree->getMaxLevelCap();
@@ -2764,22 +2814,23 @@ void StageGeometricFeedback(PatchBezier& patch, const Candidate& previous,
   if (certify_boundary) {
     std::ofstream evidence(directory / "boundary_refinement.json", std::ios::binary);
     evidence.imbue(std::locale::classic());
-    evidence << "{\"schema\":\"apmesh.quad.boundary_refinement.v1\",\"parent_sites\":"
-             << source.sites.size() << ",\"candidate_sites\":" << effective_source.sites.size()
-             << ",\"splits\":[";
+    evidence << "{\"schema\":\"apmesh.quad.boundary_refinement."
+             << (child_certificate ? "v2" : "v1") << "\",\"parent_sites\":" << source.sites.size()
+             << ",\"candidate_sites\":" << effective_source.sites.size() << ",\"splits\":[";
     for (std::size_t i = 0; i < certificate.size(); ++i) {
-      const auto& item = certificate[i];
-      const auto& start = source.sites[item.parent_interval];
-      const auto& end = source.sites[(item.parent_interval + 1) % source.sites.size()];
-      const auto& added = effective_source.sites[item.inserted_site];
       if (i)
         evidence << ',';
-      evidence << "{\"parent_interval\":" << item.parent_interval
-               << ",\"start_id\":" << start.source_id << ",\"end_id\":" << end.source_id
-               << ",\"inserted_id\":" << added.source_id << ",\"side\":" << added.side
-               << ",\"parameter\":" << std::setprecision(17) << added.parameter << '}';
+      WriteCertifiedSplit(evidence, source, intermediate, certificate[i]);
     }
-    evidence << "]}\n";
+    evidence << ']';
+    if (child_certificate) {
+      const auto request = *comparison->child_curve;
+      evidence << ",\"intermediate_sites\":" << intermediate.sites.size()
+               << ",\"child_request\":{\"interval\":" << request.interval
+               << ",\"child\":" << request.child << "},\"child_split\":";
+      WriteCertifiedSplit(evidence, intermediate, effective_source, *child_certificate);
+    }
+    evidence << "}\n";
     evidence.close();
     Require(bool(evidence), "Cannot retain the boundary refinement certificate");
   }

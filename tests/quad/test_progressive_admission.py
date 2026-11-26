@@ -7,7 +7,10 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
-from quad_progressive_admission import GRIDS, load_profile, measure_progress, regional_metric
+from quad_progressive_admission import (
+    CHILD_CERTIFICATE_SCHEMA, GRIDS, load_profile, measure_progress, regional_metric,
+    subdivision_certificate,
+)
 from quad_regional_quality_guards import GROUPS
 
 
@@ -25,6 +28,54 @@ def common_reports(new_rms=.8, new_max=2.0, previous_rms=1.0):
         return dict(global_error=dict(sample_count=n*n, rms_source_area=rms, max_xyz=maximum))
     return {n: dict(baseline=observation(n, previous_rms, 2.0),
                     candidate=observation(n, new_rms, new_max)) for n in GRIDS}
+
+
+def contour_site(side, parameter, uv, node_id):
+    return side, parameter, uv, node_id, (*uv, 0)
+
+
+class ChildSubdivisionTests(unittest.TestCase):
+    def setUp(self):
+        self.old = [
+            contour_site(0, 0, (0, 0), 1), contour_site(1, 0, (1, 0), 2),
+            contour_site(2, 1, (1, 1), 3), contour_site(3, 1, (0, 1), 4),
+        ]
+        self.middle = contour_site(3, .5, (0, .5), 10)
+        self.child = contour_site(3, .75, (0, .75), 11)
+
+    def test_each_directed_half_of_last_interval(self):
+        second = contour_site(3, .25, (0, .25), 11)
+        for child, new, ids in (
+            (0, [self.child, self.middle], (4, 10)),
+            (1, [self.middle, second], (10, 1)),
+        ):
+            with self.subTest(child=child):
+                request = {"interval": 3, "child": child}
+                cert, inserts = subdivision_certificate(self.old, self.old + new, [3], request)
+                self.assertEqual(cert["schema"], CHILD_CERTIFICATE_SCHEMA)
+                self.assertEqual(cert["intermediate_sites"], 5)
+                self.assertEqual(cert["splits"][0]["inserted_id"], 10)
+                witness = cert["child_split"]
+                self.assertEqual((witness["start_id"], witness["end_id"]), ids)
+                self.assertEqual(witness["inserted_id"], 11)
+                self.assertEqual(inserts, [self.middle, new[child]])
+
+    def test_wrong_child_and_missing_parent_are_refused(self):
+        new = self.old + [self.child, self.middle]
+        with self.assertRaisesRegex(ValueError, "different child"):
+            subdivision_certificate(self.old, new, [3], {"interval": 3, "child": 1})
+        with self.assertRaisesRegex(ValueError, "one recorded original interval"):
+            subdivision_certificate(self.old, new, [3], {"interval": 2, "child": 0})
+
+    def test_old_sites_cannot_move_or_share_new_id(self):
+        moved = [contour_site(0, .1, (.1, 0), 1), *self.old[1:]]
+        with self.assertRaisesRegex(ValueError, "changes an ordered predecessor"):
+            subdivision_certificate(self.old, moved + [self.child, self.middle], [3],
+                                    {"interval": 3, "child": 0})
+        duplicate = contour_site(3, .75, (0, .75), 10)
+        with self.assertRaisesRegex(ValueError, "no unique new node"):
+            subdivision_certificate(self.old, self.old + [duplicate, self.middle], [3],
+                                    {"interval": 3, "child": 0})
 
 
 class ProgressiveAdmissionTests(unittest.TestCase):
