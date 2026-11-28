@@ -115,6 +115,7 @@ jobs:
           python3 tests/quad/test_domain_factor_bounds_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/domain-factor-bounds
           python3 tests/quad/test_live_pair_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/live-pairs
           python3 tests/quad/test_article_front_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/article-front
+          python3 tests/quad/test_quadratic_jet_archive.py --probe build/quad-ci-linux/quad_quadratic_jet_probe --article-root build/quad-app-linux/results/article-front --history-root build/quad-app-linux/results/real-boundary --directory build/quad-app-linux/results/quadratic-jet
       - name: AddressSanitizer and UBSan controlled typed history (Linux)
         if: runner.os == 'Linux'
         shell: bash
@@ -131,6 +132,11 @@ jobs:
           python3 tests/quad/test_domain_factor_bounds_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/domain-factor-bounds
           python3 tests/quad/test_live_pair_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/live-pairs
           python3 tests/quad/test_article_front_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/article-front
+          clang++ -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iresearch/quad tests/quad/quadratic_jet_contracts.cpp -o build/quad-app-asan/quad_quadratic_jet_contracts
+          clang++ -std=c++17 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iresearch/quad tests/quad/quadratic_jet_probe.cpp -o build/quad-app-asan/quad_quadratic_jet_probe
+          build/quad-app-asan/quad_quadratic_jet_contracts
+          python3 -W error::ResourceWarning tests/quad/test_quadratic_jet_python.py build/quad-app-asan/quad_quadratic_jet_probe
+          python3 tests/quad/test_quadratic_jet_archive.py --probe build/quad-app-asan/quad_quadratic_jet_probe --article-root build/quad-app-asan/results/article-front --history-root build/quad-app-asan/results/real-boundary --directory build/quad-app-asan/results/quadratic-jet
       - name: Build controlled application QUAD entry (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
@@ -150,6 +156,8 @@ jobs:
           python tests/quad/test_live_pair_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/live-pairs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python tests/quad/test_article_front_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/article-front
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python tests/quad/test_quadratic_jet_archive.py --probe build/quad-ci-msvc/Debug/quad_quadratic_jet_probe.exe --article-root build/quad-app-msvc/results/article-front --history-root build/quad-app-msvc/results/real-boundary --directory build/quad-app-msvc/results/quadratic-jet
           exit $LASTEXITCODE
       - name: Retain controlled application output
         if: always()
